@@ -1,0 +1,752 @@
+================================================================================
+APOPHYSIS-CPP: MISSING FUNCTIONALITY AUDIT AND IMPLEMENTATION PLAN
+================================================================================
+Date: 2026-07-17
+Compared: apophysis_7x_screenshots/ (7 screenshots of the original running
+app) + the original Delphi source (apophysis-7x-patched/src/) against the
+current state of apophysis-cpp.
+
+PROGRESS LOG (most recent first):
+  2026-07-17  P1(b) DONE - TransformPanel extended with a Colors tab
+              (Color/Color Speed/Opacity/Direct Color as SliderSpin rows +
+              a gradient-lookup swatch QLabel + a Solo QCheckBox toggling
+              Flame::soloXform) and a Variables tab (one row per
+              VariationRegistry variable name, visibility gated on the
+              owning variation's weight being nonzero, refreshed on every
+              Variations-tab edit as well as on selection change; values
+              read/written via XForm::getVariable()/setVariable()). Same
+              beginEditIfNeeded()/commitEditIfNeeded() gesture pattern as
+              P1(a) - one undo entry per committed field edit, checkbox
+              toggles commit immediately (atomic, no drag to bracket).
+              Tests: transform_panel_interaction_test.cpp grew from 41 to
+              66 checks (Colors seeding/editing, Solo toggle, Variables
+              visibility-by-weight using the "curl" variation's
+              curl_c1/curl_c2 as a variation with real named parameters).
+              Full suite 36/36 passing; Debug+Release both rebuilt.
+  2026-07-17  P1(c-1) DONE - TransformPanel gained a Transform tab, folding
+              the original's separate raw-coefficient "Transform" tab and
+              per-vertex "Triangle" tab into one vertex-based editor (O/X/Y
+              each an X/Y spin box pair, round-tripped through
+              TriangleGeometry.h's triangleFromCoefs()/coefsFromTriangle() -
+              the same math TriangleCanvas's own drags use). An "Edit post
+              transform" checkbox switches the six fields (and the
+              rotate/scale/flip tools) between XForm::c and XForm::p, kept
+              bidirectionally synced with EditorWindow's existing toolbar
+              "Post" QAction via a new editingPostTransformChanged()
+              signal/setEditingPostTransform() setter pair. Also added the
+              original's exact-value tools: rotate by N degrees, scale by N
+              percent, rotate 90 CW/CCW, flip horizontal/vertical - all via
+              TriangleGeometry's rotateAroundPivot/scaleAroundPivot around
+              the active triangle's own centroid. EditorWindow's
+              onXformEdited now also calls the panel's new
+              refreshTransformTabFromCanvas() so a canvas drag (which edits
+              c/p directly, bypassing the panel) keeps the numeric fields
+              live-synced, matching plan item 1.5's "live-synced with the
+              triangle canvas drags" requirement.
+              Mid-implementation regression + fix: the first layout attempt
+              (one button per row for the 4 exact-value tools, plus
+              separate rotate-by/scale-by rows, plus a long-winded Solo
+              checkbox label left over from P1(b)) made TransformPanel's
+              natural minimum size hint big enough that EditorWindow's
+              QMainWindow-level minimumSizeHint stopped shrinking below
+              ~558x454, breaking triangle_canvas_interaction_test's
+              testEditorPreviewRendersAtReducedResolutionAndDensity (a
+              resize(400,300) call was silently clamped back up, so the
+              fitted preview came out taller than the test's 300px budget).
+              Root-caused by printing minimumSizeHint() at each layout
+              level (QSplitter panes are compressible below their
+              minimumSizeHint() by an explicit setMinimumWidth() at
+              *runtime*, but QMainWindow's own minimumSizeHint climbs from
+              each pane's uncompressed minimumSizeHint() regardless - so a
+              tall/wide tab still forces the whole window's floor up even
+              though the pane itself visibly shrinks smaller). Fixed by
+              shortening the Solo checkbox label (long text was the actual
+              dominant width contributor, not anything in the new tab) and
+              packing the Transform tab's tool rows two-per-row instead of
+              one-per-row (halving its row count). Full suite back to
+              36/36; Debug+Release both rebuilt. General lesson for any
+              future EditorWindow side-panel content: check
+              triangle_canvas_interaction_test's resize test after adding
+              rows, not just a screenshot - a screenshot alone doesn't show
+              a minimum-size regression that only bites when the window is
+              squeezed small.
+  2026-07-17  P1(c-2a) DONE - final-transform UI (enable toggle, canvas
+              drawing/selection, transform-selector inclusion; copy/paste-
+              transform still outstanding, see below). Added
+              apo::kFinalXformIndex (Flame.h) - a -2 sentinel for "the
+              flame's final transform" wherever an xform index is
+              otherwise 0..numXForms()-1, so every existing index-based
+              API (TriangleCanvas's triangleFor/writeTriangle/
+              setSelectedXform, TransformPanel's currentXForm()) could gain
+              final-xform support by special-casing the sentinel *once*
+              per method, rather than threading a parallel "or is it
+              final?" flag through the whole selection/undo/render call
+              graph. TransformPanel needed literally one changed method
+              (currentXForm()) to make every existing tab work on the
+              final transform for free, since they're all already written
+              purely in terms of currentXForm(). TriangleCanvas now draws
+              the final triangle (white/dash-dot when unselected, so it
+              reads as categorically different from the numbered per-xform
+              palette) after the regular per-xform loop, factored through
+              a shared drawTriangle lambda so it gets identical selected-
+              state treatment (reference triangle, vertex markers) without
+              a parallel copy of that logic; click-to-select and fitView's
+              bounding box were extended to include it too.
+              EditorWindow gained a checkable "Final Transform" toolbar
+              action (onFinalXformToggled) that sets
+              Flame::finalXformEnabled/useFinalXform together (this port
+              collapses the original's two separate flags into one user-
+              facing toggle - see Flame.h's fields for why they exist
+              separately at the model layer) and pushes a Structural undo
+              entry; the xform list gets a trailing "Final" row via two new
+              helpers (xformIndexForListRow/listRowForXformIndex) that
+              convert between list-row space and xform-index space in both
+              directions; a new xformAt(index) helper centralizes the
+              "*flame_->xform[index], unless index is kFinalXformIndex"
+              resolution EditorWindow's own drag/undo/redo code needed
+              (TriangleCanvas already had its own copy of the same
+              resolution baked into triangleFor/writeTriangle).
+              Bug caught before it shipped: the very first build
+              segfaulted on startup - refreshXformList()'s new code
+              synced finalXformAction_'s checked state, but
+              refreshXformList() is also called once by the constructor
+              *before* the toolbar (and finalXformAction_) exist yet.
+              Fixed with a null guard; worth remembering for any future
+              field added to that resync block.
+              Tests: 4 new checks in triangle_canvas_interaction_test.cpp
+              (TriangleCanvas-level select/drag/click-to-select on the
+              final triangle, plus an EditorWindow-level toggle+undo/redo
+              round trip) and 2 in transform_panel_interaction_test.cpp
+              (the final xform is selectable/editable/disabled exactly
+              like testPanelDisabledWithNoSelection's -1 case). Full suite
+              36/36 passing; Debug+Release both rebuilt.
+  2026-07-17  P1(c-2b) DONE - copy/paste transform, closing out P1(c) and
+              all of Priority 1 (the Editor transform-properties panel,
+              this port's single largest gap per the headline finding).
+              A process-wide (not per-EditorWindow) in-app clipboard - one
+              static apo::XForm in EditorWindow.cpp's anonymous namespace -
+              so Copy in one open Editor and Paste in another works, like a
+              real clipboard would. Two new toolbar actions (Copy/Paste,
+              no keyboard shortcuts - Ctrl+C/V are deliberately left alone
+              so they keep doing ordinary text copy/paste inside the Name
+              field and every numeric spin box, rather than a window-wide
+              shortcut silently stealing them); Paste uses XForm::assign()
+              (already existed, used identically by Flame::duplicateXForm)
+              and integrates with undo via the same pushStructuralUndo
+              pattern as every other multi-field xform mutation in this
+              file. Both actions work on the final transform too, for
+              free, via the same xformAt() sentinel resolution added for
+              P1(c-2a).
+              Tests: 2 new EditorWindow-level checks in
+              triangle_canvas_interaction_test.cpp (copy-then-paste-then-
+              undo/redo round trip between two regular xforms; paste onto
+              the final transform). Full suite 36/36 passing; Debug+Release
+              both rebuilt.
+              P1(c) COMPLETE. Remaining plan items, in the order the
+              "Suggested Order of Work" section below lists them:
+              P3.1 + P3.2 + P2.3 (Options Variations checklist + gradient-
+              source-on-random-flame + Variation menu - all touch the
+              random-generation pipeline together), then P2.1/P2.2, then
+              P4.1/P4.3, then P2.4/P2.5.
+  2026-07-17  P3.1 + P3.2 + P2.3 DONE - all three random-generation-
+              pipeline settings together, since they touch the same core
+              functions and the same MainWindow call site.
+              Core API changes (Qt-free, unaffected by which UI ends up
+              calling them - existing callers all still compile unchanged,
+              every new parameter defaults to "old behavior"):
+              MutationOps::randomizeXforms/setXformsVariation gained an
+              `eligibleVariations` parameter (nullptr/empty = every
+              variation, same as before) restricting the variationIndex<0
+              random draw - P3.1's actual enforcement point.
+              RandomFlame::generateRandomFlame gained variationIndex/
+              eligibleVariations (thread straight through to
+              randomizeXforms) plus a new RandomGradientSource enum
+              (RandomPreset/CurrentGradient/Calculated) and a
+              currentGradient ColorMap pointer, implementing P3.2's 3 of
+              5 gradient-source options (Default gradient/random-from-file
+              skipped - nothing in this port to draw either from, a
+              deliberate cut not an oversight).
+              AppSettings gained disabledVariationNames()/
+              setDisabledVariationNames() (P3.1's checklist storage - an
+              exclusion set by name, not an inclusion set, so a variation
+              added to the registry later defaults to enabled) +
+              enabledVariationIndices() (the name-set resolved to
+              MutationOps's index-list form, falling back to "everything"
+              if a user somehow disabled every single one),
+              randomGradientSource()/setRandomGradientSource() (P3.2),
+              and randomForcedVariationName()/setRandomForcedVariationName()
+              (P2.3 - stored by name so it survives the registry's
+              variation order changing between versions). Corrected two
+              stale doc comments in AppSettings.h/OptionsDialog.h that
+              flatly asserted the gradient-source setting was dead code in
+              the original - see this file's own HEADLINE FINDING section
+              for how that misdiagnosis happened and was caught.
+              UI: OptionsDialog's Random tab gained Gradient Source and
+              Variation (forced) combo boxes; a new Variations tab (4th
+              tab) holds the enable/disable checklist as a checkable
+              QListWidget + Set All/Clear All buttons. Deliberately did
+              NOT add a separate top-level "Variation" menu the way the
+              original did (Options > Random > Variation combo instead) -
+              one fewer surface for the same setting, consistent with
+              this port's existing preference for putting generation
+              settings in Options rather than scattering them across menus.
+              MainWindow::onNewRandomBatchTriggered resolves the forced-
+              variation name to an index via VariationRegistry, builds the
+              eligible-index vector via AppSettings::
+              enabledVariationIndices(), and captures the currently-
+              selected library flame's ColorMap (reusing the exact spot
+              keepBackgroundColor already captures its background, before
+              flames_ is cleared) as the CurrentGradient source's input.
+              MutateDialog's Trend=Random path also now passes
+              enabledVariationIndices() into both randomizeXforms and
+              setXformsVariation, per the plan's explicit expectation that
+              P3.1 covers Mutate too - its own Trend combo (a richer,
+              separate forced-variation mechanism) is untouched by P2.3's
+              new Options-level setting, which only feeds New Random Batch.
+              Tests: 4 new checks in mutation_ops_test.cpp
+              (eligibleVariations restricts/is-bypassed-by-forced-variation/
+              null-vs-empty-list equivalence, for both randomizeXforms and
+              setXformsVariation), 5 in random_flame_test.cpp (forced
+              variation, restricted eligible list, all 3 gradient sources
+              including the CurrentGradient-with-no-gradient-supplied
+              fallback), 5 in options_dialog_interaction_test.cpp (combo
+              seeding/persistence, Variations tab seeding, Set All/Clear
+              All, OK persists unchecked items as the disabled set), and 2
+              MainWindow-level end-to-end checks in
+              main_window_interaction_test.cpp (a real New Random Batch
+              run honors the configured forced variation + Random-preset
+              gradient source, and separately honors a Variations
+              checklist that leaves only one variation enabled). Full
+              suite 36/36 passing; Debug+Release both rebuilt.
+              Next: P2.1 (preview camera interaction) + P2.2 (duplicate
+              flame / reset location).
+  2026-07-17  P2.1 DONE - MainWindow's library preview upgraded from pure
+              display to a directly-interactive camera: mouse-wheel zoom
+              (anchored on the cursor, not just the view center) and
+              click-drag pan, both writing straight into the selected
+              flame's own Flame::zoom/center. Rotate mode and the
+              rectangle-zoom variants skipped, exactly as the plan itself
+              suggested.
+              New src/ui/PreviewLabel.{h,cpp} (a QLabel subclass,
+              replacing the previous bare QLabel previewLabel_ - the
+              MainWindow.cpp diff outside PreviewLabel itself is small)
+              owns the selected Flame the same way TriangleCanvas owns
+              its: mutates it directly on a gesture, emits a signal for
+              the owner to re-render. Two signals distinguish continuous
+              gestures from settled ones: cameraChanged() (every mouse-
+              move during a drag - cheap preview-quality feedback) and
+              cameraChangeFinished() (mouse release, or immediately after
+              one wheel notch, since a single notch is already a complete
+              gesture) - a full-quality settle-render.
+              The zoom-to-cursor and pan math is a straightforward
+              inversion of Renderer.cpp's buildBuffersAndCamera projection
+              (documented in PreviewLabel.cpp itself); verified via
+              invariant-based tests rather than hardcoded expected
+              numbers - "the flame-space point under the cursor is
+              unchanged by a cursor-anchored zoom" and "content originally
+              under the drag's start position ends up under its end
+              position" - so a real formula bug would actually be caught,
+              not just echoed back by a test copied from the same formula.
+              Performance fix caught before it could ship: MainWindow's
+              preview previously rendered every selected flame at its own
+              full declared width/height/sampleDensity with no
+              coalescing - fine for occasional list clicks, but wiring up
+              continuous wheel/drag gestures on top of that unchanged
+              would have reintroduced the exact "full-quality render on
+              every mouse-move" problem this session already fixed once
+              for EditorWindow's own preview (see EditorWindow.h's class
+              comment). Fixed by adding the same renderInFlight_/
+              renderDirty_ coalescing gate (MainWindow::requestRender(),
+              shared by both the existing full-quality selection-change
+              path and a new reduced-quality/AppSettings::
+              previewSampleDensity() camera-preview path, unlike
+              EditorWindow which only ever needs the reduced-quality one)
+              plus an aspect-ratio-preserving scale-to-fit (rather than
+              just squishing the preview clone to the label's raw width/
+              height, which EditorWindow's own canvas-filling preview
+              doesn't need to worry about but this port's often-non-
+              square library preview would visibly distort).
+              Tests: tests/ui/preview_label_interaction_test.cpp (new, 13
+              checks - zoom direction/cursor-anchoring/signal counts, pan
+              direction/signal counts, both gestures correctly no-op
+              without a flame set) plus 1 new MainWindow-level end-to-end
+              check in main_window_interaction_test.cpp (a real wheel
+              event on the library preview reaches the actual selected
+              Flame, not just a preview clone, and triggers a real
+              renderRequested). Full suite 37/37 passing; Debug+Release
+              both rebuilt.
+              Next: P2.2 (Duplicate Flame menu command, Reset Location).
+  2026-07-17  P2.2 DONE - Duplicate Flame + Reset Location, both added to
+              MainWindow's existing Library menu/context menu rather than
+              a new top-level "Flame" menu (this port already consolidated
+              Edit/Rename/Delete there; two more per-flame commands fit
+              the same place rather than justifying a whole new menu).
+              Research correction, caught while checking the original
+              source directly before implementing (apophysis-7x-patched/
+              src/Forms/Main.pas /.dfm): "Duplicate flame" does NOT exist
+              anywhere in the original - grepped the whole source tree,
+              "Duplicate" only ever appears at the transform level
+              (Editor.pas, already ported as EditorWindow's own Duplicate
+              Xform action). The original P2 plan text calling this a port
+              of "the original Flame menu" was simply wrong; corrected
+              here rather than left standing - it's a new, reasonable
+              addition (Flame::clone() already exists and every other
+              list-management op is already in this menu), not a restored
+              original feature.
+              Reset Location, by contrast, IS a real, verified port:
+              Main.dfm's mnuResetLocation has ShortCut=123 (F12, no
+              modifiers) and Hint="Reset Location (F12)", matched exactly
+              here. Read Main.pas's actual ResetLocation procedure rather
+              than assuming from the plan's own paraphrase ("sets center/
+              zoom/angle back to defaults") - the real implementation only
+              zeroes zoom, then recomputes center via CalcBoundbox (this
+              port's non-iterative equivalent: AutoFrame.h's
+              autoFrameFlame(), already used by generateRandomFlame); angle
+              is NOT touched (`//maincp.FAngle := 0;` is commented out in
+              the original itself - dead code there too, so correctly not
+              carried forward here either). Getting this from the source
+              instead of the paraphrase avoided implementing the wrong
+              (and worse - a flat center=(0,0) reset can leave a flame's
+              actual content completely off-screen) behavior.
+              Duplicate Flame does a surgical single-item list insert
+              (matching onDeleteFlameTriggered's existing convention, not
+              onNewRandomBatchTriggered's coarser "clear + repopulate
+              everything" one) - clone() the selected flame, append
+              " copy" to its name, insert immediately after the source,
+              request just its own thumbnail, select it (matching Add/
+              Duplicate Xform's own "select what you just created"
+              convention).
+              Tests: 6 new checks/functions in main_window_interaction_test.cpp
+              (list insertion position/order/selection, a full-clone field
+              check via Save-Flame-As round-trip, Reset Location's zoom-
+              zeroed-and-center-recomputed behavior via the same round-
+              trip, the F12 shortcut) plus both new actions added to the
+              existing enabled/disabled-until-selection check. Full suite
+              37/37 passing; Debug+Release both rebuilt.
+              Next: P4.1 + P4.3 (Render dialog: memory-usage estimate,
+              Save parameters alongside the PNG).
+  2026-07-17  P4.1 + P4.3 DONE - the last two items on the plan's own
+              suggested order of work.
+              P4.1 (memory-usage estimate): a new
+              Renderer::estimatePeakMemoryBytes(flame, threadCount) static
+              method (Renderer.h/.cpp), deliberately implemented by
+              *reusing* the existing buildFilter/buildBuffersAndCamera
+              internal functions render() itself already calls (same call
+              order: buildBuffersAndCamera reads plan.filterSize, set by
+              buildFilter) rather than hand-copying their bucket-sizing
+              formulas into the UI layer, where they could silently drift
+              out of sync as Renderer.cpp's own math evolves. Estimate is
+              (threadCount+1) * bucketWidth * bucketHeight * sizeof(Bucket)
+              - one private bucket array per render thread (the lock-free-
+              per-thread design Renderer.h's own class comment already
+              documents) plus one more for the final reduction buffer every
+              thread's buckets get summed into; every other allocation
+              (filter kernel, per-thread cloned Flame, output pixels,
+              tone-map tables) is negligible by comparison and omitted.
+              Pure arithmetic, no chaos-game iteration - cheap enough to
+              recompute on every RenderDialog spin-box edit. RenderDialog
+              gained a live "Estimated Peak Memory" label, recomputed on
+              width/height/oversample/filter-radius changes only (sample
+              density deliberately excluded - it changes point count, not
+              bucket array size, confirmed via a dedicated test that
+              raising density leaves the label unchanged).
+              P4.3 (Save parameters): a new "Save parameters (.flame)
+              alongside the image" checkbox; on a successful (uncancelled,
+              successfully-saved) render, writes a .flame with the same
+              basename as the PNG next to it, capturing the *exact*
+              settings that were actually rendered (the dialog's own
+              width/height/density/oversample/filter-radius/adaptive-filter
+              at Render time - a new pendingRenderFlame_ member captures
+              the real clone startRender() launched, since flame_ itself
+              may differ from what was actually rendered).
+              Tests: 3 new checks in renderer_test.cpp
+              (estimatePeakMemoryBytes scales with image size/thread count
+              and stays linear in thread count, is positive even for a 1x1
+              image, resolves threadCount=0 the same way render() does)
+              and 6 in render_dialog_interaction_test.cpp (the memory
+              label starts populated and updates on size/oversample edits
+              but not density; a real render with Save Parameters checked
+              writes a loadable .flame reflecting the dialog's own
+              settings, not flame_'s original ones; leaving it unchecked
+              - the default - writes no .flame file at all). Full suite
+              37/37 passing; Debug+Release both rebuilt.
+
+              MISSING_FEATURES_PLAN.txt's "Suggested Order of Work" is now
+              fully complete: P1(a)/(b)/(c), P3.1+P3.2+P2.3, P2.1, P2.2,
+              P4.1+P4.3.
+  2026-07-17  P4.2 DONE (by request, after the suggested order's own
+              "as demand dictates" item) - width/height/sample-density
+              preset dropdowns on the Render dialog. Verified the exact
+              values directly against FormRender.dfm rather than
+              guessing: cbWidth = 320/640/800/1024/1280/1600/1920/2048/
+              2560/3200, cbHeight = 200/240/480/600/768/1024/1200/1920/
+              2048/2400, txtDensity = 200/500/1000/2000/4000 - all three
+              carried over exactly.
+              Deliberate widget-choice deviation from the original: the
+              original's own cbWidth/cbHeight/txtDensity are plain
+              editable TComboBoxes (type a value OR pick a preset, no
+              separate spinner) - replacing this port's existing
+              QSpinBox/QDoubleSpinBox with editable QComboBoxes would have
+              lost the increment/decrement arrows and validated-range
+              input those already give for free, AND broken every
+              existing test in this file that finds these controls by
+              their QSpinBox/QDoubleSpinBox type (a wide, working,
+              already-tested surface not worth destabilizing for a "cheap;
+              nice-to-have" item). Instead, added a narrow "Preset..."
+              QComboBox next to each existing spin box - same practical
+              value (fast access to the same common values), delivered
+              without that churn. Picking a width/height preset routes
+              through the exact same hasFocus()-gated maintain-aspect-
+              ratio sync the spin boxes' own valueChanged handlers already
+              have (by focusing the spin box before calling setValue(),
+              so the pre-existing handler applies unchanged) rather than
+              a second, parallel sync path.
+              Tests: 3 new checks/functions in
+              render_dialog_interaction_test.cpp (a width preset writes
+              into widthSpin and re-syncs height under Maintain Aspect
+              Ratio, a density preset writes into densitySpin, both new
+              combos disable/re-enable alongside every other control
+              during a render). Full suite 37/37 passing; Debug+Release
+              both rebuilt.
+
+  2026-07-17  P2.4 DONE (by request) - library list/thumbnail view toggle.
+              Verified against source rather than assumed: Main.pas's
+              btnViewIcons/btnViewList toggle ListView1.ViewStyle between
+              vsIcon and vsReport, backed by a global ClassicListMode
+              flag; Regstry.pas/Settings.pas both default it to true (a
+              compact list) when nothing is stored yet, and - genuinely,
+              not just cosmetically - list mode SKIPS thumbnail generation
+              entirely (Main.pas:689: `if (not ClassicListMode) then
+              item.ImageIndex := i`), which is the real reason the plan
+              flags this as mattering "for large batches."
+              Deliberate default deviation: this port's own AppSettings::
+              libraryThumbnailView() defaults to *true* (thumbnails),
+              opposite of ClassicListMode's own true-means-list default -
+              this port has shown thumbnails unconditionally all along
+              (no other option existed before today), so defaulting the
+              new persisted setting to match that avoids silently
+              flipping the view for every existing installation the
+              moment this ships, which the original's own default was
+              never a reason to do here.
+              MainWindow gained a mutually-exclusive Thumbnails/List
+              toolbar action pair (matches the original's own two-button,
+              not-a-single-checkbox toolbar shape) driving a new
+              applyListViewMode() (QListWidget::setViewMode/setIconSize/
+              setSpacing plus every item's size hint) and gating
+              requestThumbnail() calls in populateList()/
+              onDuplicateFlameTriggered() behind the setting. Switching
+              back to Thumbnails backfills a request for every currently-
+              loaded flame that never had one (simpler than tracking which
+              items still need it; a little wasteful for entries that
+              already have a thumbnail, not worth the bookkeeping to
+              avoid).
+              Tests: 3 new checks/functions in main_window_interaction_test.cpp
+              (the toolbar pair's checked state and the list widget's
+              actual QListView::ViewMode both toggle correctly and persist
+              to AppSettings; list mode never requests a thumbnail for a
+              newly-listed flame, verified by waiting past a real
+              ThumbnailTask's completion window and confirming the icon
+              stayed null; switching to Thumbnails backfills one for an
+              entry that was listed while in list mode). Full suite 37/37
+              passing; Debug+Release both rebuilt.
+
+  2026-07-17  P2.5 DONE (by request) - elapsed/remaining time in the
+              status bar during the main preview's full-quality render.
+              Verified the original's actual mechanism before porting it:
+              Main.pas's OnProgress callback (Renderer.OnProgress) updates
+              a progress bar plus separate status-bar panels for elapsed
+              and estimated-remaining time, using
+              `remaining := elapsed/prog - elapsed` (extrapolate a total
+              from progress-so-far, subtract what's already elapsed) -
+              ported that exact formula, not a guessed one.
+              Scope note, decided deliberately rather than by omission:
+              P2.5's plan text bundles two distinct things under
+              "progressive main preview" - (a) live elapsed/remaining/
+              percent status, and (b) the bitmap itself visibly refining
+              in place while the render is in flight. Only (a) is
+              implemented. (b) is a real architectural difference, not a
+              missing nicety: the original's incremental appearance comes
+              from its render thread writing directly into a shared
+              framebuffer the preview control blits from, tightly coupled
+              to its one-shared-buckets-array-plus-lock threading model;
+              this port's Renderer::render() is a deliberately-chosen
+              one-shot blocking call with no intermediate/streamable state
+              (see Renderer.h's own class comment on trading that
+              capability away for zero-contention per-thread private
+              bucket arrays). Reproducing (b) would mean building a
+              second, fundamentally different incremental render path
+              alongside the existing one - a large, real undertaking, not
+              proportionate to an item the plan itself flagged as
+              lowest-priority/optional.
+              Implementation: RenderWorker gained a new
+              renderFlameWithProgress() slot (NOT an added parameter on
+              the existing renderFlame() - confirmed the hard way, via a
+              failed build, that Qt's connect() rejects a slot with more
+              parameters than its signal even when the extra one has a
+              default value, since a default doesn't change the slot's
+              actual function-pointer type; widening renderFlame() itself
+              would have broken all 5 other windows/dialogs already
+              connected to it). MainWindow's own renderRequested signal
+              gained a RenderProgress* parameter (a class-local change -
+              every other window's identically-named-but-distinct
+              renderRequested signal is untouched); only its full-quality
+              preview-render path constructs and passes one, matching
+              plan's original scope of "the main preview" specifically -
+              the cheap reduced-quality render P2.1's camera dragging
+              fires on every mouse-move deliberately does not get a
+              progress readout, both because those finish fast enough not
+              to need one and because flickering percent text on every
+              drag tick would be a UX regression, not an improvement.
+              Tests: 1 new end-to-end check in
+              main_window_interaction_test.cpp (a real, sized-to-take-a-
+              perceptible-but-bounded amount of time render shows a live
+              "Rendering... N% (elapsed, remaining)" status before
+              settling to the existing final "Rendered..." message) - had
+              to tune the fixture's width/height/density down after the
+              first attempt (300x300 @ density 3000, ~270M points) proved
+              too slow for a 15s test timeout on this sandboxed
+              environment's hardware; settled on 150x150 @ density 400
+              (~9M points), comfortably enough to outlast one 150ms
+              progress-timer tick without running long. Full suite 37/37
+              passing; Debug+Release both rebuilt.
+
+              MISSING_FEATURES_PLAN.txt is now fully addressed - every
+              item in the plan (including the two, P2.4/P2.5, explicitly
+              scoped as optional/lowest-priority) has been implemented,
+              tested, and verified against the original source where a
+              real behavior needed matching.
+
+--------------------------------------------------------------------------------
+HEADLINE FINDING
+--------------------------------------------------------------------------------
+The Editor screenshot (093205.png) exposes the single biggest gap in the
+port: the entire right-hand transform-properties panel is missing. Verified
+against the code: apophysis-cpp has NO UI whatsoever for editing variation
+weights, variation variables (named parameters), transform weight (density),
+per-transform color/color-speed/opacity, per-transform names, or the final
+transform. The port can drag triangles, add/delete/duplicate transforms,
+edit xaos, and randomize via Mutate - but it cannot actually AUTHOR a flame:
+there is no way to say "make this transform a spherical" or "give this
+transform weight 0.3". This is the core creative workflow of the original
+application and must be Priority 1.
+
+Two corrections to the earlier (2026-07-17, pre-screenshot) audit, found by
+re-checking the source with the right identifiers:
+  1. "Gradient source on random flame" (Options > Random > "On random flame
+     use...") was previously reported as dead code. WRONG - it is consumed
+     at RndFlame.pas:185 (`case randGradient of`) and Main.pas:932/1073.
+     The earlier grep searched the UI control name, not the backing
+     variable. This setting is live and now planned (P3.2).
+  2. The Variations enable/disable checklist (Options > Variations) IS
+     consumed by random generation (ControlPoint.pas:1263-1357,
+     RndFlame.pas:238-252: "use only variations set in options"). Also live,
+     now planned (P3.1).
+
+--------------------------------------------------------------------------------
+PRIORITY 1 - EDITOR TRANSFORM-PROPERTIES PANEL (the app's core feature)
+--------------------------------------------------------------------------------
+Reference: screenshot 093205.png; original Forms/Editor.pas right panel.
+
+Replace/extend EditorWindow's bare xform QListWidget with a proper side
+panel containing (top to bottom, as in the original):
+
+1.1  Transform selector + header row
+     - Transform combo (all transforms + "Final" when enabled), Name text
+       field (XForm::transformName - already in core, round-trips through
+       FlameIO), Weight numeric edit (XForm::density).
+     - CAUTION on weight edits: Flame::numXForms() treats density==0 as the
+       end-of-list sentinel, so the weight editor must clamp to a small
+       positive minimum (the original's own UI forbids 0 too).
+
+1.2  Variations tab
+     - Table of every variation name (local + registered; the port already
+       has VariationRegistry with the full set) with editable weight values.
+     - Search/filter box, "Hide unused variations" checkbox, Clear button -
+       all visible in the screenshot and cheap to build on QSortFilterProxy.
+     - Core support already exists: XForm::numVariations()/variation()/
+       setVariation(). This tab is pure UI wiring.
+
+1.3  Variables tab
+     - Name/value table of the selected transform's registered-variation
+       parameters (julian_power etc.). Core support exists:
+       XForm::getVariable()/setVariable() + VariationRegistry's per-type
+       variable-name lists. Show only variables of variations with nonzero
+       weight (matching the original's behavior).
+
+1.4  Colors tab
+     - Color position slider (XForm::color, 0..1) with gradient-strip
+       preview showing the picked color; Color speed (XForm::symmetry,
+       -1..1); Opacity (XForm::transOpacity, 0..1); Direct-color
+       (XForm::pluginColor). All fields exist in core + FlameIO; no UI.
+     - Include the "solo transform" toggle here (Flame::soloXform - the
+       renderer already honors it; no UI exists).
+
+1.5  Transform tab (numeric affine editing)
+     - Editable a/b/c/d/e/f coefficient fields for the selected transform's
+       main (c) and post (p) matrices, live-synced with the triangle canvas
+       drags. The original shows these as X/Y/O vector pairs; either layout
+       is fine, values must round-trip with the canvas.
+
+1.6  Triangle tab
+     - Per-vertex coordinate editing plus the exact-value transform tools
+       from the original (rotate by N degrees, scale by N percent, and the
+       toolbar's rotate-90-CW/CCW + flip-horizontal/vertical buttons).
+       XForm::rotate()/scale()/multiply()/translate() already exist in core.
+
+1.7  Final transform support in the UI
+     - The core (Flame::finalXform/finalXformEnabled/useFinalXform) and the
+       renderer fully support final transforms, and FlameIO round-trips
+       them - but TriangleCanvas never draws the final xform and
+       EditorWindow has no way to create, toggle, select, or edit one. Add:
+       "Enable final transform" toolbar toggle, canvas drawing/selection of
+       the final triangle (the original draws it as a distinct color), and
+       inclusion in the transform selector.
+
+1.8  Copy/paste transform
+     - Original toolbar has copy/paste of a whole transform (matrix +
+       variations + colors) via clipboard. Implement as in-app copy/paste
+       (a stored XForm snapshot, pasted via XForm::assign) - the original's
+       text-clipboard interchange format is optional.
+
+     All of 1.1-1.8 must integrate with EditorWindow's existing undo stack.
+     The Structural undo entry kind (whole-flame snapshots) already added
+     for Add/Delete/Duplicate can capture every one of these edits without
+     new undo machinery; batch continuous slider drags into one entry via
+     the existing begin/commit gesture pattern used by AdjustDialog.
+
+     Estimated size: the largest single work item in the port so far -
+     comparable to Curves + Xaos + PostProcess combined. Suggest splitting
+     into three deliverables: (a) 1.1+1.2 variations+weight (unblocks
+     authoring), (b) 1.3+1.4 colors+variables, (c) 1.5-1.8 numeric/final/
+     copy-paste.
+
+--------------------------------------------------------------------------------
+PRIORITY 2 - MAIN WINDOW GAPS
+--------------------------------------------------------------------------------
+Reference: screenshot 093041.png; Forms/Main.pas.
+
+2.1  Preview camera interaction (toolbar: select/zoom-in/zoom-out tools)
+     - In the original you can zoom/pan the main preview directly by
+       dragging (rectangle-zoom in, zoom out, drag-to-pan, rotate), which
+       edits the flame's camera. The port's main preview is display-only.
+     - Suggest porting the high-value subset: mouse-wheel zoom + drag pan
+       on the preview label, writing flame->zoom/center back and
+       re-rendering (skip rotate mode and the rectangle-zoom variants
+       initially).
+
+2.2  Flame-level menu commands (original Flame menu)
+     - Duplicate flame (into the library list) - one-line with existing
+       clone(); no equivalent exists today.
+     - Reset location (undo camera changes; sets center/zoom/angle back to
+       defaults).
+     - The rest of the Flame menu (calculate colors etc.) is low value.
+
+2.3  Variation menu (forced variation for random generation)
+     - Original menu bar has a whole "Variation" menu: pick "Random" or a
+       specific variation that New Flame / random batches must use. Port as
+       a combo/setting (AppSettings + a menu or an Options control) feeding
+       generateRandomFlame's existing variationIndex parameter (already
+       plumbed in MutationOps - currently always -1 from MainWindow).
+
+2.4  List/thumbnail view toggle for the library (original defaults to a
+     compact name-only list; the port always shows 64px thumbnails). Low
+     effort (QListView view-mode switch + a toolbar toggle), matters for
+     large batches.
+
+2.5  Progressive main preview with elapsed/remaining time in the status bar
+     (original renders the main preview at full quality progressively).
+     OPTIONAL - the port's fixed-density preview is a deliberate,
+     defensible simplification; only revisit if preview quality becomes a
+     complaint. The RenderProgress plumbing needed for time estimates
+     already exists.
+
+--------------------------------------------------------------------------------
+PRIORITY 3 - OPTIONS: TWO LIVE SETTINGS PREVIOUSLY MISREPORTED AS DEAD
+--------------------------------------------------------------------------------
+Reference: screenshot 093138.png; Options.pas; RndFlame.pas.
+
+3.1  Variations enable/disable tab
+     - Two-column checklist of every variation; random generation and
+       mutation only pick from the enabled set (confirmed consumed:
+       RndFlame.pas:238-252, ControlPoint.pas:1263+). Port as an Options
+       tab (QListWidget with checkboxes + Set All/Clear All) backed by
+       AppSettings, consumed by MutationOps::randomizeXforms's variation
+       picker and MutateDialog's Trend=Random path.
+
+3.2  Gradient source on random flame ("On random flame use...")
+     - 5 options: random preset / default gradient / current gradient /
+       random gradient (calculated) / random from file (RndFlame.pas:185).
+     - Port at least: random preset (pick from the built-in gradient set -
+       the port has the full 700-entry builtin gradient table), current
+       gradient, and calculated random (the current behavior). "Default"
+       and "from file" are lower value. Wire into generateRandomFlame via
+       a parameter or caller-side gradient assignment in MainWindow.
+
+3.3  Forced symmetry "Limit" (SymmetryNVars cap): stays deliberately
+     dropped - the port caps at the real array bound instead (documented in
+     core/edit/Symmetry.h). No change.
+
+--------------------------------------------------------------------------------
+PRIORITY 4 - RENDER DIALOG POLISH (mostly deliberate cuts; optional)
+--------------------------------------------------------------------------------
+Reference: screenshot 093108.png; Forms/FormRender.pas.
+
+4.1  Memory-usage estimate line - cheap and genuinely useful before a big
+     render: bucketWidth*bucketHeight*sizeof(Bucket)*threadCount is already
+     computable from the same formulas Renderer.cpp uses. Recommended.
+4.2  Width/height/density preset dropdowns (editable combos with common
+     values). Cheap; nice-to-have.
+4.3  "Save parameters" alongside the PNG (writes the .flame next to the
+     image). Small and useful for reproducibility. Recommended.
+4.4  Pause - stays dropped (renderer's one-shot cancel-token design has no
+     suspendable state; documented in RenderDialog.h). No change.
+4.5  Shut down after render / memory limit / save incomplete renders /
+     Output tab - stay dropped (low value / obsolete). No change.
+
+--------------------------------------------------------------------------------
+CONFIRMED COVERED (no action; verified against screenshots)
+--------------------------------------------------------------------------------
+- Adjustment dialog (093227/093242/093259): Camera (zoom/x/y/rotation,
+  pitch/yaw/perspective/depth-blur/height), Rendering (gamma/brightness/
+  vibrancy/background/gamma-threshold), Gradient (rotate mode + presets via
+  the Gradient Browser), Image size -> all present in AdjustDialog. Curves
+  is a separate dialog in the port rather than a tab - equivalent function.
+  Minor gap: the original's "Scale" (pixels-per-unit) direct edit; Zoom
+  covers the use case. Skip.
+- Settings > Random tab (093138): fully ported this session (transform
+  ranges, mutation ranges, forced symmetry type/order, batch size/prefix/
+  keep-background) except items 3.1-3.3 above.
+- Render dialog core controls (093108): size/aspect/density/oversample/
+  filter radius/destination/progress/start/cancel all present, plus the
+  port-only Adaptive Filter option.
+- Xaos editing, forced symmetry, curves, post-process, mutate, gradient
+  browser, fullscreen: all ported in earlier sessions (some deliberately
+  redesigned - e.g. full-matrix Xaos editor vs the original's single-row
+  view).
+
+--------------------------------------------------------------------------------
+DELIBERATELY OUT OF SCOPE (unchanged standing decisions)
+--------------------------------------------------------------------------------
+Scripting (ScriptForm/ScriptRender), flam3/Chaotica/UltraFractal export,
+Electric Sheep, plugin DLL loading (plugins are compiled in), templates
+file, favorites, autosave, language files, guideline overlays, sound,
+splash screen, Tracer window (dead code in original), UPR tab, JPEG/BMP
+output (PNG only), registry-persisted window positions.
+
+--------------------------------------------------------------------------------
+SUGGESTED ORDER OF WORK
+--------------------------------------------------------------------------------
+1. P1(a): Transform panel shell + Weight/Name + Variations tab  <- unblocks
+   actual flame authoring; everything else is secondary to this
+2. P1(b): Colors tab + Variables tab
+3. P1(c): Transform/Triangle numeric tabs, final-transform UI, copy/paste,
+   flip/rotate-90 toolbar ops
+4. P3.1 + P3.2 + P2.3 together (they all touch the random-generation
+   pipeline and AppSettings at once)
+5. P2.1 (preview camera interaction) + P2.2 (duplicate/reset-location)
+6. P4.1 + P4.3 (render dialog: memory estimate, save parameters)
+7. P2.4/P2.5 and remaining polish, as demand dictates
+
+Each step follows the established pattern: core change (if any) -> unit
+test -> UI -> interaction test -> screenshot verification -> full suite.
+================================================================================

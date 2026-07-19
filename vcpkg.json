@@ -1,0 +1,9 @@
+{
+  "name": "apophysis7x-cpp",
+  "version": "0.1.0",
+  "dependencies": [
+    "pugixml",
+    "libpng"
+  ],
+  "builtin-baseline": "3e169054dfb52ed75fa3159a81282db4b401ae03"
+}

@@ -1,0 +1,37 @@
+// Windows resource script: exe icon (shown in Explorer/taskbar/Alt-Tab) and
+// file/product version metadata (Explorer's Properties > Details tab).
+// Mirrors the original's src/Resources/apophysis7x.rc, minus the
+// Editor-specific custom cursor/bitmap resources (TriangleCanvas, this
+// port's replacement for Editor.pas's CustomDrawControl, doesn't use
+// owner-drawn cursors - see EditorWindow.h).
+
+MAINICON ICON "app.ico"
+
+1 VERSIONINFO
+    FILEVERSION     1,0,0,0
+    PRODUCTVERSION  1,0,0,0
+    FILEOS          0x00000004
+    FILETYPE        0x00000001
+    FILESUBTYPE     0x00000000
+    FILEFLAGSMASK   0x00000000
+    FILEFLAGS       0x00000000
+{
+    BLOCK "StringFileInfo"
+    {
+        BLOCK "040904e4"
+        {
+            VALUE "CompanyName", "Apophysis Developers Team"
+            VALUE "FileDescription", "Apophysis 7X (C++ port)"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "apo_gui"
+            VALUE "LegalCopyright", "Copyright (c) 2005-2010 Apophysis Developers Team"
+            VALUE "OriginalFilename", "apo_gui.exe"
+            VALUE "ProductName", "Apophysis 7X"
+            VALUE "ProductVersion", "1.0.0.0"
+        }
+    }
+    BLOCK "VarFileInfo"
+    {
+        VALUE "Translation", 0x0409, 0x04E4
+    }
+}

@@ -1,0 +1,56 @@
+**Make apophysis-cpp buildable and runnable on Linux and macOS**
+
+**Context**
+
+The project (C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp) is a C++20/Qt6 port of Apophysis 7X, currently built and tested only with MSVC on Windows. The user is about to publish it on GitHub and wants it runnable on Linux and macOS — no installers/packaging needed, just a working build of apo_gui (and the CLI tools/tests).
+
+A thorough scan found the codebase is already almost entirely portable: threading/atomics are all std::, file I/O uses libpng/pugixml/std::ifstream, settings use QSettings, paths have no drive letters or backslash literals, compiler flags and the AVX2 option are already branched if(MSVC) ... else(), packaging is already gated if(WIN32), and all UI tests set QT_QPA_PLATFORM=offscreen portably via qputenv. Only three real code issues exist, plus CI for verification (user-selected: GitHub Actions, no local WSL verification).
+
+**Changes**
+
+**1. Fix the one hard build blocker: .rc file (src/ui/CMakeLists.txt)**
+
+add_executable(apo_gui WIN32 main.cpp resources/app.rc) adds the Windows resource script unconditionally; GCC/Clang builds have no RC step (project enables only CXX C). Guard it:
+
+* Keep WIN32 on add_executable (ignored off-Windows).
+* Add resources/app.rc to the target only under if(WIN32) (e.g. via target_sources(apo_gui PRIVATE resources/app.rc) inside the guard).
+
+**2. Portability nits in the vendored plugin header (src/core/plugins/thirdparty/apoplugin.h)**
+
+Compiled as real C by many plugin wrapper TUs, so C99/C11 inline semantics apply under GCC/Clang:
+
+* Line ~56: #include <malloc.h> — doesn't exist on macOS/BSD. The file only uses calloc/free, which come from the already-included <stdlib.h>. Guard it: #if defined(**linux**) ... #endif (or remove outright; prefer the guard since the header is vendored and glibc users may expect it).
+* Lines ~432/461/470/475: inline void fsincos(...), sinhcosh, random01, sqr are plain inline in a header included by many C translation units — under GCC/Clang C inline semantics this can produce "undefined reference" link errors (MSVC is lenient). Change to static inline, with a one-line comment noting why (C99 inline semantics), keeping the diff to the vendored file minimal.
+
+**3. Physical-RAM query for the render memory clamp (src/ui/MemoryBudget.cpp)**
+
+totalPhysicalMemoryBytes() is #ifdef _WIN32 (GlobalMemoryStatusEx) with an #else returning 0 ("unknown — fail open"), so off-Windows the memory-based thread clamp silently disables. Add real branches:
+
+* Linux: sysconf(_SC_PHYS_PAGES) * sysconf(_SC_PAGE_SIZE) (<unistd.h>).
+* macOS: sysctlbyname("hw.memsize", ...) (<sys/sysctl.h>).
+* Keep the fail-open return 0 fallback for anything else.
+
+memory_budget_test.cpp already exists — check whether any assertion assumes a nonzero total only on Windows, and extend coverage if cheap.
+
+**4. GitHub Actions CI (.github/workflows/ci.yml) — the verification vehicle**
+
+New workflow, two jobs (ubuntu-latest, macos-latest), triggered on push/PR:
+
+* Qt 6.8: jurplel/install-qt-action@v4 (sets CMAKE_PREFIX_PATH automatically) — same prebuilt-SDK approach the README already recommends, not vcpkg-built Qt.
+* vcpkg deps (pugixml, libpng): clone vcpkg, configure with -DCMAKE_TOOLCHAIN_FILE=/scripts/buildsystems/vcpkg.cmake; vcpkg.json's existing builtin-baseline pins versions.
+* Linux extra apt packages for Qt headless builds (mesa GL dev, libxkbcommon, etc., per install-qt-action docs).
+* Configure with -DCMAKE_BUILD_TYPE=Release (single-config generators there, unlike VS multi-config).
+* Build all targets, then ctest --test-dir build --output-on-failure. UI tests already force the offscreen platform themselves.
+* No Windows job for now (local Windows builds already cover it); easy to add later.
+
+**5. README + docs touch-up**
+
+* Prerequisites: drop "MSVC is the only configuration currently tested"; state Linux/macOS build with GCC/Clang, verified in CI; note platform-specific Qt install (aqt install-qt linux desktop / mac desktop) and vcpkg toolchain usage is identical.
+* Build section: add the -DCMAKE_BUILD_TYPE=Release note for single-config generators and the non-Windows binary path (build/src/ui/apo_gui).
+* Status blurb: change "Windows-only for now" accordingly (packaging/installer remains Windows-only — that's fine, user doesn't care about installation).
+
+**Verification**
+
+1. Windows regression: full rebuild (Debug) + run the complete ctest suite locally — must stay green (these changes are all guards/additions; Windows paths unchanged).
+2. Linux/macOS: after the user inits the repo and pushes to GitHub, the CI workflow builds apo_core, apo_ui, apo_gui, tools, and runs the full test suite (including offscreen Qt UI interaction tests) on ubuntu-latest and macos-latest. CI green on both = "runnable" verified. (I can't trigger CI myself — the repo isn't on GitHub yet; the workflow file ships with the same commit the user pushes.)
+3. Sanity-read: confirm no other .rc/_WIN32 usages were missed (scan already inventoried them — MemoryBudget.cpp is the only windows.h include in the project).

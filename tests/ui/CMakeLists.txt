@@ -1,0 +1,74 @@
+# Separate from the main tests/CMakeLists.txt loop (which only links
+# apo_core): these tests exercise real Qt widgets interactively, so they
+# need apo_ui (the UI object library - see src/ui/CMakeLists.txt) and
+# Qt6::Test for QTest's synthetic mouse/keyboard event injection.
+add_executable(triangle_canvas_interaction_test triangle_canvas_interaction_test.cpp)
+# apo_core must be linked directly (not just transitively via apo_ui) -
+# see the comment in src/ui/CMakeLists.txt on OBJECT libraries not
+# propagating object files through another OBJECT library.
+target_link_libraries(triangle_canvas_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME triangle_canvas_interaction_test COMMAND triangle_canvas_interaction_test)
+
+add_executable(adjust_dialog_interaction_test adjust_dialog_interaction_test.cpp)
+target_link_libraries(adjust_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME adjust_dialog_interaction_test COMMAND adjust_dialog_interaction_test)
+
+add_executable(render_dialog_interaction_test render_dialog_interaction_test.cpp)
+target_link_libraries(render_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME render_dialog_interaction_test COMMAND render_dialog_interaction_test)
+
+add_executable(options_dialog_interaction_test options_dialog_interaction_test.cpp)
+target_link_libraries(options_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME options_dialog_interaction_test COMMAND options_dialog_interaction_test)
+
+add_executable(mutate_dialog_interaction_test mutate_dialog_interaction_test.cpp)
+target_link_libraries(mutate_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME mutate_dialog_interaction_test COMMAND mutate_dialog_interaction_test)
+
+add_executable(gradient_browser_dialog_interaction_test gradient_browser_dialog_interaction_test.cpp)
+target_link_libraries(gradient_browser_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME gradient_browser_dialog_interaction_test COMMAND gradient_browser_dialog_interaction_test)
+
+add_executable(fullscreen_view_interaction_test fullscreen_view_interaction_test.cpp)
+target_link_libraries(fullscreen_view_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME fullscreen_view_interaction_test COMMAND fullscreen_view_interaction_test)
+
+add_executable(main_window_interaction_test main_window_interaction_test.cpp)
+target_link_libraries(main_window_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME main_window_interaction_test COMMAND main_window_interaction_test)
+
+add_executable(curves_dialog_interaction_test curves_dialog_interaction_test.cpp)
+target_link_libraries(curves_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME curves_dialog_interaction_test COMMAND curves_dialog_interaction_test)
+
+add_executable(postprocess_dialog_interaction_test postprocess_dialog_interaction_test.cpp)
+target_link_libraries(postprocess_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME postprocess_dialog_interaction_test COMMAND postprocess_dialog_interaction_test)
+
+add_executable(xaos_dialog_interaction_test xaos_dialog_interaction_test.cpp)
+target_link_libraries(xaos_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME xaos_dialog_interaction_test COMMAND xaos_dialog_interaction_test)
+
+add_executable(force_symmetry_dialog_interaction_test force_symmetry_dialog_interaction_test.cpp)
+target_link_libraries(force_symmetry_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME force_symmetry_dialog_interaction_test COMMAND force_symmetry_dialog_interaction_test)
+
+add_executable(transform_panel_interaction_test transform_panel_interaction_test.cpp)
+target_link_libraries(transform_panel_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME transform_panel_interaction_test COMMAND transform_panel_interaction_test)
+
+add_executable(preview_label_interaction_test preview_label_interaction_test.cpp)
+target_link_libraries(preview_label_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME preview_label_interaction_test COMMAND preview_label_interaction_test)
+
+add_executable(render_all_dialog_interaction_test render_all_dialog_interaction_test.cpp)
+target_link_libraries(render_all_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME render_all_dialog_interaction_test COMMAND render_all_dialog_interaction_test)
+
+add_executable(smooth_palette_dialog_interaction_test smooth_palette_dialog_interaction_test.cpp)
+target_link_libraries(smooth_palette_dialog_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME smooth_palette_dialog_interaction_test COMMAND smooth_palette_dialog_interaction_test)
+
+add_executable(memory_budget_test memory_budget_test.cpp)
+target_link_libraries(memory_budget_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME memory_budget_test COMMAND memory_budget_test)

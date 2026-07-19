@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Headless Qt on Linux still dynamically links against GL/X11/xkb
+      # libraries even though the tests themselves run with
+      # QT_QPA_PLATFORM=offscreen (no real display server needed, but the
+      # shared libraries still have to resolve at load time).
+      - name: Install Linux Qt runtime dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgl1-mesa-dev libxkbcommon-x11-0 libxkbcommon0 \
+            libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 \
+            libxcb-render-util0 libxcb-xinerama0 libfontconfig1
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v4
+        with:
+          version: '6.8.0'
+          cache: true
+
+      # vcpkg.json (manifest mode) supplies pugixml/libpng, pinned by its
+      # own builtin-baseline - same dependency source the README's Windows
+      # instructions use, just a fresh clone/bootstrap here instead of a
+      # machine-local vcpkg install.
+      - name: Clone and bootstrap vcpkg
+        run: |
+          git clone https://github.com/microsoft/vcpkg "$RUNNER_TEMP/vcpkg"
+          "$RUNNER_TEMP/vcpkg/bootstrap-vcpkg.sh"
+
+      - name: Cache vcpkg packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ${{ runner.temp }}/vcpkg/installed
+            ~/.cache/vcpkg/archives
+          key: vcpkg-${{ runner.os }}-${{ hashFiles('vcpkg.json') }}
+
+      # Single-config generators (Unix Makefiles/Ninja) here, unlike the
+      # multi-config Visual Studio generator the Windows build uses - the
+      # build type has to be picked at configure time instead of on
+      # `cmake --build`.
+      - name: Configure
+        run: >
+          cmake -B build -G Ninja
+          -DCMAKE_BUILD_TYPE=Release
+          -DCMAKE_TOOLCHAIN_FILE=${{ runner.temp }}/vcpkg/scripts/buildsystems/vcpkg.cmake
+
+      - name: Build
+        run: cmake --build build --parallel
+
+      # UI tests set QT_QPA_PLATFORM=offscreen themselves (qputenv in each
+      # test's main()) - no display server or extra CTest env needed here.
+      - name: Test
+        run: ctest --test-dir build --output-on-failure

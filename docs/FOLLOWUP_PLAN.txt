@@ -1,0 +1,1143 @@
+================================================================================
+APOPHYSIS-CPP: FOLLOW-UP AUDIT - REMAINING FEATURES + PERFORMANCE PLAN
+================================================================================
+Date: 2026-07-18
+Scope: MISSING_FEATURES_PLAN.txt is fully addressed (see its progress log).
+This is a second, fresh audit answering two questions:
+  A. Are there features in the original that the first plan never covered?
+  B. Where is real performance headroom in the port?
+
+Method: re-swept every menu item in Main.dfm/Main.pas against the port's
+actual MainWindow/menus (not against the first plan's own coverage list),
+and read the full render hot path (Renderer.cpp, XForm.cpp/nextPoint,
+Rng.h, Variation.h, Flame construction/clone) with an eye to dispatch
+cost, allocation cost, memory traffic, and parallelism. Everything below
+was verified in source, not assumed.
+
+PROGRESS LOG (most recent first):
+  2026-07-18: Fixed a real crash-on-cancel bug reported by the user
+  ("program crashes when I cancel rendering"), root-caused via WER minidump
+  analysis rather than guesswork - the code review alone looked correct
+  (RenderDialog/RenderAllDialog/FullscreenView all set cancelRequested and
+  join their worker QThread cleanly on teardown; RenderWorker::renderFull
+  already unconditionally writes the output PNG on a cancelled render, so
+  "save the partial render on cancel" was already implemented). Windows'
+  local crash-dump collection (%LOCALAPPDATA%\CrashDumps) had several real
+  apo_gui.exe .dmp files from the user's own sessions; no debugger was
+  installed (no cdb/windbg on this machine), so a small standalone minidump
+  reader/symbolizer was written on the spot (C#, P/Invoke into dbghelp.dll -
+  parses the MINIDUMP_HEADER/stream directory by hand, loads every module it
+  can still find on disk at its recorded base address via SymLoadModuleExW,
+  and both runs a proper StackWalk64 and does a raw stack-memory scan for
+  candidate return addresses as a fallback when precise unwinding through
+  system DLLs isn't available). The most recent dump's exception was
+  0xC0000409 at ucrtbase!abort - not memory corruption despite the
+  "STATUS_STACK_BUFFER_OVERRUN" name (Windows reuses that code for CRT
+  fastfail); the raw stack scan showed ucrtbase!terminate, VCRUNTIME140's
+  exception-dispatch frames (_CxxFrameHandler4/_processing_throw), right
+  next to thread-entry-trampoline frames - the signature of an uncaught C++
+  exception unwinding out of a worker thread's top-level function, which
+  the standard mandates calls std::terminate() immediately and uncatchably
+  by anything on a different thread's stack. Nothing in the render path
+  (RenderWorker's three slots, or the std::jthread pool Renderer::render()
+  spawns for the multi-threaded case) had a try/catch anywhere, so any
+  exception there - most plausibly std::bad_alloc, since a user is most
+  likely to reach for Cancel on exactly the large/slow/memory-heavy renders
+  where an allocation is most likely to fail - took the whole process down
+  instead of just failing that one render. Fixed by wrapping all three
+  RenderWorker slots (renderFlame/renderFlameWithProgress/renderFull) in
+  try/catch, converting any exception into a normal "finished, not saved"
+  signal instead of a crash; and, separately, by making the multi-threaded
+  jthread pool in Renderer.cpp catch per-worker exceptions into a shared
+  std::exception_ptr and rethrow on the calling thread after every worker
+  joins - necessary because a jthread's own uncaught exception terminates
+  immediately regardless of any try/catch elsewhere, so RenderWorker's own
+  guard alone would not have covered that path. Could not get a byte-exact
+  reproduction in the offscreen test harness (30 iterations of
+  render-then-cancel-mid-flight on a 1600x1200/density-4000 render, timed to
+  land after real progress had ticked, all passed cleanly - this machine
+  has ~25GB free RAM, so a memory-pressure trigger needs either a much
+  larger request or a tighter machine to hit reliably), so this is a
+  defensive-correctness fix verified via full rebuild + full 43/43 ctest
+  pass in Debug, not a fix confirmed against a reproduced local crash.
+  2026-07-18: B7 follow-up - root-caused and fixed the main_window_interaction_test
+  hang the original B7 entry (below) reported, at the user's explicit
+  request to dig further. The conclusion changes materially: it was NOT
+  AVX2. Root-caused via bisection (a buggy first bisection script - its
+  regex excluded test names containing digits, like
+  testUndoStackIsBoundedTo32Entries - cost real time to notice and
+  correct; redone cleanly afterward) down to a minimal two-test
+  reproduction: testSaveFlameAsFromMainWindowRoundTrips immediately
+  followed by testSaveAllFlamesRoundTripsEveryFlameNotJustSelected hangs
+  the whole process, deterministically, in BOTH the AVX2 build and the
+  plain default build - proving directly that AVX2 was never the cause.
+  The real bug: acceptNextSaveDialogWith() (and 10 other call sites in 6
+  test files) armed a single QTimer::singleShot(50, ...) that checked
+  exactly once, at t=50ms, whether the expected modal dialog had become
+  QApplication::activeModalWidget() yet - a hardcoded-delay race, not an
+  event-driven wait. If the real dialog opened even slightly later than
+  50ms (system load, scheduling variance - exactly the kind of thing this
+  session's own extensive concurrent benchmarking was creating plenty of),
+  the one check fired too early, found nothing, and the dialog that opened
+  moments later blocked forever with nobody left to dismiss it. This was
+  latent in the test suite this entire session - every prior "43/43 passed"
+  result across every A/B item was a race that happened not to trip, not a
+  guarantee.
+  Fixed at all 11 call sites across 6 files (main_window/adjust/
+  fullscreen_view/postprocess/render_all/render_dialog_interaction_test.cpp):
+  replaced the one-shot 50ms check with a local whenModalShown<DialogT>()
+  (whenPopupMenuShown() in fullscreen_view_interaction_test.cpp, for a
+  QMenu popup rather than a modal dialog) helper - a repeating 10ms-interval
+  QTimer that polls QApplication::activeModalWidget()/activePopupWidget()
+  until the expected widget actually appears (bounded by a 5s timeout, so a
+  dialog that never appears at all - a real bug elsewhere - still fails
+  the test instead of hanging), then fires once and stops. Verified fixed,
+  not just plausible: main_window_interaction_test.exe (the file with by
+  far the most call sites) run 5 times consecutively with zero hangs, in
+  both the plain build and the AVX2 build; the full 43-test suite passed
+  twice consecutively afterward in the plain build, and once in the AVX2
+  build (finishing in ~16s there, vs the multi-hundred-second hangs
+  before).
+  A second, unrelated bug surfaced by this same repeated-run verification:
+  testMainPreviewShowsProgressDuringAFullQualityRender started failing
+  consistently (not flakily - 4/4 runs) once the dialog race above was
+  fixed and the suite could actually finish reliably enough to expose it.
+  Root cause: this test's own fixture (~9M points, calibrated when written
+  to reliably outlast MainWindow's 150ms progress-poll interval) went
+  stale because of this session's own cumulative Part B render-path
+  speedups (B1a/B2/B3/B4) - the render now completes fast enough that it
+  can finish before the first progress tick ever fires, so the status bar
+  never shows an intermediate "Rendering...N%" message for the test to
+  catch. A direct, measured example of this session's own optimization
+  work actually paying off, caught as a side effect rather than by design.
+  Fixed by 4x'ing the fixture's sampleDensity (400 -> 1600, ~36M points) to
+  restore real timing margin; verified stable across 5 consecutive runs
+  after the fix.
+  Updated B7 conclusion: AVX2 showed no correctness or stability problems
+  in this investigation once the actual (pre-existing, unrelated) bug was
+  fixed - the original "treat AVX2 as experimental, not recommended"
+  conclusion below was based on a false premise and is superseded by this
+  entry. APO_CORE_ENABLE_AVX2 remains OFF by default (no reason to flip
+  it - see the original entry's speed measurement, which is unchanged and
+  still inconclusive on this machine), but it is no longer flagged as
+  unsafe; the actual bug was in test infrastructure, not in the
+  AVX2-compiled render path.
+  Full suite (43/43) verified in both build/ (plain) and build_avx2/
+  (APO_CORE_ENABLE_AVX2=ON), Debug+Release both build clean.
+  2026-07-18: B7 (opt-in AVX2 for apo_core) implemented and measured -
+  found a real, reproducible problem in the process, which is exactly what
+  this item's "measure" instruction exists to catch, so it's reported in
+  full rather than hidden.
+  New CMake option APO_CORE_ENABLE_AVX2 (top-level CMakeLists.txt), default
+  OFF, applied only to the apo_core target (src/core/CMakeLists.txt) via
+  target_compile_options(apo_core PRIVATE /arch:AVX2) on MSVC - scoped to
+  apo_core specifically (not the whole project), matching the plan's own
+  "Compiler flags for apo_core" framing. /fp:fast is NOT set anywhere by
+  this option or elsewhere in the project, per the plan's own explicit
+  WARNING (renderBatch's poisoned-point bailout and accept-path check
+  depend on NaN/Inf propagating honestly into std::isfinite - /fp:fast
+  would license the compiler to assume neither exists). Default build
+  (build/, this option OFF) verified completely unaffected: full suite
+  (43/43) passes, Debug+Release both build clean, same as every prior item.
+  Measured in a separate build directory (build_avx2/, -DAPO_CORE_ENABLE_AVX2=ON,
+  otherwise identical toolchain/config) - Release build succeeded cleanly.
+  Running the full suite there found a real, reproducible issue:
+  main_window_interaction_test.exe hangs indefinitely under the AVX2 build
+  - confirmed twice independently (once inside a full ctest run, killed
+  after 951s; once standalone with line-buffered output, killed after 45s
+  with zero output produced either time, meaning whatever it hangs on
+  happens very early, before the first check() line would have been
+  flushed). Every one of the other 42 tests - including
+  baseline_regression_test (bit-exact PSNR=inf against the checked-in
+  golden PNGs, i.e. AVX2 codegen changed nothing about actual render
+  output for those fixtures), renderer_test, every plugin/variation-
+  correctness test, and every OTHER Qt interaction test that also
+  constructs real windows and runs real renders (adjust/render/mutate/
+  curves/postprocess/triangle_canvas, several of which are among this
+  suite's heavier GUI tests) - passed cleanly and, if anything, faster
+  than their normal-build times. apo_bench (a pure apo_core console
+  consumer, no Qt at all) also ran cleanly under AVX2 with no hang.
+  This narrows the problem to something main_window_interaction_test.cpp
+  specifically exercises (it is the single largest/most feature-heavy test
+  file in the whole suite, covering A1-A7 end-to-end) rather than a
+  blanket "AVX2 breaks apo_core" problem - but the exact trigger was NOT
+  root-caused within this session (the investigation already cost far more
+  time than the item's own "CHEAP" label anticipated, and further
+  bisection would cost materially more without a strong lead - zero output
+  before the hang rules out easily narrowing which of the file's ~40 test
+  functions is responsible without a slower, more invasive bisection
+  process). A plausible but UNCONFIRMED hypothesis, noted for whoever picks
+  this back up: an unexpected QMessageBox (or similar native modal) opening
+  under the Qt offscreen platform blocks forever with no automated click
+  handler, if some AVX2-codegen-affected computation (a memory estimate, a
+  stochastic algorithm like Smooth Palette, a render feeding a UI decision)
+  comes out different enough to cross a warning threshold that never fires
+  in the default build - consistent with the silent, early, total hang, but
+  not verified.
+  Speed measured via apo_bench --bucket-precision=double --threads=1 (same
+  fixtures as every other Part B item) in both build directories back to
+  back: linear 21.76M (no AVX2) vs 22.25M (AVX2), transcendental 8.44M vs
+  8.17M, blur 11.57M vs 12.65M - within this machine's own already-
+  documented noise floor in every case, no clear win either way. Plausible
+  explanation, not just a shrug: this codebase's hot loop is branch-heavy,
+  data-dependent per-point dispatch (xform selection, variation calc-list
+  iteration) that MSVC's auto-vectorizer has little natural opportunity to
+  turn into wide AVX2 operations without hand-written SIMD restructuring,
+  which is a substantially larger undertaking this item never scoped in.
+  CONCLUSION: APO_CORE_ENABLE_AVX2 stays OFF by default (the only state any
+  current build/test/user is in) and should be treated as experimental, not
+  recommended, pending the hang above being root-caused - a real,
+  reproducible correctness-adjacent risk, not just an unproven performance
+  idea. Documenting this clearly rather than either quietly shipping a
+  broken opt-in or omitting the finding is the whole point of this item
+  existing as "measure" rather than "just add the flag."
+  No test/baseline changes needed (default OFF, unaffected). Full suite
+  (43/43) on the default configuration, Debug+Release both build clean.
+  2026-07-18: B5 (optional float buckets) implemented - the largest,
+  riskiest Part B item yet, an explicit "EXPERIMENT" per the plan's own
+  label.
+  Renderer.cpp's Bucket struct, ThreadState, accumulate(), renderBatch(),
+  safeGetBucket(), reduceBuckets(), and toneMap() are all now templated on
+  a bucket scalar type (BucketT<Scalar>; BucketD = BucketT<double> is the
+  pre-existing behavior's alias). Renderer::render()'s own body moved
+  into an anonymous-namespace renderImpl<Scalar>() template; the public,
+  non-template Renderer::render() is now a thin dispatcher on a new
+  BucketPrecision {Double, Float} parameter (default Double), and
+  Renderer::estimatePeakMemoryBytes() gained the same parameter (using
+  sizeof(BucketT<Scalar>) instead of a hardcoded sizeof(Bucket), so the
+  16-vs-32-byte difference can never drift out of sync with the real
+  struct). Every existing call site (RenderWorker's other two slots,
+  ThumbnailTask, every test, MemoryBudget.cpp) is unaffected by construction -
+  BucketPrecision defaults to Double everywhere, so this needed no baseline
+  regeneration despite touching Renderer.cpp's entire bucket pipeline:
+  baseline_regression_test's existing single-threaded/Double-by-default
+  calls are bit-identical to before, confirmed not assumed (full suite
+  green with zero baseline changes).
+  Wired the one call site the plan explicitly names as the target -
+  RenderWorker::renderFlame(), the "fixed-low-density preview" slot every
+  live-drag preview (AdjustDialog/CurvesDialog/EditorWindow/MutateDialog/
+  PostProcessDialog) connects to - to BucketPrecision::Float.
+  renderFlameWithProgress (MainWindow's own full-quality preview) and
+  renderFull (RenderDialog/RenderAllDialog's finals) both stay at the
+  Double default, matching the plan's own suggested split exactly ("previews
+  ... use float, RenderDialog finals keep double"). Verified this is
+  low-risk before wiring it: renderFlame() already renders at threadCount=0
+  (auto/multithreaded), which is already not bit-reproducible run-to-run
+  regardless of bucket precision, and none of the five interaction-test
+  files exercising it (adjust/curves/triangle_canvas/mutate/postprocess)
+  make any exact-pixel-value assertion on its output - grepped to confirm,
+  not assumed. Visually spot-checked via --edit --auto-screenshot-exit on a
+  real fixture afterward anyway: the live preview looks exactly like a
+  normal, uncorrupted render.
+  CAVEATS from the plan's own text, evaluated directly rather than just
+  restated: float's `count` field saturates past ~16.7M points in one
+  bucket (2^24, float's mantissa limit) - a real concern for extreme-
+  density final renders, a non-issue for renderFlame()'s own low preview
+  density, which is exactly why Float is scoped to that call site only, not
+  RenderDialog's finals. Accumulated color channels round differently -
+  measured directly (not just asserted): a same-flame/same-seed Float vs
+  Double single-threaded render at a deliberately high density (enough to
+  force genuinely different output bytes, not just theoretically) still
+  scores PSNR 73-80 dB against each other - very close, well above any
+  perceptibility threshold - confirming this is "lower precision," not "a
+  different image."
+  New tests (renderer_test.cpp, 4 cases): omitting BucketPrecision defaults
+  to exactly Double bit-for-bit (both for render() and
+  estimatePeakMemoryBytes()); Float still produces a valid image with
+  identical dimensions/point-generation/acceptance counts to Double (only
+  color accumulation differs) and genuinely different-but-closely-matching
+  (PSNR-checked) pixel bytes; Float's memory estimate is exactly half of
+  Double's.
+  Speed measured via apo_bench's new --bucket-precision=double|float flag -
+  qualitatively consistent (Float never measured slower than Double across
+  repeated single-threaded runs) but this machine's own noise floor (already
+  documented in B2/B3's own entries - a >30% swing measured between two
+  back-to-back identical-code runs earlier this session) was large enough
+  that swapping measurement order changed which fixture "won" by how much,
+  so no specific percentage is claimed here - the transcendental fixture
+  was the one consistent standout (Float faster than Double in every run,
+  both orderings), plausibly because its own per-point cost is already
+  dominated by trig math rather than bucket writes, so the two effects
+  (compute-bound iterate cost, memory-bound bucket-write cost) partly
+  overlap in time on a real out-of-order CPU rather than purely adding, an
+  effect too subtle to pin down precisely on this hardware within this
+  session's time budget. The quality/correctness measurements above (PSNR,
+  exact-behavior-preserved-at-Double tests, the visual spot check) are the
+  well-established finding here; the exact speed number is honestly
+  unresolved on this machine, which is itself useful information for anyone
+  planning to explore B5 further (a cleaner benchmarking environment would
+  be needed before making a stronger speed claim).
+  Full suite (43/43, unchanged count - renderer_test.cpp gained cases, no
+  new files), Debug+Release both build clean.
+  2026-07-18: B3 (skip the opacity roll when transOpacity==1) implemented -
+  the first Part B item that changes rendered output, per its own plan-text
+  CAVEAT.
+  New XForm::opacityAlwaysPasses() (XForm.h/.cpp): a bool precomputed in
+  prepare() as `transOpacity == 1.0` (exact equality, not a tolerance check -
+  transOpacity is a plain settable field XForm::assign() copies verbatim
+  from the source flame, never interpolated/rounded before render time, so
+  a .flame saved with opacity="1" reads back as exactly 1.0). Recomputed
+  every prepare() call, not just at construction, since callers can change
+  transOpacity between prepare() calls (MainWindow's soloXform handling
+  forces transOpacity=0 on every non-solo xform immediately before
+  preparing). Renderer.cpp's renderBatch() opacity roll changed from
+  `if (rng.uniform01() >= xf.transOpacity) continue;` to
+  `if (!xf.opacityAlwaysPasses() && rng.uniform01() >= xf.transOpacity) continue;`
+  - transOpacity==1 (every xform in a real flame, virtually always) now
+  skips the RNG draw entirely instead of drawing a value whose outcome
+  (always "not rejected" - any draw in [0,1) is < 1.0) was already certain.
+  CAVEAT confirmed exactly as the plan predicted: this removes a draw from
+  the RNG stream for every point through a transOpacity==1 xform, changing
+  single-threaded deterministic output. All 5 baseline_regression_test
+  fixtures (tests/baselines/) have every xform at opacity="1", so all 5
+  needed regeneration - re-rendered via apo_render_cli (same seed=1
+  threadCount=1 the test itself uses) and eyeballed side-by-side against
+  the prior checked-in PNGs before overwriting: same fractal shape, same
+  coloring, same overall structure in every case, differing only in
+  chaos-game noise - exactly what a changed-but-uncorrupted RNG sequence
+  should look like, not a regression. Freshly regenerated baselines
+  round-trip through the test at PSNR=inf (bit-exact), as expected.
+  New tests: core_smoke_test.cpp's testOpacityAlwaysPassesReflectsTransOpacity
+  (the precomputed flag tracks transOpacity across repeated prepare() calls,
+  including back to true after being set away and restored) and two in
+  renderer_test.cpp - a transOpacity=0.5 flame still rejects a real,
+  ballpark-correct fraction of points (confirms the roll's own stochastic
+  behavior for anything other than exactly 1.0 is completely unchanged, not
+  accidentally short-circuited too), and a transOpacity=1 (default) flame
+  accepts every generated point (Sierpinski's affine maps never produce a
+  non-finite point, and the fast path never introduces a spurious
+  rejection).
+  Measured: single-digit-and-noisier than expected on this machine - this
+  item is plan-labeled "SMALL, cheap" for a reason (one skipped RNG draw +
+  compare is a small fraction of a real point's total cost, dominated by
+  variation math/projection/accumulation), and this session's own
+  benchmarking has demonstrated this particular dev machine has a real
+  30-40% run-to-run noise floor under sustained load (caught directly: one
+  apo_bench run mid-session showed every fixture 20-40% slower than
+  immediately before/after, with no code change in between - almost
+  certainly thermal throttling from the many consecutive multi-second
+  single-threaded Release renders this whole Part B session has run, not
+  a measurement bug). Repeated single-threaded runs after letting the
+  machine settle landed in the same broad range as B2's own baseline
+  (linear ~21M pts/sec, transcendental ~8-9M, blur ~10.5-11M) - no reliable
+  win or loss distinguishable from noise at this item's scale. Reported
+  honestly rather than cherry-picking a favorable run, same as B2a/B2b's
+  own entry - correctness (full suite green, baselines regenerated and
+  eyeballed) is the real deliverable here, not a performance claim this
+  machine can't actually back up at this small a scale.
+  Full suite (43/43, unchanged count - core_smoke_test.cpp/renderer_test.cpp
+  both gained cases, no new files), Debug+Release both build clean.
+  2026-07-18: B6 (memory-budget-aware thread count) implemented. New
+  src/ui/MemoryBudget.h/.cpp (UI layer, not core - GlobalMemoryStatusEx is a
+  Win32 API, and every call site needing this is already UI code):
+  totalPhysicalMemoryBytes() (Windows: GlobalMemoryStatusEx; 0 elsewhere/on
+  failure) and resolveMemorySafeThreadCount(flame, requestedThreadCount,
+  totalPhysicalRamBytes) - resolves 0=Auto the same way Renderer::render()
+  does, then reduces the thread count one step at a time (re-estimating via
+  the real Renderer::estimatePeakMemoryBytes() every step, not a hand-copied
+  formula, so it can never drift out of sync with that formula as it
+  evolves) until the estimate fits half of totalPhysicalRamBytes or hits 1
+  thread (never lower - a slow, possibly-thrashing render the user
+  explicitly asked for beats refusing to render at all). A convenience
+  overload without the RAM parameter queries the real machine for normal
+  callers; the explicit-RAM overload exists specifically so tests can drive
+  the clamping arithmetic against a known figure instead of whatever's
+  installed on the machine running the suite - unit-testing "does this
+  correctly react to low memory" by trying to fake low memory on the real
+  test machine would be far more fragile than just injecting the number.
+  Wired into both places that read AppSettings::renderThreadCount() to
+  launch a full render - RenderDialog::startRender() (also its
+  updateMemoryEstimate() label, so what's displayed matches what will
+  actually be used - showing an estimate nobody's going to get would be
+  worse than not showing one) and RenderAllDialog::renderNext() (every
+  flame in a batch shares the dialog's width/height/oversample settings,
+  so the memory profile - and hence the clamp - is effectively constant
+  across the whole batch, making this just as relevant there). Both show a
+  status-line note ("Using N threads to stay under available memory...")
+  when a clamp actually happens, matching the plan's own suggested wording.
+  Hit one real MSVC trap while writing MemoryBudget.cpp: including
+  <windows.h> without NOMINMAX silently shadows std::max/std::min with
+  windows.h's own macros, producing a confusing error pointed at an
+  unrelated line - fixed by defining NOMINMAX before the include, with a
+  comment explaining why (found the hard way, not anticipated).
+  New tests: memory_budget_test.cpp (tests/ui/ - MemoryBudget.cpp lives in
+  apo_ui, though the tested functions themselves have zero Qt dependency),
+  6 cases against the explicit-RAM overload: no clamp when comfortably
+  within budget, clamps when the request exceeds it (verifying both the
+  reduced count and that one thread beyond it would NOT have fit, i.e. the
+  boundary itself, not just "some smaller number"), never drops below 1
+  thread even against a 1-byte budget, totalPhysicalRamBytes=0 fails open
+  (never clamps), requestedThreadCount=0 (Auto) resolves before clamping,
+  and the real-RAM convenience overload runs to completion with a sane
+  result (not asserting a specific outcome, since real RAM is unknown at
+  test-authoring time). No screenshot verification - RenderDialog already
+  exists, this only changes existing label/status text logic, matching the
+  established precedent of skipping a dedicated screenshot for behavioral-
+  only changes to an already-shipped dialog.
+  Full suite (43/43 - the new memory_budget_test.cpp), Debug+Release both
+  build clean.
+  2026-07-18: B2a+B2b (hot-loop dispatch: concrete RNG + allocation-free
+  calc dispatch) implemented together, measured together.
+  B2b (the broader of the two): replaced std::function<void()> with a new
+  CalcFn (core/Variation.h) - a plain {void* obj; void(*trampoline)(void*);}
+  pair, plus a bindCalc<T, Method>() helper that binds a no-arg member
+  function pointer (a compile-time template parameter, so the emitted
+  trampoline body is exactly the direct call, no runtime member-pointer
+  resolution) to an object. This is XForm::functionList_/calcFunctionList_'s
+  new element type (XForm::nextPoint()'s per-point loop body
+  `for (auto& fn : calcFunctionList_) fn();` is unchanged syntactically -
+  CalcFn has its own operator()) and Variation::selectCalcFunction()'s new
+  return type - both XForm's 29 local-variation entries and every
+  registered-variation entry (default: bindCalc<Variation,&Variation::calc>,
+  still a real virtual call through calc() itself - only the *outer*
+  std::function-style layer is removed, matching the plan's own scoping)
+  now go through bindCalc(). The 9 variations that override
+  selectCalcFunction() for a genuine runtime dispatch (VarJulian, VarCurl,
+  VarFalloff2/VarPostFalloff2/VarPreFalloff2, VarJulia3Djf, VarJulia3Dz,
+  VarJuliaScope, VarRadialBlur, VarRectangles - found by grepping for the
+  override, not guessed) were each updated the same mechanical way (verified
+  individually, not batch-assumed): every one of their overrides already had
+  the exact same shape (`return [this]{ someMethod(); };` per branch), so
+  each became `return bindCalc<TheClass, &TheClass::someMethod>(this);`.
+  B2a: ThreadState::rng (Renderer.cpp) changed from unique_ptr<Rng> to a
+  concrete Xoshiro256Rng held by value (Xoshiro256Rng's constructor gained a
+  defaulted seed=0 parameter so a vector<ThreadState> can default-construct
+  before each gets its real per-thread seed assigned, without needing a
+  heap-allocated pointer just to defer construction - a small bonus: this
+  also removes one heap allocation per render thread that clone()->
+  cloneForRender() didn't already remove). renderBatch() binds `rng` as
+  Xoshiro256Rng&, not Rng& - its own direct draws (propTable selection,
+  initial point, opacity roll) get a statically-known concrete type instead
+  of dispatching through Rng's vtable. project() (the camera-projection
+  function, DOF blur's 2 extra draws/point) was templated on the RNG type
+  for the same reason - internal-linkage, single call site, no code-bloat
+  risk. XForm::prepare(Rng&) and Variation::rng (Rng*) deliberately kept
+  exactly as-is, per the plan's own explicit scoping - that boundary (every
+  local/registered variation's own stochastic draws) stays virtual for now.
+  Neither change touches the actual sequence or count of RNG draws, or any
+  arithmetic - purely a dispatch-mechanism substitution - so, like B4, this
+  needed no baseline regeneration: baseline_regression_test.cpp's bit-exact
+  single-threaded check passing unchanged is direct, not inferred,
+  confirmation.
+  Measured, same machine/settings/methodology as every prior Part B
+  baseline (Release, 800x600 density=200, seed=1, 16 hardware threads),
+  compared against B4's own "after" numbers as the "before" for this item -
+  run three times given this machine's own noise floor turned out to be
+  larger than expected for this particular change: auto/16-thread points/sec
+  moved from (linear 96.33M, transcendental 59.35M, blur 66.90M) to an
+  average of roughly (linear 95.8M i.e. flat, transcendental 60.3M i.e.
+  +1.6%, blur 70.2M i.e. +5%) across the three repeats - a real but small,
+  mostly-in-the-blur-fixture win, not the "single-digit to low-double-digit%"
+  upper end the plan flagged as possible. Single-threaded numbers showed no
+  reliable signal at all - run-to-run variance on this machine (as large as
+  ~5% between two back-to-back identical runs with zero code change, most
+  likely thermal/background-load noise, not measurement methodology) matched
+  or exceeded whatever this change contributes at threadCount=1, so no
+  single-threaded claim is made either way. Reported honestly rather than
+  cherry-picking the most favorable run: this is a correct, low-risk,
+  modestly-positive change, not the dramatic win B1a/B4 were - the benchmark
+  earns its keep here specifically by preventing an overstated claim, not by
+  producing an exciting number.
+  Full suite (42/42, unchanged - no new ctest entries; existing coverage
+  already exercises every touched path end-to-end through Renderer::render/
+  every variation's own test file), Debug+Release both build clean.
+  2026-07-18: B4 (parallelize bucket reduction + tone-mapping) implemented.
+  New parallelFor<F>(threadCount, totalWork, fn) helper in Renderer.cpp:
+  splits [0,totalWork) into up to threadCount roughly-equal contiguous
+  slices and runs fn(begin,end) on each via std::jthread, joining before
+  returning; threadCount<=1 or totalWork<=1 calls fn(0,totalWork) directly
+  with no thread spawned. A plain static split, not renderBatch's own
+  atomic work-stealing counter - deliberate: a render batch's cost varies
+  with how many points it rejects (hence work-stealing to keep threads
+  balanced), but one bucket-reduction unit (fixed numSources adds) or one
+  tone-map row (fixed-size filter convolution) is uniform-cost, so a static
+  split needs no synchronization at all.
+  Reduction: new reduceBuckets() sums every worker thread's private bucket
+  array into one, parallelized across the bucket-index range via
+  parallelFor (same worker-thread count the render itself used) - each
+  destination bucket is written by exactly one reduce-thread, summing the
+  same numSources doubles in the same t=0..numSources-1 order the old
+  sequential loop used, so output stays bit-identical (only *which thread*
+  computes *which bucket* changes, never the order values are added within
+  one bucket). Also folded in a small bonus: numSources==1 (the
+  single-threaded/deterministic path) now moves that one thread's bucket
+  vector out directly instead of accumulate-copying it into a fresh one -
+  a free micro-optimization noticed while writing this, not a new behavior.
+  Tone-mapping: toneMap() gained a threadCount parameter and now splits its
+  per-row loop via the same parallelFor - each row only reads the shared,
+  read-only `buckets`/`plan`/`flame` and writes its own disjoint slice of
+  image.pixels, so no synchronization is needed there either.
+  Neither change touches iteration (the RNG-driven, genuinely
+  order-sensitive phase) at all, so - unlike several other Part B items -
+  this needed no baseline regeneration; baseline_regression_test.cpp's
+  existing bit-exact single-threaded PSNR-vs-golden-PNG checks passing
+  unchanged is direct confirmation of that, not just an inference (the
+  single-threaded path also happens to take reduceBuckets' numSources==1
+  shortcut, which bypasses parallelFor entirely, so it's an especially
+  strong check here).
+  New test: testMultithreadedRenderWithMoreThreadsThanImageRows in
+  renderer_test.cpp - a 7-row image rendered with threadCount=16 forces
+  parallelFor's "more threads requested than units of work, and totalWork
+  not evenly divisible by threadCount" boundary for the tone-map pass (no
+  existing multithreaded test's image was ever thin enough relative to its
+  thread count to exercise that clamp/chunk-arithmetic path) - checks exact
+  output size (no row silently dropped) plus the same loose non-background-
+  coverage bound the file's existing multithreaded coverage test already
+  uses (deliberately not a stronger per-row assertion, which would be
+  fragile against the attractor's own shape rather than actually testing
+  the clamp logic).
+  Measured, same machine/settings as B0/B1a's baseline (Release, 800x600
+  density=200, seed=1, 16 hardware threads) - auto/16-thread reduce+tonemap
+  combined drops from ~0.056-0.063s (post-B1a) to ~0.019-0.020s across all
+  three fixtures (~3x), consistent with roughly reduce/tonemap work spread
+  across on the order of the thread count. Total wall time at this size is
+  dominated by iterate (>90%) regardless, so the whole-render wall-time
+  effect is small and within this machine's iterate-phase run-to-run noise
+  (~5-10%) - exactly matching the plan's own framing that this item's win
+  is real but modest at typical sizes, and matters more "at large
+  multi-thread renders" (also spot-checked at 1600x1200/oversample=2,
+  ~7.8M buckets: reduce=0.214s on 16 threads - a real, measurable, no-longer-
+  single-core-serialized cost, not the sub-20ms figure at default settings).
+  apo_bench (src/tools/apo_bench.cpp) gained a new --oversample=N flag for
+  this kind of bucket-area-focused measurement, independent of density.
+  Full suite (42/42 - renderer_test.cpp gained 1 new case, still one ctest
+  entry), Debug+Release both build clean (apo_bench included).
+  2026-07-18: B1a (render-clone slimming) implemented. New
+  Flame::cloneForRender(int activeXForms) (src/core/Flame.h/.cpp): same deep
+  copy as clone(), except it only instantiates xform[0..activeXForms-1]
+  (clamped to [0,kMaxXForms]) plus finalXform - every other one of
+  clone()'s full kMaxXForms+1=101 slots is left null. Safe specifically
+  because Renderer.cpp's per-thread render clone (both render()'s
+  ThreadState.flame and samplePoints()'s sampleFlame) never indexes
+  xform[] outside [0,numXForms) - confirmed by tracing every access site
+  before making the change, not assumed: buildPropTable() only ever
+  populates propTable entries with indices in that range, so a render's
+  per-point xform selection can never draw anything else, and finalXform is
+  reached through its own dedicated pointer, not through the xform array.
+  Both call sites (Renderer::render()'s per-worker-thread clone and
+  Renderer::samplePoints()'s single sample clone) switched from clone() to
+  cloneForRender(numXForms). copyFrom() was refactored to share its
+  non-xform scalar-field copying with the new method (extracted into a
+  private copyScalarFieldsFrom() helper) rather than duplicating ~60 lines -
+  clone()/copyFrom() themselves are completely unchanged in behavior, still
+  populate every slot.
+  Implementation note: a private tag-dispatched constructor
+  (Flame::SkipXFormInitTag) skips the default constructor's eager "build
+  all 101 xforms" loop so cloneForRender() can populate only what it needs;
+  every scalar field still gets its normal in-class default (NSDMI) either
+  way, so a partially-populated Flame's *scalar* fields are exactly as
+  well-defined as a normal one's - only xform[]'s unused tail is left null,
+  which is explicitly documented in Flame.h as a narrow, Renderer-only
+  contract (numXForms() and everything else that scans the array still
+  requires every slot to be real, so this must never be handed to any other
+  subsystem).
+  New tests: flame_clone_test.cpp (5 cases) - which slots end up real vs.
+  null for a given activeXForms, that the real ones are genuine deep copies
+  (not aliased to the source), that scalar fields still copy correctly, that
+  out-of-range/negative activeXForms clamps instead of corrupting memory,
+  and that clone()/copyFrom() themselves are provably untouched (still
+  populate every slot, numXForms() still round-trips). baseline_regression_
+  test.cpp (bit-exact single-threaded PSNR-vs-golden-PNG comparison) passing
+  unchanged is the strongest evidence this is a real "no behavior change"
+  optimization, not just a claim - confirmed, not assumed.
+  Measured, same machine/settings as B0's baseline (Release, 800x600
+  density=200, seed=1, 16 hardware threads) - the auto/16-thread `setup`
+  phase (which is where the 101-vs-3-xform clone cost was concentrated) drops
+  from ~0.13-0.14s to ~0.045-0.046s across all three fixtures (~3x), which
+  at this large a render is a modest ~5-11% total-wall-time win (setup was
+  already a small fraction of a multi-second render). The effect the plan
+  predicted is much starker at interactive-preview scale, also measured
+  directly: at 200x150/density=30 (a realistic camera-drag-preview size),
+  auto/16-thread setup drops to ~0.007s - previously this same ~0.14s of
+  clone overhead would have been a large fraction of the entire preview
+  render's wall time regardless of image size (clone() cost doesn't scale
+  with width/height/density at all), so interactive previews are where this
+  item's win actually lands, exactly as the plan's own framing said it
+  would.
+  Full suite (42/42 - flame_clone_test.cpp is a new file, one new ctest
+  entry), Debug+Release both build clean (apo_bench included).
+  2026-07-18: B0 (points-per-second benchmark harness) implemented - starts
+  Part B. New src/tools/apo_bench.cpp (registered in src/tools/CMakeLists.txt
+  next to the existing apo_render_cli, so it's excluded from ctest the same
+  way - built with the rest of the project but only run deliberately).
+  Renders 3 representative flames built in code (no file I/O needed): a
+  pure-affine 3-map Sierpinski IFS ("linear" - the dispatch-overhead floor,
+  no variation math at all beyond the default "linear" weight), a
+  julian+swirl blend across 3 xforms ("transcendental" - sin/cos/atan2/pow-
+  heavy per point), and a gaussian_blur blend across 3 xforms ("blur" - 2
+  extra rng.uniform01() draws + trig per point, representative of the
+  stochastic blur family). Each runs at a fixed seed/size/density (defaults
+  800x600 density=200, all overridable via --size/--density/--seed) at every
+  threadCount in --threads (default "1,0" - single-threaded baseline, then
+  auto/hardware_concurrency), reporting points/sec and a per-phase wall-clock
+  breakdown.
+  That breakdown needed a small, additive core API change: Renderer::render()
+  gained an optional `RenderTimings* timings = nullptr` out-parameter (same
+  zero-overhead-when-unused convention as the existing `RenderProgress*`),
+  populated with setupSeconds/iterateSeconds/reduceSeconds/tonemapSeconds via
+  std::chrono::steady_clock checkpoints already sitting at each phase
+  boundary render() has today - no restructuring of render() itself, just
+  four timestamps. iterateSeconds is real wall-clock time (workers alive to
+  workers joined), not summed per-thread CPU time, since wall time is what
+  actually gates how long a render takes.
+  New tests in renderer_test.cpp (3): the default nullptr path still renders
+  normally (zero-overhead contract), a real render reports non-negative
+  per-phase durations with iterate dominating setup at a non-trivial size,
+  and a degenerate (zero-size) flame's early-return path leaves every
+  RenderTimings field untouched at its zero default rather than partially
+  filled.
+  First measured baseline (this machine, 16 hardware threads, Release,
+  800x600 density=200, seed=1, ~102.8M points generated per run) - recorded
+  here as the "before" every subsequent Part B item should diff against:
+    linear          threads=1     21.40M pts/sec  wall= 4.809s  [iterate=4.774s]
+    linear          threads=auto  83.16M pts/sec  wall= 1.269s  [setup=0.140s iterate=1.037s reduce=0.038s]
+    transcendental  threads=1      9.17M pts/sec  wall=11.217s  [iterate=11.168s]
+    transcendental  threads=auto  57.19M pts/sec  wall= 1.831s  [setup=0.133s iterate=1.592s reduce=0.033s]
+    blur            threads=1     11.88M pts/sec  wall= 8.661s  [iterate=8.613s]
+    blur            threads=auto  61.57M pts/sec  wall= 1.704s  [setup=0.132s iterate=1.470s reduce=0.035s]
+  Notable finding already visible in this baseline, directly confirming B1's
+  own prediction rather than just theorizing it: auto/16-thread setup time is
+  ~17x single-threaded setup time (0.13-0.14s vs ~0.008s) purely from
+  Flame::clone() x16 (one per worker thread) each allocating all 101 xforms'
+  worth of variation objects regardless of how many are actually active (3,
+  in every fixture here) - real, measured cost sitting right where B1a's
+  plan text predicted it would be, not a guess.
+  Full suite (41/41 - renderer_test.cpp gained 3 new cases, still one ctest
+  entry), Debug+Release both build clean (apo_bench included).
+  2026-07-18: A7 (drag-and-drop) implemented - completes Part A (all 7
+  feature items now done). MainWindow::setAcceptDrops(true) plus
+  dragEnterEvent/dropEvent overrides: accepts any drag carrying at least
+  one local file URL (not gated on a .flame/.flam3 extension - matches
+  openFlameFile()'s own extension-agnostic behavior, which just tries to
+  parse whatever's there as XML and fails gracefully with a warning box on
+  a bad file, same as picking an unrelated file via File > Open's "All
+  files" filter would), and routes the first local file URL to the
+  existing openFlameFile() - not a port (Main.pas/Main.dfm has no
+  drag-drop handling at all), just standard modern-desktop-app behavior.
+  Testing note: confirmed the hard way, not assumed - a synthetic
+  QDropEvent sent to a QMainWindow via QApplication::sendEvent() with no
+  preceding QDragEnterEvent never reaches the subclass's own dropEvent()
+  override at all (apparently swallowed by QMainWindow's own internal
+  toolbar/dock-widget drag-session tracking); every test sends a real
+  DragEnter-then-Drop pair, matching what an actual OS drag always does
+  anyway, so this is purely a synthetic-test-construction detail, not
+  anything about the feature's real-world behavior.
+  New tests in main_window_interaction_test.cpp: dropping a .flame file
+  opens it (same as File > Open), dragEnterEvent accepts a local file URL
+  and rejects plain-text-only drags, dropping a multi-<flame> file lists
+  every entry, dropping an unparseable file leaves the library untouched
+  (warning box shown instead of a crash or silent no-op). Full suite
+  (41/41), Debug+Release both build clean.
+  2026-07-18: A6 (weight/color utility commands) implemented, minus one
+  item found to be dead code in the original (see below). New
+  core/edit/FlameOps.h/.cpp: randomizeXformWeights (density = uniform
+  [0,1) per active xform, matches ControlPoint.pas's RandomizeWeights),
+  equalizeXformWeights (density = the literal constant 0.5 for every
+  active xform, matches EqualizeWeights exactly - not 1/numXForms, since
+  the renderer normalizes by total density regardless), calculateXformColorValues
+  (color = i/(numXForms-1) spread evenly across [0,1], matches
+  mnuCalculateColorsClick - fixed a real division-by-zero for a
+  single-xform flame, not replicated), randomizeXformColorValues (color =
+  uniform [0,1) per active xform, matches mnuRandomizeColorValuesClick).
+  Verified each formula directly against Main.pas/ControlPoint.pas per the
+  plan's own instruction, which caught a real case of the plan's own
+  paraphrase lying: "Compute Weights" (mnuNormalWeights) is NOT ported -
+  its menu handler's actual call (`ComputeWeights(...)`) is commented out
+  behind a `// TODO: ...something` in the original itself, so the menu
+  item does nothing there today; the underlying TControlPoint.ComputeWeights
+  it would have called is also a dead end on its own merits (a
+  dimensionally-broken triangle_area() heuristic that returns a length
+  where an area is expected for any transform smaller than one unit - the
+  common case, not an edge case). Documented in FlameOps.h's own doc
+  comment rather than silently dropped.
+  New EditorWindow "F&lame" menu (Random Weights/Equalize Weights/
+  Calculate Colors Values/Randomize Color Values - matches the original's
+  own Flame-menu placement), each wired as a Structural undo entry (same
+  shape as onPasteXform's in-place edit - whole-flame before/after,
+  selection unchanged) and explicitly refreshing transformPanel_ afterward
+  (setSelectedXform() is an unconditional redisplay, not change-gated -
+  needed since these commands mutate xform fields from outside the panel
+  itself, unlike a user typing into it).
+  New tests: 5 in flame_ops_test.cpp (each formula's exact output,
+  including the single-xform division-by-zero fix) and 4 in
+  triangle_canvas_interaction_test.cpp (one per command, verifying the
+  real flame_ EditorWindow owns changes correctly and round-trips through
+  Ctrl+Z/Ctrl+Shift+Z, following the file's existing Force Symmetry
+  integration test's own pattern). A plain new menu (no novel widgets) -
+  skipped a dedicated screenshot per the precedent set for A1/A2/A4's own
+  menu-only additions. Full suite (41/41), Debug+Release both build clean.
+  2026-07-18: A5 (Smooth Palette) implemented. New core/edit/
+  SmoothPalette.h/.cpp ports Draves' "Smooth palette" GIMP-plugin algorithm
+  directly from Main.pas:4165's TMainForm.SmoothPalette - sample 256 random
+  pixels from an image, then numTries independent scramble-and-locally-
+  optimize passes (each: shuffle, then tryLength random-pair swap-if-
+  locally-improving iterations), keep the best, finish with a 1024-swap
+  "clean" pass - Qt-free (takes a raw packed RGB byte buffer, not a
+  QImage), matching every other core/edit/ function's own UI-independence.
+  Two genuine array-bounds bugs found in the original and fixed, not
+  replicated (both are the same class of off-by-one: a loop draws an index
+  whose +1 neighbor can land one past the 256-entry array - clist[256] -
+  undefined behavior in the Delphi source, not a deliberate design choice):
+  the "measure" step's `for i := 0 to 255 do diffcolor(clist, i, i+1)` (i=255
+  reads clist[256], fixed by bounding i to [0,254]) and the "clean" step's
+  `i0 := 1 + random(254)` then `diffcolor(clist, i1, i1+1)` with i1=i0+1
+  (i0=254 reads clist[256] again, fixed by bounding i0 to [1,253]).
+  New SmoothPaletteDialog (src/ui/SmoothPaletteDialog.h/.cpp), opened via
+  MainWindow's File menu "Smooth Palette..." (guarded on having a library
+  selection, matching Reset Location's own gating). Same "holds no target
+  Flame, Apply just emits a signal" shape as GradientBrowserDialog - the
+  broadened image-format filter (any QImageReader-supported format, not
+  just the original's bmp/jpg) and the added Generate button (re-samples
+  with a new random seed without re-browsing, since the algorithm is
+  inherently stochastic) are both incidental improvements enabled by
+  reusing Qt's own image decoding rather than deliberate feature additions.
+  MainWindow's Apply handler folds into A4's existing undo system as a
+  Modify entry (same shape as Reset Location) - not originally scoped in
+  A4, but a natural, small extension: leaving a new in-place flame mutation
+  outside the undo system MainWindow already has would have been a real
+  inconsistency, not a deliberate scope boundary.
+  New tests: 5 in smooth_palette_test.cpp (invalid-input rejection, every
+  output entry is a real sampled image pixel not a blend, same-seed
+  determinism, different-seed variation, and the core "smoother than random"
+  claim itself - measured total adjacent-color-distance is lower than a
+  random shuffle of the identical 256 sampled colors), 5 in
+  smooth_palette_dialog_interaction_test.cpp (disabled-until-loaded state,
+  auto-generate-on-open, Apply emits real image-sampled colors end-to-end
+  through the whole Qt pipeline, Generate produces a different result,
+  missing-file handling), 2 in main_window_interaction_test.cpp (selection
+  gating, and a full Apply/Undo/Redo round-trip verifying the flame's
+  actual saved gradient at each step - this surfaced and fixed a *test* bug,
+  not a product bug: comparing against the pre-save in-memory fixture
+  instead of the actually-loaded-and-XML-round-tripped flame, since
+  FlameIO's palette parser always fills alpha=255 while a freshly
+  default-constructed Flame's cmap has alpha=0). Added a hidden
+  `--smooth-palette [image]` CLI flag alongside the other per-dialog hooks,
+  verified visually via --auto-screenshot-exit. Full suite (40/40),
+  Debug+Release both build clean.
+  2026-07-18: A4 (main-window undo) implemented. MainWindow gets a bounded
+  (32-entry, oldest-trimmed) undo/redo stack (Ctrl+Z/Ctrl+Shift+Z, Edit
+  menu's new Undo/Redo actions above Copy/Paste) covering exactly the five
+  edits the plan scoped: camera gesture settle, Reset Location, Delete,
+  Rename, Paste - NOT a port of the original's whole-app undo web, and
+  deliberately NOT covering Duplicate (trivially reversible via Delete
+  already). Three entry kinds (Modify/Insert/Delete - MainWindow.h's
+  UndoEntry/UndoKind) generalize EditorWindow's own Drag/Structural undo
+  pattern to the library-list level: Modify entries (Rename/Reset Location/
+  camera gesture) are applied via Flame::copyFrom() rather than swapping
+  the shared_ptr, so PreviewLabel/an open EditorWindow (which hold that
+  same shared_ptr) see the undo too; Insert/Delete entries carry a clone of
+  the flame that was inserted/removed and replay the list mutation via new
+  shared helpers insertFlameAt()/removeFlameAt() (also now used by
+  Duplicate/Paste/Delete themselves, replacing 3x near-duplicated inline
+  list-mutation code with one path).
+  One real bug found and fixed along the way, in code this port itself
+  wrote (not the original): PreviewLabel::wheelEvent/mouseMoveEvent mutate
+  Flame::zoom/center BEFORE emitting cameraChanged(), so a listener trying
+  to snapshot "before" state on that signal (as this feature's first
+  attempt did) always captured post-mutation state - caught by a failing
+  test, not by inspection. Fixed by adding a new PreviewLabel::
+  gestureStarted() signal that fires before any mutation (wheelEvent, and
+  mousePressEvent for a drag's first step) - MainWindow's undo capture
+  moved there; cameraChanged()'s existing contract/callers are unchanged.
+  Also fixed a related latent gap while refactoring onDeleteFlameTriggered
+  into the shared selectRowAfterLibraryChange() helper: it never called
+  previewLabel_->setFlame() after a Delete shifted a different flame into
+  the selected slot, so a camera gesture immediately after a Delete would
+  have mutated a stale, already-orphaned Flame object instead of the
+  newly-selected one.
+  New tests: 7 in main_window_interaction_test.cpp covering all five
+  undoable operations round-tripping through undo then redo with real
+  field-level verification (not just enabled/disabled checks), the
+  standard-shortcut/initial-disabled-state check, and a precise bound test
+  (35 renames, undo exactly 32 times, assert the exact surviving value and
+  that a 33rd undo is a no-op). Full suite (38/38), Debug+Release both
+  build clean.
+  2026-07-18: A3 (Render All Flames) implemented. New RenderAllDialog
+  (src/ui/RenderAllDialog.h/.cpp), opened via MainWindow's new File menu
+  action "Render All Flames..." (objectName "renderAllFlamesAction",
+  guarded against an empty library with an info box). Shared width/height/
+  density/oversample/filter-radius/adaptive-filter/transparent-background
+  settings (seeded from the first flame's own values) are applied
+  identically to a clone of every flame in the library in turn via
+  Flame::adjustScale() (same call RenderDialog::startRender() makes),
+  rendered sequentially through one RenderWorker::renderFull call at a time
+  (same single-render-in-flight model/memory profile as RenderDialog),
+  each written as its own PNG into a chosen output folder. Output
+  filenames are the flame's own name, sanitized for filesystem legality
+  and de-duplicated up front (computed once at dialog construction, shown
+  in a live results list before a single render has run) - not ported from
+  the original (mnuRenderAllClick just iterates a `bRenderAll` flag through
+  the existing single-flame Render form's own save path; this port's
+  RenderDialog model - one flame, one output *file* chosen up front - does
+  not fit "many flames, one output *folder*", hence a dedicated dialog
+  instead of a checkbox). Cancel stops the batch after the in-flight flame
+  finishes (not mid-flame) rather than silently continuing. An optional
+  "Save parameters (.flame) alongside each image" checkbox mirrors
+  RenderDialog's own P4.3 feature per-flame. Also added a hidden
+  `--render-all <file>` CLI flag (main.cpp) alongside the existing
+  --edit/--adjust/--render/... hooks, plus setAutoScreenshot/showEvent on
+  RenderAllDialog itself (mirroring RenderDialog's), and used it to verify
+  the dialog visually via --auto-screenshot-exit.
+  New tests: render_all_dialog_interaction_test.cpp (9 tests: control
+  seeding from the first flame, filename sanitize/de-dupe, empty-library
+  disablement, output-folder gating, a real Browse... folder dialog, a
+  real 2-flame batch render producing two decodable PNGs at the requested
+  size with per-item "done" status, save-parameters .flame writing on/off,
+  and cancel-stops-the-batch with a 5-flame batch) plus 2 new tests in
+  main_window_interaction_test.cpp (empty-library info box; the opened
+  dialog carries the whole library, not just the selection). Full suite
+  (38/38), Debug+Release both build clean.
+  2026-07-18: A2 (clipboard Copy/Paste) implemented. Added
+  FlameIO::loadFlameFromString/saveFlameToString (src/core/io/FlameIO.h) -
+  the file-based loadFlameFile/saveFlameFile were refactored to share the
+  same parseDocument/buildDocument internals rather than duplicating the
+  pugixml logic. MainWindow gets a new Edit menu (Copy Flame - Ctrl+C,
+  objectName "copyFlameAction", enabled only with a library selection;
+  Paste Flame - Ctrl+V, objectName "pasteFlameAction", always enabled).
+  Copy serializes the selected flame to the system clipboard as <flame> XML
+  (matches Main.pas's mnuCopyClick). Paste parses clipboard text and
+  inserts the first parsed flame into the library right after the current
+  selection, then selects it (same insert-after-and-select shape as
+  Duplicate) - deliberately NOT the original's own behavior of overwriting
+  the single open MainCp in place, since this port's library is a list, not
+  a single working flame; a multi-flame clipboard (<flames>) only inserts
+  its first entry, matching the original's own single-flame Paste. Empty/
+  unparseable clipboard text shows an info/warning box and changes nothing;
+  pasting into an empty library (selectedIndex_ == -1) inserts at row 0.
+  New tests: flame_io_test.cpp (string round-trip, garbage-input rejection,
+  multi-flame <flames> string round-trip) and
+  main_window_interaction_test.cpp (Copy puts the right flame's XML on the
+  clipboard; Paste inserts-after-and-selects with real field fidelity;
+  paste into an empty library; garbage clipboard is rejected cleanly).
+  Full suite (37/37), Debug+Release both build clean.
+  2026-07-18: A1 (Save All Parameters) implemented. Added MainWindow's
+  "Save All Parameters..." File-menu action (onSaveAllFlamesTriggered,
+  objectName "saveAllFlamesAction") next to the existing Save Flame As -
+  writes every flame in flames_ via the already-multi-flame-capable
+  apo::saveFlameFile, guarded only against an empty library (info box, no
+  file dialog shown). Two new interaction tests in
+  main_window_interaction_test.cpp verify it writes all 3 flames of a
+  fixture (not just the selected one) in library order with names intact,
+  and that the action stays enabled with nothing selected. Full suite
+  (37/37), Debug+Release both build clean.
+
+================================================================================
+PART A - REMAINING FEATURE GAPS
+================================================================================
+Ordered by recommended priority. Each cites where it lives in the original
+and what exists (or is missing) in the port today.
+
+--------------------------------------------------------------------------------
+A1. Save All Parameters (library persistence)          [HIGH - arguably a bug]
+--------------------------------------------------------------------------------
+Original: File > "Save All Parameters" (Main.dfm mnuSaveAllAs) writes every
+flame in the loaded file back out.
+Port: MainWindow::onSaveFlameAsTriggered() saves ONLY the selected flame
+(`saveFlameFile(path, {&flame})` - MainWindow.cpp:701). There is no way to
+persist the library as a whole. This quietly breaks the port's own stated
+contract: MainWindow.h's Rename/Delete doc comment says "a renamed or
+pruned library still needs Save Flame As to persist anywhere" - but Save
+Flame As can't do that. A user who renames/reorders/deletes/duplicates
+their way to a curated library cannot save it.
+Plan: add "Save All As..." next to the existing action; apo::saveFlameFile
+already accepts a vector of flames, so this is UI wiring plus a test that
+round-trips a multi-flame library through save/load. Cheap, closes a real
+data-loss-shaped hole.
+
+--------------------------------------------------------------------------------
+A2. Copy/Paste flame as XML via the system clipboard            [HIGH value]
+--------------------------------------------------------------------------------
+Original: Edit > Copy / Paste (Main.dfm mnuCopy/mnuPaste) - copies the
+current flame's <flame> XML to the system clipboard, pastes one back in.
+This is THE community workflow: flame parameters are shared as XML text on
+forums/Discord, and pasting them in is how most users ever import one.
+Port: no QClipboard use anywhere except EditorWindow's in-app XForm
+snapshot (which is a static XForm, not the system clipboard, and carries
+transforms - not whole flames).
+Plan: Edit menu on MainWindow with Copy (serialize selected flame via the
+same pugixml writer saveFlameFile uses - may need a to-string entry point
+in FlameIO, likely a small refactor of the existing file writer) and Paste
+(parse clipboard text with the existing loader; on success, insert into
+the library like Duplicate does, select it). Round-trip test via
+QClipboard on the offscreen platform.
+
+--------------------------------------------------------------------------------
+A3. Render All Flames (batch render)                              [MEDIUM]
+--------------------------------------------------------------------------------
+Original: Flame > "Render All Flames" (mnuRenderAll) - renders every flame
+in the file to disk in one go.
+Port: RenderDialog renders exactly one flame.
+Plan: either a "Render All..." dialog (pick a folder + shared
+size/density settings, then iterate) or a checkbox on the existing
+RenderDialog. Reuse RenderWorker::renderFull sequentially (one render at a
+time keeps the existing single-render-in-flight model and its memory
+profile); progress = per-flame N-of-M plus the existing per-render
+progress bar; output names from flame names (sanitized, de-duplicated).
+Moderate effort, mostly UI/plumbing - no core changes.
+
+--------------------------------------------------------------------------------
+A4. Main-window undo (camera gestures, destructive library edits)  [MEDIUM]
+--------------------------------------------------------------------------------
+Original: Edit > Undo/Redo (mnuUndo/mnuRedo) - a main-level undo stack
+covering flame-level edits (Adjust changes, camera moves, randomize...).
+Port: undo exists only inside EditorWindow. MainWindow has zero undo -
+notably, the P2.1 preview camera gestures (wheel zoom / drag pan) and
+Reset Location mutate the selected flame irreversibly, and Delete Flame is
+confirm-gated but unrecoverable.
+Plan (scoped): don't port the original's whole-app undo web. Add a
+MainWindow-local undo stack of whole-Flame snapshots (Flame::clone()
+already exists and EditorWindow's Structural undo entries prove the
+pattern) covering: camera gesture settle, Reset Location, Delete, Rename,
+Paste (A2). Ctrl+Z/Ctrl+Shift+Z. Keep it bounded (e.g. 32 entries).
+
+--------------------------------------------------------------------------------
+A5. Smooth Palette (gradient from an image)                       [MEDIUM]
+--------------------------------------------------------------------------------
+Original: File > "Smooth Palette..." (mnuSmoothGradient ->
+TMainForm.SmoothPalette, Main.pas:4165) - opens an image file and derives
+a smooth 256-entry gradient from it, using Draves' "Smooth palette" GIMP
+plug-in algorithm (random sampling of image pixels + stochastic reordering
+to minimize adjacent color distance; NumTries/TryLength annealing loop).
+Port: nothing. Gradients come from the builtin table, the browser's file
+formats, or Adjust's calculated randoms.
+Plan: core function (QImage-free: take RGB byte buffer in, ColorMap out,
+in core/edit/ next to GradientOps) + a small dialog or a direct
+File-menu action (open image via QFileDialog/QImage, show a preview strip,
+Apply to selected flame's cmap). Port the algorithm from Main.pas:4165+
+(it's self-contained). Nice, iconic feature; moderate, low-risk effort.
+
+--------------------------------------------------------------------------------
+A6. Weight/color utility commands                                    [LOW]
+--------------------------------------------------------------------------------
+Original: Flame menu - Random Weights (mnuRWeights), Equalize Weights
+(mnuEqualize), Compute Weights (mnuNormalWeights), Calculate Colors Values
+(mnuCalculateColors), Randomize Color Values (mnuRandomizeColorValues).
+Port: none of these exist (grep confirms no equalize/randomWeights/
+calculateColors anywhere in src/).
+Plan: small pure functions in core/edit/MutationOps (or a new
+FlameOps.h) + menu entries (MainWindow Library menu or EditorWindow).
+Each is a few lines over existing fields; verify each formula against
+Main.pas before porting (the plan's own history shows paraphrases lie).
+Low priority - conveniences, not workflow blockers.
+
+--------------------------------------------------------------------------------
+A7. Drag-and-drop .flame files onto the main window                  [LOW]
+--------------------------------------------------------------------------------
+Port: MainWindow has no setAcceptDrops/dropEvent (grep confirms).
+Whether or not the original accepted OS file drops, this is standard
+desktop behavior and ~20 lines in Qt (accept text/uri-list, route to the
+existing openFlameFile). Cheap polish.
+
+--------------------------------------------------------------------------------
+A-SKIP: surveyed and deliberately NOT planned (with reasons)
+--------------------------------------------------------------------------------
+- Resume unfinished render (mnuResumeRender): depends on the original's
+  incremental/interruptible render state files; this port's renderer is
+  deliberately one-shot (standing decision, see Renderer.h).
+- Export UPR / Copy as UPR / Export Flame(flam3) / Export to Chaotica /
+  Post Sheep / scripting menu / favorites / templates / help files /
+  splash / trace log / Messages window: all already standing
+  out-of-scope decisions in MISSING_FEATURES_PLAN.txt - reconfirmed, no
+  change.
+- Import GIMP Parameters (mnuImportGimp): obscure format, near-zero
+  modern usage; skip unless requested.
+- File Contents panel (raw-XML side pane, mnuFileContents): the port's
+  library list + editor covers the need; skip.
+- Main toolbar/status-bar visibility toggles, "Reset file content list
+  width": trivial chrome around Delphi-specific layout problems; skip.
+
+================================================================================
+PART B - PERFORMANCE OPPORTUNITIES
+================================================================================
+Context: the renderer's architecture is already good - per-thread private
+bucket arrays (zero contention), xoshiro256** RNG, propTable xform
+selection, precomputed color/tone/filter tables, batch-granular
+cancellation. The headroom is in dispatch overhead per point, setup cost
+per render, memory traffic, and two leftover single-threaded passes.
+
+IMPORTANT GLOBAL CAVEAT: several items below change the RNG draw sequence
+or floating-point rounding, which changes rendered output bit-for-bit.
+baseline_regression_test.cpp's checked-in reference images would need
+regenerating in the same change that lands any such item - do them
+deliberately, one at a time, with before/after images eyeballed.
+
+--------------------------------------------------------------------------------
+B0. FIRST: a points-per-second benchmark harness           [prerequisite]
+--------------------------------------------------------------------------------
+None of the wins below should be landed on faith. Add a small benchmark
+target (not a ctest - a manually-run tool, or a tests/ binary excluded
+from the default suite) that renders 2-3 representative flames
+(linear-only, transcendental-heavy e.g. julian/swirl, blur-heavy) at fixed
+seed/size/density, single- and multi-threaded, and reports points/sec and
+wall time per phase (setup / iterate / reduce / tonemap). Every item below
+then gets a measured before/after in this file's progress log.
+
+--------------------------------------------------------------------------------
+B1. Render setup cost: Flame construction/clone is enormously
+    over-allocating                                    [BIG for interactivity]
+--------------------------------------------------------------------------------
+Verified: Flame's constructor allocates 101 XForms (kMaxXForms=100 + final,
+Flame.h:110). EVERY XForm constructor instantiates one object for EVERY
+registered variation (~150-200: 94 builtin variation files + 48 plugin
+wrappers, XForm.cpp addRegVariations) plus a std::function list. So one
+Flame() is ~15,000-20,000 heap allocations - and Renderer::render() calls
+flame.clone() ONCE PER THREAD (Renderer.cpp:727), so a 16-thread render
+does ~300,000 allocations before the first point is iterated. Worse,
+XForm::assign() (used by clone) copies every variation's variables BY NAME
+through virtual getVariable/setVariable string comparisons - hundreds of
+thousands of string ops per clone wave. This is invisible on a 5-minute
+final render but is a real, recurring cost for every interactive preview
+render (camera drags, editor drags, thumbnails, mutate previews).
+Plan, in increasing order of invasiveness (measure after each):
+  (a) Clone only the active xforms for rendering: a
+      Flame::cloneForRender() (or a leaner internal path in render()) that
+      copies numXForms()+final xforms instead of all 101. ~10-50x less
+      clone work for typical 2-10-xform flames. No behavior change.
+  (b) Lazy variation instantiation per XForm: only variations with nonzero
+      weight (plus those touched via getVariable/setVariable) need live
+      objects; name lookups for dormant ones can consult
+      VariationRegistry's factories (VariationFactory already exposes
+      numVariables/variableNameAt without an instance - Variation.h:89).
+      Largest structural win; touches XForm's internals broadly, so it
+      needs the full suite + baselines green after.
+  (c) Index-based variable copy in XForm::assign()/
+      interpolateVariablesFrom() (getVariableAt/setVariableAt(int)) to
+      kill the per-copy string traffic that remains after (b).
+
+--------------------------------------------------------------------------------
+B2. Hot-loop dispatch: std::function chain + virtual RNG    [BIG, measure]
+--------------------------------------------------------------------------------
+Two indirect-dispatch costs sit inside the per-point loop:
+  (1) XForm::nextPoint runs `for (auto& fn : calcFunctionList_) fn();`
+      where each entry is a std::function<void()> (XForm.cpp:221) -
+      type-erased indirect call per active variation per point, opaque to
+      the inliner.
+  (2) Rng::uniform01() is a VIRTUAL call (Rng.h:39), and it fires several
+      times per point: the propTable draw, the opacity roll, stochastic
+      variations, DOF draws. ThreadState holds unique_ptr<Rng>, so the
+      compiler cannot devirtualize any of it.
+Plan:
+  (a) RNG: make the render path use the concrete Xoshiro256Rng type
+      (ThreadState holds Xoshiro256Rng by value; renderBatch takes it
+      concretely). XForm's stochastic variations still take Rng& - that
+      boundary can stay virtual initially (measure), or XForm can be
+      templated/overloaded on the concrete type later if the benchmark
+      says it matters.
+  (b) calcFunctionList_: replace std::function entries with a flat array
+      of {void(*fn)(void*), void* ctx} pairs or member-function-pointer +
+      object pairs (both allocation-free and predictably branch-target-
+      cached). The prepare()-time flexibility (julian's
+      selectCalcFunction) is preservable - selectCalcFunction can return
+      an enum/function-pointer instead of a std::function.
+Expected: single-digit to low-double-digit % on transcendental-light
+flames (where dispatch is a bigger fraction of per-point cost); less on
+sin/cos-heavy ones. Benchmark decides how far to push.
+
+--------------------------------------------------------------------------------
+B3. Skip the opacity roll when transOpacity == 1        [SMALL, cheap]
+--------------------------------------------------------------------------------
+renderBatch pays `rng.uniform01() >= xf.transOpacity` per point
+(Renderer.cpp:507) even though transOpacity is 1.0 for virtually every
+xform in real flames (the roll can then never reject). Precompute a
+per-xform "always passes" flag at prepare time and branch on it - saves
+one RNG draw + compare per point in the common case.
+CAVEAT: removes draws from the RNG stream -> single-threaded deterministic
+output changes -> baselines must be regenerated in the same change.
+
+--------------------------------------------------------------------------------
+B4. Parallelize the two leftover single-threaded passes    [MEDIUM, easy]
+--------------------------------------------------------------------------------
+Both run after iteration, both trivially data-parallel, both currently
+sequential:
+  (a) Bucket reduction (Renderer.cpp:793-805): threads x bucketArea x 32B
+      of streaming adds. For a 3200x2400 os=2 render that's ~50M buckets;
+      16 source arrays = ~25GB of memory traffic through one core. Split
+      the bucket index range across the same worker threads (each thread
+      sums ALL sources for ITS slice - no synchronization needed).
+      The comment at :786 calls this negligible; at preview sizes it is,
+      at large multi-thread renders it is measurably not.
+  (b) toneMap(): per-pixel filter convolution + pow()-heavy
+      gamma/vibrancy, plus (with adaptive DE on) a per-pixel variable-
+      radius kernel pass - all one thread. Parallelize over output rows
+      (each row's writes are disjoint; all bucket reads are read-only).
+      With DE enabled at large sizes this pass alone can be seconds.
+Neither changes output at all (pure reordering of independent work) -
+no baseline impact, easy tests (same image bytes as single-threaded).
+
+--------------------------------------------------------------------------------
+B5. Bucket memory: 32-byte doubles -> optional 16-byte floats   [EXPERIMENT]
+--------------------------------------------------------------------------------
+Bucket = 4 doubles (Renderer.cpp:30). The chaos game's bucket writes are
+random-access over a huge array - this is the classic flame-fractal
+bottleneck (cache misses, not arithmetic). Halving the bucket to 4 floats
+(or float RGB + uint32 count) halves working-set size and write traffic,
+AND halves the per-thread-copy memory bill (see B6).
+CAVEATS to evaluate honestly: float count saturates addition at ~16.7M
+points/bucket (high-density renders concentrate exactly like that at
+attractor hot spots); accumulated float RGB rounds differently ->
+baselines change. Suggested shape: template the accumulation/reduction on
+the bucket scalar; previews (low density, latency-sensitive) use float,
+RenderDialog finals keep double - or make it an Options setting after
+measuring whether the quality delta is even visible.
+
+--------------------------------------------------------------------------------
+B6. Memory-budget-aware thread count                    [SAFETY/PERF UX]
+--------------------------------------------------------------------------------
+Peak memory = (threads+1) x bucketArea x 32B (estimatePeakMemoryBytes).
+At 3200x2400 with oversample 3, one copy is ~2.2GB - 16 threads + 1 wants
+~37GB and will page-thrash (a performance catastrophe far worse than
+running fewer threads). The dialog SHOWS the estimate but nothing acts on
+it. Plan: before launching, clamp effective thread count so the estimate
+fits a budget (e.g. a fraction of physical RAM via
+GlobalMemoryStatusEx, or an AppSettings cap), status-line note when
+clamped ("using 6 threads to stay under N GB"). Pairs naturally with B5
+(floats double the affordable thread count).
+
+--------------------------------------------------------------------------------
+B7. Compiler flags for apo_core                          [CHEAP, measure]
+--------------------------------------------------------------------------------
+CMakeLists.txt sets only /W4 /permissive- /EHsc; Release gets MSVC's
+default /O2. Not set: /arch:AVX2 (or /arch:AVX512) - worth benchmarking
+for the math-heavy core (opt-in CMake option, since it drops pre-2013
+CPUs).
+WARNING - do NOT reach for /fp:fast: renderBatch's poisoned-point bailout
+(Renderer.cpp:496) and the accept-path check (:516) depend on NaN/Inf
+propagating honestly through variation math into std::isfinite. /fp:fast
+licenses the compiler to assume no NaNs and can silently break exactly
+that logic. If floating-point relaxation is ever explored, it must be
+file-scoped away from the isfinite-dependent code and A/B'd against
+baselines; default recommendation is to leave /fp precise.
+
+--------------------------------------------------------------------------------
+B8. Preview-density cap for the library's full-quality render   [UX CHOICE]
+--------------------------------------------------------------------------------
+MainWindow renders each selected flame at its own full width/height/
+sampleDensity (only camera-drag previews are reduced). A library of
+density-2000 flames means every arrow-key selection change launches a
+multi-second render. Options if this ever bothers in practice: cap the
+selection render's density at some multiple of
+AppSettings::previewSampleDensity(), or add an Options "preview quality"
+setting. Flagged, not recommended by default - the current behavior is
+the deliberate P2.5-era choice and the coalescing gate already prevents
+queue pileups.
+
+================================================================================
+SUGGESTED ORDER OF WORK
+================================================================================
+Features and performance can interleave; within each track:
+
+Features: A1 (save-all; smallest, fixes a real hole) -> A2 (clipboard
+copy/paste) -> A3 (render all) -> A4 (main-window undo) -> A5 (smooth
+palette) -> A6/A7 (utilities, drag-drop) as demand dictates.
+
+Performance: B0 (benchmark harness - REQUIRED first) -> B1a (render-clone
+slimming; big, zero-risk) -> B4 (parallel reduce + tonemap; zero-risk) ->
+B2a/B2b (dispatch; measure each) -> B6 (thread clamping) -> B3/B5/B7
+(each changes output or platform floor - land individually with baseline
+regeneration and eyeball checks) -> B8 only if real-world use asks for it.
+
+Each item follows the established pattern: verify against original source
+where a behavior is being matched -> core change -> unit test -> UI ->
+interaction test -> screenshot verification -> full suite -> Debug+Release
+-> progress-log entry at the top of this file.
+================================================================================

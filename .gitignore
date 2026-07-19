@@ -1,0 +1,18 @@
+# Build output (out-of-source CMake/Visual Studio build directory)
+build/
+out/
+
+# vcpkg manifest-mode local install tree (restored automatically from
+# vcpkg.json by CMake's toolchain file - not source)
+vcpkg_installed/
+
+# IDE / editor
+.vs/
+.vscode/
+*.user
+*.suo
+CMakeUserPresets.json
+
+# OS cruft
+Thumbs.db
+.DS_Store

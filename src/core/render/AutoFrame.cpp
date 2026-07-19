@@ -1,6 +1,7 @@
 #include "AutoFrame.h"
 
 #include <algorithm>
+#include <cstddef>
 #include <vector>
 
 #include "Renderer.h"

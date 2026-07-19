@@ -9,6 +9,7 @@
 // missing/unreadable file leaves the dialog in a clean, disabled state
 // rather than crashing.
 
+#include <cstddef>
 #include <cstdio>
 
 #include <QApplication>

@@ -1,5 +1,6 @@
 // Tests for Phase 4's PNG writer (src/core/io/PngWriter.h).
 
+#include <cstddef>
 #include <cstdint>
 #include <cstdio>
 #include <fstream>

@@ -10,6 +10,7 @@
 // adjust_dialog_interaction_test.cpp's approach (QTest event injection
 // against the real compiled widget, via the apo_ui object library).
 
+#include <cstddef>
 #include <cstdio>
 #include <functional>
 

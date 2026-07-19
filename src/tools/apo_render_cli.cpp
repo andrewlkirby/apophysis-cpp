@@ -15,6 +15,7 @@
 //   --index=N       Which <flame> to render if the file has more than one
 //                    (default: 0, the first)
 
+#include <cstddef>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

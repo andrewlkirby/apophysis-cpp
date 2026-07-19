@@ -1,5 +1,7 @@
 #include "FlameOps.h"
 
+#include <cstddef>
+
 namespace apo {
 
 void randomizeXformWeights(Flame& flame, Rng& rng) {

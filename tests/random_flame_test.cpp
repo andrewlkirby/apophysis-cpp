@@ -4,6 +4,7 @@
 // already covered independently in mutation_ops_test.cpp, gradient_ops_test.cpp,
 // and auto_frame_test.cpp; this file verifies the composition itself.
 
+#include <cstddef>
 #include <vector>
 
 #include "TestHelpers.h"

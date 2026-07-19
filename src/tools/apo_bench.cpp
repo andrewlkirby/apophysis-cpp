@@ -32,6 +32,7 @@
 //                  default - see Renderer.h's B5 doc comment)
 
 #include <chrono>
+#include <cstddef>
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>

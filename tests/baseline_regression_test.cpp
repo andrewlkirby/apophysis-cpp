@@ -56,6 +56,7 @@ constexpr bool kIsReferencePlatform = true;
 constexpr bool kIsReferencePlatform = false;
 #endif
 
+#include <cstddef>
 #include <cstdio>
 #include <string>
 #include <vector>

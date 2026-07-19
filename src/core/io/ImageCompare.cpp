@@ -1,6 +1,7 @@
 #include "ImageCompare.h"
 
 #include <cmath>
+#include <cstddef>
 
 namespace apo {
 

@@ -4,6 +4,7 @@
 // toward the corners of a triangle) rather than loading a .flame file.
 
 #include <chrono>
+#include <cstddef>
 #include <cstdint>
 #include <cstdlib>
 #include <string>

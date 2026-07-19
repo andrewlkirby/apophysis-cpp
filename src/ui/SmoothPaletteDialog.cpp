@@ -1,5 +1,6 @@
 #include "SmoothPaletteDialog.h"
 
+#include <cstddef>
 #include <cstring>
 #include <random>
 #include <vector>

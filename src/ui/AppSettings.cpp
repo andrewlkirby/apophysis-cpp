@@ -1,5 +1,7 @@
 #include "AppSettings.h"
 
+#include <cstddef>
+
 #include <QSettings>
 
 #include "core/VariationRegistry.h"

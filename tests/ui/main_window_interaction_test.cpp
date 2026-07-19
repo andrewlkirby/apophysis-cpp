@@ -20,6 +20,7 @@
 #include <QClipboard>
 #include <QColor>
 #include <QDialog>
+#include <QDir>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QElapsedTimer>
@@ -105,8 +106,22 @@ void whenModalShown(QObject* context, F onShown, int timeoutMs = 5000) {
 // Intercepts the next modal QFileDialog::getSaveFileName call and accepts
 // it with `path`.
 void acceptNextSaveDialogWith(QObject* context, const QString& path) {
-    whenModalShown<QFileDialog>(context, [path](QFileDialog* dialog) {
-        dialog->selectFile(path);
+    // QFileDialog::selectFile() only special-cases an *absolute* path - a
+    // bare filename instead resolves against the dialog's own cached "last
+    // visited directory" (QFileDialogPrivate state shared process-wide
+    // across every QFileDialog instance created in this binary, not this
+    // test's notion of "current directory"). If an earlier test elsewhere
+    // in this file already opened a dialog that navigated somewhere else,
+    // that cache can drift away from the process's real working directory
+    // - and every apo::loadFlameFile(path) call in this file reads
+    // relative to the *actual* CWD, not wherever the dialog's cache
+    // happened to point the write at. Resolving to an absolute path here
+    // removes that ambiguity outright (matches selectFile()'s own
+    // documented behavior for absolute paths), independent of whatever
+    // state any earlier test left behind.
+    const QString absolutePath = QDir(path).isAbsolute() ? path : QDir::current().absoluteFilePath(path);
+    whenModalShown<QFileDialog>(context, [absolutePath](QFileDialog* dialog) {
+        dialog->selectFile(absolutePath);
         static_cast<QDialog*>(dialog)->accept();
     });
 }

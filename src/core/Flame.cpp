@@ -1,6 +1,7 @@
 #include "Flame.h"
 
 #include <algorithm>
+#include <cstddef>
 
 namespace apo {
 

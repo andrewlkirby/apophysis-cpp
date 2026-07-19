@@ -1,6 +1,7 @@
 #include "CurvesDialog.h"
 
 #include <algorithm>
+#include <cstddef>
 
 #include <QComboBox>
 #include <QCoreApplication>

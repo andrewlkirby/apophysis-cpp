@@ -20,10 +20,11 @@
 /* Vendored from apophysis-7x-patched/src/Plugin/apoplugin.h for the C++
    port's statically-linked plugin build (see ../PluginVariation.h). Each
    plugin .c file that includes this header is compiled as a small,
-   independent C translation unit (see plugins/generated/*_impl.c) with
-   every symbol this header or the plugin defines macro-renamed to a
-   plugin-unique prefix beforehand - that's what lets 50+ plugins, each
-   defining identically-named functions/globals, link into one binary.
+   independent C translation unit (see the _impl.c files under
+   plugins/generated/) with every symbol this header or the plugin defines
+   macro-renamed to a plugin-unique prefix beforehand - that's what lets
+   50+ plugins, each defining identically-named functions/globals, link
+   into one binary.
 
    Changes from the original, all portability/correctness fixes for a
    64-bit build - no behavioral change to any variation's math:

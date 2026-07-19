@@ -144,12 +144,21 @@ void testOkButtonPersistsChangesToAppSettings() {
         return;
     }
 
-    threadSpin->setValue(5);
+    // threadCountSpin's own maximum (not a hardcoded literal like 5): its
+    // range tops out at QThread::idealThreadCount() (see OptionsDialog.cpp),
+    // which on a low-core-count CI runner can be smaller than a hardcoded
+    // test value - setValue(5) on a 4-core runner silently clamps to 4,
+    // making this check compare against a value that was never actually
+    // set. maximum() is always >= 1 and always different from the Auto (0)
+    // seed below, so it still proves OK persists whatever's displayed.
+    const int testThreadCount = threadSpin->maximum();
+    threadSpin->setValue(testThreadCount);
     qualityCombo->setCurrentIndex(0); // Low
 
     QTest::mouseClick(buttons->button(QDialogButtonBox::Ok), Qt::LeftButton);
 
-    check(apo::ui::AppSettings::renderThreadCount() == 5, "OK persists the edited thread count to AppSettings");
+    check(apo::ui::AppSettings::renderThreadCount() == testThreadCount,
+          "OK persists the edited thread count to AppSettings");
     check(approxEqual(apo::ui::AppSettings::previewSampleDensity(), 4.0),
           "OK persists the edited preview quality (Low = density 4.0) to AppSettings");
 

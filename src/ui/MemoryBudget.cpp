@@ -13,6 +13,11 @@
 #define NOMINMAX
 #include <windows.h>
 #elif defined(__APPLE__)
+// <sys/sysctl.h> isn't self-contained on macOS - it uses size_t internally
+// but doesn't include the header that declares it, so it must come after
+// <sys/types.h> or the build fails with "unknown type name 'size_t'"
+// while parsing this system header itself.
+#include <sys/types.h>
 #include <sys/sysctl.h>
 #elif defined(__linux__)
 #include <unistd.h>

@@ -13,6 +13,7 @@
 
 #include <QApplication>
 #include <QCheckBox>
+#include <QCoreApplication>
 #include <QDir>
 #include <QDoubleSpinBox>
 #include <QElapsedTimer>
@@ -231,6 +232,12 @@ void testBrowseOpensFolderDialogAndFillsPath() {
     const QString folder = freshTestFolder("render_all_dialog_browse_test_folder");
     whenModalShown<QFileDialog>(dialog, [folder](QFileDialog* fileDialog) {
         fileDialog->setDirectory(folder);
+        // See main_window_interaction_test.cpp's acceptNextSaveDialogWith
+        // for why this matters: on Linux, a non-native QFileDialog's own
+        // internal state update isn't always synchronously visible to an
+        // immediately-following accept() call - confirmed via CI
+        // diagnostics for the analogous selectFile() case, not a guess.
+        QCoreApplication::processEvents();
         static_cast<QDialog*>(fileDialog)->accept();
     });
     QTest::mouseClick(browseButton, Qt::LeftButton);

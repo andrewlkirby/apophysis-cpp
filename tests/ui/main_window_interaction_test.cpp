@@ -20,6 +20,7 @@
 #include <QApplication>
 #include <QClipboard>
 #include <QColor>
+#include <QCoreApplication>
 #include <QDialog>
 #include <QDir>
 #include <QDragEnterEvent>
@@ -146,6 +147,20 @@ void acceptNextSaveDialogWith(QObject* context, const QString& path) {
     const QString absolutePath = QDir(path).isAbsolute() ? path : QDir::current().absoluteFilePath(path);
     whenModalShown<QFileDialog>(context, [absolutePath](QFileDialog* dialog) {
         dialog->selectFile(absolutePath);
+        // On Linux, QFileDialog's non-native implementation backs onto
+        // QFileSystemModel/QFileInfoGatherer, a background thread - and
+        // selectFile()'s effect on the dialog's own internal "currently
+        // selected file" state isn't always synchronously visible to an
+        // immediately-following accept() call, which can then read back
+        // the dialog's original suggested-name default instead of the
+        // override. Confirmed directly via CI diagnostics: the same call
+        // sequence resolved to the *wrong* (stale suggested) path on some
+        // runs and the correct one on others - a genuine timing race, not
+        // a hang or interception failure (never reproduced on Windows,
+        // where QFileDialog's backing implementation differs). Pumping
+        // the event queue once here gives that state update a chance to
+        // land before accept() reads it.
+        QCoreApplication::processEvents();
         static_cast<QDialog*>(dialog)->accept();
     });
 }

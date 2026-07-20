@@ -17,6 +17,7 @@
 #include <QApplication>
 #include <QCheckBox>
 #include <QComboBox>
+#include <QCoreApplication>
 #include <QDialog>
 #include <QDoubleSpinBox>
 #include <QElapsedTimer>
@@ -525,6 +526,13 @@ void testBrowseOpensFileDialogAndFillsPath() {
     // adjust_dialog_interaction_test.cpp uses for QColorDialog.
     whenModalShown<QFileDialog>(dialog, [](QFileDialog* fileDialog) {
         fileDialog->selectFile("browsed_output.png");
+        // On Linux, selectFile()'s effect on the non-native dialog's own
+        // internal state isn't always synchronously visible to an
+        // immediately-following accept() call - see
+        // main_window_interaction_test.cpp's acceptNextSaveDialogWith for
+        // the confirmed (via CI diagnostics) root cause. Pump the event
+        // queue once first so this isn't racy too.
+        QCoreApplication::processEvents();
         // QFileDialog re-declares accept()/done() as protected, but access
         // control is checked against the *static* type at the call site,
         // not the dynamic override - calling through a QDialog* (where

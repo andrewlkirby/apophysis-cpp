@@ -16,6 +16,7 @@
 
 #include <QApplication>
 #include <QColorDialog>
+#include <QCoreApplication>
 #include <QDoubleSpinBox>
 #include <QElapsedTimer>
 #include <QFileDialog>
@@ -242,6 +243,12 @@ void testSaveProducesRealPngFileWithFlameDimensions() {
     // same pattern render_dialog_interaction_test.cpp uses for Browse.
     whenModalShown<QFileDialog>(dialog, [outputPath](QFileDialog* fileDialog) {
         fileDialog->selectFile(outputPath);
+        // See main_window_interaction_test.cpp's acceptNextSaveDialogWith
+        // for why this processEvents() call is here: on Linux,
+        // selectFile()'s effect on the non-native dialog's own internal
+        // state isn't always synchronously visible to an immediately-
+        // following accept() - confirmed via CI diagnostics, not a guess.
+        QCoreApplication::processEvents();
         static_cast<QDialog*>(fileDialog)->accept();
     });
     QTest::mouseClick(saveButton, Qt::LeftButton);

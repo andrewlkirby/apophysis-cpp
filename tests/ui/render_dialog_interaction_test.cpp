@@ -525,25 +525,28 @@ void testBrowseOpensFileDialogAndFillsPath() {
     // QFileDialog widget - the same modal-dialog-testing pattern
     // adjust_dialog_interaction_test.cpp uses for QColorDialog.
     whenModalShown<QFileDialog>(dialog, [](QFileDialog* fileDialog) {
-        fileDialog->selectFile("browsed_output.png");
         // See main_window_interaction_test.cpp's acceptNextSaveDialogWith
-        // for the full story: on Linux, QFileSystemModel's background
-        // QFileInfoGatherer thread can finish *after* this selectFile()
-        // call and silently reset the selection back to the dialog's own
-        // suggested default - confirmed via CI diagnostics as a clean
-        // binary pattern, not timing jitter. A single processEvents() call
-        // didn't fix it either. Re-asserting after a real grace period
-        // makes this call the last word.
+        // for the full story: QFileDialog::selectFile() proved unreliable
+        // in CI regardless of timing (confirmed via diagnostics - not a
+        // race, a no-op whenever the dialog's own suggested default
+        // collided with another test's suggested name elsewhere in the
+        // same run). Driving the dialog's own internal filename QLineEdit
+        // directly ("fileNameEdit", a stable Qt-internal objectName since
+        // Qt4) bypasses selectFile()'s own unreliable model-matching logic
+        // entirely.
         //
         // QFileDialog re-declares accept()/done() as protected, but access
         // control is checked against the *static* type at the call site,
         // not the dynamic override - calling through a QDialog* (where
         // both are public) still virtually dispatches to QFileDialog's own
         // override.
-        QTimer::singleShot(250, fileDialog, [fileDialog] {
+        auto* fileNameEdit = fileDialog->findChild<QLineEdit*>("fileNameEdit");
+        if (fileNameEdit) {
+            fileNameEdit->setText("browsed_output.png");
+        } else {
             fileDialog->selectFile("browsed_output.png");
-            static_cast<QDialog*>(fileDialog)->accept();
-        });
+        }
+        static_cast<QDialog*>(fileDialog)->accept();
     });
     QTest::mouseClick(browseButton, Qt::LeftButton);
 

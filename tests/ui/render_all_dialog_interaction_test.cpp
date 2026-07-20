@@ -233,15 +233,22 @@ void testBrowseOpensFolderDialogAndFillsPath() {
     whenModalShown<QFileDialog>(dialog, [folder](QFileDialog* fileDialog) {
         fileDialog->setDirectory(folder);
         // See main_window_interaction_test.cpp's acceptNextSaveDialogWith
-        // for the full story: on Linux, QFileSystemModel's background
-        // QFileInfoGatherer thread can finish *after* this setDirectory()
-        // call and silently reset the dialog's state - confirmed via CI
-        // diagnostics (for the analogous selectFile() case) as a clean
-        // binary pattern, not timing jitter. A single processEvents() call
-        // didn't fix it either. Re-asserting after a real grace period
-        // makes this call the last word.
+        // for the full story: QFileDialog::selectFile()/setDirectory()
+        // proved unreliable in CI regardless of timing (confirmed via
+        // diagnostics for the analogous selectFile() case - not a race, a
+        // no-op whenever the dialog's own suggested default collided with
+        // another test's suggested name elsewhere in the same run).
+        // Driving the dialog's own internal filename/path QLineEdit
+        // directly ("fileNameEdit", a stable Qt-internal objectName since
+        // Qt4 - it shows the current directory path in Directory mode too)
+        // bypasses that unreliable logic entirely.
         QTimer::singleShot(250, fileDialog, [fileDialog, folder] {
-            fileDialog->setDirectory(folder);
+            auto* fileNameEdit = fileDialog->findChild<QLineEdit*>("fileNameEdit");
+            if (fileNameEdit) {
+                fileNameEdit->setText(folder);
+            } else {
+                fileDialog->setDirectory(folder);
+            }
             static_cast<QDialog*>(fileDialog)->accept();
         });
     });

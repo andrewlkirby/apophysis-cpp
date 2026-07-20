@@ -29,6 +29,7 @@
 #include <QFileDialog>
 #include <QImage>
 #include <QInputDialog>
+#include <QLineEdit>
 #include <QListView>
 #include <QListWidget>
 #include <QMessageBox>
@@ -146,28 +147,26 @@ void acceptNextSaveDialogWith(QObject* context, const QString& path) {
     // state any earlier test left behind.
     const QString absolutePath = QDir(path).isAbsolute() ? path : QDir::current().absoluteFilePath(path);
     whenModalShown<QFileDialog>(context, [absolutePath](QFileDialog* dialog) {
-        dialog->selectFile(absolutePath);
-        std::fprintf(stderr, "[diag] acceptNextSaveDialogWith: immediately after 1st selectFile('%s'), selectedFiles()=%s\n",
-                     absolutePath.toStdString().c_str(),
-                     dialog->selectedFiles().join(", ").toStdString().c_str());
-        std::fflush(stderr);
-        // A 250ms-later re-assertion (tried) did NOT fix a confirmed CI-only
-        // bug where getSaveFileName() returns the dialog's original
-        // suggested-name default instead of our override - so this isn't a
-        // timing race after all. Logging selectedFiles() right after
-        // selectFile() (immediately, and again just before accept()) to see
-        // whether the *widget's own* state is already wrong at this point,
-        // or whether it's correct here but getSaveFileUrl's own extraction
-        // of the final result is what's disconnected from it.
-        QTimer::singleShot(250, dialog, [dialog, absolutePath] {
-            dialog->selectFile(absolutePath);
-            std::fprintf(stderr,
-                         "[diag] acceptNextSaveDialogWith: right before accept(), selectedFiles()=%s directory()=%s\n",
-                         dialog->selectedFiles().join(", ").toStdString().c_str(),
-                         dialog->directory().absolutePath().toStdString().c_str());
-            std::fflush(stderr);
-            static_cast<QDialog*>(dialog)->accept();
-        });
+        // QFileDialog::selectFile() proved unreliable in CI (confirmed via
+        // diagnostics: dialog->selectedFiles() already reported the
+        // dialog's original suggested-name default *immediately* after
+        // calling selectFile() - not a race, not a later reset, just a
+        // no-op - specifically whenever that suggested default happened to
+        // collide with another test's own suggested name elsewhere in this
+        // same run, e.g. multiple fixtures named "Alpha"). Bypassing it
+        // entirely by driving the dialog's own internal filename QLineEdit
+        // directly - "fileNameEdit" is the stable objectName Qt's own
+        // QFileDialog implementation has assigned that widget since Qt4,
+        // specifically to make exactly this kind of automated testing
+        // possible without depending on selectFile()'s own model-matching
+        // logic at all.
+        auto* fileNameEdit = dialog->findChild<QLineEdit*>("fileNameEdit");
+        if (fileNameEdit) {
+            fileNameEdit->setText(absolutePath);
+        } else {
+            dialog->selectFile(absolutePath); // fallback if that internal name ever changes
+        }
+        static_cast<QDialog*>(dialog)->accept();
     });
 }
 

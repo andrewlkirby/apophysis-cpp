@@ -21,6 +21,7 @@
 #include <QElapsedTimer>
 #include <QFileDialog>
 #include <QLabel>
+#include <QLineEdit>
 #include <QProgressBar>
 #include <QPushButton>
 #include <QTest>
@@ -242,19 +243,22 @@ void testSaveProducesRealPngFileWithFlameDimensions() {
     // QFileDialog::getSaveFileName() runs its own nested modal event loop -
     // same pattern render_dialog_interaction_test.cpp uses for Browse.
     whenModalShown<QFileDialog>(dialog, [outputPath](QFileDialog* fileDialog) {
-        fileDialog->selectFile(outputPath);
         // See main_window_interaction_test.cpp's acceptNextSaveDialogWith
-        // for the full story: on Linux, QFileSystemModel's background
-        // QFileInfoGatherer thread can finish *after* this selectFile()
-        // call and silently reset the selection back to the dialog's own
-        // suggested default - confirmed via CI diagnostics as a clean
-        // binary pattern, not timing jitter. A single processEvents() call
-        // didn't fix it either. Re-asserting after a real grace period
-        // makes this call the last word.
-        QTimer::singleShot(250, fileDialog, [fileDialog, outputPath] {
+        // for the full story: QFileDialog::selectFile() proved unreliable
+        // in CI regardless of timing (confirmed via diagnostics - not a
+        // race, a no-op whenever the dialog's own suggested default
+        // collided with another test's suggested name elsewhere in the
+        // same run). Driving the dialog's own internal filename QLineEdit
+        // directly ("fileNameEdit", a stable Qt-internal objectName since
+        // Qt4) bypasses selectFile()'s own unreliable model-matching logic
+        // entirely.
+        auto* fileNameEdit = fileDialog->findChild<QLineEdit*>("fileNameEdit");
+        if (fileNameEdit) {
+            fileNameEdit->setText(outputPath);
+        } else {
             fileDialog->selectFile(outputPath);
-            static_cast<QDialog*>(fileDialog)->accept();
-        });
+        }
+        static_cast<QDialog*>(fileDialog)->accept();
     });
     QTest::mouseClick(saveButton, Qt::LeftButton);
 

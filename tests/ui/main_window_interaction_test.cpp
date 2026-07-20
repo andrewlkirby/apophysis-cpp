@@ -147,25 +147,25 @@ void acceptNextSaveDialogWith(QObject* context, const QString& path) {
     const QString absolutePath = QDir(path).isAbsolute() ? path : QDir::current().absoluteFilePath(path);
     whenModalShown<QFileDialog>(context, [absolutePath](QFileDialog* dialog) {
         dialog->selectFile(absolutePath);
-        // On Linux, QFileDialog's non-native implementation backs onto
-        // QFileSystemModel, populated by a background QFileInfoGatherer
-        // thread (confirmed present via a live gdb attach). When that
-        // thread's directory-listing finishes *after* this selectFile()
-        // call, its own completion handling can silently reset the
-        // dialog's selection back to whatever "suggested" default it was
-        // constructed with, discarding our override - this isn't a
-        // hypothetical race: CI logs show a clean binary pattern (every
-        // failure resolved to exactly the untouched suggested name, every
-        // success resolved to exactly this path, nothing in between),
-        // consistent with a *later* reset winning, not simple timing
-        // jitter. A single QCoreApplication::processEvents() call (tried
-        // first) didn't fix it either, since cross-thread signal delivery
-        // isn't guaranteed to land within one pump. Re-asserting the
-        // selection after a real grace period, then accepting immediately
-        // afterward, makes our call the *last* word regardless of when
-        // that reset happens.
+        std::fprintf(stderr, "[diag] acceptNextSaveDialogWith: immediately after 1st selectFile('%s'), selectedFiles()=%s\n",
+                     absolutePath.toStdString().c_str(),
+                     dialog->selectedFiles().join(", ").toStdString().c_str());
+        std::fflush(stderr);
+        // A 250ms-later re-assertion (tried) did NOT fix a confirmed CI-only
+        // bug where getSaveFileName() returns the dialog's original
+        // suggested-name default instead of our override - so this isn't a
+        // timing race after all. Logging selectedFiles() right after
+        // selectFile() (immediately, and again just before accept()) to see
+        // whether the *widget's own* state is already wrong at this point,
+        // or whether it's correct here but getSaveFileUrl's own extraction
+        // of the final result is what's disconnected from it.
         QTimer::singleShot(250, dialog, [dialog, absolutePath] {
             dialog->selectFile(absolutePath);
+            std::fprintf(stderr,
+                         "[diag] acceptNextSaveDialogWith: right before accept(), selectedFiles()=%s directory()=%s\n",
+                         dialog->selectedFiles().join(", ").toStdString().c_str(),
+                         dialog->directory().absolutePath().toStdString().c_str());
+            std::fflush(stderr);
             static_cast<QDialog*>(dialog)->accept();
         });
     });

@@ -233,12 +233,17 @@ void testBrowseOpensFolderDialogAndFillsPath() {
     whenModalShown<QFileDialog>(dialog, [folder](QFileDialog* fileDialog) {
         fileDialog->setDirectory(folder);
         // See main_window_interaction_test.cpp's acceptNextSaveDialogWith
-        // for why this matters: on Linux, a non-native QFileDialog's own
-        // internal state update isn't always synchronously visible to an
-        // immediately-following accept() call - confirmed via CI
-        // diagnostics for the analogous selectFile() case, not a guess.
-        QCoreApplication::processEvents();
-        static_cast<QDialog*>(fileDialog)->accept();
+        // for the full story: on Linux, QFileSystemModel's background
+        // QFileInfoGatherer thread can finish *after* this setDirectory()
+        // call and silently reset the dialog's state - confirmed via CI
+        // diagnostics (for the analogous selectFile() case) as a clean
+        // binary pattern, not timing jitter. A single processEvents() call
+        // didn't fix it either. Re-asserting after a real grace period
+        // makes this call the last word.
+        QTimer::singleShot(250, fileDialog, [fileDialog, folder] {
+            fileDialog->setDirectory(folder);
+            static_cast<QDialog*>(fileDialog)->accept();
+        });
     });
     QTest::mouseClick(browseButton, Qt::LeftButton);
 

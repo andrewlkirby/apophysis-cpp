@@ -244,12 +244,17 @@ void testSaveProducesRealPngFileWithFlameDimensions() {
     whenModalShown<QFileDialog>(dialog, [outputPath](QFileDialog* fileDialog) {
         fileDialog->selectFile(outputPath);
         // See main_window_interaction_test.cpp's acceptNextSaveDialogWith
-        // for why this processEvents() call is here: on Linux,
-        // selectFile()'s effect on the non-native dialog's own internal
-        // state isn't always synchronously visible to an immediately-
-        // following accept() - confirmed via CI diagnostics, not a guess.
-        QCoreApplication::processEvents();
-        static_cast<QDialog*>(fileDialog)->accept();
+        // for the full story: on Linux, QFileSystemModel's background
+        // QFileInfoGatherer thread can finish *after* this selectFile()
+        // call and silently reset the selection back to the dialog's own
+        // suggested default - confirmed via CI diagnostics as a clean
+        // binary pattern, not timing jitter. A single processEvents() call
+        // didn't fix it either. Re-asserting after a real grace period
+        // makes this call the last word.
+        QTimer::singleShot(250, fileDialog, [fileDialog, outputPath] {
+            fileDialog->selectFile(outputPath);
+            static_cast<QDialog*>(fileDialog)->accept();
+        });
     });
     QTest::mouseClick(saveButton, Qt::LeftButton);
 

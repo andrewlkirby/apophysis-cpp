@@ -148,20 +148,26 @@ void acceptNextSaveDialogWith(QObject* context, const QString& path) {
     whenModalShown<QFileDialog>(context, [absolutePath](QFileDialog* dialog) {
         dialog->selectFile(absolutePath);
         // On Linux, QFileDialog's non-native implementation backs onto
-        // QFileSystemModel/QFileInfoGatherer, a background thread - and
-        // selectFile()'s effect on the dialog's own internal "currently
-        // selected file" state isn't always synchronously visible to an
-        // immediately-following accept() call, which can then read back
-        // the dialog's original suggested-name default instead of the
-        // override. Confirmed directly via CI diagnostics: the same call
-        // sequence resolved to the *wrong* (stale suggested) path on some
-        // runs and the correct one on others - a genuine timing race, not
-        // a hang or interception failure (never reproduced on Windows,
-        // where QFileDialog's backing implementation differs). Pumping
-        // the event queue once here gives that state update a chance to
-        // land before accept() reads it.
-        QCoreApplication::processEvents();
-        static_cast<QDialog*>(dialog)->accept();
+        // QFileSystemModel, populated by a background QFileInfoGatherer
+        // thread (confirmed present via a live gdb attach). When that
+        // thread's directory-listing finishes *after* this selectFile()
+        // call, its own completion handling can silently reset the
+        // dialog's selection back to whatever "suggested" default it was
+        // constructed with, discarding our override - this isn't a
+        // hypothetical race: CI logs show a clean binary pattern (every
+        // failure resolved to exactly the untouched suggested name, every
+        // success resolved to exactly this path, nothing in between),
+        // consistent with a *later* reset winning, not simple timing
+        // jitter. A single QCoreApplication::processEvents() call (tried
+        // first) didn't fix it either, since cross-thread signal delivery
+        // isn't guaranteed to land within one pump. Re-asserting the
+        // selection after a real grace period, then accepting immediately
+        // afterward, makes our call the *last* word regardless of when
+        // that reset happens.
+        QTimer::singleShot(250, dialog, [dialog, absolutePath] {
+            dialog->selectFile(absolutePath);
+            static_cast<QDialog*>(dialog)->accept();
+        });
     });
 }
 

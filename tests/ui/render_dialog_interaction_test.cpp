@@ -526,19 +526,24 @@ void testBrowseOpensFileDialogAndFillsPath() {
     // adjust_dialog_interaction_test.cpp uses for QColorDialog.
     whenModalShown<QFileDialog>(dialog, [](QFileDialog* fileDialog) {
         fileDialog->selectFile("browsed_output.png");
-        // On Linux, selectFile()'s effect on the non-native dialog's own
-        // internal state isn't always synchronously visible to an
-        // immediately-following accept() call - see
-        // main_window_interaction_test.cpp's acceptNextSaveDialogWith for
-        // the confirmed (via CI diagnostics) root cause. Pump the event
-        // queue once first so this isn't racy too.
-        QCoreApplication::processEvents();
+        // See main_window_interaction_test.cpp's acceptNextSaveDialogWith
+        // for the full story: on Linux, QFileSystemModel's background
+        // QFileInfoGatherer thread can finish *after* this selectFile()
+        // call and silently reset the selection back to the dialog's own
+        // suggested default - confirmed via CI diagnostics as a clean
+        // binary pattern, not timing jitter. A single processEvents() call
+        // didn't fix it either. Re-asserting after a real grace period
+        // makes this call the last word.
+        //
         // QFileDialog re-declares accept()/done() as protected, but access
         // control is checked against the *static* type at the call site,
         // not the dynamic override - calling through a QDialog* (where
         // both are public) still virtually dispatches to QFileDialog's own
         // override.
-        static_cast<QDialog*>(fileDialog)->accept();
+        QTimer::singleShot(250, fileDialog, [fileDialog] {
+            fileDialog->selectFile("browsed_output.png");
+            static_cast<QDialog*>(fileDialog)->accept();
+        });
     });
     QTest::mouseClick(browseButton, Qt::LeftButton);
 

@@ -46,6 +46,28 @@ option(APO_CORE_ENABLE_AVX2 "Compile apo_core with AVX2 codegen (/arch:AVX2) - r
 find_package(Qt6 COMPONENTS Widgets Test REQUIRED)
 set(CMAKE_AUTOMOC ON)
 
+# The prebuilt macOS Qt 6.8.0 binaries (aqt / jurplel/install-qt-action) were
+# built against an SDK that still had AGL.framework, so Qt6::Gui's exported
+# CMake target bakes in a reference to it. Apple removed AGL.framework
+# outright starting with Xcode 26 / macOS 26 "Tahoe" (QTBUG-137687), which
+# breaks the final link on newer CI runners even though nothing here asks
+# for legacy AGL-based OpenGL. Strip any AGL reference - however Qt encoded
+# it (raw "-framework AGL" flag or a full .framework path) - from every Qt
+# imported target's link interface; a no-op on toolchains that never had it.
+if(APPLE)
+    foreach(_qt_target Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Test)
+        if(TARGET ${_qt_target})
+            foreach(_prop INTERFACE_LINK_LIBRARIES INTERFACE_LINK_OPTIONS)
+                get_target_property(_apo_qt_libs ${_qt_target} ${_prop})
+                if(_apo_qt_libs)
+                    list(FILTER _apo_qt_libs EXCLUDE REGEX "AGL")
+                    set_target_properties(${_qt_target} PROPERTIES ${_prop} "${_apo_qt_libs}")
+                endif()
+            endforeach()
+        endif()
+    endforeach()
+endif()
+
 add_subdirectory(src/core)
 add_subdirectory(src/tools)
 add_subdirectory(src/ui)

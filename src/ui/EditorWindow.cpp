@@ -1,7 +1,6 @@
 #include "EditorWindow.h"
 
 #include <algorithm>
-#include <cstdio>
 #include <random>
 
 #include <QActionGroup>
@@ -755,16 +754,9 @@ void EditorWindow::onSaveFlameAsTriggered() {
     const QString suggested = flame_->name.empty() ? "untitled.flame" : QString::fromStdString(flame_->name) + ".flame";
     const QString path = QFileDialog::getSaveFileName(this, "Save Flame As", suggested, "Flame files (*.flame)",
                                                        nullptr, testFriendlyFileDialogOptions());
-    std::fprintf(stderr, "[diag] onSaveFlameAsTriggered: suggested='%s' resolved path='%s'\n",
-                 suggested.toStdString().c_str(), path.toStdString().c_str());
-    std::fflush(stderr);
     if (path.isEmpty()) return;
 
-    const bool wrote = apo::saveFlameFile(path.toStdString(), {flame_.get()});
-    std::fprintf(stderr, "[diag] onSaveFlameAsTriggered: saveFlameFile('%s') returned %s\n", path.toStdString().c_str(),
-                 wrote ? "true" : "false");
-    std::fflush(stderr);
-    if (!wrote) {
+    if (!apo::saveFlameFile(path.toStdString(), {flame_.get()})) {
         QMessageBox::warning(this, "Save Flame", "Failed to write:\n" + path);
     } else {
         statusBar()->showMessage("Saved " + path);

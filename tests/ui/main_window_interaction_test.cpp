@@ -98,30 +98,12 @@ void whenModalShown(QObject* context, F onShown, int timeoutMs = 20000) {
     QElapsedTimer elapsed;
     elapsed.start();
     timer->setInterval(10);
-    auto tickCount = std::make_shared<int>(0);
-    QObject::connect(timer, &QTimer::timeout, context, [timer, elapsed, onShown, timeoutMs, tickCount]() mutable {
-        auto* activeModal = QApplication::activeModalWidget();
-        // Logs every tick (capped) rather than only on give-up: the actual
-        // CI failure resolves in under 50ms, only 1-5 ticks total, so a
-        // give-up-only log (gated on the 20000ms timeout) would never fire
-        // at all for this case - need to see what activeModalWidget()
-        // actually is on each of those few ticks to tell "no modal widget
-        // ever appeared" apart from "one appeared but wasn't a DialogT".
-        if (++*tickCount <= 50) {
-            std::fprintf(stderr, "[diag] whenModalShown<%s> tick %d @ %lldms: activeModalWidget=%s\n",
-                         DialogT::staticMetaObject.className(), *tickCount, static_cast<long long>(elapsed.elapsed()),
-                         activeModal ? activeModal->metaObject()->className() : "nullptr");
-            std::fflush(stderr);
-        }
-        if (auto* dialog = qobject_cast<DialogT*>(activeModal)) {
+    QObject::connect(timer, &QTimer::timeout, context, [timer, elapsed, onShown, timeoutMs]() mutable {
+        if (auto* dialog = qobject_cast<DialogT*>(QApplication::activeModalWidget())) {
             timer->stop();
             timer->deleteLater();
             onShown(dialog);
         } else if (elapsed.elapsed() > timeoutMs) {
-            std::fprintf(stderr, "[diag] whenModalShown<%s> gave up after %lldms; activeModalWidget=%s\n",
-                         DialogT::staticMetaObject.className(), static_cast<long long>(elapsed.elapsed()),
-                         activeModal ? activeModal->metaObject()->className() : "nullptr");
-            std::fflush(stderr);
             timer->stop();
             timer->deleteLater();
         }
@@ -258,12 +240,7 @@ std::vector<std::unique_ptr<apo::Flame>> editSelectedFlameAndSaveTo(apo::ui::Mai
 
     std::remove(path.c_str());
     acceptNextSaveDialogWith(editor, QString::fromStdString(path));
-    QElapsedTimer diagTimer;
-    diagTimer.start();
     saveFlameAsAction->trigger();
-    std::fprintf(stderr, "[diag] saveFlameAsAction->trigger() for '%s' returned after %lldms\n", path.c_str(),
-                 static_cast<long long>(diagTimer.elapsed()));
-    std::fflush(stderr);
     return apo::loadFlameFile(path);
 }
 

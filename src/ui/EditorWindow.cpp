@@ -670,7 +670,17 @@ void EditorWindow::requestRender() {
 
 void EditorWindow::resizeEvent(QResizeEvent* event) {
     QMainWindow::resizeEvent(event);
-    requestRender();
+    // canvas_'s own geometry may not have finished settling to the new
+    // window size yet at this exact point - child-layout activation can
+    // still be a pending, not-yet-processed event. Reading canvas_->width()/
+    // height() synchronously here risks a stale, oversized value; observed
+    // concretely on macOS's offscreen QPA platform (which also logs
+    // "propagateSizeHints not supported", consistent with layout
+    // propagation lagging a resize there). Deferring one event-loop turn
+    // lets any pending layout activation run first, so requestRender()
+    // reads the real, final canvas size instead of a leftover pre-resize
+    // one.
+    QTimer::singleShot(0, this, &EditorWindow::requestRender);
 }
 
 void EditorWindow::onRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted) {

@@ -17,6 +17,7 @@
 
 #include <QApplication>
 #include <QImage>
+#include <QKeyEvent>
 #include <QLabel>
 #include <QListWidget>
 #include <QPixmap>
@@ -258,15 +259,25 @@ void testEnterKeyAppliesLikeTheOriginalsListViewKeyPress() {
 
     // Deliberately not calling dialog->show() here: on the offscreen QPA
     // platform, showing a QDialog and then immediately dispatching a
-    // synthetic QTest::keyClick to one of its children hangs indefinitely
+    // synthetic key event to one of its children hangs indefinitely
     // (reproduced directly - the process sits idle, waiting on some
     // window-exposed/activation condition offscreen never satisfies)
     // instead of just misdirecting the event the way the deprecated-
-    // setActiveWindow() case elsewhere in this test suite does. setFocus()
-    // alone is sufficient for QTest::keyClick to reach the right widget.
+    // setActiveWindow() case elsewhere in this test suite does.
+    //
+    // Also deliberately not using QTest::keyClick() here (unlike every
+    // other synthetic-key-press in this test suite): on an unshown/
+    // unexposed widget its routing is platform-dependent - it reached
+    // `list` fine on Linux/Windows, but not on macOS's offscreen platform
+    // once this project's macOS CI leg moved to Qt 6.9 (see ci.yml's Qt
+    // version comment). Sending the QKeyEvent straight to `list` via
+    // QCoreApplication::sendEvent sidesteps that routing entirely - it
+    // reaches the exact same QWidget::keyPressEvent() either way, without
+    // depending on any window/focus/exposure state.
     list->setFocus();
     QSignalSpy spy(dialog, &apo::ui::GradientBrowserDialog::gradientApplied);
-    QTest::keyClick(list, Qt::Key_Return);
+    QKeyEvent enterPress(QEvent::KeyPress, Qt::Key_Return, Qt::NoModifier);
+    QCoreApplication::sendEvent(list, &enterPress);
 
     check(spy.count() == 1, "pressing Enter in the list applies the selected gradient, matching Browser.pas's "
                             "ListViewKeyPress(#13)");

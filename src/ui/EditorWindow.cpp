@@ -21,6 +21,7 @@
 #include "AdjustDialog.h"
 #include "AppSettings.h"
 #include "CurvesDialog.h"
+#include "FileDialogSupport.h"
 #include "ForceSymmetryDialog.h"
 #include "FullscreenView.h"
 #include "MutateDialog.h"
@@ -751,7 +752,8 @@ void EditorWindow::openPostProcessDialog() {
 
 void EditorWindow::onSaveFlameAsTriggered() {
     const QString suggested = flame_->name.empty() ? "untitled.flame" : QString::fromStdString(flame_->name) + ".flame";
-    const QString path = QFileDialog::getSaveFileName(this, "Save Flame As", suggested, "Flame files (*.flame)");
+    const QString path = QFileDialog::getSaveFileName(this, "Save Flame As", suggested, "Flame files (*.flame)",
+                                                       nullptr, testFriendlyFileDialogOptions());
     if (path.isEmpty()) return;
 
     if (!apo::saveFlameFile(path.toStdString(), {flame_.get()})) {

@@ -31,6 +31,7 @@
 #include "AboutDialog.h"
 #include "AppSettings.h"
 #include "EditorWindow.h"
+#include "FileDialogSupport.h"
 #include "OptionsDialog.h"
 #include "PreviewLabel.h"
 #include "RenderAllDialog.h"
@@ -782,8 +783,9 @@ void MainWindow::onRenderFinished(QImage image, quint64 pointsGenerated, quint64
 }
 
 void MainWindow::onOpenTriggered() {
-    const QString path =
-        QFileDialog::getOpenFileName(this, "Open Flame", QString(), "Flame files (*.flame *.flam3);;All files (*)");
+    const QString path = QFileDialog::getOpenFileName(this, "Open Flame", QString(),
+                                                       "Flame files (*.flame *.flam3);;All files (*)", nullptr,
+                                                       testFriendlyFileDialogOptions());
     if (!path.isEmpty()) openFlameFile(path);
 }
 
@@ -792,7 +794,8 @@ void MainWindow::onSaveRenderTriggered() {
         QMessageBox::information(this, "Save Render", "Nothing has been rendered yet.");
         return;
     }
-    const QString path = QFileDialog::getSaveFileName(this, "Save Render As", QString(), "PNG image (*.png)");
+    const QString path = QFileDialog::getSaveFileName(this, "Save Render As", QString(), "PNG image (*.png)", nullptr,
+                                                       testFriendlyFileDialogOptions());
     if (path.isEmpty()) return;
 
     if (!currentImage_.save(path, "PNG")) {
@@ -924,7 +927,8 @@ void MainWindow::onSaveFlameAsTriggered() {
     }
     const apo::Flame& flame = *flames_[static_cast<size_t>(selectedIndex_)];
     const QString suggested = flame.name.empty() ? "untitled.flame" : QString::fromStdString(flame.name) + ".flame";
-    const QString path = QFileDialog::getSaveFileName(this, "Save Flame As", suggested, "Flame files (*.flame)");
+    const QString path = QFileDialog::getSaveFileName(this, "Save Flame As", suggested, "Flame files (*.flame)",
+                                                       nullptr, testFriendlyFileDialogOptions());
     if (path.isEmpty()) return;
 
     if (!apo::saveFlameFile(path.toStdString(), {&flame})) {
@@ -940,7 +944,8 @@ void MainWindow::onSaveAllFlamesTriggered() {
         return;
     }
     const QString suggested = currentFilePath_.isEmpty() ? "untitled.flame" : currentFilePath_;
-    const QString path = QFileDialog::getSaveFileName(this, "Save All Parameters", suggested, "Flame files (*.flame)");
+    const QString path = QFileDialog::getSaveFileName(this, "Save All Parameters", suggested, "Flame files (*.flame)",
+                                                       nullptr, testFriendlyFileDialogOptions());
     if (path.isEmpty()) return;
 
     std::vector<const apo::Flame*> allFlames;

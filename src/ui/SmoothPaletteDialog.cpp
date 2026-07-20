@@ -15,6 +15,7 @@
 #include <QTimer>
 #include <QVBoxLayout>
 
+#include "FileDialogSupport.h"
 #include "core/Rng.h"
 #include "core/edit/SmoothPalette.h"
 
@@ -93,7 +94,8 @@ void SmoothPaletteDialog::setAutoScreenshot(const QString& path, bool exitAfter)
 
 void SmoothPaletteDialog::browseImage() {
     const QString path = QFileDialog::getOpenFileName(
-        this, "Open Image", QString(), "Images (*.bmp *.dib *.jpg *.jpeg *.png *.gif);;All files (*.*)");
+        this, "Open Image", QString(), "Images (*.bmp *.dib *.jpg *.jpeg *.png *.gif);;All files (*.*)", nullptr,
+        testFriendlyFileDialogOptions());
     if (!path.isEmpty()) openImageFile(path);
 }
 

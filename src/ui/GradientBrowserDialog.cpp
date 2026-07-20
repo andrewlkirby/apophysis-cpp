@@ -12,6 +12,7 @@
 #include <QTimer>
 #include <QVBoxLayout>
 
+#include "FileDialogSupport.h"
 #include "core/BuiltinGradients.h"
 #include "core/io/GradientIO.h"
 
@@ -78,7 +79,8 @@ void GradientBrowserDialog::setAutoScreenshot(const QString& path, bool exitAfte
 
 void GradientBrowserDialog::browseFile() {
     const QString path = QFileDialog::getOpenFileName(this, "Open Gradient File", currentPath_,
-                                                        "Gradient files (*.ugr *.gradient *.map);;All files (*.*)");
+                                                        "Gradient files (*.ugr *.gradient *.map);;All files (*.*)",
+                                                        nullptr, testFriendlyFileDialogOptions());
     if (!path.isEmpty()) openFile(path);
 }
 

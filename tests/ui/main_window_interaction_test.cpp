@@ -84,8 +84,13 @@ std::shared_ptr<apo::Flame> makeTestFlame() {
 // is the QObject the polling timer is parented to, so it's cleaned up
 // automatically if that object is destroyed first (e.g. a test bails out
 // early via an early `return` after a failed check()).
+// timeoutMs default raised from 5000: a heavily loaded CI/dev-machine
+// Docker environment can be slow enough to show a modal dialog that the
+// polling timer below only detects after several real seconds - a timeout
+// this tight risks a false "the dialog never appeared" result under load,
+// not just a hypothetical margin.
 template <class DialogT, class F>
-void whenModalShown(QObject* context, F onShown, int timeoutMs = 5000) {
+void whenModalShown(QObject* context, F onShown, int timeoutMs = 20000) {
     auto* timer = new QTimer(context);
     QElapsedTimer elapsed;
     elapsed.start();
@@ -200,6 +205,17 @@ std::vector<std::unique_ptr<apo::Flame>> editSelectedFlameAndSaveTo(apo::ui::Mai
     auto* editor = window->findChild<apo::ui::EditorWindow*>();
     auto* saveFlameAsAction = editor ? editor->findChild<QAction*>("saveFlameAsAction") : nullptr;
     if (!editor || !saveFlameAsAction) return {};
+
+    // EditorWindow's own constructor kicks off its own initial preview
+    // render asynchronously, on its own worker QThread, the same way
+    // MainWindow's selection-driven preview does (see EditorWindow.cpp's
+    // own statusBar()->showMessage("Rendering...")) - triggering the modal
+    // Save dialog immediately, while that's still in flight, is a genuine
+    // race that reliably hangs the dialog's nested event loop under Linux/
+    // Docker's own thread scheduling (verified directly: this was the root
+    // cause behind every "Save Flame As ... writes a loadable file" hang/
+    // failure this file exercised, not a dialog-implementation issue).
+    waitUntil([editor] { return !editor->statusBar()->currentMessage().contains("Rendering"); });
 
     std::remove(path.c_str());
     acceptNextSaveDialogWith(editor, QString::fromStdString(path));
@@ -420,6 +436,14 @@ void testPasteInsertsAFreshLibraryEntryFromClipboardXml() {
         check(list->currentRow() == 1, "Paste selects the newly inserted entry");
     }
 
+    // Selecting the pasted entry (above) kicks off an async preview render
+    // on MainWindow's own worker QThread - editSelectedFlameAndSaveTo opens
+    // an EditorWindow (which starts rendering too) and immediately drives a
+    // modal Save dialog, so let that render settle first. See
+    // testUndoRedoCameraGestureSettle's identical comment for why this
+    // isn't hypothetical: without this wait, this exact call reliably hangs
+    // under Linux/Docker's own thread scheduling.
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto loaded = editSelectedFlameAndSaveTo(window, "main_window_paste_fields_test.flame");
     if (check(!loaded.empty(), "the pasted entry's Save Flame As writes a loadable file")) {
         check(approxEqual(loaded.front()->xform[0]->c[2][0], 0.25) &&
@@ -562,8 +586,18 @@ void testUndoRedoResetLocation() {
 
     resetAction->trigger();
     check(undoAction->isEnabled() && !redoAction->isEnabled(), "Reset Location pushes an undo entry and clears redo");
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     undoAction->trigger();
+    // Undo/Redo of a Modify entry re-renders the reverted-to state
+    // (MainWindow::applyUndoEntry -> startRender) asynchronously on the
+    // worker QThread - opening an EditorWindow (editSelectedFlameAndSaveTo,
+    // which starts its own render too) while that's still in flight is a
+    // real race, not a hypothetical one: it reliably hangs the subsequent
+    // modal Save dialog under Linux/Docker's own thread scheduling, even
+    // though it happened not to on this project's Windows dev machine.
+    // Every other undo/redo trigger below gets the same wait.
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto afterUndo = editSelectedFlameAndSaveTo(window, "main_window_undo_reset_location_undo.flame");
     if (check(!afterUndo.empty(), "the flame's Save Flame As writes a loadable file after Undo")) {
         check(approxEqual(afterUndo.front()->zoom, 2.5) && approxEqual(afterUndo.front()->center[0], 37.0) &&
@@ -573,6 +607,7 @@ void testUndoRedoResetLocation() {
     check(!undoAction->isEnabled() && redoAction->isEnabled(), "after undoing the only entry, Undo is disabled and Redo is enabled");
 
     redoAction->trigger();
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto afterRedo = editSelectedFlameAndSaveTo(window, "main_window_undo_reset_location_redo.flame");
     if (check(!afterRedo.empty(), "the flame's Save Flame As writes a loadable file after Redo")) {
         check(approxEqual(afterRedo.front()->zoom, 0.0),
@@ -612,6 +647,7 @@ void testUndoRedoRename() {
 
     undoAction->trigger();
     check(list->item(0)->text() == "Alpha", "Undo reverts the list label back to the original name");
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto afterUndo = editSelectedFlameAndSaveTo(window, "main_window_undo_rename_undo.flame");
     if (check(!afterUndo.empty(), "Save Flame As after Undo writes a loadable file")) {
         check(afterUndo.front()->name == "Alpha", "Undo reverts the underlying Flame's actual name field too");
@@ -619,6 +655,7 @@ void testUndoRedoRename() {
 
     redoAction->trigger();
     check(list->item(0)->text() == "Alpha Renamed", "Redo re-applies the rename to the list label");
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto afterRedo = editSelectedFlameAndSaveTo(window, "main_window_undo_rename_redo.flame");
     if (check(!afterRedo.empty(), "Save Flame As after Redo writes a loadable file")) {
         check(afterRedo.front()->name == "Alpha Renamed", "Redo re-applies the rename to the underlying Flame too");
@@ -720,6 +757,7 @@ void testUndoRedoPaste() {
 
     redoAction->trigger();
     check(list->count() == 3 && list->item(1)->text() == "Pasted", "Redo re-inserts the pasted entry at the same row");
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto afterRedo = editSelectedFlameAndSaveTo(window, "main_window_undo_paste_redo.flame");
     if (check(!afterRedo.empty(), "Save Flame As after Redo writes a loadable file")) {
         check(afterRedo.front()->name == "Pasted", "Redo's re-inserted entry is selected and carries the original pasted content");
@@ -763,6 +801,7 @@ void testUndoRedoCameraGestureSettle() {
     waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     undoAction->trigger();
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto afterUndo = editSelectedFlameAndSaveTo(window, "main_window_undo_camera_undo.flame");
     if (check(!afterUndo.empty(), "Save Flame As after Undo writes a loadable file")) {
         check(approxEqual(afterUndo.front()->zoom, 0.0), "Undo reverts the wheel-zoom gesture's Flame::zoom change back to 0");
@@ -770,6 +809,7 @@ void testUndoRedoCameraGestureSettle() {
     check(redoAction->isEnabled(), "after undoing the camera gesture, Redo becomes available");
 
     redoAction->trigger();
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto afterRedo = editSelectedFlameAndSaveTo(window, "main_window_undo_camera_redo.flame");
     if (check(!afterRedo.empty(), "Save Flame As after Redo writes a loadable file")) {
         check(!approxEqual(afterRedo.front()->zoom, 0.0), "Redo re-applies the wheel-zoom gesture's Flame::zoom change");
@@ -854,6 +894,7 @@ void testSmoothPaletteAppliesToSelectedFlameWithUndo() {
     }
     list->setCurrentRow(0);
     check(smoothPaletteAction->isEnabled(), "smoothPaletteAction becomes enabled once a library entry is selected");
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     // The reference to compare against after Undo: the flame's cmap as it
     // actually exists in the window right now, not flameA's own in-memory
@@ -886,6 +927,7 @@ void testSmoothPaletteAppliesToSelectedFlameWithUndo() {
 
     QTest::mouseClick(applyButton, Qt::LeftButton);
     check(undoAction->isEnabled(), "clicking Apply pushes an undo entry");
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     auto afterApply = editSelectedFlameAndSaveTo(window, "main_window_smooth_palette_after_apply.flame");
     apo::ColorMap appliedCmap{};
@@ -897,6 +939,7 @@ void testSmoothPaletteAppliesToSelectedFlameWithUndo() {
     }
 
     undoAction->trigger();
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto afterUndo = editSelectedFlameAndSaveTo(window, "main_window_smooth_palette_after_undo.flame");
     if (check(!afterUndo.empty(), "Save Flame As after Undo writes a loadable file")) {
         check(afterUndo.front()->cmap.entries == originalCmap.entries, "Undo restores the flame's original gradient");
@@ -904,6 +947,7 @@ void testSmoothPaletteAppliesToSelectedFlameWithUndo() {
     check(redoAction->isEnabled(), "after undoing Smooth Palette, Redo becomes available");
 
     redoAction->trigger();
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
     auto afterRedo = editSelectedFlameAndSaveTo(window, "main_window_smooth_palette_after_redo.flame");
     if (check(!afterRedo.empty() && cmapChanged, "Save Flame As after Redo writes a loadable file")) {
         check(afterRedo.front()->cmap.entries == appliedCmap.entries,
@@ -1045,6 +1089,12 @@ void testSaveFlameAsFromEditorWindowRoundTripsEdits() {
         delete editor;
         return;
     }
+
+    // EditorWindow's constructor already kicked off its own initial preview
+    // render asynchronously - see editSelectedFlameAndSaveTo's own comment
+    // on why racing the modal Save dialog against it reliably hangs under
+    // Linux/Docker's own thread scheduling.
+    waitUntil([editor] { return !editor->statusBar()->currentMessage().contains("Rendering"); });
 
     acceptNextSaveDialogWith(editor, QString::fromStdString(path));
     saveFlameAsAction->trigger();
@@ -1336,6 +1386,7 @@ void testDuplicateFlameCopiesEveryFieldViaClone() {
         delete window;
         return;
     }
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     auto loaded = editSelectedFlameAndSaveTo(window, outputPath);
     if (check(!loaded.empty(), "the duplicate's Save Flame As writes a loadable file")) {
@@ -1372,6 +1423,7 @@ void testResetLocationRecomputesZoomAndCenter() {
     list->setCurrentRow(0);
     check(resetAction->isEnabled(), "resetLocationAction becomes enabled once a library entry is selected");
     resetAction->trigger();
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     auto loaded = editSelectedFlameAndSaveTo(window, outputPath);
     if (check(!loaded.empty(), "Save Flame As after Reset Location still writes a loadable file")) {
@@ -1506,6 +1558,12 @@ void testNewFlameAppliesConfiguredRenderDefaults() {
         return;
     }
 
+    // EditorWindow's constructor already kicked off its own initial preview
+    // render asynchronously - see editSelectedFlameAndSaveTo's own comment
+    // on why racing the modal Save dialog against it reliably hangs under
+    // Linux/Docker's own thread scheduling.
+    waitUntil([editor] { return !editor->statusBar()->currentMessage().contains("Rendering"); });
+
     const std::string path = "main_window_new_flame_defaults_test.flame";
     std::remove(path.c_str());
     acceptNextSaveDialogWith(editor, QString::fromStdString(path));
@@ -1549,6 +1607,7 @@ void testNewRandomBatchRespectsConfiguredRangeAndDefaults() {
         return;
     }
     check(list->item(0)->text().startsWith("Zzz 1"), "the batch-generated flame's name uses the configured title prefix");
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     auto loaded = editSelectedFlameAndSaveTo(window, "main_window_random_batch_settings_test.flame");
     if (check(!loaded.empty(), "the batch flame's Save Flame As writes a loadable file")) {
@@ -1585,6 +1644,7 @@ void testNewRandomBatchAppliesConfiguredForcedSymmetry() {
         delete window;
         return;
     }
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     auto loaded = editSelectedFlameAndSaveTo(window, "main_window_random_batch_symmetry_test.flame");
     if (check(!loaded.empty(), "the symmetric batch flame's Save Flame As writes a loadable file")) {
@@ -1624,6 +1684,7 @@ void testNewRandomBatchAppliesConfiguredForcedVariationAndGradientSource() {
         delete window;
         return;
     }
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     auto loaded = editSelectedFlameAndSaveTo(window, "main_window_random_batch_variation_gradient_test.flame");
     if (check(!loaded.empty(), "the batch flame's Save Flame As writes a loadable file")) {
@@ -1687,6 +1748,7 @@ void testNewRandomBatchRespectsConfiguredDisabledVariations() {
         delete window;
         return;
     }
+    waitUntil([window] { return !window->statusBar()->currentMessage().contains("Rendering"); });
 
     auto loaded = editSelectedFlameAndSaveTo(window, "main_window_random_batch_disabled_variations_test.flame");
     if (check(!loaded.empty(), "the batch flame's Save Flame As writes a loadable file")) {

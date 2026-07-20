@@ -25,6 +25,7 @@
 #include <QVBoxLayout>
 
 #include "AppSettings.h"
+#include "FileDialogSupport.h"
 #include "MemoryBudget.h"
 #include "RenderWorker.h"
 #include "core/io/FlameIO.h"
@@ -338,7 +339,8 @@ void RenderDialog::updateMemoryEstimate() {
 }
 
 void RenderDialog::browseOutputPath() {
-    const QString path = QFileDialog::getSaveFileName(this, "Render Output", outputPathEdit_->text(), "PNG Images (*.png)");
+    const QString path = QFileDialog::getSaveFileName(this, "Render Output", outputPathEdit_->text(),
+                                                       "PNG Images (*.png)", nullptr, testFriendlyFileDialogOptions());
     if (!path.isEmpty()) outputPathEdit_->setText(path);
 }
 

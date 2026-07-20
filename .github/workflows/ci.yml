@@ -27,10 +27,16 @@ jobs:
             libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 \
             libxcb-render-util0 libxcb-xinerama0 libfontconfig1
 
+      # Pinned per-OS: Linux stays on the known-good 6.8.0. macOS needs at
+      # least 6.8.4 - Apple removed AGL.framework outright starting with
+      # Xcode 26/macOS 26 "Tahoe", and Qt 6.8.0's prebuilt macOS binaries
+      # (built against an older SDK) bake a reference to it directly into
+      # Qt6::Gui's exported CMake target, breaking the final link on
+      # current runners. Fixed upstream in Qt 6.8.4/6.9.2 (QTBUG-137687).
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: '6.8.0'
+          version: ${{ runner.os == 'macOS' && '6.8.4' || '6.8.0' }}
           cache: true
 
       # vcpkg.json (manifest mode) supplies pugixml/libpng, pinned by its

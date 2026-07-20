@@ -96,11 +96,16 @@ void whenModalShown(QObject* context, F onShown, int timeoutMs = 20000) {
     elapsed.start();
     timer->setInterval(10);
     QObject::connect(timer, &QTimer::timeout, context, [timer, elapsed, onShown, timeoutMs]() mutable {
-        if (auto* dialog = qobject_cast<DialogT*>(QApplication::activeModalWidget())) {
+        auto* activeModal = QApplication::activeModalWidget();
+        if (auto* dialog = qobject_cast<DialogT*>(activeModal)) {
             timer->stop();
             timer->deleteLater();
             onShown(dialog);
         } else if (elapsed.elapsed() > timeoutMs) {
+            std::fprintf(stderr, "[diag] whenModalShown<%s> gave up after %lldms; activeModalWidget=%s\n",
+                         DialogT::staticMetaObject.className(), static_cast<long long>(elapsed.elapsed()),
+                         activeModal ? activeModal->metaObject()->className() : "nullptr");
+            std::fflush(stderr);
             timer->stop();
             timer->deleteLater();
         }
@@ -219,7 +224,12 @@ std::vector<std::unique_ptr<apo::Flame>> editSelectedFlameAndSaveTo(apo::ui::Mai
 
     std::remove(path.c_str());
     acceptNextSaveDialogWith(editor, QString::fromStdString(path));
+    QElapsedTimer diagTimer;
+    diagTimer.start();
     saveFlameAsAction->trigger();
+    std::fprintf(stderr, "[diag] saveFlameAsAction->trigger() for '%s' returned after %lldms\n", path.c_str(),
+                 static_cast<long long>(diagTimer.elapsed()));
+    std::fflush(stderr);
     return apo::loadFlameFile(path);
 }
 

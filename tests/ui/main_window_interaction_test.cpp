@@ -14,6 +14,7 @@
 #include <cstdio>
 #include <fstream>
 #include <functional>
+#include <memory>
 
 #include <QAction>
 #include <QApplication>
@@ -95,8 +96,21 @@ void whenModalShown(QObject* context, F onShown, int timeoutMs = 20000) {
     QElapsedTimer elapsed;
     elapsed.start();
     timer->setInterval(10);
-    QObject::connect(timer, &QTimer::timeout, context, [timer, elapsed, onShown, timeoutMs]() mutable {
+    auto tickCount = std::make_shared<int>(0);
+    QObject::connect(timer, &QTimer::timeout, context, [timer, elapsed, onShown, timeoutMs, tickCount]() mutable {
         auto* activeModal = QApplication::activeModalWidget();
+        // Logs every tick (capped) rather than only on give-up: the actual
+        // CI failure resolves in under 50ms, only 1-5 ticks total, so a
+        // give-up-only log (gated on the 20000ms timeout) would never fire
+        // at all for this case - need to see what activeModalWidget()
+        // actually is on each of those few ticks to tell "no modal widget
+        // ever appeared" apart from "one appeared but wasn't a DialogT".
+        if (++*tickCount <= 50) {
+            std::fprintf(stderr, "[diag] whenModalShown<%s> tick %d @ %lldms: activeModalWidget=%s\n",
+                         DialogT::staticMetaObject.className(), *tickCount, static_cast<long long>(elapsed.elapsed()),
+                         activeModal ? activeModal->metaObject()->className() : "nullptr");
+            std::fflush(stderr);
+        }
         if (auto* dialog = qobject_cast<DialogT*>(activeModal)) {
             timer->stop();
             timer->deleteLater();

@@ -1,9 +1,11 @@
 #include "GradientBrowserDialog.h"
 
 #include <QCoreApplication>
+#include <QEvent>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QHBoxLayout>
+#include <QKeyEvent>
 #include <QLabel>
 #include <QListWidget>
 #include <QPixmap>
@@ -54,6 +56,7 @@ GradientBrowserDialog::GradientBrowserDialog(QWidget* parent) : QDialog(parent) 
     list_->setObjectName("gradientList");
     connect(list_, &QListWidget::currentRowChanged, this, &GradientBrowserDialog::onSelectionChanged);
     connect(list_, &QListWidget::itemActivated, this, [this](QListWidgetItem*) { applySelected(); });
+    list_->installEventFilter(this);
     rootLayout->addWidget(list_, /*stretch=*/1);
 
     previewStrip_ = new QLabel(this);
@@ -155,6 +158,17 @@ void GradientBrowserDialog::refreshPreview() {
 void GradientBrowserDialog::applySelected() {
     if (!hasSelection_) return;
     emit gradientApplied(currentPreview_);
+}
+
+bool GradientBrowserDialog::eventFilter(QObject* watched, QEvent* event) {
+    if (watched == list_ && event->type() == QEvent::KeyPress) {
+        const auto* keyEvent = static_cast<QKeyEvent*>(event);
+        if (keyEvent->key() == Qt::Key_Return || keyEvent->key() == Qt::Key_Enter) {
+            applySelected();
+            return true;
+        }
+    }
+    return QDialog::eventFilter(watched, event);
 }
 
 void GradientBrowserDialog::showEvent(QShowEvent* event) {

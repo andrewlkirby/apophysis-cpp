@@ -5,6 +5,7 @@
 
 #include "core/ColorMap.h"
 
+class QEvent;
 class QListWidget;
 class QLabel;
 class QPushButton;
@@ -67,6 +68,16 @@ public:
 
 protected:
     void showEvent(QShowEvent* event) override;
+
+    // Explicitly matches Browser.pas's own ListViewKeyPress(#13) handler
+    // rather than relying on QAbstractItemView's built-in Key_Return ->
+    // activated() behavior - that behavior turned out to depend on
+    // internal item-view/style details that aren't consistent across Qt
+    // versions (observed: fires reliably on Qt 6.8, silently doesn't on
+    // Qt 6.9's offscreen platform). Filtering list_'s own KeyPress events
+    // and calling applySelected() directly makes this deterministic
+    // regardless of that.
+    bool eventFilter(QObject* watched, QEvent* event) override;
 
 signals:
     void gradientApplied(apo::ColorMap cmap);

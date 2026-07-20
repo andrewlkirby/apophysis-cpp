@@ -997,9 +997,21 @@ void testEditorPreviewRendersAtReducedResolutionAndDensity() {
 
     const auto previewFlame = spy.at(0).at(0).value<std::shared_ptr<const apo::Flame>>();
     if (check(previewFlame != nullptr, "the emitted preview flame is non-null")) {
-        check(previewFlame->width <= 400 && previewFlame->height <= 300,
+        auto* canvas = editor->findChild<apo::ui::TriangleCanvas*>();
+        // Compared against the canvas's own actual on-screen size, not a
+        // hardcoded 400x300: the 400x300 passed to resize() above is
+        // itself only a request - it's clamped up to the window's real
+        // layout-minimum size (menus/toolbars/panels all contribute to
+        // that floor), which varies by platform/font metrics. Observed
+        // concretely landing above 400x300 on macOS's offscreen QPA
+        // platform even though this same test settles at exactly 400x300
+        // on Linux/Windows. The invariant this test actually cares about
+        // is preview-tracks-canvas, not preview-equals-400x300.
+        check(canvas != nullptr && previewFlame->width <= canvas->width() && previewFlame->height <= canvas->height(),
               "the Editor's live preview renders at a resolution fitted to the canvas, not the flame's own huge "
               "declared width/height (1920x1080)");
+        check(previewFlame->width < 1920 && previewFlame->height < 1080,
+              "the Editor's live preview resolution is meaningfully reduced from the flame's own declared size");
         check(previewFlame->sampleDensity < 500,
               "the Editor's live preview uses a reduced preview sample density, not the flame's own expensive "
               "value (500)");

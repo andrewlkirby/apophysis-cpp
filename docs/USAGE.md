@@ -100,7 +100,6 @@ Other toolbar tools:
   to explore ("what if I nudged this in a random direction?"), pick one to
   adopt.
 - **Curves...** — tone-curve color adjustment.
-- **Post Process...** — post-render image adjustments.
 - **Fullscreen** — a distraction-free, large preview of the current flame.
 
 The **Flame** menu has a few whole-flame utilities: **Random Weights** /
@@ -117,7 +116,12 @@ filtering, and transparent background. Click **Render** to start; a
 (the render thread blocks in place — nothing already computed is lost),
 and **Cancel** stops it early (still saving whatever was rendered so far).
 Check **Save parameters (.flame) alongside the image** to also write out a
-`.flame` file with the exact settings used, next to the PNG.
+`.flame` file with the exact settings used, next to the PNG. Once a render
+finishes successfully, **Post Process...** becomes enabled — it opens a
+dialog for tuning tone-mapping (gamma/brightness/contrast/vibrancy/filter
+radius/background) on the image that was just rendered, without touching
+this flame's own saved settings; use its own **Save** button to export the
+adjusted PNG.
 
 **Render All Flames...** runs the same render settings across every flame
 in the library in one batch, useful for exporting a whole random-batch

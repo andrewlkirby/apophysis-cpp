@@ -25,7 +25,6 @@
 #include "ForceSymmetryDialog.h"
 #include "FullscreenView.h"
 #include "MutateDialog.h"
-#include "PostProcessDialog.h"
 #include "RenderDialog.h"
 #include "RenderWorker.h"
 #include "TransformPanel.h"
@@ -229,8 +228,6 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(mutateAction, &QAction::triggered, this, &EditorWindow::openMutateDialog);
     QAction* curvesAction = toolbar->addAction("Curves...");
     connect(curvesAction, &QAction::triggered, this, &EditorWindow::openCurvesDialog);
-    QAction* postProcessAction = toolbar->addAction("Post Process...");
-    connect(postProcessAction, &QAction::triggered, this, &EditorWindow::openPostProcessDialog);
     QAction* fullscreenAction = toolbar->addAction("Fullscreen");
     connect(fullscreenAction, &QAction::triggered, this, &EditorWindow::openFullscreenView);
 
@@ -739,14 +736,6 @@ void EditorWindow::openCurvesDialog() {
     // same flameChanged-signal pattern as openAdjustDialog()/openMutateDialog().
     auto* dialog = new CurvesDialog(flame_, this);
     connect(dialog, &CurvesDialog::flameChanged, this, &EditorWindow::requestRender);
-    dialog->show();
-}
-
-void EditorWindow::openPostProcessDialog() {
-    // PostProcessDialog clones flame_ internally and never writes back to
-    // it (see PostProcessDialog.h's class comment) - unlike Adjust/Mutate/
-    // Curves, there is no flameChanged signal to connect here.
-    auto* dialog = new PostProcessDialog(flame_, this);
     dialog->show();
 }
 

@@ -24,7 +24,6 @@ class RenderDialog;
 class MutateDialog;
 class FullscreenView;
 class CurvesDialog;
-class PostProcessDialog;
 class XaosDialog;
 class ForceSymmetryDialog;
 class TransformPanel;
@@ -86,7 +85,6 @@ private slots:
     void onSaveFlameAsTriggered();
     void openFullscreenView();
     void openCurvesDialog();
-    void openPostProcessDialog();
     void onAddXform();
     void onDuplicateXform();
     void onDeleteXform();

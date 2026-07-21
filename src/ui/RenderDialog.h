@@ -25,6 +25,7 @@ class QShowEvent;
 namespace apo::ui {
 
 class RenderWorker;
+class PostProcessDialog;
 
 // Port of FormRender.pas (1,318 lines) - deliberately scoped down per the
 // "good performance, not a faithful copy" project directive. Kept: image
@@ -51,9 +52,8 @@ class RenderWorker;
 // see its own doc comment) rather than tearing anything down, so Resume
 // picks up exactly where it left off with no lost work or restart, unlike
 // Cancel.
-// Windows shutdown-when-done, post-process integration (a separate Phase 7
-// dialog), the binary/incomplete-render flam3 save-format toggles, the
-// donate/save-log buttons, named/persisted presets (cmbPreset - a whole
+// Windows shutdown-when-done, the binary/incomplete-render flam3 save-format
+// toggles, the donate/save-log buttons, named/persisted presets (cmbPreset - a whole
 // separate save/delete-preset feature, not just the three quick-value
 // combos this port keeps), and - beyond simply toggling it on/off - any UI
 // for tuning the adaptive filter's own estimator/estimatorMin/
@@ -99,6 +99,13 @@ private slots:
     void startRender();
     void cancelRender();
     void togglePauseRender();
+    // Matches the original's Render > "post-process" checkbox flow
+    // (FormRender.pas's DoPostProcess, fired from chkPostProcess after a
+    // render completes) - opens PostProcessDialog seeded with the flame
+    // that was *actually just rendered* (lastRenderedFlame_), not flame_'s
+    // own possibly-different live settings, since the whole point is
+    // tuning the image that was just produced.
+    void openPostProcess();
 
 private:
     void setControlsEnabled(bool enabled);
@@ -146,6 +153,11 @@ private:
     QPushButton* renderButton_ = nullptr;
     QPushButton* pauseButton_ = nullptr;
     QPushButton* cancelButton_ = nullptr;
+    // Disabled until a render finishes successfully (see
+    // onFullRenderFinished) - re-disabled the moment a new render starts
+    // (setControlsEnabled), so it's never left pointing at a stale
+    // lastRenderedFlame_ from a previous, no-longer-current render.
+    QPushButton* postProcessButton_ = nullptr;
     QProgressBar* progressBar_ = nullptr;
     QLabel* statusLabel_ = nullptr;
 
@@ -161,6 +173,12 @@ private:
     // checked) to write out the settings that were actually rendered, not
     // just re-read flame_'s own (possibly different) original values.
     std::shared_ptr<const apo::Flame> pendingRenderFlame_;
+    // Kept around (unlike pendingRenderFlame_, which is reset once
+    // onFullRenderFinished is done with it) so openPostProcess() can seed
+    // PostProcessDialog with exactly what was last rendered - a fresh
+    // PostProcessDialog per click (WA_DeleteOnClose), same fire-and-forget
+    // pattern EditorWindow used for it.
+    std::shared_ptr<const apo::Flame> lastRenderedFlame_;
 
     QString autoScreenshotPath_;
     bool autoScreenshotExit_ = false;

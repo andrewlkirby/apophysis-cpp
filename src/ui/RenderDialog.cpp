@@ -27,6 +27,7 @@
 #include "AppSettings.h"
 #include "FileDialogSupport.h"
 #include "MemoryBudget.h"
+#include "PostProcessDialog.h"
 #include "RenderWorker.h"
 #include "core/io/FlameIO.h"
 
@@ -198,6 +199,12 @@ RenderDialog::RenderDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     cancelButton_ = new QPushButton("Cancel", this);
     cancelButton_->setObjectName("cancelButton");
     cancelButton_->setEnabled(false);
+    postProcessButton_ = new QPushButton("Post Process...", this);
+    postProcessButton_->setObjectName("postProcessButton");
+    postProcessButton_->setToolTip("Tune tone-mapping (gamma/brightness/contrast/vibrancy/background) on the "
+                                    "image that was just rendered, without changing this flame's own settings");
+    postProcessButton_->setEnabled(false);
+    buttonRow->addWidget(postProcessButton_);
     buttonRow->addStretch(1);
     buttonRow->addWidget(renderButton_);
     buttonRow->addWidget(pauseButton_);
@@ -251,6 +258,7 @@ RenderDialog::RenderDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(renderButton_, &QPushButton::clicked, this, &RenderDialog::startRender);
     connect(pauseButton_, &QPushButton::clicked, this, &RenderDialog::togglePauseRender);
     connect(cancelButton_, &QPushButton::clicked, this, &RenderDialog::cancelRender);
+    connect(postProcessButton_, &QPushButton::clicked, this, &RenderDialog::openPostProcess);
     updateRenderButtonEnabled();
 
     // Only the controls that actually change bucket sizing - sample
@@ -364,6 +372,10 @@ void RenderDialog::startRender() {
     progress_ = std::make_unique<apo::RenderProgress>();
     fullRenderInFlight_ = true;
     setControlsEnabled(false);
+    // Disable rather than leave pointing at whatever finished last - a
+    // fresh render invalidates it until this one finishes successfully too.
+    postProcessButton_->setEnabled(false);
+    lastRenderedFlame_.reset();
     progressBar_->setValue(0);
     statusLabel_->setText(budget.clamped ? QString("Using %1 thread%2 to stay under available memory...")
                                                 .arg(budget.threadCount)
@@ -452,8 +464,24 @@ void RenderDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsGenera
             }
         }
         statusLabel_->setText(message);
+
+        // Matches the original's Render > post-process flow (only offered
+        // once a render actually completed and its image was saved) -
+        // captured here, before pendingRenderFlame_ is reset below, so
+        // openPostProcess() can seed PostProcessDialog with exactly what
+        // was just rendered.
+        lastRenderedFlame_ = pendingRenderFlame_;
+        postProcessButton_->setEnabled(true);
     }
     pendingRenderFlame_.reset();
+}
+
+void RenderDialog::openPostProcess() {
+    if (!lastRenderedFlame_) return;
+    // Fresh dialog per click (WA_DeleteOnClose) - same fire-and-forget
+    // pattern EditorWindow used for this dialog.
+    auto* dialog = new PostProcessDialog(lastRenderedFlame_, this);
+    dialog->show();
 }
 
 void RenderDialog::setAutoScreenshot(const QString& path, bool exitAfter) {

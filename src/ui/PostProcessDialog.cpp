@@ -28,7 +28,7 @@ namespace {
 constexpr int kProgressPollIntervalMs = 150;
 } // namespace
 
-PostProcessDialog::PostProcessDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
+PostProcessDialog::PostProcessDialog(std::shared_ptr<const apo::Flame> flame, QWidget* parent)
     : QDialog(parent), flame_(flame->clone()) {
     setWindowTitle(
         QString("Post Process - %1").arg(flame_->name.empty() ? "Untitled" : QString::fromStdString(flame_->name)));

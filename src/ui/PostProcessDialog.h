@@ -56,7 +56,13 @@ class PostProcessDialog final : public QDialog {
     Q_OBJECT
 
 public:
-    explicit PostProcessDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent = nullptr);
+    // Takes the flame by const shared_ptr - this dialog only ever reads it
+    // once, via Flame::clone() (a const method), to seed its own private
+    // clone (see flame_ below), so it can be handed either a live, mutable
+    // Flame (EditorWindow's shared flame_) or an already-const one (e.g.
+    // RenderDialog's just-rendered lastRenderedFlame_) without the caller
+    // needing a non-const copy just to satisfy this signature.
+    explicit PostProcessDialog(std::shared_ptr<const apo::Flame> flame, QWidget* parent = nullptr);
     ~PostProcessDialog() override;
 
     void setAutoScreenshot(const QString& path, bool exitAfter);

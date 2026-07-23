@@ -6,13 +6,13 @@
 #include <QActionGroup>
 #include <QCoreApplication>
 #include <QFileDialog>
+#include <QHBoxLayout>
 #include <QKeySequence>
 #include <QListWidget>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QResizeEvent>
-#include <QSplitter>
 #include <QStatusBar>
 #include <QThread>
 #include <QTimer>
@@ -76,14 +76,23 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
 
     refreshXformList();
 
-    QSplitter* splitter = new QSplitter(this);
-    splitter->addWidget(xformList_);
-    splitter->addWidget(canvas_);
-    splitter->addWidget(transformPanel_);
-    splitter->setStretchFactor(0, 0);
-    splitter->setStretchFactor(1, 1);
-    splitter->setStretchFactor(2, 0);
-    setCentralWidget(splitter);
+    // Fixed-width side panels (xformList_'s own setMaximumWidth(150) above,
+    // transformPanel_'s setMinimumWidth(280) treated as its fixed width
+    // here) flanking the canvas, which always claims whatever space is left
+    // - a plain layout rather than a QSplitter so the image fills the
+    // available area the instant the window opens, with no drag handle the
+    // user has to move first to see it at full size.
+    xformList_->setFixedWidth(150);
+    transformPanel_->setFixedWidth(280);
+
+    QWidget* central = new QWidget(this);
+    QHBoxLayout* centralLayout = new QHBoxLayout(central);
+    centralLayout->setContentsMargins(0, 0, 0, 0);
+    centralLayout->setSpacing(0);
+    centralLayout->addWidget(xformList_);
+    centralLayout->addWidget(canvas_, 1);
+    centralLayout->addWidget(transformPanel_);
+    setCentralWidget(central);
 
     QAction* saveFlameAction = new QAction("Save &Flame As...", this);
     saveFlameAction->setObjectName("saveFlameAsAction");
@@ -120,6 +129,13 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
 
     QToolBar* toolbar = addToolBar("Edit");
     toolbar->setMovable(false);
+
+    QAction* adjustAction = toolbar->addAction("Adjust...");
+    connect(adjustAction, &QAction::triggered, this, &EditorWindow::openAdjustDialog);
+    QAction* renderAction = toolbar->addAction("Render...");
+    connect(renderAction, &QAction::triggered, this, &EditorWindow::openRenderDialog);
+    toolbar->addSeparator();
+
     toolbar->addAction(undoAction_);
     toolbar->addAction(redoAction_);
     toolbar->addSeparator();
@@ -220,10 +236,6 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(forceSymmetryAction, &QAction::triggered, this, &EditorWindow::openForceSymmetryDialog);
 
     toolbar->addSeparator();
-    QAction* adjustAction = toolbar->addAction("Adjust...");
-    connect(adjustAction, &QAction::triggered, this, &EditorWindow::openAdjustDialog);
-    QAction* renderAction = toolbar->addAction("Render...");
-    connect(renderAction, &QAction::triggered, this, &EditorWindow::openRenderDialog);
     QAction* mutateAction = toolbar->addAction("Mutate...");
     connect(mutateAction, &QAction::triggered, this, &EditorWindow::openMutateDialog);
     QAction* curvesAction = toolbar->addAction("Curves...");

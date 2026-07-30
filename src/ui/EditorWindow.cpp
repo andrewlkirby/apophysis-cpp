@@ -4,10 +4,12 @@
 #include <random>
 
 #include <QActionGroup>
+#include <QComboBox>
 #include <QCoreApplication>
 #include <QFileDialog>
 #include <QHBoxLayout>
 #include <QKeySequence>
+#include <QLineEdit>
 #include <QListWidget>
 #include <QMenu>
 #include <QMenuBar>
@@ -108,6 +110,15 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     redoAction_ = editMenu->addAction("&Redo");
     redoAction_->setShortcut(QKeySequence::Redo);
     connect(redoAction_, &QAction::triggered, this, &EditorWindow::onRedo);
+    editMenu->addSeparator();
+    QAction* copyXformAction = editMenu->addAction("&Copy Transform");
+    copyXformAction->setObjectName("copyXformAction");
+    copyXformAction->setToolTip("Copy the selected transform (coefficients, variations, colors, name)");
+    connect(copyXformAction, &QAction::triggered, this, &EditorWindow::onCopyXform);
+    QAction* pasteXformAction = editMenu->addAction("&Paste Transform");
+    pasteXformAction->setObjectName("pasteXformAction");
+    pasteXformAction->setToolTip("Paste the last-copied transform onto the selected one");
+    connect(pasteXformAction, &QAction::triggered, this, &EditorWindow::onPasteXform);
     updateUndoRedoActions();
 
     // A6 - matches Main.dfm's Flame menu weight/color utility commands -
@@ -126,6 +137,26 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     QAction* randomizeColorsAction = flameMenu->addAction("Rando&mize Color Values");
     randomizeColorsAction->setObjectName("randomizeColorsAction");
     connect(randomizeColorsAction, &QAction::triggered, this, &EditorWindow::onRandomizeColorValues);
+    flameMenu->addSeparator();
+    finalXformAction_ = flameMenu->addAction("&Final Transform");
+    finalXformAction_->setObjectName("finalXformAction");
+    finalXformAction_->setCheckable(true);
+    finalXformAction_->setToolTip("A transform applied once, after every iteration - unlike a regular "
+                                   "transform, it's never picked probabilistically");
+    connect(finalXformAction_, &QAction::toggled, this, &EditorWindow::onFinalXformToggled);
+    QAction* xaosAction = flameMenu->addAction("&Xaos...");
+    xaosAction->setObjectName("xaosAction");
+    connect(xaosAction, &QAction::triggered, this, &EditorWindow::openXaosDialog);
+    QAction* forceSymmetryAction = flameMenu->addAction("Force S&ymmetry...");
+    forceSymmetryAction->setObjectName("forceSymmetryAction");
+    connect(forceSymmetryAction, &QAction::triggered, this, &EditorWindow::openForceSymmetryDialog);
+    flameMenu->addSeparator();
+    QAction* mutateAction = flameMenu->addAction("Mu&tate...");
+    connect(mutateAction, &QAction::triggered, this, &EditorWindow::openMutateDialog);
+    QAction* curvesAction = flameMenu->addAction("Cu&rves...");
+    connect(curvesAction, &QAction::triggered, this, &EditorWindow::openCurvesDialog);
+    QAction* fullscreenAction = flameMenu->addAction("F&ullscreen");
+    connect(fullscreenAction, &QAction::triggered, this, &EditorWindow::openFullscreenView);
 
     QToolBar* toolbar = addToolBar("Edit");
     toolbar->setMovable(false);
@@ -134,10 +165,6 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(adjustAction, &QAction::triggered, this, &EditorWindow::openAdjustDialog);
     QAction* renderAction = toolbar->addAction("Render...");
     connect(renderAction, &QAction::triggered, this, &EditorWindow::openRenderDialog);
-    toolbar->addSeparator();
-
-    toolbar->addAction(undoAction_);
-    toolbar->addAction(redoAction_);
     toolbar->addSeparator();
 
     auto* modeGroup = new QActionGroup(this);
@@ -212,36 +239,20 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     deleteXformAction_->setShortcut(QKeySequence(Qt::Key_Delete));
     connect(deleteXformAction_, &QAction::triggered, this, &EditorWindow::onDeleteXform);
 
-    finalXformAction_ = toolbar->addAction("Final Transform");
-    finalXformAction_->setObjectName("finalXformAction");
-    finalXformAction_->setCheckable(true);
-    finalXformAction_->setToolTip("A transform applied once, after every iteration - unlike a regular "
-                                   "transform, it's never picked probabilistically");
-    connect(finalXformAction_, &QAction::toggled, this, &EditorWindow::onFinalXformToggled);
-
-    QAction* copyXformAction = toolbar->addAction("Copy");
-    copyXformAction->setObjectName("copyXformAction");
-    copyXformAction->setToolTip("Copy the selected transform (coefficients, variations, colors, name)");
-    connect(copyXformAction, &QAction::triggered, this, &EditorWindow::onCopyXform);
-    QAction* pasteXformAction = toolbar->addAction("Paste");
-    pasteXformAction->setObjectName("pasteXformAction");
-    pasteXformAction->setToolTip("Paste the last-copied transform onto the selected one");
-    connect(pasteXformAction, &QAction::triggered, this, &EditorWindow::onPasteXform);
-
-    QAction* xaosAction = toolbar->addAction("Xaos...");
-    xaosAction->setObjectName("xaosAction");
-    connect(xaosAction, &QAction::triggered, this, &EditorWindow::openXaosDialog);
-    QAction* forceSymmetryAction = toolbar->addAction("Force Symmetry...");
-    forceSymmetryAction->setObjectName("forceSymmetryAction");
-    connect(forceSymmetryAction, &QAction::triggered, this, &EditorWindow::openForceSymmetryDialog);
-
+    // Matches Main.dfm's tbQualityBox - see onQualityBoxCommitted()'s doc
+    // comment for what it controls here specifically.
     toolbar->addSeparator();
-    QAction* mutateAction = toolbar->addAction("Mutate...");
-    connect(mutateAction, &QAction::triggered, this, &EditorWindow::openMutateDialog);
-    QAction* curvesAction = toolbar->addAction("Curves...");
-    connect(curvesAction, &QAction::triggered, this, &EditorWindow::openCurvesDialog);
-    QAction* fullscreenAction = toolbar->addAction("Fullscreen");
-    connect(fullscreenAction, &QAction::triggered, this, &EditorWindow::openFullscreenView);
+    qualityBox_ = new QComboBox(toolbar);
+    qualityBox_->setObjectName("qualityBox");
+    qualityBox_->setEditable(true);
+    qualityBox_->setInsertPolicy(QComboBox::NoInsert);
+    qualityBox_->addItems({"5", "10", "15", "25", "50", "100", "150", "250", "500", "1000"});
+    qualityBox_->setCurrentText(QString::number(AppSettings::previewSampleDensity()));
+    qualityBox_->setFixedWidth(65);
+    qualityBox_->setToolTip("Preview render quality (sample density)");
+    connect(qualityBox_, &QComboBox::activated, this, &EditorWindow::onQualityBoxCommitted);
+    connect(qualityBox_->lineEdit(), &QLineEdit::editingFinished, this, &EditorWindow::onQualityBoxCommitted);
+    toolbar->addWidget(qualityBox_);
 
     statusBar()->showMessage("Ready");
 
@@ -652,6 +663,17 @@ void EditorWindow::onFinalXformToggled(bool enabled) {
     pushStructuralUndo(*before, selBefore, selAfter);
     canvas_->setSelectedXform(selAfter);
     refreshXformList();
+    requestRender();
+}
+
+void EditorWindow::onQualityBoxCommitted() {
+    bool ok = false;
+    const double density = qualityBox_->currentText().toDouble(&ok);
+    if (!ok || density <= 0.0) {
+        qualityBox_->setCurrentText(QString::number(AppSettings::previewSampleDensity()));
+        return;
+    }
+    AppSettings::setPreviewSampleDensity(density);
     requestRender();
 }
 

@@ -8,18 +8,21 @@
 #include <QAction>
 #include <QActionGroup>
 #include <QClipboard>
+#include <QComboBox>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFileDialog>
 #include <QGuiApplication>
 #include <QInputDialog>
 #include <QLabel>
+#include <QLineEdit>
 #include <QListWidget>
 #include <QMenu>
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QMimeData>
 #include <QResizeEvent>
+#include <QSignalBlocker>
 #include <QSplitter>
 #include <QStatusBar>
 #include <QThread>
@@ -323,6 +326,21 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     connect(viewListAction_, &QAction::triggered, this, [this] { onViewModeChanged(false); });
     applyListViewMode();
 
+    // Matches Main.dfm's tbQualityBox - see onQualityBoxCommitted()'s doc
+    // comment for what it actually controls.
+    toolbar->addSeparator();
+    qualityBox_ = new QComboBox(toolbar);
+    qualityBox_->setObjectName("qualityBox");
+    qualityBox_->setEditable(true);
+    qualityBox_->setInsertPolicy(QComboBox::NoInsert);
+    qualityBox_->addItems({"5", "10", "15", "25", "50", "100", "150", "250", "500", "1000"});
+    qualityBox_->setCurrentText(QString::number(AppSettings::defaultSampleDensity()));
+    qualityBox_->setFixedWidth(65);
+    qualityBox_->setToolTip("Preview render quality (sample density)");
+    connect(qualityBox_, &QComboBox::activated, this, &MainWindow::onQualityBoxCommitted);
+    connect(qualityBox_->lineEdit(), &QLineEdit::editingFinished, this, &MainWindow::onQualityBoxCommitted);
+    toolbar->addWidget(qualityBox_);
+
     statusBar()->showMessage("Ready");
 
     // onProgressTick()'s poll interval - matches RenderDialog's identical
@@ -440,6 +458,23 @@ void MainWindow::onViewModeChanged(bool thumbnails) {
     }
 }
 
+void MainWindow::onQualityBoxCommitted() {
+    if (selectedIndex_ < 0 || selectedIndex_ >= static_cast<int>(flames_.size())) return;
+
+    bool ok = false;
+    const double density = qualityBox_->currentText().toDouble(&ok);
+    apo::Flame& flame = *flames_[static_cast<size_t>(selectedIndex_)];
+    if (!ok || density <= 0.0) {
+        // Bad input (empty, non-numeric, zero/negative) - revert the box to
+        // whatever the flame is actually still rendering at, rather than
+        // silently accepting garbage.
+        qualityBox_->setCurrentText(QString::number(flame.sampleDensity));
+        return;
+    }
+    flame.sampleDensity = density;
+    startRender(flames_[static_cast<size_t>(selectedIndex_)]);
+}
+
 void MainWindow::requestThumbnail(int index) {
     const int generation = loadGeneration_;
     auto* task = new ThumbnailTask(index, flames_[static_cast<size_t>(index)], kThumbnailSize);
@@ -474,6 +509,15 @@ void MainWindow::onSelectionChanged(int row) {
     // is visible there too, matching how an Editor edit is visible here.
     previewLabel_->setFlame(flames_[static_cast<size_t>(row)]);
     startRender(flames_[static_cast<size_t>(row)]);
+
+    // Reflects the newly-selected flame's own density rather than whatever
+    // the box happened to show for the previous selection - QSignalBlocker
+    // so this programmatic update doesn't loop back into
+    // onQualityBoxCommitted().
+    if (qualityBox_) {
+        const QSignalBlocker blocker(qualityBox_);
+        qualityBox_->setCurrentText(QString::number(flames_[static_cast<size_t>(row)]->sampleDensity));
+    }
 }
 
 void MainWindow::onItemActivated(QListWidgetItem* item) { openFlameInEditor(flameList_->row(item)); }

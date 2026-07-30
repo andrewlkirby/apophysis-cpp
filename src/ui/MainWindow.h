@@ -20,6 +20,7 @@ class QAction;
 class QTimer;
 class QDragEnterEvent;
 class QDropEvent;
+class QComboBox;
 
 namespace apo::ui {
 
@@ -209,6 +210,19 @@ private slots:
     // to true backfills thumbnails for every currently-loaded flame that
     // never got one requested while list mode was active.
     void onViewModeChanged(bool thumbnails);
+    // Matches Main.dfm's tbQualityBox: an editable toolbar combo (typed
+    // value or one of a handful of presets) that sets the *selected* flame's
+    // real Flame::sampleDensity - the value requestRender()'s non-camera-
+    // preview path renders that flame at verbatim (see its own doc comment)
+    // - and re-renders immediately. Deliberately writes the flame's own
+    // field rather than a shared/ephemeral preview-quality knob like
+    // AppSettings::previewSampleDensity() (that one is for cheap renders
+    // *during* a camera drag - see onCameraChanged's doc comment - not the
+    // settled preview this box controls), matching the original's
+    // maincp.sample_density semantics: what you set here is the same
+    // density RenderDialog/a save/export would otherwise see for this
+    // flame, not a separate "preview-only" number.
+    void onQualityBoxCommitted();
 
 private:
     void startRender(std::shared_ptr<apo::Flame> flame);
@@ -325,6 +339,7 @@ private:
     QAction* smoothPaletteAction_ = nullptr;
     QAction* viewThumbnailsAction_ = nullptr;
     QAction* viewListAction_ = nullptr;
+    QComboBox* qualityBox_ = nullptr;
     QThread* workerThread_ = nullptr;
     RenderWorker* worker_ = nullptr;
 

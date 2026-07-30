@@ -32,19 +32,26 @@ namespace apo::ui::AppSettings {
 int renderThreadCount();
 void setRenderThreadCount(int threads);
 
-// Sample density used for live-updating interactive previews (AdjustDialog
-// dragging a slider, MutateDialog's 3x3 mutant grid) - lower is more
-// responsive, higher is closer to what the final render actually looks
-// like. Mirrors Options.pas's High/Medium/Low preview quality presets
-// (there, a separate setting per dialog - MutatePrevQual vs the Adjust
-// preview's own - unified into one shared knob here, since both are the
-// same kind of thing and a user is unlikely to want them independently
-// configured). Simplified to one fixed set of density values (4/8/16)
-// rather than user-editable numbers per level. Not used by EditorWindow's
-// preview (that one renders at the flame's own real sampleDensity, see
-// EditorWindow::requestRender) or by MainWindow/ThumbnailTask (fixed,
-// non-interactive contexts where responsiveness during a *drag* isn't a
-// concern).
+// Sample density used for live-updating interactive previews - every
+// EditorWindow render (triangle drags, property edits, ...), AdjustDialog's
+// slider drags, MutateDialog's 3x3 mutant grid, and MainWindow's own
+// cameraPreview render (a continuous pan/zoom drag on the library preview -
+// see MainWindow::requestRender) - lower is more responsive, higher is
+// closer to what the final render actually looks like. Mirrors Options.pas's
+// High/Medium/Low preview quality presets (there, a separate setting per
+// dialog - MutatePrevQual vs the Adjust preview's own - unified into one
+// shared knob here, since both are the same kind of thing and a user is
+// unlikely to want them independently configured). Editable two ways: a
+// Low/Medium/High preset picker in OptionsDialog's Preview group (applies
+// app-wide), or the free-entry-plus-presets toolbar combo EditorWindow adds
+// (EditorWindow::onQualityBoxCommitted) - the latter matches Main.dfm's
+// tbQualityBox (see MainWindow::onQualityBoxCommitted's doc comment for the
+// MainWindow-side counterpart, which edits a selected Flame's own
+// sampleDensity instead - this setting is never used for MainWindow's
+// settled, non-drag preview, which renders the flame at its own real
+// sampleDensity - see MainWindow::requestRender). Not used by
+// ThumbnailTask (fixed, non-interactive - responsiveness during a *drag*
+// isn't a concern there).
 double previewSampleDensity();
 void setPreviewSampleDensity(double density);
 

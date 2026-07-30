@@ -14,6 +14,7 @@ class QListWidget;
 class QThread;
 class QAction;
 class QResizeEvent;
+class QComboBox;
 
 namespace apo::ui {
 
@@ -122,6 +123,18 @@ private slots:
     void onEqualizeWeights();
     void onCalculateColorValues();
     void onRandomizeColorValues();
+    // Matches Main.dfm's tbQualityBox (see MainWindow::onQualityBoxCommitted's
+    // doc comment for that one), but wired to AppSettings::
+    // previewSampleDensity() rather than flame_->sampleDensity: this
+    // window's preview *always* renders a scaled/reduced-density clone,
+    // never flame_ at its own real density (see requestRender()'s and this
+    // class's own doc comment on why - every triangle drag re-renders on
+    // every mouse-move) - so there is no "settled, full-density" render for
+    // a per-flame density to control here the way MainWindow's selection
+    // preview has. Reuses the same shared preview-quality knob
+    // AdjustDialog/MutateDialog already read, matching AppSettings.h's own
+    // "a user is unlikely to want them independently configured" reasoning.
+    void onQualityBoxCommitted();
 
 private:
     void requestRender();
@@ -204,6 +217,7 @@ private:
     QAction* duplicateXformAction_ = nullptr;
     QAction* deleteXformAction_ = nullptr;
     QAction* finalXformAction_ = nullptr;
+    QComboBox* qualityBox_ = nullptr;
 
     // Not fire-and-forget like the other Editor dialogs (raw pointer,
     // cleared via QObject::destroyed when the user closes it) - see

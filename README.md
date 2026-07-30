@@ -44,6 +44,25 @@ randomization tools.
 - **File compatibility** — reads/writes the original `.flame` (XML) and
   `.ugr`/gradient library formats.
 
+## Screenshots
+
+<table>
+<tr>
+<td width="33%">
+<a href="imgs/Screenshot 2026-07-29 233558.png"><img src="imgs/Screenshot 2026-07-29 233558.png" width="100%"></a><br>
+<sub>The library window — a random batch of flames with thumbnails on the left and a live preview of the selected flame.</sub>
+</td>
+<td width="33%">
+<a href="imgs/Screenshot 2026-07-29 233658.png"><img src="imgs/Screenshot 2026-07-29 233658.png" width="100%"></a><br>
+<sub>The flame editor — triangle-based affine transform editing, with the xform list, canvas, and per-transform property panel.</sub>
+</td>
+<td width="33%">
+<a href="imgs/sample_img.png"><img src="imgs/sample_img.png" width="100%"></a><br>
+<sub>A full-quality rendered flame, exported via the render pipeline.</sub>
+</td>
+</tr>
+</table>
+
 ## Getting started
 
 ### Prerequisites

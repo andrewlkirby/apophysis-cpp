@@ -126,6 +126,25 @@ const QHash<QString, QString>& variationDescriptions() {
         // Built-in plugin variations.
         {"julia", "Classic complex square-root Julia fold."},
         {"fisheye", "Fisheye-lens radial distortion (plugin variant of eyefish)."},
+        // flam3 core variations not present in Apophysis 7X's own set.
+        {"heart", "Radial fold shaped into a heart curve."},
+        {"bent", "Asymmetric per-axis stretch that differs by quadrant."},
+        {"waves", "Sinusoidal shear driven by the transform's own affine coefficients."},
+        {"popcorn", "Jittery tangent-driven kick, using the transform's own affine coefficients."},
+        {"exponential", "Exponential radial band wrapped around an angle."},
+        {"power", "Polar power spiral (radius raised to a directional exponent)."},
+        {"cosine", "Cosine/hyperbolic fold along X and Y."},
+        {"rings", "Concentric rings sized by the transform's own affine coefficients."},
+        {"fan", "Alternating fan wedges sized by the transform's own affine coefficients."},
+        {"arch", "Random arching sine/tangent curve."},
+        {"tangent", "Tangent-driven stretch of X and Y."},
+        {"rays", "Radial rays scattered outward from the origin."},
+        {"blade", "Ribbon/blade splay driven by a randomized radius."},
+        {"secant2", "Secant curve fold with an asymmetric sign-based offset."},
+        {"twintrian", "Twin logarithmic-spiral fold with random per-point radius."},
+        {"blob", "Radius modulated by a sine wave, producing lobed bulges."},
+        {"perspective", "Simulates a tilted camera projecting onto the flame plane."},
+        {"pie", "Scatters points into randomly chosen angular pie slices."},
     };
     return descriptions;
 }

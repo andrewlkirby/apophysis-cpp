@@ -16,6 +16,7 @@
 
 #include "AppSettings.h"
 #include "CurvesWidget.h"
+#include "PreviewSizing.h"
 #include "RenderWorker.h"
 #include "SliderSpin.h"
 
@@ -34,7 +35,10 @@ CurvesDialog::CurvesDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     previewLabel_->setMinimumSize(200, 150);
     previewLabel_->setAlignment(Qt::AlignCenter);
     previewLabel_->setStyleSheet("background-color: #202020;");
-    previewLabel_->setScaledContents(true);
+    // Not setScaledContents(true) - onRenderFinished() already scales the
+    // rendered pixmap into previewLabel_ with Qt::KeepAspectRatio (see
+    // requestPreviewRender()'s doc comment), so an unconditional
+    // stretch-to-fill would squish it back out of proportion.
     splitter->addWidget(previewLabel_);
 
     auto* controls = new QWidget(splitter);
@@ -162,8 +166,8 @@ void CurvesDialog::requestPreviewRender() {
     renderInFlight_ = true;
 
     auto previewFlame = flame_->clone();
-    const int pw = std::max(previewLabel_->width(), 64);
-    const int ph = std::max(previewLabel_->height(), 64);
+    int pw, ph;
+    fitPreviewSize(previewLabel_->width(), previewLabel_->height(), flame_->width, flame_->height, pw, ph);
     previewFlame->adjustScale(pw, ph);
     previewFlame->sampleDensity = AppSettings::previewSampleDensity();
 
@@ -172,7 +176,10 @@ void CurvesDialog::requestPreviewRender() {
 }
 
 void CurvesDialog::onRenderFinished(QImage image, quint64 /*pointsGenerated*/, quint64 /*pointsAccepted*/) {
-    if (!image.isNull()) previewLabel_->setPixmap(QPixmap::fromImage(image));
+    if (!image.isNull()) {
+        previewLabel_->setPixmap(
+            QPixmap::fromImage(image).scaled(previewLabel_->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    }
 
     renderInFlight_ = false;
     if (renderDirty_) {

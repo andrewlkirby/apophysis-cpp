@@ -8,6 +8,7 @@ add_library(apo_ui OBJECT
     MainWindow.cpp
     PreviewLabel.h
     PreviewLabel.cpp
+    PreviewSizing.h
     RenderWorker.h
     ThumbnailTask.h
     TriangleCanvas.h

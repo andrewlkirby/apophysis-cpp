@@ -27,6 +27,7 @@
 #include "ForceSymmetryDialog.h"
 #include "FullscreenView.h"
 #include "MutateDialog.h"
+#include "PreviewSizing.h"
 #include "RenderDialog.h"
 #include "RenderWorker.h"
 #include "TransformPanel.h"
@@ -696,8 +697,8 @@ void EditorWindow::requestRender(bool trackProgress) {
     // sampleDensity) on every single triangle-drag mouse-move was a real
     // performance problem, not just a missing nicety.
     auto previewFlame = flame_->clone();
-    const int pw = std::max(canvas_->width(), 64);
-    const int ph = std::max(canvas_->height(), 64);
+    int pw, ph;
+    fitPreviewSize(canvas_->width(), canvas_->height(), flame_->width, flame_->height, pw, ph);
     previewFlame->adjustScale(pw, ph);
     previewFlame->sampleDensity = AppSettings::previewSampleDensity();
 

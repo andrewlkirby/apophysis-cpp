@@ -152,7 +152,15 @@ void TriangleCanvas::paintEvent(QPaintEvent*) {
     painter.fillRect(rect(), QColor(20, 20, 24));
 
     if (!background_.isNull()) {
-        painter.drawImage(rect(), background_, background_.rect());
+        // requestRender() sizes the background at the flame's own aspect
+        // ratio (see EditorWindow::requestRender()'s use of
+        // fitPreviewSize()), which generally isn't the same shape as this
+        // canvas - centered/letterboxed here rather than
+        // painter.drawImage(rect(), ...), which would stretch it back out
+        // of proportion to fill the whole widget.
+        QRectF target(QPointF(0, 0), background_.size().scaled(size(), Qt::KeepAspectRatio));
+        target.moveCenter(rect().center());
+        painter.drawImage(target, background_, background_.rect());
     }
 
     // Origin crosshair - a fixed reference point independent of any

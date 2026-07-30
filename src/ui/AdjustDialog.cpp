@@ -30,6 +30,7 @@
 
 #include "AppSettings.h"
 #include "GradientBrowserDialog.h"
+#include "PreviewSizing.h"
 #include "RenderWorker.h"
 #include "SliderSpin.h"
 #include "core/Rng.h"
@@ -104,13 +105,16 @@ AdjustDialog::AdjustDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     previewLabel_->setMinimumSize(200, 150);
     previewLabel_->setAlignment(Qt::AlignCenter);
     previewLabel_->setStyleSheet("background-color: #202020;");
-    // The very first preview render is requested before the splitter has
-    // assigned this label its final layout size, so that render comes back
-    // smaller than the label's eventual displayed size - scaledContents
-    // stretches it to fill regardless, and resizeEvent() below requests a
-    // freshly-sized render once real geometry is known (and on every
-    // subsequent resize) so it isn't stuck upscaled/blurry.
-    previewLabel_->setScaledContents(true);
+    // Deliberately not setScaledContents(true): onRenderFinished() already
+    // scales the rendered pixmap to fit previewLabel_ with
+    // Qt::KeepAspectRatio (matching MainWindow's own previewLabel_ display),
+    // so scaledContents' unconditional stretch-to-fill would just squish it
+    // back out of proportion. The very first preview render is requested
+    // before the splitter has assigned this label its final layout size, so
+    // that render comes back smaller than the label's eventual displayed
+    // size until resizeEvent() below requests a freshly-sized one once real
+    // geometry is known (and on every subsequent resize) - a brief
+    // undersized-but-correctly-proportioned preview, not a stretched one.
     splitter->addWidget(previewLabel_);
 
     auto* tabs = new QTabWidget(splitter);
@@ -570,8 +574,8 @@ void AdjustDialog::requestPreviewRender() {
     renderInFlight_ = true;
 
     auto previewFlame = flame_->clone();
-    const int pw = std::max(previewLabel_->width(), 64);
-    const int ph = std::max(previewLabel_->height(), 64);
+    int pw, ph;
+    fitPreviewSize(previewLabel_->width(), previewLabel_->height(), flame_->width, flame_->height, pw, ph);
     previewFlame->adjustScale(pw, ph);
     // Read fresh on every preview render (not cached) so a Preview Quality
     // change in OptionsDialog takes effect immediately on the very next
@@ -583,7 +587,10 @@ void AdjustDialog::requestPreviewRender() {
 }
 
 void AdjustDialog::onRenderFinished(QImage image, quint64 /*pointsGenerated*/, quint64 /*pointsAccepted*/) {
-    if (!image.isNull()) previewLabel_->setPixmap(QPixmap::fromImage(image));
+    if (!image.isNull()) {
+        previewLabel_->setPixmap(
+            QPixmap::fromImage(image).scaled(previewLabel_->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));
+    }
 
     renderInFlight_ = false;
     if (renderDirty_) {

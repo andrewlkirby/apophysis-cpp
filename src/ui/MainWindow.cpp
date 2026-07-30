@@ -37,6 +37,7 @@
 #include "FileDialogSupport.h"
 #include "OptionsDialog.h"
 #include "PreviewLabel.h"
+#include "PreviewSizing.h"
 #include "RenderAllDialog.h"
 #include "RenderWorker.h"
 #include "SmoothPaletteDialog.h"
@@ -715,21 +716,13 @@ void MainWindow::requestRender(std::shared_ptr<apo::Flame> flame, bool cameraPre
 
     // Reduced-quality preview clone - see requestCameraPreviewRender()'s
     // doc comment. Fits the clone to previewLabel_'s own available space
-    // while preserving the flame's own declared aspect ratio (rather than
-    // just using the label's raw width/height, which would visibly
-    // squish/stretch the preview whenever the label and flame don't share
-    // an aspect ratio - a jarring artifact this port doesn't need to
-    // accept just because EditorWindow's own preview, which fills a
-    // dedicated square-ish canvas widget, gets away with not bothering).
+    // while preserving the flame's own declared aspect ratio (see
+    // PreviewSizing.h) - just using the label's raw width/height would
+    // visibly squish/stretch the preview whenever the label and flame
+    // don't share an aspect ratio.
     auto previewFlame = flame->clone();
-    int pw = std::max(previewLabel_->width(), 64);
-    int ph = std::max(previewLabel_->height(), 64);
-    const double aspect = flame->height > 0 ? static_cast<double>(flame->width) / flame->height : 1.0;
-    if (static_cast<double>(pw) / ph > aspect) {
-        pw = std::max(64, static_cast<int>(ph * aspect));
-    } else {
-        ph = std::max(64, static_cast<int>(pw / aspect));
-    }
+    int pw, ph;
+    fitPreviewSize(previewLabel_->width(), previewLabel_->height(), flame->width, flame->height, pw, ph);
     previewFlame->adjustScale(pw, ph);
     previewFlame->sampleDensity = AppSettings::previewSampleDensity();
 

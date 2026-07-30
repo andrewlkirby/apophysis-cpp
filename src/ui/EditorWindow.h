@@ -4,17 +4,20 @@
 #include <memory>
 #include <vector>
 
+#include <QElapsedTimer>
 #include <QImage>
 #include <QMainWindow>
 #include <QString>
 
 #include "core/Flame.h"
+#include "core/render/Renderer.h"
 
 class QListWidget;
 class QThread;
 class QAction;
 class QResizeEvent;
 class QComboBox;
+class QTimer;
 
 namespace apo::ui {
 
@@ -69,7 +72,14 @@ protected:
     void resizeEvent(QResizeEvent* event) override;
 
 signals:
-    void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed);
+    // `progress` is non-null only for renders requestRender(true) tracks
+    // (currently just the quality-dropdown commit - see
+    // onQualityBoxCommitted()) - null for every continuous, high-frequency
+    // render (triangle drags, live property-panel edits, window resize),
+    // which are fast enough that a progress readout would just flicker
+    // uselessly. Same non-owning-pointer contract as MainWindow's own
+    // renderRequested.
+    void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed, apo::RenderProgress* progress);
 
 private slots:
     void onXformEdited(int index);
@@ -135,9 +145,19 @@ private slots:
     // AdjustDialog/MutateDialog already read, matching AppSettings.h's own
     // "a user is unlikely to want them independently configured" reasoning.
     void onQualityBoxCommitted();
+    // Polls progress_ (~150ms) while a tracked render is in flight, showing
+    // elapsed/remaining time and percent complete in the status bar - same
+    // formula and timer interval as MainWindow::onProgressTick, just scoped
+    // to this window's own preview render instead of a full-quality one.
+    void onProgressTick();
 
 private:
-    void requestRender();
+    // `trackProgress` requests a progress_/progressTimer_-driven status-bar
+    // readout (see renderRequested()'s doc comment for which callers should
+    // pass true) - defaulted false so every existing call site (triangle
+    // drags via onXformEdited, live property edits, resizeEvent, undo/redo,
+    // structural edits...) keeps behaving exactly as before.
+    void requestRender(bool trackProgress = false);
     void refreshXformList();
     // xformIndexForListRow()/listRowForXformIndex() convert between
     // xformList_'s row numbers (0..numXForms()-1 for regular xforms, then
@@ -236,6 +256,17 @@ private:
     RenderWorker* worker_ = nullptr;
     bool renderInFlight_ = false;
     bool renderDirty_ = false;
+    // Preserves a coalesced request's own trackProgress intent through to
+    // the retry requestRender() fires from onRenderFinished() once the
+    // in-flight render completes - see requestRender()'s doc comment.
+    bool pendingTrackProgress_ = false;
+
+    // onProgressTick()'s state - same trio MainWindow carries for its own
+    // (separate) progress readout; only populated while a requestRender(true)
+    // render is in flight.
+    std::unique_ptr<apo::RenderProgress> progress_;
+    QTimer* progressTimer_ = nullptr;
+    QElapsedTimer elapsedTimer_;
 
     QString autoScreenshotPath_;
     bool autoScreenshotExit_ = false;

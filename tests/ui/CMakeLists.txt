@@ -72,3 +72,7 @@ add_test(NAME smooth_palette_dialog_interaction_test COMMAND smooth_palette_dial
 add_executable(memory_budget_test memory_budget_test.cpp)
 target_link_libraries(memory_budget_test PRIVATE apo_ui apo_core Qt6::Test)
 add_test(NAME memory_budget_test COMMAND memory_budget_test)
+
+add_executable(editor_window_interaction_test editor_window_interaction_test.cpp)
+target_link_libraries(editor_window_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME editor_window_interaction_test COMMAND editor_window_interaction_test)

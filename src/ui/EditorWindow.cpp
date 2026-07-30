@@ -72,7 +72,7 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     transformPanel_ = new TransformPanel(this);
     transformPanel_->setFlame(flame_);
     transformPanel_->setMinimumWidth(280);
-    connect(transformPanel_, &TransformPanel::propertyEdited, this, &EditorWindow::requestRender);
+    connect(transformPanel_, &TransformPanel::propertyEdited, this, [this] { requestRender(); });
     connect(transformPanel_, &TransformPanel::editingStarted, this, &EditorWindow::onXformPropertyEditingStarted);
     connect(transformPanel_, &TransformPanel::editingFinished, this, &EditorWindow::onXformPropertyEditingFinished);
 
@@ -256,6 +256,11 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
 
     statusBar()->showMessage("Ready");
 
+    // onProgressTick()'s poll interval - matches MainWindow's identical timer.
+    progressTimer_ = new QTimer(this);
+    progressTimer_->setInterval(150);
+    connect(progressTimer_, &QTimer::timeout, this, &EditorWindow::onProgressTick);
+
     // Same dedicated-worker-thread pattern as MainWindow (see
     // RenderWorker.h) - but here, driven by triangle drags rather than a
     // one-shot file open, so requestRender() coalesces bursts of
@@ -265,7 +270,7 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     workerThread_ = new QThread(this);
     worker_ = new RenderWorker();
     worker_->moveToThread(workerThread_);
-    connect(this, &EditorWindow::renderRequested, worker_, &RenderWorker::renderFlame);
+    connect(this, &EditorWindow::renderRequested, worker_, &RenderWorker::renderFlameWithProgress);
     connect(worker_, &RenderWorker::renderFinished, this, &EditorWindow::onRenderFinished);
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
@@ -592,7 +597,7 @@ void EditorWindow::openXaosDialog() {
     // Mutates the shared flame_ in place (its xforms' modWeights) - same
     // flameChanged-signal pattern as openAdjustDialog()/openCurvesDialog().
     xaosDialog_ = new XaosDialog(flame_, this);
-    connect(xaosDialog_, &XaosDialog::flameChanged, this, &EditorWindow::requestRender);
+    connect(xaosDialog_, &XaosDialog::flameChanged, this, [this] { requestRender(); });
     connect(xaosDialog_, &QObject::destroyed, this, [this] { xaosDialog_ = nullptr; });
     xaosDialog_->show();
 }
@@ -674,12 +679,13 @@ void EditorWindow::onQualityBoxCommitted() {
         return;
     }
     AppSettings::setPreviewSampleDensity(density);
-    requestRender();
+    requestRender(/*trackProgress=*/true);
 }
 
-void EditorWindow::requestRender() {
+void EditorWindow::requestRender(bool trackProgress) {
     if (renderInFlight_) {
         renderDirty_ = true;
+        pendingTrackProgress_ = pendingTrackProgress_ || trackProgress;
         return;
     }
     renderInFlight_ = true;
@@ -696,7 +702,16 @@ void EditorWindow::requestRender() {
     previewFlame->sampleDensity = AppSettings::previewSampleDensity();
 
     std::shared_ptr<const apo::Flame> shared(std::move(previewFlame));
-    emit renderRequested(shared, /*seed=*/1);
+
+    if (trackProgress) {
+        progress_ = std::make_unique<apo::RenderProgress>();
+        elapsedTimer_.start();
+        progressTimer_->start();
+    } else {
+        progress_.reset();
+        progressTimer_->stop();
+    }
+    emit renderRequested(shared, /*seed=*/1, progress_.get());
 }
 
 void EditorWindow::resizeEvent(QResizeEvent* event) {
@@ -704,7 +719,30 @@ void EditorWindow::resizeEvent(QResizeEvent* event) {
     requestRender();
 }
 
+void EditorWindow::onProgressTick() {
+    if (!progress_) return;
+
+    const std::uint64_t done = progress_->pointsDone.load(std::memory_order_relaxed);
+    const std::uint64_t target = progress_->pointsTarget.load(std::memory_order_relaxed);
+    const double prog = target > 0 ? static_cast<double>(done) / static_cast<double>(target) : 0.0;
+    const int percent = static_cast<int>(std::min<std::uint64_t>(100, target > 0 ? done * 100 / target : 0));
+
+    const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
+    // Same elapsed/(remaining = elapsed/progress - elapsed) formula as
+    // MainWindow::onProgressTick - see its own doc comment for where this
+    // comes from.
+    const double remainingSec = prog > 0.0 ? (elapsedSec / prog - elapsedSec) : 0.0;
+
+    statusBar()->showMessage(QString("Rendering... %1% (%2s elapsed, ~%3s remaining)")
+                                  .arg(percent)
+                                  .arg(elapsedSec, 0, 'f', 1)
+                                  .arg(remainingSec, 0, 'f', 1));
+}
+
 void EditorWindow::onRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted) {
+    progressTimer_->stop();
+    progress_.reset();
+
     canvas_->setBackgroundImage(image);
 
     const double acceptedPct =
@@ -715,7 +753,9 @@ void EditorWindow::onRenderFinished(QImage image, quint64 pointsGenerated, quint
     renderInFlight_ = false;
     if (renderDirty_) {
         renderDirty_ = false;
-        requestRender();
+        const bool trackProgress = pendingTrackProgress_;
+        pendingTrackProgress_ = false;
+        requestRender(trackProgress);
         return;
     }
 
@@ -744,7 +784,7 @@ void EditorWindow::openAdjustDialog() {
     // the same shared Flame, so there's no state to lose by not reusing a
     // single persistent instance.
     auto* dialog = new AdjustDialog(flame_, this);
-    connect(dialog, &AdjustDialog::flameChanged, this, &EditorWindow::requestRender);
+    connect(dialog, &AdjustDialog::flameChanged, this, [this] { requestRender(); });
     dialog->show();
 }
 
@@ -761,7 +801,7 @@ void EditorWindow::openMutateDialog() {
     // adopted (see Flame::copyFrom) - same flameChanged-signal pattern as
     // openAdjustDialog().
     auto* dialog = new MutateDialog(flame_, this);
-    connect(dialog, &MutateDialog::flameChanged, this, &EditorWindow::requestRender);
+    connect(dialog, &MutateDialog::flameChanged, this, [this] { requestRender(); });
     dialog->show();
 }
 
@@ -769,7 +809,7 @@ void EditorWindow::openCurvesDialog() {
     // CurvesDialog mutates the shared flame_ in place (its curves field) -
     // same flameChanged-signal pattern as openAdjustDialog()/openMutateDialog().
     auto* dialog = new CurvesDialog(flame_, this);
-    connect(dialog, &CurvesDialog::flameChanged, this, &EditorWindow::requestRender);
+    connect(dialog, &CurvesDialog::flameChanged, this, [this] { requestRender(); });
     dialog->show();
 }
 

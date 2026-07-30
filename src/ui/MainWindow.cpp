@@ -865,6 +865,10 @@ void MainWindow::onNewRandomBatchTriggered() {
                                             /*max=*/300, /*step=*/1, &ok);
     if (!ok) return;
 
+    generateRandomBatch(count);
+}
+
+void MainWindow::generateRandomBatch(int count) {
     statusBar()->showMessage(QString("Generating %1 random flames...").arg(count));
 
     // Captured before flames_ is cleared - Main.pas's own "Keep background

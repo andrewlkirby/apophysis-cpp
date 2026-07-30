@@ -10,7 +10,7 @@ namespace apo::ui::AppSettings {
 
 namespace {
 constexpr int kDefaultRenderThreadCount = 0; // Auto - see Renderer::render()
-constexpr double kDefaultPreviewSampleDensity = 8.0; // AdjustDialog's prior hardcoded constant
+constexpr double kDefaultPreviewSampleDensity = 10.0; // matches the quality dropdown's own "10" preset
 
 // Matches RandomFlame.h's prior hardcoded kDefaultMinRandomXforms/
 // kDefaultMaxRandomXforms exactly.
@@ -50,7 +50,7 @@ constexpr double kDefaultDefaultGamma = 4.0;
 constexpr double kDefaultDefaultBrightness = 4.0;
 constexpr double kDefaultDefaultVibrancy = 1.0;
 constexpr double kDefaultDefaultGammaThreshold = 0.01;
-constexpr double kDefaultDefaultSampleDensity = 50.0;
+constexpr double kDefaultDefaultSampleDensity = 5.0;
 constexpr int kDefaultDefaultOversample = 1;
 constexpr double kDefaultDefaultFilterRadius = 0.5;
 } // namespace

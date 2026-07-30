@@ -65,6 +65,14 @@ public:
     // first one (which triggers its full-quality render).
     void openFlameFile(const QString& path);
 
+    // Replaces the library with `count` freshly generated random flames -
+    // the same generation path as New Random Batch (onNewRandomBatchTriggered),
+    // minus its own "how many?" prompt. Public (rather than a private slot
+    // fired only by that action) so main.cpp can seed a fresh launch with a
+    // startup batch instead of an empty library - see its call site's
+    // comment for why.
+    void generateRandomBatch(int count);
+
     // Testing/verification hook, not a normal user-facing feature: once
     // the current render completes, grabs the preview and saves it to
     // `path`, then (if `exitAfter`) quits the application. This is what

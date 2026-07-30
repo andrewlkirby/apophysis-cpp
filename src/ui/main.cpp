@@ -307,6 +307,11 @@ int main(int argc, char** argv) {
     }
     if (!positional.isEmpty()) {
         window.openFlameFile(positional.first());
+    } else {
+        // A fresh launch with nothing to open would otherwise show an empty
+        // library - seed it with a startup random batch instead, so there's
+        // always something to look at/render/edit right away.
+        window.generateRandomBatch(10);
     }
 
     window.show();

@@ -2,6 +2,7 @@
 
 #include <vector>
 
+#include <QByteArray>
 #include <QString>
 #include <QStringList>
 
@@ -189,5 +190,21 @@ int defaultOversample();
 void setDefaultOversample(int oversample);
 double defaultFilterRadius();
 void setDefaultFilterRadius(double radius);
+
+// Per-window-type last-used size/position, as Qt's own opaque
+// QWidget::saveGeometry() blob (also captures maximized state, and is
+// DPI/multi-monitor aware, unlike hand-tracking width/height) - keyed by a
+// short per-window-class name (e.g. "MainWindow", "AdjustDialog") via
+// WindowGeometry.h's restoreWindowGeometry()/saveWindowGeometry() helpers,
+// so every independently resizable top-level window remembers its own last
+// size across both reopening that window and relaunching the app. Shared
+// across every open instance of the same window class (e.g. two open
+// EditorWindows both read/write the "EditorWindow" key) - deliberately not
+// per-flame/per-instance, matching how "remember window size" behaves in
+// most other applications. Empty QByteArray (the default, nothing saved
+// yet) is a valid no-op input to QWidget::restoreGeometry() itself, so
+// callers don't need their own has-a-value check.
+QByteArray windowGeometry(const QString& windowKey);
+void setWindowGeometry(const QString& windowKey, const QByteArray& geometry);
 
 } // namespace apo::ui::AppSettings

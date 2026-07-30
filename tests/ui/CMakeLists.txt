@@ -76,3 +76,7 @@ add_test(NAME memory_budget_test COMMAND memory_budget_test)
 add_executable(editor_window_interaction_test editor_window_interaction_test.cpp)
 target_link_libraries(editor_window_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
 add_test(NAME editor_window_interaction_test COMMAND editor_window_interaction_test)
+
+add_executable(window_geometry_test window_geometry_test.cpp)
+target_link_libraries(window_geometry_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME window_geometry_test COMMAND window_geometry_test)

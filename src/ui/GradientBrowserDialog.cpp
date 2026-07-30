@@ -1,5 +1,6 @@
 #include "GradientBrowserDialog.h"
 
+#include <QCloseEvent>
 #include <QCoreApplication>
 #include <QEvent>
 #include <QFileDialog>
@@ -15,6 +16,7 @@
 #include <QVBoxLayout>
 
 #include "FileDialogSupport.h"
+#include "WindowGeometry.h"
 #include "core/BuiltinGradients.h"
 #include "core/io/GradientIO.h"
 
@@ -72,6 +74,9 @@ GradientBrowserDialog::GradientBrowserDialog(QWidget* parent) : QDialog(parent) 
     connect(applyButton_, &QPushButton::clicked, this, &GradientBrowserDialog::applySelected);
     rootLayout->addWidget(applyButton_);
 
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above.
+    restoreWindowGeometry(this, "GradientBrowserDialog");
     openBuiltinLibrary();
 }
 
@@ -181,6 +186,11 @@ void GradientBrowserDialog::showEvent(QShowEvent* event) {
         grab().save(path, "PNG");
         if (exitAfter) qApp->quit();
     });
+}
+
+void GradientBrowserDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "GradientBrowserDialog");
+    QDialog::closeEvent(event);
 }
 
 } // namespace apo::ui

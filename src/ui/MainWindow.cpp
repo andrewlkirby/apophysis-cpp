@@ -8,6 +8,7 @@
 #include <QAction>
 #include <QActionGroup>
 #include <QClipboard>
+#include <QCloseEvent>
 #include <QComboBox>
 #include <QDragEnterEvent>
 #include <QDropEvent>
@@ -42,6 +43,7 @@
 #include "RenderWorker.h"
 #include "SmoothPaletteDialog.h"
 #include "ThumbnailTask.h"
+#include "WindowGeometry.h"
 #include "core/BuiltinGradients.h"
 #include "core/VariationRegistry.h"
 #include "core/edit/RandomFlame.h"
@@ -364,6 +366,10 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     connect(worker_, &RenderWorker::renderFinished, this, &MainWindow::onRenderFinished);
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
+
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above.
+    restoreWindowGeometry(this, "MainWindow");
 }
 
 MainWindow::~MainWindow() {
@@ -1140,6 +1146,11 @@ void MainWindow::updateUndoRedoActions() {
 void MainWindow::resizeEvent(QResizeEvent* event) {
     QMainWindow::resizeEvent(event);
     updatePreviewScaling();
+}
+
+void MainWindow::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "MainWindow");
+    QMainWindow::closeEvent(event);
 }
 
 void MainWindow::dragEnterEvent(QDragEnterEvent* event) {

@@ -107,6 +107,7 @@ void testQualityDropdownRenderShowsProgress() {
 } // namespace
 
 int main(int argc, char** argv) {
+    qputenv("QT_QPA_PLATFORM", "offscreen");
     QApplication app(argc, argv);
     // Required for AppSettings (QSettings-backed) to resolve a real storage
     // location - without these, QSettings silently no-ops every read/write

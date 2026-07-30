@@ -4,6 +4,7 @@
 #include <random>
 
 #include <QActionGroup>
+#include <QCloseEvent>
 #include <QComboBox>
 #include <QCoreApplication>
 #include <QFileDialog>
@@ -32,6 +33,7 @@
 #include "RenderWorker.h"
 #include "TransformPanel.h"
 #include "TriangleCanvas.h"
+#include "WindowGeometry.h"
 #include "XaosDialog.h"
 #include "core/Rng.h"
 #include "core/edit/FlameOps.h"
@@ -276,6 +278,11 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
 
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above -
+    // and requestRender() below should see the actually-restored canvas_
+    // size, not whatever it'd be at the default window size.
+    restoreWindowGeometry(this, "EditorWindow");
     requestRender();
 }
 
@@ -718,6 +725,11 @@ void EditorWindow::requestRender(bool trackProgress) {
 void EditorWindow::resizeEvent(QResizeEvent* event) {
     QMainWindow::resizeEvent(event);
     requestRender();
+}
+
+void EditorWindow::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "EditorWindow");
+    QMainWindow::closeEvent(event);
 }
 
 void EditorWindow::onProgressTick() {

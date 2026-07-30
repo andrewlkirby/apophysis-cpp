@@ -7,6 +7,7 @@
 
 #include <QAction>
 #include <QCheckBox>
+#include <QCloseEvent>
 #include <QColorDialog>
 #include <QComboBox>
 #include <QCoreApplication>
@@ -33,6 +34,7 @@
 #include "PreviewSizing.h"
 #include "RenderWorker.h"
 #include "SliderSpin.h"
+#include "WindowGeometry.h"
 #include "core/Rng.h"
 #include "core/edit/GradientOps.h"
 
@@ -138,6 +140,14 @@ AdjustDialog::AdjustDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
 
+    // After the full UI (in particular previewLabel_) is built, not right
+    // after the resize() above: restoreGeometry() applied before the
+    // layout's true minimum size is known can get silently grown back past
+    // a smaller restored size once the rest of the constructor populates
+    // the layout (see WindowGeometry.h's restoreWindowGeometry() doc
+    // comment) - and requestPreviewRender() below should see the actually-
+    // restored previewLabel_ size, not whatever it'd be at the default size.
+    restoreWindowGeometry(this, "AdjustDialog");
     requestPreviewRender();
 }
 
@@ -149,6 +159,11 @@ AdjustDialog::~AdjustDialog() {
 void AdjustDialog::resizeEvent(QResizeEvent* event) {
     QDialog::resizeEvent(event);
     requestPreviewRender();
+}
+
+void AdjustDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "AdjustDialog");
+    QDialog::closeEvent(event);
 }
 
 QWidget* AdjustDialog::buildCameraTab() {

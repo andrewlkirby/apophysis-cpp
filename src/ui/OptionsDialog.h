@@ -10,6 +10,7 @@ class QLineEdit;
 class QCheckBox;
 class QListWidget;
 class QShowEvent;
+class QCloseEvent;
 
 namespace apo::ui {
 
@@ -67,6 +68,8 @@ public:
 
 protected:
     void showEvent(QShowEvent* event) override;
+    // Persists the dialog's final size/position (see WindowGeometry.h).
+    void closeEvent(QCloseEvent* event) override;
 
 private slots:
     void applyAndAccept();

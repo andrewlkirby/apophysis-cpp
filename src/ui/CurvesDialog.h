@@ -15,6 +15,7 @@ class QComboBox;
 class QLabel;
 class QPushButton;
 class QResizeEvent;
+class QCloseEvent;
 
 namespace apo::ui {
 
@@ -41,6 +42,8 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
+    // Persists the dialog's final size/position (see WindowGeometry.h).
+    void closeEvent(QCloseEvent* event) override;
 
 signals:
     // Emitted after every edit so an owning window (EditorWindow) can

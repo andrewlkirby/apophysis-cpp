@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <random>
 
+#include <QCloseEvent>
 #include <QColorDialog>
 #include <QCoreApplication>
 #include <QFileDialog>
@@ -21,6 +22,7 @@
 #include "PreviewSizing.h"
 #include "RenderWorker.h"
 #include "SliderSpin.h"
+#include "WindowGeometry.h"
 
 namespace apo::ui {
 
@@ -141,6 +143,9 @@ PostProcessDialog::PostProcessDialog(std::shared_ptr<const apo::Flame> flame, QW
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
 
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above.
+    restoreWindowGeometry(this, "PostProcessDialog");
     requestPreviewRender();
 }
 
@@ -153,6 +158,11 @@ PostProcessDialog::~PostProcessDialog() {
 void PostProcessDialog::resizeEvent(QResizeEvent* event) {
     QDialog::resizeEvent(event);
     requestPreviewRender();
+}
+
+void PostProcessDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "PostProcessDialog");
+    QDialog::closeEvent(event);
 }
 
 void PostProcessDialog::requestPreviewRender() {

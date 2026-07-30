@@ -173,4 +173,11 @@ double defaultFilterRadius() {
 }
 void setDefaultFilterRadius(double radius) { QSettings().setValue("newFlame/filterRadius", radius); }
 
+QByteArray windowGeometry(const QString& windowKey) {
+    return QSettings().value("windowGeometry/" + windowKey).toByteArray();
+}
+void setWindowGeometry(const QString& windowKey, const QByteArray& geometry) {
+    QSettings().setValue("windowGeometry/" + windowKey, geometry);
+}
+
 } // namespace apo::ui::AppSettings

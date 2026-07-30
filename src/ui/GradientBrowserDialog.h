@@ -10,6 +10,7 @@ class QListWidget;
 class QLabel;
 class QPushButton;
 class QShowEvent;
+class QCloseEvent;
 
 namespace apo::ui {
 
@@ -68,6 +69,8 @@ public:
 
 protected:
     void showEvent(QShowEvent* event) override;
+    // Persists the dialog's final size/position (see WindowGeometry.h).
+    void closeEvent(QCloseEvent* event) override;
 
     // Explicitly matches Browser.pas's own ListViewKeyPress(#13) handler
     // rather than relying on QAbstractItemView's built-in Key_Return ->

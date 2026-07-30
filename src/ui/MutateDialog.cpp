@@ -4,6 +4,7 @@
 #include <random>
 
 #include <QCheckBox>
+#include <QCloseEvent>
 #include <QComboBox>
 #include <QCoreApplication>
 #include <QFormLayout>
@@ -22,6 +23,7 @@
 #include "AppSettings.h"
 #include "RenderWorker.h"
 #include "SliderSpin.h"
+#include "WindowGeometry.h"
 #include "core/VariationRegistry.h"
 #include "core/edit/MutationOps.h"
 
@@ -127,6 +129,12 @@ MutateDialog::MutateDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
 
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above -
+    // and regenerateMutants()'s own grid render below should see the
+    // actually-restored cell button sizes, not whatever they'd be at the
+    // default window size.
+    restoreWindowGeometry(this, "MutateDialog");
     regenerateMutants();
 }
 
@@ -149,6 +157,11 @@ void MutateDialog::resizeEvent(QResizeEvent* event) {
     // keeps every cell's icon sized to its button rather than stuck at
     // whatever size it first rendered at.
     requestGridRefresh();
+}
+
+void MutateDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "MutateDialog");
+    QDialog::closeEvent(event);
 }
 
 void MutateDialog::regenerateMutants() {

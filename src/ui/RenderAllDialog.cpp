@@ -5,6 +5,7 @@
 #include <random>
 
 #include <QCheckBox>
+#include <QCloseEvent>
 #include <QCoreApplication>
 #include <QDir>
 #include <QDoubleSpinBox>
@@ -26,6 +27,7 @@
 #include "AppSettings.h"
 #include "MemoryBudget.h"
 #include "RenderWorker.h"
+#include "WindowGeometry.h"
 #include "core/io/FlameIO.h"
 
 namespace apo::ui {
@@ -204,6 +206,10 @@ RenderAllDialog::RenderAllDialog(std::vector<std::shared_ptr<apo::Flame>> flames
     connect(worker_, &RenderWorker::fullRenderFinished, this, &RenderAllDialog::onFullRenderFinished);
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
+
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above.
+    restoreWindowGeometry(this, "RenderAllDialog");
 }
 
 RenderAllDialog::~RenderAllDialog() {
@@ -390,6 +396,11 @@ void RenderAllDialog::showEvent(QShowEvent* event) {
         grab().save(path, "PNG");
         if (exitAfter) qApp->quit();
     });
+}
+
+void RenderAllDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "RenderAllDialog");
+    QDialog::closeEvent(event);
 }
 
 } // namespace apo::ui

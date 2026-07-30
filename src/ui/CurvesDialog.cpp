@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cstddef>
 
+#include <QCloseEvent>
 #include <QComboBox>
 #include <QCoreApplication>
 #include <QHBoxLayout>
@@ -19,6 +20,7 @@
 #include "PreviewSizing.h"
 #include "RenderWorker.h"
 #include "SliderSpin.h"
+#include "WindowGeometry.h"
 
 namespace apo::ui {
 
@@ -101,6 +103,9 @@ CurvesDialog::CurvesDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
 
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above.
+    restoreWindowGeometry(this, "CurvesDialog");
     requestPreviewRender();
 }
 
@@ -112,6 +117,11 @@ CurvesDialog::~CurvesDialog() {
 void CurvesDialog::resizeEvent(QResizeEvent* event) {
     QDialog::resizeEvent(event);
     requestPreviewRender();
+}
+
+void CurvesDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "CurvesDialog");
+    QDialog::closeEvent(event);
 }
 
 void CurvesDialog::onChannelChanged(int index) {

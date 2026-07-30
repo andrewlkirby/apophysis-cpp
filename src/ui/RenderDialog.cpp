@@ -7,6 +7,7 @@
 #include <thread>
 
 #include <QCheckBox>
+#include <QCloseEvent>
 #include <QComboBox>
 #include <QCoreApplication>
 #include <QDoubleSpinBox>
@@ -29,6 +30,7 @@
 #include "MemoryBudget.h"
 #include "PostProcessDialog.h"
 #include "RenderWorker.h"
+#include "WindowGeometry.h"
 #include "core/io/FlameIO.h"
 
 namespace apo::ui {
@@ -281,6 +283,10 @@ RenderDialog::RenderDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(worker_, &RenderWorker::fullRenderFinished, this, &RenderDialog::onFullRenderFinished);
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
+
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above.
+    restoreWindowGeometry(this, "RenderDialog");
 }
 
 RenderDialog::~RenderDialog() {
@@ -503,6 +509,11 @@ void RenderDialog::showEvent(QShowEvent* event) {
         grab().save(path, "PNG");
         if (exitAfter) qApp->quit();
     });
+}
+
+void RenderDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "RenderDialog");
+    QDialog::closeEvent(event);
 }
 
 } // namespace apo::ui

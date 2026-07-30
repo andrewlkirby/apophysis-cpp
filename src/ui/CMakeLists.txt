@@ -51,6 +51,7 @@ add_library(apo_ui OBJECT
     ForceSymmetryDialog.cpp
     TransformPanel.h
     TransformPanel.cpp
+    WindowGeometry.h
 )
 target_include_directories(apo_ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(apo_ui PUBLIC apo_core Qt6::Widgets)

@@ -5,6 +5,7 @@
 #include <random>
 #include <vector>
 
+#include <QCloseEvent>
 #include <QCoreApplication>
 #include <QFileDialog>
 #include <QHBoxLayout>
@@ -16,6 +17,7 @@
 #include <QVBoxLayout>
 
 #include "FileDialogSupport.h"
+#include "WindowGeometry.h"
 #include "core/Rng.h"
 #include "core/edit/SmoothPalette.h"
 
@@ -85,6 +87,10 @@ SmoothPaletteDialog::SmoothPaletteDialog(QWidget* parent) : QDialog(parent) {
     buttonRow->addWidget(generateButton_);
     buttonRow->addWidget(applyButton_);
     rootLayout->addLayout(buttonRow);
+
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above.
+    restoreWindowGeometry(this, "SmoothPaletteDialog");
 }
 
 void SmoothPaletteDialog::setAutoScreenshot(const QString& path, bool exitAfter) {
@@ -152,6 +158,11 @@ void SmoothPaletteDialog::showEvent(QShowEvent* event) {
         grab().save(path, "PNG");
         if (exitAfter) qApp->quit();
     });
+}
+
+void SmoothPaletteDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "SmoothPaletteDialog");
+    QDialog::closeEvent(event);
 }
 
 } // namespace apo::ui

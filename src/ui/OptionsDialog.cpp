@@ -3,6 +3,7 @@
 #include <algorithm>
 
 #include <QCheckBox>
+#include <QCloseEvent>
 #include <QComboBox>
 #include <QCoreApplication>
 #include <QDialogButtonBox>
@@ -22,6 +23,7 @@
 #include <QVBoxLayout>
 
 #include "AppSettings.h"
+#include "WindowGeometry.h"
 #include "core/VariationRegistry.h"
 
 namespace apo::ui {
@@ -70,6 +72,10 @@ OptionsDialog::OptionsDialog(QWidget* parent) : QDialog(parent) {
     connect(buttons, &QDialogButtonBox::accepted, this, &OptionsDialog::applyAndAccept);
     connect(buttons, &QDialogButtonBox::rejected, this, &QDialog::reject);
     rootLayout->addWidget(buttons);
+
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above.
+    restoreWindowGeometry(this, "OptionsDialog");
 }
 
 QWidget* OptionsDialog::buildGeneralTab() {
@@ -402,6 +408,11 @@ void OptionsDialog::showEvent(QShowEvent* event) {
         grab().save(path, "PNG");
         if (exitAfter) qApp->quit();
     });
+}
+
+void OptionsDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "OptionsDialog");
+    QDialog::closeEvent(event);
 }
 
 } // namespace apo::ui

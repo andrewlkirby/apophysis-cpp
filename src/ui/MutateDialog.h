@@ -15,6 +15,7 @@ class QCheckBox;
 class QPushButton;
 class QLabel;
 class QResizeEvent;
+class QCloseEvent;
 
 namespace apo::ui {
 
@@ -60,6 +61,8 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
+    // Persists the dialog's final size/position (see WindowGeometry.h).
+    void closeEvent(QCloseEvent* event) override;
 
 signals:
     // Emitted after adopting a mutant (flame_ is mutated in place) so an

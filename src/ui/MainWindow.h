@@ -18,6 +18,7 @@ class QListWidgetItem;
 class QThread;
 class QAction;
 class QTimer;
+class QCloseEvent;
 class QDragEnterEvent;
 class QDropEvent;
 class QComboBox;
@@ -84,6 +85,10 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
+    // Persists the window's final size/position (see WindowGeometry.h) once
+    // it's actually known to be final, rather than saving on every
+    // intermediate resizeEvent() during an in-progress drag.
+    void closeEvent(QCloseEvent* event) override;
     // A7 - standard desktop drag-and-drop: dropping a .flame/.flam3 (or any
     // file loadFlameFile can parse - see openFlameFile()'s own graceful
     // failure handling) onto the window opens it, same as File > Open.

@@ -15,6 +15,7 @@
 class QListWidget;
 class QThread;
 class QAction;
+class QCloseEvent;
 class QResizeEvent;
 class QComboBox;
 class QTimer;
@@ -70,6 +71,8 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
+    // Persists the window's final size/position (see WindowGeometry.h).
+    void closeEvent(QCloseEvent* event) override;
 
 signals:
     // `progress` is non-null only for renders requestRender(true) tracks

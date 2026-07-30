@@ -13,6 +13,7 @@
 
 class QThread;
 class QResizeEvent;
+class QCloseEvent;
 class QEvent;
 class QLabel;
 class QComboBox;
@@ -55,6 +56,8 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
+    // Persists the dialog's final size/position (see WindowGeometry.h).
+    void closeEvent(QCloseEvent* event) override;
     bool eventFilter(QObject* watched, QEvent* event) override;
 
 signals:

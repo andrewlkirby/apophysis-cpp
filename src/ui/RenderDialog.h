@@ -21,6 +21,7 @@ class QProgressBar;
 class QLabel;
 class QTimer;
 class QShowEvent;
+class QCloseEvent;
 
 namespace apo::ui {
 
@@ -78,6 +79,8 @@ public:
 
 protected:
     void showEvent(QShowEvent* event) override;
+    // Persists the dialog's final size/position (see WindowGeometry.h).
+    void closeEvent(QCloseEvent* event) override;
 
 signals:
     // `progress` is a raw pointer owned by this dialog (progress_) - see

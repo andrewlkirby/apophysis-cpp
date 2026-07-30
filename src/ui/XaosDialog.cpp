@@ -2,6 +2,7 @@
 
 #include <algorithm>
 
+#include <QCloseEvent>
 #include <QCoreApplication>
 #include <QHBoxLayout>
 #include <QHeaderView>
@@ -12,6 +13,7 @@
 #include <QVBoxLayout>
 
 #include "TriangleCanvas.h"
+#include "WindowGeometry.h"
 
 namespace apo::ui {
 
@@ -50,6 +52,9 @@ XaosDialog::XaosDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(setAllButton, &QPushButton::clicked, this, &XaosDialog::onSetAll);
     connect(table_, &QTableWidget::itemChanged, this, &XaosDialog::onCellChanged);
 
+    // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
+    // after the full UI/layout is built, not right after the resize() above.
+    restoreWindowGeometry(this, "XaosDialog");
     rebuildTable();
 }
 
@@ -151,6 +156,11 @@ void XaosDialog::showEvent(QShowEvent* event) {
         grab().save(path, "PNG");
         if (exitAfter) qApp->quit();
     });
+}
+
+void XaosDialog::closeEvent(QCloseEvent* event) {
+    saveWindowGeometry(this, "XaosDialog");
+    QDialog::closeEvent(event);
 }
 
 } // namespace apo::ui

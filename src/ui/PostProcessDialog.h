@@ -16,6 +16,7 @@ class QPushButton;
 class QProgressBar;
 class QTimer;
 class QResizeEvent;
+class QCloseEvent;
 
 namespace apo::ui {
 
@@ -69,6 +70,8 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
+    // Persists the dialog's final size/position (see WindowGeometry.h).
+    void closeEvent(QCloseEvent* event) override;
 
 signals:
     void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed);

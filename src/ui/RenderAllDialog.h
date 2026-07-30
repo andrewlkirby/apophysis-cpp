@@ -22,6 +22,7 @@ class QLabel;
 class QListWidget;
 class QTimer;
 class QShowEvent;
+class QCloseEvent;
 
 namespace apo::ui {
 
@@ -56,6 +57,8 @@ public:
 
 protected:
     void showEvent(QShowEvent* event) override;
+    // Persists the dialog's final size/position (see WindowGeometry.h).
+    void closeEvent(QCloseEvent* event) override;
 
 signals:
     // Identical contract to RenderDialog::fullRenderRequested - see its own

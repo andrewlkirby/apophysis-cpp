@@ -79,12 +79,15 @@ void checkGeometryRoundTrip(const char* windowKey, const QSize& targetSize,
 
     QWidget* second = makeWindow();
     if (second->size() != resizedTo) {
-        // Diagnostic-only: this mismatch has so far only been reproduced on
-        // Linux/macOS CI (the offscreen QPA platform's virtual screen size
-        // isn't guaranteed identical across Qt versions/platforms - see
-        // this file's own top comment on the AdjustDialog precedent), never
-        // locally on Windows, so print everything relevant on failure
-        // rather than guess again from a bare pass/fail.
+        // Diagnostic-only, silent unless this check is about to fail: a
+        // mismatch here almost always means some window's real layout-
+        // enforced minimum size has grown past the current platform's
+        // offscreen virtual screen (see this file's own top comment on the
+        // AdjustDialog precedent, and OptionsDialog's own Random tab -
+        // wrapped in a QScrollArea for exactly this reason). That failure
+        // mode has so far only reproduced on Linux/macOS CI, never locally
+        // on Windows, so print everything relevant rather than have to
+        // reproduce it blind from a bare pass/fail every time it recurs.
         const QScreen* screen = QGuiApplication::primaryScreen();
         const QRect screenGeom = screen ? screen->availableGeometry() : QRect();
         std::fprintf(stderr,

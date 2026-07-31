@@ -15,6 +15,7 @@
 #include <QLineEdit>
 #include <QListWidget>
 #include <QPushButton>
+#include <QScrollArea>
 #include <QShowEvent>
 #include <QSpinBox>
 #include <QTabWidget>
@@ -246,7 +247,21 @@ QWidget* OptionsDialog::buildRandomTab() {
     layout->addWidget(blendGroup);
 
     layout->addStretch(1);
-    return tab;
+
+    // Five group boxes stacked vertically add up to real height (~830px
+    // measured on the offscreen QPA platform - see window_geometry_test.cpp's
+    // own diagnostic) - comfortably more than plenty of real screens have
+    // available, let alone the 800px-tall virtual screen that CI's offscreen
+    // platform uses. A QScrollArea keeps every control reachable without
+    // forcing the whole dialog (and everything else in it, on every other
+    // tab) to grow to fit this one tab's full unscrolled height - the
+    // standard fix for a form with more rows than fit on screen, and it
+    // costs the user nothing on a screen tall enough that it never engages.
+    auto* scrollArea = new QScrollArea(this);
+    scrollArea->setWidgetResizable(true);
+    scrollArea->setFrameShape(QFrame::NoFrame);
+    scrollArea->setWidget(tab);
+    return scrollArea;
 }
 
 QWidget* OptionsDialog::buildVariationsTab() {

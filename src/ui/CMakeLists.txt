@@ -19,6 +19,8 @@ add_library(apo_ui OBJECT
     SliderSpin.cpp
     AdjustDialog.h
     AdjustDialog.cpp
+    AdjustPanel.h
+    AdjustPanel.cpp
     RenderDialog.h
     RenderDialog.cpp
     RenderAllDialog.h

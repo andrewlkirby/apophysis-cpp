@@ -143,6 +143,13 @@ signals:
     // "Post" QAction (and TriangleCanvas::setEditingPostTransform) so
     // canvas dragging follows suit.
     void editingPostTransformChanged(bool post);
+    // Fired when the user toggles "Show descriptions" on the Variations
+    // tab - EditorWindow widens/narrows the splitter panel this widget
+    // lives in accordingly, since the Description column's prose needs
+    // meaningfully more room than the panel's default width to read
+    // without eliding, and a bare column toggle with no size change just
+    // trades a hidden column for an unreadably narrow one.
+    void descriptionsVisibilityChanged(bool show);
 
 private slots:
     void onWeightChanged(double value);

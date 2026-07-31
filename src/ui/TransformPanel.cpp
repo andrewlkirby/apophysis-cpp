@@ -219,10 +219,16 @@ QWidget* TransformPanel::buildVariationsTab() {
         const QString name = QString::fromStdString(registry.varName(i));
         auto* nameItem = new QTableWidgetItem(name);
         nameItem->setFlags(nameItem->flags() & ~Qt::ItemIsEditable);
+        nameItem->setToolTip(name);
         variationsTable_->setItem(i, 0, nameItem);
         variationsTable_->setItem(i, 1, new QTableWidgetItem());
-        auto* descItem = new QTableWidgetItem(descriptions.value(name));
+        // The description column's prose routinely runs longer than the
+        // column is wide (elided with "..." by Qt) - a tooltip is the only
+        // way to read the rest of it without widening the whole panel.
+        const QString description = descriptions.value(name);
+        auto* descItem = new QTableWidgetItem(description);
         descItem->setFlags(descItem->flags() & ~Qt::ItemIsEditable);
+        descItem->setToolTip(description);
         variationsTable_->setItem(i, 2, descItem);
     }
     connect(variationsTable_, &QTableWidget::itemChanged, this, &TransformPanel::onVariationCellChanged);
@@ -485,6 +491,7 @@ void TransformPanel::onHideUnusedToggled(bool) { applyVariationsRowFilter(); }
 void TransformPanel::onShowDescriptionsToggled(bool show) {
     if (!variationsTable_) return;
     variationsTable_->setColumnHidden(2, !show);
+    emit descriptionsVisibilityChanged(show);
 }
 
 void TransformPanel::onClearVariationsClicked() {

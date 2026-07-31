@@ -16,12 +16,16 @@
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QResizeEvent>
+#include <QSplitter>
+#include <QStackedWidget>
 #include <QStatusBar>
+#include <QTabBar>
 #include <QThread>
 #include <QTimer>
 #include <QToolBar>
+#include <QVBoxLayout>
 
-#include "AdjustDialog.h"
+#include "AdjustPanel.h"
 #include "AppSettings.h"
 #include "CurvesDialog.h"
 #include "FileDialogSupport.h"
@@ -74,29 +78,70 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
 
     transformPanel_ = new TransformPanel(this);
     transformPanel_->setFlame(flame_);
-    transformPanel_->setMinimumWidth(280);
     connect(transformPanel_, &TransformPanel::propertyEdited, this, [this] { requestRender(); });
     connect(transformPanel_, &TransformPanel::editingStarted, this, &EditorWindow::onXformPropertyEditingStarted);
     connect(transformPanel_, &TransformPanel::editingFinished, this, &EditorWindow::onXformPropertyEditingFinished);
+    connect(transformPanel_, &TransformPanel::descriptionsVisibilityChanged, this,
+            &EditorWindow::onDescriptionsVisibilityChanged);
+
+    // Second page of the same right-hand panel switcher (see this class's
+    // own header comment) - AdjustPanel mutates the same shared flame_ and
+    // feeds the exact same undo path as transformPanel_ above, just via its
+    // own propertyEdited/editingStarted/editingFinished signals (its
+    // contract is deliberately identical to TransformPanel's - see
+    // AdjustPanel.h).
+    adjustPanel_ = new AdjustPanel(flame_, this);
+    connect(adjustPanel_, &AdjustPanel::propertyEdited, this, [this] { requestRender(); });
+    connect(adjustPanel_, &AdjustPanel::editingStarted, this, &EditorWindow::onXformPropertyEditingStarted);
+    connect(adjustPanel_, &AdjustPanel::editingFinished, this, &EditorWindow::onXformPropertyEditingFinished);
 
     refreshXformList();
 
-    // Fixed-width side panels (xformList_'s own setMaximumWidth(150) above,
-    // transformPanel_'s setMinimumWidth(280) treated as its fixed width
-    // here) flanking the canvas, which always claims whatever space is left
-    // - a plain layout rather than a QSplitter so the image fills the
-    // available area the instant the window opens, with no drag handle the
-    // user has to move first to see it at full size.
+    rightTabBar_ = new QTabBar(this);
+    rightTabBar_->setObjectName("rightPanelTabBar");
+    rightTabBar_->addTab("Transform");
+    rightTabBar_->addTab("Adjust");
+    connect(rightTabBar_, &QTabBar::currentChanged, this, &EditorWindow::onRightPanelTabChanged);
+
+    rightStack_ = new QStackedWidget(this);
+    rightStack_->addWidget(transformPanel_);
+    rightStack_->addWidget(adjustPanel_);
+
+    auto* rightContainer = new QWidget(this);
+    rightContainer->setMinimumWidth(280);
+    rightContainer->setMaximumWidth(900);
+    auto* rightLayout = new QVBoxLayout(rightContainer);
+    rightLayout->setContentsMargins(0, 0, 0, 0);
+    rightLayout->setSpacing(0);
+    rightLayout->addWidget(rightTabBar_);
+    rightLayout->addWidget(rightStack_, 1);
+
+    // xformList_ stays fixed-width (it's just xform names, nothing to gain
+    // from resizing it) but canvas_/rightContainer share a QSplitter so the
+    // transform/adjust panel can be dragged wider - TransformPanel's
+    // Variations table hosts a Description column (see its own
+    // buildVariationsTab) that needs more room than the 280px default to
+    // read comfortably. setSizes() below seeds the same split the old
+    // fixed layout used (canvas gets whatever's left, panel starts at 280)
+    // so the window looks identical on open; the stretch factors then keep
+    // that same "canvas absorbs extra space" behavior on window resize once
+    // the user hasn't dragged the handle themselves.
     xformList_->setFixedWidth(150);
-    transformPanel_->setFixedWidth(280);
+
+    centralSplitter_ = new QSplitter(Qt::Horizontal, this);
+    centralSplitter_->setChildrenCollapsible(false);
+    centralSplitter_->addWidget(canvas_);
+    centralSplitter_->addWidget(rightContainer);
+    centralSplitter_->setStretchFactor(0, 1);
+    centralSplitter_->setStretchFactor(1, 0);
+    centralSplitter_->setSizes({720, 280});
 
     QWidget* central = new QWidget(this);
     QHBoxLayout* centralLayout = new QHBoxLayout(central);
     centralLayout->setContentsMargins(0, 0, 0, 0);
     centralLayout->setSpacing(0);
     centralLayout->addWidget(xformList_);
-    centralLayout->addWidget(canvas_, 1);
-    centralLayout->addWidget(transformPanel_);
+    centralLayout->addWidget(centralSplitter_, 1);
     setCentralWidget(central);
 
     QAction* saveFlameAction = new QAction("Save &Flame As...", this);
@@ -164,8 +209,10 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     QToolBar* toolbar = addToolBar("Edit");
     toolbar->setMovable(false);
 
-    QAction* adjustAction = toolbar->addAction("Adjust...");
-    connect(adjustAction, &QAction::triggered, this, &EditorWindow::openAdjustDialog);
+    QAction* adjustAction = toolbar->addAction("Adjust");
+    adjustAction->setObjectName("adjustAction");
+    adjustAction->setToolTip("Camera/Coloring/Gradient/Size controls - switches the right-hand panel to Adjust");
+    connect(adjustAction, &QAction::triggered, this, [this] { rightTabBar_->setCurrentIndex(1); });
     QAction* renderAction = toolbar->addAction("Render...");
     connect(renderAction, &QAction::triggered, this, &EditorWindow::openRenderDialog);
     toolbar->addSeparator();
@@ -394,6 +441,24 @@ void EditorWindow::onXformPropertyEditingFinished() {
     pendingPropertyBefore_.reset();
 }
 
+void EditorWindow::onDescriptionsVisibilityChanged(bool show) {
+    // Keeps the canvas's own current width, only resizing the panel itself
+    // - so this doesn't fight a size the user already dragged to on the
+    // canvas side, just grows/shrinks the panel to fit (or stop needing)
+    // the Description column. 520px comfortably fits the longest built-in
+    // description without wrapping; 280px matches the panel's original
+    // (pre-splitter) fixed width for the compact Name/Value-only view.
+    const QList<int> current = centralSplitter_->sizes();
+    const int canvasWidth = current.value(0);
+    const int panelWidth = show ? 520 : 280;
+    centralSplitter_->setSizes({canvasWidth, panelWidth});
+}
+
+void EditorWindow::onRightPanelTabChanged(int index) {
+    rightStack_->setCurrentIndex(index);
+    if (index == 1) adjustPanel_->refreshControlsFromFlame();
+}
+
 void EditorWindow::onUndo() {
     if (undoStack_.empty()) return;
     const UndoEntry entry = undoStack_.back();
@@ -409,6 +474,12 @@ void EditorWindow::onUndo() {
         canvas_->setSelectedXform(entry.selectAfterUndo);
         refreshXformList();
         refreshXaosDialogIfOpen();
+        // A Structural entry can carry an AdjustPanel edit (camera/coloring/
+        // gradient/size are flame-level, not per-xform) - refresh
+        // unconditionally, matching refreshXformList()'s own
+        // "always resync, whether or not this panel happens to be visible
+        // right now" contract for transformPanel_ above.
+        adjustPanel_->refreshControlsFromFlame();
     }
 
     redoStack_.push_back(entry);
@@ -432,6 +503,7 @@ void EditorWindow::onRedo() {
         canvas_->setSelectedXform(entry.selectAfterRedo);
         refreshXformList();
         refreshXaosDialogIfOpen();
+        adjustPanel_->refreshControlsFromFlame();
     }
 
     undoStack_.push_back(entry);
@@ -603,7 +675,7 @@ void EditorWindow::openXaosDialog() {
     }
 
     // Mutates the shared flame_ in place (its xforms' modWeights) - same
-    // flameChanged-signal pattern as openAdjustDialog()/openCurvesDialog().
+    // flameChanged-signal pattern as openCurvesDialog().
     xaosDialog_ = new XaosDialog(flame_, this);
     connect(xaosDialog_, &XaosDialog::flameChanged, this, [this] { requestRender(); });
     connect(xaosDialog_, &QObject::destroyed, this, [this] { xaosDialog_ = nullptr; });
@@ -791,20 +863,10 @@ void EditorWindow::setAutoScreenshot(const QString& path, bool exitAfter) {
     autoScreenshotExit_ = exitAfter;
 }
 
-void EditorWindow::openAdjustDialog() {
-    // A fresh dialog per click (WA_DeleteOnClose handles cleanup), same
-    // pattern MainWindow uses for opening EditorWindow itself - both edit
-    // the same shared Flame, so there's no state to lose by not reusing a
-    // single persistent instance.
-    auto* dialog = new AdjustDialog(flame_, this);
-    connect(dialog, &AdjustDialog::flameChanged, this, [this] { requestRender(); });
-    dialog->show();
-}
-
 void EditorWindow::openRenderDialog() {
     // RenderDialog renders its own clone of flame_ (see its header comment)
-    // rather than mutating the shared one, so unlike openAdjustDialog()
-    // there's no flameChanged-style signal to connect back here.
+    // rather than mutating the shared one, so unlike adjustPanel_ there's no
+    // flameChanged-style signal to connect back here.
     auto* dialog = new RenderDialog(flame_, this);
     dialog->show();
 }
@@ -812,7 +874,7 @@ void EditorWindow::openRenderDialog() {
 void EditorWindow::openMutateDialog() {
     // MutateDialog mutates the shared flame_ in place when a mutant is
     // adopted (see Flame::copyFrom) - same flameChanged-signal pattern as
-    // openAdjustDialog().
+    // adjustPanel_'s propertyEdited/editingFinished.
     auto* dialog = new MutateDialog(flame_, this);
     connect(dialog, &MutateDialog::flameChanged, this, [this] { requestRender(); });
     dialog->show();
@@ -820,7 +882,7 @@ void EditorWindow::openMutateDialog() {
 
 void EditorWindow::openCurvesDialog() {
     // CurvesDialog mutates the shared flame_ in place (its curves field) -
-    // same flameChanged-signal pattern as openAdjustDialog()/openMutateDialog().
+    // same flameChanged-signal pattern as openMutateDialog().
     auto* dialog = new CurvesDialog(flame_, this);
     connect(dialog, &CurvesDialog::flameChanged, this, [this] { requestRender(); });
     dialog->show();

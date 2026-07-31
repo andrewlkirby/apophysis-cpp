@@ -80,3 +80,11 @@ add_test(NAME editor_window_interaction_test COMMAND editor_window_interaction_t
 add_executable(window_geometry_test window_geometry_test.cpp)
 target_link_libraries(window_geometry_test PRIVATE apo_ui apo_core Qt6::Test)
 add_test(NAME window_geometry_test COMMAND window_geometry_test)
+
+add_executable(adjust_panel_interaction_test adjust_panel_interaction_test.cpp)
+target_link_libraries(adjust_panel_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME adjust_panel_interaction_test COMMAND adjust_panel_interaction_test)
+
+add_executable(editor_window_adjust_panel_test editor_window_adjust_panel_test.cpp)
+target_link_libraries(editor_window_adjust_panel_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME editor_window_adjust_panel_test COMMAND editor_window_adjust_panel_test)

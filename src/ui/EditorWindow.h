@@ -19,12 +19,14 @@ class QCloseEvent;
 class QResizeEvent;
 class QComboBox;
 class QTimer;
+class QSplitter;
+class QStackedWidget;
+class QTabBar;
 
 namespace apo::ui {
 
 class RenderWorker;
 class TriangleCanvas;
-class AdjustDialog;
 class RenderDialog;
 class MutateDialog;
 class FullscreenView;
@@ -32,6 +34,7 @@ class CurvesDialog;
 class XaosDialog;
 class ForceSymmetryDialog;
 class TransformPanel;
+class AdjustPanel;
 
 // The Editor window: TriangleCanvas (see its own file for the interaction
 // model) plus a live preview render behind it, an xform list, a
@@ -54,6 +57,20 @@ class TransformPanel;
 // preview-quality knob AdjustDialog/MutateDialog already use rather than a
 // separate Editor-only setting - matches AppSettings.h's own "a user is
 // unlikely to want them independently configured" reasoning.
+//
+// The right-hand side is a switcher between two panels sharing one
+// QStackedWidget, not two independent widgets: TransformPanel (the default,
+// per-xform Transform/Colors/Variations/Variables editor) and AdjustPanel
+// (Camera/Coloring/Gradient/Size - the same controls AdjustDialog hosts as
+// its own top-level window, see AdjustPanel.h) - toolbar's "Adjust" action
+// and rightTabBar_'s own "Transform"/"Adjust" tabs both just flip
+// rightStack_'s current index, so there is exactly one place ("the panel
+// currently showing") rather than a separate always-on-top dialog that
+// could drift out of sync with whichever xform is selected. Both panels
+// mutate the same shared flame_ in place and feed the same undo stack via
+// onXformPropertyEditingStarted/Finished (see those slots' own comments) -
+// AdjustPanel is just a second source of Structural undo entries, wired
+// exactly like TransformPanel already was.
 class EditorWindow final : public QMainWindow {
     Q_OBJECT
 
@@ -93,7 +110,6 @@ private slots:
     void onCanvasSelectionChanged(int index);
     void onUndo();
     void onRedo();
-    void openAdjustDialog();
     void openRenderDialog();
     void openMutateDialog();
     void onSaveFlameAsTriggered();
@@ -153,6 +169,19 @@ private slots:
     // formula and timer interval as MainWindow::onProgressTick, just scoped
     // to this window's own preview render instead of a full-quality one.
     void onProgressTick();
+    // See TransformPanel::descriptionsVisibilityChanged's doc comment -
+    // widens/narrows centralSplitter_'s right pane so the Variations tab's
+    // Description column is actually readable while shown, instead of just
+    // toggling the column into whatever sliver of width the panel already
+    // has.
+    void onDescriptionsVisibilityChanged(bool show);
+    // rightTabBar_'s currentChanged(int) - flips rightStack_ to match (index
+    // 0 = TransformPanel, 1 = AdjustPanel) and, when switching *to* Adjust,
+    // resyncs its controls from flame_ (AdjustPanel doesn't auto-refresh
+    // while hidden - see AdjustPanel::refreshControlsFromFlame()'s doc
+    // comment - so anything that changed flame_ while Adjust wasn't showing,
+    // e.g. an xform edit's undo/redo, needs a catch-up read here).
+    void onRightPanelTabChanged(int index);
 
 private:
     // `trackProgress` requests a progress_/progressTimer_-driven status-bar
@@ -231,6 +260,14 @@ private:
     TriangleCanvas* canvas_ = nullptr;
     QListWidget* xformList_ = nullptr;
     TransformPanel* transformPanel_ = nullptr;
+    AdjustPanel* adjustPanel_ = nullptr;
+    // rightTabBar_'s two tabs ("Transform"/"Adjust") select rightStack_'s
+    // current page (0/1 respectively) - see onRightPanelTabChanged().
+    QTabBar* rightTabBar_ = nullptr;
+    QStackedWidget* rightStack_ = nullptr;
+    // Hosts canvas_/[rightTabBar_+rightStack_] - see
+    // onDescriptionsVisibilityChanged().
+    QSplitter* centralSplitter_ = nullptr;
 
     QAction* undoAction_ = nullptr;
     QAction* redoAction_ = nullptr;

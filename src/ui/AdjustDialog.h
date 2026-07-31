@@ -14,18 +14,14 @@
 class QThread;
 class QResizeEvent;
 class QCloseEvent;
-class QEvent;
 class QLabel;
-class QComboBox;
-class QSpinBox;
-class QCheckBox;
-class QPushButton;
 class QAction;
 
 namespace apo::ui {
 
 class RenderWorker;
 class SliderSpin;
+class AdjustPanel;
 
 // Port of Adjust.pas (2,733 lines in the original) - deliberately scoped
 // down per the "good performance, not a faithful copy" project directive.
@@ -45,6 +41,18 @@ class SliderSpin;
 // whole-flame-parameter snapshots, mutating the same shared Flame the
 // owning EditorWindow displays - simpler to reason about than threading a
 // second dialog's edits through another window's undo stack.
+//
+// The actual Camera/Coloring/Gradient/Size controls live in AdjustPanel
+// (see its own header comment) - this dialog just wraps one next to its own
+// live preview label, toolbar Undo/Redo, and window geometry persistence,
+// reacting to AdjustPanel's propertyEdited()/editingStarted()/
+// editingFinished() signals the same way EditorWindow does for its own
+// embedded AdjustPanel (see EditorWindow.h) - one control implementation,
+// two hosts. Kept as a standalone top-level window (rather than deleted
+// once EditorWindow could embed the panel directly) for the `--adjust` CLI
+// entry point and this dialog's own test coverage
+// (adjust_dialog_interaction_test.cpp) - both predate the embedded panel
+// and don't need a Flame already open in an Editor window to exercise.
 class AdjustDialog final : public QDialog {
     Q_OBJECT
 
@@ -58,7 +66,6 @@ protected:
     void resizeEvent(QResizeEvent* event) override;
     // Persists the dialog's final size/position (see WindowGeometry.h).
     void closeEvent(QCloseEvent* event) override;
-    bool eventFilter(QObject* watched, QEvent* event) override;
 
 signals:
     // Emitted after every committed edit so an owning window (EditorWindow)
@@ -87,66 +94,25 @@ private:
         FlameSnapshot before, after;
     };
 
-    QWidget* buildCameraTab();
-    QWidget* buildColoringTab();
-    QWidget* buildGradientTab();
-    QWidget* buildSizeTab();
-
     FlameSnapshot snapshot() const;
     void applySnapshot(const FlameSnapshot& s);
-    void refreshControlsFromFlame();
-    void refreshGradientStrip();
-    void refreshBackgroundSwatch();
 
-    // Call before mutating flame_ from any control's live-change handler -
-    // lazily captures the pre-edit snapshot on the first change of a
-    // gesture (slider drag, spin box typing session, button click).
-    void beginEditIfNeeded();
-    // Call once a gesture completes (slider released, spin box editing
-    // finished, or immediately after a single-shot button action) - pushes
-    // an undo entry if anything actually changed, clears the redo stack,
-    // requests a fresh preview, and notifies the owning window.
+    // Bracket one AdjustPanel gesture into this dialog's own undo stack -
+    // connected straight to AdjustPanel::editingStarted()/editingFinished().
+    // beginEdit() runs synchronously inside AdjustPanel::beginEditIfNeeded(),
+    // before that call's own mutation, so the snapshot captured here is
+    // always the true pre-edit state (see AdjustPanel.h's contract).
+    void beginEdit();
+    // Pushes an undo entry if anything actually changed, clears the redo
+    // stack, and notifies the owning window - the panel-hosting equivalent
+    // of the old self-contained commitEdit().
     void commitEdit();
     void updateUndoRedoActions();
 
     void requestPreviewRender();
-    void pickBackgroundColor();
-    void setGradientMode(int modeIndex);
-    void applyGradientAmount(double amount);
-    void openGradientBrowser();
 
     std::shared_ptr<apo::Flame> flame_;
-    apo::ColorMap initialCmap_;   // for the Gradient tab's Reset button
-    apo::ColorMap gradientBaseline_; // snapshot the current mode's slider amount is applied on top of
-
-    // Camera tab
-    SliderSpin* zoomCtrl_ = nullptr;
-    SliderSpin* centerXCtrl_ = nullptr;
-    SliderSpin* centerYCtrl_ = nullptr;
-    SliderSpin* angleCtrl_ = nullptr;
-    SliderSpin* pitchCtrl_ = nullptr;
-    SliderSpin* yawCtrl_ = nullptr;
-    SliderSpin* perspCtrl_ = nullptr;
-    SliderSpin* dofCtrl_ = nullptr;
-    SliderSpin* zposCtrl_ = nullptr;
-
-    // Coloring tab
-    SliderSpin* gammaCtrl_ = nullptr;
-    SliderSpin* brightnessCtrl_ = nullptr;
-    SliderSpin* vibrancyCtrl_ = nullptr;
-    SliderSpin* gammaThresholdCtrl_ = nullptr;
-    QPushButton* backgroundButton_ = nullptr;
-
-    // Gradient tab
-    QLabel* gradientStrip_ = nullptr;
-    QComboBox* gradientModeCombo_ = nullptr;
-    SliderSpin* gradientAmountCtrl_ = nullptr;
-
-    // Size tab
-    QSpinBox* widthSpin_ = nullptr;
-    QSpinBox* heightSpin_ = nullptr;
-    QCheckBox* maintainAspectCheck_ = nullptr;
-    double sizeAspectRatio_ = 1.0;
+    AdjustPanel* panel_ = nullptr;
 
     QLabel* previewLabel_ = nullptr;
     QAction* undoAction_ = nullptr;

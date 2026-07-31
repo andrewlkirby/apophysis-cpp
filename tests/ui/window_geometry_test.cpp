@@ -25,6 +25,7 @@
 // control layout stays comfortably under that ceiling.
 
 #include <algorithm>
+#include <cstdio>
 #include <functional>
 #include <memory>
 #include <string>
@@ -77,6 +78,23 @@ void checkGeometryRoundTrip(const char* windowKey, const QSize& targetSize,
           (std::string(windowKey) + ": closing after a resize saves a new geometry").c_str());
 
     QWidget* second = makeWindow();
+    if (second->size() != resizedTo) {
+        // Diagnostic-only: this mismatch has so far only been reproduced on
+        // Linux/macOS CI (the offscreen QPA platform's virtual screen size
+        // isn't guaranteed identical across Qt versions/platforms - see
+        // this file's own top comment on the AdjustDialog precedent), never
+        // locally on Windows, so print everything relevant on failure
+        // rather than guess again from a bare pass/fail.
+        const QScreen* screen = QGuiApplication::primaryScreen();
+        const QRect screenGeom = screen ? screen->availableGeometry() : QRect();
+        std::fprintf(stderr,
+                     "DEBUG %s size mismatch: target=%dx%d resizedTo(first)=%dx%d second->size()=%dx%d "
+                     "second->minimumSizeHint()=%dx%d screen.availableGeometry=%dx%d+%d+%d\n",
+                     windowKey, targetSize.width(), targetSize.height(), resizedTo.width(), resizedTo.height(),
+                     second->size().width(), second->size().height(), second->minimumSizeHint().width(),
+                     second->minimumSizeHint().height(), screenGeom.width(), screenGeom.height(), screenGeom.x(),
+                     screenGeom.y());
+    }
     check(second->size() == resizedTo, (std::string(windowKey) + ": reopening restores the last-used size").c_str());
     second->close();
     QTest::qWait(20);

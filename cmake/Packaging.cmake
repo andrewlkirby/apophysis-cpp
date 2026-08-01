@@ -6,13 +6,66 @@
 # actually producing a build to hand to someone else.
 #
 # Usage: cmake --build build --config Release --target package_zip
-# Produces build/deploy/ (a runnable, standalone copy of the app) and
-# build/apophysis7x-<version>-win64.zip (the same thing, zipped).
+#
+# Windows produces build/deploy/ (a runnable, standalone copy of the app)
+# and build/apophysis7x-<version>-win64.zip (the same thing, zipped).
+# macOS produces build/deploy/Apophysis 7X.app and
+# build/apophysis7x-<version>-macos-<arch>.zip (the .app, zipped) - <arch>
+# is CMAKE_SYSTEM_PROCESSOR (arm64 or x86_64) rather than a hardcoded
+# value, since this project doesn't set CMAKE_OSX_ARCHITECTURES and so
+# always builds natively for whatever Mac (Apple Silicon or Intel) runs
+# the build - install.sh matches this against its own `uname -m`.
 #
 # Included from the top-level CMakeLists.txt after add_subdirectory(src/ui)
-# (needs the apo_gui target to already exist).
+# (needs the apo_gui target to already exist). APO_VERSION itself is
+# declared in the top-level CMakeLists.txt, not here, since src/ui's
+# MACOSX_BUNDLE_*_VERSION properties need it too and src/ui is added
+# before this file is included.
 
-set(APO_VERSION "1.0.0" CACHE STRING "Apophysis 7X (C++ port) version, used for the package filename")
+set(APO_DEPLOY_DIR "${CMAKE_BINARY_DIR}/deploy")
+
+if(APPLE)
+    # macdeployqt lives alongside windeployqt/qmake in the SDK's bin/ dir -
+    # same Qt6_DIR-relative lookup as the Windows branch below.
+    get_filename_component(APO_QT_BIN_DIR "${Qt6_DIR}/../../../bin" ABSOLUTE)
+    find_program(APO_MACDEPLOYQT_EXECUTABLE
+        NAMES macdeployqt
+        HINTS "${APO_QT_BIN_DIR}"
+    )
+
+    add_custom_target(deploy
+        COMMENT "Staging a standalone Apophysis 7X.app in ${APO_DEPLOY_DIR}"
+        COMMAND ${CMAKE_COMMAND} -E rm -rf "${APO_DEPLOY_DIR}"
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${APO_DEPLOY_DIR}"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "$<TARGET_BUNDLE_DIR:apo_gui>"
+            "${APO_DEPLOY_DIR}/Apophysis 7X.app"
+        # -always-overwrite: macdeployqt otherwise skips frameworks it
+        # thinks are already up to date, which is wrong the first time it
+        # runs against a bundle copy that was just freshly staged above.
+        COMMAND "${APO_MACDEPLOYQT_EXECUTABLE}"
+            "${APO_DEPLOY_DIR}/Apophysis 7X.app"
+            -always-overwrite
+        VERBATIM
+    )
+    add_dependencies(deploy apo_gui)
+
+    add_custom_target(package_zip
+        # ditto (not `cmake -E tar`) preserves the .app bundle's symlinks
+        # (Contents/MacOS/... etc.) - CMake's own zip writer doesn't.
+        COMMAND ditto -c -k --sequesterRsrc --keepParent
+            "Apophysis 7X.app"
+            "${CMAKE_BINARY_DIR}/apophysis7x-${APO_VERSION}-macos-${CMAKE_SYSTEM_PROCESSOR}.zip"
+        WORKING_DIRECTORY "${APO_DEPLOY_DIR}"
+        COMMENT "Zipping ${APO_DEPLOY_DIR}/Apophysis 7X.app -> apophysis7x-${APO_VERSION}-macos-${CMAKE_SYSTEM_PROCESSOR}.zip"
+        VERBATIM
+    )
+    add_dependencies(package_zip deploy)
+
+    return()
+endif()
+
+# --- Windows -----------------------------------------------------------
 
 # windeployqt lives in the same bin/ directory as qmake/moc etc. - Qt6_DIR
 # points at .../lib/cmake/Qt6, so climb back to the SDK root's bin/.
@@ -40,8 +93,6 @@ if(MSVC)
     get_filename_component(APO_VC_DIR "${APO_MSVC_TOOLSET_DIR}/../../.." ABSOLUTE)
     file(GLOB APO_CRT_REDIST_DIR "${APO_VC_DIR}/Redist/MSVC/${APO_MSVC_VERSION}/x64/Microsoft.VC*.CRT")
 endif()
-
-set(APO_DEPLOY_DIR "${CMAKE_BINARY_DIR}/deploy")
 
 add_custom_target(deploy
     COMMENT "Staging a standalone apo_gui build in ${APO_DEPLOY_DIR}"

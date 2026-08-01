@@ -46,6 +46,11 @@ option(APO_CORE_ENABLE_AVX2 "Compile apo_core with AVX2 codegen (/arch:AVX2) - r
 find_package(Qt6 COMPONENTS Widgets Test REQUIRED)
 set(CMAKE_AUTOMOC ON)
 
+# Declared here (rather than in cmake/Packaging.cmake) so src/ui's
+# MACOSX_BUNDLE_*_VERSION properties can use it too - both need the same
+# value, and src/ui is added before Packaging.cmake is included below.
+set(APO_VERSION "1.0.0" CACHE STRING "Apophysis 7X (C++ port) version, used for package filenames and bundle metadata")
+
 add_subdirectory(src/core)
 add_subdirectory(src/tools)
 add_subdirectory(src/ui)
@@ -54,7 +59,10 @@ enable_testing()
 add_subdirectory(tests)
 
 # Phase 8 (Packaging) - opt-in `deploy`/`package_zip` targets, not part of
-# the normal build. Needs the apo_gui target from src/ui above.
-if(WIN32)
+# the normal build. Needs the apo_gui target from src/ui above. Linux has
+# no equivalent CMake target: its packaging tool (linuxdeploy) isn't part
+# of the Qt SDK like windeployqt/macdeployqt are, so it's fetched over the
+# network in CI instead - see packaging/linux-appimage.sh.
+if(WIN32 OR APPLE)
     include(cmake/Packaging.cmake)
 endif()

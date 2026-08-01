@@ -66,6 +66,19 @@ if(WIN32)
     # entirely on Linux/macOS.
     target_sources(apo_gui PRIVATE resources/app.rc)
 endif()
+if(APPLE)
+    # Makes apo_gui a proper .app bundle instead of a bare Unix executable -
+    # required for macdeployqt (cmake/Packaging.cmake) to have somewhere to
+    # embed the Qt frameworks/plugins, and for Finder/Dock/Gatekeeper to
+    # treat it as a normal Mac application rather than a CLI tool.
+    set_target_properties(apo_gui PROPERTIES
+        MACOSX_BUNDLE TRUE
+        MACOSX_BUNDLE_BUNDLE_NAME "Apophysis 7X"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.apophysis.apophysis7x"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${APO_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${APO_VERSION}"
+    )
+endif()
 # apo_core is an OBJECT library too (see src/core/CMakeLists.txt), and
 # CMake does NOT transitively flow an OBJECT library's .obj files through
 # a second OBJECT library - target_link_libraries(apo_ui PUBLIC apo_core)

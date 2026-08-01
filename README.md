@@ -12,12 +12,44 @@ maintainability, not a wrapper or a patch on top of the original.
 > [`docs/FOLLOWUP_PLAN.txt`](docs/FOLLOWUP_PLAN.txt) for the detailed,
 > ongoing audit of what's been ported and what's left. Builds and runs on
 > Windows, Linux, and macOS, verified by CI on every push
-> (`.github/workflows/ci.yml`); the packaged installer/`.zip` distribution
-> under [Packaging](#packaging-a-standalone-build) is Windows-only for now.
+> (`.github/workflows/ci.yml`); tagged releases are packaged for all three
+> — see [Installation](#installation) — by
+> [`.github/workflows/release.yml`](.github/workflows/release.yml).
 
 See [`docs/USAGE.md`](docs/USAGE.md) for a guide to using the app itself —
 the library window, the flame editor, rendering, gradients, and the
 randomization tools.
+
+## Installation
+
+Prebuilt packages (no compiler, Qt, or vcpkg required) are published on
+[GitHub Releases](https://github.com/andrewlkirby/apophysis-cpp/releases)
+by [`.github/workflows/release.yml`](.github/workflows/release.yml). Install
+with a one-line script, which downloads the right package for your OS,
+verifies its checksum, and installs it:
+
+**macOS / Linux:**
+```
+curl -fsSL https://raw.githubusercontent.com/andrewlkirby/apophysis-cpp/main/install.sh | bash
+```
+
+**Windows** (PowerShell):
+```
+irm https://raw.githubusercontent.com/andrewlkirby/apophysis-cpp/main/install.ps1 | iex
+```
+
+macOS installs to `/Applications` (or `~/Applications`); Linux installs an
+AppImage plus a launcher to `~/.local/bin/apophysis7x` and a desktop-menu
+entry; Windows installs to `%LOCALAPPDATA%\Apophysis7X` plus a Start Menu
+shortcut. Both scripts are plain, readable shell/PowerShell — inspect
+before piping into `bash`/`iex` if you'd rather not blind-pipe, or download
+a release asset directly from the [Releases page](https://github.com/andrewlkirby/apophysis-cpp/releases)
+and run/unzip it yourself.
+
+This build isn't code-signed or notarized, so macOS Gatekeeper may refuse
+the first launch ("cannot be opened because the developer cannot be
+verified") — right-click the app in Finder and choose **Open**, or allow
+it via System Settings > Privacy & Security.
 
 ## Features
 
@@ -63,7 +95,11 @@ randomization tools.
 </tr>
 </table>
 
-## Getting started
+## Building from source
+
+Only needed if you want to modify the code or build for a platform/arch the
+release packages don't cover — for normal use, see
+[Installation](#installation) above.
 
 ### Prerequisites
 
@@ -109,8 +145,10 @@ build type is chosen at configure time instead):
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=<vcpkg root>/scripts/buildsystems/vcpkg.cmake -DCMAKE_PREFIX_PATH=~/Qt/6.8.0/gcc_64
 cmake --build build
 ```
-The GUI app builds as `build/src/ui/apo_gui` (no `Release/` subdirectory).
-Use `clang_64` in place of `gcc_64` for the `CMAKE_PREFIX_PATH` on macOS.
+The GUI app builds as `build/src/ui/apo_gui` on Linux, or
+`build/src/ui/Apophysis 7X.app` (a proper .app bundle, needed for
+`macdeployqt` packaging — see below) on macOS. Use `clang_64` in place of
+`gcc_64` for the `CMAKE_PREFIX_PATH` on macOS.
 
 Optional: enable AVX2 codegen for the render/variation hot path (raises the
 minimum supported CPU to roughly Haswell/2013+) with
@@ -136,15 +174,38 @@ apo_render_cli <input.flame> <output.png> [--seed=N] [--threads=N] [--width=W] [
 
 ### Packaging a standalone build
 
+**Windows and macOS** share a `package_zip` CMake target:
+
 ```
-cmake --build build --config Release --target package_zip
+cmake --build build --config Release --target package_zip   # Windows (Release config at build time)
+cmake --build build --target package_zip                     # macOS (Release chosen at configure time)
 ```
 
 Produces `build/deploy/` (a self-contained, redistributable copy of the app
-— Qt and MSVC runtime DLLs included) and
-`build/apophysis7x-<version>-win64.zip`. An Inno Setup installer script is
-also provided at `packaging/apophysis7x.iss` (`iscc packaging\apophysis7x.iss`,
-run from the repo root, after the `deploy` step above).
+— Qt, and on Windows the MSVC runtime, DLLs included) and
+`build/apophysis7x-<version>-win64.zip` or
+`build/apophysis7x-<version>-macos-<arch>.zip` (the `.app`, on macOS). An
+Inno Setup installer script is also provided for Windows at
+`packaging/apophysis7x.iss` (`iscc packaging\apophysis7x.iss`, run from the
+repo root, after the `deploy` step above).
+
+**Linux** has no equivalent CMake target — its packaging tool
+([linuxdeploy](https://github.com/linuxdeploy/linuxdeploy)) isn't part of
+the Qt SDK and has to be fetched over the network, which a normal offline
+`cmake --build` shouldn't require. Run it directly instead, after a Release
+build:
+
+```
+packaging/linux-appimage.sh build <version> [output-dir]
+```
+
+Produces `apophysis7x-<version>-x86_64.AppImage`. Needs ImageMagick's
+`convert` on `PATH` (to derive an icon from `src/ui/resources/app.ico`) —
+`packaging/apophysis7x.png` can be dropped in to skip that requirement.
+
+All three platforms' packages are what `install.sh`/`install.ps1` (repo
+root) download — see [`.github/workflows/release.yml`](.github/workflows/release.yml)
+for how they're built and published on a tagged release.
 
 ## Project layout
 
@@ -157,7 +218,7 @@ src/ui/         Qt6 Widgets application (MainWindow, EditorWindow, dialogs)
 src/tools/      apo_render_cli, apo_bench
 tests/          Logic tests (Qt-free) and tests/ui/ (Qt widget interaction tests)
 docs/           Design/planning notes and audit logs from the porting effort
-packaging/      Inno Setup installer script
+packaging/      Inno Setup installer script, Linux AppImage packaging
 ```
 
 ## License

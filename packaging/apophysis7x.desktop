@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Apophysis 7X
+Comment=Fractal flame editor and renderer
+Exec=apo_gui
+Icon=apophysis7x
+Categories=Graphics;2DGraphics;RasterGraphics;
+Terminal=false

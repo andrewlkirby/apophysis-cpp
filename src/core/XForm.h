@@ -2,6 +2,7 @@
 
 #include <array>
 #include <memory>
+#include <mutex>
 #include <string>
 #include <vector>
 
@@ -143,7 +144,37 @@ private:
     // slot is never reached from calcFunctionList_) - prepare() always
     // overwrites it again via the new instance's own selectCalcFunction()
     // for any index that actually ends up weighted.
+    //
+    // Locks variationMutex_ around the check-and-construct: a render
+    // worker thread's Flame::cloneForRender()/copyFrom() calls
+    // XForm::assign(other) against a live, UI-owned "other" (e.g.
+    // MainWindow::requestRender's non-camera-preview path hands the
+    // worker thread the actual library Flame, not a clone), so the same
+    // source XForm's regVariations_ slot can genuinely be
+    // materialized-from concurrently - by that render thread and by the
+    // UI thread's own getVariable()/setVariable() calls (parameter
+    // panels, another in-flight render, etc.) - at the same time. Before
+    // this lock, that was an unsynchronized read-modify-write on the
+    // same std::unique_ptr from two threads (this method's own
+    // regVariations_[i] = ... assignment racing another thread's read of
+    // the same slot), which is exactly the kind of latent UB that a
+    // platform's specific allocator/thread-scheduling can turn into a
+    // segfault on one OS and not another.
     Variation& ensureRegVariation(int i) const;
+
+    // Thread-safe peek at regVariations_[i]'s current materialization
+    // state (nullptr if not yet constructed) without materializing it -
+    // used by assign()/interpolateVariablesFrom() instead of touching
+    // `other`/`x1`/`x2`'s regVariations_ vector directly, since those
+    // sources can be a live object a render worker thread is reading
+    // concurrently with the UI thread (see ensureRegVariation()'s own
+    // comment). Once a slot is non-null it is never reset back to null on
+    // any XForm other than `this` (assign()/interpolateVariablesFrom()
+    // only ever reset their own destination slot, never a source's), so
+    // guarding just this one-time null -> non-null transition with the
+    // same mutex ensureRegVariation() uses is sufficient - no separate
+    // lock ordering concern since this never also writes.
+    Variation* peekRegVariation(int i) const;
 
     // Local variation procedures - one per kLocalVarNames entry, ported
     // 1:1 from XForm.pas's non-asm branches. All read Tx_/Ty_/Tz_ and
@@ -222,6 +253,22 @@ private:
     // every single getVariable() call, so the first real read must
     // permanently freeze one instead.
     mutable std::vector<std::unique_ptr<Variation>> regVariations_;
+
+    // Guards regVariations_'s (and functionList_'s registered-slot
+    // entries') lazy null -> non-null materialization in
+    // ensureRegVariation()/peekRegVariation() - see their own comments for
+    // why this same XForm instance can genuinely be touched from more
+    // than one thread at once (a live object shared between the UI thread
+    // and an in-flight render worker thread, not just distinct per-thread
+    // render clones). Not needed for anything else here: every other
+    // XForm member is either read/written only by whichever single thread
+    // owns that particular instance's per-point render loop
+    // (calcFunctionList_/tx_/ty_/.../gaussRnd_, all rebuilt fresh by that
+    // thread's own prepare() call), or - for vars_/c/p and the rest of
+    // the plain settable fields - already relies on the caller not
+    // concurrently mutating a live flame while it's mid-render, same as
+    // before this lazy-instantiation change existed.
+    mutable std::mutex variationMutex_;
 
     // Built once (matches Delphi's FFunctionList, built in BuildFunctionlist
     // at construction time): every available calc function, local + registered,

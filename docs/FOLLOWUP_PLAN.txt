@@ -15,6 +15,88 @@ cost, allocation cost, memory traffic, and parallelism. Everything below
 was verified in source, not assumed.
 
 PROGRESS LOG (most recent first):
+  2026-08-01: Post-B1(b) regression fixed: a real data race in
+  XForm::ensureRegVariation()'s lazy materialization, caught by a macOS CI
+  segfault in main_window_interaction_test (0.39s runtime - dying almost
+  immediately, before any of that file's render-heavy checks) that did not
+  reproduce on Windows CI/dev-machine ctest runs (48/48 passed there both
+  before and after this fix, on both Debug and Release). Not a macOS
+  quirk: root-caused to a genuine, platform-independent thread-safety bug
+  B1(b) introduced, which macOS's specific allocator/thread-scheduling
+  just happened to turn into a crash first.
+
+  Root cause: before B1(b), every XForm's regVariations_ was fully
+  populated at construction time, so XForm::assign()/interpolateVariablesFrom()/
+  getVariable() reading a *shared* source XForm from multiple threads at
+  once was safe (pure reads of already-built, never-again-mutated
+  objects). B1(b) made regVariations_ lazy - the first read of an
+  unmaterialized slot now *writes* to it (constructing a Variation and
+  binding functionList_) - turning those same call sites into
+  unsynchronized concurrent read-modify-writes on the same
+  std::unique_ptr whenever two threads touch the same XForm at once. That
+  is a real, live scenario here, not a hypothetical one:
+  MainWindow::requestRender()'s non-camera-preview path (MainWindow.cpp,
+  startRender()) hands RenderWorker's worker QThread the actual live
+  Flame shared_ptr - not a clone - and Renderer::render() ->
+  Flame::cloneForRender() -> XForm::assign(*xform[i]) then reads that
+  live XForm's regVariations_ as `other` on the worker thread, fully
+  capable of racing the UI thread's own concurrent getVariable()/
+  setVariable() calls (parameter panels, another in-flight render, etc.)
+  on that same object.
+
+  Fix: XForm gained a mutable std::mutex variationMutex_ (XForm.h/.cpp).
+  ensureRegVariation() now locks it around its check-and-construct
+  (previously unsynchronized). Since a slot, once non-null, is never
+  reset back to null on any XForm other than `this` (assign()/
+  interpolateVariablesFrom() only ever null out their own destination
+  slot, never a source's), only that one-time null->non-null transition
+  needed guarding - a new peekRegVariation(i) (also mutex-guarded, read-
+  only) replaced every direct other.regVariations_[i]/x1.regVariations_[i]/
+  x2.regVariations_[i] touch in assign()/interpolateVariablesFrom() with a
+  synchronized read, closing the same race at every call site that used
+  to reach into the vector directly instead of going through
+  ensureRegVariation(). No behavior change for the already-passing
+  single-threaded test suite (48/48 on both Debug and Release, matching
+  before this fix) - this only adds synchronization around access
+  patterns that were already supposed to be safe.
+
+  2026-08-01: B1(c) (index-based variable copy in XForm::assign()/
+  interpolateVariablesFrom()) investigated and deliberately SKIPPED - no
+  code changes, documentation only. Traced what actually closing the
+  string-traffic gap left by B1(b) would require: XForm::assign()
+  (XForm.cpp:307-360) and interpolateVariablesFrom() (:362-424) still
+  turn each registered-variation parameter index into a name via
+  factory.variableNameAt(j), then round-trip through getVariable(name)/
+  setVariable(name) - a string comparison against that variation's own
+  `if (name == "pdj_a") ...` chain. A real fix means adding a genuine
+  index-based accessor (switch(index), not a name lookup) to every one of
+  the ~39 native variation files that declare named parameters (grepped
+  numVariables() const override across src/core/variations/*.h to get
+  this count, not estimated) - each requiring careful hand-verification,
+  since several have non-trivial behavior baked into their existing
+  name-keyed setVariable (e.g. VarJulian's julian_power rounds to a
+  nonzero integer; VarAuger's resetVariable preserves a deliberate,
+  shipped Pascal typo - see VarAuger.cpp) that a mechanical per-file
+  rewrite could easily transcribe wrong. Separately, and unconditionally:
+  the ~48 plugin variations (PluginVariation.cpp, wrapping the legacy
+  apoplugin.h C ABI) cannot benefit AT ALL - their vtable only exposes
+  getVariable(name)/setVariable(name) by name, with no index-based hook,
+  so roughly half of all registered variation types would stay on the
+  string path regardless of how much work went into the other half.
+  Weighed against that surface and risk: B1(b)'s own apo_bench
+  measurement already brought per-render setup cost down to single-digit
+  milliseconds at preview scale (see that entry, below) - the string-
+  comparison overhead this item would remove sits on top of an already-
+  small number, bounded by each xform's actual numVariables() (almost
+  always 1-4), i.e. a likely sub-millisecond, probably-unmeasurable
+  effect per assign() call. Decision: skip, rather than accept real
+  correctness risk against already-tested variation math for a return
+  this small - matching this project's own established precedent for
+  disproportionate items (MISSING_FEATURES_PLAN.txt's P3.3/P4.4/P4.5, all
+  "stays dropped, no change") rather than leaving a perpetually-open,
+  silently-stale TODO. B1 is now fully closed out: (a) and (b) done, (c)
+  evaluated and deliberately not pursued.
+
   2026-08-01: B1(b) (lazy per-XForm variation instantiation) implemented -
   the "largest structural win" B1's own text flagged, picking up where
   B1a (clone only active xforms) left off: even with B1a capping which
@@ -1138,9 +1220,13 @@ Plan, in increasing order of invasiveness (measure after each):
       the full account). assign()/interpolateVariablesFrom() still copy
       variable values BY NAME (unchanged from before this item) - that
       per-copy string traffic is (c) below, still open.
-  (c) Index-based variable copy in XForm::assign()/
-      interpolateVariablesFrom() (getVariableAt/setVariableAt(int)) to
-      kill the per-copy string traffic that remains after (b).
+  (c) EVALUATED AND SKIPPED (2026-08-01, see progress log) - the actual
+      fix requires an index-based accessor added to all ~39 native
+      variation files with named parameters (the ~48 plugin variations
+      cannot benefit at all - their C ABI is name-only), for a likely
+      sub-millisecond, unmeasurable win on top of what (b) already
+      captured. Deliberately not pursued; see progress log for the full
+      reasoning.
 
 --------------------------------------------------------------------------------
 B2. Hot-loop dispatch: std::function chain + virtual RNG    [BIG, measure]

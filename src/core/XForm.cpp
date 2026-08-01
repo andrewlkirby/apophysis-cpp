@@ -55,12 +55,18 @@ void XForm::addRegVariations() {
 }
 
 Variation& XForm::ensureRegVariation(int i) const {
+    std::lock_guard<std::mutex> lock(variationMutex_);
     if (!regVariations_[i]) {
         auto& registry = VariationRegistry::instance();
         regVariations_[i] = registry.registeredVariation(i).create();
         functionList_[kNumLocalVars + i] = bindCalc<Variation, &Variation::calc>(regVariations_[i].get());
     }
     return *regVariations_[i];
+}
+
+Variation* XForm::peekRegVariation(int i) const {
+    std::lock_guard<std::mutex> lock(variationMutex_);
+    return regVariations_[i].get();
 }
 
 void XForm::buildFunctionList() {
@@ -321,7 +327,14 @@ void XForm::assign(const XForm& other) {
     auto& registry = VariationRegistry::instance();
     for (size_t i = 0; i < n; ++i) {
         const auto& factory = registry.registeredVariation(static_cast<int>(i));
-        if (!other.regVariations_[i]) {
+        // peekRegVariation(), not a direct other.regVariations_[i] read:
+        // `other` can be a live object a render worker thread is reading
+        // concurrently with the UI thread (see ensureRegVariation()'s own
+        // comment) - going through the synchronized peek instead of
+        // touching the vector directly is what keeps this a data-race-free
+        // read of that shared unique_ptr.
+        Variation* src = other.peekRegVariation(static_cast<int>(i));
+        if (!src) {
             // hasNonDeterministicConstructionDefault (Variation.h): other's
             // unmaterialized slot does NOT stand for one fixed, reproducible
             // value for this type - it's whatever a fresh construction
@@ -332,7 +345,7 @@ void XForm::assign(const XForm& other) {
             // requirement getVariable() has), then fall through to copy it
             // like any materialized source.
             if (factory.hasNonDeterministicConstructionDefault) {
-                other.ensureRegVariation(static_cast<int>(i));
+                src = &other.ensureRegVariation(static_cast<int>(i));
             } else {
                 // other is at this variation type's factory default (never
                 // touched it) - this must end up matching, so drop any
@@ -349,7 +362,7 @@ void XForm::assign(const XForm& other) {
         for (int j = 0; j < nVars; ++j) {
             const std::string name = factory.variableNameAt(j);
             double value = 0;
-            other.regVariations_[i]->getVariable(name, value);
+            src->getVariable(name, value);
             dst.setVariable(name, value);
         }
     }
@@ -370,6 +383,15 @@ void XForm::interpolateVariablesFrom(const XForm& x1, const XForm& x2, double c0
         const int nVars = factory.numVariables();
         if (nVars == 0) continue;
 
+        // peekRegVariation(), not a direct x1/x2.regVariations_[i] read:
+        // x1/x2 can be live objects a render worker thread is reading
+        // concurrently with the UI thread (see ensureRegVariation()'s own
+        // comment) - going through the synchronized peek instead of
+        // touching the vector directly is what keeps this a data-race-free
+        // read of that shared unique_ptr.
+        Variation* v1 = x1.peekRegVariation(static_cast<int>(i));
+        Variation* v2 = x2.peekRegVariation(static_cast<int>(i));
+
         // hasNonDeterministicConstructionDefault (Variation.h): an
         // unmaterialized side does NOT stand for one fixed, reproducible
         // value for this type, so neither the c0+c1==1 skip below nor a
@@ -380,9 +402,9 @@ void XForm::interpolateVariablesFrom(const XForm& x1, const XForm& x2, double c0
         // requirement getVariable() has), then fall through to the normal
         // blend using those now-real instances.
         if (factory.hasNonDeterministicConstructionDefault) {
-            x1.ensureRegVariation(static_cast<int>(i));
-            x2.ensureRegVariation(static_cast<int>(i));
-        } else if (!x1.regVariations_[i] && !x2.regVariations_[i]) {
+            if (!v1) v1 = &x1.ensureRegVariation(static_cast<int>(i));
+            if (!v2) v2 = &x2.ensureRegVariation(static_cast<int>(i));
+        } else if (!v1 && !v2) {
             // Neither keyframe ever customized this one - blending two
             // copies of the same factory default. When c0+c1==1 (true of
             // MutationOps::blendXforms's only real caller, c0=1-t/c1=t)
@@ -400,12 +422,10 @@ void XForm::interpolateVariablesFrom(const XForm& x1, const XForm& x2, double c0
         // materialized both) reads as its type's real factory default via
         // a throwaway instance, without permanently materializing x1/x2.
         std::unique_ptr<Variation> tmp1, tmp2;
-        const Variation* v1 = x1.regVariations_[i].get();
         if (!v1) {
             tmp1 = factory.create();
             v1 = tmp1.get();
         }
-        const Variation* v2 = x2.regVariations_[i].get();
         if (!v2) {
             tmp2 = factory.create();
             v2 = tmp2.get();

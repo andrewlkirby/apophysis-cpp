@@ -97,9 +97,102 @@ void testEveryVariationRoundTrips() {
               .c_str());
 }
 
+// FOLLOWUP_PLAN.txt B1(b): every registered variation's Variation instance
+// is now constructed lazily - a fresh XForm never touches any of them (all
+// weights default to 0 except linear). getVariable() must still report each
+// one's real factory-default value for every one of its own registered
+// parameters, not just for the single hand-picked case core_smoke_test.cpp
+// covers (auger) - a per-variation subclass with an unusual default could
+// only be caught by actually enumerating all of them, same rationale as
+// testEveryVariationRoundTrips above.
+//
+// EXCEPT for a variation flagged hasNonDeterministicConstructionDefault
+// (pdj/julian/julia3D/julia3Dz/juliascope/rings2/fan2/radial_blur - each
+// draws its own default from constructionRandom01() at construction, not a
+// fixed constant, see Variation.h) - comparing against a second, separately
+// constructed `factory.create()` instance for one of these would be
+// comparing two independent random draws, not verifying anything real, so
+// this test only checks the deterministic-default majority here. The
+// non-deterministic ones get their own, correctly-shaped check right below
+// instead: idempotent repeated reads of the SAME XForm, which is the actual
+// invariant getVariable()'s materialize-and-freeze behavior promises.
+void testEveryVariationReadsItsDefaultsBeforeAnyTouch() {
+    auto& registry = apo::VariationRegistry::instance();
+    const int totalRegistered = registry.numRegisteredVariations();
+
+    int checkedCount = 0;
+    for (int i = 0; i < totalRegistered; ++i) {
+        const auto& factory = registry.registeredVariation(i);
+        if (factory.hasNonDeterministicConstructionDefault) continue;
+        const int nVars = factory.numVariables();
+        if (nVars == 0) continue;
+
+        apo::XForm x; // never weighted, never touched - variation i is still at its factory default
+        for (int j = 0; j < nVars; ++j) {
+            const std::string paramName = factory.variableNameAt(j);
+            double fromXForm = 0;
+            const bool gotFromXForm = x.getVariable(paramName, fromXForm);
+
+            auto reference = factory.create();
+            double fromFreshInstance = 0;
+            const bool gotFromInstance = reference->getVariable(paramName, fromFreshInstance);
+
+            if (!gotFromXForm || !gotFromInstance || !approxEqual(fromXForm, fromFreshInstance, 1e-9)) {
+                check(false, ("variation '" + factory.name() + "' parameter '" + paramName +
+                               "' reads its true factory default before ever being touched")
+                                  .c_str());
+                continue;
+            }
+            ++checkedCount;
+        }
+    }
+
+    check(checkedCount > 0, "at least one registered variation's parameter was actually exercised by this test");
+}
+
+// The non-deterministic-default counterpart to the test above: for these
+// types, getVariable() must still be idempotent on repeated reads of the
+// SAME never-touched XForm (materialize-and-freeze on first read, per
+// XForm.cpp's own getVariable()/ensureRegVariation() comments) - two
+// separate reads must agree with each other, even though neither is
+// expected to match any other XForm's own frozen value.
+void testNonDeterministicDefaultVariationsFreezeOnFirstRead() {
+    auto& registry = apo::VariationRegistry::instance();
+    const int totalRegistered = registry.numRegisteredVariations();
+
+    int checkedCount = 0;
+    for (int i = 0; i < totalRegistered; ++i) {
+        const auto& factory = registry.registeredVariation(i);
+        if (!factory.hasNonDeterministicConstructionDefault) continue;
+        const int nVars = factory.numVariables();
+        if (nVars == 0) continue;
+
+        apo::XForm x; // never weighted, never touched
+        for (int j = 0; j < nVars; ++j) {
+            const std::string paramName = factory.variableNameAt(j);
+            double firstRead = 0, secondRead = 0;
+            const bool gotFirst = x.getVariable(paramName, firstRead);
+            const bool gotSecond = x.getVariable(paramName, secondRead);
+
+            if (!gotFirst || !gotSecond || !approxEqual(firstRead, secondRead, 1e-9)) {
+                check(false, ("variation '" + factory.name() + "' parameter '" + paramName +
+                               "' (non-deterministic default) reads the same value on repeated calls")
+                                  .c_str());
+                continue;
+            }
+            ++checkedCount;
+        }
+    }
+
+    check(checkedCount > 0,
+          "at least one non-deterministic-default variation's parameter was actually exercised by this test");
+}
+
 } // namespace
 
 int main() {
     testEveryVariationRoundTrips();
+    testEveryVariationReadsItsDefaultsBeforeAnyTouch();
+    testNonDeterministicDefaultVariationsFreezeOnFirstRead();
     return apo_test::reportAndExit();
 }

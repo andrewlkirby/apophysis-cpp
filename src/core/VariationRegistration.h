@@ -47,11 +47,19 @@ public:
 // translation units: VariationRegistry::instance() is a function-local
 // (Meyer's) singleton, so it's constructed on first use by whichever
 // registerVariation<T>() call happens to run first.
+//
+// `hasRngSideEffectInPrepare`/`hasNonDeterministicConstructionDefault` both
+// default to false; each variation that needs one passes it explicitly at
+// its own registration call site (radial_blur for the former; pdj/julian/
+// julia3D/julia3Dz/juliascope/rings2/fan2 for the latter) - see
+// VariationFactory's own doc comments for why each matters.
 template <typename VariationT>
-bool registerVariation() {
+bool registerVariation(bool hasRngSideEffectInPrepare = false, bool hasNonDeterministicConstructionDefault = false) {
     auto factory = std::make_unique<SimpleVariationFactory<VariationT>>();
     factory->supports3D = VariationT::kSupports3D;
     factory->supportsDC = VariationT::kSupportsDC;
+    factory->hasRngSideEffectInPrepare = hasRngSideEffectInPrepare;
+    factory->hasNonDeterministicConstructionDefault = hasNonDeterministicConstructionDefault;
     VariationRegistry::instance().registerVariation(std::move(factory));
     return true;
 }

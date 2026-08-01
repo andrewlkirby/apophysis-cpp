@@ -217,6 +217,133 @@ void testAugerMatchesHandComputation() {
           "auger variation output matches a hand-computed formula for a known point");
 }
 
+void testGetVariableReadsFactoryDefaultBeforeAnyTouch() {
+    // FOLLOWUP_PLAN.txt B1(b): a registered variation's Variation instance
+    // is only constructed lazily (nonzero weight, or a caller reads/writes
+    // one of its named parameters) - getVariable() must still report the
+    // real factory-default value for a variation that has never been
+    // touched at all, not just for one already materialized by some other
+    // path.
+    apo::XForm x; // auger's weight is 0 (default linear=1 only) - never set, never queried before now
+    double freq = -1, weight = -1, scale = -1, sym = -1;
+    check(x.getVariable("auger_freq", freq) && approxEqual(freq, 5.0),
+          "auger_freq reads its factory default (5) on a never-touched XForm");
+    check(x.getVariable("auger_weight", weight) && approxEqual(weight, 0.5),
+          "auger_weight reads its factory default (0.5) on a never-touched XForm");
+    check(x.getVariable("auger_scale", scale) && approxEqual(scale, 0.1),
+          "auger_scale reads its factory default (0.1) on a never-touched XForm");
+    check(x.getVariable("auger_sym", sym) && approxEqual(sym, 0.0),
+          "auger_sym reads its factory default (0) on a never-touched XForm");
+    check(!x.getVariable("not_a_real_parameter_name", freq), "an unknown parameter name is rejected");
+}
+
+void testResetVariableOnUntouchedVariationReturnsTrueWithoutChangingDefault() {
+    apo::XForm x;
+    check(x.resetVariable("auger_freq"), "resetVariable on a name owned by a never-touched variation still reports success");
+    double freq = -1;
+    check(x.getVariable("auger_freq", freq) && approxEqual(freq, 5.0),
+          "...and the value is still exactly the factory default afterward");
+    check(!x.resetVariable("not_a_real_parameter_name"), "resetVariable rejects an unknown parameter name");
+}
+
+void testAssignResetsUntouchedVariationBackToDefault() {
+    // The core correctness risk B1(b) introduces: if the destination
+    // customized a variation the source never touched, assign() must still
+    // reset the destination back to the source's (default) value - not
+    // silently leave the stale customization behind just because the
+    // source's slot is null.
+    apo::XForm src;
+    apo::XForm dst;
+
+    double customFreq = 9.0;
+    dst.setVariable("auger_freq", customFreq);
+    double readBack = -1;
+    dst.getVariable("auger_freq", readBack);
+    check(approxEqual(readBack, 9.0), "sanity check: dst's auger_freq is actually customized before assign()");
+
+    dst.assign(src); // src never touched auger at all
+
+    double afterAssign = -1;
+    check(dst.getVariable("auger_freq", afterAssign) && approxEqual(afterAssign, 5.0),
+          "assign() from an untouched source resets a previously-customized parameter back to the factory default");
+}
+
+void testAssignCopiesACustomizedValueFromSource() {
+    apo::XForm src;
+    apo::XForm dst;
+
+    double customFreq = 12.0;
+    src.setVariable("auger_freq", customFreq);
+
+    dst.assign(src);
+
+    double value = -1;
+    check(dst.getVariable("auger_freq", value) && approxEqual(value, 12.0),
+          "assign() copies a source's customized parameter value onto a destination that never touched it");
+}
+
+void testInterpolateVariablesFromBlendsAgainstTrueDefaultWhenOnlyOneSideTouched() {
+    apo::XForm x1; // never touches auger
+    apo::XForm x2;
+    double customFreq = 13.0;
+    x2.setVariable("auger_freq", customFreq);
+
+    apo::XForm out;
+    out.interpolateVariablesFrom(x1, x2, 0.5, 0.5);
+
+    double blended = -1;
+    check(out.getVariable("auger_freq", blended) && approxEqual(blended, 0.5 * 5.0 + 0.5 * 13.0),
+          "interpolateVariablesFrom blends x2's customized value against x1's true (unmaterialized) factory default");
+}
+
+void testInterpolateVariablesFromLeavesBothUntouchedSideAtDefault() {
+    apo::XForm x1;
+    apo::XForm x2;
+    apo::XForm out;
+    // c0+c1==1, matching MutationOps::blendXforms's only real call shape.
+    out.interpolateVariablesFrom(x1, x2, 0.4, 0.6);
+
+    double value = -1;
+    check(out.getVariable("auger_freq", value) && approxEqual(value, 5.0),
+          "interpolating two untouched sides (c0+c1==1) leaves the result at the factory default");
+}
+
+void testAssignCopiesNonDeterministicDefaultSourceExactly() {
+    // pdj_a's default is drawn from constructionRandom01() at construction
+    // (VarPDJ::VarPDJ()), not a fixed constant - the exact case
+    // hasNonDeterministicConstructionDefault exists for (Variation.h).
+    // assign() must reproduce src's own frozen value on dst, not let dst's
+    // first real touch draw an independent random default of its own.
+    apo::XForm src;
+    apo::XForm dst;
+
+    double srcValue = -1;
+    check(src.getVariable("pdj_a", srcValue), "src's pdj_a is readable before assign()");
+
+    dst.assign(src); // src never explicitly set pdj_a - it's still at its (random, frozen) construction default
+
+    double dstValue = -1;
+    check(dst.getVariable("pdj_a", dstValue) && approxEqual(dstValue, srcValue),
+          "assign() reproduces a non-deterministic-default source's own frozen value exactly, not a fresh draw");
+}
+
+void testInterpolateVariablesFromMaterializesBothNonDeterministicSides() {
+    apo::XForm x1; // never touches pdj_a - has its own random construction default
+    apo::XForm x2; // ditto, a DIFFERENT random construction default (independent instance)
+
+    double v1 = -1, v2 = -1;
+    x1.getVariable("pdj_a", v1);
+    x2.getVariable("pdj_a", v2);
+
+    apo::XForm out;
+    out.interpolateVariablesFrom(x1, x2, 0.5, 0.5);
+
+    double blended = -1;
+    check(out.getVariable("pdj_a", blended) && approxEqual(blended, 0.5 * v1 + 0.5 * v2),
+          "interpolateVariablesFrom blends the two sides' own real (materialized) construction defaults, "
+          "not two independent fresh draws");
+}
+
 void testJulianSpecializedDispatch() {
     const int julianIndex = apo::VariationRegistry::instance().variationIndex("julian");
 
@@ -254,6 +381,14 @@ int main() {
     testRemoveXFormCompactsIndicesAndXaosColumns();
     testRegisteredVariationsIncludeCoreExamples();
     testAugerMatchesHandComputation();
+    testGetVariableReadsFactoryDefaultBeforeAnyTouch();
+    testResetVariableOnUntouchedVariationReturnsTrueWithoutChangingDefault();
+    testAssignResetsUntouchedVariationBackToDefault();
+    testAssignCopiesACustomizedValueFromSource();
+    testInterpolateVariablesFromBlendsAgainstTrueDefaultWhenOnlyOneSideTouched();
+    testInterpolateVariablesFromLeavesBothUntouchedSideAtDefault();
+    testAssignCopiesNonDeterministicDefaultSourceExactly();
+    testInterpolateVariablesFromMaterializesBothNonDeterministicSides();
     testJulianSpecializedDispatch();
 
     return apo_test::reportAndExit();

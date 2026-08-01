@@ -65,7 +65,11 @@ bool VarFan2::setVariable(const std::string& name, double& value) {
 }
 
 namespace {
-const bool kRegistered = registerVariation<VarFan2>();
+// hasNonDeterministicConstructionDefault=true: fan2_x/fan2_y's defaults are
+// drawn from constructionRandom01() at construction, not a fixed constant -
+// see VariationFactory's own doc comment (Variation.h).
+const bool kRegistered = registerVariation<VarFan2>(/*hasRngSideEffectInPrepare=*/false,
+                                                     /*hasNonDeterministicConstructionDefault=*/true);
 }
 
 } // namespace apo

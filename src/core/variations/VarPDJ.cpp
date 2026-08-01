@@ -46,7 +46,13 @@ bool VarPDJ::setVariable(const std::string& name, double& value) {
 }
 
 namespace {
-const bool kRegistered = registerVariation<VarPDJ>();
+// hasNonDeterministicConstructionDefault=true: a_/b_/c_/d_ are each drawn
+// fresh from constructionRandom01() at construction time, not a fixed
+// constant - see VariationFactory's own doc comment (Variation.h) for why
+// XForm::assign()/interpolateVariablesFrom() must always materialize both
+// sides for this type rather than skipping the copy when unmaterialized.
+const bool kRegistered = registerVariation<VarPDJ>(/*hasRngSideEffectInPrepare=*/false,
+                                                    /*hasNonDeterministicConstructionDefault=*/true);
 }
 
 } // namespace apo

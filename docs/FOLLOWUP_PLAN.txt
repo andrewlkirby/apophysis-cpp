@@ -15,6 +15,142 @@ cost, allocation cost, memory traffic, and parallelism. Everything below
 was verified in source, not assumed.
 
 PROGRESS LOG (most recent first):
+  2026-08-01: B1(b) (lazy per-XForm variation instantiation) implemented -
+  the "largest structural win" B1's own text flagged, picking up where
+  B1a (clone only active xforms) left off: even with B1a capping which
+  xforms get cloned, each surviving XForm still eagerly constructed one
+  Variation instance for EVERY registered type (~150-200: 94 built-in +
+  ~55 plugin wrappers) regardless of how many a typical flame actually
+  uses (1-5). XForm::regVariations_ is now a vector of nullable slots,
+  sized at construction but left null until first needed; a new
+  ensureRegVariation(i) (const, mutating only the now-mutable
+  regVariations_/functionList_) constructs one lazily the first time
+  variation i actually gets nonzero weight or a caller reads/writes one
+  of its named parameters via getVariable/setVariable/resetVariable.
+  VariationRegistry gained variationIndexForVariableName(name) (reusing
+  its existing flattened variableNames_/variableNameToVariationIndex_
+  arrays, already built for the editor's variable panel) so XForm's
+  get/set/reset go straight to the owning index instead of the old
+  linear scan across every (now possibly-null) Variation instance.
+
+  Two real correctness bugs were found and fixed during this item, both
+  via the existing regression suite catching real failures rather than
+  by inspection - reported here in full per this file's own established
+  practice of not hiding what a "measure/verify" step actually finds:
+
+  Bug 1 (RNG-stream corruption, caught by baseline_regression_test):
+  XForm::prepare() originally skipped prepare()/selectCalcFunction()
+  entirely for a zero-weight registered variation (calc() is never
+  invoked for one regardless, so this looked like pure dead-work
+  elimination) - except VarRadialBlur::prepare() unconditionally draws 4
+  values from the bound Rng to reseed its own rolling gaussian buffer,
+  independent of its own weight. Skipping that for every zero-weight
+  instance silently removed those 4 draws from the RNG stream for EVERY
+  flame, not just ones using radial_blur, desyncing single-threaded
+  deterministic output from the very first point onward - caught as 4 of
+  5 baseline fixtures (swirl_spherical, xaos_blend, camera_3d,
+  final_xform; only the variation-free simple_sierpinski was unaffected)
+  dropping from PSNR=inf to 24-44dB, nowhere near the 50dB bar. Root-
+  caused via bisection (git stash half the change, add temporary
+  fprintf diagnostics to renderBatch() and an isolated single-XForm
+  repro, compare old vs. new draw-by-draw) down to the exact first
+  diverging value, not just "some baseline broke." Fixed with a new
+  VariationFactory::hasRngSideEffectInPrepare flag (default false,
+  radial_blur's own registerVariation<VarRadialBlur>() call passes
+  true) - XForm::prepare() now always materializes/prepares a flagged
+  type regardless of weight, preserving its draw count exactly, while
+  every other registered variation (verified individually via grep
+  across every prepare()/selectCalcFunction() override - none of the
+  rest touch rng) stays fully lazy. All 5 baselines back to PSNR=inf
+  after the fix.
+
+  Bug 2 (non-idempotent/incorrect reads for randomized-default
+  variations, caught by a new variation_roundtrip_test.cpp check):
+  getVariable()'s original lazy design read an unmaterialized
+  variation's default via a THROWAWAY factory.create() instance (avoids
+  permanently allocating just to peek). This assumed every variation's
+  unmaterialized state represents one fixed, reproducible value - false
+  for 8 of the ~150-200 registered types (pdj, julian, julia3D,
+  julia3Dz, juliascope, rings2, fan2, radial_blur), which draw their own
+  default from constructionRandom01() AT CONSTRUCTION TIME, not a fixed
+  constant (e.g. VarPDJ::VarPDJ(): a_(6*constructionRandom01()-3)) -
+  grepped for every constructionRandom01() call site to find the exact
+  set, not assumed. A throwaway instance therefore returned a DIFFERENT
+  random value on every single getVariable() call for the same untouched
+  XForm - caught directly by a new test asserting repeated reads agree
+  with each other. A related bug in resetVariable()'s parallel
+  "unmaterialized == already at reset value" shortcut: reset value is
+  not guaranteed to equal the construction default even before this
+  session's changes (auger's own resetVariable already resets
+  "auger_scale" to auger_sym_'s default instead of its own - a
+  faithfully-ported Pascal typo, see VarAuger.cpp - so this was a
+  latent correctness gap this refactor's own new tests exposed, not
+  introduced). Fixed by making regVariations_/functionList_ mutable and
+  ensureRegVariation() const, so getVariable()/resetVariable() always
+  materialize-and-freeze via ensureRegVariation() rather than a
+  throwaway/shortcut - the first real read of a non-deterministic
+  variation now permanently fixes its value, matching every other
+  variation's already-idempotent behavior. assign()/
+  interpolateVariablesFrom() needed the same treatment for their own
+  null-skip fast paths: a second new VariationFactory flag,
+  hasNonDeterministicConstructionDefault (set true at the same 8 types'
+  own registerVariation<T>() call sites), forces both sides to
+  materialize via ensureRegVariation() for a flagged type instead of
+  skipping the copy - otherwise a destination's own later first-touch
+  could draw an independent random value instead of faithfully
+  reproducing the source's frozen one, a real (if obscure) rendered-
+  output difference this session chose to prevent up front rather than
+  discover later. Deterministic-default variations (the overwhelming
+  majority) keep the original null-skip fast path unchanged.
+
+  New tests: 6 in core_smoke_test.cpp (default-value reads before any
+  touch, resetVariable on a never-materialized parameter, assign()
+  correctly resets a customized destination back to an untouched
+  source's default AND correctly copies a customized source's value,
+  interpolateVariablesFrom blends against a true unmaterialized default,
+  plus two pdj-specific cases verifying assign()/interpolateVariablesFrom
+  reproduce a non-deterministic source's own frozen value rather than an
+  independent fresh draw) and 2 in variation_roundtrip_test.cpp (every
+  deterministic-default registered variation's every parameter reads its
+  real factory default before any touch, enumerated across all ~150-200
+  types the same way testEveryVariationRoundTrips already does; the 8
+  non-deterministic ones get their own idempotent-repeated-read check
+  instead, since comparing against a second independently-constructed
+  instance would only be comparing two unrelated random draws).
+
+  Measured via apo_bench (linear/transcendental/blur fixtures,
+  single-threaded and auto/16-thread, 3 repeats each): at the full
+  800x600/density=200 render size used throughout this session's Part B
+  work, setup cost is already down in the low tens-of-milliseconds range
+  post-B1a and this item shows no reliably measurable further change
+  there (run-to-run noise on this machine exceeds any signal, consistent
+  with B1a's own log noting setup is already a small fraction of a
+  multi-second render at this size) - iterate/reduce/tonemap are
+  untouched by this item entirely, as expected, and showed no change.
+  At B1a's own interactive-preview benchmark scale (200x150/density=30,
+  where B1a itself measured its biggest win), auto/16-thread setup drops
+  further from ~0.007-0.008s to ~0.004-0.005s (roughly 40-45%) across
+  all three fixtures - a real, measurable, but modest win in absolute
+  terms, smaller than B1a's own preview-scale win because these
+  3-xform-per-flame benchmark fixtures already had most of their
+  clone/construction cost eliminated by B1a alone (each surviving XForm
+  previously constructed ~150-200 unused Variation instances; now
+  construction is skipped for whichever of those never get weight,
+  which for these fixtures is all but 2-3 of them - the remaining win is
+  real but bounded by how much construction cost B1a's own xform-count
+  cap had already removed for a small-xform flame). The bigger,
+  currently-unmeasured beneficiary is a flame using MANY distinct
+  variation types across FEW xforms (this benchmark's fixtures don't
+  exercise that shape) - B1a's cap doesn't help there at all (every
+  xform still needs cloning), so B1(b) is the only lever for that case,
+  not measured here for lack of a representative fixture but expected to
+  show a larger win than what's reported above.
+
+  Full suite (48/48) verified in both Debug and Release after both bugs
+  above were fixed (the pre-fix state briefly showed the exact 4/5
+  baseline failures and 1 roundtrip-test failure described above, not a
+  clean run at any point this was reported as done).
+
   2026-07-18: Fixed a real crash-on-cancel bug reported by the user
   ("program crashes when I cancel rendering"), root-caused via WER minidump
   analysis rather than guesswork - the code review alone looked correct
@@ -993,13 +1129,15 @@ Plan, in increasing order of invasiveness (measure after each):
       Flame::cloneForRender() (or a leaner internal path in render()) that
       copies numXForms()+final xforms instead of all 101. ~10-50x less
       clone work for typical 2-10-xform flames. No behavior change.
-  (b) Lazy variation instantiation per XForm: only variations with nonzero
-      weight (plus those touched via getVariable/setVariable) need live
-      objects; name lookups for dormant ones can consult
-      VariationRegistry's factories (VariationFactory already exposes
-      numVariables/variableNameAt without an instance - Variation.h:89).
-      Largest structural win; touches XForm's internals broadly, so it
-      needs the full suite + baselines green after.
+  (b) DONE (2026-08-01, see progress log) - Lazy variation instantiation
+      per XForm: only variations with nonzero weight (plus those touched
+      via getVariable/setVariable) get live objects now; two real
+      correctness bugs found and fixed along the way (an RNG-side-effect
+      variation, radial_blur, and 8 non-deterministic-construction-default
+      variations needing special-cased handling - see progress log for
+      the full account). assign()/interpolateVariablesFrom() still copy
+      variable values BY NAME (unchanged from before this item) - that
+      per-copy string traffic is (c) below, still open.
   (c) Index-based variable copy in XForm::assign()/
       interpolateVariablesFrom() (getVariableAt/setVariableAt(int)) to
       kill the per-copy string traffic that remains after (b).

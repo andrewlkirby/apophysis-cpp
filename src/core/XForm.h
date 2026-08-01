@@ -121,8 +121,29 @@ private:
     static Matrix3 identity();
     static Matrix3 mul33(const Matrix3& m1, const Matrix3& m2);
 
+    // Sizes regVariations_ to registry.numRegisteredVariations() - does NOT
+    // construct any Variation instances (FOLLOWUP_PLAN.txt B1(b) - a real
+    // instance is only ever created lazily, via ensureRegVariation(), when
+    // a variation actually gets nonzero weight or a caller reads/writes one
+    // of its named parameters).
     void addRegVariations();
     void buildFunctionList();
+
+    // Returns regVariations_[i], constructing it first via
+    // VariationRegistry::registeredVariation(i).create() if this is the
+    // first time variation i has been needed (nullptr == "still at this
+    // variation type's own factory-default state" - see the class-level
+    // invariant this relies on throughout prepare()/getVariable()/
+    // setVariable()/assign()/interpolateVariablesFrom()). const (mutates
+    // only the mutable regVariations_) so getVariable() can call it too -
+    // see regVariations_'s own doc comment for why that matters. Binds
+    // functionList_[kNumLocalVars + i] to the default calc() dispatch on
+    // first construction; harmless even when called from a const context
+    // purely to materialize a value (never weighted that frame, so this
+    // slot is never reached from calcFunctionList_) - prepare() always
+    // overwrites it again via the new instance's own selectCalcFunction()
+    // for any index that actually ends up weighted.
+    Variation& ensureRegVariation(int i) const;
 
     // Local variation procedures - one per kLocalVarNames entry, ported
     // 1:1 from XForm.pas's non-asm branches. All read Tx_/Ty_/Tz_ and
@@ -184,14 +205,32 @@ private:
     bool opacityAlwaysPasses_ = true; // see the public accessor's own comment
 
     std::vector<double> vars_; // kNumLocalVars + registered-variation count
-    std::vector<std::unique_ptr<Variation>> regVariations_;
+
+    // One slot per registered variation type, sized at construction but
+    // left null until first needed (FOLLOWUP_PLAN.txt B1(b): constructing
+    // all ~150-200 registered variations' worth of objects per XForm - most
+    // never used by a typical 1-5-variation transform - is the dominant
+    // cost of Flame::clone()/assign(), called once per render thread on
+    // every render). A null entry means exactly "this variation is at its
+    // class's own factory-default state" (zero weight, every named
+    // parameter at its in-class default) - see ensureRegVariation(). Mutable
+    // so getVariable() (a logically non-mutating read) can still lazily
+    // materialize a slot through ensureRegVariation() on a const XForm& -
+    // required for variations with a non-deterministic construction default
+    // (see VariationFactory::hasNonDeterministicConstructionDefault): a
+    // fresh throwaway instance would draw a *different* random value on
+    // every single getVariable() call, so the first real read must
+    // permanently freeze one instead.
+    mutable std::vector<std::unique_ptr<Variation>> regVariations_;
 
     // Built once (matches Delphi's FFunctionList, built in BuildFunctionlist
     // at construction time): every available calc function, local + registered,
     // indexed 0..kNumLocalVars-1 then kNumLocalVars... CalcFn, not
     // std::function<void()> - see Variation.h's own comment (FOLLOWUP_PLAN.txt
-    // B2b).
-    std::vector<CalcFn> functionList_;
+    // B2b). mutable for the same reason regVariations_ is - ensureRegVariation()
+    // (now const) rebinds a registered slot's entry the first time that
+    // variation is materialized.
+    mutable std::vector<CalcFn> functionList_;
     // Rebuilt every prepare() (matches FCalcFunctionList): the ordered subset
     // of functionList_ actually active for the current variation weights.
     std::vector<CalcFn> calcFunctionList_;

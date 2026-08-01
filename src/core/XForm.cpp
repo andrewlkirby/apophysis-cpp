@@ -46,15 +46,31 @@ void XForm::clear() {
 }
 
 void XForm::addRegVariations() {
+    // No Variation instances created here - just sizes the slot array (see
+    // regVariations_'s own doc comment in XForm.h). Every entry starts
+    // null; ensureRegVariation() constructs one lazily the first time
+    // variation i actually needs a live object.
     auto& registry = VariationRegistry::instance();
-    regVariations_.clear();
-    regVariations_.reserve(registry.numRegisteredVariations());
-    for (int i = 0; i < registry.numRegisteredVariations(); ++i) {
-        regVariations_.push_back(registry.registeredVariation(i).create());
+    regVariations_.resize(registry.numRegisteredVariations()); // default-constructs each slot to nullptr
+}
+
+Variation& XForm::ensureRegVariation(int i) const {
+    if (!regVariations_[i]) {
+        auto& registry = VariationRegistry::instance();
+        regVariations_[i] = registry.registeredVariation(i).create();
+        functionList_[kNumLocalVars + i] = bindCalc<Variation, &Variation::calc>(regVariations_[i].get());
     }
+    return *regVariations_[i];
 }
 
 void XForm::buildFunctionList() {
+    // Registered-variation slots (kNumLocalVars..) are left at their
+    // default CalcFn{} (null obj/trampoline) here - ensureRegVariation()
+    // binds each one the first time it's actually constructed. Safe: the
+    // only place a registered slot is ever pushed into calcFunctionList_
+    // (prepare(), below) always calls ensureRegVariation() for that same
+    // index first, in the same call, so a still-default entry can never
+    // actually be invoked.
     functionList_.assign(kNumLocalVars + regVariations_.size(), {});
 
     functionList_[0] = bindCalc<XForm, &XForm::linear3D>(this);
@@ -86,10 +102,6 @@ void XForm::buildFunctionList() {
     functionList_[26] = bindCalc<XForm, &XForm::zCone>(this);
     functionList_[27] = bindCalc<XForm, &XForm::postRotateX>(this);
     functionList_[28] = bindCalc<XForm, &XForm::postRotateY>(this);
-
-    for (size_t i = 0; i < regVariations_.size(); ++i) {
-        functionList_[kNumLocalVars + i] = bindCalc<Variation, &Variation::calc>(regVariations_[i].get());
-    }
 }
 
 void XForm::prepare(Rng& rng) {
@@ -107,8 +119,26 @@ void XForm::prepare(Rng& rng) {
     colorC1_ = (1 + symmetry) / 2.0;
     colorC2_ = color * (1 - symmetry) / 2.0;
 
+    auto& registry = VariationRegistry::instance();
+
+    // Only variations with nonzero weight this frame get bound/prepared -
+    // calc() is never invoked for a zero-weight variation regardless (the
+    // dispatch-building loops below all gate on vars_[i] != 0.0 too), so
+    // running prepare()/selectCalcFunction() for a dormant one would
+    // ordinarily be dead work (same reasoning as opacityAlwaysPasses_, B3) -
+    // EXCEPT for a variation flagged hasRngSideEffectInPrepare (currently
+    // only radial_blur), whose prepare() draws from `rng` unconditionally;
+    // skipping that for a zero-weight instance would silently consume fewer
+    // Rng draws than before for every flame, not just ones using it,
+    // desyncing the deterministic point stream for everything rendered
+    // afterward (see VariationFactory's own doc comment). This is also the
+    // single materialization choke-point for weight-driven variations
+    // (FOLLOWUP_PLAN.txt B1(b)) - ensureRegVariation() constructs the
+    // instance the first time it's actually needed.
     for (size_t i = 0; i < regVariations_.size(); ++i) {
-        auto& v = *regVariations_[i];
+        const bool weighted = vars_[kNumLocalVars + i] != 0.0;
+        if (!weighted && !registry.registeredVariation(static_cast<int>(i)).hasRngSideEffectInPrepare) continue;
+        auto& v = ensureRegVariation(static_cast<int>(i));
         v.tx = &tx_;
         v.ty = &ty_;
         v.tz = &tz_;
@@ -135,7 +165,6 @@ void XForm::prepare(Rng& rng) {
 
     calcFunctionList_.clear();
 
-    auto& registry = VariationRegistry::instance();
     const int nrVar = kNumLocalVars + static_cast<int>(regVariations_.size());
 
     const bool calculateAngle = (vars_[6] != 0.0) || (vars_[7] != 0.0);
@@ -230,28 +259,49 @@ void XForm::nextPoint(Point3& pt, double& colorCoord) {
 }
 
 bool XForm::getVariable(const std::string& name, double& value) const {
-    for (auto& v : regVariations_) {
-        if (v->getVariable(name, value)) return true;
-    }
-    return false;
+    auto& registry = VariationRegistry::instance();
+    const int idx = registry.variationIndexForVariableName(name);
+    if (idx < kNumLocalVars) return false; // unknown name, or a local variation (no named parameters)
+    const int i = idx - kNumLocalVars;
+    // Always materialize via ensureRegVariation() (not a throwaway
+    // factory.create() read): a variation flagged
+    // hasNonDeterministicConstructionDefault draws a fresh random value
+    // every time it's constructed, so a "peek without allocating" read
+    // would return a *different* answer on every call - freezing the first
+    // real read via ensureRegVariation() instead makes repeated reads of
+    // the same untouched XForm stable, matching every other variation's
+    // already-idempotent behavior.
+    return ensureRegVariation(i).getVariable(name, value);
 }
 
 bool XForm::setVariable(const std::string& name, double& value) {
-    for (auto& v : regVariations_) {
-        if (v->setVariable(name, value)) return true;
-    }
-    return false;
+    auto& registry = VariationRegistry::instance();
+    const int idx = registry.variationIndexForVariableName(name);
+    if (idx < kNumLocalVars) return false;
+    return ensureRegVariation(idx - kNumLocalVars).setVariable(name, value);
 }
 
 bool XForm::resetVariable(const std::string& name) {
-    // Delegates to each Variation's own resetVariable() override, mirroring
-    // getVariable/setVariable's loop shape above - NOT setVariable(name, 0),
-    // since many variations override resetVariable with a non-zero default
-    // (e.g. auger_freq resets to 5). Matches TXForm.ResetVariable.
-    for (auto& v : regVariations_) {
-        if (v->resetVariable(name)) return true;
-    }
-    return false;
+    // Delegates to the owning Variation's own resetVariable() override -
+    // NOT setVariable(name, 0), since many variations override
+    // resetVariable with a non-zero default (e.g. auger_freq resets to 5).
+    // Matches TXForm.ResetVariable.
+    //
+    // Always materializes via ensureRegVariation(), rather than treating an
+    // unmaterialized slot as "already reset": a reset value is not
+    // guaranteed to equal a fresh instance's own construction default (true
+    // for every hasNonDeterministicConstructionDefault variation, whose
+    // construction default is random while its reset value is fixed; also
+    // already true for auger's own resetVariable, which - matching a
+    // faithfully-ported typo in the original Pascal source, see
+    // VarAuger.cpp - resets "auger_scale" to auger_sym_'s default instead
+    // of its own). Constructing here to find that out is the only correct
+    // option; short-circuiting "unmaterialized -> true" would have silently
+    // skipped a real reset for any such case.
+    auto& registry = VariationRegistry::instance();
+    const int idx = registry.variationIndexForVariableName(name);
+    if (idx < kNumLocalVars) return false;
+    return ensureRegVariation(idx - kNumLocalVars).resetVariable(name);
 }
 
 void XForm::assign(const XForm& other) {
@@ -268,13 +318,39 @@ void XForm::assign(const XForm& other) {
     autoZscale = other.autoZscale;
 
     const size_t n = std::min(regVariations_.size(), other.regVariations_.size());
+    auto& registry = VariationRegistry::instance();
     for (size_t i = 0; i < n; ++i) {
-        const int nVars = regVariations_[i]->numVariables();
+        const auto& factory = registry.registeredVariation(static_cast<int>(i));
+        if (!other.regVariations_[i]) {
+            // hasNonDeterministicConstructionDefault (Variation.h): other's
+            // unmaterialized slot does NOT stand for one fixed, reproducible
+            // value for this type - it's whatever a fresh construction
+            // would randomly draw - so the null-skip below isn't safe here.
+            // Force other to actually freeze a real value first (via its
+            // own ensureRegVariation(), not a throwaway - this is exactly
+            // the same "first real read must permanently materialize"
+            // requirement getVariable() has), then fall through to copy it
+            // like any materialized source.
+            if (factory.hasNonDeterministicConstructionDefault) {
+                other.ensureRegVariation(static_cast<int>(i));
+            } else {
+                // other is at this variation type's factory default (never
+                // touched it) - this must end up matching, so drop any
+                // materialized (possibly customized) copy of our own rather
+                // than leaving it stale. Null already means exactly "at
+                // default" (see regVariations_'s own doc comment), so
+                // there's nothing further to copy.
+                regVariations_[i].reset();
+                continue;
+            }
+        }
+        Variation& dst = ensureRegVariation(static_cast<int>(i));
+        const int nVars = factory.numVariables();
         for (int j = 0; j < nVars; ++j) {
-            const std::string name = regVariations_[i]->variableNameAt(j);
+            const std::string name = factory.variableNameAt(j);
             double value = 0;
             other.regVariations_[i]->getVariable(name, value);
-            regVariations_[i]->setVariable(name, value);
+            dst.setVariable(name, value);
         }
     }
 
@@ -288,15 +364,61 @@ void XForm::interpolateVariablesFrom(const XForm& x1, const XForm& x2, double c0
     // every XForm's regVariations_ covers the same registered variation
     // types in the same order (populated identically by addRegVariations()),
     // so walking (i, j) directly - rather than searching by name - is safe.
+    auto& registry = VariationRegistry::instance();
     for (size_t i = 0; i < regVariations_.size(); ++i) {
-        const int nVars = regVariations_[i]->numVariables();
+        const auto& factory = registry.registeredVariation(static_cast<int>(i));
+        const int nVars = factory.numVariables();
+        if (nVars == 0) continue;
+
+        // hasNonDeterministicConstructionDefault (Variation.h): an
+        // unmaterialized side does NOT stand for one fixed, reproducible
+        // value for this type, so neither the c0+c1==1 skip below nor a
+        // throwaway-instance read (which would draw a fresh, different
+        // random value every call) is safe - force both sides to actually
+        // freeze a real value first via their own ensureRegVariation()
+        // (the same "first real read must permanently materialize"
+        // requirement getVariable() has), then fall through to the normal
+        // blend using those now-real instances.
+        if (factory.hasNonDeterministicConstructionDefault) {
+            x1.ensureRegVariation(static_cast<int>(i));
+            x2.ensureRegVariation(static_cast<int>(i));
+        } else if (!x1.regVariations_[i] && !x2.regVariations_[i]) {
+            // Neither keyframe ever customized this one - blending two
+            // copies of the same factory default. When c0+c1==1 (true of
+            // MutationOps::blendXforms's only real caller, c0=1-t/c1=t)
+            // that reproduces the same default exactly, so skip entirely
+            // rather than materializing our own copy just to write back
+            // what's already there.
+            if (c0 + c1 == 1.0) {
+                regVariations_[i].reset();
+                continue;
+            }
+        }
+
+        // A never-touched side (only possible here for a deterministic-
+        // default type, since the non-deterministic branch above already
+        // materialized both) reads as its type's real factory default via
+        // a throwaway instance, without permanently materializing x1/x2.
+        std::unique_ptr<Variation> tmp1, tmp2;
+        const Variation* v1 = x1.regVariations_[i].get();
+        if (!v1) {
+            tmp1 = factory.create();
+            v1 = tmp1.get();
+        }
+        const Variation* v2 = x2.regVariations_[i].get();
+        if (!v2) {
+            tmp2 = factory.create();
+            v2 = tmp2.get();
+        }
+
+        Variation& dst = ensureRegVariation(static_cast<int>(i));
         for (int j = 0; j < nVars; ++j) {
-            const std::string name = regVariations_[i]->variableNameAt(j);
-            double v1 = 0, v2 = 0;
-            x1.regVariations_[i]->getVariable(name, v1);
-            x2.regVariations_[i]->getVariable(name, v2);
-            double blended = c0 * v1 + c1 * v2;
-            regVariations_[i]->setVariable(name, blended);
+            const std::string name = factory.variableNameAt(j);
+            double val1 = 0, val2 = 0;
+            v1->getVariable(name, val1);
+            v2->getVariable(name, val2);
+            double blended = c0 * val1 + c1 * val2;
+            dst.setVariable(name, blended);
         }
     }
 }

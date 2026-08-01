@@ -120,7 +120,11 @@ bool VarJulian::resetVariable(const std::string& name) {
 }
 
 namespace {
-const bool kRegistered = registerVariation<VarJulian>();
+// hasNonDeterministicConstructionDefault=true: julian_power's default is
+// drawn from constructionRandom01() at construction, not a fixed constant -
+// see VariationFactory's own doc comment (Variation.h).
+const bool kRegistered = registerVariation<VarJulian>(/*hasRngSideEffectInPrepare=*/false,
+                                                       /*hasNonDeterministicConstructionDefault=*/true);
 }
 
 } // namespace apo

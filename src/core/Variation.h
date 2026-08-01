@@ -124,6 +124,39 @@ public:
 
     bool supports3D = false;
     bool supportsDC = false;
+
+    // True for the rare variation whose prepare() draws from the bound Rng
+    // as a side effect independent of its own weight (currently only
+    // radial_blur, which unconditionally reseeds a 4-value rolling buffer -
+    // see VarRadialBlur::prepare()). FOLLOWUP_PLAN.txt B1(b): XForm::prepare()
+    // otherwise skips prepare()/selectCalcFunction() entirely for a
+    // zero-weight registered variation (its calc() is never invoked, so
+    // that would ordinarily be dead work) - but skipping it here would
+    // silently consume fewer Rng draws than before for every single flame,
+    // regardless of whether that flame ever uses radial_blur, corrupting
+    // the deterministic point stream for everything rendered afterward.
+    // Flagging this type explicitly keeps it always materialized/prepared
+    // (preserving that draw count exactly) while every other registered
+    // variation - the overwhelming majority, none of which touch rng in
+    // prepare() (verified directly, not assumed) - stays fully lazy.
+    bool hasRngSideEffectInPrepare = false;
+
+    // True for a variation whose constructor draws its own default
+    // parameter value(s) from constructionRandom01() rather than a fixed
+    // constant (currently pdj, julian, julia3D, julia3Dz, juliascope,
+    // rings2, fan2 - e.g. VarPDJ::VarPDJ(): a_(6*constructionRandom01()-3) -
+    // grepped directly for constructionRandom01() call sites, not assumed).
+    // XForm::assign()/interpolateVariablesFrom() must always materialize
+    // BOTH sides for a flagged type via ensureRegVariation() rather than
+    // taking the "null source -> null destination" shortcut the other,
+    // fixed-default variations allow: for these 7, an unmaterialized slot
+    // doesn't stand for one fixed, reproducible value, so skipping the copy
+    // would let a destination end up with whatever fresh random draw its
+    // own later first-use happens to produce - which can genuinely differ
+    // from what the source's own construction actually froze - rather than
+    // faithfully reproducing the source's value, silently changing render
+    // output for exactly the flames this bit them.
+    bool hasNonDeterministicConstructionDefault = false;
 };
 
 } // namespace apo

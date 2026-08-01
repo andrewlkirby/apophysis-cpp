@@ -116,7 +116,11 @@ bool VarJuliaScope::resetVariable(const std::string& name) {
 }
 
 namespace {
-const bool kRegistered = registerVariation<VarJuliaScope>();
+// hasNonDeterministicConstructionDefault=true: see VariationFactory's own
+// doc comment (Variation.h) - this type's default power is drawn from
+// constructionRandom01() at construction, not a fixed constant.
+const bool kRegistered = registerVariation<VarJuliaScope>(/*hasRngSideEffectInPrepare=*/false,
+                                                           /*hasNonDeterministicConstructionDefault=*/true);
 }
 
 } // namespace apo

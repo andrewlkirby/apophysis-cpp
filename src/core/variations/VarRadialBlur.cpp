@@ -99,7 +99,18 @@ bool VarRadialBlur::resetVariable(const std::string& name) {
 }
 
 namespace {
-const bool kRegistered = registerVariation<VarRadialBlur>();
+// hasRngSideEffectInPrepare=true: prepare() unconditionally reseeds rnd_[0..3]
+// from the bound Rng (see prepare() above) - see VariationFactory's own doc
+// comment (Variation.h) for why this must stay flagged so XForm::prepare()
+// (FOLLOWUP_PLAN.txt B1(b)) never skips it based on weight alone.
+// hasNonDeterministicConstructionDefault=true: angle_ is ALSO drawn fresh
+// from constructionRandom01() at construction (see the constructor above),
+// a second, independent reason this type needs special handling - see
+// VariationFactory's own doc comment for why assign()/interpolateVariablesFrom()
+// must always materialize both sides for this type.
+const bool kRegistered =
+    registerVariation<VarRadialBlur>(/*hasRngSideEffectInPrepare=*/true,
+                                      /*hasNonDeterministicConstructionDefault=*/true);
 }
 
 } // namespace apo

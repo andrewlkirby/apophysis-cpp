@@ -78,4 +78,11 @@ int VariationRegistry::variationIndexFromVariableNameIndex(int index) const {
     return variableNameToVariationIndex_[index];
 }
 
+int VariationRegistry::variationIndexForVariableName(const std::string& name) const {
+    for (size_t i = 0; i < variableNames_.size(); ++i) {
+        if (variableNames_[i] == name) return variableNameToVariationIndex_[i];
+    }
+    return -1;
+}
+
 } // namespace apo

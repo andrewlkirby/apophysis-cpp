@@ -50,6 +50,17 @@ public:
     const std::string& variableNameAt(int index) const { return variableNames_.at(index); }
     int variationIndexFromVariableNameIndex(int index) const;
 
+    // Combined-space (kNumLocalVars-relative) index of the registered
+    // variation that owns a named parameter, or -1 if no registered
+    // variation declares that name. O(numVariableNames()) linear scan over
+    // the same flattened arrays variationIndexFromVariableNameIndex() uses -
+    // only used by XForm's lazy variation lookups (getVariable/setVariable/
+    // resetVariable, FOLLOWUP_PLAN.txt B1(b)), never in the per-point render
+    // path. Same first-match-wins resolution order (registration order) a
+    // name collision across types would have hit under the old per-Variation
+    // linear scan, so behavior is unchanged even in that edge case.
+    int variationIndexForVariableName(const std::string& name) const;
+
 private:
     VariationRegistry() = default;
 

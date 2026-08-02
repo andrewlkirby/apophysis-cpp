@@ -766,6 +766,15 @@ void EditorWindow::requestRender(bool trackProgress) {
     if (renderInFlight_) {
         renderDirty_ = true;
         pendingTrackProgress_ = pendingTrackProgress_ || trackProgress;
+        // Cooperatively cancel whatever's currently rendering (same
+        // mechanism RenderDialog's Cancel button uses) instead of just
+        // queuing behind it - the worker's Renderer::render() checks
+        // cancelRequested every sub-batch and unwinds early, so
+        // onRenderFinished() fires promptly and, seeing renderDirty_, kicks
+        // off this newer request immediately rather than after the
+        // stale one runs to completion.
+        if (progress_) progress_->cancelRequested.store(true, std::memory_order_relaxed);
+        statusBar()->showMessage("Cancelling preview render...");
         return;
     }
     renderInFlight_ = true;
@@ -783,12 +792,13 @@ void EditorWindow::requestRender(bool trackProgress) {
 
     std::shared_ptr<const apo::Flame> shared(std::move(previewFlame));
 
+    // Always a fresh, cancellable token now - see this function's own doc
+    // comment in EditorWindow.h.
+    progress_ = std::make_unique<apo::RenderProgress>();
     if (trackProgress) {
-        progress_ = std::make_unique<apo::RenderProgress>();
         elapsedTimer_.start();
         progressTimer_->start();
     } else {
-        progress_.reset();
         progressTimer_->stop();
     }
     emit renderRequested(shared, /*seed=*/1, progress_.get());
@@ -827,6 +837,21 @@ void EditorWindow::onProgressTick() {
 void EditorWindow::onRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted) {
     progressTimer_->stop();
     progress_.reset();
+    renderInFlight_ = false;
+
+    if (renderDirty_) {
+        // A newer render was requested (and this one cooperatively
+        // cancelled, if it hadn't already finished on its own - see
+        // requestRender()'s doc comment) while this one was in flight, so
+        // `image` is stale or only partially rendered - skip displaying it
+        // and go straight to the render that's actually still wanted,
+        // rather than flashing a half-finished preview first.
+        renderDirty_ = false;
+        const bool trackProgress = pendingTrackProgress_;
+        pendingTrackProgress_ = false;
+        requestRender(trackProgress);
+        return;
+    }
 
     canvas_->setBackgroundImage(image);
 
@@ -834,15 +859,6 @@ void EditorWindow::onRenderFinished(QImage image, quint64 pointsGenerated, quint
         pointsGenerated > 0 ? 100.0 * static_cast<double>(pointsAccepted) / static_cast<double>(pointsGenerated) : 0.0;
     statusBar()->showMessage(
         QString("Rendered %1x%2 - %3 points, %4% accepted").arg(image.width()).arg(image.height()).arg(pointsGenerated).arg(acceptedPct, 0, 'f', 1));
-
-    renderInFlight_ = false;
-    if (renderDirty_) {
-        renderDirty_ = false;
-        const bool trackProgress = pendingTrackProgress_;
-        pendingTrackProgress_ = false;
-        requestRender(trackProgress);
-        return;
-    }
 
     if (!autoScreenshotPath_.isEmpty()) {
         // Deferred to the next event-loop iteration so the canvas has

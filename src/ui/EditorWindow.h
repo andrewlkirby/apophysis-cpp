@@ -92,13 +92,17 @@ protected:
     void closeEvent(QCloseEvent* event) override;
 
 signals:
-    // `progress` is non-null only for renders requestRender(true) tracks
-    // (currently just the quality-dropdown commit - see
-    // onQualityBoxCommitted()) - null for every continuous, high-frequency
-    // render (triangle drags, live property-panel edits, window resize),
-    // which are fast enough that a progress readout would just flicker
-    // uselessly. Same non-owning-pointer contract as MainWindow's own
-    // renderRequested.
+    // `progress` is always non-null now (every preview render gets a
+    // RenderProgress token, even the continuous, high-frequency ones -
+    // triangle drags, live property-panel edits, window resize) so that
+    // requestRender() can cooperatively cancel whichever render is
+    // currently in flight the moment a newer one is requested, rather than
+    // queuing behind it - see requestRender()'s doc comment. Only renders
+    // started with trackProgress=true (currently just the quality-dropdown
+    // commit - see onQualityBoxCommitted()) additionally drive
+    // progressTimer_'s status-bar readout; the rest just carry the token
+    // silently so they stay cancellable. Same non-owning-pointer contract
+    // as MainWindow's own renderRequested.
     void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed, apo::RenderProgress* progress);
 
 private slots:
@@ -184,11 +188,19 @@ private slots:
     void onRightPanelTabChanged(int index);
 
 private:
-    // `trackProgress` requests a progress_/progressTimer_-driven status-bar
-    // readout (see renderRequested()'s doc comment for which callers should
-    // pass true) - defaulted false so every existing call site (triangle
-    // drags via onXformEdited, live property edits, resizeEvent, undo/redo,
-    // structural edits...) keeps behaving exactly as before.
+    // Every call gets a fresh, cancellable RenderProgress token (progress_) -
+    // if a render is already in flight, this cancels *that* one (via its
+    // token's cancelRequested - the same cooperative mechanism RenderDialog's
+    // Cancel button uses) instead of just queuing behind it, so e.g. quickly
+    // correcting the quality-dropdown from a too-large value doesn't have to
+    // wait for the too-large render to actually finish first: the in-flight
+    // render unwinds early, onRenderFinished() sees renderDirty_ and fires
+    // the corrected render immediately. `trackProgress` additionally requests
+    // a progress_/progressTimer_-driven status-bar readout (see
+    // renderRequested()'s doc comment for which callers should pass true) -
+    // defaulted false so every existing call site (triangle drags via
+    // onXformEdited, live property edits, resizeEvent, undo/redo, structural
+    // edits...) keeps behaving exactly as before.
     void requestRender(bool trackProgress = false);
     void refreshXformList();
     // xformIndexForListRow()/listRowForXformIndex() convert between
@@ -301,9 +313,12 @@ private:
     // in-flight render completes - see requestRender()'s doc comment.
     bool pendingTrackProgress_ = false;
 
-    // onProgressTick()'s state - same trio MainWindow carries for its own
-    // (separate) progress readout; only populated while a requestRender(true)
-    // render is in flight.
+    // The in-flight render's cancellation/progress token - populated for
+    // *every* render now (not just requestRender(true) ones), so any render
+    // can be cooperatively cancelled by a newer request; onProgressTick's
+    // elapsed/remaining/percent readout (same trio MainWindow carries for
+    // its own separate progress readout) only means something once
+    // progressTimer_ is actually running, i.e. for requestRender(true).
     std::unique_ptr<apo::RenderProgress> progress_;
     QTimer* progressTimer_ = nullptr;
     QElapsedTimer elapsedTimer_;

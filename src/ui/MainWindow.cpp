@@ -82,8 +82,8 @@ void applyDefaultRenderSettings(apo::Flame& flame) {
 std::shared_ptr<apo::Flame> makeBlankFlame() {
     auto flame = std::make_shared<apo::Flame>();
     flame->name = "Untitled";
-    flame->width = 640;
-    flame->height = 480;
+    flame->width = AppSettings::defaultWidth();
+    flame->height = AppSettings::defaultHeight();
     apo::XForm& xf = *flame->xform[0];
     xf.clear();
     xf.density = 1.0;
@@ -936,7 +936,7 @@ void MainWindow::generateRandomBatch(int count) {
     const auto baseSeed = static_cast<std::uint64_t>(std::random_device{}());
     for (int i = 0; i < count; ++i) {
         const std::uint64_t seed = baseSeed + static_cast<std::uint64_t>(i) * 0x9e3779b97f4a7c15ULL;
-        auto flame = apo::generateRandomFlame(seed, /*width=*/640, /*height=*/480, minXforms, maxXforms,
+        auto flame = apo::generateRandomFlame(seed, AppSettings::defaultWidth(), AppSettings::defaultHeight(), minXforms, maxXforms,
                                                forcedVariationIndex, &eligibleVariations, gradientSource,
                                                hasCurrentGradient ? &currentGradient : nullptr, minVariationsPerXform,
                                                maxVariationsPerXform, variationWeightMin, variationWeightMax,

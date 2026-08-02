@@ -190,6 +190,19 @@ int defaultOversample();
 void setDefaultOversample(int oversample);
 double defaultFilterRadius();
 void setDefaultFilterRadius(double radius);
+// Canvas resolution given to a brand-new flame (New Flame, and every flame
+// in a New Random Batch) - this port's own setting, not a port of an
+// Options.pas field (the original's blank-flame template used 1500x1000;
+// this port's prior hardcoded 640x480 - see MainWindow.cpp's
+// makeBlankFlame/onNewRandomBatchTriggered - was already its own choice).
+// Every window that subsequently previews or renders that flame (EditorWindow,
+// MainWindow's own preview, AdjustDialog, MutateDialog, ...) just reads the
+// flame's own width/height, so this is the single place controlling all of
+// them at flame-creation time.
+int defaultWidth();
+void setDefaultWidth(int width);
+int defaultHeight();
+void setDefaultHeight(int height);
 
 // Per-window-type last-used size/position, as Qt's own opaque
 // QWidget::saveGeometry() blob (also captures maximized state, and is

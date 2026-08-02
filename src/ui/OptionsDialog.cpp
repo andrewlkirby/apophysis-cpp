@@ -310,6 +310,20 @@ QWidget* OptionsDialog::buildNewFlameTab() {
     auto* tab = new QWidget(this);
     auto* layout = new QVBoxLayout(tab);
 
+    auto* resolutionGroup = new QGroupBox("Resolution", tab);
+    auto* resolutionForm = new QFormLayout(resolutionGroup);
+    defaultWidthSpin_ = new QSpinBox(resolutionGroup);
+    defaultWidthSpin_->setObjectName("defaultWidthSpin");
+    defaultWidthSpin_->setRange(1, 16384);
+    defaultWidthSpin_->setValue(AppSettings::defaultWidth());
+    defaultHeightSpin_ = new QSpinBox(resolutionGroup);
+    defaultHeightSpin_->setObjectName("defaultHeightSpin");
+    defaultHeightSpin_->setRange(1, 16384);
+    defaultHeightSpin_->setValue(AppSettings::defaultHeight());
+    resolutionForm->addRow("Width", defaultWidthSpin_);
+    resolutionForm->addRow("Height", defaultHeightSpin_);
+    layout->addWidget(resolutionGroup);
+
     auto* coloringGroup = new QGroupBox("Coloring", tab);
     auto* coloringForm = new QFormLayout(coloringGroup);
     defaultGammaSpin_ = new QDoubleSpinBox(coloringGroup);
@@ -404,6 +418,8 @@ void OptionsDialog::applyAndAccept() {
     AppSettings::setDefaultSampleDensity(defaultSampleDensitySpin_->value());
     AppSettings::setDefaultOversample(defaultOversampleSpin_->value());
     AppSettings::setDefaultFilterRadius(defaultFilterRadiusSpin_->value());
+    AppSettings::setDefaultWidth(defaultWidthSpin_->value());
+    AppSettings::setDefaultHeight(defaultHeightSpin_->value());
 
     accept();
 }

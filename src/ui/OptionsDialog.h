@@ -113,6 +113,8 @@ private:
     QDoubleSpinBox* defaultSampleDensitySpin_ = nullptr;
     QSpinBox* defaultOversampleSpin_ = nullptr;
     QDoubleSpinBox* defaultFilterRadiusSpin_ = nullptr;
+    QSpinBox* defaultWidthSpin_ = nullptr;
+    QSpinBox* defaultHeightSpin_ = nullptr;
 
     QString autoScreenshotPath_;
     bool autoScreenshotExit_ = false;

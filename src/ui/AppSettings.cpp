@@ -53,6 +53,9 @@ constexpr double kDefaultDefaultGammaThreshold = 0.01;
 constexpr double kDefaultDefaultSampleDensity = 5.0;
 constexpr int kDefaultDefaultOversample = 1;
 constexpr double kDefaultDefaultFilterRadius = 0.5;
+// Matches MainWindow.cpp's prior hardcoded new-flame canvas size exactly.
+constexpr int kDefaultDefaultWidth = 640;
+constexpr int kDefaultDefaultHeight = 480;
 } // namespace
 
 int renderThreadCount() {
@@ -172,6 +175,10 @@ double defaultFilterRadius() {
     return QSettings().value("newFlame/filterRadius", kDefaultDefaultFilterRadius).toDouble();
 }
 void setDefaultFilterRadius(double radius) { QSettings().setValue("newFlame/filterRadius", radius); }
+int defaultWidth() { return QSettings().value("newFlame/width", kDefaultDefaultWidth).toInt(); }
+void setDefaultWidth(int width) { QSettings().setValue("newFlame/width", width); }
+int defaultHeight() { return QSettings().value("newFlame/height", kDefaultDefaultHeight).toInt(); }
+void setDefaultHeight(int height) { QSettings().setValue("newFlame/height", height); }
 
 QByteArray windowGeometry(const QString& windowKey) {
     return QSettings().value("windowGeometry/" + windowKey).toByteArray();

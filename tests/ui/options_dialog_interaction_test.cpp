@@ -62,6 +62,8 @@ struct SettingsGuard {
     double savedSampleDensity = apo::ui::AppSettings::defaultSampleDensity();
     int savedOversample = apo::ui::AppSettings::defaultOversample();
     double savedFilterRadius = apo::ui::AppSettings::defaultFilterRadius();
+    int savedWidth = apo::ui::AppSettings::defaultWidth();
+    int savedHeight = apo::ui::AppSettings::defaultHeight();
 
     ~SettingsGuard() {
         apo::ui::AppSettings::setRenderThreadCount(savedThreads);
@@ -91,6 +93,8 @@ struct SettingsGuard {
         apo::ui::AppSettings::setDefaultSampleDensity(savedSampleDensity);
         apo::ui::AppSettings::setDefaultOversample(savedOversample);
         apo::ui::AppSettings::setDefaultFilterRadius(savedFilterRadius);
+        apo::ui::AppSettings::setDefaultWidth(savedWidth);
+        apo::ui::AppSettings::setDefaultHeight(savedHeight);
     }
 };
 
@@ -458,14 +462,19 @@ void testNewFlameTabControlsSeededAndPersisted() {
     apo::ui::AppSettings::setDefaultBrightness(6.0);
     apo::ui::AppSettings::setDefaultSampleDensity(120.0);
     apo::ui::AppSettings::setDefaultOversample(3);
+    apo::ui::AppSettings::setDefaultWidth(800);
+    apo::ui::AppSettings::setDefaultHeight(600);
 
     auto* dialog = new apo::ui::OptionsDialog();
     auto* gamma = dialog->findChild<QDoubleSpinBox*>("defaultGammaSpin");
     auto* brightness = dialog->findChild<QDoubleSpinBox*>("defaultBrightnessSpin");
     auto* density = dialog->findChild<QDoubleSpinBox*>("defaultSampleDensitySpin");
     auto* oversample = dialog->findChild<QSpinBox*>("defaultOversampleSpin");
+    auto* width = dialog->findChild<QSpinBox*>("defaultWidthSpin");
+    auto* height = dialog->findChild<QSpinBox*>("defaultHeightSpin");
     auto* buttons = dialog->findChild<QDialogButtonBox*>();
-    if (!check(gamma && brightness && density && oversample && buttons, "New Flame tab controls found")) {
+    if (!check(gamma && brightness && density && oversample && width && height && buttons,
+               "New Flame tab controls found")) {
         delete dialog;
         return;
     }
@@ -473,10 +482,16 @@ void testNewFlameTabControlsSeededAndPersisted() {
     check(approxEqual(gamma->value(), 3.5) && approxEqual(brightness->value(), 6.0) &&
               approxEqual(density->value(), 120.0) && oversample->value() == 3,
           "New Flame tab controls are seeded from AppSettings");
+    check(width->value() == 800 && height->value() == 600,
+          "New Flame resolution spins are seeded from AppSettings::defaultWidth()/defaultHeight()");
 
     gamma->setValue(2.2);
+    width->setValue(1024);
+    height->setValue(768);
     QTest::mouseClick(buttons->button(QDialogButtonBox::Ok), Qt::LeftButton);
     check(approxEqual(apo::ui::AppSettings::defaultGamma(), 2.2), "OK persists an edited New Flame default");
+    check(apo::ui::AppSettings::defaultWidth() == 1024 && apo::ui::AppSettings::defaultHeight() == 768,
+          "OK persists edited default resolution to AppSettings");
 
     delete dialog;
 }

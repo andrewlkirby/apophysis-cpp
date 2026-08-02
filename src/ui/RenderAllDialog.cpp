@@ -83,10 +83,10 @@ RenderAllDialog::RenderAllDialog(std::vector<std::shared_ptr<apo::Flame>> flames
     // Every shared setting starts from the first flame's own values (an
     // arbitrary but reasonable "most likely representative" starting
     // point, same spirit as RenderDialog seeding its controls from the one
-    // flame it renders) - a fresh, empty-library-safe default (640x480,
-    // etc.) if there's nothing to seed from.
-    const int defaultWidth = flames_.empty() ? 640 : flames_.front()->width;
-    const int defaultHeight = flames_.empty() ? 480 : flames_.front()->height;
+    // flame it renders) - a fresh, empty-library-safe default (the
+    // configured new-flame resolution, etc.) if there's nothing to seed from.
+    const int defaultWidth = flames_.empty() ? AppSettings::defaultWidth() : flames_.front()->width;
+    const int defaultHeight = flames_.empty() ? AppSettings::defaultHeight() : flames_.front()->height;
     const double defaultDensity = flames_.empty() ? 200.0 : flames_.front()->sampleDensity;
     const int defaultOversample = flames_.empty() ? 1 : std::max(1, flames_.front()->spatialOversample);
     const double defaultFilterRadius = flames_.empty() ? 0.2 : flames_.front()->spatialFilterRadius;

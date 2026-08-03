@@ -95,8 +95,12 @@ signals:
                               apo::RenderProgress* progress, QString outputPath);
 
 private slots:
+    // `usedGpu`: see RenderWorker::fullRenderFinished's own doc comment -
+    // reflected in statusLabel_ so a user actually sees whether their
+    // render used the GPU backend (docs/GPU_RENDERING_PLAN.md's UI
+    // integration section), not just a silent behind-the-scenes choice.
     void onFullRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted, bool cancelled,
-                               bool saved);
+                               bool saved, bool usedGpu);
     void onProgressTick();
     void browseOutputPath();
     void startRender();

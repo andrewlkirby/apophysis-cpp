@@ -12,7 +12,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 if(MSVC)
-    add_compile_options(/W4 /permissive- /EHsc)
+    # $<COMPILE_LANGUAGE:...>-guarded (docs/GPU_RENDERING_PLAN.md): plain
+    # add_compile_options(/W4 /permissive- /EHsc) applies to every language a
+    # target compiles, including CUDA once APO_ENABLE_CUDA is ON - nvcc's own
+    # command-line parser doesn't understand bare, un-prefixed MSVC-style
+    # slash flags the way cl.exe does, and CMake's CUDA support doesn't
+    # auto-wrap these three in -Xcompiler=... the way it does for flags it
+    # specifically recognizes (e.g. /MD) - so unwrapped, nvcc misparses them
+    # as extra positional input-file arguments ("A single input file is
+    # required for a non-link phase when an output file is specified" -
+    # confirmed against a real build). Excluding CUDA here is correct
+    # either way, not just a workaround: these are C++-source warning/
+    # exception-handling flags with no meaning for device code.
+    add_compile_options(
+        $<$<NOT:$<COMPILE_LANGUAGE:CUDA>>:/W4>
+        $<$<NOT:$<COMPILE_LANGUAGE:CUDA>>:/permissive->
+        $<$<NOT:$<COMPILE_LANGUAGE:CUDA>>:/EHsc>
+    )
 else()
     add_compile_options(-Wall -Wextra)
 endif()
@@ -31,6 +47,42 @@ endif()
 # needs /fp:fast) - see FOLLOWUP_PLAN.txt's own progress log for this item
 # for how that was verified, not just assumed.
 option(APO_CORE_ENABLE_AVX2 "Compile apo_core with AVX2 codegen (/arch:AVX2) - requires a ~2013+ CPU" OFF)
+
+# docs/GPU_RENDERING_PLAN.md: an optional CUDA-accelerated render backend
+# (src/core/render/gpu/), off by default so the normal Windows/macOS/Linux
+# CI build (and any dev machine without an NVIDIA GPU/CUDA Toolkit
+# installed) is completely unaffected. The CPU renderer (src/core/render/
+# Renderer.h) remains the universal, authoritative path regardless of this
+# setting; RenderDispatcher picks the GPU path only when this was ON at
+# build time, a CUDA device is actually present at runtime, and the flame
+# being rendered uses no unported/plugin variation.
+option(APO_ENABLE_CUDA "Build the optional CUDA render backend (src/core/render/gpu) - requires the CUDA Toolkit" OFF)
+if(APO_ENABLE_CUDA)
+    # Must be set before enable_language(CUDA); left overridable via
+    # -DCMAKE_CUDA_ARCHITECTURES=... (a pre-existing cache entry counts as
+    # "defined" and skips this default). Covers Turing (RTX 20-series) /
+    # Ampere (RTX 30-series) / Ada (RTX 40-series) - narrower than "every
+    # CUDA GPU ever made" but a reasonable default for a 2020s dev machine;
+    # widen or use CMake 3.24+'s "native" for the actual build host's GPU.
+    if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
+        set(CMAKE_CUDA_ARCHITECTURES 75 86 89)
+    endif()
+    if(MSVC)
+        # nvcc maintains an explicit allowlist of "supported" MSVC versions
+        # and hard-errors (host_config.h's own #error) on anything newer,
+        # even though a newer-than-listed cl.exe compiles this project's
+        # plain C++20 device/host code without issue in practice - this is
+        # nvcc being conservative about host compilers it hasn't been
+        # validated against yet, not a real incompatibility. Must be set
+        # before enable_language(CUDA) below: that call's own compiler-id
+        # detection is itself a CUDA compile and hits the same check.
+        set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -allow-unsupported-compiler")
+    endif()
+    enable_language(CUDA)
+    set(CMAKE_CUDA_STANDARD 20)
+    set(CMAKE_CUDA_STANDARD_REQUIRED ON)
+    find_package(CUDAToolkit REQUIRED)
+endif()
 
 # Phase 0 note: Phase 1's core data model is deliberately dependency-free
 # (builds and tests with nothing but a C++20 compiler); libpng/pugixml

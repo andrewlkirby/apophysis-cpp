@@ -10,6 +10,7 @@ namespace apo::ui::AppSettings {
 
 namespace {
 constexpr int kDefaultRenderThreadCount = 0; // Auto - see Renderer::render()
+constexpr bool kDefaultUseGpuRendering = true; // see AppSettings.h's own comment on why this is safe as a default
 constexpr double kDefaultPreviewSampleDensity = 10.0; // matches the quality dropdown's own "10" preset
 
 // Matches RandomFlame.h's prior hardcoded kDefaultMinRandomXforms/
@@ -64,6 +65,14 @@ int renderThreadCount() {
 
 void setRenderThreadCount(int threads) {
     QSettings().setValue("rendering/threadCount", threads);
+}
+
+bool useGpuRendering() {
+    return QSettings().value("rendering/useGpu", kDefaultUseGpuRendering).toBool();
+}
+
+void setUseGpuRendering(bool useGpu) {
+    QSettings().setValue("rendering/useGpu", useGpu);
 }
 
 double previewSampleDensity() {

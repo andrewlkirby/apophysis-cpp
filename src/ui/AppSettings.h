@@ -33,6 +33,20 @@ namespace apo::ui::AppSettings {
 int renderThreadCount();
 void setRenderThreadCount(int threads);
 
+// docs/GPU_RENDERING_PLAN.md: prefer the CUDA render backend
+// (RenderDispatcher) over the CPU renderer when both are actually usable
+// for a given render - a CUDA-capable build, a CUDA device present at
+// runtime, and a flame using no unported/plugin variation (RenderDispatcher
+// checks all three itself; this setting is just the user's own on/off
+// preference layered on top, matching RenderDispatcher::render()'s
+// `preferGpu` parameter one-to-one). Defaults to true: RenderDispatcher
+// already falls back to the identical CPU path with zero behavior change
+// whenever the GPU path isn't actually usable, so there's no downside to
+// leaving this on for a user who never touches CUDA at all (a non-CUDA
+// build, or a machine with no NVIDIA GPU).
+bool useGpuRendering();
+void setUseGpuRendering(bool useGpu);
+
 // Sample density used for live-updating interactive previews - every
 // EditorWindow render (triangle drags, property edits, ...), AdjustDialog's
 // slider drags, MutateDialog's 3x3 mutant grid, and MainWindow's own

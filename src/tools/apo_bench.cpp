@@ -15,6 +15,7 @@
 //
 // Usage: apo_bench [--density=N] [--size=WxH] [--oversample=N] [--seed=N]
 //                   [--threads=1,0,4] [--flame=all|linear|transcendental|blur]
+//                   [--backend=cpu|gpu|both]
 //   --density=N    flame.sampleDensity for every fixture (default 200)
 //   --size=WxH     flame.width x flame.height for every fixture (default
 //                  800x600)
@@ -25,11 +26,24 @@
 //   --seed=N       RNG seed (default 1)
 //   --threads=...  comma-separated threadCount list to pass to
 //                  Renderer::render (0 = hardware_concurrency); default
-//                  "1,0" - single-threaded baseline, then auto
+//                  "1,0" - single-threaded baseline, then auto. Ignored for
+//                  gpu rows (the GPU backend has its own internal launch-
+//                  chunk parallelism, not a CPU-style thread count).
 //   --flame=...    which fixture(s) to run (default all)
-//   --bucket-precision=double|float  Renderer::BucketPrecision to render
-//                  with (default double, matching every real caller's own
+//   --bucket-precision=double|float  BucketPrecision to render with
+//                  (default double, matching every real caller's own
 //                  default - see Renderer.h's B5 doc comment)
+//   --backend=...  cpu (default, unchanged prior behavior): the threadCount
+//                  loop only. gpu: one GPU row per fixture instead (via
+//                  RenderDispatcher with preferGpu forced on - reports
+//                  "GPU not available" per fixture instead of silently
+//                  timing a CPU fallback if this build/machine can't
+//                  actually run that fixture on the GPU, e.g. no
+//                  APO_ENABLE_CUDA, no CUDA device, or - not applicable to
+//                  any of this file's own fixtures, which use only ported
+//                  variations - a plugin-using flame). both: cpu rows then
+//                  one gpu row per fixture, for direct throughput
+//                  comparison - see docs/GPU_RENDERING_PLAN.md.
 
 #include <chrono>
 #include <cstddef>
@@ -43,6 +57,7 @@
 
 #include "core/Flame.h"
 #include "core/VariationRegistry.h"
+#include "core/render/RenderDispatcher.h"
 #include "core/render/Renderer.h"
 
 namespace {
@@ -168,12 +183,28 @@ std::vector<int> parseThreadList(const std::string& s) {
     return out;
 }
 
+// useGpu=false (default path, unchanged): renders via Renderer::render()
+// directly at the given CPU threadCount. useGpu=true: renders via
+// RenderDispatcher with preferGpu forced on, ignoring threadCount entirely
+// (the GPU backend has its own internal parallelism - see
+// docs/GPU_RENDERING_PLAN.md's chaos_kernel.cu mapping comment) - first
+// checks RenderDispatcher::wouldUseGpu() and prints a clear "not available"
+// line instead of silently benchmarking a CPU fallback mislabeled as GPU
+// (e.g. a non-APO_ENABLE_CUDA build, or no CUDA device on this machine).
 void runOne(const char* fixtureName, const apo::Flame& flame, std::uint64_t seed, int threadCount,
-            apo::BucketPrecision precision) {
+            apo::BucketPrecision precision, bool useGpu) {
+    if (useGpu && !apo::RenderDispatcher::wouldUseGpu(flame, /*preferGpu=*/true)) {
+        std::printf("%-16s threads=%-11s prec=%-6s  GPU not available for this fixture/build/machine - skipped\n",
+                    fixtureName, "gpu", precision == apo::BucketPrecision::Float ? "float" : "double");
+        return;
+    }
+
     apo::RenderTimings timings;
     const auto wallStart = std::chrono::steady_clock::now();
     apo::RenderedImage image =
-        apo::Renderer::render(flame, seed, threadCount, /*progress=*/nullptr, &timings, precision);
+        useGpu ? apo::RenderDispatcher::render(flame, seed, /*threadCount=*/0, /*progress=*/nullptr, &timings,
+                                                precision, /*preferGpu=*/true)
+               : apo::Renderer::render(flame, seed, threadCount, /*progress=*/nullptr, &timings, precision);
     const double wallSeconds = std::chrono::duration<double>(std::chrono::steady_clock::now() - wallStart).count();
 
     const double totalSeconds =
@@ -182,7 +213,7 @@ void runOne(const char* fixtureName, const apo::Flame& flame, std::uint64_t seed
         totalSeconds > 0 ? static_cast<double>(image.stats.pointsGenerated) / totalSeconds : 0.0;
 
     const std::string threadsDesc =
-        threadCount == 1 ? "1 (single)" : (threadCount == 0 ? "auto" : std::to_string(threadCount));
+        useGpu ? "gpu" : (threadCount == 1 ? "1 (single)" : (threadCount == 0 ? "auto" : std::to_string(threadCount)));
     const char* precisionDesc = precision == apo::BucketPrecision::Float ? "float" : "double";
     std::printf(
         "%-16s threads=%-11s prec=%-6s points=%12llu  %8.2fM pts/sec  wall=%7.3fs  "
@@ -202,6 +233,7 @@ int main(int argc, char** argv) {
     std::string threadsArg = "1,0";
     std::string flameArg = "all";
     std::string precisionArg = "double";
+    std::string backendArg = "cpu";
 
     for (int i = 1; i < argc; ++i) {
         const std::string arg = argv[i];
@@ -226,6 +258,8 @@ int main(int argc, char** argv) {
             flameArg = value;
         } else if (parseOption(arg, "bucket-precision", value)) {
             precisionArg = value;
+        } else if (parseOption(arg, "backend", value)) {
+            backendArg = value;
         } else {
             std::fprintf(stderr, "unrecognized option: %s\n", arg.c_str());
             return 2;
@@ -241,6 +275,13 @@ int main(int argc, char** argv) {
         std::fprintf(stderr, "error: --bucket-precision='%s' must be 'double' or 'float'\n", precisionArg.c_str());
         return 2;
     }
+
+    if (backendArg != "cpu" && backendArg != "gpu" && backendArg != "both") {
+        std::fprintf(stderr, "error: --backend='%s' must be 'cpu', 'gpu', or 'both'\n", backendArg.c_str());
+        return 2;
+    }
+    const bool runCpu = (backendArg == "cpu" || backendArg == "both");
+    const bool runGpu = (backendArg == "gpu" || backendArg == "both");
 
     const std::vector<int> threadCounts = parseThreadList(threadsArg);
     if (threadCounts.empty()) {
@@ -264,17 +305,22 @@ int main(int argc, char** argv) {
         return 2;
     }
 
-    std::printf("apo_bench: size=%dx%d density=%.1f oversample=%d seed=%llu bucket-precision=%s "
+    std::printf("apo_bench: size=%dx%d density=%.1f oversample=%d seed=%llu bucket-precision=%s backend=%s "
                 "hardware_concurrency=%u\n",
                 width, height, density, oversample, static_cast<unsigned long long>(seed), precisionArg.c_str(),
-                std::thread::hardware_concurrency());
+                backendArg.c_str(), std::thread::hardware_concurrency());
     std::printf("--------------------------------------------------------------------------------------------------------------\n");
 
     for (const Fixture* f : fixtures) {
         auto flame = f->build(width, height, density);
         flame->spatialOversample = oversample;
-        for (int threadCount : threadCounts) {
-            runOne(f->name, *flame, seed, threadCount, precision);
+        if (runCpu) {
+            for (int threadCount : threadCounts) {
+                runOne(f->name, *flame, seed, threadCount, precision, /*useGpu=*/false);
+            }
+        }
+        if (runGpu) {
+            runOne(f->name, *flame, seed, /*threadCount=*/0, precision, /*useGpu=*/true);
         }
     }
 

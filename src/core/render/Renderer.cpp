@@ -1,4 +1,4 @@
-#include "Renderer.h"
+﻿#include "Renderer.h"
 
 #include <algorithm>
 #include <atomic>
@@ -14,17 +14,27 @@
 #include "../Point3.h"
 #include "../Rng.h"
 #include "../XForm.h"
+#include "RenderPlan.h"
 
 namespace apo {
 namespace {
+
+// RenderPlan.h/.cpp (extracted from this file, no behavior change) owns the
+// camera/tone-map/xaos-table builders (RenderPlan, buildFilter,
+// buildBuffersAndCamera, buildColorMap, buildToneMap, buildCurveTables,
+// buildAdaptiveDE, buildPropTable, ProjectionKind, CameraMatrix,
+// buildCameraMatrix, selectProjectionKind, and kSubBatchSize/
+// kPropTableSize/kMaxFilterWidth/kFilterCutoff/kBrightAdjust/
+// kPrefilterWhite) so the GPU render backend's DeviceFlame builder
+// (src/core/render/gpu/) can reuse them verbatim instead of duplicating the
+// formulas - see docs/GPU_RENDERING_PLAN.md.
+using namespace apo::detail;
 
 // ---------------------------------------------------------------------
 // Constants (from Flame/ControlPoint.pas / Rendering/RenderingInterface.pas
 // / Rendering/ImageMaker.pas - verified directly against source, not just
 // the design brief, since these are load-bearing for correctness).
 // ---------------------------------------------------------------------
-constexpr int kSubBatchSize = 10000;
-constexpr int kPropTableSize = 1024;
 
 // How long a paused render's threads sleep between rechecking
 // pauseRequested/cancelRequested - see RenderProgress::pauseRequested's own
@@ -48,10 +58,6 @@ void waitWhilePaused(RenderProgress* progress) {
     }
 }
 constexpr int kFuse = 15; // "for i := 0 to FUSE" -> 16 warm-up iterations
-constexpr int kMaxFilterWidth = 25;
-constexpr double kFilterCutoff = 1.8;
-constexpr double kBrightAdjust = 2.3;
-constexpr double kPrefilterWhite = static_cast<double>(1 << 26);
 
 // Scalar-templated (FOLLOWUP_PLAN.txt B5): Scalar=double is the original,
 // unchanged-behavior bucket (32 bytes) every existing caller still gets by
@@ -72,41 +78,6 @@ struct BucketT {
     Scalar red = 0, green = 0, blue = 0, count = 0;
 };
 using BucketD = BucketT<double>;
-
-enum class ProjectionKind { None, Pitch, PitchYaw, PitchDOF, PitchYawDOF };
-
-// CameraMatrix[a,b] in Pascal (ControlPoint.pas's 3x3 CameraMatrix) - named
-// fields instead of a 2D array so the projection formulas below read the
-// same as the Pascal source line-for-line.
-struct CameraMatrix {
-    double m00 = 1, m10 = 0, m20 = 0;
-    double m01 = 0, m11 = 1, m21 = 0;
-    double m02 = 0, m12 = 0, m22 = 1;
-};
-
-CameraMatrix buildCameraMatrix(double pitch, double yaw) {
-    CameraMatrix m;
-    m.m00 = std::cos(-yaw);
-    m.m10 = -std::sin(-yaw);
-    m.m20 = 0;
-    m.m01 = std::cos(pitch) * std::sin(-yaw);
-    m.m11 = std::cos(pitch) * std::cos(-yaw);
-    m.m21 = -std::sin(pitch);
-    m.m02 = std::sin(pitch) * std::sin(-yaw);
-    m.m12 = std::sin(pitch) * std::cos(-yaw);
-    m.m22 = std::cos(pitch);
-    return m;
-}
-
-ProjectionKind selectProjectionKind(const Flame& flame) {
-    if (flame.cameraDOF != 0) {
-        return (flame.cameraYaw != 0) ? ProjectionKind::PitchYawDOF : ProjectionKind::PitchDOF;
-    }
-    if (flame.cameraPitch != 0 || flame.cameraYaw != 0) {
-        return (flame.cameraYaw != 0) ? ProjectionKind::PitchYaw : ProjectionKind::Pitch;
-    }
-    return ProjectionKind::None;
-}
 
 // 3D -> 2D camera projection, matching ControlPoint.pas's
 // ProjectNone/ProjectPitch/ProjectPitchYaw/ProjectPitchDOF/ProjectPitchYawDOF
@@ -185,293 +156,6 @@ void project(Point3& pt, ProjectionKind kind, double persp, double zpos, double 
             pt.z = origZ - zpos;
             break;
         }
-    }
-}
-
-// Proportional xform-selection table: propTable[k*kPropTableSize + slot]
-// is the index of the xform to jump to next, given the chain is currently
-// at xform k, weighted by density*modWeights (xaos). Matches
-// ControlPoint.pas's Prepare() PropTable build exactly (verified directly
-// against source).
-std::vector<int> buildPropTable(const Flame& flame, int numXForms) {
-    std::vector<int> table(static_cast<size_t>(numXForms) * kPropTableSize, 0);
-    std::vector<double> tp(numXForms);
-
-    for (int k = 0; k < numXForms; ++k) {
-        double total = 0;
-        for (int i = 0; i < numXForms; ++i) {
-            tp[i] = flame.xform[i]->density * flame.xform[k]->modWeights[i];
-            total += tp[i];
-        }
-
-        int* row = &table[static_cast<size_t>(k) * kPropTableSize];
-        if (total > 0) {
-            double loopValue = 0;
-            for (int i = 0; i < kPropTableSize; ++i) {
-                double propsum = 0;
-                int j = -1;
-                do {
-                    ++j;
-                    propsum += tp[j];
-                } while (!(propsum > loopValue || j == numXForms - 1));
-                row[i] = j;
-                loopValue += total / kPropTableSize;
-            }
-        }
-        // else: leave this row zero-filled (fallback to xform 0). The
-        // original points every slot at a dedicated always-inert
-        // invalidXform placeholder for this case (every xform reachable
-        // from k has a zero xaos weight) - xform 0 is always a real, valid
-        // xform (Flame::numXForms()'s packing contract guarantees at least
-        // one), so this is a simpler equivalent for what's already a
-        // deliberately-degenerate-weights edge case.
-    }
-    return table;
-}
-
-// Prepared once per render, shared (read-only) across every worker thread.
-struct RenderPlan {
-    int numXForms = 0;
-    bool useFinalXform = false;
-    std::vector<int> propTable;
-
-    ProjectionKind projectionKind = ProjectionKind::None;
-    CameraMatrix cameraMatrix;
-    double persp = 0, zpos = 0, dofCoef = 0;
-
-    double camX0 = 0, camY0 = 0, camW = 1, camH = 1;
-    double bws = 1, bhs = 1;
-    int bucketWidth = 0, bucketHeight = 0;
-    int oversample = 1;
-    int gutterWidth = 0, maxGutterWidth = 0;
-
-    std::array<std::array<double, 3>, 256> colorMap{};
-
-    int numBatches = 1;
-
-    // Tone-mapping (ImageMaker.pas's CreateFilter/CreateImage) - computed
-    // here too since filter size feeds gutter/buffer sizing above.
-    int filterSize = 1;
-    std::vector<double> filter; // filterSize*filterSize, row-major
-    bool fastBucket = true;
-    double k1 = 0, k2 = 0;
-    std::array<double, 1025> logScale{};
-
-    // Bezier tone curves (see buildCurveTables) - index 0 is the master/
-    // "All" channel, 1/2/3 are Red/Green/Blue, each a 257-entry (0..256
-    // inclusive) lookup table. curvesSet mirrors ImageMaker.pas's own
-    // check: false (skip curve application entirely) only while every
-    // channel is still at its exact default identity configuration.
-    bool curvesSet = false;
-    std::array<std::array<double, 257>, 4> curveTable{};
-
-    // Adaptive density estimation (see buildAdaptiveDE/adaptiveRadiusFor
-    // and Renderer.h's class comment on why this is a from-scratch design,
-    // not a port). deKernels[r] (r=1..deMaxRadiusInt) is a normalized
-    // (2r+1)x(2r+1) circular Gaussian kernel, row-major; index 0 is unused
-    // (the minimum meaningful radius is 1).
-    bool adaptiveDE = false;
-    double deMinRadius = 1.0, deMaxRadius = 1.0, deCurve = 0.2;
-    int deMaxRadiusInt = 1;
-    std::vector<std::vector<double>> deKernels;
-};
-
-// Matches ImageMaker.pas's CreateFilter exactly (verified directly against
-// source): a normalized Gaussian-ish kernel, sized from spatialOversample
-// and spatialFilterRadius.
-void buildFilter(const Flame& flame, RenderPlan& plan) {
-    const int oversample = plan.oversample;
-    const int fw = static_cast<int>(2.0 * kFilterCutoff * oversample * flame.spatialFilterRadius);
-    int filterSize = fw + 1;
-    if ((filterSize + oversample) % 2 != 0) ++filterSize; // match oversample's parity
-
-    const double adjust = (fw > 0) ? (kFilterCutoff * filterSize) / fw : 1.0;
-
-    plan.filterSize = filterSize;
-    plan.filter.assign(static_cast<size_t>(filterSize) * filterSize, 0.0);
-    double sum = 0;
-    for (int i = 0; i < filterSize; ++i) {
-        for (int j = 0; j < filterSize; ++j) {
-            const double ii = ((2.0 * i + 1.0) / filterSize - 1.0) * adjust;
-            const double jj = ((2.0 * j + 1.0) / filterSize - 1.0) * adjust;
-            const double v = std::exp(-2.0 * (ii * ii + jj * jj));
-            plan.filter[static_cast<size_t>(i) * filterSize + j] = v;
-            sum += v;
-        }
-    }
-    if (sum != 0) {
-        for (double& v : plan.filter) v /= sum;
-    }
-}
-
-// Matches RenderingInterface.pas's CalcBufferSize + CreateCamera exactly
-// (verified directly against source).
-void buildBuffersAndCamera(const Flame& flame, RenderPlan& plan) {
-    plan.oversample = flame.spatialOversample;
-    plan.maxGutterWidth = (kMaxFilterWidth - plan.oversample) / 2;
-    plan.gutterWidth = (plan.filterSize - plan.oversample) / 2;
-    plan.bucketWidth = plan.oversample * flame.width + 2 * plan.maxGutterWidth;
-    plan.bucketHeight = plan.oversample * flame.height + 2 * plan.maxGutterWidth;
-    // ImageMaker.CreateImage recomputes "gutter_width" locally as
-    // (FBucketWidth - FOversample*Width), which algebraically equals
-    // 2*maxGutterWidth - i.e. the FastBucket check is really "does this
-    // render's actual filter fit inside the worst-case-sized gutter the
-    // buffer was allocated with", not the per-render gutterWidth above.
-    plan.fastBucket = plan.filterSize <= plan.maxGutterWidth;
-
-    const double scale = std::pow(2.0, flame.zoom);
-    const double sampleDensity = flame.sampleDensity * scale * scale;
-    const double ppux = flame.pixelsPerUnit * scale;
-    const double ppuy = flame.pixelsPerUnit * scale;
-
-    const double cornerX = flame.center[0] - flame.width / ppux / 2.0;
-    const double cornerY = flame.center[1] - flame.height / ppuy / 2.0;
-    const double t0 = plan.gutterWidth / (plan.oversample * ppux);
-    const double t1 = plan.gutterWidth / (plan.oversample * ppuy);
-    const double t2 = (2 * plan.maxGutterWidth - plan.gutterWidth) / (plan.oversample * ppux);
-    const double t3 = (2 * plan.maxGutterWidth - plan.gutterWidth) / (plan.oversample * ppuy);
-
-    plan.camX0 = cornerX - t0;
-    plan.camY0 = cornerY - t1;
-    const double camX1 = cornerX + flame.width / ppux + t2;
-    const double camY1 = cornerY + flame.height / ppuy + t3;
-    plan.camW = camX1 - plan.camX0;
-    plan.camH = camY1 - plan.camY0;
-
-    const double xSize = (std::fabs(plan.camW) > 0.01) ? (1.0 / plan.camW) : 1.0;
-    const double ySize = (std::fabs(plan.camH) > 0.01) ? (1.0 / plan.camH) : 1.0;
-    plan.bws = (plan.bucketWidth - 0.5) * xSize;
-    plan.bhs = (plan.bucketHeight - 0.5) * ySize;
-
-    // NSamples/NumBatches (RenderingInterface.pas's InitBuffers, verified
-    // directly against source).
-    const long long bucketCount = static_cast<long long>(plan.bucketWidth) * plan.bucketHeight;
-    const double nSamples = std::round(sampleDensity * static_cast<double>(bucketCount) /
-                                        (plan.oversample * plan.oversample));
-    const int nbatches = std::max(1, flame.nbatches);
-    plan.numBatches = std::max(1, static_cast<int>(std::round(nSamples / (nbatches * kSubBatchSize))));
-}
-
-// Matches RenderingInterface.pas's CreateColorMap exactly: the 256-entry
-// palette scaled by white_level, precomputed once per render rather than
-// per point.
-void buildColorMap(const Flame& flame, RenderPlan& plan) {
-    for (int i = 0; i < 256; ++i) {
-        plan.colorMap[i][0] = static_cast<double>(flame.cmap.entries[i][0] * flame.whiteLevel) / 256.0;
-        plan.colorMap[i][1] = static_cast<double>(flame.cmap.entries[i][1] * flame.whiteLevel) / 256.0;
-        plan.colorMap[i][2] = static_cast<double>(flame.cmap.entries[i][2] * flame.whiteLevel) / 256.0;
-    }
-}
-
-// Matches ImageMaker.pas's CreateImage tone-map setup exactly (k1/k2 and
-// the 1025-entry log-scale lookup table, verified directly against
-// source). `actualDensity` mirrors fcp.actual_density - for a single,
-// complete (non-incremental) render this is just flame.sampleDensity.
-void buildToneMap(const Flame& flame, RenderPlan& plan) {
-    const double scale2 = std::pow(2.0, flame.zoom);
-    double sampleDensity = flame.sampleDensity * scale2 * scale2;
-    if (sampleDensity == 0) sampleDensity = 0.001;
-
-    plan.k1 = (flame.contrast * kBrightAdjust * flame.brightness * 268 * kPrefilterWhite) / 256.0;
-    const double ppux = flame.pixelsPerUnit * scale2;
-    const double ppuy = flame.pixelsPerUnit * scale2;
-    const double area = static_cast<double>(flame.width) * flame.height / (ppux * ppuy);
-    plan.k2 = (plan.oversample * plan.oversample) / (flame.contrast * area * flame.whiteLevel * sampleDensity);
-
-    plan.logScale[0] = 0;
-    for (int i = 1; i <= 1024; ++i) {
-        plan.logScale[i] =
-            (plan.k1 * std::log10(1 + flame.whiteLevel * i * plan.k2)) / (flame.whiteLevel * i);
-    }
-}
-
-// Matches ImageMaker.pas's csa[] lookup-table construction and its
-// curvesSet detection (both verified directly against source) - index 0
-// is the master/"All" channel, applied first; 1/2/3 are Red/Green/Blue,
-// applied after. Skipping curve application entirely when every channel
-// is still at its exact default identity configuration isn't just a perf
-// shortcut: under this scheme (see Bezier.h's evalBezierCurve doc
-// comment), the default configuration doesn't evaluate to a numerically-
-// identity table, so skipping it is required for correctness, not only
-// speed - confirmed directly (see bezier_test.cpp's
-// testDefaultCurveIsTheDiagonalLine, which shows the default curve *is*
-// exactly y=x as a parametric curve, even though sampling y(t) at
-// t=i/256 does not reproduce that as a per-i identity table).
-//
-// Only checks curvePoints, not curveWeights, matching the original
-// exactly - a curve edited via weight only (dragging the weight slider
-// without ever moving a control point away from the default (0,0)/(1,1)
-// position) is invisible at render time, in this port as in the
-// original; not fixed, since it's an obscure interaction quirk rather
-// than a data-loss or crash-class bug.
-void buildCurveTables(const Flame& flame, RenderPlan& plan) {
-    static const BezierCurve kIdentity{};
-    plan.curvesSet = false;
-    for (const auto& curve : flame.curves) {
-        if (curve.points != kIdentity.points) {
-            plan.curvesSet = true;
-            break;
-        }
-    }
-    if (!plan.curvesSet) return;
-
-    for (int c = 0; c < 4; ++c) {
-        for (int i = 0; i <= 256; ++i) {
-            plan.curveTable[c][i] = evalBezierCurve(flame.curves[c], i / 256.0) * 256.0;
-        }
-    }
-}
-
-// Precomputes buildAdaptiveDE's per-integer-radius kernels and the radius
-// bounds a per-pixel density maps into - see Renderer.h's class comment
-// for why this is a from-scratch design (the original's own adaptive-DE
-// code is unreachable dead code) rather than a port. Kept simple and
-// bounded on purpose: radii are capped at plan.maxGutterWidth (the gutter
-// the fixed filter's own buffer sizing already reserves - see
-// buildBuffersAndCamera), so this never needs to grow the render buffer or
-// prove a wider gutter is safe, and kernels are precomputed once per
-// integer radius (not per pixel) so the per-pixel tone-map loop only ever
-// does a table lookup, not a fresh Gaussian evaluation.
-void buildAdaptiveDE(const Flame& flame, RenderPlan& plan) {
-    plan.adaptiveDE = flame.enableDE && flame.estimator > 0;
-    if (!plan.adaptiveDE) return;
-
-    const double cap = static_cast<double>(std::max(1, plan.maxGutterWidth));
-    const double maxRadiusRaw = flame.estimator * plan.oversample + 1.0;
-    const double minRadiusRaw = std::max(0.0, flame.estimatorMin) * plan.oversample + 1.0;
-    plan.deMaxRadius = std::clamp(maxRadiusRaw, 1.0, cap);
-    plan.deMinRadius = std::clamp(std::min(minRadiusRaw, plan.deMaxRadius), 1.0, cap);
-    // A zero/negative curve would make the density->radius falloff (see
-    // adaptiveRadiusFor) degenerate (either flat or inverted) - fall back
-    // to a gentle default rather than letting a bad .flame value break
-    // monotonicity.
-    plan.deCurve = (flame.estimatorCurve > 0) ? flame.estimatorCurve : 0.2;
-
-    plan.deMaxRadiusInt = std::max(1, static_cast<int>(std::ceil(plan.deMaxRadius)));
-    plan.deKernels.assign(static_cast<size_t>(plan.deMaxRadiusInt) + 1, {});
-    for (int r = 1; r <= plan.deMaxRadiusInt; ++r) {
-        const int size = 2 * r + 1;
-        std::vector<double> kernel(static_cast<size_t>(size) * size, 0.0);
-        double sum = 0;
-        for (int i = 0; i < size; ++i) {
-            for (int j = 0; j < size; ++j) {
-                // Circular support (clipped at d=1), not the fixed filter's
-                // square window - a natural fit for "this pixel's estimated
-                // influence radius is r", and this path isn't constrained
-                // to match ImageMaker.pas's square-windowed formula (there's
-                // no live original behavior to match here - see above).
-                const double di = (i - r) / static_cast<double>(r);
-                const double dj = (j - r) / static_cast<double>(r);
-                const double d2 = di * di + dj * dj;
-                const double v = (d2 <= 1.0) ? std::exp(-2.0 * d2) : 0.0;
-                kernel[static_cast<size_t>(i) * size + j] = v;
-                sum += v;
-            }
-        }
-        if (sum > 0) {
-            for (double& v : kernel) v /= sum;
-        }
-        plan.deKernels[static_cast<size_t>(r)] = std::move(kernel);
     }
 }
 

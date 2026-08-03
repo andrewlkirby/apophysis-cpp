@@ -440,22 +440,26 @@ void RenderDialog::onProgressTick() {
 }
 
 void RenderDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsGenerated*/, quint64 pointsAccepted,
-                                         bool cancelled, bool saved) {
+                                         bool cancelled, bool saved, bool usedGpu) {
     progressTimer_->stop();
     progress_.reset();
     fullRenderInFlight_ = false;
     setControlsEnabled(true);
 
+    const QString backendSuffix = usedGpu ? " [GPU]" : "";
     const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
     if (cancelled) {
         progressBar_->setValue(0);
-        statusLabel_->setText(QString("Cancelled after %1s").arg(elapsedSec, 0, 'f', 1));
+        statusLabel_->setText(QString("Cancelled after %1s%2").arg(elapsedSec, 0, 'f', 1).arg(backendSuffix));
     } else if (!saved) {
         progressBar_->setValue(100);
         statusLabel_->setText("Render finished, but failed to save the output file");
     } else {
         progressBar_->setValue(100);
-        QString message = QString("Done - %1 points accepted in %2s").arg(pointsAccepted).arg(elapsedSec, 0, 'f', 1);
+        QString message = QString("Done - %1 points accepted in %2s%3")
+                               .arg(pointsAccepted)
+                               .arg(elapsedSec, 0, 'f', 1)
+                               .arg(backendSuffix);
 
         // Plan's P4.3 - the exact settings that were actually rendered
         // (pendingRenderFlame_), not flame_'s own possibly-different

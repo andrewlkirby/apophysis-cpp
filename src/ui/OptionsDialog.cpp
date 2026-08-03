@@ -92,6 +92,17 @@ QWidget* OptionsDialog::buildGeneralTab() {
     threadCountSpin_->setSpecialValueText("Auto (use all CPU cores)");
     threadCountSpin_->setValue(std::clamp(AppSettings::renderThreadCount(), 0, maxThreads));
     perfForm->addRow("Render threads", threadCountSpin_);
+
+    // docs/GPU_RENDERING_PLAN.md: user-facing on/off for RenderDispatcher's
+    // GPU preference (AppSettings::useGpuRendering()) - RenderDispatcher
+    // itself already falls back to the identical CPU path with zero
+    // behavior change whenever the GPU path isn't actually usable (no
+    // CUDA build, no device, or a plugin-using flame), so this checkbox
+    // stays meaningful (and harmless to leave checked) on any machine.
+    useGpuCheck_ = new QCheckBox("Use GPU rendering when available (CUDA)", perfGroup);
+    useGpuCheck_->setObjectName("useGpuCheck");
+    useGpuCheck_->setChecked(AppSettings::useGpuRendering());
+    perfForm->addRow(useGpuCheck_);
     layout->addWidget(perfGroup);
 
     auto* previewGroup = new QGroupBox("Preview", tab);
@@ -379,6 +390,7 @@ QWidget* OptionsDialog::buildNewFlameTab() {
 
 void OptionsDialog::applyAndAccept() {
     AppSettings::setRenderThreadCount(threadCountSpin_->value());
+    AppSettings::setUseGpuRendering(useGpuCheck_->isChecked());
 
     const int index = previewQualityCombo_->currentIndex();
     if (index >= 0 && index < static_cast<int>(std::size(kPreviewQualityPresets))) {

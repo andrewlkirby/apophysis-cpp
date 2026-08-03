@@ -81,6 +81,7 @@ private:
     QWidget* buildNewFlameTab();
 
     QSpinBox* threadCountSpin_ = nullptr;
+    QCheckBox* useGpuCheck_ = nullptr;
     QComboBox* previewQualityCombo_ = nullptr;
 
     // Random tab

@@ -41,8 +41,19 @@ add_library(apo_core OBJECT
     ${APO_PLUGIN_SOURCES}
     render/Renderer.h
     render/Renderer.cpp
+    render/RenderPlan.h
+    render/RenderPlan.cpp
     render/AutoFrame.h
     render/AutoFrame.cpp
+    render/gpu/GpuAvailability.h
+    render/gpu/GpuAvailability.cpp
+    render/gpu/VariationKinds.h
+    render/gpu/VariationKinds.cpp
+    render/gpu/DeviceTypes.h
+    render/gpu/DeviceFlame.h
+    render/gpu/DeviceFlameBuilder.cpp
+    render/RenderDispatcher.h
+    render/RenderDispatcher.cpp
     io/PngWriter.h
     io/PngWriter.cpp
     io/FlameIO.h
@@ -68,6 +79,39 @@ add_library(apo_core OBJECT
 )
 
 target_include_directories(apo_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/..)
+
+# docs/GPU_RENDERING_PLAN.md - the CUDA kernels/GPU orchestration only
+# compile when APO_ENABLE_CUDA (top-level CMakeLists.txt) is ON; the
+# always-compiled sources above (GpuAvailability, VariationKinds,
+# DeviceFlameBuilder, RenderDispatcher) are plain C++ with no CUDA
+# dependency and report "unavailable" on their own when this is off, so
+# this is the only CUDA-conditional block in this file.
+if(APO_ENABLE_CUDA)
+    target_sources(apo_core PRIVATE
+        render/gpu/DeviceRng.cuh
+        render/gpu/DeviceVariations.cuh
+        render/gpu/chaos_kernel.cuh
+        render/gpu/chaos_kernel.cu
+        render/gpu/tonemap_kernel.cuh
+        render/gpu/tonemap_kernel.cu
+        render/gpu/GpuRenderer.h
+        render/gpu/GpuRenderer.cu
+    )
+    target_compile_definitions(apo_core PUBLIC APO_HAVE_CUDA)
+    target_link_libraries(apo_core PUBLIC CUDA::cudart)
+    # No CUDA_SEPARABLE_COMPILATION here deliberately: every cross-.cu
+    # boundary in render/gpu/ is a host-side kernel *launch* (GpuRenderer.cu
+    # launching chaos_kernel.cu's/tonemap_kernel.cu's __global__ functions,
+    # declared via their .cuh headers) - always legal without relocatable
+    # device code. Nothing here calls a __device__ function defined in a
+    # different .cu's device-code compilation (DeviceVariations.cuh's
+    # __device__ functions are `inline` in a header, so each .cu that
+    # includes it gets its own copy) - so there's no relocatable-device-code
+    # linking requirement to opt into, and skipping it avoids the extra
+    # cudadevrt device-link step (which is also more awkward to set up
+    # correctly across an OBJECT library's multiple final-executable
+    # consumers - apo_gui, every tests/*_test.cpp).
+endif()
 
 # FOLLOWUP_PLAN.txt B7 - see the top-level CMakeLists.txt's own comment on
 # APO_CORE_ENABLE_AVX2 for the full rationale (off by default, deliberately

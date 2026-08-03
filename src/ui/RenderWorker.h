@@ -11,7 +11,10 @@
 
 #include "core/Flame.h"
 #include "core/io/PngWriter.h"
+#include "core/render/RenderDispatcher.h"
 #include "core/render/Renderer.h"
+
+#include "AppSettings.h"
 
 namespace apo::ui {
 
@@ -52,16 +55,17 @@ public slots:
         // path here is wrapped for the same reason: turn "render failed" into
         // a normal finished-with-no-image signal instead of a whole-app crash.
         try {
-            const apo::RenderedImage image =
-                apo::Renderer::render(*flame, seed, /*threadCount=*/0, /*progress=*/nullptr, /*timings=*/nullptr,
-                                       apo::BucketPrecision::Float);
-            emit renderFinished(toQImage(image), image.stats.pointsGenerated, image.stats.pointsAccepted);
+            bool usedGpu = false;
+            const apo::RenderedImage image = apo::RenderDispatcher::render(
+                *flame, seed, /*threadCount=*/0, /*progress=*/nullptr, /*timings=*/nullptr,
+                apo::BucketPrecision::Float, AppSettings::useGpuRendering(), &usedGpu);
+            emit renderFinished(toQImage(image), image.stats.pointsGenerated, image.stats.pointsAccepted, usedGpu);
         } catch (const std::exception& e) {
             qWarning() << "RenderWorker::renderFlame failed:" << e.what();
-            emit renderFinished(QImage(), 0, 0);
+            emit renderFinished(QImage(), 0, 0, false);
         } catch (...) {
             qWarning() << "RenderWorker::renderFlame failed with an unrecognized exception";
-            emit renderFinished(QImage(), 0, 0);
+            emit renderFinished(QImage(), 0, 0, false);
         }
     }
 
@@ -82,14 +86,17 @@ public slots:
     // progress reporting).
     void renderFlameWithProgress(std::shared_ptr<const apo::Flame> flame, quint64 seed, apo::RenderProgress* progress) {
         try {
-            const apo::RenderedImage image = apo::Renderer::render(*flame, seed, /*threadCount=*/0, progress);
-            emit renderFinished(toQImage(image), image.stats.pointsGenerated, image.stats.pointsAccepted);
+            bool usedGpu = false;
+            const apo::RenderedImage image =
+                apo::RenderDispatcher::render(*flame, seed, /*threadCount=*/0, progress, /*timings=*/nullptr,
+                                               apo::BucketPrecision::Double, AppSettings::useGpuRendering(), &usedGpu);
+            emit renderFinished(toQImage(image), image.stats.pointsGenerated, image.stats.pointsAccepted, usedGpu);
         } catch (const std::exception& e) {
             qWarning() << "RenderWorker::renderFlameWithProgress failed:" << e.what();
-            emit renderFinished(QImage(), 0, 0);
+            emit renderFinished(QImage(), 0, 0, false);
         } catch (...) {
             qWarning() << "RenderWorker::renderFlameWithProgress failed with an unrecognized exception";
-            emit renderFinished(QImage(), 0, 0);
+            emit renderFinished(QImage(), 0, 0, false);
         }
     }
 
@@ -118,7 +125,10 @@ public slots:
         // save step, and without a handler would crash the whole app instead
         // of just failing this one render.
         try {
-            const apo::RenderedImage image = apo::Renderer::render(*flame, seed, threadCount, progress);
+            bool usedGpu = false;
+            const apo::RenderedImage image =
+                apo::RenderDispatcher::render(*flame, seed, threadCount, progress, /*timings=*/nullptr,
+                                               apo::BucketPrecision::Double, AppSettings::useGpuRendering(), &usedGpu);
 
             bool saved = true;
             if (!outputPath.isEmpty() && !image.pixels.empty()) {
@@ -128,21 +138,30 @@ public slots:
 
             const bool cancelled = progress && progress->cancelRequested.load(std::memory_order_relaxed);
             emit fullRenderFinished(toQImage(image), image.stats.pointsGenerated, image.stats.pointsAccepted,
-                                     cancelled, saved);
+                                     cancelled, saved, usedGpu);
         } catch (const std::exception& e) {
             qWarning() << "RenderWorker::renderFull failed:" << e.what();
             const bool cancelled = progress && progress->cancelRequested.load(std::memory_order_relaxed);
-            emit fullRenderFinished(QImage(), 0, 0, cancelled, /*saved=*/false);
+            emit fullRenderFinished(QImage(), 0, 0, cancelled, /*saved=*/false, /*usedGpu=*/false);
         } catch (...) {
             qWarning() << "RenderWorker::renderFull failed with an unrecognized exception";
             const bool cancelled = progress && progress->cancelRequested.load(std::memory_order_relaxed);
-            emit fullRenderFinished(QImage(), 0, 0, cancelled, /*saved=*/false);
+            emit fullRenderFinished(QImage(), 0, 0, cancelled, /*saved=*/false, /*usedGpu=*/false);
         }
     }
 
 signals:
-    void renderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted);
-    void fullRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted, bool cancelled, bool saved);
+    // `usedGpu` (trailing, added alongside the RenderDispatcher switch
+    // above): whether this specific render actually ran on the GPU backend -
+    // see RenderDispatcher::render()'s own doc comment on why this can't
+    // just be predicted from AppSettings::useGpuRendering() and the flame
+    // alone. Existing slots connected before this parameter existed keep
+    // compiling and working unchanged (Qt allows a slot to declare fewer
+    // parameters than the signal it's connected to) - only a slot that wants
+    // to show a GPU/CPU status indicator needs to add it.
+    void renderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted, bool usedGpu);
+    void fullRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted, bool cancelled, bool saved,
+                             bool usedGpu);
 
 private:
     // QImage::Format_RGB888/RGBA8888 both expect exactly the row-major,

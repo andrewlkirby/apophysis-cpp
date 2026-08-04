@@ -837,9 +837,10 @@ void MainWindow::onSaveRenderTriggered() {
         QMessageBox::information(this, "Save Render", "Nothing has been rendered yet.");
         return;
     }
-    const QString path = QFileDialog::getSaveFileName(this, "Save Render As", QString(), "PNG image (*.png)", nullptr,
-                                                       testFriendlyFileDialogOptions());
+    QString path = QFileDialog::getSaveFileName(this, "Save Render As", QString(), "PNG image (*.png)", nullptr,
+                                                 testFriendlyFileDialogOptions());
     if (path.isEmpty()) return;
+    path = ensureFileSuffix(path, ".png");
 
     if (!currentImage_.save(path, "PNG")) {
         QMessageBox::warning(this, "Save Render", "Failed to write:\n" + path);

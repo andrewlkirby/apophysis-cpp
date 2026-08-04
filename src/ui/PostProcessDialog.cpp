@@ -257,9 +257,10 @@ void PostProcessDialog::onSaveClicked() {
     if (fullRenderInFlight_) return;
 
     const QString suggested = flame_->name.empty() ? "untitled.png" : QString::fromStdString(flame_->name) + ".png";
-    const QString path = QFileDialog::getSaveFileName(this, "Save Image", suggested, "PNG Images (*.png)", nullptr,
-                                                       testFriendlyFileDialogOptions());
+    QString path = QFileDialog::getSaveFileName(this, "Save Image", suggested, "PNG Images (*.png)", nullptr,
+                                                 testFriendlyFileDialogOptions());
     if (path.isEmpty()) return;
+    path = ensureFileSuffix(path, ".png");
 
     progress_ = std::make_unique<apo::RenderProgress>();
     fullRenderInFlight_ = true;

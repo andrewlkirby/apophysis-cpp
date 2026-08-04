@@ -402,7 +402,7 @@ void RenderDialog::updateMemoryEstimate() {
 void RenderDialog::browseOutputPath() {
     const QString path = QFileDialog::getSaveFileName(this, "Render Output", outputPathEdit_->text(),
                                                        "PNG Images (*.png)", nullptr, testFriendlyFileDialogOptions());
-    if (!path.isEmpty()) outputPathEdit_->setText(path);
+    if (!path.isEmpty()) outputPathEdit_->setText(ensureFileSuffix(path, ".png"));
 }
 
 void RenderDialog::startRender() {

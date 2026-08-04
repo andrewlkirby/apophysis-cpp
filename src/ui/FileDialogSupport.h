@@ -42,4 +42,17 @@ inline QFileDialog::Options testFriendlyFileDialogOptions() {
                : QFileDialog::Options();
 }
 
+// QFileDialog::getSaveFileName is *documented* to append the selected
+// filter's extension when the user's typed name is missing one, but that
+// auto-append is a courtesy of the native picker, not something Qt itself
+// guarantees - several Linux desktop portals (GTK/GNOME's
+// xdg-desktop-portal file chooser in particular) hand back exactly what the
+// user typed, no extension enforcement at all. Every getSaveFileName()
+// result that's about to be used as a real output path (not just displayed)
+// should be passed through this first.
+inline QString ensureFileSuffix(QString path, const QString& suffix) {
+    if (!path.endsWith(suffix, Qt::CaseInsensitive)) path += suffix;
+    return path;
+}
+
 } // namespace apo::ui

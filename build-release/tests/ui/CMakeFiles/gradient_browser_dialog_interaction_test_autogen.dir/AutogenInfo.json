@@ -1,0 +1,97 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/gradient_browser_dialog_interaction_test_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/ui",
+	"CMAKE_EXECUTABLE" : "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/ui/CMakeLists.txt"
+	],
+	"CMAKE_SOURCE_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/gradient_browser_dialog_interaction_test_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "gradient_browser_dialog_interaction_test_autogen/timestamp",
+	"HEADERS" : [],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/gradient_browser_dialog_interaction_test_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/gradient_browser_dialog_interaction_test_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"APO_HAVE_CUDA",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_NO_DEBUG",
+		"QT_TESTCASE_BUILDDIR=\"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui\"",
+		"QT_TESTCASE_SOURCEDIR=\"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/ui\"",
+		"QT_TESTLIB_LIB",
+		"QT_WIDGETS_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN64",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src",
+		"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/include",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/vcpkg_installed/x64-windows/include",
+		"C:/Qt/6.8.0/msvc2022_64/include/QtWidgets",
+		"C:/Qt/6.8.0/msvc2022_64/include",
+		"C:/Qt/6.8.0/msvc2022_64/include/QtCore",
+		"C:/Qt/6.8.0/msvc2022_64/mkspecs/win32-msvc",
+		"C:/Qt/6.8.0/msvc2022_64/include/QtGui",
+		"C:/Qt/6.8.0/msvc2022_64/include/QtTest"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : [],
+	"MOC_PREDEFS_FILE" : "",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : 
+	[
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/adjust_dialog_interaction_test_autogen/mocs_compilation.cpp",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/mutate_dialog_interaction_test_autogen/mocs_compilation.cpp",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/options_dialog_interaction_test_autogen/mocs_compilation.cpp",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/render_dialog_interaction_test_autogen/mocs_compilation.cpp",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/triangle_canvas_interaction_test_autogen/mocs_compilation.cpp"
+	],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/gradient_browser_dialog_interaction_test_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "C:/Qt/6.8.0/msvc2022_64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 8,
+	"SETTINGS_FILE" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/gradient_browser_dialog_interaction_test_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/ui/gradient_browser_dialog_interaction_test.cpp",
+			"Mu",
+			null
+		]
+	],
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

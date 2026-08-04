@@ -25,12 +25,15 @@ namespace apo::ui {
 //     Adjust/Mutate/Curves/PostProcess *and* the Editor's own canvas
 //     preview - see EditorWindow.h's class comment).
 //   - Random: new-random-flame/mutation transform-count ranges, batch
-//     defaults, forced symmetry, gradient source, forced variation, and
+//     defaults, forced symmetry, gradient source, forced variation,
 //     variation-blending (how many variations combine per xform, their
-//     weight range, and whether their own parameters get randomized) on
-//     random generation, all consumed by MainWindow::
-//     onNewRandomBatchTriggered; mutation transform-count range also
-//     consumed by MutateDialog.
+//     weight range, and whether their own parameters get randomized), and
+//     an opt-in GPU-compatibility restriction on random generation
+//     (docs/GPU_RENDERING_PLAN.md - narrows the same eligibleVariations
+//     pool the Variations tab's checklist feeds, so generation never lands
+//     on a CPU-only legacy plugin variation), all consumed by MainWindow::
+//     onNewRandomBatchTriggered; mutation transform-count range and the
+//     GPU restriction are also consumed by MutateDialog.
 //   - Variations: the enable/disable checklist restricting which
 //     variations a "Random" topology draw can land on - consumed by
 //     MainWindow's random batch generation AND MutateDialog's own
@@ -92,6 +95,7 @@ private:
     QSpinBox* batchSizeSpin_ = nullptr;
     QLineEdit* batchTitlePrefixEdit_ = nullptr;
     QCheckBox* keepBackgroundCheck_ = nullptr;
+    QCheckBox* restrictToGpuCompatibleCheck_ = nullptr;
     QSpinBox* mutationMinXformsSpin_ = nullptr;
     QSpinBox* mutationMaxXformsSpin_ = nullptr;
     QComboBox* symmetryTypeCombo_ = nullptr;

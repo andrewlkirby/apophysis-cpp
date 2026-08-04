@@ -1,0 +1,2 @@
+﻿# CMAKE generated file: DO NOT EDIT!
+# Timestamp file for custom commands dependencies management for variations_batch7_test_autogen.

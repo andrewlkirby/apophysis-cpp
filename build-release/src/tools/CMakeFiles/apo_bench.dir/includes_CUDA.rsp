@@ -1,0 +1,1 @@
+-I"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/tools/apo_bench_autogen/include" -I"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/.." -isystem C:/PROGRA~1/NVIDIA~2/CUDA/v12.6/include -isystem "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/vcpkg_installed/x64-windows/include"

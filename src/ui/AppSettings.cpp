@@ -5,6 +5,7 @@
 #include <QSettings>
 
 #include "core/VariationRegistry.h"
+#include "core/render/gpu/VariationKinds.h"
 
 namespace apo::ui::AppSettings {
 
@@ -136,20 +137,37 @@ void setRandomVariationParameterStrength(double strength) {
 QStringList disabledVariationNames() { return QSettings().value("random/disabledVariations").toStringList(); }
 void setDisabledVariationNames(const QStringList& names) { QSettings().setValue("random/disabledVariations", names); }
 
+bool randomRestrictToGpuCompatible() {
+    return QSettings().value("random/restrictToGpuCompatible", false).toBool();
+}
+void setRandomRestrictToGpuCompatible(bool restrict) {
+    QSettings().setValue("random/restrictToGpuCompatible", restrict);
+}
+
 std::vector<int> enabledVariationIndices() {
     const QStringList disabled = disabledVariationNames();
+    const bool gpuOnly = randomRestrictToGpuCompatible();
     const auto& registry = apo::VariationRegistry::instance();
-    std::vector<int> enabled;
-    enabled.reserve(static_cast<size_t>(registry.nrVar()));
-    for (int i = 0; i < registry.nrVar(); ++i) {
-        if (!disabled.contains(QString::fromStdString(registry.varName(i)))) enabled.push_back(i);
-    }
-    if (enabled.empty()) {
-        // Every variation was excluded - fall back to "everything eligible"
-        // rather than leaving random generation with nothing to draw from.
-        enabled.reserve(static_cast<size_t>(registry.nrVar()));
-        for (int i = 0; i < registry.nrVar(); ++i) enabled.push_back(i);
-    }
+    const int n = registry.nrVar();
+
+    // applyDisabled/applyGpuOnly let the fallbacks below drop one filter at
+    // a time rather than jumping straight to "everything" - see this
+    // function's own header comment for why.
+    auto collect = [&](bool applyDisabled, bool applyGpuOnly) {
+        std::vector<int> out;
+        out.reserve(static_cast<size_t>(n));
+        for (int i = 0; i < n; ++i) {
+            const std::string name = registry.varName(i);
+            if (applyDisabled && disabled.contains(QString::fromStdString(name))) continue;
+            if (applyGpuOnly && !apo::gpu::isVariationNameGpuEligible(name)) continue;
+            out.push_back(i);
+        }
+        return out;
+    };
+
+    std::vector<int> enabled = collect(/*applyDisabled=*/true, gpuOnly);
+    if (enabled.empty()) enabled = collect(/*applyDisabled=*/false, gpuOnly);
+    if (enabled.empty()) enabled = collect(/*applyDisabled=*/false, /*applyGpuOnly=*/false);
     return enabled;
 }
 

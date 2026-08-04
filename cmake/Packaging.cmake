@@ -87,11 +87,33 @@ find_program(APO_WINDEPLOYQT_EXECUTABLE
 # whatever shell invokes cmake --build.
 if(MSVC)
     get_filename_component(APO_MSVC_BIN_DIR "${CMAKE_CXX_COMPILER}" DIRECTORY)
-    # .../VC/Tools/MSVC/<version>/bin/Hostx64/x64 -> .../VC/Redist/MSVC/<version>/x64/Microsoft.VC*.CRT
+    # .../VC/Tools/MSVC/<version>/bin/Hostx64/x64 -> .../VC/Redist/MSVC/<redist-version>/x64/Microsoft.VC*.CRT
     get_filename_component(APO_MSVC_TOOLSET_DIR "${APO_MSVC_BIN_DIR}/../../.." ABSOLUTE)
     get_filename_component(APO_MSVC_VERSION "${APO_MSVC_TOOLSET_DIR}" NAME)
     get_filename_component(APO_VC_DIR "${APO_MSVC_TOOLSET_DIR}/../../.." ABSOLUTE)
-    file(GLOB APO_CRT_REDIST_DIR "${APO_VC_DIR}/Redist/MSVC/${APO_MSVC_VERSION}/x64/Microsoft.VC*.CRT")
+    # Redist/MSVC/<version>/'s version doesn't always exactly match
+    # Tools/MSVC/<version>/'s - confirmed on a real VS2022 BuildTools-only
+    # install: Tools had 14.44.35207, Redist only had 14.44.35112 (the
+    # redist package's own release cadence lags the compiler toolset's).
+    # An exact-version glob then silently matches nothing, APO_CRT_REDIST_DIR
+    # stays unset, and this whole CRT-bundling step becomes a silent no-op -
+    # the resulting zip still launches fine on a dev machine that already
+    # has the redistributable installed system-wide, then fails with a
+    # missing-DLL error on one that doesn't, with no warning at build time.
+    # Match on just the major.minor ABI band (e.g. "14.44") instead - that's
+    # what actually determines CRT binary compatibility, and the
+    # patch/build component is safe to let differ between the compiler and
+    # its redistributable package.
+    string(REGEX MATCH "^[0-9]+\\.[0-9]+" APO_MSVC_ABI_VERSION "${APO_MSVC_VERSION}")
+    file(GLOB APO_CRT_REDIST_CANDIDATES "${APO_VC_DIR}/Redist/MSVC/${APO_MSVC_ABI_VERSION}.*/x64/Microsoft.VC*.CRT")
+    if(APO_CRT_REDIST_CANDIDATES)
+        # Prefer the highest patch/build version if more than one is
+        # installed side-by-side (lexical sort matches numeric order here:
+        # every observed Redist patch/build component is the same digit
+        # width within one VS release).
+        list(SORT APO_CRT_REDIST_CANDIDATES)
+        list(GET APO_CRT_REDIST_CANDIDATES -1 APO_CRT_REDIST_DIR)
+    endif()
 endif()
 
 add_custom_target(deploy
@@ -120,6 +142,25 @@ if(APO_CRT_REDIST_DIR)
         COMMAND ${CMAKE_COMMAND} "-DSRC_DIR=${APO_CRT_REDIST_DIR}" "-DDST_DIR=${APO_DEPLOY_DIR}" "-DPATTERN=*.dll"
             -P "${CMAKE_CURRENT_LIST_DIR}/CopyMatching.cmake"
         COMMENT "Bundling the MSVC redistributable CRT DLLs"
+        VERBATIM
+    )
+endif()
+
+# docs/GPU_RENDERING_PLAN.md: apo_gui dynamically links CUDA::cudart
+# (src/core/CMakeLists.txt) whenever APO_ENABLE_CUDA is ON, but neither
+# windeployqt nor the CRT-redist step above knows anything about it - a
+# deploy/package_zip build made with CUDA enabled would otherwise launch
+# fine here (cudart64_*.dll already resolves from the CUDA Toolkit install
+# on this machine) and then fail with a "code execution cannot proceed
+# because <dll> was not found" popup on any target machine that doesn't
+# happen to have the CUDA Toolkit installed - the exact class of error this
+# comment is here to prevent. CUDAToolkit_BIN_DIR comes from find_package
+# (CUDAToolkit) in the top-level CMakeLists.txt.
+if(APO_ENABLE_CUDA)
+    add_custom_command(TARGET deploy POST_BUILD
+        COMMAND ${CMAKE_COMMAND} "-DSRC_DIR=${CUDAToolkit_BIN_DIR}" "-DDST_DIR=${APO_DEPLOY_DIR}" "-DPATTERN=cudart64_*.dll"
+            -P "${CMAKE_CURRENT_LIST_DIR}/CopyMatching.cmake"
+        COMMENT "Bundling the CUDA runtime DLL (cudart64_*.dll)"
         VERBATIM
     )
 endif()

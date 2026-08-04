@@ -1,0 +1,360 @@
+{
+	"AUTOGEN_COMMAND_LINE_LENGTH_MAX" : 32000,
+	"BUILD_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui",
+	"CMAKE_EXECUTABLE" : "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CMakeLists.txt"
+	],
+	"CMAKE_SOURCE_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp",
+	"CROSS_CONFIG" : false,
+	"DEP_FILE" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "apo_ui_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AboutDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_AboutDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_AdjustDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.h",
+			"Mu",
+			"EWIEGA46WW/moc_AdjustPanel.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AppSettings.h",
+			"Mu",
+			"EWIEGA46WW/moc_AppSettings.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_CurvesDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesWidget.h",
+			"Mu",
+			"EWIEGA46WW/moc_CurvesWidget.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.h",
+			"Mu",
+			"EWIEGA46WW/moc_EditorWindow.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_ForceSymmetryDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.h",
+			"Mu",
+			"EWIEGA46WW/moc_FullscreenView.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_GradientBrowserDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.h",
+			"Mu",
+			"EWIEGA46WW/moc_MainWindow.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.h",
+			"Mu",
+			"EWIEGA46WW/moc_MemoryBudget.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MutateDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_MutateDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/OptionsDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_OptionsDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PostProcessDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_PostProcessDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewLabel.h",
+			"Mu",
+			"EWIEGA46WW/moc_PreviewLabel.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewSizing.h",
+			"Mu",
+			"EWIEGA46WW/moc_PreviewSizing.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderAllDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_RenderAllDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_RenderDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderWorker.h",
+			"Mu",
+			"EWIEGA46WW/moc_RenderWorker.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.h",
+			"Mu",
+			"EWIEGA46WW/moc_SliderSpin.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_SmoothPaletteDialog.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ThumbnailTask.h",
+			"Mu",
+			"EWIEGA46WW/moc_ThumbnailTask.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TransformPanel.h",
+			"Mu",
+			"EWIEGA46WW/moc_TransformPanel.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TriangleCanvas.h",
+			"Mu",
+			"EWIEGA46WW/moc_TriangleCanvas.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h",
+			"Mu",
+			"EWIEGA46WW/moc_WindowGeometry.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h",
+			"Mu",
+			"EWIEGA46WW/moc_XaosDialog.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"APO_HAVE_CUDA",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_NO_DEBUG",
+		"QT_WIDGETS_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN64",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src",
+		"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/include",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/vcpkg_installed/x64-windows/include",
+		"C:/Qt/6.8.0/msvc2022_64/include/QtWidgets",
+		"C:/Qt/6.8.0/msvc2022_64/include",
+		"C:/Qt/6.8.0/msvc2022_64/include/QtCore",
+		"C:/Qt/6.8.0/msvc2022_64/mkspecs/win32-msvc",
+		"C:/Qt/6.8.0/msvc2022_64/include/QtGui"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : [],
+	"MOC_PREDEFS_FILE" : "",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 8,
+	"PARSE_CACHE_FILE" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/CMakeFiles/apo_ui_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "C:/Qt/6.8.0/msvc2022_64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 8,
+	"SETTINGS_FILE" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/CMakeFiles/apo_ui_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AboutDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AppSettings.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesWidget.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MutateDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/OptionsDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PostProcessDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewLabel.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderAllDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TransformPanel.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TriangleCanvas.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.cpp",
+			"Mu",
+			null
+		]
+	],
+	"USE_BETTER_GRAPH" : true,
+	"VERBOSITY" : 0
+}

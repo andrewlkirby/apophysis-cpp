@@ -137,13 +137,31 @@ void setRandomVariationParameterStrength(double strength);
 // core code) takes a plain index list, not this Qt-ish name-based form.
 QStringList disabledVariationNames();
 void setDisabledVariationNames(const QStringList& names);
+
+// Random tab's "Restrict to GPU-render-compatible variations" checkbox
+// (docs/GPU_RENDERING_PLAN.md) - when on, enabledVariationIndices() below
+// also excludes every variation apo::gpu::isVariationNameGpuEligible()
+// reports as not GPU-ported (today, only the 47 legacy C plugins), so a
+// randomly generated flame or "Random" mutation trend is guaranteed to be
+// eligible for GpuRenderer regardless of AppSettings::useGpuRendering()'s
+// own separate per-render on/off. Off by default: this is a deliberate
+// restriction a user opts into for a GPU-targeted workflow, not a default
+// that would silently shrink the variation pool for everyone else.
+bool randomRestrictToGpuCompatible();
+void setRandomRestrictToGpuCompatible(bool restrict);
+
 // VariationRegistry indices of every variation NOT in
-// disabledVariationNames() - the ready-to-use form
+// disabledVariationNames() (and, if randomRestrictToGpuCompatible() is on,
+// not GPU-ineligible either) - the ready-to-use form
 // MutationOps::randomizeXforms/setXformsVariation's eligibleVariations
-// parameter wants. Falls back to every registered index if the exclusion
-// set would otherwise leave nothing eligible (a user who unchecked every
-// box shouldn't end up with generation broken outright - same "clamp to
-// something sane" spirit as randomMinXforms/randomMaxXforms above).
+// parameter wants. Falls back in stages if a filter would otherwise leave
+// nothing eligible - first ignoring disabledVariationNames() (but keeping
+// the GPU restriction, if any), then, only as a last resort, ignoring the
+// GPU restriction too - so a user who's excluded almost everything, or
+// whose disabled list plus the GPU restriction leaves nothing standing,
+// still gets a working random generator rather than a hard failure (same
+// "clamp to something sane" spirit as randomMinXforms/randomMaxXforms
+// above).
 std::vector<int> enabledVariationIndices();
 
 // Options.pas's "On random flame use..." gradient-source choice

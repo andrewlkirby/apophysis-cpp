@@ -133,4 +133,17 @@ struct RegisteredVarInfo {
 // variation has no GPU implementation.
 const RegisteredVarInfo* lookupRegisteredVarKind(const std::string& name);
 
+// True iff `name` is one of the 29 local variations or appears in
+// kRegisteredVarTable above - i.e. iff a flame using nothing but this
+// variation (and other GPU-eligible ones) can render on the GPU backend.
+// False for anything else, which today means only the 47 legacy C plugins
+// (see src/core/plugins/) - they're never added to the registered-variation
+// table above and have no local-variation slot either. A name-only check,
+// independent of any particular Flame/XForm's index space, so UI code
+// (TransformPanel's Variations table, OptionsDialog's "GPU-compatible only"
+// random-generation filter) can use it without needing a full flame to test
+// eligibility against - see isFlameGpuEligible (DeviceFlame.h) for the
+// Flame-level check this is a building block of.
+bool isVariationNameGpuEligible(const std::string& name);
+
 } // namespace apo::gpu

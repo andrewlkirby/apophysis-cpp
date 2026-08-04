@@ -57,6 +57,12 @@ it via System Settings > Privacy & Security.
   (density-estimation) filtering, gamma/vibrancy/brightness color
   correction, transparent-background export, and cooperative
   cancel/pause/resume mid-render.
+- **Optional GPU (CUDA) rendering backend** — full parity with the CPU
+  renderer for every non-plugin variation, selectable for both live preview
+  and final export with automatic CPU fallback; opt-in at build time (see
+  [Building from source](#building-from-source)) and off by default. See
+  [`docs/GPU_RENDERING_PLAN.md`](docs/GPU_RENDERING_PLAN.md) for the design
+  and verified performance numbers.
 - **~90 variations** ported from flam3/Apophysis, including the full local
   (parameterless) set and dozens of parametric variations, plus a
   compatibility shim for legacy third-party plugin variations (`julia`,
@@ -128,6 +134,14 @@ release packages don't cover — for normal use, see
   Qt runtime libraries on the system (GL, xkbcommon, fontconfig, etc.) —
   see `.github/workflows/ci.yml` for the exact `apt-get install` list CI
   uses.
+- **CUDA Toolkit** (optional, Windows/Linux only) — only needed to build the
+  GPU render backend (`-DAPO_ENABLE_CUDA=ON`, off by default; see
+  [`docs/GPU_RENDERING_PLAN.md`](docs/GPU_RENDERING_PLAN.md)). nvcc
+  maintains an allowlist of "supported" host MSVC versions and hard-errors
+  on anything newer, even when that newer compiler works fine in practice —
+  if your only installed MSVC is too new for your CUDA release, install an
+  older MSVC toolset (e.g. the VS2022 "v143" build tools) side-by-side and
+  point CMake at it, rather than trying to use the latest MSVC unmodified.
 
 ### Build
 
@@ -153,6 +167,23 @@ The GUI app builds as `build/src/ui/apo_gui` on Linux, or
 Optional: enable AVX2 codegen for the render/variation hot path (raises the
 minimum supported CPU to roughly Haswell/2013+) with
 `-DAPO_CORE_ENABLE_AVX2=ON`.
+
+Optional: enable the CUDA render backend with `-DAPO_ENABLE_CUDA=ON`
+(requires the CUDA Toolkit — see [Prerequisites](#prerequisites)). On
+Windows, if the CUDA Toolkit doesn't yet support your installed MSVC
+version, CMake's Visual Studio generator won't work even with an older
+toolset selected (it needs matching CUDA MSBuild integration files) — use
+the NMake Makefiles generator from a Developer Command Prompt for the
+compatible toolset instead:
+```
+"<path to matching VS install>\VC\Auxiliary\Build\vcvars64.bat"
+cmake -B build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DAPO_ENABLE_CUDA=ON -DCMAKE_TOOLCHAIN_FILE=<vcpkg root>/scripts/buildsystems/vcpkg.cmake -DCMAKE_PREFIX_PATH=C:\Qt\6.8.0\msvc2022_64
+cmake --build build
+```
+This produces `build/src/ui/apo_gui.exe` directly (no `Release`
+subdirectory, since NMake is single-config). See
+[`docs/GPU_RENDERING_PLAN.md`](docs/GPU_RENDERING_PLAN.md) for the full
+toolchain notes this was verified against.
 
 ### Run the tests
 
@@ -182,7 +213,8 @@ cmake --build build --target package_zip                     # macOS (Release ch
 ```
 
 Produces `build/deploy/` (a self-contained, redistributable copy of the app
-— Qt, and on Windows the MSVC runtime, DLLs included) and
+— Qt, and on Windows the MSVC runtime and, if `APO_ENABLE_CUDA=ON`, the CUDA
+runtime DLL, all included) and
 `build/apophysis7x-<version>-win64.zip` or
 `build/apophysis7x-<version>-macos-<arch>.zip` (the `.app`, on macOS). An
 Inno Setup installer script is also provided for Windows at

@@ -2,6 +2,8 @@
 
 #include <unordered_map>
 
+#include "../../VariationRegistry.h"
+
 namespace apo::gpu {
 
 namespace {
@@ -107,6 +109,13 @@ const RegisteredVarInfo* lookupRegisteredVarKind(const std::string& name) {
     const auto& table = registeredVarTable();
     const auto it = table.find(name);
     return it == table.end() ? nullptr : &it->second;
+}
+
+bool isVariationNameGpuEligible(const std::string& name) {
+    for (const std::string& localName : VariationRegistry::localVarNames()) {
+        if (localName == name) return true;
+    }
+    return lookupRegisteredVarKind(name) != nullptr;
 }
 
 } // namespace apo::gpu

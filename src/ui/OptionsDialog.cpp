@@ -24,6 +24,7 @@
 #include <QVBoxLayout>
 
 #include "AppSettings.h"
+#include "GpuCompatibilityBadge.h"
 #include "WindowGeometry.h"
 #include "core/VariationRegistry.h"
 
@@ -166,6 +167,30 @@ QWidget* OptionsDialog::buildRandomTab() {
 
     layout->addWidget(xformsGroup);
 
+    // docs/GPU_RENDERING_PLAN.md: an opt-in restriction (default off) on top
+    // of the Variations tab's own enable/disable checklist - narrows the
+    // same eligibleVariations pool (AppSettings::enabledVariationIndices())
+    // so a randomly generated flame, or a Mutate "Random" trend draw, only
+    // ever lands on a variation apo::gpu::isVariationNameGpuEligible()
+    // reports as GPU-ported. Independent of the General tab's "Use GPU
+    // rendering" toggle: that one picks a backend per-render for whatever
+    // flame already exists, this one shapes what randomly-generated flames
+    // contain in the first place, so they can't accidentally end up with a
+    // CPU-only plugin variation baked in - useful for a GPU-focused
+    // exploration workflow where every generated flame should get the
+    // GPU's speed, not just whichever ones happen not to use a plugin.
+    auto* gpuGroup = new QGroupBox("GPU Compatibility", tab);
+    auto* gpuForm = new QFormLayout(gpuGroup);
+    restrictToGpuCompatibleCheck_ = new QCheckBox("Restrict to GPU-render-compatible variations", gpuGroup);
+    restrictToGpuCompatibleCheck_->setObjectName("restrictToGpuCompatibleCheck");
+    restrictToGpuCompatibleCheck_->setToolTip(
+        "When checked, new random flames and Mutate's \"Random\" trend only draw from variations the GPU "
+        "backend has ported - never one of the 47 legacy plugin variations (which always render on the CPU). "
+        "Applies on top of the Variations tab's own enable/disable list.");
+    restrictToGpuCompatibleCheck_->setChecked(AppSettings::randomRestrictToGpuCompatible());
+    gpuForm->addRow(restrictToGpuCompatibleCheck_);
+    layout->addWidget(gpuGroup);
+
     auto* batchGroup = new QGroupBox("Random Batch", tab);
     auto* batchForm = new QFormLayout(batchGroup);
     batchSizeSpin_ = new QSpinBox(batchGroup);
@@ -291,10 +316,21 @@ QWidget* OptionsDialog::buildVariationsTab() {
     const auto& registry = apo::VariationRegistry::instance();
     const QStringList disabled = AppSettings::disabledVariationNames();
     for (int i = 0; i < registry.nrVar(); ++i) {
-        const QString name = QString::fromStdString(registry.varName(i));
+        const std::string stdName = registry.varName(i);
+        const QString name = QString::fromStdString(stdName);
         auto* item = new QListWidgetItem(name, variationsList_);
         item->setFlags(item->flags() | Qt::ItemIsUserCheckable);
         item->setCheckState(disabled.contains(name) ? Qt::Unchecked : Qt::Checked);
+        // Same marker as TransformPanel's Variations table (see
+        // GpuCompatibilityBadge.h) - this list feeds the same
+        // eligibleVariations pool the Random tab's "Restrict to GPU-render-
+        // compatible variations" checkbox filters, so a user deciding
+        // whether to hand-uncheck a plugin variation here benefits from the
+        // same at-a-glance marker.
+        if (isCpuOnlyVariation(stdName)) {
+            item->setIcon(cpuOnlyBadgeIcon());
+            item->setToolTip(name + cpuOnlyTooltipSuffix());
+        }
     }
     layout->addWidget(variationsList_, /*stretch=*/1);
 
@@ -402,6 +438,7 @@ void OptionsDialog::applyAndAccept() {
     AppSettings::setRandomBatchSize(batchSizeSpin_->value());
     AppSettings::setRandomBatchTitlePrefix(batchTitlePrefixEdit_->text());
     AppSettings::setRandomKeepBackground(keepBackgroundCheck_->isChecked());
+    AppSettings::setRandomRestrictToGpuCompatible(restrictToGpuCompatibleCheck_->isChecked());
     AppSettings::setMutationMinXforms(mutationMinXformsSpin_->value());
     AppSettings::setMutationMaxXforms(mutationMaxXformsSpin_->value());
     AppSettings::setRandomSymmetryType(symmetryTypeCombo_->currentIndex());

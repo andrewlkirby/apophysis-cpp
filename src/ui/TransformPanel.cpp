@@ -19,6 +19,7 @@
 #include <QTabWidget>
 #include <QVBoxLayout>
 
+#include "GpuCompatibilityBadge.h"
 #include "SliderSpin.h"
 #include "core/VariationRegistry.h"
 
@@ -216,10 +217,16 @@ QWidget* TransformPanel::buildVariationsTab() {
     const int n = registry.nrVar();
     variationsTable_->setRowCount(n);
     for (int i = 0; i < n; ++i) {
-        const QString name = QString::fromStdString(registry.varName(i));
+        const std::string stdName = registry.varName(i);
+        const QString name = QString::fromStdString(stdName);
         auto* nameItem = new QTableWidgetItem(name);
         nameItem->setFlags(nameItem->flags() & ~Qt::ItemIsEditable);
-        nameItem->setToolTip(name);
+        if (isCpuOnlyVariation(stdName)) {
+            nameItem->setIcon(cpuOnlyBadgeIcon());
+            nameItem->setToolTip(name + cpuOnlyTooltipSuffix());
+        } else {
+            nameItem->setToolTip(name);
+        }
         variationsTable_->setItem(i, 0, nameItem);
         variationsTable_->setItem(i, 1, new QTableWidgetItem());
         // The description column's prose routinely runs longer than the

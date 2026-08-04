@@ -1,0 +1,12 @@
+{
+	"InstallScripts" : 
+	[
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/cmake_install.cmake",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/core/cmake_install.cmake",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/tools/cmake_install.cmake",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/cmake_install.cmake",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/cmake_install.cmake",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

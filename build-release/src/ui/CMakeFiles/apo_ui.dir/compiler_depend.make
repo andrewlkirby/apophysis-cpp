@@ -1692,6 +1692,7 @@ src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Rng.h
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\random"
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\gpu\VariationKinds.h
 
 
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesDialog.cpp
@@ -4111,6 +4112,319 @@ src\ui\CMakeFiles\apo_ui.dir\FullscreenView.cpp.obj: C:\Users\andre\Documents\Co
 src\ui\CMakeFiles\apo_ui.dir\FullscreenView.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\RenderDispatcher.h
 
 
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.cpp
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\yvals_core.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\sal.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concurrencysal.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vadefs.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xkeycheck.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xstring"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_sanitizer_annotate_container.hpp"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_string_view.hpp"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iosfwd"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\yvals.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\crtdbg.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_new_debug.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_new.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\crtdefs.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\use_ansi.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdio"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdio.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstring"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\string.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_memory.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_memcpy_s.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\errno.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_string.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstring.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cwchar"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\wchar.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wconio.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wctype.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wdirect.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wio.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_share.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wprocess.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdlib.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wtime.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\stat.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\types.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.inl.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\setjmp.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\immintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\wmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\nmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\smmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\tmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\pmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\emmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\mmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\malloc.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_malloc.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\zmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ammintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtr1common"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xutility"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\utility"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\initializer_list"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstddef"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stddef.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\type_traits"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdint"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdint.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\compare"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concepts"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\climits"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdlib"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_math.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdlib.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_search.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmemory"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cfloat"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\float.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\new"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\exception"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_exception.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\eh.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_terminate.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\tuple"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xpolymorphic_allocator.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cctype"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qglobal.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdbool.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtversionchecks.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtconfiginclude.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qconfig.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtcore-config.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtconfigmacros.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtdeprecationdefinitions.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtcoreexports.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\version"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtdeprecationmarkers.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtclasshelpermacros.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtpreprocessorsupport.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qassert.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtnoop.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtypes.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtversion.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtypeinfo.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainerfwd.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsysinfo.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlogging.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qflags.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompare_impl.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qatomic.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbasicatomic.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qatomic_cxx11.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qgenericatomic.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qyieldcpu.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\atomic"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic_wait.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xthreads.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_threads_core.hpp"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtimec.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ctime"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\time.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qconstructormacros.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdarwinhelpers.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qexceptionhandling.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qforeach.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qttypetraits.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\optional"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xsmf_control.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\variant"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionpointer.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qglobalstatic.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmalloc.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qminmax.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qnumeric.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cmath"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qoverload.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qswap.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtenvironmentvariables.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtresource.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qttranslation.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qversiontagging.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompare.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\bit"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_bit_utils.hpp"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcomparehelpers.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20type_traits.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\functional"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\typeinfo"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_typeinfo.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\unordered_map"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xhash"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\list"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vector"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xnode_handle.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringview.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringview.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearray.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrefcount.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qnamespace.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtmetamacros.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qarraydata.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpair.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qarraydatapointer.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qarraydataops.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qxptype_traits.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iterator"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\algorithm"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_heap_algorithms.hpp"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_minmax.hpp"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20functional.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20memory.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearrayalgorithms.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdarg.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearrayview.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string_view"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringliteral.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringalgorithms.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlatin1stringview.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qanystringview.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qutf8stringview.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringtokenizer.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringbuilder.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringconverter.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringconverter_base.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringbuilder.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QColor
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qcolor.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtguiglobal.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtgui-config.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtguiexports.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qrgb.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlist.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qhashfunctions.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\numeric"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiterator.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearraylist.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlist.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlist.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qalgorithms.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringmatcher.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qrgba64.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QIcon
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qicon.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsize.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmargins.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q23utility.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpixmap.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpaintdevice.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qwindowdefs.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobjectdefs.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobjectdefs_impl.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionaltools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qwindowdefs_win.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrect.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpoint.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qshareddata.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qimage.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpixelformat.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtransform.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpolygon.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qregion.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdatastream.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qscopedpointer.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiodevicebase.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qspan.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\array"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cassert"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20iterator.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\span"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qline.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QPainter
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpainter.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtextoption.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmetatype.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfloat16.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmath.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiterable.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmetacontainer.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainerinfo.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtaggedpointer.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qscopeguard.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\map"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtree"
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpen.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qbrush.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qfontinfo.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qfont.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qendian.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qfontmetrics.h
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QPixmap
+src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\gpu\VariationKinds.h
+
+
 src\ui\CMakeFiles\apo_ui.dir\GradientBrowserDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GradientBrowserDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\GradientBrowserDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GradientBrowserDialog.h
 src\ui\CMakeFiles\apo_ui.dir\GradientBrowserDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QDialog
@@ -6417,6 +6731,8 @@ src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\incl
 src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QStringList
 src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.h
+src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h
 src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QByteArray
 src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
@@ -9731,6 +10047,8 @@ src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\inc
 src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qtableview.h
 src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QTabWidget
 src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QVBoxLayout
+src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.h
+src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SliderSpin.h
 src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QWidget
 
@@ -11318,11 +11636,11 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtconfigmacros.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h":
 
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\errno.h":
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\numeric":
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MutateDialog.h:
 
-"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\numeric":
+"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\errno.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstring.h":
 
@@ -12292,6 +12610,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtGui\QWheelEvent:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\VariationRegistry.h:
 
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\gpu\VariationKinds.h:
+
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesDialog.cpp:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QStackedWidget:
@@ -12373,6 +12693,10 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\FullscreenView.c
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\QContextMenuEvent:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\QKeyEvent:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GradientBrowserDialog.cpp:
 

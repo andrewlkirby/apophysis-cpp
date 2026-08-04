@@ -77,8 +77,12 @@ signals:
     void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed);
     // `progress` is a raw pointer owned by this dialog (progress_) - see
     // RenderWorker::renderFull's doc comment on the ownership contract.
+    // Always emitted with BucketPrecision::Double (see .cpp) - this dialog
+    // has no "Faster rendering" control of its own; the parameter exists
+    // only so this signal keeps matching RenderWorker::renderFull's slot
+    // signature (see RenderDialog::fullRenderRequested's own doc comment).
     void fullRenderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed, int threadCount,
-                              apo::RenderProgress* progress, QString outputPath);
+                              apo::RenderProgress* progress, QString outputPath, apo::BucketPrecision precision);
 
 private slots:
     void onRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted);

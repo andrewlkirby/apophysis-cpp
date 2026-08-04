@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
 
 #include "../Flame.h"
 #include "Renderer.h"
@@ -45,6 +46,26 @@ public:
     // status indicator ("Rendering on GPU" / "CPU (plugin variation in
     // use)") - see docs/GPU_RENDERING_PLAN.md's UI integration section.
     static bool wouldUseGpu(const Flame& flame, bool preferGpu = true);
+
+    // "" when wouldUseGpu(flame, preferGpu) is true; otherwise a short,
+    // user-facing reason it isn't (GPU disabled in preferences, no CUDA
+    // device, flame uses a CPU-only/legacy-plugin variation, or - a non-CUDA
+    // build - CUDA support not compiled in). Cheap, does no rendering; the
+    // companion half of wouldUseGpu() for a UI backend indicator that
+    // explains itself rather than just saying "CPU".
+    static std::string cpuFallbackReason(const Flame& flame, bool preferGpu = true);
+
+    // Estimated peak CUDA device-memory GpuRenderer::render() would use for
+    // this exact flame/precision - see gpu::estimatePeakMemoryBytes's own
+    // doc comment (DeviceFlame.h) for what's counted. 0 if no CUDA device is
+    // available or the flame isn't GPU-eligible (callers should treat 0 as
+    // "no estimate", not "zero bytes" - same convention as the underlying
+    // gpu:: call). Deliberately NOT gated on `preferGpu`/AppSettings'
+    // use-GPU toggle, unlike wouldUseGpu() - this answers "what would the
+    // GPU path cost if used", independent of whether the user currently has
+    // it enabled, so a UI can show it even while the preference is off.
+    static std::uint64_t estimateGpuPeakMemoryBytes(const Flame& flame,
+                                                      BucketPrecision precision = BucketPrecision::Double);
 };
 
 } // namespace apo

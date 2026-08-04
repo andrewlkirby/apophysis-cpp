@@ -62,12 +62,13 @@ std::uint64_t totalPhysicalMemoryBytes() {
 }
 
 ThreadBudgetResult resolveMemorySafeThreadCount(const apo::Flame& flame, int requestedThreadCount,
-                                                 std::uint64_t totalPhysicalRamBytes) {
+                                                 std::uint64_t totalPhysicalRamBytes,
+                                                 apo::BucketPrecision precision) {
     ThreadBudgetResult result;
     result.threadCount = requestedThreadCount > 0
                               ? requestedThreadCount
                               : static_cast<int>(std::max(1u, std::thread::hardware_concurrency()));
-    result.estimatedBytes = apo::Renderer::estimatePeakMemoryBytes(flame, result.threadCount);
+    result.estimatedBytes = apo::Renderer::estimatePeakMemoryBytes(flame, result.threadCount, precision);
 
     if (totalPhysicalRamBytes == 0) return result; // unknown - fail open, see header comment
 
@@ -75,14 +76,15 @@ ThreadBudgetResult resolveMemorySafeThreadCount(const apo::Flame& flame, int req
         static_cast<std::uint64_t>(static_cast<double>(totalPhysicalRamBytes) * kBudgetFractionOfPhysicalRam);
     while (result.threadCount > 1 && result.estimatedBytes > budget) {
         --result.threadCount;
-        result.estimatedBytes = apo::Renderer::estimatePeakMemoryBytes(flame, result.threadCount);
+        result.estimatedBytes = apo::Renderer::estimatePeakMemoryBytes(flame, result.threadCount, precision);
         result.clamped = true;
     }
     return result;
 }
 
-ThreadBudgetResult resolveMemorySafeThreadCount(const apo::Flame& flame, int requestedThreadCount) {
-    return resolveMemorySafeThreadCount(flame, requestedThreadCount, totalPhysicalMemoryBytes());
+ThreadBudgetResult resolveMemorySafeThreadCount(const apo::Flame& flame, int requestedThreadCount,
+                                                 apo::BucketPrecision precision) {
+    return resolveMemorySafeThreadCount(flame, requestedThreadCount, totalPhysicalMemoryBytes(), precision);
 }
 
 } // namespace apo::ui

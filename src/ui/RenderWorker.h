@@ -40,9 +40,11 @@ public slots:
     // "low density, latency-sensitive" preview path the plan calls out by
     // name: AdjustDialog/CurvesDialog/EditorWindow/MutateDialog/
     // PostProcessDialog's live-drag previews, all wired to this slot (not
-    // renderFlameWithProgress or renderFull below, both of which stay at
-    // the BucketPrecision::Double default - a full-quality render keeps
-    // full precision).
+    // renderFlameWithProgress below, which stays at the BucketPrecision::
+    // Double default always - a live preview has no per-render precision
+    // control of its own. renderFull() below defaults to Double too (a
+    // full-quality render keeps full precision unless the user opts out via
+    // RenderDialog's "Faster rendering" checkbox - see its own doc comment).
     void renderFlame(std::shared_ptr<const apo::Flame> flame, quint64 seed) {
         // A render can legitimately throw (most realistically std::bad_alloc,
         // if a large canvas's bucket allocation collides with whatever else
@@ -112,8 +114,21 @@ public slots:
     // `progress` is a raw pointer, not owned by this call - the caller
     // (RenderDialog) owns it and must keep it alive until fullRenderFinished
     // is delivered back; nullptr is fine (no progress reporting).
+    //
+    // `precision` defaults to Double (this slot's long-standing behavior,
+    // and still every caller's default) - Float is an explicit per-render
+    // opt-in (RenderDialog's "Faster rendering" checkbox) that trades the
+    // same accuracy caveat Renderer.h's BucketPrecision documents for
+    // real, measured throughput: ~2x on the GPU backend for a typical
+    // (non-blur-bottlenecked) flame at final-render density (apo_bench
+    // --backend=gpu, double vs float, confirmed 2026-08-03), since a
+    // float atomicAdd into the shared device histogram is cheaper than a
+    // double one on every CUDA architecture this project targets; on the
+    // CPU backend the win is smaller (memory-bandwidth/cache, not atomics)
+    // but real too.
     void renderFull(std::shared_ptr<const apo::Flame> flame, quint64 seed, int threadCount,
-                     apo::RenderProgress* progress, QString outputPath) {
+                     apo::RenderProgress* progress, QString outputPath,
+                     apo::BucketPrecision precision = apo::BucketPrecision::Double) {
         // Note: a cancelled render already reaches this point normally (the
         // early-break in Renderer::render() just stops feeding more points
         // into the buckets already accumulated) and gets tone-mapped and
@@ -127,8 +142,8 @@ public slots:
         try {
             bool usedGpu = false;
             const apo::RenderedImage image =
-                apo::RenderDispatcher::render(*flame, seed, threadCount, progress, /*timings=*/nullptr,
-                                               apo::BucketPrecision::Double, AppSettings::useGpuRendering(), &usedGpu);
+                apo::RenderDispatcher::render(*flame, seed, threadCount, progress, /*timings=*/nullptr, precision,
+                                               AppSettings::useGpuRendering(), &usedGpu);
 
             bool saved = true;
             if (!outputPath.isEmpty() && !image.pixels.empty()) {

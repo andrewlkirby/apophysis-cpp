@@ -98,7 +98,8 @@ void FullscreenView::startRender() {
 
     std::shared_ptr<const apo::Flame> shared(std::move(renderFlame));
     const quint64 seed = static_cast<quint64>(std::random_device{}());
-    emit renderRequested(shared, seed, AppSettings::renderThreadCount(), progress_.get(), QString());
+    emit renderRequested(shared, seed, AppSettings::renderThreadCount(), progress_.get(), QString(),
+                          apo::BucketPrecision::Double);
 }
 
 void FullscreenView::onProgressTick() {

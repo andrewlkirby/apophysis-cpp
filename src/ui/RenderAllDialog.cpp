@@ -316,7 +316,8 @@ void RenderAllDialog::renderNext() {
     const QString outputPath =
         QDir(outputFolderEdit_->text()).filePath(outputFileNames_[static_cast<std::size_t>(currentIndex_)]);
     const quint64 seed = static_cast<quint64>(std::random_device{}());
-    emit fullRenderRequested(shared, seed, budget.threadCount, progress_.get(), outputPath);
+    emit fullRenderRequested(shared, seed, budget.threadCount, progress_.get(), outputPath,
+                              apo::BucketPrecision::Double);
 }
 
 void RenderAllDialog::onProgressTick() {

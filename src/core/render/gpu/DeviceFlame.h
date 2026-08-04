@@ -1,9 +1,11 @@
 #pragma once
 
 #include <array>
+#include <cstdint>
 #include <vector>
 
 #include "../../Flame.h"
+#include "../Renderer.h"
 #include "DeviceTypes.h"
 
 // Host-side (plain C++, no CUDA syntax) upload package: everything
@@ -74,5 +76,23 @@ bool isFlameGpuEligible(const Flame& flame);
 // the flame isn't GPU-eligible or is degenerate (no xforms / zero-size
 // canvas) - callers must fall back to the CPU renderer in that case.
 bool buildDeviceFlame(const Flame& flame, DeviceFlameHost& out);
+
+// Cheap, render-free estimate of GpuRenderer's peak device-memory use for
+// `flame` - dominated by the single shared histogram GpuRenderer.cu
+// allocates (bucketWidth*bucketHeight DeviceBucket/DeviceBucketF entries,
+// atomicAdd'd into directly by every GPU thread - no per-thread copies to
+// multiply by, unlike Renderer::estimatePeakMemoryBytes's own
+// (threadCount+1)-private-buckets design) plus the output pixel buffer;
+// every other device allocation (xform/op/param tables, color map, filter
+// kernel, DE kernels) is a few KB to a few MB even at extreme settings, so
+// omitted here for the same reason the CPU estimate omits its own
+// equivalents. Pure arithmetic, reusing the exact same buildFilter/
+// buildBuffersAndCamera formulas buildDeviceFlame() itself uses, so this
+// can never silently drift out of sync with the real allocation math.
+// Returns 0 for a flame that isn't GPU-eligible or is degenerate (no xforms
+// / zero-size canvas) - callers should treat that as "no GPU estimate
+// available", not "zero bytes" (see RenderDispatcher::estimateGpuPeakMemoryBytes,
+// the UI-facing wrapper that also folds in CUDA-device availability).
+std::uint64_t estimatePeakMemoryBytes(const Flame& flame, BucketPrecision precision = BucketPrecision::Double);
 
 } // namespace apo::gpu

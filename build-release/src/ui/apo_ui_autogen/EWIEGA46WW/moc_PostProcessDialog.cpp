@@ -46,6 +46,8 @@ constexpr auto qt_meta_stringdata_CLASSapoSCOPEuiSCOPEPostProcessDialogENDCLASS 
     "apo::RenderProgress*",
     "progress",
     "outputPath",
+    "apo::BucketPrecision",
+    "precision",
     "onRenderFinished",
     "image",
     "pointsGenerated",
@@ -75,20 +77,20 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSapoSCOPEuiSCOPEPostProcessDialog
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
        1,    2,   44,    2, 0x06,    1 /* Public */,
-       6,    5,   49,    2, 0x06,    4 /* Public */,
+       6,    6,   49,    2, 0x06,    4 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      11,    3,   60,    2, 0x08,   10 /* Private */,
-      15,    5,   67,    2, 0x08,   14 /* Private */,
-      18,    0,   78,    2, 0x08,   20 /* Private */,
+      13,    3,   62,    2, 0x08,   11 /* Private */,
+      17,    5,   69,    2, 0x08,   15 /* Private */,
+      20,    0,   80,    2, 0x08,   21 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, QMetaType::ULongLong,    4,    5,
-    QMetaType::Void, 0x80000000 | 3, QMetaType::ULongLong, QMetaType::Int, 0x80000000 | 8, QMetaType::QString,    4,    5,    7,    9,   10,
+    QMetaType::Void, 0x80000000 | 3, QMetaType::ULongLong, QMetaType::Int, 0x80000000 | 8, QMetaType::QString, 0x80000000 | 11,    4,    5,    7,    9,   10,   12,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QImage, QMetaType::ULongLong, QMetaType::ULongLong,   12,   13,   14,
-    QMetaType::Void, QMetaType::QImage, QMetaType::ULongLong, QMetaType::ULongLong, QMetaType::Bool, QMetaType::Bool,   12,   13,   14,   16,   17,
+    QMetaType::Void, QMetaType::QImage, QMetaType::ULongLong, QMetaType::ULongLong,   14,   15,   16,
+    QMetaType::Void, QMetaType::QImage, QMetaType::ULongLong, QMetaType::ULongLong, QMetaType::Bool, QMetaType::Bool,   14,   15,   16,   18,   19,
     QMetaType::Void,
 
        0        // eod
@@ -114,6 +116,7 @@ Q_CONSTINIT const QMetaObject apo::ui::PostProcessDialog::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<apo::RenderProgress *, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<apo::BucketPrecision, std::false_type>,
         // method 'onRenderFinished'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QImage, std::false_type>,
@@ -139,7 +142,7 @@ void apo::ui::PostProcessDialog::qt_static_metacall(QObject *_o, QMetaObject::Ca
         (void)_t;
         switch (_id) {
         case 0: _t->renderRequested((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2]))); break;
-        case 1: _t->fullRenderRequested((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<apo::RenderProgress*>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[5]))); break;
+        case 1: _t->fullRenderRequested((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<apo::RenderProgress*>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[5])),(*reinterpret_cast< std::add_pointer_t<apo::BucketPrecision>>(_a[6]))); break;
         case 2: _t->onRenderFinished((*reinterpret_cast< std::add_pointer_t<QImage>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[3]))); break;
         case 3: _t->onFullRenderFinished((*reinterpret_cast< std::add_pointer_t<QImage>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[5]))); break;
         case 4: _t->onProgressTick(); break;
@@ -155,7 +158,7 @@ void apo::ui::PostProcessDialog::qt_static_metacall(QObject *_o, QMetaObject::Ca
             }
         }
         {
-            using _t = void (PostProcessDialog::*)(std::shared_ptr<const apo::Flame> , quint64 , int , apo::RenderProgress * , QString );
+            using _t = void (PostProcessDialog::*)(std::shared_ptr<const apo::Flame> , quint64 , int , apo::RenderProgress * , QString , apo::BucketPrecision );
             if (_t _q_method = &PostProcessDialog::fullRenderRequested; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 1;
                 return;
@@ -202,9 +205,9 @@ void apo::ui::PostProcessDialog::renderRequested(std::shared_ptr<const apo::Flam
 }
 
 // SIGNAL 1
-void apo::ui::PostProcessDialog::fullRenderRequested(std::shared_ptr<const apo::Flame> _t1, quint64 _t2, int _t3, apo::RenderProgress * _t4, QString _t5)
+void apo::ui::PostProcessDialog::fullRenderRequested(std::shared_ptr<const apo::Flame> _t1, quint64 _t2, int _t3, apo::RenderProgress * _t4, QString _t5, apo::BucketPrecision _t6)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t6))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

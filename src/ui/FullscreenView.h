@@ -51,8 +51,12 @@ public:
     void setAutoScreenshot(const QString& path, bool exitAfter);
 
 signals:
+    // Always emitted with BucketPrecision::Double (see .cpp) - this view has
+    // no "Faster rendering" control of its own; the parameter exists only
+    // so this signal keeps matching RenderWorker::renderFull's slot
+    // signature (see RenderDialog::fullRenderRequested's own doc comment).
     void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed, int threadCount,
-                          apo::RenderProgress* progress, QString outputPath);
+                          apo::RenderProgress* progress, QString outputPath, apo::BucketPrecision precision);
 
 protected:
     void showEvent(QShowEvent* event) override;

@@ -268,4 +268,24 @@ bool buildDeviceFlame(const Flame& flame, DeviceFlameHost& out) {
     return true;
 }
 
+std::uint64_t estimatePeakMemoryBytes(const Flame& flame, BucketPrecision precision) {
+    if (!isFlameGpuEligible(flame)) return 0;
+
+    // Same two calls, same order, as buildDeviceFlame() above (and as
+    // Renderer::estimatePeakMemoryBytes uses on the CPU side) - deliberately
+    // not a second, hand-copied sizing formula that could silently drift.
+    detail::RenderPlan plan;
+    detail::buildFilter(flame, plan);
+    detail::buildBuffersAndCamera(flame, plan);
+
+    const std::uint64_t bucketArea =
+        static_cast<std::uint64_t>(plan.bucketWidth) * static_cast<std::uint64_t>(plan.bucketHeight);
+    const std::uint64_t bucketBytes =
+        precision == BucketPrecision::Float ? sizeof(DeviceBucketF) : sizeof(DeviceBucket);
+    const std::uint64_t pixelBytes =
+        static_cast<std::uint64_t>(flame.width) * static_cast<std::uint64_t>(flame.height) *
+        static_cast<std::uint64_t>(flame.transparency ? 4 : 3);
+    return bucketArea * bucketBytes + pixelBytes;
+}
+
 } // namespace apo::gpu

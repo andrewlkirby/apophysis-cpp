@@ -2,6 +2,8 @@
 
 #include <cstdint>
 
+#include "core/render/Renderer.h"
+
 namespace apo {
 class Flame;
 }
@@ -56,12 +58,19 @@ struct ThreadBudgetResult {
 // figure instead of whatever RAM happens to be installed in the machine
 // running the test suite - see the convenience overload below for what
 // every real UI call site actually wants.
+//
+// `precision` defaults to Double, matching every existing caller's
+// unchanged behavior - pass Float to size the budget against
+// RenderDialog's "Faster rendering" checkbox instead (a real, smaller
+// number: BucketT<float> is half BucketT<double>'s size).
 ThreadBudgetResult resolveMemorySafeThreadCount(const apo::Flame& flame, int requestedThreadCount,
-                                                 std::uint64_t totalPhysicalRamBytes);
+                                                 std::uint64_t totalPhysicalRamBytes,
+                                                 apo::BucketPrecision precision = apo::BucketPrecision::Double);
 
 // Convenience overload for real callers: queries the machine's actual
 // physical RAM via totalPhysicalMemoryBytes() below.
-ThreadBudgetResult resolveMemorySafeThreadCount(const apo::Flame& flame, int requestedThreadCount);
+ThreadBudgetResult resolveMemorySafeThreadCount(const apo::Flame& flame, int requestedThreadCount,
+                                                 apo::BucketPrecision precision = apo::BucketPrecision::Double);
 
 // Total physical RAM in bytes (Windows: GlobalMemoryStatusEx, macOS:
 // sysctlbyname("hw.memsize"), Linux: sysconf(_SC_PHYS_PAGES) *

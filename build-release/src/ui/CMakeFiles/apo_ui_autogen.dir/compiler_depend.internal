@@ -210,6 +210,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/ap
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.cpp
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.h
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.cpp
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.cpp
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.cpp

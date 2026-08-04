@@ -209,6 +209,8 @@ src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apop
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\FullscreenView.cpp
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\FullscreenView.h
+src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.cpp
+src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GradientBrowserDialog.cpp
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GradientBrowserDialog.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MainWindow.cpp
@@ -683,6 +685,10 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\EditorWindow.cpp
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.cpp:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\FullscreenView.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GradientBrowserDialog.cpp:
 

@@ -54,7 +54,9 @@ constexpr auto qt_meta_stringdata_CLASSapoSCOPEuiSCOPERenderWorkerENDCLASS = QtM
     "progress",
     "renderFull",
     "threadCount",
-    "outputPath"
+    "outputPath",
+    "apo::BucketPrecision",
+    "precision"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -67,7 +69,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSapoSCOPEuiSCOPERenderWorkerENDCL
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -75,13 +77,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSapoSCOPEuiSCOPERenderWorkerENDCL
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    4,   44,    2, 0x06,    1 /* Public */,
-       7,    6,   53,    2, 0x06,    6 /* Public */,
+       1,    4,   50,    2, 0x06,    1 /* Public */,
+       7,    6,   59,    2, 0x06,    6 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      10,    2,   66,    2, 0x0a,   13 /* Public */,
-      14,    3,   71,    2, 0x0a,   16 /* Public */,
-      17,    5,   78,    2, 0x0a,   20 /* Public */,
+      10,    2,   72,    2, 0x0a,   13 /* Public */,
+      14,    3,   77,    2, 0x0a,   16 /* Public */,
+      17,    6,   84,    2, 0x0a,   20 /* Public */,
+      17,    5,   97,    2, 0x2a,   27 /* Public | MethodCloned */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QImage, QMetaType::ULongLong, QMetaType::ULongLong, QMetaType::Bool,    3,    4,    5,    6,
@@ -90,6 +93,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSapoSCOPEuiSCOPERenderWorkerENDCL
  // slots: parameters
     QMetaType::Void, 0x80000000 | 11, QMetaType::ULongLong,   12,   13,
     QMetaType::Void, 0x80000000 | 11, QMetaType::ULongLong, 0x80000000 | 15,   12,   13,   16,
+    QMetaType::Void, 0x80000000 | 11, QMetaType::ULongLong, QMetaType::Int, 0x80000000 | 15, QMetaType::QString, 0x80000000 | 20,   12,   13,   18,   16,   19,   21,
     QMetaType::Void, 0x80000000 | 11, QMetaType::ULongLong, QMetaType::Int, 0x80000000 | 15, QMetaType::QString,   12,   13,   18,   16,   19,
 
        0        // eod
@@ -133,6 +137,14 @@ Q_CONSTINIT const QMetaObject apo::ui::RenderWorker::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<quint64, std::false_type>,
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<apo::RenderProgress *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<apo::BucketPrecision, std::false_type>,
+        // method 'renderFull'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<std::shared_ptr<const apo::Flame>, std::false_type>,
+        QtPrivate::TypeAndForceComplete<quint64, std::false_type>,
+        QtPrivate::TypeAndForceComplete<int, std::false_type>,
+        QtPrivate::TypeAndForceComplete<apo::RenderProgress *, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>
     >,
     nullptr
@@ -148,7 +160,8 @@ void apo::ui::RenderWorker::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         case 1: _t->fullRenderFinished((*reinterpret_cast< std::add_pointer_t<QImage>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[5])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[6]))); break;
         case 2: _t->renderFlame((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2]))); break;
         case 3: _t->renderFlameWithProgress((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<apo::RenderProgress*>>(_a[3]))); break;
-        case 4: _t->renderFull((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<apo::RenderProgress*>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[5]))); break;
+        case 4: _t->renderFull((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<apo::RenderProgress*>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[5])),(*reinterpret_cast< std::add_pointer_t<apo::BucketPrecision>>(_a[6]))); break;
+        case 5: _t->renderFull((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<apo::RenderProgress*>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[5]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -189,13 +202,13 @@ int apo::ui::RenderWorker::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 6)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 5;
+        _id -= 6;
     }
     return _id;
 }

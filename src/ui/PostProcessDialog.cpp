@@ -271,7 +271,8 @@ void PostProcessDialog::onSaveClicked() {
 
     std::shared_ptr<const apo::Flame> shared(flame_->clone());
     const quint64 seed = static_cast<quint64>(std::random_device{}());
-    emit fullRenderRequested(shared, seed, AppSettings::renderThreadCount(), progress_.get(), path);
+    emit fullRenderRequested(shared, seed, AppSettings::renderThreadCount(), progress_.get(), path,
+                              apo::BucketPrecision::Double);
 }
 
 void PostProcessDialog::onProgressTick() {

@@ -483,6 +483,10 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderAllDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AppSettings.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -648,10 +652,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.cpp
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.cpp
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesWidget.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h

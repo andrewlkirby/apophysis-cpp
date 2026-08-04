@@ -10109,9 +10109,11 @@ src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Fi
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vadefs.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xkeycheck.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdint.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\..\Flame.h
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\array"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xutility"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xstring"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_sanitizer_annotate_container.hpp"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_string_view.hpp"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iosfwd"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\yvals.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\crtdbg.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt.h"
@@ -10119,13 +10121,10 @@ src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Fi
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_new.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\crtdefs.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\use_ansi.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\utility"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\initializer_list"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstddef"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stddef.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtr1common"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\type_traits"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdio"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdio.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstring"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\string.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_memory.h"
@@ -10133,22 +10132,7 @@ src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Fi
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\errno.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_string.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstring.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\compare"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concepts"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\climits"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdlib"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_math.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdlib.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_malloc.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_search.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdlib.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cwchar"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdio"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdio.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\wchar.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wconio.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wctype.h"
@@ -10156,6 +10140,7 @@ src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Fi
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wio.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_share.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wprocess.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdlib.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wtime.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\stat.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\types.h"
@@ -10172,24 +10157,46 @@ src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Fi
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmmintrin.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\mmintrin.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\malloc.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_malloc.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\zmmintrin.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ammintrin.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\exception"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_exception.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\eh.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_terminate.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iosfwd"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\typeinfo"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_typeinfo.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtr1common"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xutility"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\utility"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\initializer_list"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstddef"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stddef.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\type_traits"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\compare"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concepts"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\climits"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdlib"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_math.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdlib.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_search.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmemory"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cfloat"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\float.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\new"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\exception"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_exception.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\eh.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_terminate.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\tuple"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xpolymorphic_allocator.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cctype"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\..\Flame.h
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\array"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\typeinfo"
+src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_typeinfo.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\atomic"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic_wait.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xthreads.h"
@@ -10197,13 +10204,6 @@ src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Fi
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtimec.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ctime"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\time.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xstring"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_sanitizer_annotate_container.hpp"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_string_view.hpp"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xpolymorphic_allocator.h"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cctype"
-src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h"
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Bezier.h
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\ColorMap.h
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\XForm.h
@@ -10729,6 +10729,7 @@ src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: "C:\Prog
 src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h"
 src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
 src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
+src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\..\Renderer.h
 src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\DeviceTypes.h
 src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\..\RenderPlan.h
 src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\VariationKinds.h
@@ -11179,6 +11180,43 @@ src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program 
 src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\list"
 src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h"
 src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xnode_handle.h"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\..\..\VariationRegistry.h
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\array"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\typeinfo"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_typeinfo.h"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\atomic"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic_wait.h"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xthreads.h"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_threads_core.hpp"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtimec.h"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ctime"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\time.h"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Rng.h
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\random"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\algorithm"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_heap_algorithms.hpp"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_minmax.hpp"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ios"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocnum"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iterator"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\streambuf"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xiosbase"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\share.h"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\system_error"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_system_error_abi.hpp"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cerrno"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdexcept"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcall_once.h"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xerrc.h"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocale"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xfacet"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocinfo"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_xlocinfo_types.hpp"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\clocale"
+src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\locale.h"
 
 
 src\core\CMakeFiles\apo_core.dir\render\gpu\chaos_kernel.cu.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\chaos_kernel.cu
@@ -20415,9 +20453,9 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\Gpu
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concurrencysal.h":
 
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\..\thirdparty\npolar.c:
-
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarLazysusan.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\..\thirdparty\npolar.c:
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdint":
 
@@ -20795,6 +20833,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\Var
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\process.h":
 
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\..\Renderer.h:
+
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_startup.h":
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarPDJ.cpp:
@@ -20851,13 +20891,13 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\genera
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\locale.h":
 
-"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h":
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBubble.cpp:
+"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\include\crt\sm_70_rt.h":
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarLog.cpp:
 
-"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\include\crt\sm_70_rt.h":
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h":
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBubble.cpp:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h:
 
@@ -21384,6 +21424,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\Var
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarPreSpherical.h:
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xnode_handle.h":
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\..\..\VariationRegistry.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\DeviceVariations.cuh:
 

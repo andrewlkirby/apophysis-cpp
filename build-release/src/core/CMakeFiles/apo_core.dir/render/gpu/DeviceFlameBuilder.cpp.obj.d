@@ -145,6 +145,7 @@ C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/locale.h
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/xbit_ops.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/gpu/../Renderer.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/gpu/DeviceTypes.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/gpu/../RenderPlan.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/gpu/VariationKinds.h

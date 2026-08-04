@@ -90,9 +90,11 @@ signals:
     // MemoryBudget.h's resolveMemorySafeThreadCount() (FOLLOWUP_PLAN.txt
     // B6) - possibly reduced below the AppSettings value to keep this
     // render's estimated peak memory within budget; not live-tracked
-    // afterward either way.
+    // afterward either way. `precision` mirrors fasterRenderingCheck_'s
+    // state at Render time - see RenderWorker::renderFull's own doc
+    // comment for what it trades off.
     void fullRenderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed, int threadCount,
-                              apo::RenderProgress* progress, QString outputPath);
+                              apo::RenderProgress* progress, QString outputPath, apo::BucketPrecision precision);
 
 private slots:
     // `usedGpu`: see RenderWorker::fullRenderFinished's own doc comment -
@@ -117,12 +119,17 @@ private slots:
 private:
     void setControlsEnabled(bool enabled);
     void updateRenderButtonEnabled();
-    // Recomputes memoryEstimateLabel_ from the dialog's *current* field
-    // values via Renderer::estimatePeakMemoryBytes() - connected to every
-    // control that actually affects bucket sizing (width/height/
-    // oversample/filter radius); sample density deliberately excluded,
-    // since it changes how many points get iterated, not how large the
-    // bucket array is.
+    // Recomputes memoryEstimateLabel_/gpuMemoryEstimateLabel_/
+    // backendIndicatorLabel_ from the dialog's *current* field values via
+    // Renderer::estimatePeakMemoryBytes()/RenderDispatcher's GPU
+    // equivalents - connected to every control that actually affects bucket
+    // sizing (width/height/oversample/filter radius); sample density
+    // deliberately excluded, since it changes how many points get
+    // iterated, not how large the bucket array is. The backend indicator
+    // itself doesn't depend on any of these (only on the flame's
+    // variations and the GPU's availability, both fixed for the dialog's
+    // lifetime), but recomputing it alongside the memory estimates is cheap
+    // and keeps this one call site the single place both update from.
     void updateMemoryEstimate();
 
     std::shared_ptr<apo::Flame> flame_;
@@ -149,7 +156,26 @@ private:
     // ones" model (see this class's own doc comment) than a single checkbox
     // is.
     QCheckBox* transparentBackgroundCheck_ = nullptr;
+    // "Faster rendering (float-precision buckets)" - opt-in
+    // BucketPrecision::Float for this render (unchecked/Double is the
+    // default, matching every existing caller's unchanged behavior) - see
+    // RenderWorker::renderFull's own doc comment for the measured GPU
+    // speedup and the accuracy tradeoff (Renderer.h's BucketPrecision enum
+    // doc comment has the full story: count-saturation past ~16.7M points
+    // in one bucket, and different color rounding vs Double).
+    QCheckBox* fasterRenderingCheck_ = nullptr;
+    // "Render Backend" row - GPU (CUDA) vs CPU, with a short reason
+    // whenever it's CPU (see RenderDispatcher::cpuFallbackReason()) - shown
+    // up front, before Render is even clicked, rather than only after the
+    // fact via onFullRenderFinished's `usedGpu` suffix (which still exists,
+    // since a GPU attempt can itself fail mid-render and fall back - this
+    // label predicts, that one reports what actually happened).
+    QLabel* backendIndicatorLabel_ = nullptr;
     QLabel* memoryEstimateLabel_ = nullptr;
+    // GPU device-memory estimate (RenderDispatcher::estimateGpuPeakMemoryBytes)
+    // alongside memoryEstimateLabel_'s CPU one - "-" when no CUDA device is
+    // available or this flame isn't GPU-eligible (see updateMemoryEstimate).
+    QLabel* gpuMemoryEstimateLabel_ = nullptr;
     QLineEdit* outputPathEdit_ = nullptr;
     QPushButton* browseButton_ = nullptr;
     // Plan's P4.3 - writes a .flame alongside the rendered PNG, next to it

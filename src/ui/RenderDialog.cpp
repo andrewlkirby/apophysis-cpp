@@ -32,6 +32,7 @@
 #include "RenderWorker.h"
 #include "WindowGeometry.h"
 #include "core/io/FlameIO.h"
+#include "core/render/RenderDispatcher.h"
 
 namespace apo::ui {
 
@@ -162,9 +163,29 @@ RenderDialog::RenderDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
         "only takes effect in the output PNG (this dialog always renders to PNG).");
     form->addRow("Transparent Background", transparentBackgroundCheck_);
 
+    fasterRenderingCheck_ = new QCheckBox(this);
+    fasterRenderingCheck_->setObjectName("fasterRenderingCheck");
+    fasterRenderingCheck_->setChecked(false);
+    fasterRenderingCheck_->setToolTip(
+        "Render with float-precision histogram buckets instead of double - roughly 2x faster on the GPU backend "
+        "for a typical flame (measured; less on the CPU backend, and negligible for blur-heavy variations that "
+        "are already RNG/math-bound rather than memory/atomic-bound), at two costs: a bucket's point count "
+        "saturates past ~16.7 million points (a real risk only at extreme density on a small/detailed canvas), "
+        "and color channels round slightly differently than the Double baseline. Leave unchecked for the exact "
+        "output this dialog has always produced.");
+    form->addRow("Faster Rendering", fasterRenderingCheck_);
+
+    backendIndicatorLabel_ = new QLabel(this);
+    backendIndicatorLabel_->setObjectName("backendIndicatorLabel");
+    form->addRow("Render Backend", backendIndicatorLabel_);
+
     memoryEstimateLabel_ = new QLabel(this);
     memoryEstimateLabel_->setObjectName("memoryEstimateLabel");
-    form->addRow("Estimated Peak Memory", memoryEstimateLabel_);
+    form->addRow("Estimated Peak Memory (CPU)", memoryEstimateLabel_);
+
+    gpuMemoryEstimateLabel_ = new QLabel(this);
+    gpuMemoryEstimateLabel_->setObjectName("gpuMemoryEstimateLabel");
+    form->addRow("Estimated Peak Memory (GPU)", gpuMemoryEstimateLabel_);
 
     auto* outputRow = new QHBoxLayout();
     outputPathEdit_ = new QLineEdit(this);
@@ -270,6 +291,7 @@ RenderDialog::RenderDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(heightSpin_, &QSpinBox::valueChanged, this, &RenderDialog::updateMemoryEstimate);
     connect(oversampleSpin_, &QSpinBox::valueChanged, this, &RenderDialog::updateMemoryEstimate);
     connect(filterRadiusSpin_, &QDoubleSpinBox::valueChanged, this, &RenderDialog::updateMemoryEstimate);
+    connect(fasterRenderingCheck_, &QCheckBox::toggled, this, &RenderDialog::updateMemoryEstimate);
     updateMemoryEstimate();
 
     progressTimer_ = new QTimer(this);
@@ -314,6 +336,7 @@ void RenderDialog::setControlsEnabled(bool enabled) {
     filterRadiusSpin_->setEnabled(enabled);
     adaptiveFilterCheck_->setEnabled(enabled);
     transparentBackgroundCheck_->setEnabled(enabled);
+    fasterRenderingCheck_->setEnabled(enabled);
     outputPathEdit_->setEnabled(enabled);
     browseButton_->setEnabled(enabled);
     saveParametersCheck_->setEnabled(enabled);
@@ -339,17 +362,41 @@ void RenderDialog::updateMemoryEstimate() {
     probeFlame->spatialOversample = oversampleSpin_->value();
     probeFlame->spatialFilterRadius = filterRadiusSpin_->value();
 
+    // Mirrors fasterRenderingCheck_'s state - matches both estimates below
+    // to what startRender() would actually allocate right now.
+    const apo::BucketPrecision precision =
+        fasterRenderingCheck_->isChecked() ? apo::BucketPrecision::Float : apo::BucketPrecision::Double;
+
     // B6: shows what will actually be used (after the memory-safety clamp),
     // not the raw AppSettings request - a label that quietly diverges from
     // startRender()'s own resolved thread count would be worse than no
     // estimate at all.
-    const ThreadBudgetResult budget = resolveMemorySafeThreadCount(*probeFlame, AppSettings::renderThreadCount());
+    const ThreadBudgetResult budget =
+        resolveMemorySafeThreadCount(*probeFlame, AppSettings::renderThreadCount(), precision);
     QString text = QString("%1 (%2 thread%3)")
                         .arg(formatBytes(budget.estimatedBytes))
                         .arg(budget.threadCount)
                         .arg(budget.threadCount == 1 ? "" : "s");
     if (budget.clamped) text += " - reduced to fit available memory";
     memoryEstimateLabel_->setText(text);
+
+    const std::uint64_t gpuBytes = apo::RenderDispatcher::estimateGpuPeakMemoryBytes(*probeFlame, precision);
+    gpuMemoryEstimateLabel_->setText(gpuBytes > 0 ? formatBytes(gpuBytes) : "-");
+
+    // preferGpu mirrors RenderWorker::renderFull's own
+    // AppSettings::useGpuRendering() argument to RenderDispatcher::render() -
+    // this predicts exactly what that call would pick for `flame_` as it
+    // stands right now (variations only; independent of the size/oversample/
+    // filter-radius fields above, so it doesn't strictly need to be
+    // recomputed here, but doing so alongside the memory estimates keeps
+    // this one function the dialog's single source of GPU-status truth).
+    const bool preferGpu = AppSettings::useGpuRendering();
+    if (apo::RenderDispatcher::wouldUseGpu(*flame_, preferGpu)) {
+        backendIndicatorLabel_->setText("GPU (CUDA)");
+    } else {
+        const QString reason = QString::fromStdString(apo::RenderDispatcher::cpuFallbackReason(*flame_, preferGpu));
+        backendIndicatorLabel_->setText(QString("CPU - %1").arg(reason));
+    }
 }
 
 void RenderDialog::browseOutputPath() {
@@ -370,10 +417,14 @@ void RenderDialog::startRender() {
     renderFlame->enableDE = adaptiveFilterCheck_->isChecked();
     renderFlame->transparency = transparentBackgroundCheck_->isChecked();
 
+    const apo::BucketPrecision precision =
+        fasterRenderingCheck_->isChecked() ? apo::BucketPrecision::Float : apo::BucketPrecision::Double;
+
     // B6: resolve the memory-safe thread count once here, from the exact
     // flame that's about to render - this is the value actually passed to
     // fullRenderRequested below, not the raw AppSettings request.
-    const ThreadBudgetResult budget = resolveMemorySafeThreadCount(*renderFlame, AppSettings::renderThreadCount());
+    const ThreadBudgetResult budget =
+        resolveMemorySafeThreadCount(*renderFlame, AppSettings::renderThreadCount(), precision);
 
     progress_ = std::make_unique<apo::RenderProgress>();
     fullRenderInFlight_ = true;
@@ -393,7 +444,7 @@ void RenderDialog::startRender() {
     std::shared_ptr<const apo::Flame> shared(std::move(renderFlame));
     pendingRenderFlame_ = shared;
     const quint64 seed = static_cast<quint64>(std::random_device{}());
-    emit fullRenderRequested(shared, seed, budget.threadCount, progress_.get(), outputPathEdit_->text());
+    emit fullRenderRequested(shared, seed, budget.threadCount, progress_.get(), outputPathEdit_->text(), precision);
 }
 
 void RenderDialog::cancelRender() {

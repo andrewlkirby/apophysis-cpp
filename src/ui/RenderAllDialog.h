@@ -63,8 +63,13 @@ protected:
 signals:
     // Identical contract to RenderDialog::fullRenderRequested - see its own
     // doc comment (progress is owned by this dialog, not the receiver).
+    // Unlike RenderDialog, this dialog has no "Faster rendering" checkbox of
+    // its own yet - startRenderAll() always emits BucketPrecision::Double,
+    // preserving this dialog's existing behavior exactly; the parameter
+    // exists only so this signal keeps matching RenderWorker::renderFull's
+    // slot signature.
     void fullRenderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed, int threadCount,
-                              apo::RenderProgress* progress, QString outputPath);
+                              apo::RenderProgress* progress, QString outputPath, apo::BucketPrecision precision);
 
 private slots:
     void onFullRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted, bool cancelled,

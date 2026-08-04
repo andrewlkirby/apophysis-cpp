@@ -19,6 +19,23 @@ bool RenderDispatcher::wouldUseGpu(const Flame& flame, bool preferGpu) {
 #endif
 }
 
+std::string RenderDispatcher::cpuFallbackReason(const Flame& flame, bool preferGpu) {
+    if (!preferGpu) return "GPU rendering disabled in Options";
+#ifdef APO_HAVE_CUDA
+    if (!gpu::isCudaAvailable()) return gpu::cudaUnavailableReason();
+    if (!gpu::isFlameGpuEligible(flame)) return "flame uses a CPU-only (legacy plugin) variation";
+    return {};
+#else
+    (void)flame;
+    return gpu::cudaUnavailableReason();
+#endif
+}
+
+std::uint64_t RenderDispatcher::estimateGpuPeakMemoryBytes(const Flame& flame, BucketPrecision precision) {
+    if (!gpu::isCudaAvailable() || !gpu::isFlameGpuEligible(flame)) return 0;
+    return gpu::estimatePeakMemoryBytes(flame, precision);
+}
+
 RenderedImage RenderDispatcher::render(const Flame& flame, std::uint64_t seed, int threadCount,
                                         RenderProgress* progress, RenderTimings* timings, BucketPrecision precision,
                                         bool preferGpu, bool* usedGpu) {

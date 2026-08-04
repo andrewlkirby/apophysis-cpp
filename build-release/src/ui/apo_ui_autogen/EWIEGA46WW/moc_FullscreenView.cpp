@@ -45,6 +45,8 @@ constexpr auto qt_meta_stringdata_CLASSapoSCOPEuiSCOPEFullscreenViewENDCLASS = Q
     "apo::RenderProgress*",
     "progress",
     "outputPath",
+    "apo::BucketPrecision",
+    "precision",
     "onRenderFinished",
     "image",
     "pointsGenerated",
@@ -72,17 +74,17 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSapoSCOPEuiSCOPEFullscreenViewEND
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    5,   32,    2, 0x06,    1 /* Public */,
+       1,    6,   32,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-      10,    5,   43,    2, 0x08,    7 /* Private */,
-      16,    0,   54,    2, 0x08,   13 /* Private */,
+      12,    5,   45,    2, 0x08,    8 /* Private */,
+      18,    0,   56,    2, 0x08,   14 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, 0x80000000 | 3, QMetaType::ULongLong, QMetaType::Int, 0x80000000 | 7, QMetaType::QString,    4,    5,    6,    8,    9,
+    QMetaType::Void, 0x80000000 | 3, QMetaType::ULongLong, QMetaType::Int, 0x80000000 | 7, QMetaType::QString, 0x80000000 | 10,    4,    5,    6,    8,    9,   11,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QImage, QMetaType::ULongLong, QMetaType::ULongLong, QMetaType::Bool, QMetaType::Bool,   11,   12,   13,   14,   15,
+    QMetaType::Void, QMetaType::QImage, QMetaType::ULongLong, QMetaType::ULongLong, QMetaType::Bool, QMetaType::Bool,   13,   14,   15,   16,   17,
     QMetaType::Void,
 
        0        // eod
@@ -104,6 +106,7 @@ Q_CONSTINIT const QMetaObject apo::ui::FullscreenView::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<int, std::false_type>,
         QtPrivate::TypeAndForceComplete<apo::RenderProgress *, std::false_type>,
         QtPrivate::TypeAndForceComplete<QString, std::false_type>,
+        QtPrivate::TypeAndForceComplete<apo::BucketPrecision, std::false_type>,
         // method 'onRenderFinished'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QImage, std::false_type>,
@@ -123,7 +126,7 @@ void apo::ui::FullscreenView::qt_static_metacall(QObject *_o, QMetaObject::Call 
         auto *_t = static_cast<FullscreenView *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->renderRequested((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<apo::RenderProgress*>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[5]))); break;
+        case 0: _t->renderRequested((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<apo::RenderProgress*>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[5])),(*reinterpret_cast< std::add_pointer_t<apo::BucketPrecision>>(_a[6]))); break;
         case 1: _t->onRenderFinished((*reinterpret_cast< std::add_pointer_t<QImage>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[3])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[4])),(*reinterpret_cast< std::add_pointer_t<bool>>(_a[5]))); break;
         case 2: _t->onProgressTick(); break;
         default: ;
@@ -131,7 +134,7 @@ void apo::ui::FullscreenView::qt_static_metacall(QObject *_o, QMetaObject::Call 
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (FullscreenView::*)(std::shared_ptr<const apo::Flame> , quint64 , int , apo::RenderProgress * , QString );
+            using _t = void (FullscreenView::*)(std::shared_ptr<const apo::Flame> , quint64 , int , apo::RenderProgress * , QString , apo::BucketPrecision );
             if (_t _q_method = &FullscreenView::renderRequested; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 0;
                 return;
@@ -171,9 +174,9 @@ int apo::ui::FullscreenView::qt_metacall(QMetaObject::Call _c, int _id, void **_
 }
 
 // SIGNAL 0
-void apo::ui::FullscreenView::renderRequested(std::shared_ptr<const apo::Flame> _t1, quint64 _t2, int _t3, apo::RenderProgress * _t4, QString _t5)
+void apo::ui::FullscreenView::renderRequested(std::shared_ptr<const apo::Flame> _t1, quint64 _t2, int _t3, apo::RenderProgress * _t4, QString _t5, apo::BucketPrecision _t6)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t4))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t5))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t6))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP

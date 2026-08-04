@@ -489,6 +489,8 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QByteArray
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QStringList
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QByteArray
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString

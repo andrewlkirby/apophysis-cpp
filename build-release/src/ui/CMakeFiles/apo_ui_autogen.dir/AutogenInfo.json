@@ -70,6 +70,12 @@
 			null
 		],
 		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.h",
+			"Mu",
+			"EWIEGA46WW/moc_GpuCompatibilityBadge.cpp",
+			null
+		],
+		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.h",
 			"Mu",
 			"EWIEGA46WW/moc_GradientBrowserDialog.cpp",
@@ -281,6 +287,11 @@
 		],
 		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.cpp",
 			"Mu",
 			null
 		],

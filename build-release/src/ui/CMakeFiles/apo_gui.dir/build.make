@@ -152,6 +152,7 @@ apo_gui_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\apo_core_autogen\mocs_compilation.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\VariationRegistry.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\Bezier.cpp.obj" \
@@ -368,6 +369,7 @@ src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj
+src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\apo_core_autogen\mocs_compilation.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\VariationRegistry.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\Bezier.cpp.obj

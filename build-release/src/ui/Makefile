@@ -504,6 +504,36 @@ FullscreenView.cpp.s:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 .PHONY : FullscreenView.cpp.s
 
+GpuCompatibilityBadge.obj: GpuCompatibilityBadge.cpp.obj
+.PHONY : GpuCompatibilityBadge.obj
+
+# target to build an object file
+GpuCompatibilityBadge.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : GpuCompatibilityBadge.cpp.obj
+
+GpuCompatibilityBadge.i: GpuCompatibilityBadge.cpp.i
+.PHONY : GpuCompatibilityBadge.i
+
+# target to preprocess a source file
+GpuCompatibilityBadge.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : GpuCompatibilityBadge.cpp.i
+
+GpuCompatibilityBadge.s: GpuCompatibilityBadge.cpp.s
+.PHONY : GpuCompatibilityBadge.s
+
+# target to generate assembly for a file
+GpuCompatibilityBadge.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : GpuCompatibilityBadge.cpp.s
+
 GradientBrowserDialog.obj: GradientBrowserDialog.cpp.obj
 .PHONY : GradientBrowserDialog.obj
 
@@ -1066,6 +1096,9 @@ help:
 	@echo ... FullscreenView.obj
 	@echo ... FullscreenView.i
 	@echo ... FullscreenView.s
+	@echo ... GpuCompatibilityBadge.obj
+	@echo ... GpuCompatibilityBadge.i
+	@echo ... GpuCompatibilityBadge.s
 	@echo ... GradientBrowserDialog.obj
 	@echo ... GradientBrowserDialog.i
 	@echo ... GradientBrowserDialog.s

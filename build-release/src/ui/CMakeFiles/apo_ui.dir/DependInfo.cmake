@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.cpp" "src/ui/CMakeFiles/apo_ui.dir/EditorWindow.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/EditorWindow.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.cpp" "src/ui/CMakeFiles/apo_ui.dir/ForceSymmetryDialog.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/ForceSymmetryDialog.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.cpp" "src/ui/CMakeFiles/apo_ui.dir/FullscreenView.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/FullscreenView.cpp.obj.d"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.cpp" "src/ui/CMakeFiles/apo_ui.dir/GpuCompatibilityBadge.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/GpuCompatibilityBadge.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.cpp" "src/ui/CMakeFiles/apo_ui.dir/GradientBrowserDialog.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/GradientBrowserDialog.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.cpp" "src/ui/CMakeFiles/apo_ui.dir/MainWindow.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/MainWindow.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.cpp" "src/ui/CMakeFiles/apo_ui.dir/MemoryBudget.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/MemoryBudget.cpp.obj.d"

@@ -151,7 +151,11 @@ chosen at build time, not configure time):
 cmake -B build -DCMAKE_TOOLCHAIN_FILE=<vcpkg root>/scripts/buildsystems/vcpkg.cmake -DCMAKE_PREFIX_PATH=C:\Qt\6.8.0\msvc2022_64
 cmake --build build --config Release
 ```
-The GUI app builds as `build/src/ui/Release/apo_gui.exe`.
+This produces `build/src/ui/Release/apo_gui.exe` - a raw linked executable,
+not something to launch directly (it needs Qt's DLLs discoverable at
+runtime, and will fail with a "code execution cannot proceed" error
+otherwise). See [Running the app you built](#running-the-app-you-built)
+below.
 
 **Linux / macOS** (Ninja/Makefiles are single-config generators, so the
 build type is chosen at configure time instead):
@@ -159,10 +163,14 @@ build type is chosen at configure time instead):
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_TOOLCHAIN_FILE=<vcpkg root>/scripts/buildsystems/vcpkg.cmake -DCMAKE_PREFIX_PATH=~/Qt/6.8.0/gcc_64
 cmake --build build
 ```
-The GUI app builds as `build/src/ui/apo_gui` on Linux, or
+This produces `build/src/ui/apo_gui` on Linux, or
 `build/src/ui/Apophysis 7X.app` (a proper .app bundle, needed for
 `macdeployqt` packaging — see below) on macOS. Use `clang_64` in place of
-`gcc_64` for the `CMAKE_PREFIX_PATH` on macOS.
+`gcc_64` for the `CMAKE_PREFIX_PATH` on macOS. On Linux this raw executable
+runs directly as long as the Qt runtime packages from
+[Prerequisites](#prerequisites) are installed system-wide; on macOS it
+needs the same treatment as Windows — see
+[Running the app you built](#running-the-app-you-built) below.
 
 Optional: enable AVX2 codegen for the render/variation hot path (raises the
 minimum supported CPU to roughly Haswell/2013+) with
@@ -181,9 +189,40 @@ cmake -B build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release -DAPO_ENABLE_CUDA
 cmake --build build
 ```
 This produces `build/src/ui/apo_gui.exe` directly (no `Release`
-subdirectory, since NMake is single-config). See
+subdirectory, since NMake is single-config) — same "needs Qt/CUDA runtime
+DLLs discoverable" caveat as above; see
+[Running the app you built](#running-the-app-you-built) below. See
 [`docs/GPU_RENDERING_PLAN.md`](docs/GPU_RENDERING_PLAN.md) for the full
 toolchain notes this was verified against.
+
+### Running the app you built
+
+The `apo_gui`/`apo_gui.exe` produced directly above is a raw linked
+executable — on Windows and macOS it needs Qt (and, on Windows, the MSVC
+and CUDA runtime DLLs) discoverable at runtime, which a plain `cmake
+--build` doesn't set up. Rather than fighting `PATH`, build the `deploy`
+target instead (or in addition — it depends on `apo_gui`, so it triggers
+the same build): it stages every runtime dependency alongside the
+executable in `build/deploy/`, producing something that runs standalone,
+double-click or CLI, with zero environment changes:
+
+```
+cmake --build build --config Release --target deploy   # Windows (Release config at build time)
+cmake --build build --target deploy                     # macOS (Release chosen at configure time)
+```
+
+Run `build/deploy/apo_gui.exe` (Windows) or `build/deploy/Apophysis 7X.app`
+(macOS). This is also exactly what [`package_zip`](#packaging-a-standalone-build)
+below zips up, so if you build `deploy` once to test locally, packaging a
+release from the same build tree is one more command away, not a redo.
+
+**Linux** has no `deploy` target (see [Prerequisites](#prerequisites) — its
+Qt runtime is expected to already be on the system, not bundled) — the raw
+`build/src/ui/apo_gui` from above runs directly.
+
+If you'd rather not build `deploy` every time (e.g. while iterating with a
+debugger already configured to find Qt), add Qt's `bin` directory to `PATH`
+before launching the raw executable instead.
 
 ### Run the tests
 
@@ -205,16 +244,19 @@ apo_render_cli <input.flame> <output.png> [--seed=N] [--threads=N] [--width=W] [
 
 ### Packaging a standalone build
 
-**Windows and macOS** share a `package_zip` CMake target:
+For zipping up a build to hand to someone else (rather than just running
+what you built locally — see
+[Running the app you built](#running-the-app-you-built) above, which
+`package_zip` below builds on top of). **Windows and macOS** share a
+`package_zip` CMake target:
 
 ```
 cmake --build build --config Release --target package_zip   # Windows (Release config at build time)
 cmake --build build --target package_zip                     # macOS (Release chosen at configure time)
 ```
 
-Produces `build/deploy/` (a self-contained, redistributable copy of the app
-— Qt, and on Windows the MSVC runtime and, if `APO_ENABLE_CUDA=ON`, the CUDA
-runtime DLL, all included) and
+Produces `build/deploy/` (the same self-contained, standalone copy of the
+app `deploy` produces on its own) and
 `build/apophysis7x-<version>-win64.zip` or
 `build/apophysis7x-<version>-macos-<arch>.zip` (the `.app`, on macOS). An
 Inno Setup installer script is also provided for Windows at

@@ -20,6 +20,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/apo_ui.dir/ForceSymmetryDialog.cpp.obj.d"
   "CMakeFiles/apo_ui.dir/FullscreenView.cpp.obj"
   "CMakeFiles/apo_ui.dir/FullscreenView.cpp.obj.d"
+  "CMakeFiles/apo_ui.dir/GpuCompatibilityBadge.cpp.obj"
+  "CMakeFiles/apo_ui.dir/GpuCompatibilityBadge.cpp.obj.d"
   "CMakeFiles/apo_ui.dir/GradientBrowserDialog.cpp.obj"
   "CMakeFiles/apo_ui.dir/GradientBrowserDialog.cpp.obj.d"
   "CMakeFiles/apo_ui.dir/MainWindow.cpp.obj"

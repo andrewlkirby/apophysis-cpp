@@ -144,6 +144,7 @@ gradient_browser_dialog_interaction_test_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\apo_core_autogen\mocs_compilation.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\VariationRegistry.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\Bezier.cpp.obj" \
@@ -359,6 +360,7 @@ tests\ui\gradient_browser_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.
 tests\ui\gradient_browser_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj
 tests\ui\gradient_browser_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj
 tests\ui\gradient_browser_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj
+tests\ui\gradient_browser_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj
 tests\ui\gradient_browser_dialog_interaction_test.exe: src\core\CMakeFiles\apo_core.dir\apo_core_autogen\mocs_compilation.cpp.obj
 tests\ui\gradient_browser_dialog_interaction_test.exe: src\core\CMakeFiles\apo_core.dir\VariationRegistry.cpp.obj
 tests\ui\gradient_browser_dialog_interaction_test.exe: src\core\CMakeFiles\apo_core.dir\Bezier.cpp.obj

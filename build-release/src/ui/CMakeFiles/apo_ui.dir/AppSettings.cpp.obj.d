@@ -335,3 +335,4 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Rng.h
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/random
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_int128.hpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/gpu/VariationKinds.h

@@ -283,6 +283,9 @@ private:
 
     QAction* undoAction_ = nullptr;
     QAction* redoAction_ = nullptr;
+    QAction* moveAction_ = nullptr;
+    QAction* rotateAction_ = nullptr;
+    QAction* scaleAction_ = nullptr;
     QAction* pickPivotAction_ = nullptr;
     QAction* clearPivotAction_ = nullptr;
     QAction* addXformAction_ = nullptr;

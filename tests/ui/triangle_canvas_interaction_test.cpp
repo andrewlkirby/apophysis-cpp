@@ -244,6 +244,62 @@ void testCtrlDragScalesRegardlessOfCurrentMode() {
           "a Ctrl-held drag outward roughly doubles the area - it scaled, it didn't move or rotate");
 }
 
+void testHypotenuseDragScalesRegardlessOfMode() {
+    auto flame = makeTestFlame();
+    apo::ui::TriangleCanvas canvas;
+    canvas.resize(500, 500);
+    canvas.setFlame(flame);
+    canvas.setEditMode(apo::ui::TriangleCanvas::EditMode::Move); // deliberately not Scale mode
+
+    const apo::Triangle before = canvas.currentTriangle(0);
+    const apo::Point2 centroidBefore = apo::centroid(before);
+    const double areaBefore = triangleArea(before);
+
+    // The midpoint of the X-Y edge (the hypotenuse) - well clear of every
+    // vertex's own hit radius, so this exercises HitTarget::EdgeXY, not a
+    // vertex grab.
+    const apo::Point2 hypotenuseMid{(before.x.x + before.y.x) / 2.0, (before.x.y + before.y.y) / 2.0};
+    const QPoint startPx = canvas.flameToWidget(hypotenuseMid).toPoint();
+    const QPoint centroidPx = canvas.flameToWidget(centroidBefore).toPoint();
+    const QPoint targetPx = centroidPx + (startPx - centroidPx) * 2;
+
+    QTest::mousePress(&canvas, Qt::LeftButton, Qt::NoModifier, startPx);
+    QTest::mouseMove(&canvas, targetPx);
+    QTest::mouseRelease(&canvas, Qt::LeftButton, Qt::NoModifier, targetPx);
+
+    const apo::Triangle after = canvas.currentTriangle(0);
+    const apo::Point2 centroidAfter = apo::centroid(after);
+    const double areaAfter = triangleArea(after);
+
+    check(canvas.editMode() == apo::ui::TriangleCanvas::EditMode::Move,
+          "the global toolbar mode itself is untouched by a hypotenuse drag - like Ctrl, it overrides for that "
+          "one drag only");
+    check(approxEqual(centroidBefore.x, centroidAfter.x, 1e-6) && approxEqual(centroidBefore.y, centroidAfter.y, 1e-6),
+          "dragging the hypotenuse scales around the centroid, exactly like Scale mode, even while Move is active");
+    check(areaAfter > areaBefore * 1.5,
+          "dragging the hypotenuse outward roughly doubles the area - it scaled the whole triangle, not just "
+          "the one edge");
+}
+
+void testSwitchingSelectedXformResetsModeToMove() {
+    auto flame = makeMultiXformFlame();
+    apo::ui::TriangleCanvas canvas;
+    canvas.resize(500, 500);
+    canvas.setFlame(flame);
+    canvas.setEditMode(apo::ui::TriangleCanvas::EditMode::Scale);
+
+    QSignalSpy modeSpy(&canvas, &apo::ui::TriangleCanvas::editModeChanged);
+    canvas.setSelectedXform(1);
+
+    check(canvas.editMode() == apo::ui::TriangleCanvas::EditMode::Move,
+          "switching to a different xform resets the mode back to Move - Scale/Rotate can never survive a "
+          "triangle switch, which is the fix for getting stuck unable to leave Scale mode");
+    check(modeSpy.count() == 1, "editModeChanged fires exactly once for the automatic reset");
+
+    canvas.setSelectedXform(1); // re-selecting the already-selected xform
+    check(modeSpy.count() == 1, "re-selecting the already-selected xform doesn't re-trigger a mode reset");
+}
+
 void testSingleVertexMoveOnlyMovesThatVertex() {
     auto flame = makeTestFlame();
     apo::ui::TriangleCanvas canvas;
@@ -383,6 +439,58 @@ void testEditorWindowUndoRedo() {
 
     QTest::keySequence(editor, QKeySequence::Redo);
     check(flame->xform[0]->c == editedC, "Ctrl+Shift+Z re-applies the drag's post-edit coefficients");
+
+    delete editor;
+}
+
+void testEditorWindowToolbarSyncsWhenSwitchingXforms() {
+    // Reproduces the reported bug directly: after picking Scale and then
+    // switching to a different triangle, the toolbar used to leave Scale
+    // checked (or worse, get out of sync) even though nothing let you
+    // click back to a highlighted Move. Now switching triangles resets
+    // the canvas to Move and the toolbar follows.
+    auto flame = makeMultiXformFlame();
+    auto* editor = new apo::ui::EditorWindow(flame);
+    auto* canvas = editor->findChild<apo::ui::TriangleCanvas*>();
+    auto* moveAction = editor->findChild<QAction*>("moveAction");
+    auto* scaleAction = editor->findChild<QAction*>("scaleAction");
+    if (!check(canvas && moveAction && scaleAction, "TriangleCanvas, moveAction, and scaleAction found")) {
+        delete editor;
+        return;
+    }
+
+    scaleAction->trigger();
+    check(scaleAction->isChecked() && !moveAction->isChecked(), "triggering Scale checks it and unchecks Move");
+
+    canvas->setSelectedXform(1);
+
+    check(moveAction->isChecked() && !scaleAction->isChecked(),
+          "switching the selected xform resets the canvas to Move mode, and the toolbar's checked action "
+          "follows it - previously nothing kept the toolbar in sync with this out-of-band mode change");
+
+    delete editor;
+}
+
+void testEscapeKeyReturnsToMoveMode() {
+    auto flame = makeTestFlame();
+    auto* editor = new apo::ui::EditorWindow(flame);
+    showAndActivate(editor);
+    auto* canvas = editor->findChild<apo::ui::TriangleCanvas*>();
+    auto* moveAction = editor->findChild<QAction*>("moveAction");
+    auto* scaleAction = editor->findChild<QAction*>("scaleAction");
+    if (!check(canvas && moveAction && scaleAction, "TriangleCanvas, moveAction, and scaleAction found")) {
+        delete editor;
+        return;
+    }
+
+    scaleAction->trigger();
+    check(canvas->editMode() == apo::ui::TriangleCanvas::EditMode::Scale, "Scale mode is active before Escape");
+
+    QTest::keyClick(editor, Qt::Key_Escape);
+
+    check(canvas->editMode() == apo::ui::TriangleCanvas::EditMode::Move,
+          "Escape is an explicit, always-available way back to Move mode");
+    check(moveAction->isChecked() && !scaleAction->isChecked(), "Escape also updates the toolbar's checked state");
 
     delete editor;
 }
@@ -1079,10 +1187,14 @@ int main(int argc, char** argv) {
     testRotateDragPreservesCentroidAndArea();
     testScaleDragPreservesCentroidChangesArea();
     testCtrlDragScalesRegardlessOfCurrentMode();
+    testHypotenuseDragScalesRegardlessOfMode();
+    testSwitchingSelectedXformResetsModeToMove();
     testSingleVertexMoveOnlyMovesThatVertex();
     testPivotPickChangesRotateResult();
     testEditingSignalsFireWithCorrectIndexAndCount();
     testEditorWindowUndoRedo();
+    testEditorWindowToolbarSyncsWhenSwitchingXforms();
+    testEscapeKeyReturnsToMoveMode();
     testAddXformActionAppendsAndSelectsNewXform();
     testDuplicateViaInsertKeyPreservesXaosLinks();
     testDeleteViaDeleteKeyCompactsRemainingXforms();

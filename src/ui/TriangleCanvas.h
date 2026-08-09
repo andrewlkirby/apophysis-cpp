@@ -27,8 +27,12 @@ namespace apo::ui {
 //     hit-zones that silently switch mode depending on exactly where you
 //     click. A vertex or the triangle's body is always draggable; which
 //     transform that drag performs is whatever mode is currently active.
-//     Fewer hidden modes, at the cost of the original's slightly faster
-//     "grab the hypotenuse to scale without touching a toolbar" shortcut.
+//     One exception, restored to match the original: dragging the
+//     hypotenuse (the X-Y edge) always scales, regardless of mode - see
+//     HitTarget::EdgeXY.
+//   - Selecting a different xform (setSelectedXform(), or clicking a new
+//     triangle on the canvas) always resets the mode back to Move, so a
+//     stale Rotate/Scale mode can never survive a triangle switch.
 //   - Pivot defaults to the selected triangle's own centroid, recomputed
 //     at the start of each drag, but can be overridden by arming pivot-
 //     pick mode (setPivotPickArmed) and clicking anywhere on the canvas -
@@ -76,7 +80,13 @@ public:
     // matching Editor.pas's GetTriangleColor being shared between the
     // triangle view and the Xaos grid's row-color swatches.
     static QColor xformColor(int index);
-    void setEditMode(EditMode mode) { mode_ = mode; }
+    // No-op if `mode` is already the current mode. Otherwise updates
+    // mode_ and emits editModeChanged() - the only way the mode can
+    // change (also called internally when the selected xform changes -
+    // see setSelectedXform()), so a caller driving a toolbar's checked
+    // state off that signal never has to separately worry about the
+    // selection-change reset path going out of sync.
+    void setEditMode(EditMode mode);
     EditMode editMode() const { return mode_; }
 
     // Whether the triangle being edited reads/writes the post-transform
@@ -133,6 +143,11 @@ signals:
     // behavior).
     void editingFinished(int index);
     void selectedXformChanged(int index);
+    // Emitted whenever setEditMode() actually changes the mode - either
+    // from a direct call or the automatic reset-to-Move that happens on
+    // selectedXformChanged - so a toolbar can stay in sync with the real
+    // mode regardless of which of those triggered the change.
+    void editModeChanged(EditMode mode);
 
 protected:
     void paintEvent(QPaintEvent* event) override;
@@ -143,7 +158,11 @@ protected:
     void resizeEvent(QResizeEvent* event) override;
 
 private:
-    enum class HitTarget { None, VertexO, VertexX, VertexY, Body };
+    // EdgeXY is the hypotenuse (the X-Y edge, opposite the origin vertex)
+    // - dragging it always scales the whole triangle, regardless of the
+    // current mode_ (see mouseMoveEvent()), matching the original's
+    // grab-the-hypotenuse-to-scale shortcut.
+    enum class HitTarget { None, VertexO, VertexX, VertexY, EdgeXY, Body };
     struct HitResult {
         int xformIndex = -1;
         HitTarget target = HitTarget::None;

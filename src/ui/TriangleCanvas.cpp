@@ -13,6 +13,9 @@ namespace apo::ui {
 
 namespace {
 constexpr double kVertexHitRadiusPx = 9.0;
+// Tighter than kVertexHitRadiusPx - vertices still win when a click is
+// close to a corner, since hitTestFull() checks them first.
+constexpr double kEdgeHitRadiusPx = 6.0;
 constexpr double kSnapAngleDegrees = 15.0;
 constexpr double kSnapScaleStep = 0.1;
 // How close (in widget pixels) a click has to land to the previous one to
@@ -58,12 +61,21 @@ void TriangleCanvas::setSelectedXform(int index) {
     if (!flame_) return;
     if (index == apo::kFinalXformIndex) {
         if (!flame_->finalXformEnabled) return;
+        if (index != selectedXform_) setEditMode(EditMode::Move);
         selectedXform_ = index;
         update();
         return;
     }
     if (index < 0 || index >= flame_->numXForms()) return;
+    if (index != selectedXform_) setEditMode(EditMode::Move);
     selectedXform_ = index;
+    update();
+}
+
+void TriangleCanvas::setEditMode(EditMode mode) {
+    if (mode_ == mode) return;
+    mode_ = mode;
+    emit editModeChanged(mode_);
     update();
 }
 
@@ -274,8 +286,19 @@ TriangleCanvas::HitResult TriangleCanvas::hitTestFull(int xformIndex, QPointF wi
     HitResult vertexHit = hitTestVerticesOnly(xformIndex, widgetPos);
     if (vertexHit.target != HitTarget::None) return vertexHit;
 
-    const apo::Point2 flamePos = widgetToFlame(widgetPos);
     const apo::Triangle t = triangleFor(xformIndex);
+
+    // The hypotenuse (X-Y edge) always scales on drag, regardless of
+    // mode_ - checked in widget-pixel space, same as the vertex radius
+    // above, so the hit tolerance stays resolution-independent.
+    const apo::Point2 widgetPt{widgetPos.x(), widgetPos.y()};
+    const QPointF pxQ = flameToWidget(t.x);
+    const QPointF pyQ = flameToWidget(t.y);
+    const apo::Point2 px{pxQ.x(), pxQ.y()};
+    const apo::Point2 py{pyQ.x(), pyQ.y()};
+    if (apo::distanceToSegment(widgetPt, px, py) <= kEdgeHitRadiusPx) return {xformIndex, HitTarget::EdgeXY};
+
+    const apo::Point2 flamePos = widgetToFlame(widgetPos);
     if (apo::pointInTriangle(flamePos, t)) return {xformIndex, HitTarget::Body};
     return {-1, HitTarget::None};
 }
@@ -345,6 +368,7 @@ void TriangleCanvas::mousePressEvent(QMouseEvent* event) {
 
     const HitResult& hit = hits[static_cast<size_t>(index)];
     if (hit.xformIndex != selectedXform_) {
+        setEditMode(EditMode::Move);
         selectedXform_ = hit.xformIndex;
         emit selectedXformChanged(hit.xformIndex);
         update();
@@ -368,7 +392,11 @@ void TriangleCanvas::mouseMoveEvent(QMouseEvent* event) {
     // original, which reaches scale from any mode via its per-corner
     // "widget" hit-zones instead - not ported here).
     const bool ctrl = event->modifiers() & Qt::ControlModifier;
-    const EditMode effectiveMode = ctrl ? EditMode::Scale : mode_;
+    // Dragging the hypotenuse (EdgeXY) always scales too, same as Ctrl -
+    // the restored "grab the hypotenuse" shortcut from the original (see
+    // the class comment).
+    const bool edgeScale = dragTarget_.target == HitTarget::EdgeXY;
+    const EditMode effectiveMode = (ctrl || edgeScale) ? EditMode::Scale : mode_;
 
     // Grabbing the Origin with Shift held translates the whole triangle
     // rather than shearing it (preserves the O->X/O->Y vectors) - the one
@@ -376,7 +404,7 @@ void TriangleCanvas::mouseMoveEvent(QMouseEvent* event) {
     // behavior (see TriangleGeometry.h's file comment for what else was
     // simplified away).
     const bool wholeTriangle =
-        dragTarget_.target == HitTarget::Body ||
+        dragTarget_.target == HitTarget::Body || edgeScale ||
         (dragTarget_.target == HitTarget::VertexO && shift && effectiveMode == EditMode::Move);
 
     apo::Triangle result = dragStartTriangle_;

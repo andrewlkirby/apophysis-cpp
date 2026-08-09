@@ -220,22 +220,45 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     auto* modeGroup = new QActionGroup(this);
     modeGroup->setExclusive(true);
 
-    QAction* moveAction = toolbar->addAction("Move");
-    moveAction->setCheckable(true);
-    moveAction->setChecked(true);
-    modeGroup->addAction(moveAction);
-    connect(moveAction, &QAction::triggered, this, [this] { canvas_->setEditMode(TriangleCanvas::EditMode::Move); });
+    moveAction_ = toolbar->addAction("Move");
+    moveAction_->setObjectName("moveAction");
+    moveAction_->setCheckable(true);
+    moveAction_->setChecked(true);
+    // Escape always gets you back to Move, regardless of the triangle
+    // canvas's own automatic reset-on-selection-change (see
+    // TriangleCanvas::setSelectedXform) - an explicit way out of
+    // Rotate/Scale without having to switch triangles first.
+    moveAction_->setShortcut(QKeySequence(Qt::Key_Escape));
+    modeGroup->addAction(moveAction_);
+    connect(moveAction_, &QAction::triggered, this, [this] { canvas_->setEditMode(TriangleCanvas::EditMode::Move); });
 
-    QAction* rotateAction = toolbar->addAction("Rotate");
-    rotateAction->setCheckable(true);
-    modeGroup->addAction(rotateAction);
-    connect(rotateAction, &QAction::triggered, this,
+    rotateAction_ = toolbar->addAction("Rotate");
+    rotateAction_->setObjectName("rotateAction");
+    rotateAction_->setCheckable(true);
+    modeGroup->addAction(rotateAction_);
+    connect(rotateAction_, &QAction::triggered, this,
             [this] { canvas_->setEditMode(TriangleCanvas::EditMode::Rotate); });
 
-    QAction* scaleAction = toolbar->addAction("Scale");
-    scaleAction->setCheckable(true);
-    modeGroup->addAction(scaleAction);
-    connect(scaleAction, &QAction::triggered, this, [this] { canvas_->setEditMode(TriangleCanvas::EditMode::Scale); });
+    scaleAction_ = toolbar->addAction("Scale");
+    scaleAction_->setObjectName("scaleAction");
+    scaleAction_->setCheckable(true);
+    modeGroup->addAction(scaleAction_);
+    connect(scaleAction_, &QAction::triggered, this,
+            [this] { canvas_->setEditMode(TriangleCanvas::EditMode::Scale); });
+
+    // Reverse sync: canvas_->setEditMode() can now change the mode on its
+    // own (the reset-to-Move on xform selection change) as well as via
+    // these actions' own triggered handlers above - this keeps whichever
+    // toolbar button is checked always matching the canvas's real mode,
+    // no matter which side initiated the change. Mirrors the postAction/
+    // editingPostTransformChanged two-way binding below.
+    connect(canvas_, &TriangleCanvas::editModeChanged, this, [this](TriangleCanvas::EditMode mode) {
+        switch (mode) {
+            case TriangleCanvas::EditMode::Move: moveAction_->setChecked(true); break;
+            case TriangleCanvas::EditMode::Rotate: rotateAction_->setChecked(true); break;
+            case TriangleCanvas::EditMode::Scale: scaleAction_->setChecked(true); break;
+        }
+    });
 
     toolbar->addSeparator();
     QAction* postAction = toolbar->addAction("Post");

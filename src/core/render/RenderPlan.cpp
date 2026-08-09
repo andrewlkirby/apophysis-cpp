@@ -103,7 +103,12 @@ void buildBuffersAndCamera(const Flame& flame, RenderPlan& plan) {
     plan.fastBucket = plan.filterSize <= plan.maxGutterWidth;
 
     const double scale = std::pow(2.0, flame.zoom);
-    const double sampleDensity = flame.sampleDensity * scale * scale;
+    // Unlike upstream flam3/Apophysis, zoom does not boost sampleDensity here
+    // (Apophysis 7x-style "Scale" behavior: cheap magnification, no
+    // compensating sample-density increase, so render cost stays flat
+    // regardless of zoom level - at the cost of more visible grain when
+    // zoomed in far on a fixed sample budget).
+    const double sampleDensity = flame.sampleDensity;
     const double ppux = flame.pixelsPerUnit * scale;
     const double ppuy = flame.pixelsPerUnit * scale;
 
@@ -144,7 +149,9 @@ void buildColorMap(const Flame& flame, RenderPlan& plan) {
 
 void buildToneMap(const Flame& flame, RenderPlan& plan) {
     const double scale2 = std::pow(2.0, flame.zoom);
-    double sampleDensity = flame.sampleDensity * scale2 * scale2;
+    // Kept in sync with buildBuffersAndCamera() above: no zoom-driven
+    // sampleDensity boost (see comment there).
+    double sampleDensity = flame.sampleDensity;
     if (sampleDensity == 0) sampleDensity = 0.001;
 
     plan.k1 = (flame.contrast * kBrightAdjust * flame.brightness * 268 * kPrefilterWhite) / 256.0;

@@ -5488,9 +5488,8 @@ src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Micro
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vadefs.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xkeycheck.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdint.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\algorithm"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_heap_algorithms.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xutility"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\atomic"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\yvals.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\crtdbg.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt.h"
@@ -5498,13 +5497,9 @@ src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Micro
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_new.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\crtdefs.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\use_ansi.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\utility"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\initializer_list"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstddef"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stddef.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtr1common"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\type_traits"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstring"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\string.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_memory.h"
@@ -5512,10 +5507,11 @@ src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windo
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\errno.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_string.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstring.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\compare"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concepts"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\climits"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\type_traits"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.inl.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic_wait.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdlib"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_math.h"
@@ -5523,6 +5519,25 @@ src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windo
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_malloc.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_search.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdlib.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xthreads.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_threads_core.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\climits"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtimec.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ctime"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\time.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wtime.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\utility"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\initializer_list"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\compare"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concepts"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vector"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_bit_utils.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_sanitizer_annotate_container.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmemory"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cfloat"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\float.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cwchar"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdio"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdio.h"
@@ -5535,11 +5550,9 @@ src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windo
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wio.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_share.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wprocess.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wtime.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\stat.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\types.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.inl.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\setjmp.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\immintrin.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\wmmintrin.h"
@@ -5553,38 +5566,67 @@ src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Micro
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\malloc.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\zmmintrin.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ammintrin.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_minmax.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmemory"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cfloat"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\float.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\new"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\exception"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_exception.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\eh.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_terminate.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xutility"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\tuple"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\thread"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_chrono.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ctime"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\time.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ratio"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtimec.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xpolymorphic_allocator.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\..\Flame.h
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\array"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iosfwd"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\typeinfo"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_typeinfo.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\atomic"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic_wait.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xthreads.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_threads_core.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xstring"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_string_view.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cctype"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Bezier.h
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\ColorMap.h
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\XForm.h
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\mutex"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_chrono.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ratio"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\system_error"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_system_error_abi.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cerrno"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdexcept"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcall_once.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xerrc.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\thread"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\process.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_startup.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_startup.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stop_token"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Point3.h
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Rng.h
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\random"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\algorithm"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_heap_algorithms.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_minmax.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cmath"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ios"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocnum"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iterator"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\streambuf"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xiosbase"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\share.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocale"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xfacet"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocinfo"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_xlocinfo_types.hpp"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\clocale"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\locale.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h"
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
+src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\windows.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\winapifamily.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\winpackagefamily.h"
@@ -5599,7 +5641,6 @@ src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windo
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\driverspecs.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\sdv_driverspecs.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\winnt.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\kernelspecs.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\basetsd.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\guiddef.h"
@@ -5694,47 +5735,6 @@ src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windo
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\mcx.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\imm.h"
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\ime_cmodes.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\Flame.h
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\array"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xstring"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_sanitizer_annotate_container.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_string_view.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xpolymorphic_allocator.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cctype"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Bezier.h
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\ColorMap.h
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\XForm.h
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\mutex"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\system_error"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_system_error_abi.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cerrno"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdexcept"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcall_once.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xerrc.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vector"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_bit_utils.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Point3.h
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Rng.h
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\random"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cmath"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ios"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocnum"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iterator"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\streambuf"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xiosbase"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\share.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocale"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xfacet"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocinfo"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_xlocinfo_types.hpp"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\clocale"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\locale.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h"
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
-src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
 
 
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MutateDialog.cpp
@@ -12744,6 +12744,10 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MemoryBudget.h:
 
+src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\SliderSpin.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\..\Flame.h:
+
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\windows.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\winver.h":
@@ -12925,8 +12929,6 @@ src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\RenderDialog.h:
 src\ui\apo_ui_autogen\EWIEGA46WW\moc_RenderWorker.cpp:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\RenderWorker.h:
-
-src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\SliderSpin.h:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\SmoothPaletteDialog.h:
 

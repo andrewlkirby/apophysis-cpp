@@ -463,10 +463,14 @@ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qboxlayout.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qgridlayout.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qlayout.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QKeySequence
+C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QLabel
+C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qlabel.h
+C:/Qt/6.8.0/msvc2022_64/include/QtGui/qpicture.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
+C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextdocument.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QLineEdit
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qlineedit.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextcursor.h
-C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextdocument.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextformat.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qpen.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextoption.h

@@ -16,7 +16,8 @@ namespace apo {
 
 // Replaces `flame`'s xform topology with a fresh random one: a random
 // count of xforms in [minXforms, maxXforms], each with a random affine
-// transform and a single shared variation (see `variationIndex` below).
+// transform and its own independently drawn variation (see `variationIndex`
+// below).
 // Matches ControlPoint.pas's RandomCP, except:
 //   - Doesn't touch cmap/hue_rotation (RandomCP randomizes a colormap too,
 //     but Mutate.pas's own Interpolate()/ShowMain() unconditionally
@@ -36,12 +37,10 @@ namespace apo {
 //
 // variationIndex >= 0 forces every generated xform to that one shared
 // variation (matches RandomCP's dominant rv>=0 branch, and is what the
-// Mutate dialog's Trend combo box selects); < 0 draws ONE random variation
-// shared across every xform of this call (matches SetVariation(vRandom)'s
-// own dominant rv>=0 branch - the rarer independently-random-per-xform
-// rv<0 branch needs weighted var_distrib/mixed_var_distrib tables this
-// port hasn't built, and is a low-value flavor variant, not behavior worth
-// the extra porting cost here).
+// Mutate dialog's Trend combo box selects); < 0 draws an independent random
+// variation (or palette - see the trailing six parameters below) per xform,
+// so different xforms in the same flame can use different variation types
+// rather than all sharing one.
 //
 // `eligibleVariations`, when variationIndex < 0, restricts the random draw
 // to this list of VariationRegistry indices instead of every registered
@@ -51,23 +50,20 @@ namespace apo {
 // variation is eligible", exactly this function's pre-existing behavior -
 // so every caller that doesn't care about the checklist is unaffected.
 //
-// The trailing six parameters extend the "single shared variation" draw
-// above into a shared *palette* of variations, all still defaulted to
-// exactly reproduce the original one-variation-at-weight-1.0 behavior for
-// any caller that doesn't pass them (MutateDialog's two call sites, every
-// existing test):
+// The trailing six parameters extend the "single independent variation"
+// draw above into an independently drawn *palette* of variations per xform,
+// all still defaulted to exactly reproduce the original
+// one-variation-at-weight-1.0 behavior for any caller that doesn't pass
+// them (MutateDialog's two call sites, every existing test):
 //   - minVariationsPerXform/maxVariationsPerXform: how many distinct
-//     variations get drawn (once, shared by every xform in this call - not
-//     redrawn per xform, so the whole flame still reads as one coherent
-//     "family" rather than each xform being unrelated) from the eligible
-//     pool. Ignored when variationIndex >= 0 (a forced variation is always
-//     exactly that one, matching every existing forced-variation caller's
-//     expectation).
-//   - minVariationWeight/maxVariationWeight: each xform independently
-//     draws its own weight (uniform in this range) for each of the shared
-//     palette's variations - the palette (which variations) is shared
-//     across the flame, but how much each contributes to any given xform
-//     is not. Also ignored when variationIndex >= 0: a forced variation is
+//     variations get drawn, freshly for each xform (not once for the whole
+//     flame), from the eligible pool - so both which variations appear and
+//     how many can differ from one xform to the next. Ignored when
+//     variationIndex >= 0 (a forced variation is always exactly that one,
+//     matching every existing forced-variation caller's expectation).
+//   - minVariationWeight/maxVariationWeight: each xform independently draws
+//     its own weight (uniform in this range) for each variation in its own
+//     palette. Also ignored when variationIndex >= 0: a forced variation is
 //     always weight exactly 1.0, the same pre-blending guarantee
 //     testHonorsForcedVariationIndex depends on - weight ranges are a
 //     "Random" (blended) draw concept only.

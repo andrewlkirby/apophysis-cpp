@@ -92,21 +92,33 @@ void testRandomizeXformsForcesRequestedVariation() {
     }
 }
 
-void testRandomizeXformsSharesOneVariationAcrossAllXforms() {
-    auto flame = std::make_unique<apo::Flame>();
-    apo::Xoshiro256Rng rng(99);
-    apo::randomizeXforms(*flame, rng, 4, 4, /*variationIndex=*/-1); // "Random" trend
+void testRandomizeXformsDrawsIndependentVariationPerXform() {
+    // A single seed/call won't reliably produce different picks for every
+    // xform (they're independent draws, so coincidental repeats happen),
+    // so this checks across many seeds that at least one produces xforms
+    // with differing variations - i.e. draws are independent, not one
+    // shared pick reused for the whole flame.
+    bool sawDifferingVariations = false;
+    for (std::uint64_t seed = 0; seed < 50 && !sawDifferingVariations; ++seed) {
+        auto flame = std::make_unique<apo::Flame>();
+        apo::Xoshiro256Rng rng(seed);
+        apo::randomizeXforms(*flame, rng, 4, 4, /*variationIndex=*/-1); // "Random" trend
 
-    int sharedVariation = -1;
-    for (int i = 0; i < flame->numXForms(); ++i) {
-        const apo::XForm& xf = *flame->xform[i];
-        for (int j = 0; j < xf.numVariations(); ++j) {
-            if (xf.variation(j) > 0.5) {
-                if (sharedVariation < 0) sharedVariation = j;
-                check(j == sharedVariation, "a 'Random' trend still picks ONE variation shared by every xform");
+        int firstVariation = -1;
+        for (int i = 0; i < flame->numXForms() && !sawDifferingVariations; ++i) {
+            const apo::XForm& xf = *flame->xform[i];
+            for (int j = 0; j < xf.numVariations(); ++j) {
+                if (xf.variation(j) > 0.5) {
+                    if (firstVariation < 0) {
+                        firstVariation = j;
+                    } else if (j != firstVariation) {
+                        sawDifferingVariations = true;
+                    }
+                }
             }
         }
     }
+    check(sawDifferingVariations, "a 'Random' trend draws each xform's variation independently, not one shared pick");
 }
 
 void testRandomizeXformsRestrictsRandomDrawToEligibleVariations() {
@@ -149,30 +161,49 @@ void testRandomizeXformsNullOrEmptyEligibleListMeansEveryVariationIsEligible() {
           "a null eligibleVariations pointer and an empty (but non-null) list behave identically");
 }
 
-void testRandomizeXformsBlendPaletteIsSharedAcrossXforms() {
-    auto flame = std::make_unique<apo::Flame>();
-    apo::Xoshiro256Rng rng(21);
+void testRandomizeXformsBlendPaletteIsDrawnIndependentlyPerXform() {
     const std::vector<int> eligible = {2, 4, 6, 8, 10}; // five distinct candidates
 
-    apo::randomizeXforms(*flame, rng, /*minXforms=*/4, /*maxXforms=*/4, /*variationIndex=*/-1, &eligible,
-                          /*minVariationsPerXform=*/3, /*maxVariationsPerXform=*/3);
-
-    std::vector<int> palette0;
-    for (int j : eligible) {
-        if (flame->xform[0]->variation(j) > 0.0) palette0.push_back(j);
-    }
-    if (!check(static_cast<int>(palette0.size()) == 3, "the drawn palette has exactly the requested variation count"))
-        return;
-
-    for (int i = 1; i < flame->numXForms(); ++i) {
+    auto paletteOf = [&](const apo::Flame& flame, int i) {
+        std::vector<int> palette;
         for (int j : eligible) {
-            const bool activeHere = flame->xform[i]->variation(j) > 0.0;
-            const bool activeInPalette = std::find(palette0.begin(), palette0.end(), j) != palette0.end();
-            if (!check(activeHere == activeInPalette,
-                        "every xform shares the exact same variation palette (weights may still differ)"))
+            if (flame.xform[i]->variation(j) > 0.0) palette.push_back(j);
+        }
+        return palette;
+    };
+
+    // Every xform's own palette always has exactly the requested count,
+    // drawn only from the eligible pool.
+    {
+        auto flame = std::make_unique<apo::Flame>();
+        apo::Xoshiro256Rng rng(21);
+        apo::randomizeXforms(*flame, rng, /*minXforms=*/4, /*maxXforms=*/4, /*variationIndex=*/-1, &eligible,
+                              /*minVariationsPerXform=*/3, /*maxVariationsPerXform=*/3);
+        for (int i = 0; i < flame->numXForms(); ++i) {
+            if (!check(static_cast<int>(paletteOf(*flame, i).size()) == 3,
+                        "every xform's own drawn palette has exactly the requested variation count"))
                 return;
         }
     }
+
+    // Across many seeds, at least one produces xforms whose palettes
+    // differ - i.e. each xform's palette is drawn independently, not one
+    // shared draw reused for the whole flame.
+    bool sawDifferingPalettes = false;
+    for (std::uint64_t seed = 0; seed < 50 && !sawDifferingPalettes; ++seed) {
+        auto flame = std::make_unique<apo::Flame>();
+        apo::Xoshiro256Rng rng(seed);
+        apo::randomizeXforms(*flame, rng, /*minXforms=*/4, /*maxXforms=*/4, /*variationIndex=*/-1, &eligible,
+                              /*minVariationsPerXform=*/3, /*maxVariationsPerXform=*/3);
+        const std::vector<int> palette0 = paletteOf(*flame, 0);
+        for (int i = 1; i < flame->numXForms(); ++i) {
+            if (paletteOf(*flame, i) != palette0) {
+                sawDifferingPalettes = true;
+                break;
+            }
+        }
+    }
+    check(sawDifferingPalettes, "each xform's variation palette is drawn independently, not shared across the flame");
 }
 
 void testRandomizeXformsBlendCountIsCappedByPoolSize() {
@@ -399,11 +430,11 @@ int main() {
     testRandomizeXformsProducesXformCountInRange();
     testRandomizeXformsIsDeterministicGivenSeed();
     testRandomizeXformsForcesRequestedVariation();
-    testRandomizeXformsSharesOneVariationAcrossAllXforms();
+    testRandomizeXformsDrawsIndependentVariationPerXform();
     testRandomizeXformsRestrictsRandomDrawToEligibleVariations();
     testRandomizeXformsForcedVariationIgnoresEligibleList();
     testRandomizeXformsNullOrEmptyEligibleListMeansEveryVariationIsEligible();
-    testRandomizeXformsBlendPaletteIsSharedAcrossXforms();
+    testRandomizeXformsBlendPaletteIsDrawnIndependentlyPerXform();
     testRandomizeXformsBlendCountIsCappedByPoolSize();
     testRandomizeXformsBlendWeightsStayWithinRange();
     testRandomizeXformsDefaultBlendRangeStillForcesWeightExactlyOne();

@@ -90,21 +90,16 @@ void randomizeXforms(Flame& flame, Rng& rng, int minXforms, int maxXforms, int v
     const int hi = std::min(Flame::kMaxXForms, std::max(minXforms, maxXforms));
     const int n = lo + rng.uniformInt(hi - lo + 1);
 
-    // The shared variation "palette" for this whole flame - drawn once, not
-    // per xform, so the flame still reads as one coherent family (matches
-    // the pre-existing single-shared-variation design this generalizes; see
-    // this function's own header comment). A forced variationIndex is
-    // always exactly a one-variation palette, ignoring the blend range
-    // entirely - matches every existing forced-variation caller/test.
-    std::vector<int> palette;
-    if (variationIndex >= 0) {
-        palette = {variationIndex};
-    } else {
-        const int blendLo = std::max(1, std::min(minVariationsPerXform, maxVariationsPerXform));
-        const int blendHi = std::max(blendLo, std::max(minVariationsPerXform, maxVariationsPerXform));
-        const int count = blendLo + rng.uniformInt(blendHi - blendLo + 1);
-        pickDistinctVariations(rng, eligiblePool(eligibleVariations), count, palette);
-    }
+    // Blend-count and eligible pool are shared across xforms (they're just
+    // ranges/config, not the actual drawn variations), but the palette
+    // itself is now drawn independently per xform below so each transform
+    // gets its own random set of variation types, not one type-set reused
+    // for the whole flame. A forced variationIndex still always yields
+    // exactly a one-variation palette, ignoring the blend range entirely -
+    // matches every existing forced-variation caller/test.
+    const int blendLo = std::max(1, std::min(minVariationsPerXform, maxVariationsPerXform));
+    const int blendHi = std::max(blendLo, std::max(minVariationsPerXform, maxVariationsPerXform));
+    const std::vector<int> pool = eligiblePool(eligibleVariations);
 
     // A forced variation always gets exactly weight 1.0, ignoring the
     // configured weight range entirely - matches every existing forced-
@@ -125,6 +120,14 @@ void randomizeXforms(Flame& flame, Rng& rng, int minXforms, int maxXforms, int v
         xf.c[1][1] = 2 * rng.uniform01() - 1;
         xf.c[2][0] = 4 * rng.uniform01() - 2;
         xf.c[2][1] = 4 * rng.uniform01() - 2;
+
+        std::vector<int> palette;
+        if (variationIndex >= 0) {
+            palette = {variationIndex};
+        } else {
+            const int count = blendLo + rng.uniformInt(blendHi - blendLo + 1);
+            pickDistinctVariations(rng, pool, count, palette);
+        }
 
         for (int j = 0; j < xf.numVariations(); ++j) xf.setVariation(j, 0.0);
         for (int idx : palette) {

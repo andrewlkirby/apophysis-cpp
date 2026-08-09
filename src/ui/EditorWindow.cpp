@@ -10,6 +10,7 @@
 #include <QFileDialog>
 #include <QHBoxLayout>
 #include <QKeySequence>
+#include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
 #include <QMenu>
@@ -208,6 +209,18 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
 
     QToolBar* toolbar = addToolBar("Edit");
     toolbar->setMovable(false);
+    // The default checked-state look for a QToolButton (a thin, easy-to-
+    // miss sunken border) wasn't visible enough to tell which of Move/
+    // Rotate/Scale/Post is currently active - palette(highlight) matches
+    // whatever accent color the OS theme actually uses (works in both
+    // light and dark themes), so the active one now gets an unmistakable
+    // filled background instead.
+    toolbar->setStyleSheet(
+        "QToolButton:checked {"
+        "  background-color: palette(highlight);"
+        "  color: palette(highlighted-text);"
+        "  border: 1px solid palette(highlight);"
+        "}");
 
     QAction* adjustAction = toolbar->addAction("Adjust");
     adjustAction->setObjectName("adjustAction");
@@ -246,17 +259,37 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     connect(scaleAction_, &QAction::triggered, this,
             [this] { canvas_->setEditMode(TriangleCanvas::EditMode::Scale); });
 
+    // A permanent (never overwritten by statusBar()->showMessage(), unlike
+    // the transient "Rendering..."/"Ready" text sharing the same status
+    // bar) readout of the current mode - the toolbar highlight above is
+    // easy to miss at a glance, this spells it out in words.
+    modeLabel_ = new QLabel(statusBar());
+    modeLabel_->setObjectName("modeLabel");
+    modeLabel_->setStyleSheet("font-weight: bold; padding: 0 6px;");
+    modeLabel_->setText("Mode: Move");
+    statusBar()->addPermanentWidget(modeLabel_);
+
     // Reverse sync: canvas_->setEditMode() can now change the mode on its
     // own (the reset-to-Move on xform selection change) as well as via
     // these actions' own triggered handlers above - this keeps whichever
-    // toolbar button is checked always matching the canvas's real mode,
-    // no matter which side initiated the change. Mirrors the postAction/
-    // editingPostTransformChanged two-way binding below.
+    // toolbar button is checked (and modeLabel_'s text) always matching
+    // the canvas's real mode, no matter which side initiated the change.
+    // Mirrors the postAction/editingPostTransformChanged two-way binding
+    // below.
     connect(canvas_, &TriangleCanvas::editModeChanged, this, [this](TriangleCanvas::EditMode mode) {
         switch (mode) {
-            case TriangleCanvas::EditMode::Move: moveAction_->setChecked(true); break;
-            case TriangleCanvas::EditMode::Rotate: rotateAction_->setChecked(true); break;
-            case TriangleCanvas::EditMode::Scale: scaleAction_->setChecked(true); break;
+            case TriangleCanvas::EditMode::Move:
+                moveAction_->setChecked(true);
+                modeLabel_->setText("Mode: Move");
+                break;
+            case TriangleCanvas::EditMode::Rotate:
+                rotateAction_->setChecked(true);
+                modeLabel_->setText("Mode: Rotate");
+                break;
+            case TriangleCanvas::EditMode::Scale:
+                scaleAction_->setChecked(true);
+                modeLabel_->setText("Mode: Scale");
+                break;
         }
     });
 

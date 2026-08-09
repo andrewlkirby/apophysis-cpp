@@ -22,6 +22,7 @@ class QTimer;
 class QSplitter;
 class QStackedWidget;
 class QTabBar;
+class QLabel;
 
 namespace apo::ui {
 
@@ -286,6 +287,7 @@ private:
     QAction* moveAction_ = nullptr;
     QAction* rotateAction_ = nullptr;
     QAction* scaleAction_ = nullptr;
+    QLabel* modeLabel_ = nullptr;
     QAction* pickPivotAction_ = nullptr;
     QAction* clearPivotAction_ = nullptr;
     QAction* addXformAction_ = nullptr;

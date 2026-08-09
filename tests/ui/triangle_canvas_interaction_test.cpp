@@ -25,6 +25,7 @@
 #include <QDoubleSpinBox>
 #include <QElapsedTimer>
 #include <QKeySequence>
+#include <QLabel>
 #include <QLineEdit>
 #include <QListWidget>
 #include <QPushButton>
@@ -454,19 +455,25 @@ void testEditorWindowToolbarSyncsWhenSwitchingXforms() {
     auto* canvas = editor->findChild<apo::ui::TriangleCanvas*>();
     auto* moveAction = editor->findChild<QAction*>("moveAction");
     auto* scaleAction = editor->findChild<QAction*>("scaleAction");
-    if (!check(canvas && moveAction && scaleAction, "TriangleCanvas, moveAction, and scaleAction found")) {
+    auto* modeLabel = editor->findChild<QLabel*>("modeLabel");
+    if (!check(canvas && moveAction && scaleAction && modeLabel,
+               "TriangleCanvas, moveAction, scaleAction, and modeLabel found")) {
         delete editor;
         return;
     }
 
+    check(modeLabel->text() == "Mode: Move", "the mode label starts out reporting Move, matching the default mode");
+
     scaleAction->trigger();
     check(scaleAction->isChecked() && !moveAction->isChecked(), "triggering Scale checks it and unchecks Move");
+    check(modeLabel->text() == "Mode: Scale", "the mode label updates to Scale alongside the toolbar highlight");
 
     canvas->setSelectedXform(1);
 
     check(moveAction->isChecked() && !scaleAction->isChecked(),
           "switching the selected xform resets the canvas to Move mode, and the toolbar's checked action "
           "follows it - previously nothing kept the toolbar in sync with this out-of-band mode change");
+    check(modeLabel->text() == "Mode: Move", "the mode label follows the reset back to Move too");
 
     delete editor;
 }

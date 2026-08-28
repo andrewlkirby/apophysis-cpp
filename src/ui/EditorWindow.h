@@ -17,6 +17,7 @@ class QThread;
 class QAction;
 class QCloseEvent;
 class QResizeEvent;
+class QShowEvent;
 class QComboBox;
 class QTimer;
 class QSplitter;
@@ -89,6 +90,10 @@ public:
 
 protected:
     void resizeEvent(QResizeEvent* event) override;
+    // Restores centralSplitter_'s last-dragged sidebar width (see
+    // showEvent()'s own doc comment in EditorWindow.cpp for why this can't
+    // just happen in the constructor).
+    void showEvent(QShowEvent* event) override;
     // Persists the window's final size/position (see WindowGeometry.h).
     void closeEvent(QCloseEvent* event) override;
 
@@ -281,6 +286,9 @@ private:
     // Hosts canvas_/[rightTabBar_+rightStack_] - see
     // onDescriptionsVisibilityChanged().
     QSplitter* centralSplitter_ = nullptr;
+    // Guards showEvent()'s one-time centralSplitter_->restoreState() call -
+    // see its own doc comment.
+    bool splitterStateRestored_ = false;
 
     QAction* undoAction_ = nullptr;
     QAction* redoAction_ = nullptr;

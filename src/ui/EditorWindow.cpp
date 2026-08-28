@@ -17,6 +17,7 @@
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QResizeEvent>
+#include <QShowEvent>
 #include <QSplitter>
 #include <QStackedWidget>
 #include <QStatusBar>
@@ -383,43 +384,13 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     workerThread_->start();
 
     // See WindowGeometry.h's restoreWindowGeometry() doc comment: must come
-    // after the full UI/layout is built, not right after the resize() above -
-    // and requestRender() below should see the actually-restored canvas_
-    // size, not whatever it'd be at the default window size.
+    // after the full UI/layout is built, not right after the resize() above.
     restoreWindowGeometry(this, "EditorWindow");
-    // Same "after the full UI/layout is built" ordering rule applies here -
-    // called back up at the splitter's own construction (right after
-    // setSizes({720, 280})), centralSplitter_ has zero real width (not yet
-    // part of a shown layout), so QSplitter::restoreState() has nothing
-    // real to apply a saved width against and the sizes silently fall back
-    // to whatever the next actual resize event computes from the stretch
-    // factors instead - confirmed via tests/ui/editor_splitter_test.cpp.
-    // Restoring here, once restoreWindowGeometry() above has already given
-    // the window its real, final size, is what actually sticks - but only
-    // once that size has actually propagated down to centralSplitter_.
-    // restoreGeometry() on a top-level widget that hasn't been shown() yet
-    // (still true at this point in the constructor - the caller always
-    // shows the window after constructing it) updates this widget's own
-    // geometry immediately, but Qt defers the resulting relayout of its
-    // children until the window is actually shown, instead of doing it
-    // synchronously here - reproduces in CI on both Linux and macOS (both
-    // ctest under the offscreen QPA plugin), whatever made it look fixed in
-    // local manual testing evidently didn't hit this path. So
-    // centralSplitter_ is still at its pre-restore width (whatever
-    // setSizes({720, 280}) above produced) when QSplitter::restoreState()
-    // would otherwise run, and it has nothing real to apply a saved width
-    // against. Forcing that deferred relayout through explicitly - activate()
-    // walks straight down through the widget tree via direct setGeometry()
-    // calls (QMainWindowLayout -> central widget's QHBoxLayout ->
-    // centralSplitter_), not through the event loop - is what makes
-    // centralSplitter_->width() already reflect the restored geometry
-    // below, regardless of whether the window has been shown yet.
-    if (QLayout* topLevelLayout = layout()) {
-        topLevelLayout->activate();
-    }
-    // A no-op if nothing's been saved yet (see AppSettings::splitterState's
-    // own doc comment), leaving the setSizes() default in place.
-    centralSplitter_->restoreState(AppSettings::splitterState("EditorWindow"));
+    // centralSplitter_'s own saved-width restore deliberately does NOT
+    // happen here - see showEvent()'s doc comment for why a hidden
+    // top-level widget's own geometry restoring correctly (immediately
+    // above) doesn't mean its *children*'s layout has caught up yet, and
+    // why that gap can't be reliably closed from inside the constructor.
     requestRender();
 }
 
@@ -897,6 +868,37 @@ void EditorWindow::requestRender(bool trackProgress) {
 void EditorWindow::resizeEvent(QResizeEvent* event) {
     QMainWindow::resizeEvent(event);
     requestRender();
+}
+
+// Restores a width the user previously dragged centralSplitter_'s handle to
+// (see AppSettings::splitterState's own doc comment) - deliberately not
+// done back in the constructor. restoreWindowGeometry() there does give
+// *this* widget its own correct, final size immediately, even while still
+// hidden - but centralSplitter_ is two layouts down (QMainWindowLayout's
+// central-widget slot, then the central widget's own QHBoxLayout), and Qt
+// doesn't guarantee that a hidden top-level widget's *children* have
+// caught up to a geometry change yet: QSplitter::restoreState() would then
+// have nothing real to apply a saved width against, so the saved sizes get
+// silently discarded in favor of whatever the next actual resize computes
+// from the stretch factors instead. Various ways of forcing that gap closed
+// synchronously from inside the constructor (flushing pending layout
+// events, calling layout()->activate() directly) worked in some manual/local
+// testing but still reproduced the same discarded-width failure in CI on
+// both Linux and macOS (both running tests under the offscreen QPA
+// plugin) - evidently the gap isn't reliably closeable pre-show() at all,
+// on at least some Qt-version/QPA-plugin combinations. showEvent() is the
+// one point Qt itself documents as guaranteed to fire only once the
+// widget's full layout, size, and children are final and about to be
+// painted, so restoring here - once, guarded by splitterStateRestored_ so a
+// later re-show (e.g. after minimize) doesn't stomp a width the user has
+// since dragged - is reliable regardless of platform/QPA-plugin timing.
+// Confirmed via tests/ui/editor_splitter_test.cpp.
+void EditorWindow::showEvent(QShowEvent* event) {
+    QMainWindow::showEvent(event);
+    if (!splitterStateRestored_) {
+        splitterStateRestored_ = true;
+        centralSplitter_->restoreState(AppSettings::splitterState("EditorWindow"));
+    }
 }
 
 void EditorWindow::closeEvent(QCloseEvent* event) {

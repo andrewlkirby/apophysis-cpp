@@ -130,16 +130,13 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     xformList_->setFixedWidth(150);
 
     centralSplitter_ = new QSplitter(Qt::Horizontal, this);
+    centralSplitter_->setObjectName("centralSplitter");
     centralSplitter_->setChildrenCollapsible(false);
     centralSplitter_->addWidget(canvas_);
     centralSplitter_->addWidget(rightContainer);
     centralSplitter_->setStretchFactor(0, 1);
     centralSplitter_->setStretchFactor(1, 0);
     centralSplitter_->setSizes({720, 280});
-    // Restores a width the user previously dragged the handle to (see
-    // AppSettings::splitterState's own doc comment) - a no-op if nothing's
-    // been saved yet, leaving the setSizes() default above in place.
-    centralSplitter_->restoreState(AppSettings::splitterState("EditorWindow"));
 
     QWidget* central = new QWidget(this);
     QHBoxLayout* centralLayout = new QHBoxLayout(central);
@@ -390,6 +387,19 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     // and requestRender() below should see the actually-restored canvas_
     // size, not whatever it'd be at the default window size.
     restoreWindowGeometry(this, "EditorWindow");
+    // Same "after the full UI/layout is built" ordering rule applies here -
+    // called back up at the splitter's own construction (right after
+    // setSizes({720, 280})), centralSplitter_ has zero real width (not yet
+    // part of a shown layout), so QSplitter::restoreState() has nothing
+    // real to apply a saved width against and the sizes silently fall back
+    // to whatever the next actual resize event computes from the stretch
+    // factors instead - confirmed via tests/ui/editor_splitter_test.cpp.
+    // Restoring here, once restoreWindowGeometry() above has already given
+    // the window (and so the splitter) its real, final size, is what
+    // actually sticks. A no-op if nothing's been saved yet (see
+    // AppSettings::splitterState's own doc comment), leaving the setSizes()
+    // default in place.
+    centralSplitter_->restoreState(AppSettings::splitterState("EditorWindow"));
     requestRender();
 }
 

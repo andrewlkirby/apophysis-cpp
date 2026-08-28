@@ -18,6 +18,8 @@ set -euo pipefail
 BUILD_DIR="${1:?usage: linux-appimage.sh <build-dir> <version> [output-dir]}"
 APO_VERSION="${2:?usage: linux-appimage.sh <build-dir> <version> [output-dir]}"
 OUTPUT_DIR="${3:-$PWD}"
+mkdir -p "${OUTPUT_DIR}"
+OUTPUT_DIR="$(cd "${OUTPUT_DIR}" && pwd)"
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APO_GUI_BIN="${BUILD_DIR}/src/ui/apo_gui"

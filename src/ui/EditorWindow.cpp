@@ -395,10 +395,30 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     // to whatever the next actual resize event computes from the stretch
     // factors instead - confirmed via tests/ui/editor_splitter_test.cpp.
     // Restoring here, once restoreWindowGeometry() above has already given
-    // the window (and so the splitter) its real, final size, is what
-    // actually sticks. A no-op if nothing's been saved yet (see
-    // AppSettings::splitterState's own doc comment), leaving the setSizes()
-    // default in place.
+    // the window its real, final size, is what actually sticks - but only
+    // once that size has actually propagated down to centralSplitter_.
+    // restoreGeometry() on a top-level widget that hasn't been shown() yet
+    // (still true at this point in the constructor - the caller always
+    // shows the window after constructing it) updates this widget's own
+    // geometry immediately, but Qt defers the resulting relayout of its
+    // children until the window is actually shown, instead of doing it
+    // synchronously here - reproduces in CI on both Linux and macOS (both
+    // ctest under the offscreen QPA plugin), whatever made it look fixed in
+    // local manual testing evidently didn't hit this path. So
+    // centralSplitter_ is still at its pre-restore width (whatever
+    // setSizes({720, 280}) above produced) when QSplitter::restoreState()
+    // would otherwise run, and it has nothing real to apply a saved width
+    // against. Forcing that deferred relayout through explicitly - activate()
+    // walks straight down through the widget tree via direct setGeometry()
+    // calls (QMainWindowLayout -> central widget's QHBoxLayout ->
+    // centralSplitter_), not through the event loop - is what makes
+    // centralSplitter_->width() already reflect the restored geometry
+    // below, regardless of whether the window has been shown yet.
+    if (QLayout* topLevelLayout = layout()) {
+        topLevelLayout->activate();
+    }
+    // A no-op if nothing's been saved yet (see AppSettings::splitterState's
+    // own doc comment), leaving the setSizes() default in place.
     centralSplitter_->restoreState(AppSettings::splitterState("EditorWindow"));
     requestRender();
 }

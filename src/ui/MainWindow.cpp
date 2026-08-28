@@ -13,6 +13,7 @@
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QGuiApplication>
 #include <QInputDialog>
 #include <QLabel>
@@ -837,10 +838,11 @@ void MainWindow::onSaveRenderTriggered() {
         QMessageBox::information(this, "Save Render", "Nothing has been rendered yet.");
         return;
     }
-    QString path = QFileDialog::getSaveFileName(this, "Save Render As", QString(), "PNG image (*.png)", nullptr,
-                                                 testFriendlyFileDialogOptions());
+    QString path = QFileDialog::getSaveFileName(this, "Save Render As", AppSettings::lastRenderOutputDirectory(),
+                                                 "PNG image (*.png)", nullptr, testFriendlyFileDialogOptions());
     if (path.isEmpty()) return;
     path = ensureFileSuffix(path, ".png");
+    AppSettings::setLastRenderOutputDirectory(QFileInfo(path).absolutePath());
 
     if (!currentImage_.save(path, "PNG")) {
         QMessageBox::warning(this, "Save Render", "Failed to write:\n" + path);
@@ -955,6 +957,17 @@ void MainWindow::generateRandomBatch(int count) {
             case 3: apo::addSymmetry(*flame, -symOrder); break;
             default: break; // 0 = None
         }
+
+        // generateRandomFlame() already auto-framed the flame (AutoFrame.h),
+        // but that framing was computed before addSymmetry() above ran -
+        // addSymmetry's copies rotate/reflect about the origin (Symmetry.cpp),
+        // not about that already-computed camera center, so whenever the
+        // pre-symmetry attractor wasn't itself centered near the origin
+        // (the common case), the symmetric copies can land partly or wholly
+        // outside the earlier frame - the flame then renders tiny or blank
+        // until the user manually re-centers/zooms. Re-running autoFrameFlame
+        // now, against the fully-built (post-symmetry) flame, fixes that.
+        if (symType != 0) apo::autoFrameFlame(*flame, seed + 7);
 
         if (AppSettings::randomKeepBackground()) flame->background = keepBackgroundColor;
 

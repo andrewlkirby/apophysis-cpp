@@ -779,11 +779,35 @@ std::vector<std::pair<double, double>> Renderer::samplePoints(const Flame& flame
         sampleFlame->xform[xfIdx]->nextPoint(p, c);
     }
 
-    for (int i = 0; i < count; ++i) {
+    // A single count-sized trajectory, unlike the real renderer's many
+    // independent kSubBatchSize-sized ones (Renderer.cpp's renderBatch) - a
+    // divergence partway through used to `break` and discard the rest of
+    // the budget outright, which could leave AutoFrame.cpp with too few
+    // samples (<100) to compute a real camera frame from, silently falling
+    // back to whatever center/pixelsPerUnit the flame already had (often a
+    // blank-looking default). Restarting from a fresh random point instead
+    // - mirroring how a real render just wastes the one poisoned sub-batch,
+    // not the whole thing - lets a flame that only diverges occasionally
+    // still fill out its full sample budget. kMaxRestarts bounds the retry
+    // cost for a flame that diverges on essentially every attempt.
+    constexpr int kMaxRestarts = 50;
+    int restarts = 0;
+    for (int i = 0; i < count;) {
         xfIdx = propTable[static_cast<size_t>(xfIdx) * kPropTableSize + rng.uniformInt(kPropTableSize)];
         XForm& xf = *sampleFlame->xform[xfIdx];
         xf.nextPoint(p, c);
-        if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.z) || !std::isfinite(c)) break;
+        if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.z) || !std::isfinite(c)) {
+            if (++restarts > kMaxRestarts) break;
+            p = {2 * rng.uniform01() - 1, 2 * rng.uniform01() - 1, 0};
+            c = rng.uniform01();
+            xfIdx = 0;
+            for (int f = 0; f <= kFuse; ++f) {
+                xfIdx = propTable[static_cast<size_t>(xfIdx) * kPropTableSize + rng.uniformInt(kPropTableSize)];
+                sampleFlame->xform[xfIdx]->nextPoint(p, c);
+            }
+            continue;
+        }
+        ++i;
         if (xf.transOpacity == 0.0) continue; // matches IterateXY's own hard opacity=0 exclusion
 
         double qx = p.x, qy = p.y;

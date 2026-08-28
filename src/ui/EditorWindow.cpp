@@ -136,6 +136,10 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     centralSplitter_->setStretchFactor(0, 1);
     centralSplitter_->setStretchFactor(1, 0);
     centralSplitter_->setSizes({720, 280});
+    // Restores a width the user previously dragged the handle to (see
+    // AppSettings::splitterState's own doc comment) - a no-op if nothing's
+    // been saved yet, leaving the setSizes() default above in place.
+    centralSplitter_->restoreState(AppSettings::splitterState("EditorWindow"));
 
     QWidget* central = new QWidget(this);
     QHBoxLayout* centralLayout = new QHBoxLayout(central);
@@ -867,6 +871,7 @@ void EditorWindow::resizeEvent(QResizeEvent* event) {
 
 void EditorWindow::closeEvent(QCloseEvent* event) {
     saveWindowGeometry(this, "EditorWindow");
+    AppSettings::setSplitterState("EditorWindow", centralSplitter_->saveState());
     QMainWindow::closeEvent(event);
 }
 

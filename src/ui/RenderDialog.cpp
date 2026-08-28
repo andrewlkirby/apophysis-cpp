@@ -10,8 +10,10 @@
 #include <QCloseEvent>
 #include <QComboBox>
 #include <QCoreApplication>
+#include <QDir>
 #include <QDoubleSpinBox>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QFormLayout>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -30,6 +32,7 @@
 #include "MemoryBudget.h"
 #include "PostProcessDialog.h"
 #include "RenderWorker.h"
+#include "TimeFormat.h"
 #include "WindowGeometry.h"
 #include "core/io/FlameIO.h"
 #include "core/render/RenderDispatcher.h"
@@ -400,9 +403,16 @@ void RenderDialog::updateMemoryEstimate() {
 }
 
 void RenderDialog::browseOutputPath() {
-    const QString path = QFileDialog::getSaveFileName(this, "Render Output", outputPathEdit_->text(),
-                                                       "PNG Images (*.png)", nullptr, testFriendlyFileDialogOptions());
-    if (!path.isEmpty()) outputPathEdit_->setText(ensureFileSuffix(path, ".png"));
+    QString start = outputPathEdit_->text();
+    if (start.isEmpty()) {
+        const QString lastDir = AppSettings::lastRenderOutputDirectory();
+        if (!lastDir.isEmpty()) start = QDir(lastDir).filePath("untitled.png");
+    }
+    const QString path = QFileDialog::getSaveFileName(this, "Render Output", start, "PNG Images (*.png)", nullptr,
+                                                       testFriendlyFileDialogOptions());
+    if (path.isEmpty()) return;
+    outputPathEdit_->setText(ensureFileSuffix(path, ".png"));
+    AppSettings::setLastRenderOutputDirectory(QFileInfo(path).absolutePath());
 }
 
 void RenderDialog::startRender() {
@@ -482,12 +492,28 @@ void RenderDialog::onProgressTick() {
 
     const bool paused = progress_->pauseRequested.load(std::memory_order_relaxed);
     const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
-    statusLabel_->setText(QString("%1%2 / %3 points (%4%) - %5s elapsed")
+    // ETA is a simple linear extrapolation from progress-so-far - no
+    // point-rate smoothing, since sample density (and thus points/sec) is
+    // constant for the duration of a single render, so the estimate only
+    // gets more accurate as `done` grows, never noisier.
+    QString etaText;
+    if (paused) {
+        etaText = "paused";
+    } else if (done >= target) {
+        etaText = formatDuration(0.0);
+    } else if (done > 0) {
+        etaText =
+            formatDuration(elapsedSec * static_cast<double>(target - done) / static_cast<double>(done));
+    } else {
+        etaText = "calculating...";
+    }
+    statusLabel_->setText(QString("%1%2 / %3 points (%4%) - %5 elapsed, %6 remaining")
                                .arg(paused ? "Paused - " : "")
                                .arg(done)
                                .arg(target)
                                .arg(percent)
-                               .arg(elapsedSec, 0, 'f', 1));
+                               .arg(formatDuration(elapsedSec))
+                               .arg(etaText));
 }
 
 void RenderDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsGenerated*/, quint64 pointsAccepted,
@@ -501,15 +527,15 @@ void RenderDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsGenera
     const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
     if (cancelled) {
         progressBar_->setValue(0);
-        statusLabel_->setText(QString("Cancelled after %1s%2").arg(elapsedSec, 0, 'f', 1).arg(backendSuffix));
+        statusLabel_->setText(QString("Cancelled after %1%2").arg(formatDuration(elapsedSec)).arg(backendSuffix));
     } else if (!saved) {
         progressBar_->setValue(100);
         statusLabel_->setText("Render finished, but failed to save the output file");
     } else {
         progressBar_->setValue(100);
-        QString message = QString("Done - %1 points accepted in %2s%3")
+        QString message = QString("Done - %1 points accepted in %2%3")
                                .arg(pointsAccepted)
-                               .arg(elapsedSec, 0, 'f', 1)
+                               .arg(formatDuration(elapsedSec))
                                .arg(backendSuffix);
 
         // Plan's P4.3 - the exact settings that were actually rendered

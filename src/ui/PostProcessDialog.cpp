@@ -6,7 +6,9 @@
 #include <QCloseEvent>
 #include <QColorDialog>
 #include <QCoreApplication>
+#include <QDir>
 #include <QFileDialog>
+#include <QFileInfo>
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QProgressBar>
@@ -22,6 +24,7 @@
 #include "PreviewSizing.h"
 #include "RenderWorker.h"
 #include "SliderSpin.h"
+#include "TimeFormat.h"
 #include "WindowGeometry.h"
 
 namespace apo::ui {
@@ -256,11 +259,14 @@ void PostProcessDialog::setControlsEnabled(bool enabled) {
 void PostProcessDialog::onSaveClicked() {
     if (fullRenderInFlight_) return;
 
-    const QString suggested = flame_->name.empty() ? "untitled.png" : QString::fromStdString(flame_->name) + ".png";
+    const QString name = flame_->name.empty() ? "untitled.png" : QString::fromStdString(flame_->name) + ".png";
+    const QString startDir = AppSettings::lastRenderOutputDirectory();
+    const QString suggested = startDir.isEmpty() ? name : QDir(startDir).filePath(name);
     QString path = QFileDialog::getSaveFileName(this, "Save Image", suggested, "PNG Images (*.png)", nullptr,
                                                  testFriendlyFileDialogOptions());
     if (path.isEmpty()) return;
     path = ensureFileSuffix(path, ".png");
+    AppSettings::setLastRenderOutputDirectory(QFileInfo(path).absolutePath());
 
     progress_ = std::make_unique<apo::RenderProgress>();
     fullRenderInFlight_ = true;
@@ -285,11 +291,20 @@ void PostProcessDialog::onProgressTick() {
     progressBar_->setValue(percent);
 
     const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
-    statusLabel_->setText(QString("%1 / %2 points (%3%) - %4s elapsed")
+    QString etaText;
+    if (done >= target) {
+        etaText = formatDuration(0.0);
+    } else if (done > 0) {
+        etaText = formatDuration(elapsedSec * static_cast<double>(target - done) / static_cast<double>(done));
+    } else {
+        etaText = "calculating...";
+    }
+    statusLabel_->setText(QString("%1 / %2 points (%3%) - %4 elapsed, %5 remaining")
                                .arg(done)
                                .arg(target)
                                .arg(percent)
-                               .arg(elapsedSec, 0, 'f', 1));
+                               .arg(formatDuration(elapsedSec))
+                               .arg(etaText));
 }
 
 void PostProcessDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsGenerated*/, quint64 pointsAccepted,
@@ -302,14 +317,14 @@ void PostProcessDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsG
     const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
     if (cancelled) {
         progressBar_->setValue(0);
-        statusLabel_->setText(QString("Cancelled after %1s").arg(elapsedSec, 0, 'f', 1));
+        statusLabel_->setText(QString("Cancelled after %1").arg(formatDuration(elapsedSec)));
     } else if (!saved) {
         progressBar_->setValue(100);
         statusLabel_->setText("Render finished, but failed to save the output file");
     } else {
         progressBar_->setValue(100);
         statusLabel_->setText(
-            QString("Saved - %1 points accepted in %2s").arg(pointsAccepted).arg(elapsedSec, 0, 'f', 1));
+            QString("Saved - %1 points accepted in %2").arg(pointsAccepted).arg(formatDuration(elapsedSec)));
     }
 }
 

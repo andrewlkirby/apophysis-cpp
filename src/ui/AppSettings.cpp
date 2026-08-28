@@ -214,4 +214,16 @@ void setWindowGeometry(const QString& windowKey, const QByteArray& geometry) {
     QSettings().setValue("windowGeometry/" + windowKey, geometry);
 }
 
+QByteArray splitterState(const QString& splitterKey) {
+    return QSettings().value("splitterState/" + splitterKey).toByteArray();
+}
+void setSplitterState(const QString& splitterKey, const QByteArray& state) {
+    QSettings().setValue("splitterState/" + splitterKey, state);
+}
+
+QString lastRenderOutputDirectory() { return QSettings().value("rendering/lastOutputDirectory").toString(); }
+void setLastRenderOutputDirectory(const QString& directory) {
+    QSettings().setValue("rendering/lastOutputDirectory", directory);
+}
+
 } // namespace apo::ui::AppSettings

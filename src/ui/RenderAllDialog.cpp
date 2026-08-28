@@ -27,6 +27,7 @@
 #include "AppSettings.h"
 #include "MemoryBudget.h"
 #include "RenderWorker.h"
+#include "TimeFormat.h"
 #include "WindowGeometry.h"
 #include "core/io/FlameIO.h"
 
@@ -241,8 +242,12 @@ void RenderAllDialog::updateStartButtonEnabled() {
 }
 
 void RenderAllDialog::browseOutputFolder() {
-    const QString path = QFileDialog::getExistingDirectory(this, "Render All - Output Folder", outputFolderEdit_->text());
-    if (!path.isEmpty()) outputFolderEdit_->setText(path);
+    QString start = outputFolderEdit_->text();
+    if (start.isEmpty()) start = AppSettings::lastRenderOutputDirectory();
+    const QString path = QFileDialog::getExistingDirectory(this, "Render All - Output Folder", start);
+    if (path.isEmpty()) return;
+    outputFolderEdit_->setText(path);
+    AppSettings::setLastRenderOutputDirectory(path);
 }
 
 void RenderAllDialog::startRenderAll() {
@@ -329,11 +334,20 @@ void RenderAllDialog::onProgressTick() {
     progressBar_->setValue(percent);
 
     const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
-    statusLabel_->setText(QString("%1 / %2 points (%3%) - %4s elapsed")
+    QString etaText;
+    if (done >= target) {
+        etaText = formatDuration(0.0);
+    } else if (done > 0) {
+        etaText = formatDuration(elapsedSec * static_cast<double>(target - done) / static_cast<double>(done));
+    } else {
+        etaText = "calculating...";
+    }
+    statusLabel_->setText(QString("%1 / %2 points (%3%) - %4 elapsed, %5 remaining")
                                .arg(done)
                                .arg(target)
                                .arg(percent)
-                               .arg(elapsedSec, 0, 'f', 1));
+                               .arg(formatDuration(elapsedSec))
+                               .arg(etaText));
 }
 
 void RenderAllDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsGenerated*/, quint64 pointsAccepted,

@@ -252,4 +252,23 @@ void setDefaultHeight(int height);
 QByteArray windowGeometry(const QString& windowKey);
 void setWindowGeometry(const QString& windowKey, const QByteArray& geometry);
 
+// Per-window-type splitter handle position, as QSplitter::saveState()'s own
+// opaque blob - keyed the same way as windowGeometry() above (e.g.
+// "EditorWindow"), so a sidebar/panel a user drags to a new width stays
+// there across both reopening that window and relaunching the app. Empty
+// QByteArray (the default, nothing saved yet) is a valid no-op input to
+// QSplitter::restoreState().
+QByteArray splitterState(const QString& splitterKey);
+void setSplitterState(const QString& splitterKey, const QByteArray& state);
+
+// Last directory a user actually saved a rendered image into (Save Render
+// As, Render dialog's Browse, Render All's output folder, and Post-Process's
+// Save Image) - shared across all of those since they're all "where do my
+// rendered PNGs go" in the same session, matching how a user's own mental
+// model of "my render output folder" isn't per-dialog. Empty string (the
+// default) means "no preference yet", in which case each call site falls
+// back to its own prior behavior (Qt's own last-visited-directory default).
+QString lastRenderOutputDirectory();
+void setLastRenderOutputDirectory(const QString& directory);
+
 } // namespace apo::ui::AppSettings

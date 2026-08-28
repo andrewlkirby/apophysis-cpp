@@ -1781,6 +1781,19 @@ editor_window_adjust_panel_test\fast:
 .PHONY : editor_window_adjust_panel_test\fast
 
 #=============================================================================
+# Target rules for targets named editor_splitter_test
+
+# Build rule for target.
+editor_splitter_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) editor_splitter_test
+.PHONY : editor_splitter_test
+
+# fast build rule for target.
+editor_splitter_test\fast:
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\build
+.PHONY : editor_splitter_test\fast
+
+#=============================================================================
 # Target rules for targets named triangle_canvas_interaction_test_autogen_timestamp_deps
 
 # Build rule for target.
@@ -2326,6 +2339,32 @@ editor_window_adjust_panel_test_autogen\fast:
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\build
 .PHONY : editor_window_adjust_panel_test_autogen\fast
 
+#=============================================================================
+# Target rules for targets named editor_splitter_test_autogen_timestamp_deps
+
+# Build rule for target.
+editor_splitter_test_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) editor_splitter_test_autogen_timestamp_deps
+.PHONY : editor_splitter_test_autogen_timestamp_deps
+
+# fast build rule for target.
+editor_splitter_test_autogen_timestamp_deps\fast:
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\build
+.PHONY : editor_splitter_test_autogen_timestamp_deps\fast
+
+#=============================================================================
+# Target rules for targets named editor_splitter_test_autogen
+
+# Build rule for target.
+editor_splitter_test_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) editor_splitter_test_autogen
+.PHONY : editor_splitter_test_autogen
+
+# fast build rule for target.
+editor_splitter_test_autogen\fast:
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test_autogen.dir\build
+.PHONY : editor_splitter_test_autogen\fast
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -2364,6 +2403,8 @@ help:
 	@echo ... curves_dialog_interaction_test_autogen
 	@echo ... curves_dialog_interaction_test_autogen_timestamp_deps
 	@echo ... deploy
+	@echo ... editor_splitter_test_autogen
+	@echo ... editor_splitter_test_autogen_timestamp_deps
 	@echo ... editor_window_adjust_panel_test_autogen
 	@echo ... editor_window_adjust_panel_test_autogen_timestamp_deps
 	@echo ... editor_window_interaction_test_autogen
@@ -2463,6 +2504,7 @@ help:
 	@echo ... builtin_gradients_test
 	@echo ... core_smoke_test
 	@echo ... curves_dialog_interaction_test
+	@echo ... editor_splitter_test
 	@echo ... editor_window_adjust_panel_test
 	@echo ... editor_window_interaction_test
 	@echo ... flame_clone_test

@@ -3071,10 +3071,14 @@ src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\inclu
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qgridlayout.h
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qlayout.h
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QKeySequence
+src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QLabel
+src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qlabel.h
+src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpicture.h
+src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtextdocument.h
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QLineEdit
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qlineedit.h
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtextcursor.h
-src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtextdocument.h
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtextformat.h
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpen.h
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtextoption.h
@@ -5372,6 +5376,7 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtimezone.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qdialog.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QFileInfo
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QGuiApplication
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QInputDialog
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qinputdialog.h
@@ -7174,8 +7179,7 @@ src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QColorDialog
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qcolordialog.h
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QCoreApplication
-src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog
-src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qfiledialog.h
+src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QDir
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdir.h
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdirlisting.h
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h
@@ -7186,6 +7190,9 @@ src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: "C:\Program Files (x86)\
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfileinfo.h
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtimezone.h
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog
+src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qfiledialog.h
+src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QFileInfo
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QHBoxLayout
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qboxlayout.h
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qlayout.h
@@ -7239,6 +7246,8 @@ src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Users\andre\Documents
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\RenderDispatcher.h
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SliderSpin.h
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QWidget
+src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TimeFormat.h
+src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QByteArray
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
@@ -8195,6 +8204,8 @@ src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\in
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\io\PngWriter.h
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\RenderDispatcher.h
+src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TimeFormat.h
+src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QByteArray
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
@@ -8648,10 +8659,7 @@ src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\inclu
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qframe.h
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qabstractitemmodel.h
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QCoreApplication
-src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QDoubleSpinBox
-src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qspinbox.h
-src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog
-src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qfiledialog.h
+src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QDir
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdir.h
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdirlisting.h
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfiledevice.h
@@ -8662,6 +8670,11 @@ src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: "C:\Program Files (x86)\Micro
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfileinfo.h
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtimezone.h
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QDoubleSpinBox
+src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qspinbox.h
+src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog
+src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qfiledialog.h
+src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QFileInfo
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QFormLayout
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qformlayout.h
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QLayout
@@ -8727,6 +8740,8 @@ src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\inclu
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\io\PngWriter.h
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\RenderDispatcher.h
+src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TimeFormat.h
+src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QByteArray
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
@@ -12871,6 +12886,8 @@ src\ui\apo_ui_autogen\EWIEGA46WW\moc_AdjustDialog.cpp:
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\OptionsDialog.cpp:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qprogressbar.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TimeFormat.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewLabel.cpp:
 

@@ -141,6 +141,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/window_geometry_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/adjust_panel_interaction_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/editor_window_adjust_panel_test.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/editor_splitter_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/edit_cache.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/rebuild_cache.dir
@@ -186,3 +187,5 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/adjust_panel_interaction_test_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/editor_window_adjust_panel_test_autogen_timestamp_deps.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/editor_window_adjust_panel_test_autogen.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/editor_splitter_test_autogen_timestamp_deps.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/editor_splitter_test_autogen.dir

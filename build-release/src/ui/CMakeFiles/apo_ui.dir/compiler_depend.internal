@@ -3072,10 +3072,14 @@ src/ui/CMakeFiles/apo_ui.dir/EditorWindow.cpp.obj
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qgridlayout.h
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qlayout.h
  C:/Qt/6.8.0/msvc2022_64/include/QtGui/QKeySequence
+ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QLabel
+ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qlabel.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtGui/qpicture.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextdocument.h
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QLineEdit
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qlineedit.h
  C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextcursor.h
- C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextdocument.h
  C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextformat.h
  C:/Qt/6.8.0/msvc2022_64/include/QtGui/qpen.h
  C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextoption.h
@@ -5373,6 +5377,7 @@ src/ui/CMakeFiles/apo_ui.dir/MainWindow.cpp.obj
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtimezone.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qdialog.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QFileInfo
  C:/Qt/6.8.0/msvc2022_64/include/QtGui/QGuiApplication
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QInputDialog
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qinputdialog.h
@@ -7175,8 +7180,7 @@ src/ui/CMakeFiles/apo_ui.dir/PostProcessDialog.cpp.obj
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QColorDialog
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qcolordialog.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QCoreApplication
- C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QFileDialog
- C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qfiledialog.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QDir
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qdir.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qdirlisting.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfiledevice.h
@@ -7187,6 +7191,9 @@ src/ui/CMakeFiles/apo_ui.dir/PostProcessDialog.cpp.obj
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfileinfo.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtimezone.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QFileDialog
+ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qfiledialog.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QFileInfo
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QHBoxLayout
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qboxlayout.h
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qlayout.h
@@ -7240,6 +7247,8 @@ src/ui/CMakeFiles/apo_ui.dir/PostProcessDialog.cpp.obj
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/RenderDispatcher.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.h
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QWidget
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TimeFormat.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QByteArray
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -8196,6 +8205,8 @@ src/ui/CMakeFiles/apo_ui.dir/RenderAllDialog.cpp.obj
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/io/PngWriter.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/RenderDispatcher.h
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TimeFormat.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QByteArray
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -8649,10 +8660,7 @@ src/ui/CMakeFiles/apo_ui.dir/RenderDialog.cpp.obj
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qframe.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qabstractitemmodel.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QCoreApplication
- C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QDoubleSpinBox
- C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qspinbox.h
- C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QFileDialog
- C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qfiledialog.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QDir
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qdir.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qdirlisting.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfiledevice.h
@@ -8663,6 +8671,11 @@ src/ui/CMakeFiles/apo_ui.dir/RenderDialog.cpp.obj
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfileinfo.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtimezone.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QDoubleSpinBox
+ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qspinbox.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QFileDialog
+ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qfiledialog.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QFileInfo
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QFormLayout
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qformlayout.h
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QLayout
@@ -8728,6 +8741,8 @@ src/ui/CMakeFiles/apo_ui.dir/RenderDialog.cpp.obj
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/io/PngWriter.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/RenderDispatcher.h
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TimeFormat.h
+ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QByteArray
  C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString

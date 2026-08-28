@@ -517,6 +517,8 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/io/PngWriter.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/RenderDispatcher.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TimeFormat.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QByteArray
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString

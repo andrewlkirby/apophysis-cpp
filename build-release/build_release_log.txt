@@ -1,0 +1,134 @@
+
+Microsoft (R) Program Maintenance Utility Version 14.44.35228.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+-- Running vcpkg install
+Detecting compiler hash for triplet x64-windows...
+Compiler found: C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe
+The following packages are already installed:
+    libpng:x64-windows@1.6.58
+    pugixml:x64-windows@1.16
+  * vcpkg-cmake:x64-windows@2024-04-23
+  * vcpkg-cmake-config:x64-windows@2024-05-23
+  * zlib:x64-windows@1.3.2#1
+libpng provides CMake targets:
+
+  find_package(PNG REQUIRED)
+  target_link_libraries(main PRIVATE PNG::PNG)
+
+pugixml provides CMake targets:
+
+  # this is heuristically generated, and may not be correct
+  find_package(pugixml CONFIG REQUIRED)
+  target_link_libraries(main PRIVATE pugixml::shared pugixml::pugixml)
+
+pugixml provides pkg-config modules:
+
+  # Light-weight, simple and fast XML parser for C++ with XPath support.
+  pugixml
+
+All requested installations completed successfully in: 362 us
+-- Running vcpkg install - done
+-- Could NOT find WrapVulkanHeaders (missing: Vulkan_INCLUDE_DIR) 
+-- Configuring done (21.4s)
+-- Generating done (14.4s)
+-- Build files have been written to: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release
+[  0%] Built target apo_core_autogen_timestamp_deps
+[  0%] Automatic MOC for target apo_core
+[  0%] Built target apo_core_autogen
+[  2%] Building CXX object src/core/CMakeFiles/apo_core.dir/render/Renderer.cpp.obj
+Renderer.cpp
+[ 86%] Built target apo_core
+[ 86%] Built target apo_ui_autogen_timestamp_deps
+[ 86%] Automatic MOC for target apo_ui
+[ 86%] Built target apo_ui_autogen
+[ 88%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/apo_ui_autogen/mocs_compilation.cpp.obj
+mocs_compilation.cpp
+[ 88%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/MainWindow.cpp.obj
+MainWindow.cpp
+[ 90%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/EditorWindow.cpp.obj
+EditorWindow.cpp
+[ 90%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/AdjustDialog.cpp.obj
+AdjustDialog.cpp
+[ 90%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/RenderDialog.cpp.obj
+RenderDialog.cpp
+[ 92%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/RenderAllDialog.cpp.obj
+RenderAllDialog.cpp
+[ 92%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/AppSettings.cpp.obj
+AppSettings.cpp
+[ 92%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/OptionsDialog.cpp.obj
+OptionsDialog.cpp
+[ 94%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/MutateDialog.cpp.obj
+MutateDialog.cpp
+[ 94%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/GradientBrowserDialog.cpp.obj
+GradientBrowserDialog.cpp
+[ 94%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/SmoothPaletteDialog.cpp.obj
+SmoothPaletteDialog.cpp
+[ 94%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/FullscreenView.cpp.obj
+FullscreenView.cpp
+[ 94%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/CurvesDialog.cpp.obj
+CurvesDialog.cpp
+[ 94%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/PostProcessDialog.cpp.obj
+PostProcessDialog.cpp
+[ 94%] Building CXX object src/ui/CMakeFiles/apo_ui.dir/XaosDialog.cpp.obj
+XaosDialog.cpp
+[ 98%] Built target apo_ui
+[ 98%] Built target apo_gui_autogen_timestamp_deps
+[ 98%] Built target apo_gui_autogen
+[ 98%] Linking CXX executable apo_gui.exe
+[100%] Built target apo_gui
+[  0%] Built target apo_core_autogen_timestamp_deps
+[  0%] Built target apo_core_autogen
+[ 86%] Built target apo_core
+[ 86%] Built target apo_ui_autogen_timestamp_deps
+[ 86%] Built target apo_ui_autogen
+[ 98%] Built target apo_ui
+[ 98%] Built target apo_gui_autogen_timestamp_deps
+[ 98%] Built target apo_gui_autogen
+[100%] Built target apo_gui
+[100%] Staging a standalone apo_gui build in C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/deploy
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\deploy\apo_gui.exe 64 bit, release executable
+Adding in plugin type generic for module: Qt6Gui
+Adding Qt6Network for qtuiotouchplugin.dll from plugin type: generic
+Adding in plugin type iconengines for module: Qt6Gui
+Adding Qt6Svg for qsvgicon.dll from plugin type: iconengines
+Adding in plugin type imageformats for module: Qt6Gui
+Adding in plugin type networkinformation for module: Qt6Network
+Adding in plugin type platforms for module: Qt6Gui
+Adding in plugin type styles for module: Qt6Widgets
+Adding in plugin type tls for module: Qt6Network
+Skipping plugin qopensslbackend.dll. Use -force_openssl or specify -openssl-root if you want to use it.
+Direct dependencies: Qt6Core Qt6Gui Qt6Widgets
+All dependencies   : Qt6Core Qt6Gui Qt6Widgets
+To be deployed     : Qt6Core Qt6Gui Qt6Network Qt6Svg Qt6Widgets
+Qt6Core.dll is up to date.
+Qt6Gui.dll is up to date.
+Qt6Network.dll is up to date.
+Qt6Svg.dll is up to date.
+Qt6Widgets.dll is up to date.
+Updating opengl32sw.dll.
+Updating d3dcompiler_47.dll.
+Updating dxcompiler.dll.
+Updating dxil.dll.
+Updating vc_redist.x64.exe.
+Creating directory C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/deploy/generic.
+Updating qtuiotouchplugin.dll.
+Creating directory C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/deploy/iconengines.
+Updating qsvgicon.dll.
+Creating directory C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/deploy/imageformats.
+Updating qgif.dll.
+Updating qico.dll.
+Updating qjpeg.dll.
+Updating qsvg.dll.
+Creating directory C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/deploy/networkinformation.
+Updating qnetworklistmanager.dll.
+Creating directory C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/deploy/platforms.
+Updating qwindows.dll.
+Creating directory C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/deploy/styles.
+Updating qmodernwindowsstyle.dll.
+Creating directory C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/deploy/tls.
+Updating qcertonlybackend.dll.
+Updating qschannelbackend.dll.
+Bundling the MSVC redistributable CRT DLLs
+Bundling the CUDA runtime DLL (cudart64_*.dll)
+[100%] Built target deploy

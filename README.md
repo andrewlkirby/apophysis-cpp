@@ -40,11 +40,16 @@ irm https://raw.githubusercontent.com/andrewlkirby/apophysis-cpp/main/install.ps
 
 macOS installs to `/Applications` (or `~/Applications`); Linux installs an
 AppImage plus a launcher to `~/.local/bin/apophysis7x` and a desktop-menu
-entry; Windows installs to `%LOCALAPPDATA%\Apophysis7X` plus a Start Menu
-shortcut. Both scripts are plain, readable shell/PowerShell — inspect
-before piping into `bash`/`iex` if you'd rather not blind-pipe, or download
-a release asset directly from the [Releases page](https://github.com/andrewlkirby/apophysis-cpp/releases)
-and run/unzip it yourself.
+entry; Windows installs to `%LOCALAPPDATA%\Apophysis7X` and, run
+interactively, prompts for where to put a shortcut (Start Menu, Desktop,
+both, or neither) — pass `-StartMenuShortcut`/`-DesktopShortcut`/
+`-NoShortcut` to `install.ps1` to skip the prompt (see the script's own
+header comment for the `iex "& { ... } -DesktopShortcut"` syntax needed to
+pass switches through a piped install). Both scripts are plain, readable
+shell/PowerShell — inspect before piping into `bash`/`iex` if you'd rather
+not blind-pipe, or download a release asset directly from the
+[Releases page](https://github.com/andrewlkirby/apophysis-cpp/releases) and
+run/unzip it yourself.
 
 This build isn't code-signed or notarized, so macOS Gatekeeper may refuse
 the first launch ("cannot be opened because the developer cannot be

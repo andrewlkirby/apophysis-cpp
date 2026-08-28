@@ -319,6 +319,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "tests/ui/CMakeFiles/window_geometry_test_autogen.dir/AutogenInfo.json"
   "tests/ui/CMakeFiles/adjust_panel_interaction_test_autogen.dir/AutogenInfo.json"
   "tests/ui/CMakeFiles/editor_window_adjust_panel_test_autogen.dir/AutogenInfo.json"
+  "tests/ui/CMakeFiles/editor_splitter_test_autogen.dir/AutogenInfo.json"
   "tests/ui/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -452,6 +453,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "tests/ui/CMakeFiles/window_geometry_test.dir/DependInfo.cmake"
   "tests/ui/CMakeFiles/adjust_panel_interaction_test.dir/DependInfo.cmake"
   "tests/ui/CMakeFiles/editor_window_adjust_panel_test.dir/DependInfo.cmake"
+  "tests/ui/CMakeFiles/editor_splitter_test.dir/DependInfo.cmake"
   "tests/ui/CMakeFiles/triangle_canvas_interaction_test_autogen_timestamp_deps.dir/DependInfo.cmake"
   "tests/ui/CMakeFiles/triangle_canvas_interaction_test_autogen.dir/DependInfo.cmake"
   "tests/ui/CMakeFiles/adjust_dialog_interaction_test_autogen_timestamp_deps.dir/DependInfo.cmake"
@@ -494,4 +496,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "tests/ui/CMakeFiles/adjust_panel_interaction_test_autogen.dir/DependInfo.cmake"
   "tests/ui/CMakeFiles/editor_window_adjust_panel_test_autogen_timestamp_deps.dir/DependInfo.cmake"
   "tests/ui/CMakeFiles/editor_window_adjust_panel_test_autogen.dir/DependInfo.cmake"
+  "tests/ui/CMakeFiles/editor_splitter_test_autogen_timestamp_deps.dir/DependInfo.cmake"
+  "tests/ui/CMakeFiles/editor_splitter_test_autogen.dir/DependInfo.cmake"
   )

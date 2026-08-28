@@ -505,6 +505,24 @@ editor_window_adjust_panel_test\fast:
 .PHONY : editor_window_adjust_panel_test\fast
 
 # Convenience name for target.
+tests\ui\CMakeFiles\editor_splitter_test.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : tests\ui\CMakeFiles\editor_splitter_test.dir\rule
+
+# Convenience name for target.
+editor_splitter_test: tests\ui\CMakeFiles\editor_splitter_test.dir\rule
+.PHONY : editor_splitter_test
+
+# fast build rule for target.
+editor_splitter_test\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : editor_splitter_test\fast
+
+# Convenience name for target.
 tests\ui\CMakeFiles\triangle_canvas_interaction_test_autogen_timestamp_deps.dir\rule:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\triangle_canvas_interaction_test_autogen_timestamp_deps.dir\rule
@@ -1260,6 +1278,42 @@ editor_window_adjust_panel_test_autogen\fast:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
 .PHONY : editor_window_adjust_panel_test_autogen\fast
 
+# Convenience name for target.
+tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\rule
+
+# Convenience name for target.
+editor_splitter_test_autogen_timestamp_deps: tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\rule
+.PHONY : editor_splitter_test_autogen_timestamp_deps
+
+# fast build rule for target.
+editor_splitter_test_autogen_timestamp_deps\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : editor_splitter_test_autogen_timestamp_deps\fast
+
+# Convenience name for target.
+tests\ui\CMakeFiles\editor_splitter_test_autogen.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test_autogen.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : tests\ui\CMakeFiles\editor_splitter_test_autogen.dir\rule
+
+# Convenience name for target.
+editor_splitter_test_autogen: tests\ui\CMakeFiles\editor_splitter_test_autogen.dir\rule
+.PHONY : editor_splitter_test_autogen
+
+# fast build rule for target.
+editor_splitter_test_autogen\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test_autogen.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : editor_splitter_test_autogen\fast
+
 adjust_dialog_interaction_test.obj: adjust_dialog_interaction_test.cpp.obj
 .PHONY : adjust_dialog_interaction_test.obj
 
@@ -1439,6 +1493,66 @@ curves_dialog_interaction_test_autogen\mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\curves_dialog_interaction_test_autogen\mocs_compilation.cpp.s
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
 .PHONY : curves_dialog_interaction_test_autogen\mocs_compilation.cpp.s
+
+editor_splitter_test.obj: editor_splitter_test.cpp.obj
+.PHONY : editor_splitter_test.obj
+
+# target to build an object file
+editor_splitter_test.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\editor_splitter_test.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : editor_splitter_test.cpp.obj
+
+editor_splitter_test.i: editor_splitter_test.cpp.i
+.PHONY : editor_splitter_test.i
+
+# target to preprocess a source file
+editor_splitter_test.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\editor_splitter_test.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : editor_splitter_test.cpp.i
+
+editor_splitter_test.s: editor_splitter_test.cpp.s
+.PHONY : editor_splitter_test.s
+
+# target to generate assembly for a file
+editor_splitter_test.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\editor_splitter_test.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : editor_splitter_test.cpp.s
+
+editor_splitter_test_autogen\mocs_compilation.obj: editor_splitter_test_autogen\mocs_compilation.cpp.obj
+.PHONY : editor_splitter_test_autogen\mocs_compilation.obj
+
+# target to build an object file
+editor_splitter_test_autogen\mocs_compilation.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\editor_splitter_test_autogen\mocs_compilation.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : editor_splitter_test_autogen\mocs_compilation.cpp.obj
+
+editor_splitter_test_autogen\mocs_compilation.i: editor_splitter_test_autogen\mocs_compilation.cpp.i
+.PHONY : editor_splitter_test_autogen\mocs_compilation.i
+
+# target to preprocess a source file
+editor_splitter_test_autogen\mocs_compilation.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\editor_splitter_test_autogen\mocs_compilation.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : editor_splitter_test_autogen\mocs_compilation.cpp.i
+
+editor_splitter_test_autogen\mocs_compilation.s: editor_splitter_test_autogen\mocs_compilation.cpp.s
+.PHONY : editor_splitter_test_autogen\mocs_compilation.s
+
+# target to generate assembly for a file
+editor_splitter_test_autogen\mocs_compilation.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\editor_splitter_test_autogen\mocs_compilation.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : editor_splitter_test_autogen\mocs_compilation.cpp.s
 
 editor_window_adjust_panel_test.obj: editor_window_adjust_panel_test.cpp.obj
 .PHONY : editor_window_adjust_panel_test.obj
@@ -2535,6 +2649,8 @@ help:
 	@echo ... adjust_panel_interaction_test_autogen_timestamp_deps
 	@echo ... curves_dialog_interaction_test_autogen
 	@echo ... curves_dialog_interaction_test_autogen_timestamp_deps
+	@echo ... editor_splitter_test_autogen
+	@echo ... editor_splitter_test_autogen_timestamp_deps
 	@echo ... editor_window_adjust_panel_test_autogen
 	@echo ... editor_window_adjust_panel_test_autogen_timestamp_deps
 	@echo ... editor_window_interaction_test_autogen
@@ -2574,6 +2690,7 @@ help:
 	@echo ... adjust_dialog_interaction_test
 	@echo ... adjust_panel_interaction_test
 	@echo ... curves_dialog_interaction_test
+	@echo ... editor_splitter_test
 	@echo ... editor_window_adjust_panel_test
 	@echo ... editor_window_interaction_test
 	@echo ... force_symmetry_dialog_interaction_test
@@ -2610,6 +2727,12 @@ help:
 	@echo ... curves_dialog_interaction_test_autogen/mocs_compilation.obj
 	@echo ... curves_dialog_interaction_test_autogen/mocs_compilation.i
 	@echo ... curves_dialog_interaction_test_autogen/mocs_compilation.s
+	@echo ... editor_splitter_test.obj
+	@echo ... editor_splitter_test.i
+	@echo ... editor_splitter_test.s
+	@echo ... editor_splitter_test_autogen/mocs_compilation.obj
+	@echo ... editor_splitter_test_autogen/mocs_compilation.i
+	@echo ... editor_splitter_test_autogen/mocs_compilation.s
 	@echo ... editor_window_adjust_panel_test.obj
 	@echo ... editor_window_adjust_panel_test.i
 	@echo ... editor_window_adjust_panel_test.s

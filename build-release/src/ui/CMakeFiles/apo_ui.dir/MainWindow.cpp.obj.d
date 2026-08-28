@@ -464,6 +464,7 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfileinfo.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtimezone.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qdialog.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QFileInfo
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QGuiApplication
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QInputDialog
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qinputdialog.h

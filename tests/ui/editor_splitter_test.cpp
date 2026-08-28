@@ -5,10 +5,13 @@
 // bring the sidebar back at the width it was last resized to, the same way
 // window_geometry_test.cpp already covers each window's own outer size.
 
+#include <algorithm>
 #include <memory>
 
 #include <QApplication>
 #include <QByteArray>
+#include <QScreen>
+#include <QSize>
 #include <QSplitter>
 #include <QTest>
 
@@ -29,21 +32,36 @@ std::shared_ptr<apo::Flame> makeTestFlame() {
     return flame;
 }
 
-void testEditorWindowRemembersSidebarWidth() {
+void testEditorWindowRemembersSidebarWidth(const QSize& safeWindowSize) {
     const QByteArray savedState = apo::ui::AppSettings::splitterState("EditorWindow");
 
     auto* first = new apo::ui::EditorWindow(makeTestFlame());
     first->show();
+    // EditorWindow's own constructor defaults to resize(1000, 700) - wider
+    // than the offscreen QPA platform's ~800px-wide virtual screen (see
+    // window_geometry_test.cpp's own top comment on this exact clamp).
+    // resize() itself doesn't clamp to the screen, only restoreGeometry()
+    // does, so leaving this window at its unclamped 1000-wide default while
+    // the *second* window below restores a saved geometry that DOES get
+    // clamped would compare two windows at genuinely different real widths -
+    // nothing to do with the splitter-restore mechanism this test is
+    // actually meant to cover. Explicitly resizing down to a screen-safe
+    // size here keeps both windows at the same real width.
+    first->resize(safeWindowSize);
     QTest::qWait(20);
 
     auto* firstSplitter = first->findChild<QSplitter*>("centralSplitter");
     check(firstSplitter != nullptr, "EditorWindow exposes its central splitter as \"centralSplitter\"");
 
-    // 520 is comfortably outside the {720, 280} default the constructor
-    // seeds on every fresh open (EditorWindow.cpp), and still within
-    // rightContainer's [280, 900] min/max width clamp.
+    // Comfortably outside the {720, 280} default the constructor seeds on
+    // every fresh open (EditorWindow.cpp), within rightContainer's
+    // [280, 900] min/max width clamp, and leaving canvas_ at least its own
+    // 200px hard minimum (TriangleCanvas::setMinimumSize) - derived from
+    // `total` rather than a flat pixel value since safeWindowSize above
+    // (and so `total`) can be a good deal narrower than a real display
+    // under the offscreen QPA platform's small virtual screen.
     const int total = firstSplitter->width();
-    const int targetSidebarWidth = 520;
+    const int targetSidebarWidth = std::clamp(total - 250, 280, 900);
     firstSplitter->setSizes({total - targetSidebarWidth, targetSidebarWidth});
     QTest::qWait(20);
     const int resizedSidebarWidth = firstSplitter->sizes().value(1);
@@ -80,7 +98,15 @@ int main(int argc, char** argv) {
     QApplication::setApplicationName("Apophysis 7X");
     QApplication::setOrganizationName("Apophysis 7X");
 
-    testEditorWindowRemembersSidebarWidth();
+    // Same margin-clamped derivation window_geometry_test.cpp uses for the
+    // same reason (see its own top comment) - keeps this test's window at a
+    // size that round-trips through QWidget::restoreGeometry() unclamped on
+    // the offscreen QPA platform's small virtual screen.
+    const QScreen* screen = QGuiApplication::primaryScreen();
+    const QSize screenSize = screen ? screen->availableGeometry().size() : QSize(800, 800);
+    const QSize safeWindowSize(std::min(1000, screenSize.width() - 80), std::min(700, screenSize.height() - 80));
+
+    testEditorWindowRemembersSidebarWidth(safeWindowSize);
 
     return apo_test::reportAndExit();
 }

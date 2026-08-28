@@ -7,6 +7,7 @@
 #include <QCloseEvent>
 #include <QComboBox>
 #include <QCoreApplication>
+#include <QDebug>
 #include <QFileDialog>
 #include <QHBoxLayout>
 #include <QKeySequence>
@@ -897,13 +898,20 @@ void EditorWindow::showEvent(QShowEvent* event) {
     QMainWindow::showEvent(event);
     if (!splitterStateRestored_) {
         splitterStateRestored_ = true;
-        centralSplitter_->restoreState(AppSettings::splitterState("EditorWindow"));
+        const QByteArray saved = AppSettings::splitterState("EditorWindow");
+        qDebug() << "[splitter-debug] showEvent: centralSplitter_ width=" << centralSplitter_->width()
+                  << "sizes=" << centralSplitter_->sizes() << "savedState bytes=" << saved.size();
+        centralSplitter_->restoreState(saved);
+        qDebug() << "[splitter-debug] after restoreState: sizes=" << centralSplitter_->sizes();
     }
 }
 
 void EditorWindow::closeEvent(QCloseEvent* event) {
     saveWindowGeometry(this, "EditorWindow");
-    AppSettings::setSplitterState("EditorWindow", centralSplitter_->saveState());
+    const QByteArray state = centralSplitter_->saveState();
+    qDebug() << "[splitter-debug] closeEvent: sizes=" << centralSplitter_->sizes() << "saving state bytes="
+              << state.size();
+    AppSettings::setSplitterState("EditorWindow", state);
     QMainWindow::closeEvent(event);
 }
 

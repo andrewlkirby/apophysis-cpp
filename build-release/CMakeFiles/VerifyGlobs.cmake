@@ -373,6 +373,7 @@ set(OLD_GLOB
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/png_writer_test.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/random_flame_test.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/renderer_test.cpp"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/scratch_user_roundtrip_test.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/smooth_palette_test.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/symmetry_test.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/triangle_geometry_test.cpp"

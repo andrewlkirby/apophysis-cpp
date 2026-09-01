@@ -469,6 +469,24 @@ renderer_test\fast:
 .PHONY : renderer_test\fast
 
 # Convenience name for target.
+tests\CMakeFiles\scratch_user_roundtrip_test.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : tests\CMakeFiles\scratch_user_roundtrip_test.dir\rule
+
+# Convenience name for target.
+scratch_user_roundtrip_test: tests\CMakeFiles\scratch_user_roundtrip_test.dir\rule
+.PHONY : scratch_user_roundtrip_test
+
+# fast build rule for target.
+scratch_user_roundtrip_test\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : scratch_user_roundtrip_test\fast
+
+# Convenience name for target.
 tests\CMakeFiles\smooth_palette_test.dir\rule:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\smooth_palette_test.dir\rule
@@ -1349,6 +1367,42 @@ renderer_test_autogen\fast:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\renderer_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\renderer_test_autogen.dir\build
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
 .PHONY : renderer_test_autogen\fast
+
+# Convenience name for target.
+tests\CMakeFiles\scratch_user_roundtrip_test_autogen_timestamp_deps.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test_autogen_timestamp_deps.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : tests\CMakeFiles\scratch_user_roundtrip_test_autogen_timestamp_deps.dir\rule
+
+# Convenience name for target.
+scratch_user_roundtrip_test_autogen_timestamp_deps: tests\CMakeFiles\scratch_user_roundtrip_test_autogen_timestamp_deps.dir\rule
+.PHONY : scratch_user_roundtrip_test_autogen_timestamp_deps
+
+# fast build rule for target.
+scratch_user_roundtrip_test_autogen_timestamp_deps\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test_autogen_timestamp_deps.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : scratch_user_roundtrip_test_autogen_timestamp_deps\fast
+
+# Convenience name for target.
+tests\CMakeFiles\scratch_user_roundtrip_test_autogen.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test_autogen.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : tests\CMakeFiles\scratch_user_roundtrip_test_autogen.dir\rule
+
+# Convenience name for target.
+scratch_user_roundtrip_test_autogen: tests\CMakeFiles\scratch_user_roundtrip_test_autogen.dir\rule
+.PHONY : scratch_user_roundtrip_test_autogen
+
+# fast build rule for target.
+scratch_user_roundtrip_test_autogen\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test_autogen.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : scratch_user_roundtrip_test_autogen\fast
 
 # Convenience name for target.
 tests\CMakeFiles\smooth_palette_test_autogen_timestamp_deps.dir\rule:
@@ -2886,6 +2940,66 @@ renderer_test_autogen\mocs_compilation.cpp.s:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
 .PHONY : renderer_test_autogen\mocs_compilation.cpp.s
 
+scratch_user_roundtrip_test.obj: scratch_user_roundtrip_test.cpp.obj
+.PHONY : scratch_user_roundtrip_test.obj
+
+# target to build an object file
+scratch_user_roundtrip_test.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test.dir\scratch_user_roundtrip_test.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : scratch_user_roundtrip_test.cpp.obj
+
+scratch_user_roundtrip_test.i: scratch_user_roundtrip_test.cpp.i
+.PHONY : scratch_user_roundtrip_test.i
+
+# target to preprocess a source file
+scratch_user_roundtrip_test.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test.dir\scratch_user_roundtrip_test.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : scratch_user_roundtrip_test.cpp.i
+
+scratch_user_roundtrip_test.s: scratch_user_roundtrip_test.cpp.s
+.PHONY : scratch_user_roundtrip_test.s
+
+# target to generate assembly for a file
+scratch_user_roundtrip_test.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test.dir\scratch_user_roundtrip_test.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : scratch_user_roundtrip_test.cpp.s
+
+scratch_user_roundtrip_test_autogen\mocs_compilation.obj: scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.obj
+.PHONY : scratch_user_roundtrip_test_autogen\mocs_compilation.obj
+
+# target to build an object file
+scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test.dir\scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.obj
+
+scratch_user_roundtrip_test_autogen\mocs_compilation.i: scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.i
+.PHONY : scratch_user_roundtrip_test_autogen\mocs_compilation.i
+
+# target to preprocess a source file
+scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test.dir\scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.i
+
+scratch_user_roundtrip_test_autogen\mocs_compilation.s: scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.s
+.PHONY : scratch_user_roundtrip_test_autogen\mocs_compilation.s
+
+# target to generate assembly for a file
+scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test.dir\scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : scratch_user_roundtrip_test_autogen\mocs_compilation.cpp.s
+
 smooth_palette_test.obj: smooth_palette_test.cpp.obj
 .PHONY : smooth_palette_test.obj
 
@@ -3593,6 +3707,8 @@ help:
 	@echo ... random_flame_test_autogen_timestamp_deps
 	@echo ... renderer_test_autogen
 	@echo ... renderer_test_autogen_timestamp_deps
+	@echo ... scratch_user_roundtrip_test_autogen
+	@echo ... scratch_user_roundtrip_test_autogen_timestamp_deps
 	@echo ... smooth_palette_test_autogen
 	@echo ... smooth_palette_test_autogen_timestamp_deps
 	@echo ... symmetry_test_autogen
@@ -3634,6 +3750,7 @@ help:
 	@echo ... png_writer_test
 	@echo ... random_flame_test
 	@echo ... renderer_test
+	@echo ... scratch_user_roundtrip_test
 	@echo ... smooth_palette_test
 	@echo ... symmetry_test
 	@echo ... triangle_geometry_test
@@ -3759,6 +3876,12 @@ help:
 	@echo ... renderer_test_autogen/mocs_compilation.obj
 	@echo ... renderer_test_autogen/mocs_compilation.i
 	@echo ... renderer_test_autogen/mocs_compilation.s
+	@echo ... scratch_user_roundtrip_test.obj
+	@echo ... scratch_user_roundtrip_test.i
+	@echo ... scratch_user_roundtrip_test.s
+	@echo ... scratch_user_roundtrip_test_autogen/mocs_compilation.obj
+	@echo ... scratch_user_roundtrip_test_autogen/mocs_compilation.i
+	@echo ... scratch_user_roundtrip_test_autogen/mocs_compilation.s
 	@echo ... smooth_palette_test.obj
 	@echo ... smooth_palette_test.i
 	@echo ... smooth_palette_test.s

@@ -489,6 +489,7 @@ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QMessageBox
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qmessagebox.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qdialogbuttonbox.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QResizeEvent
+C:/Qt/6.8.0/msvc2022_64/include/QtGui/QShowEvent
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QSplitter
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qsplitter.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QStackedWidget

@@ -42,6 +42,8 @@ add_test([=[random_flame_test]=] "C:/Users/andre/Documents/Code/apop_patched/apo
 set_tests_properties([=[random_flame_test]=] PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;14;add_test;C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;0;")
 add_test([=[renderer_test]=] "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/renderer_test.exe")
 set_tests_properties([=[renderer_test]=] PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;14;add_test;C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;0;")
+add_test([=[scratch_user_roundtrip_test]=] "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/scratch_user_roundtrip_test.exe")
+set_tests_properties([=[scratch_user_roundtrip_test]=] PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;14;add_test;C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;0;")
 add_test([=[smooth_palette_test]=] "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/smooth_palette_test.exe")
 set_tests_properties([=[smooth_palette_test]=] PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;14;add_test;C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;0;")
 add_test([=[symmetry_test]=] "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/symmetry_test.exe")

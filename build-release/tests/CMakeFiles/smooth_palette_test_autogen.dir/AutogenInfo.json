@@ -70,8 +70,7 @@
 		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/plugin_variations_test_autogen/mocs_compilation.cpp",
 		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/png_writer_test_autogen/mocs_compilation.cpp",
 		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/random_flame_test_autogen/mocs_compilation.cpp",
-		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/renderer_test_autogen/mocs_compilation.cpp",
-		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/scratch_user_roundtrip_test_autogen/mocs_compilation.cpp"
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/renderer_test_autogen/mocs_compilation.cpp"
 	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,

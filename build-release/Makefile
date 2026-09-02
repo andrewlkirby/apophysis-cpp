@@ -585,19 +585,6 @@ renderer_test\fast:
 .PHONY : renderer_test\fast
 
 #=============================================================================
-# Target rules for targets named scratch_user_roundtrip_test
-
-# Build rule for target.
-scratch_user_roundtrip_test: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) scratch_user_roundtrip_test
-.PHONY : scratch_user_roundtrip_test
-
-# fast build rule for target.
-scratch_user_roundtrip_test\fast:
-	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test.dir\build
-.PHONY : scratch_user_roundtrip_test\fast
-
-#=============================================================================
 # Target rules for targets named smooth_palette_test
 
 # Build rule for target.
@@ -1233,32 +1220,6 @@ renderer_test_autogen: cmake_check_build_system
 renderer_test_autogen\fast:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\renderer_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\renderer_test_autogen.dir\build
 .PHONY : renderer_test_autogen\fast
-
-#=============================================================================
-# Target rules for targets named scratch_user_roundtrip_test_autogen_timestamp_deps
-
-# Build rule for target.
-scratch_user_roundtrip_test_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) scratch_user_roundtrip_test_autogen_timestamp_deps
-.PHONY : scratch_user_roundtrip_test_autogen_timestamp_deps
-
-# fast build rule for target.
-scratch_user_roundtrip_test_autogen_timestamp_deps\fast:
-	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test_autogen_timestamp_deps.dir\build
-.PHONY : scratch_user_roundtrip_test_autogen_timestamp_deps\fast
-
-#=============================================================================
-# Target rules for targets named scratch_user_roundtrip_test_autogen
-
-# Build rule for target.
-scratch_user_roundtrip_test_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) scratch_user_roundtrip_test_autogen
-.PHONY : scratch_user_roundtrip_test_autogen
-
-# fast build rule for target.
-scratch_user_roundtrip_test_autogen\fast:
-	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\scratch_user_roundtrip_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\scratch_user_roundtrip_test_autogen.dir\build
-.PHONY : scratch_user_roundtrip_test_autogen\fast
 
 #=============================================================================
 # Target rules for targets named smooth_palette_test_autogen_timestamp_deps
@@ -2497,8 +2458,6 @@ help:
 	@echo ... render_dialog_interaction_test_autogen_timestamp_deps
 	@echo ... renderer_test_autogen
 	@echo ... renderer_test_autogen_timestamp_deps
-	@echo ... scratch_user_roundtrip_test_autogen
-	@echo ... scratch_user_roundtrip_test_autogen_timestamp_deps
 	@echo ... smooth_palette_dialog_interaction_test_autogen
 	@echo ... smooth_palette_dialog_interaction_test_autogen_timestamp_deps
 	@echo ... smooth_palette_test_autogen
@@ -2572,7 +2531,6 @@ help:
 	@echo ... render_all_dialog_interaction_test
 	@echo ... render_dialog_interaction_test
 	@echo ... renderer_test
-	@echo ... scratch_user_roundtrip_test
 	@echo ... smooth_palette_dialog_interaction_test
 	@echo ... smooth_palette_test
 	@echo ... symmetry_test

@@ -46,7 +46,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMa
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/png_writer_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/random_flame_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/renderer_test.dir
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/scratch_user_roundtrip_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/smooth_palette_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/symmetry_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/triangle_geometry_test.dir
@@ -99,8 +98,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMa
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/random_flame_test_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/renderer_test_autogen_timestamp_deps.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/renderer_test_autogen.dir
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/scratch_user_roundtrip_test_autogen_timestamp_deps.dir
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/scratch_user_roundtrip_test_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/smooth_palette_test_autogen_timestamp_deps.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/smooth_palette_test_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/symmetry_test_autogen_timestamp_deps.dir

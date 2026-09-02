@@ -577,6 +577,18 @@
 			null
 		],
 		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPow.h",
+			"Mu",
+			"3TK3ELSZKA/moc_VarSinhPow.cpp",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPowIA.h",
+			"Mu",
+			"3TK3ELSZKA/moc_VarSinhPowIA.cpp",
+			null
+		],
+		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSplits.h",
 			"Mu",
 			"3TK3ELSZKA/moc_VarSplits.cpp",
@@ -1557,6 +1569,16 @@
 		],
 		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSeparation.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPow.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPowIA.cpp",
 			"Mu",
 			null
 		],

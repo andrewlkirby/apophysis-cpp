@@ -5,8 +5,9 @@
 // Resumed/testPauseThenCancelStopsWithoutNeedingResumeFirst, but exercised at
 // the point-count scale a real interactive preview or final render actually
 // hits, not a single-sub-batch toy case: GpuRenderer::render() polls
-// progress/cancel/pause once per kernel-launch chunk (GpuRenderer.cu's
-// kBatchesPerLaunch=4096 sub-batches, i.e. up to ~41M points per launch), a
+// progress/cancel/pause once per kernel-launch chunk, sized by
+// GpuRenderer.cu's adaptLaunchSize() to target ~0.35s per launch (see that
+// function's own doc comment) rather than a fixed sub-batch count - a
 // coarser granularity than the CPU renderer's per-10,000-point check, so
 // this file specifically measures *how coarse in practice* - the time
 // between setting cancelRequested/pauseRequested and the render actually
@@ -101,10 +102,11 @@ double secondsSince(clock_t::time_point t0) {
 // cost of a live editor preview render.
 std::unique_ptr<apo::Flame> makePreviewScaleFlame() { return buildInteractiveFlame(640, 480, 400.0); }
 
-// ~1920x1080 @ density 400: ~829M points, ~20 GPU launch chunks - roughly
-// the cost of a real final-export render, long enough (several seconds on
-// this machine's RTX 3070 Laptop GPU) to observe multiple in-flight
-// launches and meaningfully exercise mid-render pause/cancel.
+// ~1920x1080 @ density 400: ~829M points - roughly the cost of a real
+// final-export render, long enough (several seconds on a mid-range consumer
+// GPU, spread over several adaptively-sized launch chunks) to observe
+// multiple in-flight launches and meaningfully exercise mid-render
+// pause/cancel.
 std::unique_ptr<apo::Flame> makeFinalScaleFlame() { return buildInteractiveFlame(1920, 1080, 400.0); }
 
 void testGpuProgressReachesCompletion() {

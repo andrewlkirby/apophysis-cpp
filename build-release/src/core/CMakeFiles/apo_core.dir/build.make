@@ -1777,10 +1777,62 @@ src\core\CMakeFiles\apo_core.dir\variations\VarSeparation.cpp.s: cmake_force
 <<
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPow.cpp
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarSinhPow.cpp.obj"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPow.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/apo_core.dir/variations/VarSinhPow.cpp.i"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe > CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPow.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/apo_core.dir/variations/VarSinhPow.cpp.s"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.s /c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPow.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.cpp
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarSinhPowIA.cpp.obj"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/apo_core.dir/variations/VarSinhPowIA.cpp.i"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe > CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/apo_core.dir/variations/VarSinhPowIA.cpp.s"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.s /c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
 src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSplits.cpp
 src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarSplits.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarSplits.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSplits.cpp
@@ -1806,7 +1858,7 @@ src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarTangent.cpp
 src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarTangent.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarTangent.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarTangent.cpp
@@ -1832,7 +1884,7 @@ src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarTwintrian.cpp
 src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_69) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarTwintrian.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarTwintrian.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarTwintrian.cpp
@@ -1858,7 +1910,7 @@ src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\variations\VarWaves.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\variations\VarWaves.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarWaves.cpp
 src\core\CMakeFiles\apo_core.dir\variations\VarWaves.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_70) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarWaves.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarWaves.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\variations\VarWaves.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\variations\VarWaves.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarWaves.cpp
@@ -1884,7 +1936,7 @@ src\core\CMakeFiles\apo_core.dir\variations\VarWaves.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\variations\VarWaves2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\variations\VarWaves2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarWaves2.cpp
 src\core\CMakeFiles\apo_core.dir\variations\VarWaves2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_71) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarWaves2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarWaves2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\variations\VarWaves2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\variations\VarWaves2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarWaves2.cpp
@@ -1910,7 +1962,7 @@ src\core\CMakeFiles\apo_core.dir\variations\VarWaves2.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\variations\VarWedge.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\variations\VarWedge.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarWedge.cpp
 src\core\CMakeFiles\apo_core.dir\variations\VarWedge.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_72) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarWedge.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object src/core/CMakeFiles/apo_core.dir/variations/VarWedge.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\variations\VarWedge.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\variations\VarWedge.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarWedge.cpp
@@ -1936,7 +1988,7 @@ src\core\CMakeFiles\apo_core.dir\variations\VarWedge.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\plugins\PluginVariation.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\PluginVariation.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\PluginVariation.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\PluginVariation.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_73) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/PluginVariation.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/PluginVariation.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\PluginVariation.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\PluginVariation.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\PluginVariation.cpp
@@ -1962,7 +2014,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\PluginVariation.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBarycentroid.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_74) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBarycentroid.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBarycentroid.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBarycentroid.cpp
@@ -1988,7 +2040,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid.cpp.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBarycentroid_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_75) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBarycentroid_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBarycentroid_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBarycentroid_impl.c
@@ -2014,7 +2066,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBarycentroid_impl.c.s: 
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBcircle.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_76) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBcircle.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBcircle.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginBcircle.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBcircle.cpp
@@ -2040,7 +2092,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle.cpp.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBcircle_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_77) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBcircle_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBcircle_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginBcircle_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBcircle_impl.c
@@ -2066,7 +2118,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBcircle_impl.c.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBoarders2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_78) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBoarders2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBoarders2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBoarders2.cpp
@@ -2092,7 +2144,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2.cpp.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBoarders2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_79) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBoarders2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginBoarders2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginBoarders2_impl.c
@@ -2118,7 +2170,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginBoarders2_impl.c.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginCoswrap.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_80) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginCoswrap.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginCoswrap.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginCoswrap.cpp
@@ -2144,7 +2196,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap.cpp.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginCoswrap_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_81) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginCoswrap_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginCoswrap_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginCoswrap_impl.c
@@ -2170,7 +2222,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginCoswrap_impl.c.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBoarders.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_82) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcBoarders.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcBoarders.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBoarders.cpp
@@ -2196,7 +2248,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders.cpp.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBoarders_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_83) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcBoarders_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcBoarders_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBoarders_impl.c
@@ -2222,7 +2274,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBoarders_impl.c.s: cm
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBubble.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_84) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcBubble.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcBubble.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBubble.cpp
@@ -2248,7 +2300,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble.cpp.s: cmake_f
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBubble_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_85) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcBubble_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcBubble_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcBubble_impl.c
@@ -2274,7 +2326,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcBubble_impl.c.s: cmak
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcCarpet.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_86) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcCarpet.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcCarpet.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcCarpet.cpp
@@ -2300,7 +2352,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet.cpp.s: cmake_f
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcCarpet_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_87) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcCarpet_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcCarpet_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcCarpet_impl.c
@@ -2326,7 +2378,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCarpet_impl.c.s: cmak
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcCube.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_88) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcCube.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcCube.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcCube.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcCube.cpp
@@ -2352,7 +2404,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube.cpp.s: cmake_for
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcCube_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_89) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcCube_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcCube_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcCube_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcCube_impl.c
@@ -2378,7 +2430,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcCube_impl.c.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcGridout.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_90) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcGridout.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcGridout.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcGridout.cpp
@@ -2404,7 +2456,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout.cpp.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcGridout_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_91) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcGridout_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcGridout_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcGridout_impl.c
@@ -2430,7 +2482,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcGridout_impl.c.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcLinear.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_92) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcLinear.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcLinear.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcLinear.cpp
@@ -2456,7 +2508,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear.cpp.s: cmake_f
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcLinear_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_93) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcLinear_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcLinear_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcLinear_impl.c
@@ -2482,7 +2534,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcLinear_impl.c.s: cmak
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcMandelbrot.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_94) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcMandelbrot.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcMandelbrot.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcMandelbrot.cpp
@@ -2508,7 +2560,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot.cpp.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcMandelbrot_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_95) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcMandelbrot_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcMandelbrot_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcMandelbrot_impl.c
@@ -2534,7 +2586,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcMandelbrot_impl.c.s: 
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcTriangle.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_96) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcTriangle.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcTriangle.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcTriangle.cpp
@@ -2560,7 +2612,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle.cpp.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcTriangle_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_97) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcTriangle_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcTriangle_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcTriangle_impl.c
@@ -2586,7 +2638,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcTriangle_impl.c.s: cm
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcZtransl.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcZtransl.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcZtransl.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcZtransl.cpp
@@ -2612,7 +2664,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl.cpp.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcZtransl_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcZtransl_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginDcZtransl_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginDcZtransl_impl.c
@@ -2638,7 +2690,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginDcZtransl_impl.c.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginEx.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginEx.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginEx.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginEx.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginEx.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginEx.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginEx.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginEx.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginEx.cpp
@@ -2664,7 +2716,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginEx.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginEx_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginEx_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginEx_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginEx_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginEx_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginEx_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginEx_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginEx_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginEx_impl.c
@@ -2690,7 +2742,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginEx_impl.c.s: cmake_forc
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginExtrude.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginExtrude.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginExtrude.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginExtrude.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginExtrude.cpp
@@ -2716,7 +2768,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude.cpp.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginExtrude_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginExtrude_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginExtrude_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginExtrude_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginExtrude_impl.c
@@ -2742,7 +2794,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginExtrude_impl.c.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginFalloff.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginFalloff.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginFalloff.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginFalloff.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginFalloff.cpp
@@ -2768,7 +2820,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff.cpp.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginFalloff_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginFalloff_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginFalloff_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginFalloff_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginFalloff_impl.c
@@ -2794,7 +2846,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFalloff_impl.c.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginFisheye.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginFisheye.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginFisheye.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginFisheye.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginFisheye.cpp
@@ -2820,7 +2872,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye.cpp.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginFisheye_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginFisheye_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginFisheye_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginFisheye_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginFisheye_impl.c
@@ -2846,7 +2898,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginFisheye_impl.c.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginGdoffs.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginGdoffs.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginGdoffs.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginGdoffs.cpp
@@ -2872,7 +2924,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs.cpp.s: cmake_for
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginGdoffs_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginGdoffs_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginGdoffs_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginGdoffs_impl.c
@@ -2898,7 +2950,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginGdoffs_impl.c.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginHandkerchief.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginHandkerchief.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginHandkerchief.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginHandkerchief.cpp
@@ -2924,7 +2976,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief.cpp.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginHandkerchief_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginHandkerchief_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginHandkerchief_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginHandkerchief_impl.c
@@ -2950,7 +3002,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHandkerchief_impl.c.s: 
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginHexcrop.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginHexcrop.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginHexcrop.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginHexcrop.cpp
@@ -2976,7 +3028,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop.cpp.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginHexcrop_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginHexcrop_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginHexcrop_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginHexcrop_impl.c
@@ -3002,7 +3054,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginHexcrop_impl.c.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulia.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulia.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulia.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulia.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulia.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulia.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginJulia.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginJulia.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulia.cpp
@@ -3028,7 +3080,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulia.cpp.s: cmake_forc
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulia_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulia_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulia_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulia_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulia_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulia_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginJulia_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginJulia_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulia_impl.c
@@ -3054,7 +3106,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulia_impl.c.s: cmake_f
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulian2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulian2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulian2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginJulian2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulian2.cpp
@@ -3080,7 +3132,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2.cpp.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulian2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulian2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulian2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginJulian2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulian2_impl.c
@@ -3106,7 +3158,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2_impl.c.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulian2dc.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulian2dc.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulian2dc.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulian2dc.cpp
@@ -3132,7 +3184,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc.cpp.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulian2dc_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulian2dc_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginJulian2dc_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginJulian2dc_impl.c
@@ -3158,7 +3210,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginJulian2dc_impl.c.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginNpolar.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginNpolar.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginNpolar.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginNpolar.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginNpolar.cpp
@@ -3184,7 +3236,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar.cpp.s: cmake_for
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginNpolar_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginNpolar_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginNpolar_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginNpolar_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginNpolar_impl.c
@@ -3210,7 +3262,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginNpolar_impl.c.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginOctapol.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginOctapol.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginOctapol.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginOctapol.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginOctapol.cpp
@@ -3236,7 +3288,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol.cpp.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginOctapol_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginOctapol_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginOctapol_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginOctapol_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginOctapol_impl.c
@@ -3262,7 +3314,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginOctapol_impl.c.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPolynomial.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPolynomial.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPolynomial.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPolynomial.cpp
@@ -3288,7 +3340,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial.cpp.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPolynomial_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPolynomial_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPolynomial_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPolynomial_impl.c
@@ -3314,7 +3366,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPolynomial_impl.c.s: cm
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostBwraps2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostBwraps2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostBwraps2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostBwraps2.cpp
@@ -3340,7 +3392,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2.cpp.s: cmak
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostBwraps2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostBwraps2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostBwraps2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostBwraps2_impl.c
@@ -3366,7 +3418,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostBwraps2_impl.c.s: c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostDcztransl.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostDcztransl.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostDcztransl.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostDcztransl.cpp
@@ -3392,7 +3444,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl.cpp.s: cm
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostDcztransl_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostDcztransl_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostDcztransl_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostDcztransl_impl.c
@@ -3418,7 +3470,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostDcztransl_impl.c.s:
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostJulian2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostJulian2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostJulian2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostJulian2.cpp
@@ -3444,7 +3496,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2.cpp.s: cmak
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostJulian2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostJulian2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostJulian2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostJulian2_impl.c
@@ -3470,7 +3522,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostJulian2_impl.c.s: c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorX.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorX.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorX.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorX.cpp
@@ -3496,7 +3548,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX.cpp.s: cmak
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorX_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorX_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorX_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorX_impl.c
@@ -3522,7 +3574,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorX_impl.c.s: c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorY.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorY.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorY.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorY.cpp
@@ -3548,7 +3600,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY.cpp.s: cmak
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorY_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorY_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorY_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorY_impl.c
@@ -3574,7 +3626,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorY_impl.c.s: c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorZ.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorZ.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorZ.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorZ.cpp
@@ -3600,7 +3652,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ.cpp.s: cmak
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorZ_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorZ_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostMirrorZ_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostMirrorZ_impl.c
@@ -3626,7 +3678,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostMirrorZ_impl.c.s: c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostPolar2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostPolar2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostPolar2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostPolar2.cpp
@@ -3652,7 +3704,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2.cpp.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostPolar2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostPolar2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostPolar2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostPolar2_impl.c
@@ -3678,7 +3730,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostPolar2_impl.c.s: cm
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostRblur.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostRblur.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostRblur.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostRblur.cpp
@@ -3704,7 +3756,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur.cpp.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostRblur_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostRblur_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPostRblur_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPostRblur_impl.c
@@ -3730,7 +3782,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPostRblur_impl.c.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreBoarders2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreBoarders2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreBoarders2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreBoarders2.cpp
@@ -3756,7 +3808,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2.cpp.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreBoarders2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreBoarders2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreBoarders2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreBoarders2_impl.c
@@ -3782,7 +3834,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBoarders2_impl.c.s: 
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreBwraps2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreBwraps2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreBwraps2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreBwraps2.cpp
@@ -3808,7 +3860,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2.cpp.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreBwraps2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreBwraps2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreBwraps2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreBwraps2_impl.c
@@ -3834,7 +3886,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreBwraps2_impl.c.s: cm
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreDcztransl.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreDcztransl.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreDcztransl.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreDcztransl.cpp
@@ -3860,7 +3912,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl.cpp.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreDcztransl_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreDcztransl_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPreDcztransl_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPreDcztransl_impl.c
@@ -3886,7 +3938,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPreDcztransl_impl.c.s: 
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPrePolar2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPrePolar2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPrePolar2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPrePolar2.cpp
@@ -3912,7 +3964,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2.cpp.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPrePolar2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPrePolar2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginPrePolar2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginPrePolar2_impl.c
@@ -3938,7 +3990,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginPrePolar2_impl.c.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginRipple.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginRipple.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginRipple.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginRipple.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginRipple.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginRipple.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginRipple.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginRipple.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginRipple.cpp
@@ -3964,7 +4016,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginRipple.cpp.s: cmake_for
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginRipple_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginRipple_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginRipple_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginRipple_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginRipple_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginRipple_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginRipple_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginRipple_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginRipple_impl.c
@@ -3990,7 +4042,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginRipple_impl.c.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSigmoid.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSigmoid.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSigmoid.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSigmoid.cpp
@@ -4016,7 +4068,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid.cpp.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSigmoid_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSigmoid_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSigmoid_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSigmoid_impl.c
@@ -4042,7 +4094,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSigmoid_impl.c.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSinusgrid.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSinusgrid.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSinusgrid.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSinusgrid.cpp
@@ -4068,7 +4120,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid.cpp.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSinusgrid_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSinusgrid_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSinusgrid_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSinusgrid_impl.c
@@ -4094,7 +4146,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSinusgrid_impl.c.s: cma
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSpherical2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSpherical2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSpherical2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSpherical2.cpp
@@ -4120,7 +4172,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2.cpp.s: cmake
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSpherical2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSpherical2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSpherical2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSpherical2_impl.c
@@ -4146,7 +4198,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSpherical2_impl.c.s: cm
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginStwins.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginStwins.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginStwins.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginStwins.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginStwins.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginStwins.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginStwins.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginStwins.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginStwins.cpp
@@ -4172,7 +4224,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginStwins.cpp.s: cmake_for
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginStwins_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginStwins_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginStwins_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginStwins_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginStwins_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginStwins_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginStwins_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginStwins_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginStwins_impl.c
@@ -4198,7 +4250,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginStwins_impl.c.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSwirl2.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSwirl2.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSwirl2.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSwirl2.cpp
@@ -4224,7 +4276,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2.cpp.s: cmake_for
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSwirl2_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSwirl2_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginSwirl2_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginSwirl2_impl.c
@@ -4250,7 +4302,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginSwirl2_impl.c.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginWavesn.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginWavesn.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginWavesn.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginWavesn.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginWavesn.cpp
@@ -4276,7 +4328,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn.cpp.s: cmake_for
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginWavesn_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginWavesn_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginWavesn_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginWavesn_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginWavesn_impl.c
@@ -4302,7 +4354,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginWavesn_impl.c.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXheart.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXheart.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginXheart.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXheart.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginXheart.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginXheart.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginXheart.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginXheart.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginXheart.cpp
@@ -4328,7 +4380,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXheart.cpp.s: cmake_for
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXheart_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXheart_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginXheart_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXheart_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginXheart_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginXheart_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginXheart_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginXheart_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginXheart_impl.c
@@ -4354,7 +4406,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXheart_impl.c.s: cmake_
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginXtrb.cpp
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginXtrb.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building CXX object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginXtrb.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginXtrb.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginXtrb.cpp
@@ -4380,7 +4432,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb_impl.c.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb_impl.c.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginXtrb_impl.c
 src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb_impl.c.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginXtrb_impl.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building C object src/core/CMakeFiles/apo_core.dir/plugins/generated/PluginXtrb_impl.c.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb_impl.c.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\plugins\generated\PluginXtrb_impl.c.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginXtrb_impl.c
@@ -4406,7 +4458,7 @@ src\core\CMakeFiles\apo_core.dir\plugins\generated\PluginXtrb_impl.c.s: cmake_fo
 src\core\CMakeFiles\apo_core.dir\render\Renderer.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\render\Renderer.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\Renderer.cpp
 src\core\CMakeFiles\apo_core.dir\render\Renderer.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/Renderer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/Renderer.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\render\Renderer.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\render\Renderer.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\Renderer.cpp
@@ -4432,7 +4484,7 @@ src\core\CMakeFiles\apo_core.dir\render\Renderer.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\render\RenderPlan.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\render\RenderPlan.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\RenderPlan.cpp
 src\core\CMakeFiles\apo_core.dir\render\RenderPlan.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/RenderPlan.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/RenderPlan.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\render\RenderPlan.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\render\RenderPlan.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\RenderPlan.cpp
@@ -4458,7 +4510,7 @@ src\core\CMakeFiles\apo_core.dir\render\RenderPlan.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\render\AutoFrame.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\render\AutoFrame.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\AutoFrame.cpp
 src\core\CMakeFiles\apo_core.dir\render\AutoFrame.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/AutoFrame.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/AutoFrame.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\render\AutoFrame.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\render\AutoFrame.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\AutoFrame.cpp
@@ -4484,7 +4536,7 @@ src\core\CMakeFiles\apo_core.dir\render\AutoFrame.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\render\gpu\GpuAvailability.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\render\gpu\GpuAvailability.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\GpuAvailability.cpp
 src\core\CMakeFiles\apo_core.dir\render\gpu\GpuAvailability.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/gpu/GpuAvailability.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/gpu/GpuAvailability.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\render\gpu\GpuAvailability.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\render\gpu\GpuAvailability.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\GpuAvailability.cpp
@@ -4510,7 +4562,7 @@ src\core\CMakeFiles\apo_core.dir\render\gpu\GpuAvailability.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\VariationKinds.cpp
 src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/gpu/VariationKinds.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/gpu/VariationKinds.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\VariationKinds.cpp
@@ -4536,7 +4588,7 @@ src\core\CMakeFiles\apo_core.dir\render\gpu\VariationKinds.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\DeviceFlameBuilder.cpp
 src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/gpu/DeviceFlameBuilder.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/gpu/DeviceFlameBuilder.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\DeviceFlameBuilder.cpp
@@ -4562,7 +4614,7 @@ src\core\CMakeFiles\apo_core.dir\render\gpu\DeviceFlameBuilder.cpp.s: cmake_forc
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\RenderDispatcher.cpp
 src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/RenderDispatcher.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building CXX object src/core/CMakeFiles/apo_core.dir/render/RenderDispatcher.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\RenderDispatcher.cpp
@@ -4588,7 +4640,7 @@ src\core\CMakeFiles\apo_core.dir\render\RenderDispatcher.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\io\PngWriter.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\io\PngWriter.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\PngWriter.cpp
 src\core\CMakeFiles\apo_core.dir\io\PngWriter.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building CXX object src/core/CMakeFiles/apo_core.dir/io/PngWriter.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building CXX object src/core/CMakeFiles/apo_core.dir/io/PngWriter.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\io\PngWriter.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\io\PngWriter.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\PngWriter.cpp
@@ -4614,7 +4666,7 @@ src\core\CMakeFiles\apo_core.dir\io\PngWriter.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\io\FlameIO.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\io\FlameIO.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\FlameIO.cpp
 src\core\CMakeFiles\apo_core.dir\io\FlameIO.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building CXX object src/core/CMakeFiles/apo_core.dir/io/FlameIO.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building CXX object src/core/CMakeFiles/apo_core.dir/io/FlameIO.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\io\FlameIO.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\io\FlameIO.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\FlameIO.cpp
@@ -4640,7 +4692,7 @@ src\core\CMakeFiles\apo_core.dir\io\FlameIO.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\io\GradientIO.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\io\GradientIO.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\GradientIO.cpp
 src\core\CMakeFiles\apo_core.dir\io\GradientIO.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building CXX object src/core/CMakeFiles/apo_core.dir/io/GradientIO.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building CXX object src/core/CMakeFiles/apo_core.dir/io/GradientIO.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\io\GradientIO.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\io\GradientIO.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\GradientIO.cpp
@@ -4666,7 +4718,7 @@ src\core\CMakeFiles\apo_core.dir\io\GradientIO.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\io\ImageCompare.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\io\ImageCompare.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\ImageCompare.cpp
 src\core\CMakeFiles\apo_core.dir\io\ImageCompare.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building CXX object src/core/CMakeFiles/apo_core.dir/io/ImageCompare.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building CXX object src/core/CMakeFiles/apo_core.dir/io/ImageCompare.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\io\ImageCompare.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\io\ImageCompare.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\ImageCompare.cpp
@@ -4692,7 +4744,7 @@ src\core\CMakeFiles\apo_core.dir\io\ImageCompare.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\edit\TriangleGeometry.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\edit\TriangleGeometry.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\TriangleGeometry.cpp
 src\core\CMakeFiles\apo_core.dir\edit\TriangleGeometry.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/TriangleGeometry.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/TriangleGeometry.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\edit\TriangleGeometry.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\edit\TriangleGeometry.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\TriangleGeometry.cpp
@@ -4718,7 +4770,7 @@ src\core\CMakeFiles\apo_core.dir\edit\TriangleGeometry.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\edit\GradientOps.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\edit\GradientOps.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\GradientOps.cpp
 src\core\CMakeFiles\apo_core.dir\edit\GradientOps.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/GradientOps.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_182) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/GradientOps.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\edit\GradientOps.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\edit\GradientOps.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\GradientOps.cpp
@@ -4744,7 +4796,7 @@ src\core\CMakeFiles\apo_core.dir\edit\GradientOps.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\edit\SmoothPalette.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\edit\SmoothPalette.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\SmoothPalette.cpp
 src\core\CMakeFiles\apo_core.dir\edit\SmoothPalette.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/SmoothPalette.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_183) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/SmoothPalette.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\edit\SmoothPalette.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\edit\SmoothPalette.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\SmoothPalette.cpp
@@ -4770,7 +4822,7 @@ src\core\CMakeFiles\apo_core.dir\edit\SmoothPalette.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\edit\FlameOps.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\edit\FlameOps.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\FlameOps.cpp
 src\core\CMakeFiles\apo_core.dir\edit\FlameOps.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_182) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/FlameOps.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_184) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/FlameOps.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\edit\FlameOps.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\edit\FlameOps.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\FlameOps.cpp
@@ -4796,7 +4848,7 @@ src\core\CMakeFiles\apo_core.dir\edit\FlameOps.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\edit\MutationOps.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\edit\MutationOps.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\MutationOps.cpp
 src\core\CMakeFiles\apo_core.dir\edit\MutationOps.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_183) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/MutationOps.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_185) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/MutationOps.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\edit\MutationOps.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\edit\MutationOps.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\MutationOps.cpp
@@ -4822,7 +4874,7 @@ src\core\CMakeFiles\apo_core.dir\edit\MutationOps.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\RandomFlame.cpp
 src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_184) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/RandomFlame.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_186) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/RandomFlame.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\RandomFlame.cpp
@@ -4848,7 +4900,7 @@ src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.s: cmake_force
 src\core\CMakeFiles\apo_core.dir\edit\Symmetry.cpp.obj: src\core\CMakeFiles\apo_core.dir\flags.make
 src\core\CMakeFiles\apo_core.dir\edit\Symmetry.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\Symmetry.cpp
 src\core\CMakeFiles\apo_core.dir\edit\Symmetry.cpp.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_185) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/Symmetry.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_187) "Building CXX object src/core/CMakeFiles/apo_core.dir/edit/Symmetry.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_core.dir\edit\Symmetry.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_core.dir\edit\Symmetry.cpp.obj /FdCMakeFiles\apo_core.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\Symmetry.cpp
@@ -4875,7 +4927,7 @@ src\core\CMakeFiles\apo_core.dir\render\gpu\chaos_kernel.cu.obj: src\core\CMakeF
 src\core\CMakeFiles\apo_core.dir\render\gpu\chaos_kernel.cu.obj: src\core\CMakeFiles\apo_core.dir\includes_CUDA.rsp
 src\core\CMakeFiles\apo_core.dir\render\gpu\chaos_kernel.cu.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\chaos_kernel.cu
 src\core\CMakeFiles\apo_core.dir\render\gpu\chaos_kernel.cu.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_186) "Building CUDA object src/core/CMakeFiles/apo_core.dir/render/gpu/chaos_kernel.cu.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_188) "Building CUDA object src/core/CMakeFiles/apo_core.dir/render/gpu/chaos_kernel.cu.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	C:\PROGRA~1\NVIDIA~2\CUDA\v12.6\bin\nvcc.exe -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT src\core\CMakeFiles\apo_core.dir\render\gpu\chaos_kernel.cu.obj -MF CMakeFiles\apo_core.dir\render\gpu\chaos_kernel.cu.obj.d -x cu -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\chaos_kernel.cu -o CMakeFiles\apo_core.dir\render\gpu\chaos_kernel.cu.obj -Xcompiler=-FdCMakeFiles\apo_core.dir\,-FS
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
@@ -4892,7 +4944,7 @@ src\core\CMakeFiles\apo_core.dir\render\gpu\tonemap_kernel.cu.obj: src\core\CMak
 src\core\CMakeFiles\apo_core.dir\render\gpu\tonemap_kernel.cu.obj: src\core\CMakeFiles\apo_core.dir\includes_CUDA.rsp
 src\core\CMakeFiles\apo_core.dir\render\gpu\tonemap_kernel.cu.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\tonemap_kernel.cu
 src\core\CMakeFiles\apo_core.dir\render\gpu\tonemap_kernel.cu.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_187) "Building CUDA object src/core/CMakeFiles/apo_core.dir/render/gpu/tonemap_kernel.cu.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_189) "Building CUDA object src/core/CMakeFiles/apo_core.dir/render/gpu/tonemap_kernel.cu.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	C:\PROGRA~1\NVIDIA~2\CUDA\v12.6\bin\nvcc.exe -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT src\core\CMakeFiles\apo_core.dir\render\gpu\tonemap_kernel.cu.obj -MF CMakeFiles\apo_core.dir\render\gpu\tonemap_kernel.cu.obj.d -x cu -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\tonemap_kernel.cu -o CMakeFiles\apo_core.dir\render\gpu\tonemap_kernel.cu.obj -Xcompiler=-FdCMakeFiles\apo_core.dir\,-FS
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
@@ -4909,7 +4961,7 @@ src\core\CMakeFiles\apo_core.dir\render\gpu\GpuRenderer.cu.obj: src\core\CMakeFi
 src\core\CMakeFiles\apo_core.dir\render\gpu\GpuRenderer.cu.obj: src\core\CMakeFiles\apo_core.dir\includes_CUDA.rsp
 src\core\CMakeFiles\apo_core.dir\render\gpu\GpuRenderer.cu.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\GpuRenderer.cu
 src\core\CMakeFiles\apo_core.dir\render\gpu\GpuRenderer.cu.obj: src\core\CMakeFiles\apo_core.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_188) "Building CUDA object src/core/CMakeFiles/apo_core.dir/render/gpu/GpuRenderer.cu.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_190) "Building CUDA object src/core/CMakeFiles/apo_core.dir/render/gpu/GpuRenderer.cu.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 	C:\PROGRA~1\NVIDIA~2\CUDA\v12.6\bin\nvcc.exe -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT src\core\CMakeFiles\apo_core.dir\render\gpu\GpuRenderer.cu.obj -MF CMakeFiles\apo_core.dir\render\gpu\GpuRenderer.cu.obj.d -x cu -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\gpu\GpuRenderer.cu -o CMakeFiles\apo_core.dir\render\gpu\GpuRenderer.cu.obj -Xcompiler=-FdCMakeFiles\apo_core.dir\,-FS
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
@@ -4988,6 +5040,8 @@ apo_core: src\core\CMakeFiles\apo_core.dir\variations\VarRings2.cpp.obj
 apo_core: src\core\CMakeFiles\apo_core.dir\variations\VarScry.cpp.obj
 apo_core: src\core\CMakeFiles\apo_core.dir\variations\VarSecant2.cpp.obj
 apo_core: src\core\CMakeFiles\apo_core.dir\variations\VarSeparation.cpp.obj
+apo_core: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj
+apo_core: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj
 apo_core: src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj
 apo_core: src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj
 apo_core: src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj

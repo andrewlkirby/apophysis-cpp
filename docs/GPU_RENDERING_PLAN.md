@@ -3,7 +3,7 @@
 ## Implementation status (this is now built and verified, not just planned)
 
 A working CUDA backend has been implemented per this plan and **verified end-to-end
-on real hardware** (RTX 3070, CUDA 12.6, Windows): `apo_core` builds cleanly with
+on real hardware** (a CUDA-capable GPU, CUDA 12.6, Windows): `apo_core` builds cleanly with
 `APO_ENABLE_CUDA=ON`, and `tests/gpu_variation_parity_test.cpp` renders every
 ported variation on both the CPU and GPU backends and compares them with
 `computePsnr()` - **all 94 pass**, at 36.9-63.4 dB (well above the 15 dB bar),
@@ -284,8 +284,8 @@ plugin flames and non-CUDA machines.
    (batches 2 and 3 - see "Implementation status" above for the breakdown
    and how each `prepare()`/RNG/`selectCalcFunction()` complication was
    handled). `gpu_variation_parity_test` covers all 94 ported variations
-   (29 local + 65 registered), passing at 36.9-63.4 dB PSNR per variation on
-   an RTX 3070. Plugin flames remain CPU-only by design (dispatcher rule),
+   (29 local + 65 registered), passing at 36.9-63.4 dB PSNR per variation.
+   Plugin flames remain CPU-only by design (dispatcher rule),
    not a gap to close - they're now the *only* remaining fallback case.
 4. **Polish (in progress):**
    - ✅ `float`-precision histogram option: `GpuRenderer::render()` now takes
@@ -297,7 +297,7 @@ plugin flames and non-CUDA machines.
      transcendental/blur fixtures, routes gpu rows through
      `RenderDispatcher` (preferGpu forced on, reporting "GPU not available"
      rather than silently timing a CPU fallback if it can't actually run on
-     the GPU). Measured on an RTX 3070 vs 16-thread CPU:
+     the GPU). Measured on a consumer GPU vs 16-thread CPU:
      - 800x600, density 200 (~103M points): linear 28.6M -> 369M pts/sec
        (12.9x), transcendental (julian+swirl) 19.2M -> 97.8M pts/sec (5.1x),
        blur (gaussian_blur) 18.1M -> 178M pts/sec (9.8x).
@@ -329,7 +329,7 @@ plugin flames and non-CUDA machines.
      honored, bounded by `GpuRenderer.cu`'s per-launch-chunk poll cadence
      (`kBatchesPerLaunch=4096`, ~41M points/launch), against
      `RenderDialog.cpp`'s own 150ms UI poll interval
-     (`kProgressPollIntervalMs`). Measured on an RTX 3070 Laptop GPU with a
+     (`kProgressPollIntervalMs`). Measured on a mid-range consumer GPU with a
      1920x1080, density-400 (~829M point, ~20-launch-chunk) julian+swirl
      flame: cancel latency 0.17-0.19s, pause-freeze latency 0.19s (both
      comfortably inside a 2s bound, and within a couple of the UI's own
@@ -340,6 +340,33 @@ plugin flames and non-CUDA machines.
      not a single 0%->100% jump. No tuning of `kBatchesPerLaunch` was needed;
      the existing chunk size already lands well inside interactive latency
      budgets on this hardware.
+   - ✅ Adaptive launch sizing: the fixed `kBatchesPerLaunch=4096` above was
+     found (via `apo_bench --backend=gpu`) to leave real throughput on the
+     table - each launch only occupies 4096 of the GPU's resident threads
+     regardless of how many the device can actually run at once (no
+     `cudaGetDeviceProperties` occupancy query existed), and per-thread state
+     is registers-only (no per-thread device allocation), so there was no
+     memory reason for the cap. Sweeping `kBatchesPerLaunch` by hand
+     (4096/16384/32768/65536/131072/262144) measured ~30-40% higher points/sec
+     at 65536+ vs the 4096 baseline on a mid-range consumer GPU (noisy - the
+     card thermal-throttled over the sweep, boost clock dropping ~2.4x
+     between readings - but every larger value beat 4096 by a wide margin
+     even under matched thermal conditions). Replaced the fixed constant with
+     `adaptLaunchSize()`
+     (`GpuRenderer.cu`): a proportional controller that times each launch and
+     scales the next one toward `kTargetLaunchSeconds=0.35s`, starting fresh
+     from a conservative 4096-thread guess every render (converges in 1-2
+     launches, <1s overhead - negligible, and avoids caching a value that
+     could go stale between renders as thermal/contention conditions change).
+     0.35s was chosen with a real ceiling in mind, not just a UX preference:
+     Windows WDDM resets the GPU driver if a single kernel doesn't yield
+     within its Timeout Detection and Recovery window (2s by default), and a
+     driver reset kills every GPU-using app on the system, not just this
+     render - so growth per launch is capped at 2x/step (shrinking isn't) to
+     keep a single bad measurement from jumping close to that edge. No
+     separate app-startup calibration step: re-measuring per-render is
+     already cheap enough that a persisted/warm-up value would only add
+     staleness risk for no real benefit.
 
 ---
 
@@ -347,7 +374,7 @@ plugin flames and non-CUDA machines.
 
 - **Parity:** ✅ `gpu_variation_parity_test` - all 94 ported variations (every
   local + every native registered variation), CPU vs GPU PSNR above threshold
-  (currently 15 dB; observed 36.9-63.4 dB on an RTX 3070). ✅ Also extended to
+  (currently 15 dB; observed 36.9-63.4 dB). ✅ Also extended to
   whole-flame parity: `gpu_baseline_parity_test` loads each of
   `baseline_regression_test`'s five checked-in fixtures
   (`tests/baselines/*.flame` - plain affine, multi-variation blending,
@@ -359,7 +386,7 @@ plugin flames and non-CUDA machines.
   vs GPU output at the same 15 dB PSNR bar - not against the checked-in PNG
   baselines themselves, which are a single-seed *CPU* golden and only
   meaningful CPU-vs-CPU (see `baseline_regression_test.cpp`'s own comment).
-  All five pass at 27.3-64.3 dB on an RTX 3070, including the 3D-camera and
+  All five pass at 27.3-64.3 dB, including the 3D-camera and
   xaos fixtures - real end-to-end evidence the whole render pipeline (not
   just each variation in isolation) agrees between backends.
 - **Fallback correctness:** ✅ confirmed both ways. `APO_ENABLE_CUDA=OFF`

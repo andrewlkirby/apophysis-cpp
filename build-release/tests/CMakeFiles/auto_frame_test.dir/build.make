@@ -186,6 +186,8 @@ auto_frame_test_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarScry.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSecant2.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSeparation.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj" \
@@ -377,6 +379,8 @@ tests\auto_frame_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarRings2
 tests\auto_frame_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarScry.cpp.obj
 tests\auto_frame_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSecant2.cpp.obj
 tests\auto_frame_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSeparation.cpp.obj
+tests\auto_frame_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj
+tests\auto_frame_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj
 tests\auto_frame_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj
 tests\auto_frame_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj
 tests\auto_frame_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj

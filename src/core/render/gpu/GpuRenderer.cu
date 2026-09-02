@@ -79,11 +79,45 @@ private:
 // Sub-batches (chaos-kernel threads) launched per chunk. Each is a full
 // kDeviceSubBatchSize-point unit of work (see DeviceTypes.h's mapping
 // comment), so this is also the granularity progress/cancel/pause polling
-// happens at between launches - a compromise between launch overhead
-// (bigger is better) and interactivity (smaller is better), same role as
-// the CPU renderer's per-sub-batch check in Renderer.cpp's renderImpl().
-constexpr int kBatchesPerLaunch = 4096;
+// happens at between launches.
+//
+// This count is now adaptive, not fixed - see adaptLaunchSize() below for
+// why. kInitialBatchesPerLaunch is just the conservative first guess every
+// render starts from before its own first real measurement arrives;
+// kMinBatchesPerLaunch is a floor a render never adapts below even if a
+// single degenerate launch measures ~0s (e.g. cancelled mid-launch), so the
+// final partial launch of a render can't end up requesting 0 threads.
+constexpr int kInitialBatchesPerLaunch = 4096;
+constexpr int kMinBatchesPerLaunch = 1024;
 constexpr int kThreadsPerBlock = 256;
+
+// Target wall-clock time for a single chaos-kernel launch. Deliberately far
+// below Windows WDDM's Timeout Detection and Recovery watchdog (2 seconds by
+// default - a GPU that doesn't yield to the display driver within that
+// window gets its driver reset by the OS, killing the render and every other
+// GPU-using app with it, not just this one) - this is a hard safety ceiling,
+// not a tunable preference, so it's not exposed anywhere a user could push
+// it toward that edge. 0.35s keeps real launches comfortably under TDR even
+// after kMaxGrowthFactor's headroom below overshoots on a single step, while
+// still being short enough that cancel/pause and the progress bar stay
+// responsive at a finer grain than most users would ever ask for - there's
+// no real-world reason to trade *more* of that responsiveness for a further
+// throughput gain, since benchmarking (docs/GPU_RENDERING_PLAN.md's "Adaptive
+// launch sizing" entry) already found the throughput curve flattening out
+// well below this size on a mid-range consumer GPU: ~4096->65536 threads was
+// most of the win; every doubling after that was marginal-to-flat, and 2s+
+// launches were never actually necessary to capture it.
+constexpr double kTargetLaunchSeconds = 0.35;
+// Per-step clamp on how fast adaptLaunchSize() can grow the next launch's
+// thread count - without this, a single unrepresentative fast measurement
+// (e.g. a launch that undershoots host.numBatches - batchOffset, or a lucky
+// GPU boost-clock window) could jump straight to a launch several times
+// larger than intended and land close to the TDR ceiling on the very next
+// try. Shrinking is not similarly capped: overshooting *down* just costs a
+// bit of throughput on the next launch, while overshooting *up* risks the
+// TDR reset above, so there's no safety reason to slow-walk a shrink the
+// same way.
+constexpr double kMaxGrowthFactor = 2.0;
 
 void waitWhilePaused(RenderProgress* progress) {
     if (!progress) return;
@@ -91,6 +125,41 @@ void waitWhilePaused(RenderProgress* progress) {
            !progress->cancelRequested.load(std::memory_order_relaxed)) {
         std::this_thread::sleep_for(std::chrono::milliseconds(20));
     }
+}
+
+// Self-calibrating launch-size controller (replaces the old fixed
+// kBatchesPerLaunch=4096). `lastSeconds` is how long the just-finished
+// launch of `lastBatches` threads actually took; returns the thread count
+// for the *next* launch, aimed at kTargetLaunchSeconds. Pure function (no
+// I/O, no device access) - deliberately factored out of the render() launch
+// loop below so it stays that way.
+//
+// Deliberately proportional (nextBatches scales linearly with the
+// target/actual ratio), not additive - a flame with cheap per-point math
+// (e.g. pure affine) and one with expensive math (e.g. blur-heavy) need
+// thread counts that differ by whatever multiple their points/sec differs
+// by, and a ratio converges to the right order of magnitude in 1-2 launches
+// regardless of which extreme it starts from, where a fixed step size would
+// either take many launches to climb to a fast flame's ideal size or
+// overshoot a slow flame's by a similar margin.
+int adaptLaunchSize(int lastBatches, double lastSeconds) {
+    // A launch that measured ~0s (e.g. the very last, partial launch of a
+    // render, sized by `numBatches - batchOffset` rather than by this
+    // function) carries no useful throughput signal - hold steady rather
+    // than dividing by ~0 and collapsing to the floor for no reason.
+    if (lastSeconds <= 0.0) return lastBatches;
+
+    const double ratio = kTargetLaunchSeconds / lastSeconds;
+    // Growth is capped (kMaxGrowthFactor) but shrinking isn't - see that
+    // constant's own doc comment for why the two directions have different
+    // risk profiles.
+    const double clampedRatio = std::min(ratio, kMaxGrowthFactor);
+    const double next = static_cast<double>(lastBatches) * clampedRatio;
+    // Rounds toward the floor on underflow (e.g. an extremely expensive
+    // per-point flame where even kMinBatchesPerLaunch threads take longer
+    // than kTargetLaunchSeconds) rather than ever returning less than it -
+    // a floor of 0 would stall the launch loop's own `+=` progress forever.
+    return std::max(kMinBatchesPerLaunch, static_cast<int>(next));
 }
 
 } // namespace
@@ -182,17 +251,42 @@ RenderedImage GpuRenderer::render(const Flame& flame, std::uint64_t seed, Render
 
     const auto tSetupEnd = clock::now();
 
-    for (int batchOffset = 0; batchOffset < host.numBatches; batchOffset += kBatchesPerLaunch) {
+    // Ramps toward kTargetLaunchSeconds launch-over-launch via
+    // adaptLaunchSize() - see that function's own doc comment. Starts at the
+    // same conservative kInitialBatchesPerLaunch every render regardless of
+    // what any previous render on this device converged to: re-measuring
+    // from scratch each time is cheap (a couple of launches, well under a
+    // second - negligible next to any render worth using the GPU for at
+    // all) and self-corrects for anything that changed since the last
+    // render (thermal state, another app now sharing the GPU, a different
+    // flame's per-point cost), where a value cached from a prior render
+    // could easily be stale in exactly the situation it matters most.
+    int nextBatches = kInitialBatchesPerLaunch;
+    // A plain for-loop's own increment clause runs *after* the body, using
+    // whatever nextBatches the body just recalibrated to - the wrong value
+    // (that's next launch's size, not this launch's), so batchOffset is
+    // advanced explicitly by threadsThisLaunch (what actually ran) instead,
+    // inside the body, rather than relying on the loop header for it.
+    for (int batchOffset = 0; batchOffset < host.numBatches;) {
         if (progress && progress->cancelRequested.load(std::memory_order_relaxed)) break;
         waitWhilePaused(progress);
         if (progress && progress->cancelRequested.load(std::memory_order_relaxed)) break;
 
-        const int threadsThisLaunch = std::min(kBatchesPerLaunch, host.numBatches - batchOffset);
+        const int threadsThisLaunch = std::min(nextBatches, host.numBatches - batchOffset);
         const int blocks = (threadsThisLaunch + kThreadsPerBlock - 1) / kThreadsPerBlock;
+        const auto tLaunchStart = clock::now();
         chaosKernel<<<blocks, kThreadsPerBlock>>>(kp, seed, batchOffset, threadsThisLaunch, dPointsGenerated.get(),
                                                     dPointsAccepted.get());
         if (cudaGetLastError() != cudaSuccess) return RenderedImage{};
         if (cudaDeviceSynchronize() != cudaSuccess) return RenderedImage{};
+        const double launchSeconds = secondsBetween(tLaunchStart, clock::now());
+        // Calibrated off threadsThisLaunch (what actually ran), not
+        // nextBatches (what was requested) - the two only differ on the
+        // final, remainder-sized launch of a render, and even then the
+        // difference only ever shrinks the reported cost per thread, never
+        // inflates it, so this can't itself be a source of overshoot.
+        nextBatches = adaptLaunchSize(threadsThisLaunch, launchSeconds);
+        batchOffset += threadsThisLaunch;
 
         if (progress) {
             progress->pointsDone.fetch_add(static_cast<std::uint64_t>(threadsThisLaunch) * kDeviceSubBatchSize,

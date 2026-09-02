@@ -5640,6 +5640,66 @@ variations\VarSeparation.cpp.s:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 .PHONY : variations\VarSeparation.cpp.s
 
+variations\VarSinhPow.obj: variations\VarSinhPow.cpp.obj
+.PHONY : variations\VarSinhPow.obj
+
+# target to build an object file
+variations\VarSinhPow.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\core\CMakeFiles\apo_core.dir\build.make /nologo -$(MAKEFLAGS) src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+.PHONY : variations\VarSinhPow.cpp.obj
+
+variations\VarSinhPow.i: variations\VarSinhPow.cpp.i
+.PHONY : variations\VarSinhPow.i
+
+# target to preprocess a source file
+variations\VarSinhPow.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\core\CMakeFiles\apo_core.dir\build.make /nologo -$(MAKEFLAGS) src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+.PHONY : variations\VarSinhPow.cpp.i
+
+variations\VarSinhPow.s: variations\VarSinhPow.cpp.s
+.PHONY : variations\VarSinhPow.s
+
+# target to generate assembly for a file
+variations\VarSinhPow.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\core\CMakeFiles\apo_core.dir\build.make /nologo -$(MAKEFLAGS) src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+.PHONY : variations\VarSinhPow.cpp.s
+
+variations\VarSinhPowIA.obj: variations\VarSinhPowIA.cpp.obj
+.PHONY : variations\VarSinhPowIA.obj
+
+# target to build an object file
+variations\VarSinhPowIA.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\core\CMakeFiles\apo_core.dir\build.make /nologo -$(MAKEFLAGS) src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+.PHONY : variations\VarSinhPowIA.cpp.obj
+
+variations\VarSinhPowIA.i: variations\VarSinhPowIA.cpp.i
+.PHONY : variations\VarSinhPowIA.i
+
+# target to preprocess a source file
+variations\VarSinhPowIA.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\core\CMakeFiles\apo_core.dir\build.make /nologo -$(MAKEFLAGS) src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+.PHONY : variations\VarSinhPowIA.cpp.i
+
+variations\VarSinhPowIA.s: variations\VarSinhPowIA.cpp.s
+.PHONY : variations\VarSinhPowIA.s
+
+# target to generate assembly for a file
+variations\VarSinhPowIA.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\core\CMakeFiles\apo_core.dir\build.make /nologo -$(MAKEFLAGS) src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+.PHONY : variations\VarSinhPowIA.cpp.s
+
 variations\VarSplits.obj: variations\VarSplits.cpp.obj
 .PHONY : variations\VarSplits.obj
 
@@ -6378,6 +6438,12 @@ help:
 	@echo ... variations/VarSeparation.obj
 	@echo ... variations/VarSeparation.i
 	@echo ... variations/VarSeparation.s
+	@echo ... variations/VarSinhPow.obj
+	@echo ... variations/VarSinhPow.i
+	@echo ... variations/VarSinhPow.s
+	@echo ... variations/VarSinhPowIA.obj
+	@echo ... variations/VarSinhPowIA.i
+	@echo ... variations/VarSinhPowIA.s
 	@echo ... variations/VarSplits.obj
 	@echo ... variations/VarSplits.i
 	@echo ... variations/VarSplits.s

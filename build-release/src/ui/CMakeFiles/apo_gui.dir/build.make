@@ -219,6 +219,8 @@ apo_gui_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarScry.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSecant2.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSeparation.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj" \
@@ -436,6 +438,8 @@ src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\variations\VarRings2.cpp.ob
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\variations\VarScry.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSecant2.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSeparation.cpp.obj
+src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj
+src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj

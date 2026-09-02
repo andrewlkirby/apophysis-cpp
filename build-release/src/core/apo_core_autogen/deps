@@ -287,6 +287,10 @@ apo_core_autogen/timestamp: \
 	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSecant2.h \
 	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSeparation.cpp \
 	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSeparation.h \
+	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPow.cpp \
+	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPow.h \
+	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPowIA.cpp \
+	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPowIA.h \
 	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSplits.cpp \
 	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSplits.h \
 	C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTangent.cpp \

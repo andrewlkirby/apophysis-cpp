@@ -290,6 +290,10 @@ src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSecant2.h
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSeparation.cpp
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSeparation.h
+src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPow.cpp
+src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPow.h
+src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.cpp
+src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.h
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSplits.cpp
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSplits.h
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarTangent.cpp
@@ -414,6 +418,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Flame.h:
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\plugins\generated\PluginRipple.cpp:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Point3.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPow.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h:
 
@@ -900,6 +906,12 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\Var
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSecant2.cpp:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSeparation.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPow.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSplits.cpp:
 

@@ -57,6 +57,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMa
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch5_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch6_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch7_test.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch8_test.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch9_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/edit_cache.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/rebuild_cache.dir
@@ -120,6 +122,10 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMa
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch6_test_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch7_test_autogen_timestamp_deps.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch7_test_autogen.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch8_test_autogen_timestamp_deps.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch8_test_autogen.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch9_test_autogen_timestamp_deps.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/CMakeFiles/variations_batch9_test_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/triangle_canvas_interaction_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/adjust_dialog_interaction_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/render_dialog_interaction_test.dir

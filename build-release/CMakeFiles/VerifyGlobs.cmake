@@ -233,6 +233,8 @@ set(OLD_GLOB
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarScry.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSecant2.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSeparation.cpp"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPow.cpp"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPowIA.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSplits.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTangent.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTwintrian.cpp"
@@ -323,6 +325,8 @@ set(OLD_GLOB
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarScry.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSecant2.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSeparation.h"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPow.h"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPowIA.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSplits.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTangent.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTwintrian.h"
@@ -384,6 +388,8 @@ set(OLD_GLOB
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/variations_batch5_test.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/variations_batch6_test.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/variations_batch7_test.cpp"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/variations_batch8_test.cpp"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/variations_batch9_test.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

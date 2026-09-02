@@ -117,6 +117,15 @@ constexpr int kRadialBlur = kFirstRegisteredKind + 61;
 constexpr int kFalloff2 = kFirstRegisteredKind + 62;
 constexpr int kPostFalloff2 = kFirstRegisteredKind + 63;
 constexpr int kPreFalloff2 = kFirstRegisteredKind + 64;
+// Batch 4 - single new variation (no RNG, no selectCalcFunction
+// specialization): sinh(c^q) is a constant depending only on this xform's
+// own parameters, so - like the "prepare()-only" Batch 2 entries above -
+// the device calc() below just recomputes it inline from the raw params
+// each call rather than needing a host-side precompute step.
+constexpr int kSinhPow = kFirstRegisteredKind + 65;
+// sinhpow's "(b)" companion (VarSinhPowIA.h) - same no-RNG/no-cache shape,
+// just four T_c evaluations per point instead of one.
+constexpr int kSinhPowIA = kFirstRegisteredKind + 66;
 } // namespace kind
 
 struct RegisteredVarInfo {

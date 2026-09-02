@@ -197,6 +197,8 @@ int main() {
         "arch", "blade", "blur_circle", "blur_pixelize", "blur_zoom", "crop", "post_crop", "pre_crop",
         "curl", "rectangles", "epispiral", "pie", "rays", "twintrian", "julian", "juliascope", "julia3Dz",
         "julia3D", "radial_blur", "falloff2", "post_falloff2", "pre_falloff2",
+        // Batch 4
+        "sinhpow", "sinhpowia",
     };
 
     for (const auto& name : kLocalVariations) testVariationParity(name);

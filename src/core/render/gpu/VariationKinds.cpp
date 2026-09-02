@@ -99,6 +99,10 @@ const std::unordered_map<std::string, RegisteredVarInfo>& registeredVarTable() {
                                                 "pre_falloff2_mul_z", "pre_falloff2_mul_c", "pre_falloff2_x0",
                                                 "pre_falloff2_y0", "pre_falloff2_z0", "pre_falloff2_invert",
                                                 "pre_falloff2_type"}}},
+        {"sinhpow", {kind::kSinhPow, {"sinhpow_power", "sinhpow_q", "sinhpow_cx", "sinhpow_cy"}}},
+        {"sinhpowia", {kind::kSinhPowIA, {"sinhpowia_power", "sinhpowia_q", "sinhpowia_cx", "sinhpowia_cy",
+                                           "sinhpowia_alpha", "sinhpowia_beta", "sinhpowia_gamma",
+                                           "sinhpowia_lambda"}}},
     };
     return table;
 }

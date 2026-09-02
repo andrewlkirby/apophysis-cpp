@@ -1016,6 +1016,84 @@ __device__ inline void devJulia3Djf(DeviceVarContext& c) {
     c.py += tmp * sin(angle);
 }
 
+// Ported from VarSinhPow.cpp - see that file's doc comment for the map
+// (T_c(z) = z^p + sinh(c^q)) and its provenance. No RNG, no cached
+// prepare()-derived constant: sinh(c^q) is recomputed inline from the raw
+// params every call, same convention as the Batch 2 "prepare()-only"
+// variations above (see VariationKinds.h's kSinhPow comment).
+__device__ inline void devSinhPow(DeviceVarContext& c) {
+    const double power = c.params[0], q = c.params[1], cx = c.params[2], cy = c.params[3];
+
+    const double cr2 = cx * cx + cy * cy;
+    const double cMag = pow(cr2, q / 2.0);
+    const double cAngle = q * atan2(cy, cx);
+    const double wRe = cMag * cos(cAngle);
+    const double wIm = cMag * sin(cAngle);
+    const double kRe = sinh(wRe) * cos(wIm);
+    const double kIm = cosh(wRe) * sin(wIm);
+
+    const double zr2 = c.tx * c.tx + c.ty * c.ty;
+    const double zMag = pow(zr2, power / 2.0);
+    const double zAngle = power * atan2(c.ty, c.tx);
+
+    c.px += c.vvar * (zMag * cos(zAngle) + kRe);
+    c.py += c.vvar * (zMag * sin(zAngle) + kIm);
+    c.pz += c.vvar * c.tz;
+}
+
+// z^p via the principal branch - shared helper for devSinhPowIA below (see
+// VarSinhPowIA.cpp's identical complexPow()).
+__device__ inline void devComplexPow(double re, double im, double p, double& outRe, double& outIm) {
+    const double r2 = re * re + im * im;
+    const double mag = pow(r2, p / 2.0);
+    const double ang = p * atan2(im, re);
+    outRe = mag * cos(ang);
+    outIm = mag * sin(ang);
+}
+
+// Ported from VarSinhPowIA.cpp - sinhpow's "(b)" companion: one full step of
+// the paper's IA iteration (x/w/y/z' below) per point, four T_c evaluations
+// instead of sinhpow's one. No RNG, no cached prepare()-derived constant -
+// same convention as devSinhPow above.
+__device__ inline void devSinhPowIA(DeviceVarContext& c) {
+    const double power = c.params[0], q = c.params[1], cx = c.params[2], cy = c.params[3];
+    const double alpha = c.params[4], beta = c.params[5], gamma = c.params[6], lambda = c.params[7];
+
+    double wRe, wIm;
+    devComplexPow(cx, cy, q, wRe, wIm);
+    const double kRe = sinh(wRe) * cos(wIm);
+    const double kIm = cosh(wRe) * sin(wIm);
+
+    const double zRe = c.tx, zIm = c.ty;
+    double tcZRe, tcZIm;
+    devComplexPow(zRe, zIm, power, tcZRe, tcZIm);
+    tcZRe += kRe;
+    tcZIm += kIm;
+
+    const double xRe = (alpha + beta) * zRe + gamma * tcZRe;
+    const double xIm = (alpha + beta) * zIm + gamma * tcZIm;
+    double tcXRe, tcXIm;
+    devComplexPow(xRe, xIm, power, tcXRe, tcXIm);
+    tcXRe += kRe;
+    tcXIm += kIm;
+
+    const double sRe = (1.0 - lambda) * tcXRe + lambda * tcZRe;
+    const double sIm = (1.0 - lambda) * tcXIm + lambda * tcZIm;
+    double yRe, yIm;
+    devComplexPow(sRe, sIm, power, yRe, yIm);
+    yRe += kRe;
+    yIm += kIm;
+
+    double zNextRe, zNextIm;
+    devComplexPow(yRe, yIm, power, zNextRe, zNextIm);
+    zNextRe += kRe;
+    zNextIm += kIm;
+
+    c.px += c.vvar * zNextRe;
+    c.py += c.vvar * zNextIm;
+    c.pz += c.vvar * c.tz;
+}
+
 // RadialBlur's selectCalcFunction specializations (calcZoom/calcSpin) are
 // also verified-algebraically-equivalent limits (spinVar/zoomVar -> 0 - see
 // VarRadialBlur.h's own comment), so the general formula alone suffices.
@@ -1223,6 +1301,8 @@ __device__ inline void devCalcVariation(int kind, DeviceVarContext& c) {
         case kind::kFalloff2: devFalloff2(c); return;
         case kind::kPostFalloff2: devPostFalloff2(c); return;
         case kind::kPreFalloff2: devPreFalloff2(c); return;
+        case kind::kSinhPow: devSinhPow(c); return;
+        case kind::kSinhPowIA: devSinhPowIA(c); return;
         default: return; // unreachable if RenderDispatcher's eligibility check is correct
     }
 }

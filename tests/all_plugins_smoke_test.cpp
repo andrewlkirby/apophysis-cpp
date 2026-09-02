@@ -37,7 +37,7 @@ int registeredIndex(const std::string& name) {
 }
 
 void testTotalRegisteredCount() {
-    // 65 native Variations/*.pas ports registered via registerVariation()
+    // 67 native Variations/*.pas ports registered via registerVariation()
     // (see src/core/variations/ - distinct from VariationRegistry's 29
     // kNumLocalVars, which are hardcoded into XForm's own dispatch rather
     // than going through this same factory-registration path) + 47
@@ -48,7 +48,11 @@ void testTotalRegisteredCount() {
     // variation: auger, crop, falloff2, post_crop, pre_crop,
     // post_falloff2, pre_falloff2. A silent drop here (e.g. a wrapper file
     // that failed to self-register) would otherwise go unnoticed.
-    const int kExpectedNative = 65;
+    //
+    // 67 = 65 original ports + sinhpow + sinhpowia (VarSinhPow.cpp,
+    // VarSinhPowIA.cpp - see docs/SINHPOW_VARIATIONS.md), neither a
+    // Variations/*.pas port (no Apophysis 7X/flam3 precedent).
+    const int kExpectedNative = 67;
     const int kExpectedPlugins = 47;
     check(apo::VariationRegistry::instance().numRegisteredVariations() == kExpectedNative + kExpectedPlugins,
           "total registered (native + plugin) variation count matches expectations");

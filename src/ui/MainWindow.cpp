@@ -10,6 +10,7 @@
 #include <QClipboard>
 #include <QCloseEvent>
 #include <QComboBox>
+#include <QDesktopServices>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFileDialog>
@@ -23,6 +24,8 @@
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QMimeData>
+#include <QPointer>
+#include <QPushButton>
 #include <QResizeEvent>
 #include <QSignalBlocker>
 #include <QSplitter>
@@ -35,6 +38,7 @@
 
 #include "AboutDialog.h"
 #include "AppSettings.h"
+#include "AppVersion.h"
 #include "EditorWindow.h"
 #include "FileDialogSupport.h"
 #include "OptionsDialog.h"
@@ -44,6 +48,7 @@
 #include "RenderWorker.h"
 #include "SmoothPaletteDialog.h"
 #include "ThumbnailTask.h"
+#include "UpdateChecker.h"
 #include "WindowGeometry.h"
 #include "core/BuiltinGradients.h"
 #include "core/VariationRegistry.h"
@@ -292,10 +297,16 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     QMenu* toolsMenu = menuBar()->addMenu("&Tools");
     toolsMenu->addAction(optionsAction);
 
+    checkForUpdatesAction_ = new QAction("Check for &Updates...", this);
+    checkForUpdatesAction_->setObjectName("checkForUpdatesAction");
+    connect(checkForUpdatesAction_, &QAction::triggered, this, &MainWindow::onCheckForUpdatesTriggered);
+
     QAction* aboutAction = new QAction("&About Apophysis 7X", this);
     aboutAction->setObjectName("aboutAction");
     connect(aboutAction, &QAction::triggered, this, &MainWindow::openAboutDialog);
     QMenu* helpMenu = menuBar()->addMenu("&Help");
+    helpMenu->addAction(checkForUpdatesAction_);
+    helpMenu->addSeparator();
     helpMenu->addAction(aboutAction);
 
     QToolBar* toolbar = addToolBar("Main");
@@ -1221,6 +1232,48 @@ void MainWindow::openOptionsDialog() {
 void MainWindow::openAboutDialog() {
     AboutDialog dialog(this);
     dialog.exec();
+}
+
+void MainWindow::onCheckForUpdatesTriggered() {
+    // Guards against a second overlapping request if the user double-clicks
+    // the menu item - re-enabled from inside the callback below regardless
+    // of outcome (success, no update, or failure), so this can never get
+    // stuck disabled.
+    checkForUpdatesAction_->setEnabled(false);
+
+    // QPointer, not a raw `this` capture: the callback fires asynchronously
+    // (a real network round trip), and nothing stops the user from closing
+    // MainWindow before it returns - a raw `this` would then be a dangling
+    // pointer the moment the callback runs, where a null QPointer just skips
+    // showing the result instead of touching freed memory.
+    QPointer<MainWindow> self(this);
+    apo::ui::checkForUpdates(QString::fromLatin1(kAppVersion), [self](apo::ui::UpdateCheckResult result) {
+        if (!self) return;
+        self->checkForUpdatesAction_->setEnabled(true);
+
+        if (!result.ok) {
+            QMessageBox::warning(self, "Check for Updates",
+                                  "Couldn't check for updates:\n" + result.errorMessage);
+            return;
+        }
+        if (!result.updateAvailable) {
+            QMessageBox::information(self, "Check for Updates",
+                                      QString("You're running the latest version (%1).").arg(kAppVersion));
+            return;
+        }
+
+        QMessageBox box(self);
+        box.setWindowTitle("Check for Updates");
+        box.setIcon(QMessageBox::Information);
+        box.setText(QString("A new version is available: %1 (you have %2).")
+                        .arg(result.latestVersion, kAppVersion));
+        QPushButton* viewButton = box.addButton("View Release", QMessageBox::AcceptRole);
+        box.addButton(QMessageBox::Close);
+        box.exec();
+        if (box.clickedButton() == viewButton) {
+            QDesktopServices::openUrl(QUrl(result.releaseUrl));
+        }
+    });
 }
 
 } // namespace apo::ui

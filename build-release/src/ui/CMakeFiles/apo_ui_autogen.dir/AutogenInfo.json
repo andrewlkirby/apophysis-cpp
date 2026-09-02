@@ -7,7 +7,9 @@
 	"CMAKE_EXECUTABLE" : "C:/Program Files/Microsoft Visual Studio/18/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe",
 	"CMAKE_LIST_FILES" : 
 	[
-		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CMakeLists.txt"
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CMakeLists.txt",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AppVersion.h.in",
+		"C:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in"
 	],
 	"CMAKE_SOURCE_DIR" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp",
 	"CROSS_CONFIG" : false,
@@ -172,6 +174,12 @@
 			null
 		],
 		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/UpdateChecker.h",
+			"Mu",
+			"EWIEGA46WW/moc_UpdateChecker.cpp",
+			null
+		],
+		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h",
 			"Mu",
 			"EWIEGA46WW/moc_WindowGeometry.cpp",
@@ -192,6 +200,7 @@
 		"APO_HAVE_CUDA",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
+		"QT_NETWORK_LIB",
 		"QT_NO_DEBUG",
 		"QT_WIDGETS_LIB",
 		"UNICODE",
@@ -211,6 +220,7 @@
 	"MOC_INCLUDES" : 
 	[
 		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui",
 		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src",
 		"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/include",
 		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/vcpkg_installed/x64-windows/include",
@@ -218,7 +228,8 @@
 		"C:/Qt/6.8.0/msvc2022_64/include",
 		"C:/Qt/6.8.0/msvc2022_64/include/QtCore",
 		"C:/Qt/6.8.0/msvc2022_64/mkspecs/win32-msvc",
-		"C:/Qt/6.8.0/msvc2022_64/include/QtGui"
+		"C:/Qt/6.8.0/msvc2022_64/include/QtGui",
+		"C:/Qt/6.8.0/msvc2022_64/include/QtNetwork"
 	],
 	"MOC_MACRO_NAMES" : 
 	[
@@ -234,7 +245,10 @@
 	"MOC_PREDEFS_CMD" : [],
 	"MOC_PREDEFS_FILE" : "",
 	"MOC_RELAXED_MODE" : false,
-	"MOC_SKIP" : [],
+	"MOC_SKIP" : 
+	[
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/.qt/rcc/qrc_app_icon.cpp"
+	],
 	"MULTI_CONFIG" : false,
 	"PARALLEL" : 8,
 	"PARSE_CACHE_FILE" : "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/CMakeFiles/apo_ui_autogen.dir/ParseCache.txt",
@@ -357,6 +371,11 @@
 		],
 		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TriangleCanvas.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/UpdateChecker.cpp",
 			"Mu",
 			null
 		],

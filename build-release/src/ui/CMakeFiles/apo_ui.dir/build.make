@@ -711,6 +711,32 @@ src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.s: cmake_force
 <<
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/UpdateChecker.cpp.obj"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/apo_ui.dir/UpdateChecker.cpp.i"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe > CMakeFiles\apo_ui.dir\UpdateChecker.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/apo_ui.dir/UpdateChecker.cpp.s"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\apo_ui.dir\UpdateChecker.cpp.s /c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj
@@ -736,6 +762,7 @@ apo_ui: src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj
+apo_ui: src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\build.make
 .PHONY : apo_ui
 

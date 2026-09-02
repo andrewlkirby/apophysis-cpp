@@ -58,6 +58,7 @@ constexpr auto qt_meta_stringdata_CLASSapoSCOPEuiSCOPEMainWindowENDCLASS = QtMoc
     "item",
     "openOptionsDialog",
     "openAboutDialog",
+    "onCheckForUpdatesTriggered",
     "onNewFlameTriggered",
     "onSaveFlameAsTriggered",
     "onSaveAllFlamesTriggered",
@@ -95,7 +96,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSapoSCOPEuiSCOPEMainWindowENDCLAS
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-      32,   14, // methods
+      33,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -103,40 +104,41 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSapoSCOPEuiSCOPEMainWindowENDCLAS
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    3,  206,    2, 0x06,    1 /* Public */,
+       1,    3,  212,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       8,    0,  213,    2, 0x08,    5 /* Private */,
-       9,    0,  214,    2, 0x08,    6 /* Private */,
-      10,    3,  215,    2, 0x08,    7 /* Private */,
-      14,    1,  222,    2, 0x08,   11 /* Private */,
-      16,    2,  225,    2, 0x08,   13 /* Private */,
-      18,    1,  230,    2, 0x08,   16 /* Private */,
-      21,    0,  233,    2, 0x08,   18 /* Private */,
-      22,    0,  234,    2, 0x08,   19 /* Private */,
-      23,    0,  235,    2, 0x08,   20 /* Private */,
-      24,    0,  236,    2, 0x08,   21 /* Private */,
-      25,    0,  237,    2, 0x08,   22 /* Private */,
-      26,    0,  238,    2, 0x08,   23 /* Private */,
-      27,    0,  239,    2, 0x08,   24 /* Private */,
-      28,    0,  240,    2, 0x08,   25 /* Private */,
-      29,    0,  241,    2, 0x08,   26 /* Private */,
-      30,    0,  242,    2, 0x08,   27 /* Private */,
-      31,    0,  243,    2, 0x08,   28 /* Private */,
-      32,    0,  244,    2, 0x08,   29 /* Private */,
-      33,    0,  245,    2, 0x08,   30 /* Private */,
-      34,    0,  246,    2, 0x08,   31 /* Private */,
-      35,    0,  247,    2, 0x08,   32 /* Private */,
-      36,    0,  248,    2, 0x08,   33 /* Private */,
-      37,    0,  249,    2, 0x08,   34 /* Private */,
-      38,    1,  250,    2, 0x08,   35 /* Private */,
-      40,    1,  253,    2, 0x08,   37 /* Private */,
-      41,    0,  256,    2, 0x08,   39 /* Private */,
-      42,    0,  257,    2, 0x08,   40 /* Private */,
-      43,    0,  258,    2, 0x08,   41 /* Private */,
-      44,    0,  259,    2, 0x08,   42 /* Private */,
-      45,    1,  260,    2, 0x08,   43 /* Private */,
-      47,    0,  263,    2, 0x08,   45 /* Private */,
+       8,    0,  219,    2, 0x08,    5 /* Private */,
+       9,    0,  220,    2, 0x08,    6 /* Private */,
+      10,    3,  221,    2, 0x08,    7 /* Private */,
+      14,    1,  228,    2, 0x08,   11 /* Private */,
+      16,    2,  231,    2, 0x08,   13 /* Private */,
+      18,    1,  236,    2, 0x08,   16 /* Private */,
+      21,    0,  239,    2, 0x08,   18 /* Private */,
+      22,    0,  240,    2, 0x08,   19 /* Private */,
+      23,    0,  241,    2, 0x08,   20 /* Private */,
+      24,    0,  242,    2, 0x08,   21 /* Private */,
+      25,    0,  243,    2, 0x08,   22 /* Private */,
+      26,    0,  244,    2, 0x08,   23 /* Private */,
+      27,    0,  245,    2, 0x08,   24 /* Private */,
+      28,    0,  246,    2, 0x08,   25 /* Private */,
+      29,    0,  247,    2, 0x08,   26 /* Private */,
+      30,    0,  248,    2, 0x08,   27 /* Private */,
+      31,    0,  249,    2, 0x08,   28 /* Private */,
+      32,    0,  250,    2, 0x08,   29 /* Private */,
+      33,    0,  251,    2, 0x08,   30 /* Private */,
+      34,    0,  252,    2, 0x08,   31 /* Private */,
+      35,    0,  253,    2, 0x08,   32 /* Private */,
+      36,    0,  254,    2, 0x08,   33 /* Private */,
+      37,    0,  255,    2, 0x08,   34 /* Private */,
+      38,    0,  256,    2, 0x08,   35 /* Private */,
+      39,    1,  257,    2, 0x08,   36 /* Private */,
+      41,    1,  260,    2, 0x08,   38 /* Private */,
+      42,    0,  263,    2, 0x08,   40 /* Private */,
+      43,    0,  264,    2, 0x08,   41 /* Private */,
+      44,    0,  265,    2, 0x08,   42 /* Private */,
+      45,    0,  266,    2, 0x08,   43 /* Private */,
+      46,    1,  267,    2, 0x08,   44 /* Private */,
+      48,    0,  270,    2, 0x08,   46 /* Private */,
 
  // signals: parameters
     QMetaType::Void, 0x80000000 | 3, QMetaType::ULongLong, 0x80000000 | 6,    4,    5,    7,
@@ -165,13 +167,14 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSapoSCOPEuiSCOPEMainWindowENDCLAS
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QPoint,   39,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QPoint,   40,
     QMetaType::Void, 0x80000000 | 19,   20,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Bool,   46,
+    QMetaType::Void, QMetaType::Bool,   47,
     QMetaType::Void,
 
        0        // eod
@@ -213,6 +216,8 @@ Q_CONSTINIT const QMetaObject apo::ui::MainWindow::staticMetaObject = { {
         // method 'openOptionsDialog'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'openAboutDialog'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'onCheckForUpdatesTriggered'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'onNewFlameTriggered'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
@@ -282,29 +287,30 @@ void apo::ui::MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, 
         case 6: _t->onItemActivated((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
         case 7: _t->openOptionsDialog(); break;
         case 8: _t->openAboutDialog(); break;
-        case 9: _t->onNewFlameTriggered(); break;
-        case 10: _t->onSaveFlameAsTriggered(); break;
-        case 11: _t->onSaveAllFlamesTriggered(); break;
-        case 12: _t->onCopyFlameTriggered(); break;
-        case 13: _t->onPasteFlameTriggered(); break;
-        case 14: _t->onUndo(); break;
-        case 15: _t->onRedo(); break;
-        case 16: _t->onRenderAllFlamesTriggered(); break;
-        case 17: _t->onSmoothPaletteTriggered(); break;
-        case 18: _t->onNewRandomBatchTriggered(); break;
-        case 19: _t->onEditFlameTriggered(); break;
-        case 20: _t->onDuplicateFlameTriggered(); break;
-        case 21: _t->onRenameFlameTriggered(); break;
-        case 22: _t->onDeleteFlameTriggered(); break;
-        case 23: _t->onResetLocationTriggered(); break;
-        case 24: _t->onFlameListContextMenuRequested((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
-        case 25: _t->onFlameItemChanged((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
-        case 26: _t->onCameraGestureStarted(); break;
-        case 27: _t->onCameraChanged(); break;
-        case 28: _t->onCameraChangeFinished(); break;
-        case 29: _t->onProgressTick(); break;
-        case 30: _t->onViewModeChanged((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
-        case 31: _t->onQualityBoxCommitted(); break;
+        case 9: _t->onCheckForUpdatesTriggered(); break;
+        case 10: _t->onNewFlameTriggered(); break;
+        case 11: _t->onSaveFlameAsTriggered(); break;
+        case 12: _t->onSaveAllFlamesTriggered(); break;
+        case 13: _t->onCopyFlameTriggered(); break;
+        case 14: _t->onPasteFlameTriggered(); break;
+        case 15: _t->onUndo(); break;
+        case 16: _t->onRedo(); break;
+        case 17: _t->onRenderAllFlamesTriggered(); break;
+        case 18: _t->onSmoothPaletteTriggered(); break;
+        case 19: _t->onNewRandomBatchTriggered(); break;
+        case 20: _t->onEditFlameTriggered(); break;
+        case 21: _t->onDuplicateFlameTriggered(); break;
+        case 22: _t->onRenameFlameTriggered(); break;
+        case 23: _t->onDeleteFlameTriggered(); break;
+        case 24: _t->onResetLocationTriggered(); break;
+        case 25: _t->onFlameListContextMenuRequested((*reinterpret_cast< std::add_pointer_t<QPoint>>(_a[1]))); break;
+        case 26: _t->onFlameItemChanged((*reinterpret_cast< std::add_pointer_t<QListWidgetItem*>>(_a[1]))); break;
+        case 27: _t->onCameraGestureStarted(); break;
+        case 28: _t->onCameraChanged(); break;
+        case 29: _t->onCameraChangeFinished(); break;
+        case 30: _t->onProgressTick(); break;
+        case 31: _t->onViewModeChanged((*reinterpret_cast< std::add_pointer_t<bool>>(_a[1]))); break;
+        case 32: _t->onQualityBoxCommitted(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -338,13 +344,13 @@ int apo::ui::MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 32)
+        if (_id < 33)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 32;
+        _id -= 33;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 32)
+        if (_id < 33)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 32;
+        _id -= 33;
     }
     return _id;
 }

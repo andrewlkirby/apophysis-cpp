@@ -393,3 +393,4 @@ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qlayoutitem.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qboxlayout.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qgridlayout.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qlayout.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/AppVersion.h

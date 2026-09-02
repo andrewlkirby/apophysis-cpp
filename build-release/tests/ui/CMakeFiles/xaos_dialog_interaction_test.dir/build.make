@@ -145,6 +145,7 @@ xaos_dialog_interaction_test_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\apo_core_autogen\mocs_compilation.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\VariationRegistry.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\Bezier.cpp.obj" \
@@ -363,6 +364,7 @@ tests\ui\xaos_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\XaosDial
 tests\ui\xaos_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj
 tests\ui\xaos_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj
 tests\ui\xaos_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj
+tests\ui\xaos_dialog_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj
 tests\ui\xaos_dialog_interaction_test.exe: src\core\CMakeFiles\apo_core.dir\apo_core_autogen\mocs_compilation.cpp.obj
 tests\ui\xaos_dialog_interaction_test.exe: src\core\CMakeFiles\apo_core.dir\VariationRegistry.cpp.obj
 tests\ui\xaos_dialog_interaction_test.exe: src\core\CMakeFiles\apo_core.dir\Bezier.cpp.obj
@@ -561,12 +563,13 @@ tests\ui\xaos_dialog_interaction_test.exe: vcpkg_installed\x64-windows\lib\libpn
 tests\ui\xaos_dialog_interaction_test.exe: vcpkg_installed\x64-windows\lib\z.lib
 tests\ui\xaos_dialog_interaction_test.exe: C:\Qt\6.8.0\msvc2022_64\lib\Qt6Widgets.lib
 tests\ui\xaos_dialog_interaction_test.exe: C:\Qt\6.8.0\msvc2022_64\lib\Qt6Gui.lib
+tests\ui\xaos_dialog_interaction_test.exe: C:\Qt\6.8.0\msvc2022_64\lib\Qt6Network.lib
 tests\ui\xaos_dialog_interaction_test.exe: C:\Qt\6.8.0\msvc2022_64\lib\Qt6Core.lib
 tests\ui\xaos_dialog_interaction_test.exe: tests\ui\CMakeFiles\xaos_dialog_interaction_test.dir\objects1.rsp
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable xaos_dialog_interaction_test.exe"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
 	"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\xaos_dialog_interaction_test.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\xaos_dialog_interaction_test.dir\objects1.rsp @<<
- /out:xaos_dialog_interaction_test.exe /implib:xaos_dialog_interaction_test.lib /pdb:C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui\xaos_dialog_interaction_test.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:console   -LIBPATH:C:\PROGRA~1\NVIDIA~2\CUDA\v12.6\lib\x64  C:\Qt\6.8.0\msvc2022_64\lib\Qt6Test.lib "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudart.lib" ..\..\vcpkg_installed\x64-windows\lib\pugixml.lib ..\..\vcpkg_installed\x64-windows\lib\libpng16.lib ..\..\vcpkg_installed\x64-windows\lib\z.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Widgets.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Gui.lib d3d11.lib dxgi.lib dxguid.lib d3d12.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Core.lib mpr.lib userenv.lib cudadevrt.lib cudart_static.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  
+ /out:xaos_dialog_interaction_test.exe /implib:xaos_dialog_interaction_test.lib /pdb:C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui\xaos_dialog_interaction_test.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:console   -LIBPATH:C:\PROGRA~1\NVIDIA~2\CUDA\v12.6\lib\x64  C:\Qt\6.8.0\msvc2022_64\lib\Qt6Test.lib "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudart.lib" ..\..\vcpkg_installed\x64-windows\lib\pugixml.lib ..\..\vcpkg_installed\x64-windows\lib\libpng16.lib ..\..\vcpkg_installed\x64-windows\lib\z.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Widgets.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Gui.lib d3d11.lib dxgi.lib dxguid.lib d3d12.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Network.lib ws2_32.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Core.lib mpr.lib userenv.lib cudadevrt.lib cudart_static.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  
 <<
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui

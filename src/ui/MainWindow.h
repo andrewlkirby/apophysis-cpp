@@ -122,6 +122,7 @@ private slots:
     void onItemActivated(QListWidgetItem* item);
     void openOptionsDialog();
     void openAboutDialog();
+    void onCheckForUpdatesTriggered();
     void onNewFlameTriggered();
     void onSaveFlameAsTriggered();
     // Matches Main.dfm's mnuSaveAllAs (File > Save All Parameters): writes
@@ -352,6 +353,11 @@ private:
     QAction* smoothPaletteAction_ = nullptr;
     QAction* viewThumbnailsAction_ = nullptr;
     QAction* viewListAction_ = nullptr;
+    // Disabled for the duration of an in-flight check (re-enabled in
+    // onCheckForUpdatesTriggered's own UpdateChecker::checkForUpdates
+    // callback) so a user double-clicking Help > Check for Updates can't
+    // fire a second overlapping GitHub API request.
+    QAction* checkForUpdatesAction_ = nullptr;
     QComboBox* qualityBox_ = nullptr;
     QThread* workerThread_ = nullptr;
     RenderWorker* worker_ = nullptr;

@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="resources/app.ico">C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/resources/app.ico</file>
+  </qresource>
+</RCC>
+

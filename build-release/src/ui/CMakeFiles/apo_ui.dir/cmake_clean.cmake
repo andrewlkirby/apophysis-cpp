@@ -48,6 +48,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/apo_ui.dir/TransformPanel.cpp.obj.d"
   "CMakeFiles/apo_ui.dir/TriangleCanvas.cpp.obj"
   "CMakeFiles/apo_ui.dir/TriangleCanvas.cpp.obj.d"
+  "CMakeFiles/apo_ui.dir/UpdateChecker.cpp.obj"
+  "CMakeFiles/apo_ui.dir/UpdateChecker.cpp.obj.d"
   "CMakeFiles/apo_ui.dir/XaosDialog.cpp.obj"
   "CMakeFiles/apo_ui.dir/XaosDialog.cpp.obj.d"
   "CMakeFiles/apo_ui.dir/apo_ui_autogen/mocs_compilation.cpp.obj"

@@ -58,13 +58,21 @@ include src\ui\CMakeFiles\apo_gui.dir\progress.make
 # Include the compile flags for this target's objects.
 include src\ui\CMakeFiles\apo_gui.dir\flags.make
 
+src\ui\.qt\rcc\qrc_app_icon.cpp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\resources\app.ico
+src\ui\.qt\rcc\qrc_app_icon.cpp: src\ui\.qt\rcc\app_icon.qrc
+src\ui\.qt\rcc\qrc_app_icon.cpp: C:\Qt\6.8.0\msvc2022_64\bin\rcc.exe
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Running rcc for resource app_icon"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	C:\Qt\6.8.0\msvc2022_64\bin\rcc.exe --output C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/.qt/rcc/qrc_app_icon.cpp --name app_icon C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/.qt/rcc/app_icon.qrc --no-zstd
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
 src\ui\CMakeFiles\apo_gui.dir\codegen:
 .PHONY : src\ui\CMakeFiles\apo_gui.dir\codegen
 
 src\ui\CMakeFiles\apo_gui.dir\apo_gui_autogen\mocs_compilation.cpp.obj: src\ui\CMakeFiles\apo_gui.dir\flags.make
 src\ui\CMakeFiles\apo_gui.dir\apo_gui_autogen\mocs_compilation.cpp.obj: src\ui\apo_gui_autogen\mocs_compilation.cpp
 src\ui\CMakeFiles\apo_gui.dir\apo_gui_autogen\mocs_compilation.cpp.obj: src\ui\CMakeFiles\apo_gui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/ui/CMakeFiles/apo_gui.dir/apo_gui_autogen/mocs_compilation.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/ui/CMakeFiles/apo_gui.dir/apo_gui_autogen/mocs_compilation.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_gui.dir\apo_gui_autogen\mocs_compilation.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_gui.dir\apo_gui_autogen\mocs_compilation.cpp.obj /FdCMakeFiles\apo_gui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\apo_gui_autogen\mocs_compilation.cpp
@@ -90,7 +98,7 @@ src\ui\CMakeFiles\apo_gui.dir\apo_gui_autogen\mocs_compilation.cpp.s: cmake_forc
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: src\ui\CMakeFiles\apo_gui.dir\flags.make
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\main.cpp
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: src\ui\CMakeFiles\apo_gui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/ui/CMakeFiles/apo_gui.dir/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/ui/CMakeFiles/apo_gui.dir/main.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_gui.dir\main.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_gui.dir\main.cpp.obj /FdCMakeFiles\apo_gui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\main.cpp
@@ -115,16 +123,43 @@ src\ui\CMakeFiles\apo_gui.dir\main.cpp.s: cmake_force
 
 src\ui\CMakeFiles\apo_gui.dir\resources\app.rc.res: src\ui\CMakeFiles\apo_gui.dir\flags.make
 src\ui\CMakeFiles\apo_gui.dir\resources\app.rc.res: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\resources\app.rc
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building RC object src/ui/CMakeFiles/apo_gui.dir/resources/app.rc.res"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building RC object src/ui/CMakeFiles/apo_gui.dir/resources/app.rc.res"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe $(RC_DEFINES) $(RC_INCLUDES) $(RC_FLAGS) /fo CMakeFiles\apo_gui.dir\resources\app.rc.res C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\resources\app.rc
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.obj: src\ui\CMakeFiles\apo_gui.dir\flags.make
+src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.obj: src\ui\.qt\rcc\qrc_app_icon.cpp
+src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.obj: src\ui\CMakeFiles\apo_gui.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/ui/CMakeFiles/apo_gui.dir/.qt/rcc/qrc_app_icon.cpp.obj"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.obj /FdCMakeFiles\apo_gui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\.qt\rcc\qrc_app_icon.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/apo_gui.dir/.qt/rcc/qrc_app_icon.cpp.i"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe > CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\.qt\rcc\qrc_app_icon.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/apo_gui.dir/.qt/rcc/qrc_app_icon.cpp.s"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.s /c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\.qt\rcc\qrc_app_icon.cpp
+<<
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 
 # Object files for target apo_gui
 apo_gui_OBJECTS = \
 "CMakeFiles\apo_gui.dir\apo_gui_autogen\mocs_compilation.cpp.obj" \
 "CMakeFiles\apo_gui.dir\main.cpp.obj" \
-"CMakeFiles\apo_gui.dir\resources\app.rc.res"
+"CMakeFiles\apo_gui.dir\resources\app.rc.res" \
+"CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.obj"
 
 # External object files for target apo_gui
 apo_gui_EXTERNAL_OBJECTS = \
@@ -153,6 +188,7 @@ apo_gui_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\apo_core_autogen\mocs_compilation.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\VariationRegistry.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\Bezier.cpp.obj" \
@@ -347,6 +383,7 @@ apo_gui_EXTERNAL_OBJECTS = \
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_gui.dir\apo_gui_autogen\mocs_compilation.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_gui.dir\resources\app.rc.res
+src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj
@@ -372,6 +409,7 @@ src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj
+src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\apo_core_autogen\mocs_compilation.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\VariationRegistry.cpp.obj
 src\ui\apo_gui.exe: src\core\CMakeFiles\apo_core.dir\Bezier.cpp.obj
@@ -569,13 +607,14 @@ src\ui\apo_gui.exe: vcpkg_installed\x64-windows\lib\libpng16.lib
 src\ui\apo_gui.exe: vcpkg_installed\x64-windows\lib\z.lib
 src\ui\apo_gui.exe: C:\Qt\6.8.0\msvc2022_64\lib\Qt6Widgets.lib
 src\ui\apo_gui.exe: C:\Qt\6.8.0\msvc2022_64\lib\Qt6Gui.lib
+src\ui\apo_gui.exe: C:\Qt\6.8.0\msvc2022_64\lib\Qt6Network.lib
 src\ui\apo_gui.exe: C:\Qt\6.8.0\msvc2022_64\lib\Qt6Core.lib
 src\ui\apo_gui.exe: C:\Qt\6.8.0\msvc2022_64\lib\Qt6EntryPoint.lib
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_gui.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable apo_gui.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable apo_gui.exe"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	"C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E vs_link_exe --msvc-ver=1944 --intdir=CMakeFiles\apo_gui.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100261~1.0\x64\mt.exe --manifests -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\link.exe /nologo @CMakeFiles\apo_gui.dir\objects1.rsp @<<
- /out:apo_gui.exe /implib:apo_gui.lib /pdb:C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\apo_gui.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:windows   -LIBPATH:C:\PROGRA~1\NVIDIA~2\CUDA\v12.6\lib\x64  "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudart.lib" ..\..\vcpkg_installed\x64-windows\lib\pugixml.lib ..\..\vcpkg_installed\x64-windows\lib\libpng16.lib ..\..\vcpkg_installed\x64-windows\lib\z.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Widgets.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Gui.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Core.lib mpr.lib userenv.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6EntryPoint.lib shell32.lib d3d11.lib dxgi.lib dxguid.lib d3d12.lib cudadevrt.lib cudart_static.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  
+ /out:apo_gui.exe /implib:apo_gui.lib /pdb:C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\apo_gui.pdb /version:0.0 /machine:x64 /INCREMENTAL:NO /subsystem:windows   -LIBPATH:C:\PROGRA~1\NVIDIA~2\CUDA\v12.6\lib\x64  "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.6\lib\x64\cudart.lib" ..\..\vcpkg_installed\x64-windows\lib\pugixml.lib ..\..\vcpkg_installed\x64-windows\lib\libpng16.lib ..\..\vcpkg_installed\x64-windows\lib\z.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Widgets.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Gui.lib d3d11.lib dxgi.lib dxguid.lib d3d12.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Network.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6Core.lib mpr.lib userenv.lib C:\Qt\6.8.0\msvc2022_64\lib\Qt6EntryPoint.lib shell32.lib ws2_32.lib cudadevrt.lib cudart_static.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  
 <<
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
@@ -592,7 +631,7 @@ src\ui\CMakeFiles\apo_gui.dir\clean:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 .PHONY : src\ui\CMakeFiles\apo_gui.dir\clean
 
-src\ui\CMakeFiles\apo_gui.dir\depend:
+src\ui\CMakeFiles\apo_gui.dir\depend: src\ui\.qt\rcc\qrc_app_icon.cpp
 	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles" C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_gui.dir\DependInfo.cmake "--color=$(COLOR)" apo_gui
 .PHONY : src\ui\CMakeFiles\apo_gui.dir\depend
 

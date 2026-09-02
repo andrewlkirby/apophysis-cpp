@@ -95,7 +95,7 @@ endif()
 # 6.8.0 win64_msvc2022_64 -O C:\Qt`) is a ~1-2GB download that's ready in
 # under a minute. Point CMake at it with
 # -DCMAKE_PREFIX_PATH=C:\Qt\6.8.0\msvc2022_64 (or wherever it's installed).
-find_package(Qt6 COMPONENTS Widgets Test REQUIRED)
+find_package(Qt6 COMPONENTS Widgets Network Test REQUIRED)
 set(CMAKE_AUTOMOC ON)
 
 # Declared here (rather than in cmake/Packaging.cmake) so src/ui's

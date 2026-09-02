@@ -449,6 +449,8 @@ C:/Qt/6.8.0/msvc2022_64/include/QtGui/qguiapplication_platform.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qguiapplication.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QComboBox
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qcombobox.h
+C:/Qt/6.8.0/msvc2022_64/include/QtGui/QDesktopServices
+C:/Qt/6.8.0/msvc2022_64/include/QtGui/qdesktopservices.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QDragEnterEvent
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QDropEvent
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QFileDialog
@@ -492,6 +494,11 @@ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qmessagebox.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qdialogbuttonbox.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QMimeData
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qmimedata.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QPointer
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/qpointer.h
+C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QPushButton
+C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qpushbutton.h
+C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qabstractbutton.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QResizeEvent
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QSignalBlocker
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QSplitter
@@ -526,6 +533,7 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QByteArray
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QStringList
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/AppVersion.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QElapsedTimer
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QImage
@@ -560,6 +568,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ThumbnailTask.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QImage
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QRunnable
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/UpdateChecker.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QByteArray
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString

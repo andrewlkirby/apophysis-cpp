@@ -179,6 +179,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/ap
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qtwidgetsexports.h
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qtwidgetsglobal.h
  C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
+ C:/Qt/6.8.0/msvc2022_64/lib/cmake/Qt6Core/Qt6CoreConfigureFileTemplate.in
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Bezier.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/ColorMap.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Flame.h
@@ -199,6 +200,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/ap
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AppSettings.cpp
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AppSettings.h
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AppVersion.h.in
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CMakeLists.txt
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.cpp
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
@@ -241,6 +243,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/ap
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TransformPanel.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TriangleCanvas.cpp
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TriangleCanvas.h
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/UpdateChecker.cpp
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/UpdateChecker.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.cpp
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h

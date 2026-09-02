@@ -178,6 +178,7 @@ src\ui\apo_ui_autogen\timestamp: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qtwid
 src\ui\apo_ui_autogen\timestamp: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qtwidgetsexports.h
 src\ui\apo_ui_autogen\timestamp: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qtwidgetsglobal.h
 src\ui\apo_ui_autogen\timestamp: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qwidget.h
+src\ui\apo_ui_autogen\timestamp: C:\Qt\6.8.0\msvc2022_64\lib\cmake\Qt6Core\Qt6CoreConfigureFileTemplate.in
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Bezier.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\ColorMap.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Flame.h
@@ -198,6 +199,7 @@ src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apop
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AdjustPanel.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AppSettings.cpp
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AppSettings.h
+src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AppVersion.h.in
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CMakeLists.txt
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesDialog.cpp
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesDialog.h
@@ -240,6 +242,8 @@ src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apop
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TransformPanel.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TriangleCanvas.cpp
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TriangleCanvas.h
+src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp
+src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\XaosDialog.cpp
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\XaosDialog.h
@@ -636,6 +640,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qtwidgetsexports.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qwidget.h:
 
+C:\Qt\6.8.0\msvc2022_64\lib\cmake\Qt6Core\Qt6CoreConfigureFileTemplate.in:
+
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewSizing.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Bezier.h:
@@ -669,6 +675,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AdjustPanel.cpp:
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AdjustPanel.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AppSettings.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AppVersion.h.in:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CMakeLists.txt:
 
@@ -727,5 +735,9 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SmoothPaletteDia
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TransformPanel.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TriangleCanvas.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\XaosDialog.h:

@@ -397,6 +397,7 @@ src\ui\CMakeFiles\apo_ui.dir\AboutDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\includ
 src\ui\CMakeFiles\apo_ui.dir\AboutDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qboxlayout.h
 src\ui\CMakeFiles\apo_ui.dir\AboutDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qgridlayout.h
 src\ui\CMakeFiles\apo_ui.dir\AboutDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qlayout.h
+src\ui\CMakeFiles\apo_ui.dir\AboutDialog.cpp.obj: src\ui\AppVersion.h
 
 
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AdjustDialog.cpp
@@ -5362,6 +5363,8 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qguiapplication.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QComboBox
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qcombobox.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QDesktopServices
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qdesktopservices.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QDragEnterEvent
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QDropEvent
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog
@@ -5405,6 +5408,11 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qdialogbuttonbox.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QMimeData
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmimedata.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QPointer
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpointer.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QPushButton
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qpushbutton.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qabstractbutton.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QResizeEvent
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QSignalBlocker
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QSplitter
@@ -5439,6 +5447,7 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QStringList
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: src\ui\AppVersion.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\EditorWindow.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QElapsedTimer
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QImage
@@ -5473,6 +5482,8 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\a
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QImage
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QObject
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QByteArray
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
@@ -10503,6 +10514,399 @@ src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj: C:\Qt\6.8.0\msvc2022_64\inc
 src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QWheelEvent
 
 
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\functional"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\yvals_core.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\sal.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concurrencysal.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vadefs.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xkeycheck.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\exception"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\yvals.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\crtdbg.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_new_debug.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_new.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\crtdefs.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\use_ansi.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdlib"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_math.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdlib.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_malloc.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_search.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stddef.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdlib.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\type_traits"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstddef"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtr1common"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdint"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdint.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstring"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\string.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_memory.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_memcpy_s.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\errno.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_string.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstring.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\malloc.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_exception.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\eh.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_terminate.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\tuple"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\compare"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concepts"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\utility"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\initializer_list"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\typeinfo"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_typeinfo.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmemory"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cfloat"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\float.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\climits"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cwchar"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdio"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdio.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\wchar.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wconio.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wctype.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wdirect.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wio.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_share.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wprocess.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wtime.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\stat.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\types.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.inl.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\setjmp.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\immintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\wmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\nmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\smmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\tmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\pmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\emmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\mmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\zmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ammintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\new"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xutility"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\unordered_map"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xhash"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cmath"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\list"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xpolymorphic_allocator.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vector"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_bit_utils.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_sanitizer_annotate_container.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xnode_handle.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qglobal.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdbool.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtversionchecks.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtconfiginclude.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qconfig.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtcore-config.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtconfigmacros.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtdeprecationdefinitions.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtcoreexports.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\version"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtdeprecationmarkers.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtclasshelpermacros.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtpreprocessorsupport.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qassert.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtnoop.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtypes.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtversion.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtypeinfo.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainerfwd.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsysinfo.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlogging.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qflags.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompare_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qatomic.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbasicatomic.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qatomic_cxx11.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qgenericatomic.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qyieldcpu.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\atomic"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic_wait.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xthreads.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_threads_core.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtimec.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ctime"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\time.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qconstructormacros.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdarwinhelpers.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qexceptionhandling.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qforeach.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qttypetraits.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\optional"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xsmf_control.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\variant"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionpointer.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qglobalstatic.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmalloc.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qminmax.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qnumeric.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qoverload.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qswap.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtenvironmentvariables.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtresource.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qttranslation.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qversiontagging.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompare.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\bit"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcomparehelpers.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20type_traits.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringview.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringview.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearray.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrefcount.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qnamespace.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtmetamacros.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qarraydata.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpair.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qarraydatapointer.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qarraydataops.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qxptype_traits.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iterator"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iosfwd"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\algorithm"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_heap_algorithms.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_minmax.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20functional.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20memory.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearrayalgorithms.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdarg.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearrayview.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xstring"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_string_view.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cctype"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string_view"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringliteral.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringalgorithms.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlatin1stringview.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qanystringview.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qutf8stringview.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringtokenizer.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringbuilder.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringconverter.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringconverter_base.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringbuilder.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QJsonDocument
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qjsondocument.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobjectdefs.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobjectdefs_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionaltools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmetatype.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdatastream.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qscopedpointer.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiodevicebase.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfloat16.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qhashfunctions.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\numeric"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmath.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qalgorithms.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiterable.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmetacontainer.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainerinfo.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtaggedpointer.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qscopeguard.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\array"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\map"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtree"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdebug.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtextstream.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontiguouscache.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsharedpointer.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qshareddata.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsharedpointer_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\chrono"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_chrono.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ratio"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\system_error"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_system_error_abi.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cerrno"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdexcept"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcall_once.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xerrc.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xfilesystem_abi.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_tzdb.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\format"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_format_ucd_tables.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_formatter.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_print.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_ranges_tuple_formatter.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocale"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xfacet"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocinfo"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_xlocinfo_types.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\clocale"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\locale.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\charconv"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv_ryu.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv_ryu_tables.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv_tables.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\locale"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocbuf"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\streambuf"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xiosbase"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\share.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocmes"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocmon"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocnum"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xloctime"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\forward_list"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iomanip"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\istream"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_ostream.hpp"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ios"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\sstream"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlist.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiterator.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearraylist.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlist.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlist.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringmatcher.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmap.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qshareddata_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qset.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qhash.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qvarlengtharray.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdatetime.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcalendar.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlocale.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qvariant.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q23utility.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearraylist.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobject.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobject_impl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbindingstorage.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qregularexpression.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qurl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\quuid.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qendian.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QJsonObject
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qjsonobject.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QNetworkAccessManager
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qnetworkaccessmanager.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qtnetworkglobal.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qtnetwork-config.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qtnetworkexports.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qnetworkrequest.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qhttpheaders.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QSharedDataPointer
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QUrl
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QVariant
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q26numeric.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QList
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QObject
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QSslConfiguration
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslconfiguration.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslsocket.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qtcpsocket.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qabstractsocket.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiodevice.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qhostaddress.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslerror.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslcertificate.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcryptographichash.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qspan.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cassert"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20iterator.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\span"
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qssl.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QFlags
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QSslPreSharedKeyAuthenticator
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslpresharedkeyauthenticator.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QSharedDataPointer
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QMetaType
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QNetworkReply
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qnetworkreply.h
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QIODevice
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QVariant
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QNetworkRequest
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QNetworkAccessManager
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QNetworkRequest
+src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QUrl
+
+
 src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\XaosDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\XaosDialog.h
 src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory"
@@ -11510,6 +11914,8 @@ src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.
 
 
 
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QJsonObject:
+
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qglobal.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdlib.h":
@@ -11596,6 +12002,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbasicatomic.h:
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime.h":
 
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QNetworkRequest:
+
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cwchar":
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\FullscreenView.h:
@@ -11651,6 +12059,8 @@ src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\EditorWindow.h:
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtconfigmacros.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h":
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qnetworkreply.h:
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\numeric":
 
@@ -11768,6 +12178,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qabstractscrollarea.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qwindowdefs_win.h:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qhostaddress.h:
+
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cfloat":
 
 src\ui\apo_ui_autogen\EWIEGA46WW\moc_OptionsDialog.cpp:
@@ -11824,6 +12236,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfile.h:
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\filesystem":
 
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QPointer:
+
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.inl.h":
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\setjmp.h":
@@ -11841,6 +12255,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmath.h:
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h":
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qabstractbutton.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslcertificate.h:
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\tmmintrin.h":
 
@@ -11861,6 +12277,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\FullscreenView.h
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\malloc.h":
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtimer.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qtcpsocket.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpixmap.h:
 
@@ -11948,6 +12366,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QSlider:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\AdjustDialog.h:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\q26numeric.h:
+
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Rng.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h":
@@ -11967,6 +12387,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QMenu:
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_threads_core.hpp":
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\typeinfo":
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qnetworkaccessmanager.h:
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtimec.h":
 
@@ -12146,6 +12568,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringview.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QToolBar:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QMetaType:
+
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearray.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\RenderDispatcher.h:
@@ -12308,6 +12732,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewSizing.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Bezier.h:
 
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp:
+
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdexcept":
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xerrc.h":
@@ -12394,17 +12820,21 @@ C:\Qt\6.8.0\msvc2022_64\include\QtGui\qscreen_platform.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpaintdevice.h:
 
+"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\guiddef.h":
+
+src\ui\AppVersion.h:
+
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrect.h:
-
-C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpoint.h:
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\namespaceapi.h":
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\QCloseEvent:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\QEvent:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpoint.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qrgb.h:
 
@@ -12435,6 +12865,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdebug.h:
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmap.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qshareddata_impl.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QIODevice:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qhash.h:
 
@@ -12550,6 +12982,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlocale.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qtabbar.h:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\quuid.h:
+
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qguiapplication_platform.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QSplitter:
@@ -12580,6 +13014,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\Rendere
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslconfiguration.h:
+
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AdjustPanel.cpp:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TransformPanel.h:
@@ -12601,6 +13037,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qabstractspinbox.h:
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qslider.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QStatusBar:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qjsonvalue.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qstyle.h:
 
@@ -12627,6 +13065,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtGui\QWheelEvent:
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\VariationRegistry.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\gpu\VariationKinds.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QNetworkAccessManager:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesDialog.cpp:
 
@@ -12681,6 +13121,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qabstractitemview.h:
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QMessageBox:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qmessagebox.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcborvalue.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\QShowEvent:
 
@@ -12738,9 +13180,15 @@ C:\Qt\6.8.0\msvc2022_64\include\QtGui\QClipboard:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qclipboard.h:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtGui\QDesktopServices:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtGui\qdesktopservices.h:
+
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qinputdialog.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmimedata.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpointer.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\QThreadPool:
 
@@ -12757,6 +13205,8 @@ src\ui\apo_ui_autogen\EWIEGA46WW\moc_MainWindow.cpp:
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ThumbnailTask.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MemoryBudget.h:
 
@@ -12785,8 +13235,6 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\..\Flam
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\specstrings_strict.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\driverspecs.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\guiddef.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\pshpack4.h":
 
@@ -12914,6 +13362,54 @@ C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qtableview.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TriangleCanvas.cpp:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QJsonDocument:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qjsondocument.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcborcommon.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qjsonobject.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qtnetworkglobal.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qtnetwork-config.h:
+
+src\ui\apo_ui_autogen\EWIEGA46WW\moc_EditorWindow.cpp:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qtnetworkexports.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qnetworkrequest.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qhttpheaders.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QSharedDataPointer:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QVariant:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QSslConfiguration:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslsocket.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qabstractsocket.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslerror.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcryptographichash.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qssl.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QFlags:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QSslPreSharedKeyAuthenticator:
+
+src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\MainWindow.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\qsslpresharedkeyauthenticator.h:
+
+src\ui\apo_ui_autogen\EWIEGA46WW\moc_RenderWorker.cpp:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QNetworkReply:
+
 src\ui\apo_ui_autogen\mocs_compilation.cpp:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\AdjustPanel.h:
@@ -12925,10 +13421,6 @@ src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\CurvesDialog.h:
 src\ui\apo_ui_autogen\EWIEGA46WW\moc_CurvesWidget.cpp:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\CurvesWidget.h:
-
-src\ui\apo_ui_autogen\EWIEGA46WW\moc_EditorWindow.cpp:
-
-src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\MainWindow.h:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\OptionsDialog.h:
 
@@ -12943,8 +13435,6 @@ src\ui\apo_ui_autogen\EWIEGA46WW\moc_RenderAllDialog.cpp:
 src\ui\apo_ui_autogen\EWIEGA46WW\moc_RenderDialog.cpp:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\RenderDialog.h:
-
-src\ui\apo_ui_autogen\EWIEGA46WW\moc_RenderWorker.cpp:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\RenderWorker.h:
 

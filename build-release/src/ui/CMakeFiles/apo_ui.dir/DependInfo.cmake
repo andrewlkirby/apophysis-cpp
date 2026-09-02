@@ -31,6 +31,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.cpp" "src/ui/CMakeFiles/apo_ui.dir/SmoothPaletteDialog.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/SmoothPaletteDialog.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TransformPanel.cpp" "src/ui/CMakeFiles/apo_ui.dir/TransformPanel.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/TransformPanel.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TriangleCanvas.cpp" "src/ui/CMakeFiles/apo_ui.dir/TriangleCanvas.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/TriangleCanvas.cpp.obj.d"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/UpdateChecker.cpp" "src/ui/CMakeFiles/apo_ui.dir/UpdateChecker.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/UpdateChecker.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.cpp" "src/ui/CMakeFiles/apo_ui.dir/XaosDialog.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/XaosDialog.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/mocs_compilation.cpp" "src/ui/CMakeFiles/apo_ui.dir/apo_ui_autogen/mocs_compilation.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/apo_ui_autogen/mocs_compilation.cpp.obj.d"
   )

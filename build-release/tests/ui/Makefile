@@ -433,6 +433,24 @@ memory_budget_test\fast:
 .PHONY : memory_budget_test\fast
 
 # Convenience name for target.
+tests\ui\CMakeFiles\update_checker_test.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : tests\ui\CMakeFiles\update_checker_test.dir\rule
+
+# Convenience name for target.
+update_checker_test: tests\ui\CMakeFiles\update_checker_test.dir\rule
+.PHONY : update_checker_test
+
+# fast build rule for target.
+update_checker_test\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : update_checker_test\fast
+
+# Convenience name for target.
 tests\ui\CMakeFiles\editor_window_interaction_test.dir\rule:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_interaction_test.dir\rule
@@ -1133,6 +1151,42 @@ memory_budget_test_autogen\fast:
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\memory_budget_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\memory_budget_test_autogen.dir\build
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
 .PHONY : memory_budget_test_autogen\fast
+
+# Convenience name for target.
+tests\ui\CMakeFiles\update_checker_test_autogen_timestamp_deps.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test_autogen_timestamp_deps.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : tests\ui\CMakeFiles\update_checker_test_autogen_timestamp_deps.dir\rule
+
+# Convenience name for target.
+update_checker_test_autogen_timestamp_deps: tests\ui\CMakeFiles\update_checker_test_autogen_timestamp_deps.dir\rule
+.PHONY : update_checker_test_autogen_timestamp_deps
+
+# fast build rule for target.
+update_checker_test_autogen_timestamp_deps\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test_autogen_timestamp_deps.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : update_checker_test_autogen_timestamp_deps\fast
+
+# Convenience name for target.
+tests\ui\CMakeFiles\update_checker_test_autogen.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test_autogen.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : tests\ui\CMakeFiles\update_checker_test_autogen.dir\rule
+
+# Convenience name for target.
+update_checker_test_autogen: tests\ui\CMakeFiles\update_checker_test_autogen.dir\rule
+.PHONY : update_checker_test_autogen
+
+# fast build rule for target.
+update_checker_test_autogen\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test_autogen.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : update_checker_test_autogen\fast
 
 # Convenience name for target.
 tests\ui\CMakeFiles\editor_window_interaction_test_autogen_timestamp_deps.dir\rule:
@@ -2514,6 +2568,66 @@ triangle_canvas_interaction_test_autogen\mocs_compilation.cpp.s:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
 .PHONY : triangle_canvas_interaction_test_autogen\mocs_compilation.cpp.s
 
+update_checker_test.obj: update_checker_test.cpp.obj
+.PHONY : update_checker_test.obj
+
+# target to build an object file
+update_checker_test.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\update_checker_test.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : update_checker_test.cpp.obj
+
+update_checker_test.i: update_checker_test.cpp.i
+.PHONY : update_checker_test.i
+
+# target to preprocess a source file
+update_checker_test.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\update_checker_test.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : update_checker_test.cpp.i
+
+update_checker_test.s: update_checker_test.cpp.s
+.PHONY : update_checker_test.s
+
+# target to generate assembly for a file
+update_checker_test.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\update_checker_test.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : update_checker_test.cpp.s
+
+update_checker_test_autogen\mocs_compilation.obj: update_checker_test_autogen\mocs_compilation.cpp.obj
+.PHONY : update_checker_test_autogen\mocs_compilation.obj
+
+# target to build an object file
+update_checker_test_autogen\mocs_compilation.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\update_checker_test_autogen\mocs_compilation.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : update_checker_test_autogen\mocs_compilation.cpp.obj
+
+update_checker_test_autogen\mocs_compilation.i: update_checker_test_autogen\mocs_compilation.cpp.i
+.PHONY : update_checker_test_autogen\mocs_compilation.i
+
+# target to preprocess a source file
+update_checker_test_autogen\mocs_compilation.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\update_checker_test_autogen\mocs_compilation.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : update_checker_test_autogen\mocs_compilation.cpp.i
+
+update_checker_test_autogen\mocs_compilation.s: update_checker_test_autogen\mocs_compilation.cpp.s
+.PHONY : update_checker_test_autogen\mocs_compilation.s
+
+# target to generate assembly for a file
+update_checker_test_autogen\mocs_compilation.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\update_checker_test_autogen\mocs_compilation.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests\ui
+.PHONY : update_checker_test_autogen\mocs_compilation.cpp.s
+
 window_geometry_test.obj: window_geometry_test.cpp.obj
 .PHONY : window_geometry_test.obj
 
@@ -2683,6 +2797,8 @@ help:
 	@echo ... transform_panel_interaction_test_autogen_timestamp_deps
 	@echo ... triangle_canvas_interaction_test_autogen
 	@echo ... triangle_canvas_interaction_test_autogen_timestamp_deps
+	@echo ... update_checker_test_autogen
+	@echo ... update_checker_test_autogen_timestamp_deps
 	@echo ... window_geometry_test_autogen
 	@echo ... window_geometry_test_autogen_timestamp_deps
 	@echo ... xaos_dialog_interaction_test_autogen
@@ -2707,6 +2823,7 @@ help:
 	@echo ... smooth_palette_dialog_interaction_test
 	@echo ... transform_panel_interaction_test
 	@echo ... triangle_canvas_interaction_test
+	@echo ... update_checker_test
 	@echo ... window_geometry_test
 	@echo ... xaos_dialog_interaction_test
 	@echo ... adjust_dialog_interaction_test.obj
@@ -2829,6 +2946,12 @@ help:
 	@echo ... triangle_canvas_interaction_test_autogen/mocs_compilation.obj
 	@echo ... triangle_canvas_interaction_test_autogen/mocs_compilation.i
 	@echo ... triangle_canvas_interaction_test_autogen/mocs_compilation.s
+	@echo ... update_checker_test.obj
+	@echo ... update_checker_test.i
+	@echo ... update_checker_test.s
+	@echo ... update_checker_test_autogen/mocs_compilation.obj
+	@echo ... update_checker_test_autogen/mocs_compilation.i
+	@echo ... update_checker_test_autogen/mocs_compilation.s
 	@echo ... window_geometry_test.obj
 	@echo ... window_geometry_test.i
 	@echo ... window_geometry_test.s

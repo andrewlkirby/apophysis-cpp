@@ -3,6 +3,7 @@
 #include <QApplication>
 #include <QCommandLineOption>
 #include <QCommandLineParser>
+#include <QIcon>
 
 #include "AdjustDialog.h"
 #include "CurvesDialog.h"
@@ -24,6 +25,19 @@ int main(int argc, char** argv) {
     QApplication app(argc, argv);
     QApplication::setApplicationName("Apophysis 7X");
     QApplication::setOrganizationName("Apophysis 7X");
+    // The .exe's own icon (resources/app.rc's MAINICON, shown in Explorer/
+    // Alt-Tab) does NOT automatically become a running window's taskbar
+    // icon - that's set via WM_SETICON, which Qt only sends once a widget
+    // (or, as here, the whole QApplication) actually has a QIcon assigned.
+    // Setting it once, here, before any window is constructed, covers every
+    // top-level window this binary can open - MainWindow below and every
+    // --edit/--adjust/--render/... direct-dialog entry point further down -
+    // since a QWidget with no icon of its own falls back to
+    // QApplication::windowIcon(). Same source file (resources/app.ico) as
+    // the .exe icon and the Linux AppImage's derived PNG icon, embedded as
+    // a Qt resource by src/ui/CMakeLists.txt's qt_add_resources() call so
+    // this doesn't depend on that file being deployed alongside the binary.
+    QApplication::setWindowIcon(QIcon(":/resources/app.ico"));
 
     QCommandLineParser parser;
     parser.setApplicationDescription("Apophysis 7X - fractal flame editor");

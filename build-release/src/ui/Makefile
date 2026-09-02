@@ -163,6 +163,24 @@ apo_gui\fast:
 .PHONY : apo_gui\fast
 
 # Convenience name for target.
+src\ui\CMakeFiles\apo_gui_other_files.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui_other_files.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : src\ui\CMakeFiles\apo_gui_other_files.dir\rule
+
+# Convenience name for target.
+apo_gui_other_files: src\ui\CMakeFiles\apo_gui_other_files.dir\rule
+.PHONY : apo_gui_other_files
+
+# fast build rule for target.
+apo_gui_other_files\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui_other_files.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui_other_files.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : apo_gui_other_files\fast
+
+# Convenience name for target.
 src\ui\CMakeFiles\apo_ui_autogen_timestamp_deps.dir\rule:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui_autogen_timestamp_deps.dir\rule
@@ -233,6 +251,36 @@ apo_gui_autogen\fast:
 	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui_autogen.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui_autogen.dir\build
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 .PHONY : apo_gui_autogen\fast
+
+.qt\rcc\qrc_app_icon.obj: .qt\rcc\qrc_app_icon.cpp.obj
+.PHONY : .qt\rcc\qrc_app_icon.obj
+
+# target to build an object file
+.qt\rcc\qrc_app_icon.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : .qt\rcc\qrc_app_icon.cpp.obj
+
+.qt\rcc\qrc_app_icon.i: .qt\rcc\qrc_app_icon.cpp.i
+.PHONY : .qt\rcc\qrc_app_icon.i
+
+# target to preprocess a source file
+.qt\rcc\qrc_app_icon.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : .qt\rcc\qrc_app_icon.cpp.i
+
+.qt\rcc\qrc_app_icon.s: .qt\rcc\qrc_app_icon.cpp.s
+.PHONY : .qt\rcc\qrc_app_icon.s
+
+# target to generate assembly for a file
+.qt\rcc\qrc_app_icon.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : .qt\rcc\qrc_app_icon.cpp.s
 
 AboutDialog.obj: AboutDialog.cpp.obj
 .PHONY : AboutDialog.obj
@@ -924,6 +972,36 @@ TriangleCanvas.cpp.s:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 .PHONY : TriangleCanvas.cpp.s
 
+UpdateChecker.obj: UpdateChecker.cpp.obj
+.PHONY : UpdateChecker.obj
+
+# target to build an object file
+UpdateChecker.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : UpdateChecker.cpp.obj
+
+UpdateChecker.i: UpdateChecker.cpp.i
+.PHONY : UpdateChecker.i
+
+# target to preprocess a source file
+UpdateChecker.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : UpdateChecker.cpp.i
+
+UpdateChecker.s: UpdateChecker.cpp.s
+.PHONY : UpdateChecker.s
+
+# target to generate assembly for a file
+UpdateChecker.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : UpdateChecker.cpp.s
+
 XaosDialog.obj: XaosDialog.cpp.obj
 .PHONY : XaosDialog.obj
 
@@ -1065,10 +1143,14 @@ help:
 	@echo ... test
 	@echo ... apo_gui_autogen
 	@echo ... apo_gui_autogen_timestamp_deps
+	@echo ... apo_gui_other_files
 	@echo ... apo_ui_autogen
 	@echo ... apo_ui_autogen_timestamp_deps
 	@echo ... apo_gui
 	@echo ... apo_ui
+	@echo ... .qt/rcc/qrc_app_icon.obj
+	@echo ... .qt/rcc/qrc_app_icon.i
+	@echo ... .qt/rcc/qrc_app_icon.s
 	@echo ... AboutDialog.obj
 	@echo ... AboutDialog.i
 	@echo ... AboutDialog.s
@@ -1138,6 +1220,9 @@ help:
 	@echo ... TriangleCanvas.obj
 	@echo ... TriangleCanvas.i
 	@echo ... TriangleCanvas.s
+	@echo ... UpdateChecker.obj
+	@echo ... UpdateChecker.i
+	@echo ... UpdateChecker.s
 	@echo ... XaosDialog.obj
 	@echo ... XaosDialog.i
 	@echo ... XaosDialog.s

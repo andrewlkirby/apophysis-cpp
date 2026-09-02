@@ -380,13 +380,14 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QCommandLineParser
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcommandlineparser.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
+C:/Qt/6.8.0/msvc2022_64/include/QtGui/QIcon
+C:/Qt/6.8.0/msvc2022_64/include/QtGui/qicon.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustDialog.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QDialog
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qdialog.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qaction.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qkeysequence.h
-C:/Qt/6.8.0/msvc2022_64/include/QtGui/qicon.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qpalette.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qbrush.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qfont.h

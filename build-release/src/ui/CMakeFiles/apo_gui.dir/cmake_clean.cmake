@@ -1,7 +1,10 @@
 file(REMOVE_RECURSE
+  ".qt/rcc/qrc_app_icon.cpp"
   "CMakeFiles/apo_gui_autogen.dir/AutogenUsed.txt"
   "CMakeFiles/apo_gui_autogen.dir/ParseCache.txt"
   "apo_gui_autogen"
+  "CMakeFiles/apo_gui.dir/.qt/rcc/qrc_app_icon.cpp.obj"
+  "CMakeFiles/apo_gui.dir/.qt/rcc/qrc_app_icon.cpp.obj.d"
   "CMakeFiles/apo_gui.dir/apo_gui_autogen/mocs_compilation.cpp.obj"
   "CMakeFiles/apo_gui.dir/apo_gui_autogen/mocs_compilation.cpp.obj.d"
   "CMakeFiles/apo_gui.dir/main.cpp.obj"

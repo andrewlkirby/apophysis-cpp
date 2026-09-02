@@ -20,6 +20,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/tools
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/tools/CMakeFiles/apo_bench_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/CMakeFiles/apo_ui.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/CMakeFiles/apo_gui.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/CMakeFiles/apo_gui_other_files.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/CMakeFiles/test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/CMakeFiles/edit_cache.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/CMakeFiles/rebuild_cache.dir
@@ -143,6 +144,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/render_all_dialog_interaction_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/smooth_palette_dialog_interaction_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/memory_budget_test.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/update_checker_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/editor_window_interaction_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/window_geometry_test.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/adjust_panel_interaction_test.dir
@@ -185,6 +187,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/smooth_palette_dialog_interaction_test_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/memory_budget_test_autogen_timestamp_deps.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/memory_budget_test_autogen.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/update_checker_test_autogen_timestamp_deps.dir
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/update_checker_test_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/editor_window_interaction_test_autogen_timestamp_deps.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/editor_window_interaction_test_autogen.dir
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/CMakeFiles/window_geometry_test_autogen_timestamp_deps.dir

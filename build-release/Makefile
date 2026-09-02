@@ -286,6 +286,19 @@ apo_gui\fast:
 .PHONY : apo_gui\fast
 
 #=============================================================================
+# Target rules for targets named apo_gui_other_files
+
+# Build rule for target.
+apo_gui_other_files: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) apo_gui_other_files
+.PHONY : apo_gui_other_files
+
+# fast build rule for target.
+apo_gui_other_files\fast:
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui_other_files.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui_other_files.dir\build
+.PHONY : apo_gui_other_files\fast
+
+#=============================================================================
 # Target rules for targets named apo_ui_autogen_timestamp_deps
 
 # Build rule for target.
@@ -1807,6 +1820,19 @@ memory_budget_test\fast:
 .PHONY : memory_budget_test\fast
 
 #=============================================================================
+# Target rules for targets named update_checker_test
+
+# Build rule for target.
+update_checker_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) update_checker_test
+.PHONY : update_checker_test
+
+# fast build rule for target.
+update_checker_test\fast:
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\build
+.PHONY : update_checker_test\fast
+
+#=============================================================================
 # Target rules for targets named editor_window_interaction_test
 
 # Build rule for target.
@@ -2314,6 +2340,32 @@ memory_budget_test_autogen\fast:
 .PHONY : memory_budget_test_autogen\fast
 
 #=============================================================================
+# Target rules for targets named update_checker_test_autogen_timestamp_deps
+
+# Build rule for target.
+update_checker_test_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) update_checker_test_autogen_timestamp_deps
+.PHONY : update_checker_test_autogen_timestamp_deps
+
+# fast build rule for target.
+update_checker_test_autogen_timestamp_deps\fast:
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test_autogen_timestamp_deps.dir\build
+.PHONY : update_checker_test_autogen_timestamp_deps\fast
+
+#=============================================================================
+# Target rules for targets named update_checker_test_autogen
+
+# Build rule for target.
+update_checker_test_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) update_checker_test_autogen
+.PHONY : update_checker_test_autogen
+
+# fast build rule for target.
+update_checker_test_autogen\fast:
+	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test_autogen.dir\build
+.PHONY : update_checker_test_autogen\fast
+
+#=============================================================================
 # Target rules for targets named editor_window_interaction_test_autogen_timestamp_deps
 
 # Build rule for target.
@@ -2464,6 +2516,7 @@ help:
 	@echo ... apo_core_autogen_timestamp_deps
 	@echo ... apo_gui_autogen
 	@echo ... apo_gui_autogen_timestamp_deps
+	@echo ... apo_gui_other_files
 	@echo ... apo_render_cli_autogen
 	@echo ... apo_render_cli_autogen_timestamp_deps
 	@echo ... apo_ui_autogen
@@ -2548,6 +2601,8 @@ help:
 	@echo ... triangle_canvas_interaction_test_autogen_timestamp_deps
 	@echo ... triangle_geometry_test_autogen
 	@echo ... triangle_geometry_test_autogen_timestamp_deps
+	@echo ... update_checker_test_autogen
+	@echo ... update_checker_test_autogen_timestamp_deps
 	@echo ... variation_roundtrip_test_autogen
 	@echo ... variation_roundtrip_test_autogen_timestamp_deps
 	@echo ... variations_batch1_test_autogen
@@ -2619,6 +2674,7 @@ help:
 	@echo ... transform_panel_interaction_test
 	@echo ... triangle_canvas_interaction_test
 	@echo ... triangle_geometry_test
+	@echo ... update_checker_test
 	@echo ... variation_roundtrip_test
 	@echo ... variations_batch1_test
 	@echo ... variations_batch2_test

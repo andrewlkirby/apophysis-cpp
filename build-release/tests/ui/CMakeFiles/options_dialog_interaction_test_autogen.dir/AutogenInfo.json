@@ -22,6 +22,7 @@
 		"APO_HAVE_CUDA",
 		"QT_CORE_LIB",
 		"QT_GUI_LIB",
+		"QT_NETWORK_LIB",
 		"QT_NO_DEBUG",
 		"QT_TESTCASE_BUILDDIR=\"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui\"",
 		"QT_TESTCASE_SOURCEDIR=\"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/ui\"",
@@ -44,6 +45,7 @@
 	"MOC_INCLUDES" : 
 	[
 		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui",
+		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui",
 		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src",
 		"C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v12.6/include",
 		"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/vcpkg_installed/x64-windows/include",
@@ -52,6 +54,7 @@
 		"C:/Qt/6.8.0/msvc2022_64/include/QtCore",
 		"C:/Qt/6.8.0/msvc2022_64/mkspecs/win32-msvc",
 		"C:/Qt/6.8.0/msvc2022_64/include/QtGui",
+		"C:/Qt/6.8.0/msvc2022_64/include/QtNetwork",
 		"C:/Qt/6.8.0/msvc2022_64/include/QtTest"
 	],
 	"MOC_MACRO_NAMES" : 

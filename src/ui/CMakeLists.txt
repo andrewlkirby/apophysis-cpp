@@ -56,18 +56,48 @@ add_library(apo_ui OBJECT
     GpuCompatibilityBadge.h
     GpuCompatibilityBadge.cpp
     WindowGeometry.h
+    UpdateChecker.h
+    UpdateChecker.cpp
 )
-target_include_directories(apo_ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(apo_ui PUBLIC apo_core Qt6::Widgets)
+target_include_directories(apo_ui PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+target_link_libraries(apo_ui PUBLIC apo_core Qt6::Widgets Qt6::Network)
+
+# AppVersion.h.in -> AppVersion.h (APO_VERSION substituted in) so C++ code
+# (MainWindow's Check for Updates, AboutDialog) can read the same version
+# CMakeLists.txt/Packaging.cmake/release.yml already use, instead of a second
+# hand-maintained copy going stale the way AboutDialog's old hardcoded
+# "1.0.0" string already had. Configured at CMake-configure time (not
+# build time), so it picks up -DAPO_VERSION=... the same way
+# MACOSX_BUNDLE_BUNDLE_VERSION above does.
+configure_file(AppVersion.h.in "${CMAKE_CURRENT_BINARY_DIR}/AppVersion.h" @ONLY)
 
 add_executable(apo_gui WIN32 main.cpp)
 if(WIN32)
     # The .rc/.ico icon resource is a Windows-only concept (no RC compiler
     # exists on a GCC/Clang toolchain) - WIN32 above is harmless off-Windows
     # (it's simply ignored), but this source must stay out of the target
-    # entirely on Linux/macOS.
+    # entirely on Linux/macOS. This is what gives apo_gui.exe itself its
+    # icon in Explorer/Alt-Tab - it does NOT make a *running* window's
+    # taskbar button use that icon (that's a separate WM_SETICON concern,
+    # controlled by Qt's own QApplication::setWindowIcon() call in main.cpp,
+    # which needs the same picture available as an in-binary Qt resource -
+    # see app_icon below).
     target_sources(apo_gui PRIVATE resources/app.rc)
 endif()
+# Embeds the same app.ico app.rc uses for the .exe's own icon (single
+# source of truth - also what packaging/linux-appimage.sh derives its PNG
+# icon from) as a Qt resource, so main.cpp can hand it to
+# QApplication::setWindowIcon() without depending on any file being present
+# on disk next to the installed binary. qt_add_resources() (not a checked-in
+# .qrc file - unnecessary indirection for a single asset) generates the
+# resource .cpp straight from FILES below and adds it to apo_gui directly;
+# it works without CMAKE_AUTORCC being enabled project-wide. Resulting
+# resource path: ":/resources/app.ico" (PREFIX "/" + the FILES path, taken
+# relative to this directory).
+qt_add_resources(apo_gui "app_icon"
+    PREFIX "/"
+    FILES resources/app.ico
+)
 if(APPLE)
     # Makes apo_gui a proper .app bundle instead of a bare Unix executable -
     # required for macdeployqt (cmake/Packaging.cmake) to have somewhere to

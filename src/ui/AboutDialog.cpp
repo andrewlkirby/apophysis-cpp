@@ -5,6 +5,8 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 
+#include "AppVersion.h"
+
 namespace apo::ui {
 
 AboutDialog::AboutDialog(QWidget* parent) : QDialog(parent) {
@@ -16,7 +18,8 @@ AboutDialog::AboutDialog(QWidget* parent) : QDialog(parent) {
     auto* title = new QLabel("<h2>Apophysis 7X</h2>", this);
     layout->addWidget(title);
 
-    auto* subtitle = new QLabel("C++/Qt6 port &#8212; version 1.0.0", this);
+    auto* subtitle =
+        new QLabel(QString("C++/Qt6 port &#8212; version %1").arg(kAppVersion), this);
     layout->addWidget(subtitle);
 
     // QLabel's openExternalLinks handles link clicks itself (hands off to

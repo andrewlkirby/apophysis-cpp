@@ -73,6 +73,10 @@ add_executable(memory_budget_test memory_budget_test.cpp)
 target_link_libraries(memory_budget_test PRIVATE apo_ui apo_core Qt6::Test)
 add_test(NAME memory_budget_test COMMAND memory_budget_test)
 
+add_executable(update_checker_test update_checker_test.cpp)
+target_link_libraries(update_checker_test PRIVATE apo_ui apo_core Qt6::Test)
+add_test(NAME update_checker_test COMMAND update_checker_test)
+
 add_executable(editor_window_interaction_test editor_window_interaction_test.cpp)
 target_link_libraries(editor_window_interaction_test PRIVATE apo_ui apo_core Qt6::Test)
 add_test(NAME editor_window_interaction_test COMMAND editor_window_interaction_test)

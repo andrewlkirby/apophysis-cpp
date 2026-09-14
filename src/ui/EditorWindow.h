@@ -88,6 +88,24 @@ public:
     // rather than just by reading the code.
     void setAutoScreenshot(const QString& path, bool exitAfter);
 
+    // Testing hook only (see editor_window_interaction_test.cpp's
+    // testQualityDropdownRenderShowsProgress) - exposes whichever
+    // RenderProgress token is currently in flight (or null if none is), so a
+    // test can pause it deterministically right after requesting a tracked
+    // render, rather than tuning a render's flame/density/canvas size to
+    // reliably take some specific amount of wall-clock time - a real render
+    // completes in wildly different real time depending on the machine
+    // (measured directly: the same render took ~1.3s on a CUDA-capable dev
+    // machine and still hadn't finished after 15s on a CI runner's CPU-only
+    // fallback), so no fixed density is portably "slow enough to observe a
+    // progress tick, but fast enough not to time out." Same idea as
+    // RenderDialog's *real* Pause button letting its own tests sidestep this
+    // exact problem (see render_dialog_interaction_test.cpp's
+    // testPauseFreezesProgressUntilResumed) - EditorWindow just has no Pause
+    // UI of its own for a test to click, so this exposes the same
+    // underlying mechanism directly instead.
+    apo::RenderProgress* currentRenderProgressForTesting() const { return progress_.get(); }
+
 protected:
     void resizeEvent(QResizeEvent* event) override;
     // Restores centralSplitter_'s last-dragged sidebar width (see

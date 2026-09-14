@@ -1,10 +1,10 @@
-Start testing: Sep 14 11:47 Eastern Daylight Time
+Start testing: Sep 14 12:20 Eastern Daylight Time
 ----------------------------------------------------------
 1/55 Testing: all_plugins_smoke_test
 1/55 Test: all_plugins_smoke_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/all_plugins_smoke_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"all_plugins_smoke_test" start time: Sep 14 11:47 Eastern Daylight Time
+"all_plugins_smoke_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: total registered (native + plugin) variation count matches expectations
@@ -105,10 +105,10 @@ ok: xtrb produces finite output across sample points
 
 all checks passed
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"all_plugins_smoke_test" end time: Sep 14 11:47 Eastern Daylight Time
+"all_plugins_smoke_test" end time: Sep 14 12:20 Eastern Daylight Time
 "all_plugins_smoke_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -116,7 +116,7 @@ Test Passed.
 2/55 Test: auto_frame_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/auto_frame_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"auto_frame_test" start time: Sep 14 11:47 Eastern Daylight Time
+"auto_frame_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: samplePoints returns exactly `count` points for a well-behaved, bounded flame
@@ -139,7 +139,7 @@ all checks passed
 Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"auto_frame_test" end time: Sep 14 11:47 Eastern Daylight Time
+"auto_frame_test" end time: Sep 14 12:20 Eastern Daylight Time
 "auto_frame_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -147,7 +147,7 @@ Test Passed.
 3/55 Test: baseline_regression_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/baseline_regression_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"baseline_regression_test" start time: Sep 14 11:47 Eastern Daylight Time
+"baseline_regression_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: baseline fixture 'simple_sierpinski' loads as one flame
@@ -178,10 +178,10 @@ ok: 'final_xform' matches its baseline (PSNR=inf dB, threshold=50 dB)
 
 all checks passed
 <end of output>
-Test time =   0.08 sec
+Test time =   0.07 sec
 ----------------------------------------------------------
 Test Passed.
-"baseline_regression_test" end time: Sep 14 11:47 Eastern Daylight Time
+"baseline_regression_test" end time: Sep 14 12:20 Eastern Daylight Time
 "baseline_regression_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -189,7 +189,7 @@ Test Passed.
 4/55 Test: bezier_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/bezier_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"bezier_test" start time: Sep 14 11:47 Eastern Daylight Time
+"bezier_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: t=0 always lands exactly on P0=(0,0)
@@ -216,7 +216,7 @@ all checks passed
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"bezier_test" end time: Sep 14 11:47 Eastern Daylight Time
+"bezier_test" end time: Sep 14 12:20 Eastern Daylight Time
 "bezier_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -224,7 +224,7 @@ Test Passed.
 5/55 Test: builtin_gradients_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/builtin_gradients_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"builtin_gradients_test" start time: Sep 14 11:47 Eastern Daylight Time
+"builtin_gradients_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: cmapdata.pas's cmaps array has exactly 701 entries
@@ -241,7 +241,7 @@ all checks passed
 Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"builtin_gradients_test" end time: Sep 14 11:47 Eastern Daylight Time
+"builtin_gradients_test" end time: Sep 14 12:20 Eastern Daylight Time
 "builtin_gradients_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -249,7 +249,7 @@ Test Passed.
 6/55 Test: core_smoke_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/core_smoke_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"core_smoke_test" start time: Sep 14 11:47 Eastern Daylight Time
+"core_smoke_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: identity XForm (linear=1, identity affine) leaves a point unchanged
@@ -315,7 +315,7 @@ all checks passed
 Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"core_smoke_test" end time: Sep 14 11:47 Eastern Daylight Time
+"core_smoke_test" end time: Sep 14 12:20 Eastern Daylight Time
 "core_smoke_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -323,7 +323,7 @@ Test Passed.
 7/55 Test: flame_clone_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/flame_clone_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"flame_clone_test" start time: Sep 14 11:47 Eastern Daylight Time
+"flame_clone_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: cloneForRender(3) populates xform[0]
@@ -362,7 +362,7 @@ all checks passed
 Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"flame_clone_test" end time: Sep 14 11:47 Eastern Daylight Time
+"flame_clone_test" end time: Sep 14 12:20 Eastern Daylight Time
 "flame_clone_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -370,7 +370,7 @@ Test Passed.
 8/55 Test: flame_io_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/flame_io_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"flame_io_test" start time: Sep 14 11:47 Eastern Daylight Time
+"flame_io_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: saveFlameFile succeeds
@@ -437,10 +437,10 @@ ok: multi-flame string round-trip preserves order and names
 
 all checks passed
 <end of output>
-Test time =   0.04 sec
+Test time =   0.03 sec
 ----------------------------------------------------------
 Test Passed.
-"flame_io_test" end time: Sep 14 11:47 Eastern Daylight Time
+"flame_io_test" end time: Sep 14 12:20 Eastern Daylight Time
 "flame_io_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -448,7 +448,7 @@ Test Passed.
 9/55 Test: flame_ops_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/flame_ops_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"flame_ops_test" start time: Sep 14 11:47 Eastern Daylight Time
+"flame_ops_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: randomizeXformWeights sets every active xform's density into [0, 1)
@@ -468,7 +468,7 @@ all checks passed
 Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"flame_ops_test" end time: Sep 14 11:47 Eastern Daylight Time
+"flame_ops_test" end time: Sep 14 12:20 Eastern Daylight Time
 "flame_ops_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -476,7 +476,7 @@ Test Passed.
 10/55 Test: gpu_baseline_parity_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/gpu_baseline_parity_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"gpu_baseline_parity_test" start time: Sep 14 11:47 Eastern Daylight Time
+"gpu_baseline_parity_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: baseline fixture 'simple_sierpinski' loads as one flame
@@ -517,10 +517,10 @@ ok: final_xform: whole-flame CPU vs GPU PSNR 31.8 dB >= 15.0 dB threshold
 
 all checks passed
 <end of output>
-Test time =   1.62 sec
+Test time =   1.22 sec
 ----------------------------------------------------------
 Test Passed.
-"gpu_baseline_parity_test" end time: Sep 14 11:47 Eastern Daylight Time
+"gpu_baseline_parity_test" end time: Sep 14 12:20 Eastern Daylight Time
 "gpu_baseline_parity_test" time elapsed: 00:00:01
 ----------------------------------------------------------
 
@@ -528,7 +528,7 @@ Test Passed.
 11/55 Test: gpu_progress_control_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/gpu_progress_control_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"gpu_progress_control_test" start time: Sep 14 11:47 Eastern Daylight Time
+"gpu_progress_control_test" start time: Sep 14 12:20 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: progress: preview-scale test flame is GPU-eligible
@@ -538,30 +538,30 @@ ok: progress: an uncancelled GPU render's pointsDone reaches exactly pointsTarge
 ok: progress: the GPU render still produces a real image when a progress token is supplied
 ok: cancel: final-scale test flame is GPU-eligible
 ok: cancel: a cancelled final-scale GPU render stops with pointsDone short of pointsTarget
-ok: cancel: latency from cancelRequested to render thread joining was 0.028s (< 2.0s bound, vs RenderDialog's 0.150s UI poll interval)
+ok: cancel: latency from cancelRequested to render thread joining was 0.138s (< 2.0s bound, vs RenderDialog's 0.150s UI poll interval)
 ok: pause: final-scale test flame is GPU-eligible
-ok: pause: latency from pauseRequested to pointsDone freezing was 0.031s (< 2.0s bound)
+ok: pause: latency from pauseRequested to pointsDone freezing was 0.159s (< 2.0s bound)
 ok: pause: pointsDone stays frozen for as long as the GPU render stays paused
 ok: pause: clearing pauseRequested lets a paused GPU render reach completion normally
 ok: pause+cancel: final-scale test flame is GPU-eligible
 ok: pause+cancel: a GPU render cancelled while paused stops short, without needing Resume first
 ok: ticks: final-scale test flame is GPU-eligible
-ok: ticks: observed 23 distinct progress updates over a 8.812s final-scale GPU render (>= 3 expected - a responsive progress bar, not a single 0%->100% jump)
+ok: ticks: observed 10 distinct progress updates over a 3.292s final-scale GPU render (>= 3 expected - a responsive progress bar, not a single 0%->100% jump)
 
 all checks passed
 <end of output>
-Test time =  17.39 sec
+Test time =   9.38 sec
 ----------------------------------------------------------
 Test Passed.
-"gpu_progress_control_test" end time: Sep 14 11:48 Eastern Daylight Time
-"gpu_progress_control_test" time elapsed: 00:00:17
+"gpu_progress_control_test" end time: Sep 14 12:21 Eastern Daylight Time
+"gpu_progress_control_test" time elapsed: 00:00:09
 ----------------------------------------------------------
 
 12/55 Testing: gpu_variation_parity_test
 12/55 Test: gpu_variation_parity_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/gpu_variation_parity_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"gpu_variation_parity_test" start time: Sep 14 11:48 Eastern Daylight Time
+"gpu_variation_parity_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: linear: test flame is GPU-eligible
@@ -768,7 +768,7 @@ ok: pdj: test flame is GPU-eligible
 ok: pdj: GPU render produced pixel data
 ok: pdj: GPU image dimensions/channels match the CPU image
 ok: pdj: GPU render accepted at least some points
-ok: pdj: CPU vs GPU PSNR 50.9 dB >= 15.0 dB threshold
+ok: pdj: CPU vs GPU PSNR 50.4 dB >= 15.0 dB threshold
 ok: popcorn: test flame is GPU-eligible
 ok: popcorn: GPU render produced pixel data
 ok: popcorn: GPU image dimensions/channels match the CPU image
@@ -848,7 +848,7 @@ ok: fan2: test flame is GPU-eligible
 ok: fan2: GPU render produced pixel data
 ok: fan2: GPU image dimensions/channels match the CPU image
 ok: fan2: GPU render accepted at least some points
-ok: fan2: CPU vs GPU PSNR 51.9 dB >= 15.0 dB threshold
+ok: fan2: CPU vs GPU PSNR 49.6 dB >= 15.0 dB threshold
 ok: log: test flame is GPU-eligible
 ok: log: GPU render produced pixel data
 ok: log: GPU image dimensions/channels match the CPU image
@@ -908,7 +908,7 @@ ok: rings2: test flame is GPU-eligible
 ok: rings2: GPU render produced pixel data
 ok: rings2: GPU image dimensions/channels match the CPU image
 ok: rings2: GPU render accepted at least some points
-ok: rings2: CPU vs GPU PSNR 59.5 dB >= 15.0 dB threshold
+ok: rings2: CPU vs GPU PSNR 50.6 dB >= 15.0 dB threshold
 ok: scry: test flame is GPU-eligible
 ok: scry: GPU render produced pixel data
 ok: scry: GPU image dimensions/channels match the CPU image
@@ -998,27 +998,27 @@ ok: julian: test flame is GPU-eligible
 ok: julian: GPU render produced pixel data
 ok: julian: GPU image dimensions/channels match the CPU image
 ok: julian: GPU render accepted at least some points
-ok: julian: CPU vs GPU PSNR 54.4 dB >= 15.0 dB threshold
+ok: julian: CPU vs GPU PSNR 51.4 dB >= 15.0 dB threshold
 ok: juliascope: test flame is GPU-eligible
 ok: juliascope: GPU render produced pixel data
 ok: juliascope: GPU image dimensions/channels match the CPU image
 ok: juliascope: GPU render accepted at least some points
-ok: juliascope: CPU vs GPU PSNR 53.2 dB >= 15.0 dB threshold
+ok: juliascope: CPU vs GPU PSNR 53.5 dB >= 15.0 dB threshold
 ok: julia3Dz: test flame is GPU-eligible
 ok: julia3Dz: GPU render produced pixel data
 ok: julia3Dz: GPU image dimensions/channels match the CPU image
 ok: julia3Dz: GPU render accepted at least some points
-ok: julia3Dz: CPU vs GPU PSNR 54.4 dB >= 15.0 dB threshold
+ok: julia3Dz: CPU vs GPU PSNR 46.7 dB >= 15.0 dB threshold
 ok: julia3D: test flame is GPU-eligible
 ok: julia3D: GPU render produced pixel data
 ok: julia3D: GPU image dimensions/channels match the CPU image
 ok: julia3D: GPU render accepted at least some points
-ok: julia3D: CPU vs GPU PSNR 53.3 dB >= 15.0 dB threshold
+ok: julia3D: CPU vs GPU PSNR 49.8 dB >= 15.0 dB threshold
 ok: radial_blur: test flame is GPU-eligible
 ok: radial_blur: GPU render produced pixel data
 ok: radial_blur: GPU image dimensions/channels match the CPU image
 ok: radial_blur: GPU render accepted at least some points
-ok: radial_blur: CPU vs GPU PSNR 35.5 dB >= 15.0 dB threshold
+ok: radial_blur: CPU vs GPU PSNR 37.1 dB >= 15.0 dB threshold
 ok: falloff2: test flame is GPU-eligible
 ok: falloff2: GPU render produced pixel data
 ok: falloff2: GPU image dimensions/channels match the CPU image
@@ -1051,18 +1051,18 @@ ok: float-precision: CPU vs GPU PSNR 53.9 dB >= 15.0 dB threshold
 
 all checks passed
 <end of output>
-Test time =  58.12 sec
+Test time =  26.41 sec
 ----------------------------------------------------------
 Test Passed.
-"gpu_variation_parity_test" end time: Sep 14 11:49 Eastern Daylight Time
-"gpu_variation_parity_test" time elapsed: 00:00:58
+"gpu_variation_parity_test" end time: Sep 14 12:21 Eastern Daylight Time
+"gpu_variation_parity_test" time elapsed: 00:00:26
 ----------------------------------------------------------
 
 13/55 Testing: gradient_io_test
 13/55 Test: gradient_io_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/gradient_io_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"gradient_io_test" start time: Sep 14 11:49 Eastern Daylight Time
+"gradient_io_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: loadGradientFile succeeds for a .map file
@@ -1084,10 +1084,10 @@ ok: loading a nonexistent .ugr file fails cleanly
 
 all checks passed
 <end of output>
-Test time =   0.02 sec
+Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"gradient_io_test" end time: Sep 14 11:49 Eastern Daylight Time
+"gradient_io_test" end time: Sep 14 12:21 Eastern Daylight Time
 "gradient_io_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1095,7 +1095,7 @@ Test Passed.
 14/55 Test: gradient_ops_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/gradient_ops_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"gradient_ops_test" start time: Sep 14 11:49 Eastern Daylight Time
+"gradient_ops_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: rotateGradient(10): entry 10 takes entry 0's old value
@@ -1126,10 +1126,10 @@ ok: adjustScale doubles pixelsPerUnit when width doubles (100->200)
 
 all checks passed
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"gradient_ops_test" end time: Sep 14 11:49 Eastern Daylight Time
+"gradient_ops_test" end time: Sep 14 12:21 Eastern Daylight Time
 "gradient_ops_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1137,7 +1137,7 @@ Test Passed.
 15/55 Test: mutation_ops_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/mutation_ops_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"mutation_ops_test" start time: Sep 14 11:49 Eastern Daylight Time
+"mutation_ops_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: randomizeXforms always produces an xform count within [min,max]
@@ -1866,7 +1866,7 @@ all checks passed
 Test time =   0.03 sec
 ----------------------------------------------------------
 Test Passed.
-"mutation_ops_test" end time: Sep 14 11:49 Eastern Daylight Time
+"mutation_ops_test" end time: Sep 14 12:21 Eastern Daylight Time
 "mutation_ops_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1874,7 +1874,7 @@ Test Passed.
 16/55 Test: plugin_variations_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/plugin_variations_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"plugin_variations_test" start time: Sep 14 11:49 Eastern Daylight Time
+"plugin_variations_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: bcircle plugin is registered
@@ -1894,7 +1894,7 @@ all checks passed
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"plugin_variations_test" end time: Sep 14 11:49 Eastern Daylight Time
+"plugin_variations_test" end time: Sep 14 12:21 Eastern Daylight Time
 "plugin_variations_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1902,7 +1902,7 @@ Test Passed.
 17/55 Test: png_writer_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/png_writer_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"png_writer_test" start time: Sep 14 11:49 Eastern Daylight Time
+"png_writer_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: writePng succeeds for an RGB buffer
@@ -1919,7 +1919,7 @@ all checks passed
 Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"png_writer_test" end time: Sep 14 11:49 Eastern Daylight Time
+"png_writer_test" end time: Sep 14 12:21 Eastern Daylight Time
 "png_writer_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -1927,7 +1927,7 @@ Test Passed.
 18/55 Test: random_flame_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/random_flame_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"random_flame_test" start time: Sep 14 11:49 Eastern Daylight Time
+"random_flame_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: the flame has the requested dimensions
@@ -2022,10 +2022,10 @@ ok: CurrentGradient with no currentGradient supplied falls back to a real (calcu
 
 all checks passed
 <end of output>
-Test time =   0.10 sec
+Test time =   0.09 sec
 ----------------------------------------------------------
 Test Passed.
-"random_flame_test" end time: Sep 14 11:49 Eastern Daylight Time
+"random_flame_test" end time: Sep 14 12:21 Eastern Daylight Time
 "random_flame_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2033,7 +2033,7 @@ Test Passed.
 19/55 Test: renderer_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/renderer_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"renderer_test" start time: Sep 14 11:49 Eastern Daylight Time
+"renderer_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: rendered image has the requested dimensions
@@ -2099,18 +2099,18 @@ ok: a degenerate flame's early return leaves every RenderTimings field untouched
 
 all checks passed
 <end of output>
-Test time =  11.02 sec
+Test time =  10.10 sec
 ----------------------------------------------------------
 Test Passed.
-"renderer_test" end time: Sep 14 11:49 Eastern Daylight Time
-"renderer_test" time elapsed: 00:00:11
+"renderer_test" end time: Sep 14 12:21 Eastern Daylight Time
+"renderer_test" time elapsed: 00:00:10
 ----------------------------------------------------------
 
 20/55 Testing: smooth_palette_test
 20/55 Test: smooth_palette_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/smooth_palette_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"smooth_palette_test" start time: Sep 14 11:49 Eastern Daylight Time
+"smooth_palette_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: a null pixel buffer returns false
@@ -2129,10 +2129,10 @@ ok: the smoothed ordering has a lower total adjacent-color distance than a rando
 
 all checks passed
 <end of output>
-Test time =   0.04 sec
+Test time =   0.03 sec
 ----------------------------------------------------------
 Test Passed.
-"smooth_palette_test" end time: Sep 14 11:49 Eastern Daylight Time
+"smooth_palette_test" end time: Sep 14 12:21 Eastern Daylight Time
 "smooth_palette_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2140,7 +2140,7 @@ Test Passed.
 21/55 Test: symmetry_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/symmetry_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"symmetry_test" start time: Sep 14 11:49 Eastern Daylight Time
+"symmetry_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: sym=0 is a no-op
@@ -2171,7 +2171,7 @@ all checks passed
 Test time =   0.02 sec
 ----------------------------------------------------------
 Test Passed.
-"symmetry_test" end time: Sep 14 11:49 Eastern Daylight Time
+"symmetry_test" end time: Sep 14 12:21 Eastern Daylight Time
 "symmetry_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2179,7 +2179,7 @@ Test Passed.
 22/55 Test: triangle_geometry_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/triangle_geometry_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"triangle_geometry_test" start time: Sep 14 11:49 Eastern Daylight Time
+"triangle_geometry_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: identity: O is at the origin
@@ -2205,7 +2205,7 @@ all checks passed
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"triangle_geometry_test" end time: Sep 14 11:49 Eastern Daylight Time
+"triangle_geometry_test" end time: Sep 14 12:21 Eastern Daylight Time
 "triangle_geometry_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2213,7 +2213,7 @@ Test Passed.
 23/55 Test: variation_roundtrip_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variation_roundtrip_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variation_roundtrip_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variation_roundtrip_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: all registered variations round-trip through FlameIO (143/143)
@@ -2222,10 +2222,10 @@ ok: at least one non-deterministic-default variation's parameter was actually ex
 
 all checks passed
 <end of output>
-Test time =   0.44 sec
+Test time =   0.56 sec
 ----------------------------------------------------------
 Test Passed.
-"variation_roundtrip_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variation_roundtrip_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variation_roundtrip_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2233,7 +2233,7 @@ Test Passed.
 24/55 Test: variations_batch1_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch1_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variations_batch1_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch1_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: bipolar is registered
@@ -2264,7 +2264,7 @@ all checks passed
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"variations_batch1_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch1_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variations_batch1_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2272,7 +2272,7 @@ Test Passed.
 25/55 Test: variations_batch2_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch2_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variations_batch2_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch2_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: curl
@@ -2292,10 +2292,10 @@ ok: foci at the origin hits the tmp==0 guard and leaves x/y at 0
 
 all checks passed
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"variations_batch2_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch2_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variations_batch2_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2303,7 +2303,7 @@ Test Passed.
 26/55 Test: variations_batch3_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch3_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variations_batch3_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch3_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: hemisphere matches hand-computed formula, including Pz's raw-t (not vvar*Tz) quirk
@@ -2320,7 +2320,7 @@ all checks passed
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"variations_batch3_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch3_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variations_batch3_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2328,7 +2328,7 @@ Test Passed.
 27/55 Test: variations_batch4_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch4_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variations_batch4_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch4_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: mobius is registered
@@ -2351,10 +2351,10 @@ ok: post_curl3D with default zero cx/cy/cz is an identity map (assigns all of px
 
 all checks passed
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"variations_batch4_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch4_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variations_batch4_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2362,7 +2362,7 @@ Test Passed.
 28/55 Test: variations_batch5_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch5_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variations_batch5_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch5_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: post_falloff2 with all mul_* = 0 passes through the linear-accumulated point unchanged
@@ -2378,7 +2378,7 @@ all checks passed
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"variations_batch5_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch5_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variations_batch5_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2386,7 +2386,7 @@ Test Passed.
 29/55 Test: variations_batch6_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch6_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variations_batch6_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch6_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: radial_blur is registered
@@ -2406,10 +2406,10 @@ ok: wedge with default params at (1,0) matches hand-computed formula
 
 all checks passed
 <end of output>
-Test time =   0.02 sec
+Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"variations_batch6_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch6_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variations_batch6_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2417,7 +2417,7 @@ Test Passed.
 30/55 Test: variations_batch7_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch7_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variations_batch7_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch7_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: heart is registered
@@ -2466,7 +2466,7 @@ all checks passed
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"variations_batch7_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch7_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variations_batch7_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2474,7 +2474,7 @@ Test Passed.
 31/55 Test: variations_batch8_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch8_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variations_batch8_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch8_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: sinhpow is registered
@@ -2489,7 +2489,7 @@ all checks passed
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"variations_batch8_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch8_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variations_batch8_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2497,7 +2497,7 @@ Test Passed.
 32/55 Test: variations_batch9_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch9_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests
-"variations_batch9_test" start time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch9_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: sinhpowia is registered
@@ -2512,7 +2512,7 @@ all checks passed
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"variations_batch9_test" end time: Sep 14 11:49 Eastern Daylight Time
+"variations_batch9_test" end time: Sep 14 12:21 Eastern Daylight Time
 "variations_batch9_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2520,7 +2520,7 @@ Test Passed.
 33/55 Test: triangle_canvas_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/triangle_canvas_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"triangle_canvas_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"triangle_canvas_interaction_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: a Move body-drag preserves the O->X vector (pure translation - no shear/rotate/scale)
@@ -2669,10 +2669,10 @@ ok: Ctrl+Shift+Z redoes the weight edit
 
 all checks passed
 <end of output>
-Test time =   0.67 sec
+Test time =   0.54 sec
 ----------------------------------------------------------
 Test Passed.
-"triangle_canvas_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"triangle_canvas_interaction_test" end time: Sep 14 12:21 Eastern Daylight Time
 "triangle_canvas_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2680,7 +2680,7 @@ Test Passed.
 34/55 Test: adjust_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/adjust_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"adjust_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"adjust_dialog_interaction_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: AdjustDialog exposes a zoomCtrl SliderSpin
@@ -2722,10 +2722,10 @@ ok: clicking the gradient strip itself opens a GradientBrowserDialog child, same
 
 all checks passed
 <end of output>
-Test time =   0.63 sec
+Test time =   0.48 sec
 ----------------------------------------------------------
 Test Passed.
-"adjust_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"adjust_dialog_interaction_test" end time: Sep 14 12:21 Eastern Daylight Time
 "adjust_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2733,7 +2733,7 @@ Test Passed.
 35/55 Test: render_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/render_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"render_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"render_dialog_interaction_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: RenderDialog exposes width/height/density/oversample/filterRadius/adaptiveFilter/transparentBackground controls
@@ -2833,7 +2833,7 @@ all checks passed
 Test time =   1.27 sec
 ----------------------------------------------------------
 Test Passed.
-"render_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"render_dialog_interaction_test" end time: Sep 14 12:21 Eastern Daylight Time
 "render_dialog_interaction_test" time elapsed: 00:00:01
 ----------------------------------------------------------
 
@@ -2841,7 +2841,7 @@ Test Passed.
 36/55 Test: options_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/options_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"options_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"options_dialog_interaction_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: OptionsDialog exposes threadCountSpin and previewQualityCombo
@@ -2903,10 +2903,10 @@ ok: OK persists edited default resolution to AppSettings
 
 all checks passed
 <end of output>
-Test time =   0.16 sec
+Test time =   0.14 sec
 ----------------------------------------------------------
 Test Passed.
-"options_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"options_dialog_interaction_test" end time: Sep 14 12:21 Eastern Daylight Time
 "options_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2914,7 +2914,7 @@ Test Passed.
 37/55 Test: mutate_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/mutate_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"mutate_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"mutate_dialog_interaction_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: MutateDialog exposes trend/strength/checkboxes/back/grid-cell controls
@@ -2941,10 +2941,10 @@ ok: the center grid cell receives a real rendered icon within the timeout
 
 all checks passed
 <end of output>
-Test time =   0.50 sec
+Test time =   0.35 sec
 ----------------------------------------------------------
 Test Passed.
-"mutate_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"mutate_dialog_interaction_test" end time: Sep 14 12:21 Eastern Daylight Time
 "mutate_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -2952,7 +2952,7 @@ Test Passed.
 38/55 Test: gradient_browser_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/gradient_browser_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"gradient_browser_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"gradient_browser_dialog_interaction_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: list, applyButton, and previewStrip found
@@ -2991,10 +2991,10 @@ ok: Apply stays disabled with nothing loaded
 
 all checks passed
 <end of output>
-Test time =   0.09 sec
+Test time =   0.08 sec
 ----------------------------------------------------------
 Test Passed.
-"gradient_browser_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"gradient_browser_dialog_interaction_test" end time: Sep 14 12:21 Eastern Daylight Time
 "gradient_browser_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3002,7 +3002,7 @@ Test Passed.
 39/55 Test: fullscreen_view_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/fullscreen_view_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"fullscreen_view_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"fullscreen_view_interaction_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: FullscreenView exposes its image and status labels
@@ -3017,10 +3017,10 @@ ok: Cancel Render in the context menu actually stops the render
 
 all checks passed
 <end of output>
-Test time =   0.68 sec
+Test time =   0.53 sec
 ----------------------------------------------------------
 Test Passed.
-"fullscreen_view_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"fullscreen_view_interaction_test" end time: Sep 14 12:21 Eastern Daylight Time
 "fullscreen_view_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3028,7 +3028,7 @@ Test Passed.
 40/55 Test: main_window_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/main_window_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"main_window_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"main_window_interaction_test" start time: Sep 14 12:21 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: MainWindow exposes a newFlameAction
@@ -3263,18 +3263,18 @@ ok: triggering About opens a modal dialog titled 'About ...' and it closes clean
 
 all checks passed
 <end of output>
-Test time =  15.03 sec
+Test time =  17.65 sec
 ----------------------------------------------------------
 Test Passed.
-"main_window_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
-"main_window_interaction_test" time elapsed: 00:00:15
+"main_window_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
+"main_window_interaction_test" time elapsed: 00:00:17
 ----------------------------------------------------------
 
 41/55 Testing: curves_dialog_interaction_test
 41/55 Test: curves_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/curves_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"curves_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"curves_dialog_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: CurvesDialog exposes channel combo/curves widget/weight sliders/reset buttons
@@ -3300,10 +3300,10 @@ ok: Reset All restores every channel's weight back to the dialog's captured star
 
 all checks passed
 <end of output>
-Test time =   0.38 sec
+Test time =   0.30 sec
 ----------------------------------------------------------
 Test Passed.
-"curves_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"curves_dialog_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
 "curves_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3311,7 +3311,7 @@ Test Passed.
 42/55 Test: postprocess_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/postprocess_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"postprocess_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"postprocess_dialog_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: PostProcessDialog exposes all five tone sliders plus background/reset/save/progress/status
@@ -3337,10 +3337,10 @@ ok: the saved PNG matches the flame's own width/height (PostProcessDialog reuses
 
 all checks passed
 <end of output>
-Test time =   0.46 sec
+Test time =   0.37 sec
 ----------------------------------------------------------
 Test Passed.
-"postprocess_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"postprocess_dialog_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
 "postprocess_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3348,7 +3348,7 @@ Test Passed.
 43/55 Test: xaos_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/xaos_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"xaos_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"xaos_dialog_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: XaosDialog exposes an xaosTable
@@ -3382,7 +3382,7 @@ all checks passed
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"xaos_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"xaos_dialog_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
 "xaos_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3390,7 +3390,7 @@ Test Passed.
 44/55 Test: force_symmetry_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/force_symmetry_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"force_symmetry_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"force_symmetry_dialog_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: ForceSymmetryDialog exposes kindCombo/orderSpin/applyButton/closeButton
@@ -3412,7 +3412,7 @@ all checks passed
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"force_symmetry_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"force_symmetry_dialog_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
 "force_symmetry_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3420,7 +3420,7 @@ Test Passed.
 45/55 Test: transform_panel_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/transform_panel_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"transform_panel_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"transform_panel_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: TransformPanel exposes transformNameEdit and transformWeightSpin
@@ -3536,10 +3536,10 @@ ok: switching selection re-seeds the variations table
 
 all checks passed
 <end of output>
-Test time =   0.25 sec
+Test time =   0.14 sec
 ----------------------------------------------------------
 Test Passed.
-"transform_panel_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"transform_panel_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
 "transform_panel_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3547,7 +3547,7 @@ Test Passed.
 46/55 Test: preview_label_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/preview_label_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"preview_label_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"preview_label_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: scrolling up (positive angleDelta) increases Flame::zoom - zooms in
@@ -3569,7 +3569,7 @@ all checks passed
 Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"preview_label_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"preview_label_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
 "preview_label_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3577,7 +3577,7 @@ Test Passed.
 47/55 Test: render_all_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/render_all_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"render_all_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"render_all_dialog_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: RenderAllDialog exposes all its shared-setting controls and the results list
@@ -3628,10 +3628,10 @@ ok: Render All is re-enabled again after a cancelled batch
 
 all checks passed
 <end of output>
-Test time =   0.77 sec
+Test time =   0.75 sec
 ----------------------------------------------------------
 Test Passed.
-"render_all_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"render_all_dialog_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
 "render_all_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3639,7 +3639,7 @@ Test Passed.
 48/55 Test: smooth_palette_dialog_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/smooth_palette_dialog_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"smooth_palette_dialog_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"smooth_palette_dialog_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: controls found
@@ -3665,10 +3665,10 @@ ok: Apply stays disabled after a failed load
 
 all checks passed
 <end of output>
-Test time =   0.14 sec
+Test time =   0.13 sec
 ----------------------------------------------------------
 Test Passed.
-"smooth_palette_dialog_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"smooth_palette_dialog_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
 "smooth_palette_dialog_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3676,7 +3676,7 @@ Test Passed.
 49/55 Test: memory_budget_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/memory_budget_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"memory_budget_test" start time: Sep 14 11:49 Eastern Daylight Time
+"memory_budget_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: a request that comfortably fits the budget is not clamped
@@ -3700,7 +3700,7 @@ all checks passed
 Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"memory_budget_test" end time: Sep 14 11:49 Eastern Daylight Time
+"memory_budget_test" end time: Sep 14 12:22 Eastern Daylight Time
 "memory_budget_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3708,7 +3708,7 @@ Test Passed.
 50/55 Test: update_checker_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/update_checker_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"update_checker_test" start time: Sep 14 11:49 Eastern Daylight Time
+"update_checker_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: a higher patch version is newer
@@ -3730,7 +3730,7 @@ all checks passed
 Test time =   0.04 sec
 ----------------------------------------------------------
 Test Passed.
-"update_checker_test" end time: Sep 14 11:49 Eastern Daylight Time
+"update_checker_test" end time: Sep 14 12:22 Eastern Daylight Time
 "update_checker_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3738,7 +3738,7 @@ Test Passed.
 51/55 Test: editor_window_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/editor_window_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"editor_window_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"editor_window_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: test setup: the Editor's initial preview render completes
@@ -3748,18 +3748,18 @@ ok: the status bar still reports the final "Rendered..." message once the render
 
 all checks passed
 <end of output>
-Test time =   1.47 sec
+Test time =   0.58 sec
 ----------------------------------------------------------
 Test Passed.
-"editor_window_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
-"editor_window_interaction_test" time elapsed: 00:00:01
+"editor_window_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
+"editor_window_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
 52/55 Testing: window_geometry_test
 52/55 Test: window_geometry_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/window_geometry_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"window_geometry_test" start time: Sep 14 11:49 Eastern Daylight Time
+"window_geometry_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: MainWindow: closing after a resize saves a new geometry
@@ -3773,10 +3773,10 @@ ok: OptionsDialog: reopening restores the last-used size
 
 all checks passed
 <end of output>
-Test time =   0.42 sec
+Test time =   0.46 sec
 ----------------------------------------------------------
 Test Passed.
-"window_geometry_test" end time: Sep 14 11:49 Eastern Daylight Time
+"window_geometry_test" end time: Sep 14 12:22 Eastern Daylight Time
 "window_geometry_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3784,7 +3784,7 @@ Test Passed.
 53/55 Test: adjust_panel_interaction_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/adjust_panel_interaction_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"adjust_panel_interaction_test" start time: Sep 14 11:49 Eastern Daylight Time
+"adjust_panel_interaction_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: AdjustPanel exposes a zoomCtrl SliderSpin
@@ -3807,7 +3807,7 @@ all checks passed
 Test time =   0.06 sec
 ----------------------------------------------------------
 Test Passed.
-"adjust_panel_interaction_test" end time: Sep 14 11:49 Eastern Daylight Time
+"adjust_panel_interaction_test" end time: Sep 14 12:22 Eastern Daylight Time
 "adjust_panel_interaction_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3815,7 +3815,7 @@ Test Passed.
 54/55 Test: editor_window_adjust_panel_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/editor_window_adjust_panel_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"editor_window_adjust_panel_test" start time: Sep 14 11:49 Eastern Daylight Time
+"editor_window_adjust_panel_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: EditorWindow exposes adjustAction, rightPanelTabBar, and both panels
@@ -3829,10 +3829,10 @@ ok: Ctrl+Shift+Z redoes it
 
 all checks passed
 <end of output>
-Test time =   0.20 sec
+Test time =   0.17 sec
 ----------------------------------------------------------
 Test Passed.
-"editor_window_adjust_panel_test" end time: Sep 14 11:49 Eastern Daylight Time
+"editor_window_adjust_panel_test" end time: Sep 14 12:22 Eastern Daylight Time
 "editor_window_adjust_panel_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
@@ -3840,7 +3840,7 @@ Test Passed.
 55/55 Test: editor_splitter_test
 Command: "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui/editor_splitter_test.exe"
 Directory: C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/ui
-"editor_splitter_test" start time: Sep 14 11:49 Eastern Daylight Time
+"editor_splitter_test" start time: Sep 14 12:22 Eastern Daylight Time
 Output:
 ----------------------------------------------------------
 ok: EditorWindow exposes its central splitter as "centralSplitter"
@@ -3850,11 +3850,11 @@ ok: reopening the editor restores the sidebar to its last-dragged width
 
 all checks passed
 <end of output>
-Test time =   0.33 sec
+Test time =   0.21 sec
 ----------------------------------------------------------
 Test Passed.
-"editor_splitter_test" end time: Sep 14 11:49 Eastern Daylight Time
+"editor_splitter_test" end time: Sep 14 12:22 Eastern Daylight Time
 "editor_splitter_test" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Sep 14 11:49 Eastern Daylight Time
+End testing: Sep 14 12:22 Eastern Daylight Time

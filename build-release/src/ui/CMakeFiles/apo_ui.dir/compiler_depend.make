@@ -795,6 +795,7 @@ src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: "C:\Program Files (x86)\Micro
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
+src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QAction
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QCloseEvent
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qevent.h
@@ -874,7 +875,6 @@ src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\inclu
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\io\PngWriter.h
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\RenderDispatcher.h
-src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\Renderer.h
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QByteArray
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
@@ -2091,6 +2091,7 @@ src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: "C:\Program Files (x86)\Micro
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
+src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QCloseEvent
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qevent.h
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcoreevent.h
@@ -2184,7 +2185,6 @@ src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\inclu
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\io\PngWriter.h
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\RenderDispatcher.h
-src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\Renderer.h
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SliderSpin.h
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QWidget
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h
@@ -6149,6 +6149,7 @@ src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: "C:\Program Files (x86)\Micro
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
+src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QCheckBox
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qcheckbox.h
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qabstractbutton.h
@@ -6246,7 +6247,6 @@ src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\inclu
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\io\PngWriter.h
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\RenderDispatcher.h
-src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\Renderer.h
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SliderSpin.h
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QWidget
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h
@@ -11785,6 +11785,7 @@ src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: "C:\Progra
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\moc_AdjustPanel.cpp
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\AdjustPanel.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QWidget
@@ -11805,7 +11806,6 @@ src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qmainwindow.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qtabwidget.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
-src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\moc_ForceSymmetryDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\ForceSymmetryDialog.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QDialog
@@ -12827,15 +12827,15 @@ src\ui\AppVersion.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrect.h:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpoint.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.h:
+
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\namespaceapi.h":
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\QCloseEvent:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\QEvent:
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.h:
-
-C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpoint.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qrgb.h:
 
@@ -13010,8 +13010,6 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderWorker.h:
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\QDebug:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qactiongroup.h:
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\Renderer.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h:
 

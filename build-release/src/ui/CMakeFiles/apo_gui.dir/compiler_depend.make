@@ -424,6 +424,7 @@ src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: "C:\Program Files (x86)\Microsoft Vi
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
+src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesDialog.h
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QDialog
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QImage
@@ -435,7 +436,6 @@ src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWi
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qmainwindow.h
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qtabwidget.h
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
-src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.h
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QDialog
 src\ui\CMakeFiles\apo_gui.dir\main.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString

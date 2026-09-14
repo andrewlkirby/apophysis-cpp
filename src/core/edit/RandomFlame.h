@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "../Flame.h"
+#include "../render/AutoFrame.h"
 
 namespace apo {
 
@@ -78,6 +79,10 @@ enum class RandomGradientSource {
 // comment) - lets a caller that generates many flames (e.g. a random
 // batch) detect and discard/retry ones that would otherwise render blank,
 // without duplicating the sampling work autoFrameFlame already does here.
+// `minValidSamples` passes straight through to that same autoFrameFlame
+// call - see its own doc comment; user-configurable via AppSettings's
+// randomMinFramingSamples, so the UI layer (not this core function) owns
+// the actual value used for random-batch generation.
 std::unique_ptr<Flame> generateRandomFlame(std::uint64_t seed, int width, int height,
                                             int minXforms = kDefaultMinRandomXforms,
                                             int maxXforms = kDefaultMaxRandomXforms, int variationIndex = -1,
@@ -88,6 +93,7 @@ std::unique_ptr<Flame> generateRandomFlame(std::uint64_t seed, int width, int he
                                             double minVariationWeight = 1.0, double maxVariationWeight = 1.0,
                                             bool randomizeVariationParameters = false,
                                             double parameterRandomizationStrength = 1.0,
-                                            bool* hasContent = nullptr);
+                                            bool* hasContent = nullptr,
+                                            int minValidSamples = kDefaultMinValidSamples);
 
 } // namespace apo

@@ -576,6 +576,6 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QWidget
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/BuiltinGradients.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/edit/RandomFlame.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/edit/../render/AutoFrame.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/edit/Symmetry.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/AutoFrame.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/io/FlameIO.h

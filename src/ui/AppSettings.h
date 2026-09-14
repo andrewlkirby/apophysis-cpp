@@ -95,6 +95,18 @@ void setRandomKeepBackground(bool keep);
 // render blank) is retried with a new seed instead of being kept as-is.
 bool randomDiscardBlank();
 void setRandomDiscardBlank(bool discard);
+// How strict discarding is (only meaningful while randomDiscardBlank() is
+// on): the minimum number of AutoFrame.h's 10000-point sample that must
+// come back finite for a freshly-generated random flame to be accepted -
+// passed straight through to generateRandomFlame's minValidSamples
+// parameter (core/edit/RandomFlame.h), which passes it straight through to
+// autoFrameFlame (core/render/AutoFrame.h) - see its own doc comment for
+// what this actually guards against (near-total numerical divergence) and
+// why raising it is basically free. Defaults to AutoFrame.h's own
+// kDefaultMinValidSamples, so a fresh install matches that recommended
+// value exactly.
+int randomMinFramingSamples();
+void setRandomMinFramingSamples(int count);
 int mutationMinXforms();
 void setMutationMinXforms(int count);
 int mutationMaxXforms();

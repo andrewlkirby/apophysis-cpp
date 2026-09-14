@@ -1296,10 +1296,10 @@ src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: "C:\Program Files (x8
 src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h"
 src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
 src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
+src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h
 src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\GradientOps.h
 src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\MutationOps.h
 src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\BuiltinGradients.h
-src\core\CMakeFiles\apo_core.dir\edit\RandomFlame.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h
 
 
 src\core\CMakeFiles\apo_core.dir\edit\SmoothPalette.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\SmoothPalette.cpp
@@ -21215,13 +21215,13 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\RandomFla
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\..\VariationRegistration.h:
 
-"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv.h":
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\BuiltinGradients.h:
-
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarBlob.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h:
+
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv.h":
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\BuiltinGradients.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\SmoothPalette.cpp:
 

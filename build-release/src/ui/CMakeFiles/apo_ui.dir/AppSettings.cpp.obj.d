@@ -335,4 +335,17 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Rng.h
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/random
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_int128.hpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/AutoFrame.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/../Flame.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Bezier.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/ColorMap.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
+C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/mutex
+C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/thread
+C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/process.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/corecrt_startup.h
+C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/math.h
+C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/vcruntime_startup.h
+C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/stop_token
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Point3.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/gpu/VariationKinds.h

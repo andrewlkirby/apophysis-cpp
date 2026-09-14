@@ -83,6 +83,24 @@ public:
     // path rather than just the core render library.
     void setAutoScreenshot(const QString& path, bool exitAfter);
 
+    // Testing hook only (see main_window_interaction_test.cpp's
+    // testMainPreviewShowsProgressDuringAFullQualityRender) - exposes
+    // whichever RenderProgress token is currently in flight for the
+    // full-quality preview path (or null if none is - see requestRender()'s
+    // own comment on why only that path gets one), so a test can pause it
+    // deterministically right after triggering a tracked render, rather
+    // than tuning a fixture's density to reliably take some specific
+    // amount of wall-clock time - a real render's actual duration varies
+    // too much across machines and over time (this test used to do exactly
+    // that, and needed re-tuning more than once as the render path got
+    // faster - see the comment this replaced) for any fixed value to
+    // reliably be both slow enough to observe a progress tick and fast
+    // enough not to time out. Same idea as EditorWindow's own
+    // currentRenderProgressForTesting() and RenderDialog's *real* Pause
+    // button letting its own tests sidestep this exact problem (see
+    // render_dialog_interaction_test.cpp's testPauseFreezesProgressUntilResumed).
+    apo::RenderProgress* currentRenderProgressForTesting() const { return progress_.get(); }
+
 protected:
     void resizeEvent(QResizeEvent* event) override;
     // Persists the window's final size/position (see WindowGeometry.h) once

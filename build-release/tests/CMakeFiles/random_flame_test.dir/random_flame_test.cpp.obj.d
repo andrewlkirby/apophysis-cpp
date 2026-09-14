@@ -147,3 +147,4 @@ C:/Program Files (x86)/Windows Kits/10/include/10.0.26100.0/ucrt/math.h
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/vcruntime_startup.h
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/stop_token
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Point3.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/edit/../render/AutoFrame.h

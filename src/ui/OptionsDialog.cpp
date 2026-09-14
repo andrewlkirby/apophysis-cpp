@@ -206,10 +206,23 @@ QWidget* OptionsDialog::buildRandomTab() {
     discardBlankCheck_ = new QCheckBox("Discard blank/degenerate flames", batchGroup);
     discardBlankCheck_->setObjectName("discardBlankCheck");
     discardBlankCheck_->setChecked(AppSettings::randomDiscardBlank());
+    minFramingSamplesSpin_ = new QSpinBox(batchGroup);
+    minFramingSamplesSpin_->setObjectName("minFramingSamplesSpin");
+    // Upper bound matches AutoFrame.cpp's fixed 10000-point sample size
+    // (there's nothing to gain requiring more valid points than are ever
+    // drawn); lower bound just keeps the field from being set to 0 (which
+    // would accept literally any flame, defeating the point of discarding).
+    minFramingSamplesSpin_->setRange(100, 10000);
+    minFramingSamplesSpin_->setSingleStep(100);
+    minFramingSamplesSpin_->setValue(AppSettings::randomMinFramingSamples());
+    minFramingSamplesSpin_->setToolTip(
+        "How many of the 10000 sampled points must land as valid, non-diverging points for a random flame to be "
+        "kept. Only matters while \"Discard blank/degenerate flames\" is checked. Recommended: 500.");
     batchForm->addRow("Default batch size", batchSizeSpin_);
     batchForm->addRow("Title prefix", batchTitlePrefixEdit_);
     batchForm->addRow(keepBackgroundCheck_);
     batchForm->addRow(discardBlankCheck_);
+    batchForm->addRow("Min valid sample count", minFramingSamplesSpin_);
     layout->addWidget(batchGroup);
 
     auto* mutationGroup = new QGroupBox("Mutation", tab);
@@ -443,6 +456,7 @@ void OptionsDialog::applyAndAccept() {
     AppSettings::setRandomBatchTitlePrefix(batchTitlePrefixEdit_->text());
     AppSettings::setRandomKeepBackground(keepBackgroundCheck_->isChecked());
     AppSettings::setRandomDiscardBlank(discardBlankCheck_->isChecked());
+    AppSettings::setRandomMinFramingSamples(minFramingSamplesSpin_->value());
     AppSettings::setRandomRestrictToGpuCompatible(restrictToGpuCompatibleCheck_->isChecked());
     AppSettings::setMutationMinXforms(mutationMinXformsSpin_->value());
     AppSettings::setMutationMaxXforms(mutationMaxXformsSpin_->value());

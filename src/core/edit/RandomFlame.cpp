@@ -23,7 +23,7 @@ std::unique_ptr<Flame> generateRandomFlame(std::uint64_t seed, int width, int he
                                             int minVariationsPerXform, int maxVariationsPerXform,
                                             double minVariationWeight, double maxVariationWeight,
                                             bool randomizeVariationParameters, double parameterRandomizationStrength,
-                                            bool* hasContent) {
+                                            bool* hasContent, int minValidSamples) {
     auto flame = std::make_unique<Flame>();
     flame->width = width;
     flame->height = height;
@@ -47,7 +47,7 @@ std::unique_ptr<Flame> generateRandomFlame(std::uint64_t seed, int width, int he
         flame->cmap = randomGradient(gradientRng);
     }
 
-    const bool framed = autoFrameFlame(*flame, seed + 2 * kSplitmixGamma);
+    const bool framed = autoFrameFlame(*flame, seed + 2 * kSplitmixGamma, minValidSamples);
     if (hasContent) *hasContent = framed;
 
     return flame;

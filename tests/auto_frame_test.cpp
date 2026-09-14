@@ -75,14 +75,19 @@ void testAutoFrameFlameCentersOnAnOffsetAttractor() {
     check(flame->pixelsPerUnit > 10.0, "a real (non-degenerate) attractor gets a proportional, non-fallback pixelsPerUnit");
 }
 
-void testAutoFrameFlameFallsBackForATightlyClusteredAttractor() {
+void testAutoFrameFlameRejectsATightlyClusteredAttractor() {
     // A single strongly-contracting linear xform - its chaos-game
     // iteration converges toward one fixed point (a "cluster" attractor
-    // with ~zero spread), matching CalcBoundbox's own near-zero-area
-    // fallback case.
+    // with ~zero spread). CalcBoundbox's original near-zero-area fallback
+    // would frame this at a default pixelsPerUnit=10, but a collapsed-to-
+    // one-point attractor is visually indistinguishable from blank at any
+    // zoom, so this port now treats it as degenerate instead (see
+    // autoFrameFlame's own doc comment).
     auto flame = std::make_unique<apo::Flame>();
     flame->width = 100;
     flame->height = 100;
+    flame->center = {1.0, 2.0};
+    flame->pixelsPerUnit = 42.0;
     apo::XForm& xf = *flame->xform[0];
     xf.clear();
     xf.density = 1.0;
@@ -91,12 +96,56 @@ void testAutoFrameFlameFallsBackForATightlyClusteredAttractor() {
     xf.c[2] = {10.0, -20.0}; // fixed point at c/(1-0.1) = (11.11, -22.22)
 
     const bool framed = apo::autoFrameFlame(*flame, /*seed=*/3);
-    check(framed, "a tightly-clustered attractor still has enough sampled points to count as framed");
+    check(!framed, "a tightly-clustered (near-zero-spread) attractor reports failed framing, not a fallback frame");
+    check(approxEqual(flame->center[0], 1.0) && approxEqual(flame->center[1], 2.0),
+          "...and its center is left untouched");
+    check(approxEqual(flame->pixelsPerUnit, 42.0), "...and its pixelsPerUnit is left untouched");
+}
 
-    check(approxEqual(flame->pixelsPerUnit, 10.0),
-          "a tightly-clustered (near-zero-spread) attractor falls back to pixelsPerUnit=10, matching CalcBoundbox");
-    check(std::abs(flame->center[0] - 11.11) < 0.5 && std::abs(flame->center[1] - (-22.22)) < 0.5,
-          "the fallback still centers on roughly the right point");
+void testAutoFrameFlameRejectsAnImplausiblyLargeAttractor() {
+    // A single strongly-expanding linear xform - its chaos-game iteration
+    // diverges toward increasingly large coordinates without ever hitting
+    // non-finite values, so it passes the finite-sample-count check but
+    // still trips the other CalcBoundbox-derived fallback: an implausibly
+    // large (>1000-unit) trimmed extent. CalcBoundbox's original fallback
+    // forced center=(0,0) here, which usually isn't anywhere near the
+    // actual attractor - this port now treats it as degenerate instead
+    // (see autoFrameFlame's own doc comment).
+    auto flame = std::make_unique<apo::Flame>();
+    flame->width = 100;
+    flame->height = 100;
+    flame->center = {1.0, 2.0};
+    flame->pixelsPerUnit = 42.0;
+    apo::XForm& xf = *flame->xform[0];
+    xf.clear();
+    xf.density = 1.0;
+    xf.c[0] = {1.5, 0.0};
+    xf.c[1] = {0.0, 1.5};
+    xf.c[2] = {500.0, 500.0};
+
+    const bool framed = apo::autoFrameFlame(*flame, /*seed=*/5);
+    check(!framed, "an implausibly large (>1000-unit) attractor extent reports failed framing, not a fallback frame");
+    check(approxEqual(flame->center[0], 1.0) && approxEqual(flame->center[1], 2.0),
+          "...and its center is left untouched");
+    check(approxEqual(flame->pixelsPerUnit, 42.0), "...and its pixelsPerUnit is left untouched");
+}
+
+void testAutoFrameFlameHonorsAConfigurableMinValidSampleCount() {
+    // A flame whose single xform has transOpacity=0 (excluded by
+    // samplePoints - see its own IterateXY-matching comment) produces zero
+    // sampled points, same as the "no active xforms" case below - cheap way
+    // to get a small-but-nonzero-ish boundary to probe minValidSamples
+    // against without relying on real numerical divergence.
+    auto flame = makeSierpinskiFlame();
+
+    const bool framedWithDefault = apo::autoFrameFlame(*flame, /*seed=*/9);
+    check(framedWithDefault, "a well-behaved attractor still frames successfully at the default minValidSamples");
+
+    auto flame2 = makeSierpinskiFlame();
+    const bool framedWithImpossibleMinimum = apo::autoFrameFlame(*flame2, /*seed=*/9, /*minValidSamples=*/1000000);
+    check(!framedWithImpossibleMinimum,
+          "raising minValidSamples above what any run could produce forces failed framing, confirming the "
+          "parameter is actually threaded through");
 }
 
 void testAutoFrameFlameLeavesDegenerateFlameUntouched() {
@@ -121,7 +170,9 @@ int main() {
     testSamplePointsIsEmptyForADegenerateFlame();
     testSamplePointsIsDeterministicGivenSeed();
     testAutoFrameFlameCentersOnAnOffsetAttractor();
-    testAutoFrameFlameFallsBackForATightlyClusteredAttractor();
+    testAutoFrameFlameRejectsATightlyClusteredAttractor();
+    testAutoFrameFlameRejectsAnImplausiblyLargeAttractor();
+    testAutoFrameFlameHonorsAConfigurableMinValidSampleCount();
     testAutoFrameFlameLeavesDegenerateFlameUntouched();
 
     return apo_test::reportAndExit();

@@ -5,6 +5,7 @@
 #include <QSettings>
 
 #include "core/VariationRegistry.h"
+#include "core/render/AutoFrame.h"
 #include "core/render/gpu/VariationKinds.h"
 
 namespace apo::ui::AppSettings {
@@ -99,6 +100,10 @@ bool randomKeepBackground() { return QSettings().value("random/keepBackground", 
 void setRandomKeepBackground(bool keep) { QSettings().setValue("random/keepBackground", keep); }
 bool randomDiscardBlank() { return QSettings().value("random/discardBlank", kDefaultRandomDiscardBlank).toBool(); }
 void setRandomDiscardBlank(bool discard) { QSettings().setValue("random/discardBlank", discard); }
+int randomMinFramingSamples() {
+    return QSettings().value("random/minFramingSamples", apo::kDefaultMinValidSamples).toInt();
+}
+void setRandomMinFramingSamples(int count) { QSettings().setValue("random/minFramingSamples", count); }
 int mutationMinXforms() { return QSettings().value("random/mutationMinXforms", kDefaultMutationMinXforms).toInt(); }
 void setMutationMinXforms(int count) { QSettings().setValue("random/mutationMinXforms", count); }
 int mutationMaxXforms() { return QSettings().value("random/mutationMaxXforms", kDefaultMutationMaxXforms).toInt(); }

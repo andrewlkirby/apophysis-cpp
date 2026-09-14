@@ -1693,6 +1693,19 @@ src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Rng.h
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\random"
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\AutoFrame.h
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\..\Flame.h
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Bezier.h
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\ColorMap.h
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\XForm.h
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\mutex"
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\thread"
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\process.h"
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_startup.h"
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_startup.h"
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stop_token"
+src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Point3.h
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\gpu\VariationKinds.h
 
 
@@ -5490,8 +5503,8 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QWidget
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\BuiltinGradients.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\edit\RandomFlame.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\edit\Symmetry.h
-src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\AutoFrame.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\io\FlameIO.h
 
 
@@ -12751,9 +12764,9 @@ C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QLayout:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\QKeySequence:
 
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\AutoFrame.h:
-
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_print.hpp":
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\AutoFrame.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\ColorMap.h:
 
@@ -12827,15 +12840,15 @@ src\ui\AppVersion.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrect.h:
 
-C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpoint.h:
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.h:
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\namespaceapi.h":
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\QCloseEvent:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\QEvent:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpoint.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qrgb.h:
 
@@ -13063,6 +13076,12 @@ C:\Qt\6.8.0\msvc2022_64\include\QtGui\QWheelEvent:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\VariationRegistry.h:
 
+src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\SliderSpin.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\..\Flame.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\ColorMap.h:
+
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\gpu\VariationKinds.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtNetwork\QNetworkAccessManager:
@@ -13076,8 +13095,6 @@ C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QStackedWidget:
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesDialog.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\Bezier.h:
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\ColorMap.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesWidget.cpp:
 
@@ -13207,11 +13224,9 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.h:
 
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h:
+
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MemoryBudget.h:
-
-src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\SliderSpin.h:
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\..\Flame.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\windows.h":
 

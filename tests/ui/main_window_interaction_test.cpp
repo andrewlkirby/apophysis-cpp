@@ -58,6 +58,34 @@ using apo_test::check;
 
 namespace {
 
+// A real, contracting 3-xform Sierpinski-style IFS - unlike
+// makeTestFlame()/makeNamedFlame() below (a single identity-affine xform
+// with only a translation set), this has an actual fixed attractor
+// AutoFrame.h's autoFrameFlame() can frame. Needed by any test that
+// exercises Reset Location's real re-framing (testResetLocationRecomputes
+// ZoomAndCenter, testUndoRedoResetLocation): makeTestFlame()'s pure,
+// unbounded translation has no fixed point at all, which autoFrameFlame()
+// correctly treats as degenerate (see its own doc comment on the
+// >1000-unit-extent case) - same IFS auto_frame_test.cpp's own
+// makeSierpinskiFlame() uses.
+std::shared_ptr<apo::Flame> makeWellFramedFlame(const std::string& name) {
+    auto flame = std::make_shared<apo::Flame>();
+    flame->name = name;
+    flame->width = 100;
+    flame->height = 100;
+    const double corners[3][2] = {{-0.5, -0.5}, {0.5, -0.5}, {0.0, 0.5}};
+    for (int i = 0; i < 3; ++i) {
+        apo::XForm& xf = *flame->xform[i];
+        xf.clear();
+        xf.density = 1.0;
+        xf.color = i / 2.0;
+        xf.c[0] = {0.5, 0.0};
+        xf.c[1] = {0.0, 0.5};
+        xf.c[2] = {corners[i][0], corners[i][1]};
+    }
+    return flame;
+}
+
 std::shared_ptr<apo::Flame> makeTestFlame() {
     auto flame = std::make_shared<apo::Flame>();
     flame->name = "editor test flame";
@@ -586,7 +614,7 @@ void testUndoRedoResetLocation() {
     const std::string inputPath = "main_window_undo_reset_location_test_input.flame";
     std::remove(inputPath.c_str());
 
-    auto flameA = makeNamedFlame("Alpha");
+    auto flameA = makeWellFramedFlame("Alpha");
     flameA->zoom = 2.5;
     flameA->center = {37.0, -19.0};
     check(apo::saveFlameFile(inputPath, {flameA.get()}), "test setup: writing a 1-flame fixture succeeds");
@@ -1427,7 +1455,7 @@ void testResetLocationRecomputesZoomAndCenter() {
     std::remove(inputPath.c_str());
     std::remove(outputPath.c_str());
 
-    auto flameA = makeNamedFlame("Alpha");
+    auto flameA = makeWellFramedFlame("Alpha");
     flameA->zoom = 2.5;
     flameA->center = {37.0, -19.0}; // simulates a flame already zoomed/panned away from its own content
     check(apo::saveFlameFile(inputPath, {flameA.get()}), "test setup: writing a 1-flame fixture succeeds");
@@ -1842,29 +1870,23 @@ void testCameraGestureOnPreviewLabelMutatesTheSelectedFlameAndReRenders() {
 }
 
 void testMainPreviewShowsProgressDuringAFullQualityRender() {
-    // Large/dense enough that the render takes a real, perceptible amount
-    // of time - the tiny fixtures elsewhere in this file finish too fast
-    // for onProgressTick()'s ~150ms poll to ever land a single tick before
-    // the render's already done. ~9M points (density=400) was that margin
-    // when this test was written, but Part B's cumulative render-path
-    // speedups (B1a/B2/B3/B4 - render-clone slimming, hot-loop dispatch,
-    // skipping the opacity roll when transOpacity==1, parallel reduce/
-    // tonemap) made that stale: caught directly, not assumed - this test
-    // started failing consistently (not flakily) once those items landed,
-    // because the render now finishes before the first progress tick fires.
-    // 4x the original point count restores real margin against the render
-    // path being fast on any given run, current or future.
-    //
-    // openFlameFile() now applies AppSettings::defaultSampleDensity() to
-    // every loaded flame (same reset New Flame/New Random Batch already
-    // got - see MainWindow::openFlameFile's own comment on why loading a
-    // flame saved at a high final-export density shouldn't make every
-    // preview render that slow too), so the fixture's own sampleDensity
-    // below no longer survives the load - raising the *setting* is what
-    // actually controls it now.
-    const double savedDefaultSampleDensity = apo::ui::AppSettings::defaultSampleDensity();
-    apo::ui::AppSettings::setDefaultSampleDensity(1600); // ~36M points - see comment above on why 400 stopped being enough
-
+    // Used to tune the fixture's density so the render took a real,
+    // perceptible amount of wall-clock time, long enough for
+    // onProgressTick()'s ~150ms poll to land at least one tick before the
+    // render finished. That needed re-tuning more than once as the render
+    // path got faster (Part B's cumulative speedups - render-clone
+    // slimming, hot-loop dispatch, skipping the opacity roll when
+    // transOpacity==1, parallel reduce/tonemap - made an earlier density
+    // stale, caught directly as a consistent, not flaky, failure) and,
+    // worse, isn't portable across machines at all - the same render can
+    // take wildly different real time depending on GPU vs. CPU-only
+    // fallback (see editor_window_interaction_test.cpp's header comment,
+    // which hit exactly this on CI). Pauses the render deterministically
+    // via MainWindow::currentRenderProgressForTesting() instead - the same
+    // idea as RenderDialog's *real* Pause button letting its own tests
+    // sidestep this exact problem (see render_dialog_interaction_test.cpp's
+    // testPauseFreezesProgressUntilResumed) - so this test's own runtime is
+    // bounded and independent of how fast the render itself actually is.
     auto flame = makeNamedFlame("Alpha");
     flame->width = 150;
     flame->height = 150;
@@ -1874,24 +1896,52 @@ void testMainPreviewShowsProgressDuringAFullQualityRender() {
     check(apo::saveFlameFile(path, {flame.get()}), "test setup: writing a fixture succeeds");
 
     auto* window = new apo::ui::MainWindow();
-    window->openFlameFile(QString::fromStdString(path)); // triggers the initial full-quality preview render
 
-    const bool sawProgress = waitUntil(
-        [window] {
-            const QString msg = window->statusBar()->currentMessage();
-            return msg.contains("Rendering...") && msg.contains("%");
-        },
-        5000);
+    // Retries the whole open-and-pause cycle rather than a single
+    // grab-and-pause, mirroring editor_window_interaction_test.cpp's own
+    // testQualityDropdownRenderShowsProgress: openFlameFile() re-populates
+    // the library and re-triggers the initial full-quality preview render
+    // each time, so a fresh attempt after a failed one is safe and starts
+    // from a clean state. requestRender() allocates progress_ synchronously
+    // on the UI thread before the worker thread (a queued connection) ever
+    // starts (see its own body) - pausing with no event-loop turn in
+    // between wins the race against the worker's first per-sub-batch check
+    // deterministically, regardless of how fast the render itself would
+    // otherwise be.
+    bool sawProgress = false;
+    for (int attempt = 0; attempt < 10 && !sawProgress; ++attempt) {
+        window->openFlameFile(QString::fromStdString(path));
+
+        if (auto* progress = window->currentRenderProgressForTesting()) {
+            progress->pauseRequested.store(true, std::memory_order_relaxed);
+        }
+
+        QTest::qWait(200); // > progressTimer_'s 150ms interval, so a tick lands while paused
+        const QString msg = window->statusBar()->currentMessage();
+        sawProgress = msg.contains("Rendering...") && msg.contains("%");
+
+        if (!sawProgress) {
+            if (auto* progress = window->currentRenderProgressForTesting()) {
+                progress->pauseRequested.store(false, std::memory_order_relaxed);
+            }
+            // Let this attempt's render actually finish before the next
+            // attempt's openFlameFile() call starts a new one.
+            waitUntil([window] { return window->statusBar()->currentMessage().contains("Rendered"); }, 15000);
+        }
+    }
     check(sawProgress,
           "the main preview's full-quality render shows a live percent/elapsed/remaining status (plan's P2.5), "
           "matching Main.pas's own OnProgress panels");
+
+    if (auto* progress = window->currentRenderProgressForTesting()) {
+        progress->pauseRequested.store(false, std::memory_order_relaxed);
+    }
 
     const bool settled = waitUntil([window] { return window->statusBar()->currentMessage().contains("Rendered"); }, 15000);
     check(settled, "the status bar still reports the final \"Rendered...\" message once the render completes");
 
     delete window;
     std::remove(path.c_str());
-    apo::ui::AppSettings::setDefaultSampleDensity(savedDefaultSampleDensity);
 }
 
 void testAboutDialogOpensAndClosesModally() {

@@ -963,6 +963,7 @@ void MainWindow::generateRandomBatch(int count) {
     // flame is too degenerate to frame (would render blank) is retried with
     // a new seed, up to kMaxDiscardBlankRetries times, rather than kept as-is.
     const bool discardBlank = AppSettings::randomDiscardBlank();
+    const int minFramingSamples = AppSettings::randomMinFramingSamples();
     constexpr int kMaxDiscardBlankRetries = 20;
 
     const auto baseSeed = static_cast<std::uint64_t>(std::random_device{}());
@@ -978,7 +979,8 @@ void MainWindow::generateRandomBatch(int count) {
                                               forcedVariationIndex, &eligibleVariations, gradientSource,
                                               hasCurrentGradient ? &currentGradient : nullptr, minVariationsPerXform,
                                               maxVariationsPerXform, variationWeightMin, variationWeightMax,
-                                              randomizeVariationParameters, variationParameterStrength, &hasContent);
+                                              randomizeVariationParameters, variationParameterStrength, &hasContent,
+                                              minFramingSamples);
 
             // Forced symmetry on random generation (Options.pas's Random tab) -
             // matches Main.pas's own sign convention exactly (see
@@ -1003,7 +1005,7 @@ void MainWindow::generateRandomBatch(int count) {
             // now, against the fully-built (post-symmetry) flame, fixes
             // that - and its return value supersedes the pre-symmetry
             // hasContent for the discard check below.
-            if (symType != 0) hasContent = apo::autoFrameFlame(*flame, seed + 7);
+            if (symType != 0) hasContent = apo::autoFrameFlame(*flame, seed + 7, minFramingSamples);
 
             if (!discardBlank || hasContent) break;
             // Otherwise: degenerate and discarding is on - loop and retry

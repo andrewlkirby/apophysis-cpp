@@ -61,7 +61,8 @@ void testAutoFrameFlameCentersOnAnOffsetAttractor() {
     flame->center = {0, 0};
     flame->pixelsPerUnit = 50;
 
-    apo::autoFrameFlame(*flame, /*seed=*/7);
+    const bool framed = apo::autoFrameFlame(*flame, /*seed=*/7);
+    check(framed, "a real, non-degenerate attractor reports successful framing");
 
     // Each xform is a 0.5-scale contraction x' = 0.5x + c - shifting every
     // map's translation c by a constant d moves its (and so the whole
@@ -89,7 +90,8 @@ void testAutoFrameFlameFallsBackForATightlyClusteredAttractor() {
     xf.c[1] = {0.0, 0.1};
     xf.c[2] = {10.0, -20.0}; // fixed point at c/(1-0.1) = (11.11, -22.22)
 
-    apo::autoFrameFlame(*flame, /*seed=*/3);
+    const bool framed = apo::autoFrameFlame(*flame, /*seed=*/3);
+    check(framed, "a tightly-clustered attractor still has enough sampled points to count as framed");
 
     check(approxEqual(flame->pixelsPerUnit, 10.0),
           "a tightly-clustered (near-zero-spread) attractor falls back to pixelsPerUnit=10, matching CalcBoundbox");
@@ -104,8 +106,9 @@ void testAutoFrameFlameLeavesDegenerateFlameUntouched() {
     flame.center = {1.0, 2.0};
     flame.pixelsPerUnit = 42.0;
 
-    apo::autoFrameFlame(flame, /*seed=*/1);
+    const bool framed = apo::autoFrameFlame(flame, /*seed=*/1);
 
+    check(!framed, "a flame with no active xforms (too few sampled points) reports failed framing");
     check(approxEqual(flame.center[0], 1.0) && approxEqual(flame.center[1], 2.0),
           "a flame with no active xforms is left with its center untouched (nothing to sample)");
     check(approxEqual(flame.pixelsPerUnit, 42.0), "...and its pixelsPerUnit untouched too");

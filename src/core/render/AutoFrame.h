@@ -22,6 +22,13 @@ namespace apo {
 // over one Renderer::samplePoints() call, which is simpler and more
 // precise than iteratively guessing toward the same target. `flame.zoom`
 // is left untouched either way, matching the original.
-void autoFrameFlame(Flame& flame, std::uint64_t seed);
+//
+// Returns false if the attractor was too degenerate to frame at all (fewer
+// than 100 of the sampled points landed anywhere sensible) - center/
+// pixelsPerUnit are left untouched in that case. Callers that can retry
+// with a different flame/seed (e.g. random batch generation) can use this
+// to detect and discard flames that would otherwise render blank; other
+// callers are free to ignore the return value, matching prior behavior.
+bool autoFrameFlame(Flame& flame, std::uint64_t seed);
 
 } // namespace apo

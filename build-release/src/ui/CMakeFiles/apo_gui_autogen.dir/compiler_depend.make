@@ -3,6 +3,7 @@
 
 src\ui\apo_gui_autogen\timestamp: "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe"
 src\ui\apo_gui_autogen\timestamp: C:\Qt\6.8.0\msvc2022_64\lib\cmake\Qt6Core\Qt6CoreConfigureFileTemplate.in
+src\ui\apo_gui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AppVersion.h.in
 src\ui\apo_gui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CMakeLists.txt
 src\ui\apo_gui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\main.cpp
 
@@ -13,5 +14,7 @@ C:\Qt\6.8.0\msvc2022_64\lib\cmake\Qt6Core\Qt6CoreConfigureFileTemplate.in:
 "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe":
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CMakeLists.txt:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AppVersion.h.in:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\main.cpp:

@@ -124,7 +124,7 @@ MutateDialog::MutateDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     workerThread_ = new QThread(this);
     worker_ = new RenderWorker();
     worker_->moveToThread(workerThread_);
-    connect(this, &MutateDialog::renderRequested, worker_, &RenderWorker::renderFlame);
+    connect(this, &MutateDialog::renderRequested, worker_, &RenderWorker::renderFlameCancellable);
     connect(worker_, &RenderWorker::renderFinished, this, &MutateDialog::onRenderFinished);
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
@@ -139,6 +139,16 @@ MutateDialog::MutateDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
 }
 
 MutateDialog::~MutateDialog() {
+    // A render still in flight when the dialog is closed must be stopped
+    // before progress_ is destroyed - the worker thread holds a raw pointer
+    // to it for the duration of the blocking render() call (see
+    // RenderWorker::renderFlameCancellable). Requesting cancellation first
+    // means the worker observes it within one sub-batch and returns
+    // quickly, rather than this destructor blocking for however long the
+    // *current cell's* render would otherwise have taken (the remaining
+    // pending cells in pendingCells_ are simply never rendered - this object
+    // is being destroyed) - same ordering as RenderDialog's destructor.
+    if (progress_) progress_->cancelRequested.store(true, std::memory_order_relaxed);
     workerThread_->quit();
     workerThread_->wait();
 }
@@ -220,10 +230,13 @@ void MutateDialog::renderNextCell() {
     renderInFlight_ = true;
 
     std::shared_ptr<const apo::Flame> shared(buildPreviewFlame(currentCell_));
-    emit renderRequested(shared, /*seed=*/1);
+    // Always a fresh, cancellable token - see this dialog's own destructor.
+    progress_ = std::make_unique<apo::RenderProgress>();
+    emit renderRequested(shared, /*seed=*/1, progress_.get());
 }
 
 void MutateDialog::onRenderFinished(QImage image, quint64 /*pointsGenerated*/, quint64 /*pointsAccepted*/) {
+    progress_.reset();
     if (!image.isNull() && currentCell_ >= 0) {
         QPushButton* button = cellButtons_[currentCell_];
         button->setIcon(QIcon(QPixmap::fromImage(image)));

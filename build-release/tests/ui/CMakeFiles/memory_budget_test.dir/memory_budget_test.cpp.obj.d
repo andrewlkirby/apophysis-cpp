@@ -376,7 +376,8 @@ C:/Qt/6.8.0/msvc2022_64/include/QtGui/qguiapplication_platform.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qguiapplication.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/ui/../TestHelpers.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/Flame.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/Renderer.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/../Flame.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Bezier.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/ColorMap.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
@@ -393,4 +394,3 @@ C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_int128.hpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/Renderer.h

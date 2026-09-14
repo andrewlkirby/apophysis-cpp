@@ -17,14 +17,14 @@ constexpr int kSampleCount = 10000;
 constexpr double kTrimFraction = 0.05;
 } // namespace
 
-void autoFrameFlame(Flame& flame, std::uint64_t seed) {
-    if (flame.width <= 0 || flame.height <= 0) return;
+bool autoFrameFlame(Flame& flame, std::uint64_t seed) {
+    if (flame.width <= 0 || flame.height <= 0) return false;
 
     const auto samples = Renderer::samplePoints(flame, seed, kSampleCount);
     // Too few points to make a reasonable estimate (a near-fully-degenerate
     // flame) - leave center/pixelsPerUnit exactly as they were rather than
     // computing a framing from noise.
-    if (samples.size() < 100) return;
+    if (samples.size() < 100) return false;
 
     std::vector<double> xs, ys;
     xs.reserve(samples.size());
@@ -55,7 +55,7 @@ void autoFrameFlame(Flame& flame, std::uint64_t seed) {
     if (deltaX > 1000 || deltaY > 1000) {
         flame.center = {0, 0};
         flame.pixelsPerUnit = 10;
-        return;
+        return true;
     }
 
     flame.center = {(xLow + xHigh) / 2.0, (yLow + yHigh) / 2.0};
@@ -66,6 +66,7 @@ void autoFrameFlame(Flame& flame, std::uint64_t seed) {
     } else {
         flame.pixelsPerUnit = 10;
     }
+    return true;
 }
 
 } // namespace apo

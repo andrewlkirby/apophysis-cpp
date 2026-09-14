@@ -34,6 +34,20 @@ void testProducesAWellFormedFlame() {
     check(hasNonBlackEntry, "the flame gets a real (non-all-black) random gradient");
 }
 
+void testHasContentOutParamReportsAutoFrameFlamesResult() {
+    // A normal random flame's attractor should sample plenty of points, so
+    // hasContent should come back true - this is the same signal
+    // AutoFrame.h's autoFrameFlame() itself returns, just threaded through
+    // generateRandomFlame() for callers (e.g. a random batch) that want to
+    // detect/discard degenerate flames without duplicating the check.
+    for (std::uint64_t seed = 1; seed <= 5; ++seed) {
+        bool hasContent = false;
+        auto flame = apo::generateRandomFlame(seed, 100, 100, 2, 6, -1, nullptr, apo::RandomGradientSource::Calculated,
+                                               nullptr, 1, 1, 1.0, 1.0, false, 1.0, &hasContent);
+        check(hasContent, "a normally-generated random flame reports hasContent=true via the out-param");
+    }
+}
+
 void testIsDeterministicGivenSeed() {
     // Runs several seeds, not just one: which topology variation gets
     // picked is itself seed-dependent, and camera framing is only
@@ -147,6 +161,7 @@ void testCurrentGradientSourceFallsBackWhenNoneSupplied() {
 
 int main() {
     testProducesAWellFormedFlame();
+    testHasContentOutParamReportsAutoFrameFlamesResult();
     testIsDeterministicGivenSeed();
     testDifferentSeedsProduceDifferentFlames();
     testHonorsExplicitXformRange();

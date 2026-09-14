@@ -397,6 +397,7 @@ C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_int128.hpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/Renderer.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/moc_AdjustPanel.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/../../../../../src/ui/AdjustPanel.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QWidget
@@ -417,7 +418,6 @@ C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QMainWindow
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qmainwindow.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qtabwidget.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/Renderer.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/moc_ForceSymmetryDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/../../../../../src/ui/ForceSymmetryDialog.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QDialog
@@ -509,6 +509,7 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QRunnable
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qrunnable.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcompilerdetection.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfunctionaltools_impl.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewSizing.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/moc_TransformPanel.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/../../../../../src/ui/TransformPanel.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QWidget

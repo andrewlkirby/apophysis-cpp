@@ -68,20 +68,27 @@ void testQualityDropdownRenderShowsProgress() {
         return;
     }
 
-    // Dense enough, against this window's own real on-screen canvas size
-    // (~570x620 for EditorWindow's default 1000x700 layout - much larger
-    // than main_window_interaction_test.cpp's fixed 150x150 fixture, so a
-    // far smaller density multiple gets the same real point-count margin;
-    // measured empirically - the default "10" preset's own render already
-    // produces several million points here), that the render takes a real,
-    // perceptible amount of time - see main_window_interaction_test.cpp's
-    // identical-purpose comment on why a too-fast render can finish before
-    // onProgressTick()'s ~150ms poll ever lands a single tick. Deliberately
-    // NOT pushed much higher: EditorWindow's destructor blocks on
-    // workerThread_->wait() for whatever render is still in flight, so an
-    // overly heavy density here would hang this test's own cleanup, not
-    // just slow down the render.
-    qualityBox->setCurrentText("150");
+    // Dense enough that the render takes a real, perceptible amount of time -
+    // see main_window_interaction_test.cpp's identical-purpose comment on why
+    // a too-fast render can finish before onProgressTick()'s ~150ms poll ever
+    // lands a single tick. This used to say "150" (~53M points, against an
+    // assumed ~570x620 real canvas size) and had gone stale in the same way
+    // that test's own comment describes for a different reason - measured
+    // directly (temporary fprintf instrumentation on the status-bar text),
+    // this window's real on-screen canvas is only ~286x286, and even the
+    // quality dropdown's own largest preset ("1000", ~96M points here)
+    // rendered in ~126ms, just under the poll interval, so it failed on every
+    // run, not flakily. The combo box is editable and not restricted to its
+    // preset list (setInsertPolicy(NoInsert) only stops typed values from
+    // being *added* to the dropdown, not from being accepted as this box's
+    // current text), so an arbitrary value works here even though the preset
+    // list tops out at 1000. "10000" (~1.3s, verified empirically) restores
+    // real margin against the render path being fast on any given run,
+    // current or future, CPU or GPU. Deliberately not pushed much higher:
+    // EditorWindow's destructor blocks on workerThread_->wait() for whatever
+    // render is still in flight, so an overly heavy density here would hang
+    // this test's own cleanup, not just slow down the render.
+    qualityBox->setCurrentText("10000");
     // Same signal a real Return keypress in the (editable) combo's line
     // edit fires - see the constructor's own
     // connect(qualityBox_->lineEdit(), &QLineEdit::editingFinished, ...).

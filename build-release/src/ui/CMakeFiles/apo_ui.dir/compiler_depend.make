@@ -11897,6 +11897,7 @@ src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrunnable.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionaltools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewSizing.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\moc_TransformPanel.cpp
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\TransformPanel.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QWidget

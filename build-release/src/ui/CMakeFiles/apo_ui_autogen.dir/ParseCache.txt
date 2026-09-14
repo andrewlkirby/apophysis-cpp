@@ -319,6 +319,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustDialog.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustDialog.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.h
  mmc:Q_OBJECT
@@ -484,10 +485,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderAllDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AppSettings.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.cpp
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.cpp
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.cpp
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -652,8 +649,12 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesWidget.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h
@@ -809,8 +810,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesWidget.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Bezier.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesWidget.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.cpp
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h
@@ -973,7 +974,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
- mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QElapsedTimer
@@ -1143,7 +1144,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h
@@ -1306,8 +1307,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDia
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
- mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.cpp
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QElapsedTimer
@@ -1474,8 +1475,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -1633,6 +1634,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserD
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/ColorMap.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QElapsedTimer
@@ -1804,7 +1806,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MutateDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -1969,7 +1970,9 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MutateDialog.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MutateDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/OptionsDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -2126,7 +2129,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/OptionsDialog.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qtwidgetsglobal.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/OptionsDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PostProcessDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QElapsedTimer
@@ -2295,6 +2297,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PostProcessDialo
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PostProcessDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewLabel.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h
@@ -3107,7 +3110,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qtwidgetsglobal.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -3266,6 +3268,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDia
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/ColorMap.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ThumbnailTask.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
@@ -3401,6 +3404,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ThumbnailTask.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewSizing.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ThumbnailTask.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TransformPanel.h
  mmc:Q_OBJECT

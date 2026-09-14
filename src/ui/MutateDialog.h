@@ -8,6 +8,7 @@
 #include <QString>
 
 #include "core/Flame.h"
+#include "core/render/Renderer.h"
 
 class QThread;
 class QComboBox;
@@ -68,7 +69,7 @@ signals:
     // Emitted after adopting a mutant (flame_ is mutated in place) so an
     // owning window (EditorWindow) can refresh its own view of it.
     void flameChanged();
-    void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed);
+    void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed, apo::RenderProgress* progress);
 
 private slots:
     void onRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted);
@@ -104,6 +105,7 @@ private:
 
     QThread* workerThread_ = nullptr;
     RenderWorker* worker_ = nullptr;
+    std::unique_ptr<apo::RenderProgress> progress_;
     std::array<int, kGridCells> pendingCells_{};
     int pendingCount_ = 0;
     int pendingHead_ = 0;

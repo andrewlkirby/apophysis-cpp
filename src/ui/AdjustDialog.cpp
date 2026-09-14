@@ -78,7 +78,7 @@ AdjustDialog::AdjustDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
     workerThread_ = new QThread(this);
     worker_ = new RenderWorker();
     worker_->moveToThread(workerThread_);
-    connect(this, &AdjustDialog::renderRequested, worker_, &RenderWorker::renderFlame);
+    connect(this, &AdjustDialog::renderRequested, worker_, &RenderWorker::renderFlameCancellable);
     connect(worker_, &RenderWorker::renderFinished, this, &AdjustDialog::onRenderFinished);
     connect(workerThread_, &QThread::finished, worker_, &QObject::deleteLater);
     workerThread_->start();
@@ -95,6 +95,15 @@ AdjustDialog::AdjustDialog(std::shared_ptr<apo::Flame> flame, QWidget* parent)
 }
 
 AdjustDialog::~AdjustDialog() {
+    // A render still in flight when the dialog is closed must be stopped
+    // before progress_ is destroyed - the worker thread holds a raw pointer
+    // to it for the duration of the blocking render() call (see
+    // RenderWorker::renderFlameCancellable). Requesting cancellation first
+    // means the worker observes it within one sub-batch and returns
+    // quickly, rather than this destructor blocking for however long the
+    // render would otherwise have taken - same ordering as RenderDialog's
+    // destructor.
+    if (progress_) progress_->cancelRequested.store(true, std::memory_order_relaxed);
     workerThread_->quit();
     workerThread_->wait();
 }
@@ -217,10 +226,13 @@ void AdjustDialog::requestPreviewRender() {
     previewFlame->sampleDensity = AppSettings::previewSampleDensity();
 
     std::shared_ptr<const apo::Flame> shared(std::move(previewFlame));
-    emit renderRequested(shared, /*seed=*/1);
+    // Always a fresh, cancellable token - see this dialog's own destructor.
+    progress_ = std::make_unique<apo::RenderProgress>();
+    emit renderRequested(shared, /*seed=*/1, progress_.get());
 }
 
 void AdjustDialog::onRenderFinished(QImage image, quint64 /*pointsGenerated*/, quint64 /*pointsAccepted*/) {
+    progress_.reset();
     if (!image.isNull()) {
         previewLabel_->setPixmap(
             QPixmap::fromImage(image).scaled(previewLabel_->size(), Qt::KeepAspectRatio, Qt::SmoothTransformation));

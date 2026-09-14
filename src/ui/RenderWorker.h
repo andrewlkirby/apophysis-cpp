@@ -71,6 +71,38 @@ public slots:
         }
     }
 
+    // Identical to renderFlame() above, plus cancellation support - a
+    // *separate* slot for the same Qt connect() function-pointer-type reason
+    // renderFlameWithProgress() below is (see its own doc comment):
+    // AdjustDialog/CurvesDialog/MutateDialog's renderRequested(flame, seed,
+    // progress) signal needs a 3-argument slot to connect to. Deliberately
+    // keeps Float precision (not Double, unlike renderFlameWithProgress) -
+    // these three dialogs' previews are the same fast/cheap live-drag/
+    // live-grid path renderFlame() already served; the only thing this adds
+    // is a RenderProgress token their destructors can set cancelRequested on
+    // (same fix already applied to RenderDialog/EditorWindow/MainWindow's
+    // own destructors - see their comments) so closing the dialog mid-render
+    // doesn't block the UI thread for however long that render would
+    // otherwise have taken. Not intended for a live percent readout (none of
+    // these three dialogs show one) - nothing stops a caller from adding one
+    // later via the same pointsDone/pointsTarget polling EditorWindow/
+    // MainWindow already do, but that's not what this exists for today.
+    void renderFlameCancellable(std::shared_ptr<const apo::Flame> flame, quint64 seed, apo::RenderProgress* progress) {
+        try {
+            bool usedGpu = false;
+            const apo::RenderedImage image = apo::RenderDispatcher::render(
+                *flame, seed, /*threadCount=*/0, progress, /*timings=*/nullptr,
+                apo::BucketPrecision::Float, AppSettings::useGpuRendering(), &usedGpu);
+            emit renderFinished(toQImage(image), image.stats.pointsGenerated, image.stats.pointsAccepted, usedGpu);
+        } catch (const std::exception& e) {
+            qWarning() << "RenderWorker::renderFlameCancellable failed:" << e.what();
+            emit renderFinished(QImage(), 0, 0, false);
+        } catch (...) {
+            qWarning() << "RenderWorker::renderFlameCancellable failed with an unrecognized exception";
+            emit renderFinished(QImage(), 0, 0, false);
+        }
+    }
+
     // Identical to renderFlame() above, plus progress reporting - a
     // *separate* slot rather than an extra defaulted parameter on
     // renderFlame() itself, because Qt's connect() requires a slot's

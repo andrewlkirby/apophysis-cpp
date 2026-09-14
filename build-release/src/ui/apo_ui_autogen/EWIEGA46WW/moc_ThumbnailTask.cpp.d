@@ -131,4 +131,5 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/ap
   C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Rng.h \
   C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h \
   C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h \
-  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
+  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h \
+  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewSizing.h

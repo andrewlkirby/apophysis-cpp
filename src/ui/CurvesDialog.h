@@ -9,6 +9,7 @@
 
 #include "core/Bezier.h"
 #include "core/Flame.h"
+#include "core/render/Renderer.h"
 
 class QThread;
 class QComboBox;
@@ -49,7 +50,7 @@ signals:
     // Emitted after every edit so an owning window (EditorWindow) can
     // refresh its own view of the same shared Flame.
     void flameChanged();
-    void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed);
+    void renderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed, apo::RenderProgress* progress);
 
 private slots:
     void onRenderFinished(QImage image, quint64 pointsGenerated, quint64 pointsAccepted);
@@ -76,6 +77,7 @@ private:
 
     QThread* workerThread_ = nullptr;
     RenderWorker* worker_ = nullptr;
+    std::unique_ptr<apo::RenderProgress> progress_;
     bool renderInFlight_ = false;
     bool renderDirty_ = false;
 

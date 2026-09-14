@@ -203,9 +203,13 @@ QWidget* OptionsDialog::buildRandomTab() {
     keepBackgroundCheck_ = new QCheckBox("Keep background color", batchGroup);
     keepBackgroundCheck_->setObjectName("keepBackgroundCheck");
     keepBackgroundCheck_->setChecked(AppSettings::randomKeepBackground());
+    discardBlankCheck_ = new QCheckBox("Discard blank/degenerate flames", batchGroup);
+    discardBlankCheck_->setObjectName("discardBlankCheck");
+    discardBlankCheck_->setChecked(AppSettings::randomDiscardBlank());
     batchForm->addRow("Default batch size", batchSizeSpin_);
     batchForm->addRow("Title prefix", batchTitlePrefixEdit_);
     batchForm->addRow(keepBackgroundCheck_);
+    batchForm->addRow(discardBlankCheck_);
     layout->addWidget(batchGroup);
 
     auto* mutationGroup = new QGroupBox("Mutation", tab);
@@ -438,6 +442,7 @@ void OptionsDialog::applyAndAccept() {
     AppSettings::setRandomBatchSize(batchSizeSpin_->value());
     AppSettings::setRandomBatchTitlePrefix(batchTitlePrefixEdit_->text());
     AppSettings::setRandomKeepBackground(keepBackgroundCheck_->isChecked());
+    AppSettings::setRandomDiscardBlank(discardBlankCheck_->isChecked());
     AppSettings::setRandomRestrictToGpuCompatible(restrictToGpuCompatibleCheck_->isChecked());
     AppSettings::setMutationMinXforms(mutationMinXformsSpin_->value());
     AppSettings::setMutationMaxXforms(mutationMaxXformsSpin_->value());

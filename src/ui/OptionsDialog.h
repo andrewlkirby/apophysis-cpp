@@ -95,6 +95,7 @@ private:
     QSpinBox* batchSizeSpin_ = nullptr;
     QLineEdit* batchTitlePrefixEdit_ = nullptr;
     QCheckBox* keepBackgroundCheck_ = nullptr;
+    QCheckBox* discardBlankCheck_ = nullptr;
     QCheckBox* restrictToGpuCompatibleCheck_ = nullptr;
     QSpinBox* mutationMinXformsSpin_ = nullptr;
     QSpinBox* mutationMaxXformsSpin_ = nullptr;

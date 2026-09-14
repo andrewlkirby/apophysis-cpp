@@ -42,6 +42,8 @@ constexpr auto qt_meta_stringdata_CLASSapoSCOPEuiSCOPEMutateDialogENDCLASS = QtM
     "std::shared_ptr<const apo::Flame>",
     "flame",
     "seed",
+    "apo::RenderProgress*",
+    "progress",
     "onRenderFinished",
     "image",
     "pointsGenerated",
@@ -77,29 +79,29 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSapoSCOPEuiSCOPEMutateDialogENDCL
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
        1,    0,   68,    2, 0x06,    1 /* Public */,
-       3,    2,   69,    2, 0x06,    2 /* Public */,
+       3,    3,   69,    2, 0x06,    2 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       7,    3,   74,    2, 0x08,    5 /* Private */,
-      11,    1,   81,    2, 0x08,    9 /* Private */,
-      13,    0,   84,    2, 0x08,   11 /* Private */,
-      14,    1,   85,    2, 0x08,   12 /* Private */,
-      16,    1,   88,    2, 0x08,   14 /* Private */,
-      18,    1,   91,    2, 0x08,   16 /* Private */,
-      20,    1,   94,    2, 0x08,   18 /* Private */,
+       9,    3,   76,    2, 0x08,    6 /* Private */,
+      13,    1,   83,    2, 0x08,   10 /* Private */,
+      15,    0,   86,    2, 0x08,   12 /* Private */,
+      16,    1,   87,    2, 0x08,   13 /* Private */,
+      18,    1,   90,    2, 0x08,   15 /* Private */,
+      20,    1,   93,    2, 0x08,   17 /* Private */,
+      22,    1,   96,    2, 0x08,   19 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 4, QMetaType::ULongLong,    5,    6,
+    QMetaType::Void, 0x80000000 | 4, QMetaType::ULongLong, 0x80000000 | 7,    5,    6,    8,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::QImage, QMetaType::ULongLong, QMetaType::ULongLong,    8,    9,   10,
-    QMetaType::Void, QMetaType::Int,   12,
+    QMetaType::Void, QMetaType::QImage, QMetaType::ULongLong, QMetaType::ULongLong,   10,   11,   12,
+    QMetaType::Void, QMetaType::Int,   14,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   15,
-    QMetaType::Void, QMetaType::Double,   17,
-    QMetaType::Void, QMetaType::Bool,   19,
-    QMetaType::Void, QMetaType::Bool,   19,
+    QMetaType::Void, QMetaType::Int,   17,
+    QMetaType::Void, QMetaType::Double,   19,
+    QMetaType::Void, QMetaType::Bool,   21,
+    QMetaType::Void, QMetaType::Bool,   21,
 
        0        // eod
 };
@@ -119,6 +121,7 @@ Q_CONSTINIT const QMetaObject apo::ui::MutateDialog::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<std::shared_ptr<const apo::Flame>, std::false_type>,
         QtPrivate::TypeAndForceComplete<quint64, std::false_type>,
+        QtPrivate::TypeAndForceComplete<apo::RenderProgress *, std::false_type>,
         // method 'onRenderFinished'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QImage, std::false_type>,
@@ -152,7 +155,7 @@ void apo::ui::MutateDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c
         (void)_t;
         switch (_id) {
         case 0: _t->flameChanged(); break;
-        case 1: _t->renderRequested((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2]))); break;
+        case 1: _t->renderRequested((*reinterpret_cast< std::add_pointer_t<std::shared_ptr<const apo::Flame>>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<apo::RenderProgress*>>(_a[3]))); break;
         case 2: _t->onRenderFinished((*reinterpret_cast< std::add_pointer_t<QImage>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<quint64>>(_a[3]))); break;
         case 3: _t->onCellClicked((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
         case 4: _t->onBack(); break;
@@ -172,7 +175,7 @@ void apo::ui::MutateDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c
             }
         }
         {
-            using _t = void (MutateDialog::*)(std::shared_ptr<const apo::Flame> , quint64 );
+            using _t = void (MutateDialog::*)(std::shared_ptr<const apo::Flame> , quint64 , apo::RenderProgress * );
             if (_t _q_method = &MutateDialog::renderRequested; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
                 *result = 1;
                 return;
@@ -218,9 +221,9 @@ void apo::ui::MutateDialog::flameChanged()
 }
 
 // SIGNAL 1
-void apo::ui::MutateDialog::renderRequested(std::shared_ptr<const apo::Flame> _t1, quint64 _t2)
+void apo::ui::MutateDialog::renderRequested(std::shared_ptr<const apo::Flame> _t1, quint64 _t2, apo::RenderProgress * _t3)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t3))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 QT_WARNING_POP

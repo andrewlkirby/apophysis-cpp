@@ -42,6 +42,7 @@ struct SettingsGuard {
     int savedBatchSize = apo::ui::AppSettings::randomBatchSize();
     QString savedBatchPrefix = apo::ui::AppSettings::randomBatchTitlePrefix();
     bool savedKeepBackground = apo::ui::AppSettings::randomKeepBackground();
+    bool savedDiscardBlank = apo::ui::AppSettings::randomDiscardBlank();
     int savedMutationMin = apo::ui::AppSettings::mutationMinXforms();
     int savedMutationMax = apo::ui::AppSettings::mutationMaxXforms();
     int savedSymType = apo::ui::AppSettings::randomSymmetryType();
@@ -73,6 +74,7 @@ struct SettingsGuard {
         apo::ui::AppSettings::setRandomBatchSize(savedBatchSize);
         apo::ui::AppSettings::setRandomBatchTitlePrefix(savedBatchPrefix);
         apo::ui::AppSettings::setRandomKeepBackground(savedKeepBackground);
+        apo::ui::AppSettings::setRandomDiscardBlank(savedDiscardBlank);
         apo::ui::AppSettings::setMutationMinXforms(savedMutationMin);
         apo::ui::AppSettings::setMutationMaxXforms(savedMutationMax);
         apo::ui::AppSettings::setRandomSymmetryType(savedSymType);
@@ -202,6 +204,7 @@ void testRandomTabControlsSeededFromAppSettings() {
     apo::ui::AppSettings::setRandomBatchSize(25);
     apo::ui::AppSettings::setRandomBatchTitlePrefix("MyFlames");
     apo::ui::AppSettings::setRandomKeepBackground(true);
+    apo::ui::AppSettings::setRandomDiscardBlank(false);
     apo::ui::AppSettings::setMutationMinXforms(4);
     apo::ui::AppSettings::setMutationMaxXforms(10);
     apo::ui::AppSettings::setRandomSymmetryType(2); // Rotational
@@ -213,12 +216,13 @@ void testRandomTabControlsSeededFromAppSettings() {
     auto* batchSize = dialog->findChild<QSpinBox*>("batchSizeSpin");
     auto* batchPrefix = dialog->findChild<QLineEdit*>("batchTitlePrefixEdit");
     auto* keepBackground = dialog->findChild<QCheckBox*>("keepBackgroundCheck");
+    auto* discardBlank = dialog->findChild<QCheckBox*>("discardBlankCheck");
     auto* mutationMin = dialog->findChild<QSpinBox*>("mutationMinXformsSpin");
     auto* mutationMax = dialog->findChild<QSpinBox*>("mutationMaxXformsSpin");
     auto* symType = dialog->findChild<QComboBox*>("symmetryTypeCombo");
     auto* symOrder = dialog->findChild<QSpinBox*>("symmetryOrderSpin");
-    if (!check(minXforms && maxXforms && batchSize && batchPrefix && keepBackground && mutationMin && mutationMax &&
-                   symType && symOrder,
+    if (!check(minXforms && maxXforms && batchSize && batchPrefix && keepBackground && discardBlank && mutationMin &&
+                   mutationMax && symType && symOrder,
                "every Random tab control is found")) {
         delete dialog;
         return;
@@ -228,6 +232,7 @@ void testRandomTabControlsSeededFromAppSettings() {
     check(batchSize->value() == 25, "batch size spin is seeded");
     check(batchPrefix->text() == "MyFlames", "batch title prefix edit is seeded");
     check(keepBackground->isChecked(), "keep background checkbox is seeded");
+    check(!discardBlank->isChecked(), "discard blank checkbox is seeded");
     check(mutationMin->value() == 4 && mutationMax->value() == 10, "min/max mutation transform spins are seeded");
     check(symType->currentIndex() == 2 && symType->currentText() == "Rotational",
           "symmetry type combo is seeded to the stored index");
@@ -317,9 +322,11 @@ void testRandomTabOkPersistsToAppSettings() {
     auto* maxXforms = dialog->findChild<QSpinBox*>("randomMaxXformsSpin");
     auto* batchPrefix = dialog->findChild<QLineEdit*>("batchTitlePrefixEdit");
     auto* keepBackground = dialog->findChild<QCheckBox*>("keepBackgroundCheck");
+    auto* discardBlank = dialog->findChild<QCheckBox*>("discardBlankCheck");
     auto* symType = dialog->findChild<QComboBox*>("symmetryTypeCombo");
     auto* buttons = dialog->findChild<QDialogButtonBox*>();
-    if (!check(minXforms && maxXforms && batchPrefix && keepBackground && symType && buttons, "controls found")) {
+    if (!check(minXforms && maxXforms && batchPrefix && keepBackground && discardBlank && symType && buttons,
+               "controls found")) {
         delete dialog;
         return;
     }
@@ -328,6 +335,7 @@ void testRandomTabOkPersistsToAppSettings() {
     maxXforms->setValue(11);
     batchPrefix->setText("Batch Title");
     keepBackground->setChecked(true);
+    discardBlank->setChecked(false);
     symType->setCurrentIndex(3); // Dihedral
 
     QTest::mouseClick(buttons->button(QDialogButtonBox::Ok), Qt::LeftButton);
@@ -336,6 +344,7 @@ void testRandomTabOkPersistsToAppSettings() {
           "OK persists the edited random transform-count range");
     check(apo::ui::AppSettings::randomBatchTitlePrefix() == "Batch Title", "OK persists the edited batch title prefix");
     check(apo::ui::AppSettings::randomKeepBackground(), "OK persists the edited keep-background checkbox");
+    check(!apo::ui::AppSettings::randomDiscardBlank(), "OK persists the edited discard-blank checkbox");
     check(apo::ui::AppSettings::randomSymmetryType() == 3, "OK persists the edited symmetry type");
 
     delete dialog;

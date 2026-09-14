@@ -385,6 +385,17 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 }
 
 MainWindow::~MainWindow() {
+    // A render still in flight when the window is closed must be stopped
+    // before progress_ is destroyed - the worker thread holds a raw pointer
+    // to it for the duration of the blocking render() call (see
+    // RenderWorker::renderFlameWithProgress). Requesting cancellation first
+    // means the worker observes it within one sub-batch and returns
+    // quickly, rather than this destructor blocking for however long the
+    // render would otherwise have taken - same ordering as RenderDialog's
+    // destructor. progress_ is null for a cheap camera-preview render (see
+    // requestRender()'s own doc comment on why only the full-quality path
+    // gets a progress token) - those are fast enough this doesn't matter.
+    if (progress_) progress_->cancelRequested.store(true, std::memory_order_relaxed);
     workerThread_->quit();
     workerThread_->wait();
 }
@@ -947,38 +958,62 @@ void MainWindow::generateRandomBatch(int count) {
     // seeds, reused here so each flame in the batch is independently
     // well-seeded rather than just base+i (see Renderer.cpp's own comment
     // on why adjacent integer seeds can correlate for some PRNGs).
+    // Options.pas has no equivalent - a new setting this port adds (see
+    // AppSettings.h's own comment). When set, a batch slot whose generated
+    // flame is too degenerate to frame (would render blank) is retried with
+    // a new seed, up to kMaxDiscardBlankRetries times, rather than kept as-is.
+    const bool discardBlank = AppSettings::randomDiscardBlank();
+    constexpr int kMaxDiscardBlankRetries = 20;
+
     const auto baseSeed = static_cast<std::uint64_t>(std::random_device{}());
     for (int i = 0; i < count; ++i) {
-        const std::uint64_t seed = baseSeed + static_cast<std::uint64_t>(i) * 0x9e3779b97f4a7c15ULL;
-        auto flame = apo::generateRandomFlame(seed, AppSettings::defaultWidth(), AppSettings::defaultHeight(), minXforms, maxXforms,
-                                               forcedVariationIndex, &eligibleVariations, gradientSource,
-                                               hasCurrentGradient ? &currentGradient : nullptr, minVariationsPerXform,
-                                               maxVariationsPerXform, variationWeightMin, variationWeightMax,
-                                               randomizeVariationParameters, variationParameterStrength);
-        flame->name = QString("%1 %2").arg(titlePrefix).arg(i + 1).toStdString();
-        applyDefaultRenderSettings(*flame);
+        std::unique_ptr<apo::Flame> flame;
+        std::uint64_t seed = 0;
+        for (int attempt = 0; attempt < kMaxDiscardBlankRetries; ++attempt) {
+            seed = baseSeed +
+                   (static_cast<std::uint64_t>(i) * kMaxDiscardBlankRetries + static_cast<std::uint64_t>(attempt)) *
+                       0x9e3779b97f4a7c15ULL;
+            bool hasContent = true;
+            flame = apo::generateRandomFlame(seed, AppSettings::defaultWidth(), AppSettings::defaultHeight(), minXforms, maxXforms,
+                                              forcedVariationIndex, &eligibleVariations, gradientSource,
+                                              hasCurrentGradient ? &currentGradient : nullptr, minVariationsPerXform,
+                                              maxVariationsPerXform, variationWeightMin, variationWeightMax,
+                                              randomizeVariationParameters, variationParameterStrength, &hasContent);
 
-        // Forced symmetry on random generation (Options.pas's Random tab) -
-        // matches Main.pas's own sign convention exactly (see
-        // core/edit/Symmetry.h's doc comment): Bilateral -> sym=-1,
-        // Rotational -> sym=+Order, Dihedral -> sym=-Order.
-        switch (symType) {
-            case 1: apo::addSymmetry(*flame, -1); break;
-            case 2: apo::addSymmetry(*flame, symOrder); break;
-            case 3: apo::addSymmetry(*flame, -symOrder); break;
-            default: break; // 0 = None
+            // Forced symmetry on random generation (Options.pas's Random tab) -
+            // matches Main.pas's own sign convention exactly (see
+            // core/edit/Symmetry.h's doc comment): Bilateral -> sym=-1,
+            // Rotational -> sym=+Order, Dihedral -> sym=-Order.
+            switch (symType) {
+                case 1: apo::addSymmetry(*flame, -1); break;
+                case 2: apo::addSymmetry(*flame, symOrder); break;
+                case 3: apo::addSymmetry(*flame, -symOrder); break;
+                default: break; // 0 = None
+            }
+
+            // generateRandomFlame() already auto-framed the flame
+            // (AutoFrame.h), but that framing was computed before
+            // addSymmetry() above ran - addSymmetry's copies rotate/reflect
+            // about the origin (Symmetry.cpp), not about that
+            // already-computed camera center, so whenever the pre-symmetry
+            // attractor wasn't itself centered near the origin (the common
+            // case), the symmetric copies can land partly or wholly outside
+            // the earlier frame - the flame then renders tiny or blank until
+            // the user manually re-centers/zooms. Re-running autoFrameFlame
+            // now, against the fully-built (post-symmetry) flame, fixes
+            // that - and its return value supersedes the pre-symmetry
+            // hasContent for the discard check below.
+            if (symType != 0) hasContent = apo::autoFrameFlame(*flame, seed + 7);
+
+            if (!discardBlank || hasContent) break;
+            // Otherwise: degenerate and discarding is on - loop and retry
+            // with a new seed. If every attempt stays degenerate, the loop
+            // falls through with the last (still-degenerate) flame so the
+            // batch count is never short.
         }
 
-        // generateRandomFlame() already auto-framed the flame (AutoFrame.h),
-        // but that framing was computed before addSymmetry() above ran -
-        // addSymmetry's copies rotate/reflect about the origin (Symmetry.cpp),
-        // not about that already-computed camera center, so whenever the
-        // pre-symmetry attractor wasn't itself centered near the origin
-        // (the common case), the symmetric copies can land partly or wholly
-        // outside the earlier frame - the flame then renders tiny or blank
-        // until the user manually re-centers/zooms. Re-running autoFrameFlame
-        // now, against the fully-built (post-symmetry) flame, fixes that.
-        if (symType != 0) apo::autoFrameFlame(*flame, seed + 7);
+        flame->name = QString("%1 %2").arg(titlePrefix).arg(i + 1).toStdString();
+        applyDefaultRenderSettings(*flame);
 
         if (AppSettings::randomKeepBackground()) flame->background = keepBackgroundColor;
 

@@ -395,6 +395,15 @@ EditorWindow::EditorWindow(std::shared_ptr<apo::Flame> flame, QWidget* parent)
 }
 
 EditorWindow::~EditorWindow() {
+    // A render still in flight when the window is closed must be stopped
+    // before progress_ is destroyed - the worker thread holds a raw pointer
+    // to it for the duration of the blocking render() call (see
+    // RenderWorker::renderFlameWithProgress). Requesting cancellation first
+    // means the worker observes it within one sub-batch and returns
+    // quickly, rather than this destructor blocking for however long the
+    // render would otherwise have taken - same ordering as RenderDialog's
+    // destructor.
+    if (progress_) progress_->cancelRequested.store(true, std::memory_order_relaxed);
     workerThread_->quit();
     workerThread_->wait();
 }

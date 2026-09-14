@@ -392,6 +392,7 @@ C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.
 C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/include/__msvc_int128.hpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/Renderer.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QCheckBox
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qcheckbox.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qabstractbutton.h
@@ -489,7 +490,6 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/io/PngWriter.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/render/RenderDispatcher.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QWidget
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h

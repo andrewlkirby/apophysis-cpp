@@ -89,6 +89,12 @@ void setRandomBatchTitlePrefix(const QString& prefix);
 // of resetting to black.
 bool randomKeepBackground();
 void setRandomKeepBackground(bool keep);
+// No Options.pas equivalent - a new setting this port adds. When set, a
+// freshly generated random flame whose attractor is too degenerate to
+// frame (AutoFrame.h's autoFrameFlame() returning false - would otherwise
+// render blank) is retried with a new seed instead of being kept as-is.
+bool randomDiscardBlank();
+void setRandomDiscardBlank(bool discard);
 int mutationMinXforms();
 void setMutationMinXforms(int count);
 int mutationMaxXforms();

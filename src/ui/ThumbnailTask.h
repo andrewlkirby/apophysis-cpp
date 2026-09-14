@@ -7,6 +7,7 @@
 #include <QRunnable>
 
 #include "core/Flame.h"
+#include "PreviewSizing.h"
 
 namespace apo::ui {
 
@@ -40,8 +41,13 @@ public:
         // reading `flame_` at the same time - see Flame::clone()'s own
         // comment on exactly this concurrent-access hazard.
         std::unique_ptr<apo::Flame> thumb = flame_->clone();
-        thumb->width = size_;
-        thumb->height = size_;
+        // Fit-then-scale (rather than just assigning width/height directly)
+        // so the thumbnail shows the whole composition scaled down, matching
+        // every other preview surface in the app - see PreviewSizing.h's own
+        // comment on why adjustScale() alone isn't enough without this.
+        int tw = size_, th = size_;
+        fitPreviewSize(size_, size_, thumb->width, thumb->height, tw, th);
+        thumb->adjustScale(tw, th);
         thumb->spatialOversample = 1;
         thumb->sampleDensity = 5; // fast/rough - just enough to recognize the shape
 

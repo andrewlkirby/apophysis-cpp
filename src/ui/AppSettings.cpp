@@ -21,6 +21,7 @@ constexpr int kDefaultRandomMaxXforms = 6;
 constexpr int kDefaultRandomBatchSize = 10; // matches Options.dfm's txtBatchSize.Text
 constexpr const char* kDefaultRandomBatchTitlePrefix = "Random"; // matches MainWindow.cpp's prior hardcoded prefix
 constexpr bool kDefaultRandomKeepBackground = false;
+constexpr bool kDefaultRandomDiscardBlank = true;
 // Matches MutateDialog.cpp's prior hardcoded kDefaultMinXforms/kDefaultMaxXforms.
 constexpr int kDefaultMutationMinXforms = 2;
 constexpr int kDefaultMutationMaxXforms = 6;
@@ -96,6 +97,8 @@ QString randomBatchTitlePrefix() {
 void setRandomBatchTitlePrefix(const QString& prefix) { QSettings().setValue("random/batchTitlePrefix", prefix); }
 bool randomKeepBackground() { return QSettings().value("random/keepBackground", kDefaultRandomKeepBackground).toBool(); }
 void setRandomKeepBackground(bool keep) { QSettings().setValue("random/keepBackground", keep); }
+bool randomDiscardBlank() { return QSettings().value("random/discardBlank", kDefaultRandomDiscardBlank).toBool(); }
+void setRandomDiscardBlank(bool discard) { QSettings().setValue("random/discardBlank", discard); }
 int mutationMinXforms() { return QSettings().value("random/mutationMinXforms", kDefaultMutationMinXforms).toInt(); }
 void setMutationMinXforms(int count) { QSettings().setValue("random/mutationMinXforms", count); }
 int mutationMaxXforms() { return QSettings().value("random/mutationMaxXforms", kDefaultMutationMaxXforms).toInt(); }

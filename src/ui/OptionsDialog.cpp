@@ -218,11 +218,23 @@ QWidget* OptionsDialog::buildRandomTab() {
     minFramingSamplesSpin_->setToolTip(
         "How many of the 10000 sampled points must land as valid, non-diverging points for a random flame to be "
         "kept. Only matters while \"Discard blank/degenerate flames\" is checked. Recommended: 500.");
+    minColoredCoverageSpin_ = new QDoubleSpinBox(batchGroup);
+    minColoredCoverageSpin_->setObjectName("minColoredCoverageSpin");
+    minColoredCoverageSpin_->setRange(0.0, 100.0);
+    minColoredCoverageSpin_->setDecimals(1);
+    minColoredCoverageSpin_->setSuffix("%");
+    minColoredCoverageSpin_->setValue(AppSettings::randomMinColoredCoverage() * 100.0);
+    minColoredCoverageSpin_->setToolTip(
+        "How much of a random flame's own quick test render must actually be colored (not background) for it to be "
+        "kept - catches flames that have real spatial extent but render as barely more than a faint dot, which the "
+        "min valid sample count above can't see. Only matters while \"Discard blank/degenerate flames\" is checked. "
+        "Recommended: 1%.");
     batchForm->addRow("Default batch size", batchSizeSpin_);
     batchForm->addRow("Title prefix", batchTitlePrefixEdit_);
     batchForm->addRow(keepBackgroundCheck_);
     batchForm->addRow(discardBlankCheck_);
     batchForm->addRow("Min valid sample count", minFramingSamplesSpin_);
+    batchForm->addRow("Min colored coverage", minColoredCoverageSpin_);
     layout->addWidget(batchGroup);
 
     auto* mutationGroup = new QGroupBox("Mutation", tab);
@@ -457,6 +469,7 @@ void OptionsDialog::applyAndAccept() {
     AppSettings::setRandomKeepBackground(keepBackgroundCheck_->isChecked());
     AppSettings::setRandomDiscardBlank(discardBlankCheck_->isChecked());
     AppSettings::setRandomMinFramingSamples(minFramingSamplesSpin_->value());
+    AppSettings::setRandomMinColoredCoverage(minColoredCoverageSpin_->value() / 100.0);
     AppSettings::setRandomRestrictToGpuCompatible(restrictToGpuCompatibleCheck_->isChecked());
     AppSettings::setMutationMinXforms(mutationMinXformsSpin_->value());
     AppSettings::setMutationMaxXforms(mutationMaxXformsSpin_->value());

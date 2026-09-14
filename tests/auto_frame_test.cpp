@@ -148,6 +148,64 @@ void testAutoFrameFlameHonorsAConfigurableMinValidSampleCount() {
           "parameter is actually threaded through");
 }
 
+void testHasMinimumColoredCoverageAcceptsAWellFramedFlame() {
+    auto flame = makeSierpinskiFlame();
+    check(apo::autoFrameFlame(*flame, /*seed=*/11), "test setup: the Sierpinski fixture frames successfully");
+    // makeSierpinskiFlame() only sets each xform's `color` (a gradient
+    // *index*) - a fresh Flame's own cmap defaults to all-zero (pure
+    // black) entries, which happens to exactly match the default
+    // background too. Needs a real, non-background gradient here, or this
+    // "accepts" test would trivially pass for the wrong reason (this
+    // function correctly flagging an all-black-on-black render as no
+    // coverage, same as the "rejects" test below deliberately constructs).
+    for (auto& entry : flame->cmap.entries) {
+        entry[0] = 220;
+        entry[1] = 160;
+        entry[2] = 40;
+    }
+
+    check(apo::hasMinimumColoredCoverage(*flame, /*seed=*/12),
+          "a real, well-framed attractor with a real (non-background-matching) gradient passes the default "
+          "coverage check");
+}
+
+void testHasMinimumColoredCoverageRejectsAFlameWhoseGradientMatchesBackground() {
+    // Same well-framed, real-spread attractor as the "accepts" test above -
+    // autoFrameFlame's own bounding-box check (raw, pre-color chaos-game
+    // positions) has nothing to object to here. But every gradient entry
+    // below is set to exactly match the flame's own background color, so
+    // every rendered pixel - however densely hit - tone-maps to
+    // (near-)background regardless: a stand-in for what real variations
+    // like crop/pie/wedge/falloff2 do statistically (culling nearly every
+    // point before it visibly contributes), but deterministic and cheap to
+    // assert on directly. This is exactly the gap hasMinimumColoredCoverage
+    // exists to catch that the spatial bounding-box check above cannot.
+    auto flame = makeSierpinskiFlame();
+    check(apo::autoFrameFlame(*flame, /*seed=*/13), "test setup: the Sierpinski fixture frames successfully");
+    for (auto& entry : flame->cmap.entries) {
+        entry[0] = flame->background[0];
+        entry[1] = flame->background[1];
+        entry[2] = flame->background[2];
+    }
+
+    check(!apo::hasMinimumColoredCoverage(*flame, /*seed=*/14),
+          "a well-framed attractor whose every rendered pixel matches the background color fails the coverage "
+          "check, even though its raw spatial extent is fine");
+}
+
+void testHasMinimumColoredCoverageIsDisabledByAZeroOrNegativeFraction() {
+    auto flame = makeSierpinskiFlame();
+    check(apo::autoFrameFlame(*flame, /*seed=*/15), "test setup: the Sierpinski fixture frames successfully");
+    for (auto& entry : flame->cmap.entries) {
+        entry[0] = flame->background[0];
+        entry[1] = flame->background[1];
+        entry[2] = flame->background[2];
+    }
+
+    check(apo::hasMinimumColoredCoverage(*flame, /*seed=*/16, /*minCoverageFraction=*/0.0),
+          "a minCoverageFraction of 0 disables the check entirely, even for an all-background render");
+}
+
 void testAutoFrameFlameLeavesDegenerateFlameUntouched() {
     apo::Flame flame;
     flame.width = 100;
@@ -173,6 +231,9 @@ int main() {
     testAutoFrameFlameRejectsATightlyClusteredAttractor();
     testAutoFrameFlameRejectsAnImplausiblyLargeAttractor();
     testAutoFrameFlameHonorsAConfigurableMinValidSampleCount();
+    testHasMinimumColoredCoverageAcceptsAWellFramedFlame();
+    testHasMinimumColoredCoverageRejectsAFlameWhoseGradientMatchesBackground();
+    testHasMinimumColoredCoverageIsDisabledByAZeroOrNegativeFraction();
     testAutoFrameFlameLeavesDegenerateFlameUntouched();
 
     return apo_test::reportAndExit();

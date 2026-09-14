@@ -964,6 +964,7 @@ void MainWindow::generateRandomBatch(int count) {
     // a new seed, up to kMaxDiscardBlankRetries times, rather than kept as-is.
     const bool discardBlank = AppSettings::randomDiscardBlank();
     const int minFramingSamples = AppSettings::randomMinFramingSamples();
+    const double minColoredCoverage = AppSettings::randomMinColoredCoverage();
     constexpr int kMaxDiscardBlankRetries = 20;
 
     const auto baseSeed = static_cast<std::uint64_t>(std::random_device{}());
@@ -1006,6 +1007,17 @@ void MainWindow::generateRandomBatch(int count) {
             // that - and its return value supersedes the pre-symmetry
             // hasContent for the discard check below.
             if (symType != 0) hasContent = apo::autoFrameFlame(*flame, seed + 7, minFramingSamples);
+
+            // A flame can pass the spatial framing check above (a real,
+            // non-degenerate attractor extent) and still render as barely
+            // more than a faint dot/smudge - see AutoFrame.h's
+            // hasMinimumColoredCoverage doc comment for why. Only worth the
+            // extra test render when discarding is actually on and framing
+            // already succeeded - otherwise this attempt is getting
+            // discarded or kept below regardless of coverage.
+            if (discardBlank && hasContent) {
+                hasContent = apo::hasMinimumColoredCoverage(*flame, seed + 13, minColoredCoverage);
+            }
 
             if (!discardBlank || hasContent) break;
             // Otherwise: degenerate and discarding is on - loop and retry

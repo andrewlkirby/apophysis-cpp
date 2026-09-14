@@ -107,6 +107,18 @@ void setRandomDiscardBlank(bool discard);
 // value exactly.
 int randomMinFramingSamples();
 void setRandomMinFramingSamples(int count);
+// A second, complementary strictness knob (also only meaningful while
+// randomDiscardBlank() is on): the minimum fraction (0.0-1.0; the Options
+// UI presents this as a 0-100 percentage) of a quick coverage-test
+// render's pixels that must differ from background - passed straight
+// through to AutoFrame.h's hasMinimumColoredCoverage, which is what
+// actually catches the "real attractor extent, but only a faint dot/
+// smudge actually renders" case randomMinFramingSamples/autoFrameFlame's
+// own bounding-box check can't see (see hasMinimumColoredCoverage's own
+// doc comment for why). Defaults to AutoFrame.h's own
+// kDefaultMinColoredCoverage.
+double randomMinColoredCoverage();
+void setRandomMinColoredCoverage(double fraction);
 int mutationMinXforms();
 void setMutationMinXforms(int count);
 int mutationMaxXforms();

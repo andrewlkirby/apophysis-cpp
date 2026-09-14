@@ -151,6 +151,7 @@ tests\CMakeFiles\random_flame_test.dir\random_flame_test.cpp.obj: "C:\Program Fi
 tests\CMakeFiles\random_flame_test.dir\random_flame_test.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_startup.h"
 tests\CMakeFiles\random_flame_test.dir\random_flame_test.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stop_token"
 tests\CMakeFiles\random_flame_test.dir\random_flame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Point3.h
+tests\CMakeFiles\random_flame_test.dir\random_flame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h
 
 
 tests\CMakeFiles\random_flame_test.dir\random_flame_test_autogen\mocs_compilation.cpp.obj: tests\random_flame_test_autogen\mocs_compilation.cpp
@@ -454,5 +455,7 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\Flame.
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stop_token":
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Point3.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h:
 
 tests\random_flame_test_autogen\mocs_compilation.cpp:

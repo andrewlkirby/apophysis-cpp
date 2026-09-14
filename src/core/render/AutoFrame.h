@@ -59,4 +59,38 @@ constexpr int kDefaultMinValidSamples = 500;
 // render blank; other callers are free to ignore the return value.
 bool autoFrameFlame(Flame& flame, std::uint64_t seed, int minValidSamples = kDefaultMinValidSamples);
 
+// Minimum fraction of a quick, low-res test render's pixels that must
+// differ meaningfully from the flame's own background color for a
+// generated random flame to be considered to have real visible content -
+// see hasMinimumColoredCoverage's own doc comment for why this exists
+// separately from (and in addition to) autoFrameFlame's bounding-box
+// check above. 0.01 (1%) targets the "just a faint dot/smudge near the
+// center" failure mode directly observed in real generated output (a
+// flame whose attractor has a real, non-degenerate spatial extent but
+// whose variations - crop/pie/wedge/falloff2 and friends - cull nearly
+// every point before it ever reaches a pixel), without rejecting
+// legitimately sparse/filigree fractal patterns that still spread real
+// structure across a meaningful fraction of the frame.
+constexpr double kDefaultMinColoredCoverage = 0.01;
+
+// Renders a small, cheap test image of `flame` (assumed already framed -
+// see autoFrameFlame above, which should run first) and measures what
+// fraction of its pixels differ meaningfully from flame.background.
+// Complements autoFrameFlame's spatial bounding-box check: that check only
+// ever looks at raw, pre-color, pre-crop/pre-opacity chaos-game positions
+// (Renderer::samplePoints), so a flame can have a real, non-degenerate
+// attractor *extent* (autoFrameFlame succeeds) and still render almost
+// entirely background color once color/opacity/crop-style variations have
+// had their say - this catches that directly, by actually rendering and
+// looking at pixels, the only way to know for sure.
+//
+// `seed` drives the coverage-test render's own point sequence
+// independently of whatever seed `flame` itself was generated/framed with
+// (same "derive a distinct stream via a seed offset" pattern
+// RandomFlame.cpp already uses for its own topology/gradient/framing
+// draws). Returns true (nothing to check, so nothing to reject) if
+// flame.width/height are degenerate or minCoverageFraction <= 0.
+bool hasMinimumColoredCoverage(const Flame& flame, std::uint64_t seed,
+                                double minCoverageFraction = kDefaultMinColoredCoverage);
+
 } // namespace apo

@@ -97,6 +97,7 @@ private:
     QCheckBox* keepBackgroundCheck_ = nullptr;
     QCheckBox* discardBlankCheck_ = nullptr;
     QSpinBox* minFramingSamplesSpin_ = nullptr;
+    QDoubleSpinBox* minColoredCoverageSpin_ = nullptr;
     QCheckBox* restrictToGpuCompatibleCheck_ = nullptr;
     QSpinBox* mutationMinXformsSpin_ = nullptr;
     QSpinBox* mutationMaxXformsSpin_ = nullptr;

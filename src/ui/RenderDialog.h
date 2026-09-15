@@ -181,7 +181,9 @@ private:
     // Plan's P4.3 - writes a .flame alongside the rendered PNG, next to it
     // (same basename, ".flame" extension), capturing exactly the settings
     // that were actually rendered (pendingRenderFlame_ below), not flame_'s
-    // own possibly-different original values.
+    // own possibly-different original values. Written *before* the render
+    // starts (startRender()), not after it finishes, so a crash mid-render
+    // doesn't cost the user the parameters along with the render.
     QCheckBox* saveParametersCheck_ = nullptr;
     QPushButton* renderButton_ = nullptr;
     QPushButton* pauseButton_ = nullptr;
@@ -206,6 +208,13 @@ private:
     // checked) to write out the settings that were actually rendered, not
     // just re-read flame_'s own (possibly different) original values.
     std::shared_ptr<const apo::Flame> pendingRenderFlame_;
+    // Whether the .flame parameters file for the in-flight/just-finished
+    // render was written successfully - saved *before* the render starts
+    // (see startRender()) so a crash mid-render still leaves the user with
+    // the exact parameters to re-run from, rather than only writing it
+    // after a render that might never get the chance to finish. Only
+    // meaningful when saveParametersCheck_ is checked.
+    bool parametersSaved_ = false;
     // Kept around (unlike pendingRenderFlame_, which is reset once
     // onFullRenderFinished is done with it) so openPostProcess() can seed
     // PostProcessDialog with exactly what was last rendered - a fresh

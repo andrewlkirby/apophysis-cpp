@@ -133,6 +133,12 @@ private:
     // "save parameters" .flame write), not flames_[currentIndex_]'s own,
     // possibly-different original field values.
     std::shared_ptr<const apo::Flame> pendingRenderFlame_;
+    // Same reason RenderDialog carries parametersSaved_ - see its own doc
+    // comment: the .flame for the in-flight flame is written up front in
+    // renderNext(), before that flame's render starts, so a crash mid-batch
+    // still leaves the user with parameters for whichever flame was in
+    // flight when it happened.
+    bool parametersSaved_ = false;
 
     QString autoScreenshotPath_;
     bool autoScreenshotExit_ = false;

@@ -453,6 +453,17 @@ void RenderDialog::startRender() {
 
     std::shared_ptr<const apo::Flame> shared(std::move(renderFlame));
     pendingRenderFlame_ = shared;
+
+    // Plan's P4.3 - save the .flame *before* the render starts (rather than
+    // only after it finishes) so a crash mid-render still leaves the user
+    // with the exact parameters to re-run from, instead of losing them
+    // along with the incomplete render.
+    parametersSaved_ = false;
+    if (saveParametersCheck_->isChecked()) {
+        const QString flamePath = flameParametersPathFor(outputPathEdit_->text());
+        parametersSaved_ = apo::saveFlameFile(flamePath.toStdString(), {pendingRenderFlame_.get()});
+    }
+
     const quint64 seed = static_cast<quint64>(std::random_device{}());
     emit fullRenderRequested(shared, seed, budget.threadCount, progress_.get(), outputPathEdit_->text(), precision);
 }
@@ -525,31 +536,28 @@ void RenderDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsGenera
 
     const QString backendSuffix = usedGpu ? " [GPU]" : "";
     const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
+    // The .flame was already written (or attempted) up front in
+    // startRender() - just report what happened, rather than re-saving here
+    // (which would also be wrong now, since a cancelled/crashed render has
+    // no guarantee pendingRenderFlame_'s settings still reflect anything
+    // worth re-saving over the already-written file).
+    const QString paramsSuffix = saveParametersCheck_->isChecked()
+        ? (parametersSaved_ ? " (parameters saved)" : " (failed to save parameters)")
+        : "";
     if (cancelled) {
         progressBar_->setValue(0);
-        statusLabel_->setText(QString("Cancelled after %1%2").arg(formatDuration(elapsedSec)).arg(backendSuffix));
+        statusLabel_->setText(
+            QString("Cancelled after %1%2%3").arg(formatDuration(elapsedSec)).arg(backendSuffix).arg(paramsSuffix));
     } else if (!saved) {
         progressBar_->setValue(100);
-        statusLabel_->setText("Render finished, but failed to save the output file");
+        statusLabel_->setText(QString("Render finished, but failed to save the output file%1").arg(paramsSuffix));
     } else {
         progressBar_->setValue(100);
-        QString message = QString("Done - %1 points accepted in %2%3")
-                               .arg(pointsAccepted)
-                               .arg(formatDuration(elapsedSec))
-                               .arg(backendSuffix);
-
-        // Plan's P4.3 - the exact settings that were actually rendered
-        // (pendingRenderFlame_), not flame_'s own possibly-different
-        // original values (width/density/oversample/... as this dialog's
-        // own fields had them at Render time).
-        if (saveParametersCheck_->isChecked() && pendingRenderFlame_) {
-            const QString flamePath = flameParametersPathFor(outputPathEdit_->text());
-            if (apo::saveFlameFile(flamePath.toStdString(), {pendingRenderFlame_.get()})) {
-                message += " (parameters saved)";
-            } else {
-                message += " (failed to save parameters)";
-            }
-        }
+        const QString message = QString("Done - %1 points accepted in %2%3%4")
+                                     .arg(pointsAccepted)
+                                     .arg(formatDuration(elapsedSec))
+                                     .arg(backendSuffix)
+                                     .arg(paramsSuffix);
         statusLabel_->setText(message);
 
         // Matches the original's Render > post-process flow (only offered

@@ -320,6 +320,19 @@ void RenderAllDialog::renderNext() {
     pendingRenderFlame_ = shared;
     const QString outputPath =
         QDir(outputFolderEdit_->text()).filePath(outputFileNames_[static_cast<std::size_t>(currentIndex_)]);
+
+    // Same reasoning as RenderDialog::startRender() - write the .flame
+    // before this flame's render starts, not after it finishes, so a crash
+    // mid-batch still leaves the user with parameters for whichever flame
+    // was in flight.
+    parametersSaved_ = false;
+    if (saveParametersCheck_->isChecked()) {
+        QString flamePath = outputFileNames_[static_cast<std::size_t>(currentIndex_)];
+        flamePath = flamePath.left(flamePath.length() - 4) + ".flame"; // strip ".png", add ".flame"
+        flamePath = QDir(outputFolderEdit_->text()).filePath(flamePath);
+        parametersSaved_ = apo::saveFlameFile(flamePath.toStdString(), {pendingRenderFlame_.get()});
+    }
+
     const quint64 seed = static_cast<quint64>(std::random_device{}());
     emit fullRenderRequested(shared, seed, budget.threadCount, progress_.get(), outputPath,
                               apo::BucketPrecision::Double);
@@ -356,27 +369,21 @@ void RenderAllDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsGen
     progress_.reset();
 
     const int index = currentIndex_;
+    // The .flame for this flame was already written (or attempted) up front
+    // in renderNext() - just report what happened.
+    const QString paramsSuffix = saveParametersCheck_->isChecked()
+        ? (parametersSaved_ ? ", parameters saved" : ", failed to save parameters")
+        : "";
     QString suffix;
     if (cancelled) {
         cancelledMidBatch_ = true;
-        suffix = " - cancelled";
+        suffix = " - cancelled" + paramsSuffix;
     } else if (!saved) {
         ++failedCount_;
-        suffix = " - failed to save";
+        suffix = " - failed to save" + paramsSuffix;
     } else {
         ++succeededCount_;
-        suffix = QString(" - done (%1 points)").arg(pointsAccepted);
-
-        if (saveParametersCheck_->isChecked() && pendingRenderFlame_) {
-            QString flamePath = outputFileNames_[static_cast<std::size_t>(index)];
-            flamePath = flamePath.left(flamePath.length() - 4) + ".flame"; // strip ".png", add ".flame"
-            flamePath = QDir(outputFolderEdit_->text()).filePath(flamePath);
-            if (apo::saveFlameFile(flamePath.toStdString(), {pendingRenderFlame_.get()})) {
-                suffix += ", parameters saved";
-            } else {
-                suffix += ", failed to save parameters";
-            }
-        }
+        suffix = QString(" - done (%1 points)%2").arg(pointsAccepted).arg(paramsSuffix);
     }
 
     if (index >= 0 && index < resultsList_->count()) {

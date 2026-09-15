@@ -5423,6 +5423,8 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmimedata.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QPointer
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpointer.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QProgressDialog
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qprogressdialog.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QPushButton
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qpushbutton.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qabstractbutton.h
@@ -13206,6 +13208,12 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmimedata.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpointer.h:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QProgressDialog:
+
+"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\ioapiset.h":
+
+C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qprogressdialog.h:
+
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\QThreadPool:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrunnable.h:
@@ -13283,8 +13291,6 @@ src\ui\apo_ui_autogen\EWIEGA46WW\moc_AboutDialog.cpp:
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\errhandlingapi.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\fibersapi.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\ioapiset.h":
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QProgressBar:
 

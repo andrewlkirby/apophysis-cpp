@@ -496,6 +496,8 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QMimeData
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qmimedata.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QPointer
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qpointer.h
+C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QProgressDialog
+C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qprogressdialog.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QPushButton
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qpushbutton.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qabstractbutton.h

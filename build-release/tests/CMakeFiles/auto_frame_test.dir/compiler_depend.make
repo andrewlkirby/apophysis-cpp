@@ -39,11 +39,11 @@ tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files 
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\errno.h"
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_string.h"
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstring.h"
+tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\tests\TestHelpers.h
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdio"
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdio.h"
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h"
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h"
-tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\tests\TestHelpers.h
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\Flame.h
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\array"
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xutility"
@@ -149,7 +149,6 @@ tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files 
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h"
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
-tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\io\FlameIO.h
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\AutoFrame.h
 tests\CMakeFiles\auto_frame_test.dir\auto_frame_test.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\Renderer.h
 
@@ -272,14 +271,6 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\Flame.
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstring.h":
 
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h":
-
-"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdio":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h":
-
-"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\utility":
-
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\immintrin.h":
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concepts":
@@ -289,6 +280,14 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\Flame.
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Bezier.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\tests\TestHelpers.h:
+
+"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h":
+
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdio":
+
+"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h":
+
+"C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\utility":
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xutility":
 
@@ -455,7 +454,5 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Point3.h:
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h:
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\io\FlameIO.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\render\AutoFrame.h:

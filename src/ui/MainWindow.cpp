@@ -25,6 +25,7 @@
 #include <QMessageBox>
 #include <QMimeData>
 #include <QPointer>
+#include <QProgressDialog>
 #include <QPushButton>
 #include <QResizeEvent>
 #include <QSignalBlocker>
@@ -918,9 +919,21 @@ void MainWindow::generateRandomBatch(int count) {
     // Matches Main.pas's RandomBatch: replaces the current library view
     // with a freshly-generated batch, not appended alongside whatever was
     // already loaded (see openFlameFile()'s identical flames_.clear()).
+    // Bumped now, before generation starts, rather than deferred alongside
+    // the flames_ replacement below: this immediately invalidates any
+    // still-in-flight async callback tied to the *old* library (e.g.
+    // requestThumbnail()'s stale-generation check) - needed because the
+    // generation loop below now pumps the event loop via the progress
+    // dialog's own setValue() (see below), so such a callback really can
+    // run mid-generation, not just in theory.
     ++loadGeneration_;
-    flames_.clear();
-    flames_.reserve(static_cast<size_t>(count));
+    // Built up locally and only swapped into flames_ once generation is
+    // fully done (or cancelled) - see below - rather than clearing/
+    // rebuilding flames_ in place, so flames_/flameList_ stay in a fully
+    // consistent, valid state for the entire generation loop even though
+    // that loop now reenters the event loop on every iteration.
+    std::vector<std::shared_ptr<apo::Flame>> newFlames;
+    newFlames.reserve(static_cast<size_t>(count));
 
     const int minXforms = AppSettings::randomMinXforms();
     const int maxXforms = AppSettings::randomMaxXforms();
@@ -967,8 +980,33 @@ void MainWindow::generateRandomBatch(int count) {
     const double minColoredCoverage = AppSettings::randomMinColoredCoverage();
     constexpr int kMaxDiscardBlankRetries = 20;
 
+    // Modal (blocks input to MainWindow itself, so the user can't start a
+    // second, overlapping batch mid-generation) but not application-modal -
+    // other top-level windows (EditorWindow, etc.) stay usable. setValue()
+    // below reenters the event loop each iteration (QProgressDialog's own
+    // documented behavior), which is what keeps the UI responsive/repainting
+    // and lets the Cancel button - and the window's own close button - both
+    // actually register a click while generation is in progress; a strict
+    // enough minColoredCoverage setting can make a slot burn through every
+    // one of its kMaxDiscardBlankRetries attempts, each doing a real test
+    // render (AutoFrame.h's hasMinimumColoredCoverage), so a large batch is
+    // no longer guaranteed to be fast. setMinimumDuration() keeps this from
+    // ever flashing on screen for the common case where generation finishes
+    // quickly anyway.
+    QProgressDialog progressDialog(QString("Generating random flames..."), "Cancel", 0, count, this);
+    progressDialog.setWindowTitle("New Random Batch");
+    progressDialog.setWindowModality(Qt::WindowModal);
+    progressDialog.setMinimumDuration(700);
+    progressDialog.setValue(0);
+
     const auto baseSeed = static_cast<std::uint64_t>(std::random_device{}());
+    bool cancelled = false;
     for (int i = 0; i < count; ++i) {
+        if (progressDialog.wasCanceled()) {
+            cancelled = true;
+            break;
+        }
+
         std::unique_ptr<apo::Flame> flame;
         std::uint64_t seed = 0;
         for (int attempt = 0; attempt < kMaxDiscardBlankRetries; ++attempt) {
@@ -1031,11 +1069,21 @@ void MainWindow::generateRandomBatch(int count) {
 
         if (AppSettings::randomKeepBackground()) flame->background = keepBackgroundColor;
 
-        flames_.push_back(std::shared_ptr<apo::Flame>(std::move(flame)));
+        newFlames.push_back(std::shared_ptr<apo::Flame>(std::move(flame)));
+        progressDialog.setValue(i + 1);
     }
+    if (!cancelled) progressDialog.setValue(count); // dismiss it - cancel() already hid it on the cancelled path
+
+    flames_ = std::move(newFlames);
 
     currentFilePath_.clear();
-    setWindowTitle(QString("Apophysis 7X - Random Batch (%1 flame%2)").arg(count).arg(count == 1 ? "" : "s"));
+    const int generated = static_cast<int>(flames_.size());
+    if (cancelled) {
+        setWindowTitle(QString("Apophysis 7X - Random Batch (%1 of %2 flames, cancelled)").arg(generated).arg(count));
+        statusBar()->showMessage(QString("Cancelled after generating %1 of %2 flames").arg(generated).arg(count));
+    } else {
+        setWindowTitle(QString("Apophysis 7X - Random Batch (%1 flame%2)").arg(count).arg(count == 1 ? "" : "s"));
+    }
 
     populateList();
     if (!flames_.empty()) flameList_->setCurrentRow(0);

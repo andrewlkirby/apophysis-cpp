@@ -1001,6 +1001,12 @@ void MainWindow::generateRandomBatch(int count) {
 
     const auto baseSeed = static_cast<std::uint64_t>(std::random_device{}());
     bool cancelled = false;
+    // Count of batch slots where every attempt failed discardBlank's checks
+    // and the best-scoring (not just the last) attempt was kept instead -
+    // surfaced to the user below rather than silently handed over, since a
+    // strict enough minColoredCoverage can make this the common case, not a
+    // rare edge case.
+    int fallbackCount = 0;
     for (int i = 0; i < count; ++i) {
         if (progressDialog.wasCanceled()) {
             cancelled = true;
@@ -1008,6 +1014,11 @@ void MainWindow::generateRandomBatch(int count) {
         }
 
         std::unique_ptr<apo::Flame> flame;
+        // Best-scoring attempt seen so far this slot, kept in case every
+        // attempt fails discardBlank's checks - see the fallback below.
+        std::unique_ptr<apo::Flame> bestFlame;
+        double bestScore = -1.0;
+        bool accepted = false;
         std::uint64_t seed = 0;
         for (int attempt = 0; attempt < kMaxDiscardBlankRetries; ++attempt) {
             seed = baseSeed +
@@ -1046,28 +1057,60 @@ void MainWindow::generateRandomBatch(int count) {
             // hasContent for the discard check below.
             if (symType != 0) hasContent = apo::autoFrameFlame(*flame, seed + 7, minFramingSamples);
 
+            if (!discardBlank) { accepted = true; break; }
+
+            // Apply the render settings (and "keep background") this flame
+            // will actually be kept with *before* measuring its content
+            // below, not after (as this used to do at the very end of the
+            // per-slot loop) - hasMinimumColoredCoverage/measureContent
+            // otherwise scores generateRandomFlame's own gamma=1/
+            // brightness=1 Flame defaults while the flame is actually shown
+            // at applyDefaultRenderSettings's gamma=4/brightness=4, silently
+            // judging a much darker image than the one being decided on.
+            applyDefaultRenderSettings(*flame);
+            if (AppSettings::randomKeepBackground()) flame->background = keepBackgroundColor;
+
             // A flame can pass the spatial framing check above (a real,
             // non-degenerate attractor extent) and still render as barely
             // more than a faint dot/smudge - see AutoFrame.h's
             // hasMinimumColoredCoverage doc comment for why. Only worth the
-            // extra test render when discarding is actually on and framing
-            // already succeeded - otherwise this attempt is getting
-            // discarded or kept below regardless of coverage.
-            if (discardBlank && hasContent) {
-                hasContent = apo::hasMinimumColoredCoverage(*flame, seed + 13, minColoredCoverage);
+            // extra test render when framing already succeeded - otherwise
+            // this attempt is getting discarded regardless of coverage.
+            double score = 0.0;
+            if (hasContent) {
+                const apo::ContentScore content = apo::measureContent(*flame, seed + 13);
+                score = content.score;
+                hasContent = content.coveredFraction >= minColoredCoverage;
             }
 
-            if (!discardBlank || hasContent) break;
-            // Otherwise: degenerate and discarding is on - loop and retry
-            // with a new seed. If every attempt stays degenerate, the loop
-            // falls through with the last (still-degenerate) flame so the
-            // batch count is never short.
+            if (hasContent) { accepted = true; break; }
+
+            // Degenerate, or real but below the coverage bar - remember
+            // this attempt if it's the best-scoring one seen so far for
+            // this slot, then loop and retry with a new seed. If every
+            // attempt fails, the best-scoring attempt (not just whichever
+            // happened to be tried last) is kept below, so a strict filter
+            // can no longer make a slot fall back to an arbitrary reject.
+            if (!bestFlame || score > bestScore) {
+                bestScore = score;
+                bestFlame = std::move(flame);
+            }
+        }
+
+        if (!accepted) {
+            if (bestFlame) flame = std::move(bestFlame);
+            ++fallbackCount;
         }
 
         flame->name = QString("%1 %2").arg(titlePrefix).arg(i + 1).toStdString();
-        applyDefaultRenderSettings(*flame);
-
-        if (AppSettings::randomKeepBackground()) flame->background = keepBackgroundColor;
+        // When discardBlank is on, every attempt above (accepted or not)
+        // already had render settings/background applied before its content
+        // was measured - applying again here would be redundant. When it's
+        // off, nothing above touched them, so apply now as before.
+        if (!discardBlank) {
+            applyDefaultRenderSettings(*flame);
+            if (AppSettings::randomKeepBackground()) flame->background = keepBackgroundColor;
+        }
 
         newFlames.push_back(std::shared_ptr<apo::Flame>(std::move(flame)));
         progressDialog.setValue(i + 1);
@@ -1080,9 +1123,26 @@ void MainWindow::generateRandomBatch(int count) {
     const int generated = static_cast<int>(flames_.size());
     if (cancelled) {
         setWindowTitle(QString("Apophysis 7X - Random Batch (%1 of %2 flames, cancelled)").arg(generated).arg(count));
-        statusBar()->showMessage(QString("Cancelled after generating %1 of %2 flames").arg(generated).arg(count));
+        QString message = QString("Cancelled after generating %1 of %2 flames").arg(generated).arg(count);
+        if (fallbackCount > 0) {
+            message += QString(" (%1 did not meet the quality filter)").arg(fallbackCount);
+        }
+        statusBar()->showMessage(message);
     } else {
         setWindowTitle(QString("Apophysis 7X - Random Batch (%1 flame%2)").arg(count).arg(count == 1 ? "" : "s"));
+        // discardBlank's retry loop above always keeps the best-scoring
+        // attempt for a slot that never meets minColoredCoverage/framing,
+        // so the batch count is never short - but that's still worth
+        // surfacing rather than leaving silent, since the kept flame didn't
+        // actually pass the user's own filter.
+        if (fallbackCount > 0) {
+            statusBar()->showMessage(QString("Generated %1 flames - %2 did not meet the quality filter (kept the "
+                                              "best attempt for each)")
+                                          .arg(count)
+                                          .arg(fallbackCount));
+        } else {
+            statusBar()->showMessage(QString("Generated %1 flames").arg(count));
+        }
     }
 
     populateList();

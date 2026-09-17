@@ -1,6 +1,7 @@
 #include "AutoFrame.h"
 
 #include <algorithm>
+#include <cmath>
 #include <cstddef>
 #include <cstdlib>
 #include <vector>
@@ -17,18 +18,33 @@ namespace {
 constexpr int kSampleCount = 10000;
 constexpr double kTrimFraction = 0.05;
 
-// hasMinimumColoredCoverage's own test-render settings. 64x64 at
-// sampleDensity=10 is ~41000 points - cheap (same order of magnitude as
-// this file's own kSampleCount above), but plenty to estimate coverage
-// down to the ~1% scale kDefaultMinColoredCoverage cares about.
-constexpr int kCoverageTestSize = 64;
-constexpr double kCoverageTestSampleDensity = 10.0;
-// Sum of |R-bgR|+|G-bgG|+|B-bgB| (out of a possible 765) a pixel must
-// exceed to count as "covered" rather than background - small enough to
-// catch faint anti-aliased edges, large enough to ignore the kind of
-// single-LSB rounding noise a gamma/tone-map curve can leave even on an
-// otherwise-untouched background pixel.
-constexpr int kCoverageColorDeltaThreshold = 24;
+// measureContent's own test-render settings. 128x128 at sampleDensity=20 is
+// ~330000 points - still cheap next to a real render, but a big step up
+// from the 64x64/~41000-point version this replaced: at 64x64, one test
+// pixel spans roughly 20x12 pixels of a typical 1280x800 output, so even
+// thin/sparse structure "touches" nearly every test cell and reads as far
+// more covered than the real render looks. 128x128 quarters that per-cell
+// footprint, tracking perceived fullness much more closely.
+constexpr int kCoverageTestSize = 128;
+constexpr double kCoverageTestSampleDensity = 20.0;
+// Luminance (Rec.601, 0-255) delta from the background's own luminance a
+// pixel must exceed to count as "covered" - small enough to catch faint
+// anti-aliased edges, large enough to ignore single-LSB rounding noise a
+// gamma/tone-map curve can leave even on an otherwise-untouched background
+// pixel. Luminance rather than a raw per-channel RGB sum so the threshold
+// means the same thing regardless of hue, and so it composes directly with
+// meanForegroundLum/lumStdDev below (all three drawn from the same measure).
+constexpr double kLumDeltaThreshold = 8.0;
+// score's own brightness/contrast normalization: meanForegroundLum and
+// lumStdDev values at/above these (0-255) saturate their respective score
+// terms to 1.0. Not exposed as settings - see measureContent's own doc
+// comment on why these stay implementation constants.
+constexpr double kLumReference = 64.0;
+constexpr double kContrastReference = 48.0;
+
+double luminance(int r, int g, int b) {
+    return 0.299 * r + 0.587 * g + 0.114 * b;
+}
 } // namespace
 
 bool autoFrameFlame(Flame& flame, std::uint64_t seed, int minValidSamples) {
@@ -85,6 +101,11 @@ bool autoFrameFlame(Flame& flame, std::uint64_t seed, int minValidSamples) {
 bool hasMinimumColoredCoverage(const Flame& flame, std::uint64_t seed, double minCoverageFraction) {
     if (flame.width <= 0 || flame.height <= 0) return true;
     if (minCoverageFraction <= 0.0) return true;
+    return measureContent(flame, seed).coveredFraction >= minCoverageFraction;
+}
+
+ContentScore measureContent(const Flame& flame, std::uint64_t seed) {
+    if (flame.width <= 0 || flame.height <= 0) return {};
 
     auto testFlame = flame.clone();
     // Fits into a kCoverageTestSize x kCoverageTestSize box aspect-
@@ -115,20 +136,42 @@ bool hasMinimumColoredCoverage(const Flame& flame, std::uint64_t seed, double mi
     // so avoiding thread-pool spin-up/join overhead on a render this
     // small/cheap matters more than parallelizing it.
     const RenderedImage image = Renderer::render(*testFlame, seed, /*threadCount=*/1);
-    if (image.pixels.empty() || image.width <= 0 || image.height <= 0) return false;
+    if (image.pixels.empty() || image.width <= 0 || image.height <= 0) return {};
 
     const auto channels = static_cast<size_t>(image.channels);
     const int totalPixels = image.width * image.height;
+    const double bgLum = luminance(flame.background[0], flame.background[1], flame.background[2]);
     int coveredPixels = 0;
+    double sumFgLum = 0.0;
+    double sumFgLum2 = 0.0;
     for (int i = 0; i < totalPixels; ++i) {
         const std::uint8_t* px = &image.pixels[static_cast<size_t>(i) * channels];
-        const int delta = std::abs(static_cast<int>(px[0]) - flame.background[0]) +
-                           std::abs(static_cast<int>(px[1]) - flame.background[1]) +
-                           std::abs(static_cast<int>(px[2]) - flame.background[2]);
-        if (delta > kCoverageColorDeltaThreshold) ++coveredPixels;
+        const double lum = luminance(px[0], px[1], px[2]);
+        if (std::abs(lum - bgLum) > kLumDeltaThreshold) {
+            ++coveredPixels;
+            sumFgLum += lum;
+            sumFgLum2 += lum * lum;
+        }
     }
 
-    return static_cast<double>(coveredPixels) / static_cast<double>(totalPixels) >= minCoverageFraction;
+    ContentScore out;
+    out.coveredFraction = static_cast<double>(coveredPixels) / static_cast<double>(totalPixels);
+    if (coveredPixels > 0) {
+        out.meanForegroundLum = sumFgLum / coveredPixels;
+        const double variance =
+            std::max(0.0, sumFgLum2 / coveredPixels - out.meanForegroundLum * out.meanForegroundLum);
+        out.lumStdDev = std::sqrt(variance);
+    }
+    // Rewards coverage, brightness, and structure (spread) together so a
+    // bright, structured flame outranks a flat, faint haze at equal
+    // coveredFraction - the discrimination best-of-N fallback (MainWindow's
+    // random batch retry loop) needs when every attempt fails the user's
+    // minCoverageFraction bar and it must pick the least-bad one. Bounded to
+    // [0, coveredFraction] since the two terms are clamped to [0,1].
+    const double lumTerm = std::clamp(out.meanForegroundLum / kLumReference, 0.0, 1.0);
+    const double contrastTerm = std::clamp(out.lumStdDev / kContrastReference, 0.0, 1.0);
+    out.score = out.coveredFraction * (0.60 + 0.25 * lumTerm + 0.15 * contrastTerm);
+    return out;
 }
 
 } // namespace apo

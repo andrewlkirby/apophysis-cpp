@@ -4,6 +4,7 @@
 // Mutate's mutants, which always inherit their base flame's existing
 // camera - see AutoFrame.h's header comment).
 
+#include <algorithm>
 #include <cmath>
 
 #include "TestHelpers.h"
@@ -206,6 +207,67 @@ void testHasMinimumColoredCoverageIsDisabledByAZeroOrNegativeFraction() {
           "a minCoverageFraction of 0 disables the check entirely, even for an all-background render");
 }
 
+void testMeasureContentScoresABrightWellFramedFlameAboveZero() {
+    auto flame = makeSierpinskiFlame();
+    check(apo::autoFrameFlame(*flame, /*seed=*/17), "test setup: the Sierpinski fixture frames successfully");
+    for (auto& entry : flame->cmap.entries) {
+        entry[0] = 220;
+        entry[1] = 160;
+        entry[2] = 40;
+    }
+
+    const apo::ContentScore content = apo::measureContent(*flame, /*seed=*/18);
+    check(content.coveredFraction > 0.0, "a real, well-framed, brightly-colored attractor has nonzero coverage");
+    check(content.meanForegroundLum > 0.0, "...and a nonzero mean foreground luminance");
+    check(content.score > 0.0, "...and a nonzero combined score");
+}
+
+void testMeasureContentScoresAllBackgroundAsZero() {
+    auto flame = makeSierpinskiFlame();
+    check(apo::autoFrameFlame(*flame, /*seed=*/19), "test setup: the Sierpinski fixture frames successfully");
+    for (auto& entry : flame->cmap.entries) {
+        entry[0] = flame->background[0];
+        entry[1] = flame->background[1];
+        entry[2] = flame->background[2];
+    }
+
+    const apo::ContentScore content = apo::measureContent(*flame, /*seed=*/20);
+    check(content.coveredFraction == 0.0, "a gradient matching the background has zero measured coverage");
+    check(content.score == 0.0, "...and so a zero combined score");
+}
+
+void testMeasureContentRanksABrighterFlameAboveAFainterOneAtEqualCoverage() {
+    // Same attractor and same *background-relative* delta pattern (three
+    // gradient stops, one per xform, each offset from the background by the
+    // same amount) - only the offset's magnitude differs, so both flames
+    // hit the same set of pixels (same coveredFraction) but the bright one
+    // is farther from the background in luminance. This is exactly the
+    // discrimination best-of-N fallback (MainWindow's random batch retry
+    // loop) relies on `score` for: ranking two attempts that both fail the
+    // user's coverage bar, or that both pass it, so the least-bad (or best)
+    // one can be identified instead of picking arbitrarily.
+    auto dim = makeSierpinskiFlame();
+    check(apo::autoFrameFlame(*dim, /*seed=*/21), "test setup: the dim fixture frames successfully");
+    for (auto& entry : dim->cmap.entries) {
+        entry[0] = std::min(255, dim->background[0] + 20);
+        entry[1] = std::min(255, dim->background[1] + 20);
+        entry[2] = std::min(255, dim->background[2] + 20);
+    }
+
+    auto bright = makeSierpinskiFlame();
+    check(apo::autoFrameFlame(*bright, /*seed=*/21), "test setup: the bright fixture frames successfully");
+    for (auto& entry : bright->cmap.entries) {
+        entry[0] = std::min(255, bright->background[0] + 200);
+        entry[1] = std::min(255, bright->background[1] + 200);
+        entry[2] = std::min(255, bright->background[2] + 200);
+    }
+
+    const apo::ContentScore dimContent = apo::measureContent(*dim, /*seed=*/22);
+    const apo::ContentScore brightContent = apo::measureContent(*bright, /*seed=*/22);
+    check(brightContent.score > dimContent.score,
+          "a brighter flame outranks a fainter one sharing the same attractor and seed");
+}
+
 void testAutoFrameFlameLeavesDegenerateFlameUntouched() {
     apo::Flame flame;
     flame.width = 100;
@@ -234,6 +296,9 @@ int main() {
     testHasMinimumColoredCoverageAcceptsAWellFramedFlame();
     testHasMinimumColoredCoverageRejectsAFlameWhoseGradientMatchesBackground();
     testHasMinimumColoredCoverageIsDisabledByAZeroOrNegativeFraction();
+    testMeasureContentScoresABrightWellFramedFlameAboveZero();
+    testMeasureContentScoresAllBackgroundAsZero();
+    testMeasureContentRanksABrighterFlameAboveAFainterOneAtEqualCoverage();
     testAutoFrameFlameLeavesDegenerateFlameUntouched();
 
     return apo_test::reportAndExit();

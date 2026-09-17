@@ -93,4 +93,26 @@ constexpr double kDefaultMinColoredCoverage = 0.01;
 bool hasMinimumColoredCoverage(const Flame& flame, std::uint64_t seed,
                                 double minCoverageFraction = kDefaultMinColoredCoverage);
 
+// Full breakdown behind hasMinimumColoredCoverage's pass/fail bool - lets a
+// caller doing best-of-N fallback (random batch generation, when every
+// retry attempt fails the coverage threshold) rank attempts against each
+// other instead of only knowing each one failed. All luminance fields are
+// 0..255; `score` is a combined ranking metric (monotone in coveredFraction,
+// meanForegroundLum, and lumStdDev) meant for relative comparison only, not
+// for comparing against minCoverageFraction - that comparison stays on
+// coveredFraction, exactly matching hasMinimumColoredCoverage's own contract.
+struct ContentScore {
+    double coveredFraction = 0.0;
+    double meanForegroundLum = 0.0;
+    double lumStdDev = 0.0;
+    double score = 0.0;
+};
+
+// Same test render hasMinimumColoredCoverage uses, returning the full
+// breakdown instead of just a pass/fail bool. `flame` should already carry
+// the gamma/brightness/vibrancy it will actually be displayed with - this
+// renders and measures exactly what's passed in, it doesn't apply any
+// defaults of its own.
+ContentScore measureContent(const Flame& flame, std::uint64_t seed);
+
 } // namespace apo

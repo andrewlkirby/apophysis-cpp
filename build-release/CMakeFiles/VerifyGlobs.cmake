@@ -236,6 +236,7 @@ set(OLD_GLOB
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPow.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPowIA.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSplits.cpp"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSupermoire.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTangent.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTwintrian.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarWaves.cpp"
@@ -328,6 +329,7 @@ set(OLD_GLOB
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPow.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSinhPowIA.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSplits.h"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSupermoire.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTangent.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTwintrian.h"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarWaves.h"
@@ -390,6 +392,7 @@ set(OLD_GLOB
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/variations_batch7_test.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/variations_batch8_test.cpp"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/variations_batch9_test.cpp"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/variations_supermoire_test.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

@@ -126,6 +126,11 @@ constexpr int kSinhPow = kFirstRegisteredKind + 65;
 // sinhpow's "(b)" companion (VarSinhPowIA.h) - same no-RNG/no-cache shape,
 // just four T_c evaluations per point instead of one.
 constexpr int kSinhPowIA = kFirstRegisteredKind + 66;
+// Batch 5 - single new variation (no RNG, no selectCalcFunction
+// specialization, no prepare()-cached state): the device calc() below
+// recomputes the triangular-lattice sums inline from the raw params each
+// call, same shape as Batch 4 above.
+constexpr int kSupermoire = kFirstRegisteredKind + 67;
 } // namespace kind
 
 struct RegisteredVarInfo {

@@ -767,6 +767,19 @@ variations_batch9_test\fast:
 .PHONY : variations_batch9_test\fast
 
 #=============================================================================
+# Target rules for targets named variations_supermoire_test
+
+# Build rule for target.
+variations_supermoire_test: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) variations_supermoire_test
+.PHONY : variations_supermoire_test
+
+# fast build rule for target.
+variations_supermoire_test\fast:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\build
+.PHONY : variations_supermoire_test\fast
+
+#=============================================================================
 # Target rules for targets named all_plugins_smoke_test_autogen_timestamp_deps
 
 # Build rule for target.
@@ -1597,6 +1610,32 @@ variations_batch9_test_autogen: cmake_check_build_system
 variations_batch9_test_autogen\fast:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch9_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch9_test_autogen.dir\build
 .PHONY : variations_batch9_test_autogen\fast
+
+#=============================================================================
+# Target rules for targets named variations_supermoire_test_autogen_timestamp_deps
+
+# Build rule for target.
+variations_supermoire_test_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) variations_supermoire_test_autogen_timestamp_deps
+.PHONY : variations_supermoire_test_autogen_timestamp_deps
+
+# fast build rule for target.
+variations_supermoire_test_autogen_timestamp_deps\fast:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\build
+.PHONY : variations_supermoire_test_autogen_timestamp_deps\fast
+
+#=============================================================================
+# Target rules for targets named variations_supermoire_test_autogen
+
+# Build rule for target.
+variations_supermoire_test_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) variations_supermoire_test_autogen
+.PHONY : variations_supermoire_test_autogen
+
+# fast build rule for target.
+variations_supermoire_test_autogen\fast:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen.dir\build
+.PHONY : variations_supermoire_test_autogen\fast
 
 #=============================================================================
 # Target rules for targets named triangle_canvas_interaction_test
@@ -2623,6 +2662,8 @@ help:
 	@echo ... variations_batch8_test_autogen_timestamp_deps
 	@echo ... variations_batch9_test_autogen
 	@echo ... variations_batch9_test_autogen_timestamp_deps
+	@echo ... variations_supermoire_test_autogen
+	@echo ... variations_supermoire_test_autogen_timestamp_deps
 	@echo ... window_geometry_test_autogen
 	@echo ... window_geometry_test_autogen_timestamp_deps
 	@echo ... xaos_dialog_interaction_test_autogen
@@ -2685,6 +2726,7 @@ help:
 	@echo ... variations_batch7_test
 	@echo ... variations_batch8_test
 	@echo ... variations_batch9_test
+	@echo ... variations_supermoire_test
 	@echo ... window_geometry_test
 	@echo ... xaos_dialog_interaction_test
 .PHONY : help

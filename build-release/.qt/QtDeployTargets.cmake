@@ -172,3 +172,6 @@ set(__QT_DEPLOY_TARGET_variations_batch8_test_RUNTIME_DLLS C:/Users/andre/Docume
 set(__QT_DEPLOY_TARGET_variations_batch9_test_FILE C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch9_test.exe)
 set(__QT_DEPLOY_TARGET_variations_batch9_test_TYPE EXECUTABLE)
 set(__QT_DEPLOY_TARGET_variations_batch9_test_RUNTIME_DLLS C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/vcpkg_installed/x64-windows/bin/pugixml.dll)
+set(__QT_DEPLOY_TARGET_variations_supermoire_test_FILE C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_supermoire_test.exe)
+set(__QT_DEPLOY_TARGET_variations_supermoire_test_TYPE EXECUTABLE)
+set(__QT_DEPLOY_TARGET_variations_supermoire_test_RUNTIME_DLLS C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/vcpkg_installed/x64-windows/bin/pugixml.dll)

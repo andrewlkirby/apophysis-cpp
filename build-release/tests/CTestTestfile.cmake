@@ -68,4 +68,6 @@ add_test([=[variations_batch8_test]=] "C:/Users/andre/Documents/Code/apop_patche
 set_tests_properties([=[variations_batch8_test]=] PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;14;add_test;C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;0;")
 add_test([=[variations_batch9_test]=] "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_batch9_test.exe")
 set_tests_properties([=[variations_batch9_test]=] PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;14;add_test;C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;0;")
+add_test([=[variations_supermoire_test]=] "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/tests/variations_supermoire_test.exe")
+set_tests_properties([=[variations_supermoire_test]=] PROPERTIES  _BACKTRACE_TRIPLES "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;14;add_test;C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/tests/CMakeLists.txt;0;")
 subdirs("ui")

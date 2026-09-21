@@ -372,6 +372,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/apo_core.dir/variations/VarSinhPowIA.cpp.obj.d"
   "CMakeFiles/apo_core.dir/variations/VarSplits.cpp.obj"
   "CMakeFiles/apo_core.dir/variations/VarSplits.cpp.obj.d"
+  "CMakeFiles/apo_core.dir/variations/VarSupermoire.cpp.obj"
+  "CMakeFiles/apo_core.dir/variations/VarSupermoire.cpp.obj.d"
   "CMakeFiles/apo_core.dir/variations/VarTangent.cpp.obj"
   "CMakeFiles/apo_core.dir/variations/VarTangent.cpp.obj.d"
   "CMakeFiles/apo_core.dir/variations/VarTwintrian.cpp.obj"

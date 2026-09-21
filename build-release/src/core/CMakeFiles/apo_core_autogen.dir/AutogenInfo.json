@@ -595,6 +595,12 @@
 			null
 		],
 		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSupermoire.h",
+			"Mu",
+			"3TK3ELSZKA/moc_VarSupermoire.cpp",
+			null
+		],
+		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarTangent.h",
 			"Mu",
 			"3TK3ELSZKA/moc_VarTangent.cpp",
@@ -1584,6 +1590,11 @@
 		],
 		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSplits.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/variations/VarSupermoire.cpp",
 			"Mu",
 			null
 		],

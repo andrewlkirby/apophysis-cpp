@@ -296,6 +296,8 @@ src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.h
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSplits.cpp
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSplits.h
+src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSupermoire.cpp
+src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSupermoire.h
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarTangent.cpp
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarTangent.h
 src\core\apo_core_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarTwintrian.cpp
@@ -338,6 +340,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\Var
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\ImageCompare.cpp:
 
 vcpkg_installed\x64-windows\share\png\vcpkg-cmake-wrapper.cmake:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSupermoire.cpp:
 
 "C:\Program Files\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-4.3\Modules\FindPackageHandleStandardArgs.cmake":
 
@@ -914,6 +918,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\Var
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSinhPowIA.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSplits.cpp:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarSupermoire.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\variations\VarTangent.cpp:
 

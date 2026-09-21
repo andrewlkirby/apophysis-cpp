@@ -49,10 +49,11 @@ void testTotalRegisteredCount() {
     // post_falloff2, pre_falloff2. A silent drop here (e.g. a wrapper file
     // that failed to self-register) would otherwise go unnoticed.
     //
-    // 67 = 65 original ports + sinhpow + sinhpowia (VarSinhPow.cpp,
-    // VarSinhPowIA.cpp - see docs/SINHPOW_VARIATIONS.md), neither a
-    // Variations/*.pas port (no Apophysis 7X/flam3 precedent).
-    const int kExpectedNative = 67;
+    // 68 = 65 original ports + sinhpow + sinhpowia (VarSinhPow.cpp,
+    // VarSinhPowIA.cpp - see docs/SINHPOW_VARIATIONS.md) + supermoire
+    // (VarSupermoire.cpp) - none a Variations/*.pas port (no Apophysis
+    // 7X/flam3 precedent).
+    const int kExpectedNative = 68;
     const int kExpectedPlugins = 47;
     check(apo::VariationRegistry::instance().numRegisteredVariations() == kExpectedNative + kExpectedPlugins,
           "total registered (native + plugin) variation count matches expectations");

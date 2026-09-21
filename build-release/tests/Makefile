@@ -703,6 +703,24 @@ variations_batch9_test\fast:
 .PHONY : variations_batch9_test\fast
 
 # Convenience name for target.
+tests\CMakeFiles\variations_supermoire_test.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : tests\CMakeFiles\variations_supermoire_test.dir\rule
+
+# Convenience name for target.
+variations_supermoire_test: tests\CMakeFiles\variations_supermoire_test.dir\rule
+.PHONY : variations_supermoire_test
+
+# fast build rule for target.
+variations_supermoire_test\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : variations_supermoire_test\fast
+
+# Convenience name for target.
 tests\CMakeFiles\all_plugins_smoke_test_autogen_timestamp_deps.dir\rule:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\all_plugins_smoke_test_autogen_timestamp_deps.dir\rule
@@ -1853,6 +1871,42 @@ variations_batch9_test_autogen\fast:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch9_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch9_test_autogen.dir\build
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
 .PHONY : variations_batch9_test_autogen\fast
+
+# Convenience name for target.
+tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\rule
+
+# Convenience name for target.
+variations_supermoire_test_autogen_timestamp_deps: tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\rule
+.PHONY : variations_supermoire_test_autogen_timestamp_deps
+
+# fast build rule for target.
+variations_supermoire_test_autogen_timestamp_deps\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : variations_supermoire_test_autogen_timestamp_deps\fast
+
+# Convenience name for target.
+tests\CMakeFiles\variations_supermoire_test_autogen.dir\rule:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen.dir\rule
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen.dir\rule
+
+# Convenience name for target.
+variations_supermoire_test_autogen: tests\CMakeFiles\variations_supermoire_test_autogen.dir\rule
+.PHONY : variations_supermoire_test_autogen
+
+# fast build rule for target.
+variations_supermoire_test_autogen\fast:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen.dir\build
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : variations_supermoire_test_autogen\fast
 
 all_plugins_smoke_test.obj: all_plugins_smoke_test.cpp.obj
 .PHONY : all_plugins_smoke_test.obj
@@ -3774,6 +3828,66 @@ variations_batch9_test_autogen\mocs_compilation.cpp.s:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
 .PHONY : variations_batch9_test_autogen\mocs_compilation.cpp.s
 
+variations_supermoire_test.obj: variations_supermoire_test.cpp.obj
+.PHONY : variations_supermoire_test.obj
+
+# target to build an object file
+variations_supermoire_test.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\variations_supermoire_test.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : variations_supermoire_test.cpp.obj
+
+variations_supermoire_test.i: variations_supermoire_test.cpp.i
+.PHONY : variations_supermoire_test.i
+
+# target to preprocess a source file
+variations_supermoire_test.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\variations_supermoire_test.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : variations_supermoire_test.cpp.i
+
+variations_supermoire_test.s: variations_supermoire_test.cpp.s
+.PHONY : variations_supermoire_test.s
+
+# target to generate assembly for a file
+variations_supermoire_test.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\variations_supermoire_test.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : variations_supermoire_test.cpp.s
+
+variations_supermoire_test_autogen\mocs_compilation.obj: variations_supermoire_test_autogen\mocs_compilation.cpp.obj
+.PHONY : variations_supermoire_test_autogen\mocs_compilation.obj
+
+# target to build an object file
+variations_supermoire_test_autogen\mocs_compilation.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\variations_supermoire_test_autogen\mocs_compilation.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : variations_supermoire_test_autogen\mocs_compilation.cpp.obj
+
+variations_supermoire_test_autogen\mocs_compilation.i: variations_supermoire_test_autogen\mocs_compilation.cpp.i
+.PHONY : variations_supermoire_test_autogen\mocs_compilation.i
+
+# target to preprocess a source file
+variations_supermoire_test_autogen\mocs_compilation.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\variations_supermoire_test_autogen\mocs_compilation.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : variations_supermoire_test_autogen\mocs_compilation.cpp.i
+
+variations_supermoire_test_autogen\mocs_compilation.s: variations_supermoire_test_autogen\mocs_compilation.cpp.s
+.PHONY : variations_supermoire_test_autogen\mocs_compilation.s
+
+# target to generate assembly for a file
+variations_supermoire_test_autogen\mocs_compilation.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\variations_supermoire_test_autogen\mocs_compilation.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\tests
+.PHONY : variations_supermoire_test_autogen\mocs_compilation.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -3847,6 +3961,8 @@ help:
 	@echo ... variations_batch8_test_autogen_timestamp_deps
 	@echo ... variations_batch9_test_autogen
 	@echo ... variations_batch9_test_autogen_timestamp_deps
+	@echo ... variations_supermoire_test_autogen
+	@echo ... variations_supermoire_test_autogen_timestamp_deps
 	@echo ... all_plugins_smoke_test
 	@echo ... auto_frame_test
 	@echo ... baseline_regression_test
@@ -3879,6 +3995,7 @@ help:
 	@echo ... variations_batch7_test
 	@echo ... variations_batch8_test
 	@echo ... variations_batch9_test
+	@echo ... variations_supermoire_test
 	@echo ... all_plugins_smoke_test.obj
 	@echo ... all_plugins_smoke_test.i
 	@echo ... all_plugins_smoke_test.s
@@ -4071,6 +4188,12 @@ help:
 	@echo ... variations_batch9_test_autogen/mocs_compilation.obj
 	@echo ... variations_batch9_test_autogen/mocs_compilation.i
 	@echo ... variations_batch9_test_autogen/mocs_compilation.s
+	@echo ... variations_supermoire_test.obj
+	@echo ... variations_supermoire_test.i
+	@echo ... variations_supermoire_test.s
+	@echo ... variations_supermoire_test_autogen/mocs_compilation.obj
+	@echo ... variations_supermoire_test_autogen/mocs_compilation.i
+	@echo ... variations_supermoire_test_autogen/mocs_compilation.s
 .PHONY : help
 
 

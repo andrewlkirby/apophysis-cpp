@@ -189,6 +189,7 @@ apo_bench_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSupermoire.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarWaves.cpp.obj" \
@@ -382,6 +383,7 @@ src\tools\apo_bench.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSeparati
 src\tools\apo_bench.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj
 src\tools\apo_bench.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj
 src\tools\apo_bench.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj
+src\tools\apo_bench.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSupermoire.cpp.obj
 src\tools\apo_bench.exe: src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj
 src\tools\apo_bench.exe: src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj
 src\tools\apo_bench.exe: src\core\CMakeFiles\apo_core.dir\variations\VarWaves.cpp.obj

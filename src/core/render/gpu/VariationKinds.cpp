@@ -103,6 +103,9 @@ const std::unordered_map<std::string, RegisteredVarInfo>& registeredVarTable() {
         {"sinhpowia", {kind::kSinhPowIA, {"sinhpowia_power", "sinhpowia_q", "sinhpowia_cx", "sinhpowia_cy",
                                            "sinhpowia_alpha", "sinhpowia_beta", "sinhpowia_gamma",
                                            "sinhpowia_lambda"}}},
+        {"supermoire", {kind::kSupermoire, {"supermoire_freq1", "supermoire_freq2", "supermoire_angle1",
+                                             "supermoire_angle2", "supermoire_strain", "supermoire_mix",
+                                             "supermoire_scale"}}},
     };
     return table;
 }

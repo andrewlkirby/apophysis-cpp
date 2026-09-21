@@ -191,6 +191,7 @@ tests\all: tests\CMakeFiles\variations_batch6_test.dir\all
 tests\all: tests\CMakeFiles\variations_batch7_test.dir\all
 tests\all: tests\CMakeFiles\variations_batch8_test.dir\all
 tests\all: tests\CMakeFiles\variations_batch9_test.dir\all
+tests\all: tests\CMakeFiles\variations_supermoire_test.dir\all
 tests\all: tests\ui\all
 .PHONY : tests\all
 
@@ -227,6 +228,7 @@ tests\codegen: tests\CMakeFiles\variations_batch6_test.dir\codegen
 tests\codegen: tests\CMakeFiles\variations_batch7_test.dir\codegen
 tests\codegen: tests\CMakeFiles\variations_batch8_test.dir\codegen
 tests\codegen: tests\CMakeFiles\variations_batch9_test.dir\codegen
+tests\codegen: tests\CMakeFiles\variations_supermoire_test.dir\codegen
 tests\codegen: tests\ui\codegen
 .PHONY : tests\codegen
 
@@ -267,6 +269,7 @@ tests\clean: tests\CMakeFiles\variations_batch6_test.dir\clean
 tests\clean: tests\CMakeFiles\variations_batch7_test.dir\clean
 tests\clean: tests\CMakeFiles\variations_batch8_test.dir\clean
 tests\clean: tests\CMakeFiles\variations_batch9_test.dir\clean
+tests\clean: tests\CMakeFiles\variations_supermoire_test.dir\clean
 tests\clean: tests\CMakeFiles\all_plugins_smoke_test_autogen_timestamp_deps.dir\clean
 tests\clean: tests\CMakeFiles\all_plugins_smoke_test_autogen.dir\clean
 tests\clean: tests\CMakeFiles\auto_frame_test_autogen_timestamp_deps.dir\clean
@@ -331,6 +334,8 @@ tests\clean: tests\CMakeFiles\variations_batch8_test_autogen_timestamp_deps.dir\
 tests\clean: tests\CMakeFiles\variations_batch8_test_autogen.dir\clean
 tests\clean: tests\CMakeFiles\variations_batch9_test_autogen_timestamp_deps.dir\clean
 tests\clean: tests\CMakeFiles\variations_batch9_test_autogen.dir\clean
+tests\clean: tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\clean
+tests\clean: tests\CMakeFiles\variations_supermoire_test_autogen.dir\clean
 tests\clean: tests\ui\clean
 .PHONY : tests\clean
 
@@ -477,7 +482,7 @@ CMakeFiles\deploy.dir\all: src\ui\CMakeFiles\apo_gui.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\deploy.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 50
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\deploy.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : CMakeFiles\deploy.dir\rule
@@ -509,7 +514,7 @@ CMakeFiles\package_zip.dir\all: CMakeFiles\deploy.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\package_zip.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 50
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\package_zip.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : CMakeFiles\package_zip.dir\rule
@@ -631,16 +636,16 @@ src\core\CMakeFiles\apo_core_autogen.dir\clean:
 
 # All Build rule for target.
 src\tools\CMakeFiles\apo_render_cli.dir\all: src\core\CMakeFiles\apo_core.dir\all
-src\tools\CMakeFiles\apo_render_cli.dir\all: src\tools\CMakeFiles\apo_render_cli_autogen_timestamp_deps.dir\all
 src\tools\CMakeFiles\apo_render_cli.dir\all: src\tools\CMakeFiles\apo_render_cli_autogen.dir\all
+src\tools\CMakeFiles\apo_render_cli.dir\all: src\tools\CMakeFiles\apo_render_cli_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f src\tools\CMakeFiles\apo_render_cli.dir\build.make /nologo -$(MAKEFLAGS) src\tools\CMakeFiles\apo_render_cli.dir\depend
 	$(MAKE) $(MAKESILENT) -f src\tools\CMakeFiles\apo_render_cli.dir\build.make /nologo -$(MAKEFLAGS) src\tools\CMakeFiles\apo_render_cli.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target apo_render_cli"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=47 "Built target apo_render_cli"
 .PHONY : src\tools\CMakeFiles\apo_render_cli.dir\all
 
 # Build rule for subdir invocation for target.
 src\tools\CMakeFiles\apo_render_cli.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) src\tools\CMakeFiles\apo_render_cli.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : src\tools\CMakeFiles\apo_render_cli.dir\rule
@@ -652,7 +657,7 @@ apo_render_cli: src\tools\CMakeFiles\apo_render_cli.dir\rule
 # codegen rule for target.
 src\tools\CMakeFiles\apo_render_cli.dir\codegen: src\tools\CMakeFiles\apo_render_cli_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f src\tools\CMakeFiles\apo_render_cli.dir\build.make /nologo -$(MAKEFLAGS) src\tools\CMakeFiles\apo_render_cli.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target apo_render_cli"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=47 "Finished codegen for target apo_render_cli"
 .PHONY : src\tools\CMakeFiles\apo_render_cli.dir\codegen
 
 # clean rule for target.
@@ -665,8 +670,8 @@ src\tools\CMakeFiles\apo_render_cli.dir\clean:
 
 # All Build rule for target.
 src\tools\CMakeFiles\apo_bench.dir\all: src\core\CMakeFiles\apo_core.dir\all
-src\tools\CMakeFiles\apo_bench.dir\all: src\tools\CMakeFiles\apo_bench_autogen.dir\all
 src\tools\CMakeFiles\apo_bench.dir\all: src\tools\CMakeFiles\apo_bench_autogen_timestamp_deps.dir\all
+src\tools\CMakeFiles\apo_bench.dir\all: src\tools\CMakeFiles\apo_bench_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f src\tools\CMakeFiles\apo_bench.dir\build.make /nologo -$(MAKEFLAGS) src\tools\CMakeFiles\apo_bench.dir\depend
 	$(MAKE) $(MAKESILENT) -f src\tools\CMakeFiles\apo_bench.dir\build.make /nologo -$(MAKEFLAGS) src\tools\CMakeFiles\apo_bench.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=3 "Built target apo_bench"
@@ -827,8 +832,8 @@ src\tools\CMakeFiles\apo_bench_autogen.dir\clean:
 
 # All Build rule for target.
 src\ui\CMakeFiles\apo_ui.dir\all: src\core\CMakeFiles\apo_core.dir\all
-src\ui\CMakeFiles\apo_ui.dir\all: src\ui\CMakeFiles\apo_ui_autogen_timestamp_deps.dir\all
 src\ui\CMakeFiles\apo_ui.dir\all: src\ui\CMakeFiles\apo_ui_autogen.dir\all
+src\ui\CMakeFiles\apo_ui.dir\all: src\ui\CMakeFiles\apo_ui_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\depend
 	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=48,49,50,51,52,53 "Built target apo_ui"
@@ -862,8 +867,8 @@ src\ui\CMakeFiles\apo_ui.dir\clean:
 # All Build rule for target.
 src\ui\CMakeFiles\apo_gui.dir\all: src\core\CMakeFiles\apo_core.dir\all
 src\ui\CMakeFiles\apo_gui.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-src\ui\CMakeFiles\apo_gui.dir\all: src\ui\CMakeFiles\apo_gui_autogen.dir\all
 src\ui\CMakeFiles\apo_gui.dir\all: src\ui\CMakeFiles\apo_gui_autogen_timestamp_deps.dir\all
+src\ui\CMakeFiles\apo_gui.dir\all: src\ui\CMakeFiles\apo_gui_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui.dir\depend
 	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=46 "Built target apo_gui"
@@ -871,7 +876,7 @@ src\ui\CMakeFiles\apo_gui.dir\all: src\ui\CMakeFiles\apo_gui_autogen_timestamp_d
 
 # Build rule for subdir invocation for target.
 src\ui\CMakeFiles\apo_gui.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 50
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : src\ui\CMakeFiles\apo_gui.dir\rule
@@ -1027,12 +1032,12 @@ src\ui\CMakeFiles\apo_gui_autogen_timestamp_deps.dir\clean:
 src\ui\CMakeFiles\apo_gui_autogen.dir\all: src\ui\CMakeFiles\apo_gui_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui_autogen.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui_autogen.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=47 "Built target apo_gui_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target apo_gui_autogen"
 .PHONY : src\ui\CMakeFiles\apo_gui_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 src\ui\CMakeFiles\apo_gui_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : src\ui\CMakeFiles\apo_gui_autogen.dir\rule
@@ -1044,7 +1049,7 @@ apo_gui_autogen: src\ui\CMakeFiles\apo_gui_autogen.dir\rule
 # codegen rule for target.
 src\ui\CMakeFiles\apo_gui_autogen.dir\codegen: src\ui\CMakeFiles\apo_gui_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_gui_autogen.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_gui_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=47 "Finished codegen for target apo_gui_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target apo_gui_autogen"
 .PHONY : src\ui\CMakeFiles\apo_gui_autogen.dir\codegen
 
 # clean rule for target.
@@ -1091,8 +1096,8 @@ tests\CMakeFiles\all_plugins_smoke_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\auto_frame_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\auto_frame_test.dir\all: tests\CMakeFiles\auto_frame_test_autogen.dir\all
 tests\CMakeFiles\auto_frame_test.dir\all: tests\CMakeFiles\auto_frame_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\auto_frame_test.dir\all: tests\CMakeFiles\auto_frame_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\auto_frame_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\auto_frame_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\auto_frame_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\auto_frame_test.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=54 "Built target auto_frame_test"
@@ -1125,8 +1130,8 @@ tests\CMakeFiles\auto_frame_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\baseline_regression_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\baseline_regression_test.dir\all: tests\CMakeFiles\baseline_regression_test_autogen.dir\all
 tests\CMakeFiles\baseline_regression_test.dir\all: tests\CMakeFiles\baseline_regression_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\baseline_regression_test.dir\all: tests\CMakeFiles\baseline_regression_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\baseline_regression_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\baseline_regression_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\baseline_regression_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\baseline_regression_test.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=55 "Built target baseline_regression_test"
@@ -1159,11 +1164,11 @@ tests\CMakeFiles\baseline_regression_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\bezier_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\bezier_test.dir\all: tests\CMakeFiles\bezier_test_autogen.dir\all
 tests\CMakeFiles\bezier_test.dir\all: tests\CMakeFiles\bezier_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\bezier_test.dir\all: tests\CMakeFiles\bezier_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\bezier_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\bezier_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\bezier_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\bezier_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=56 "Built target bezier_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target bezier_test"
 .PHONY : tests\CMakeFiles\bezier_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1180,7 +1185,7 @@ bezier_test: tests\CMakeFiles\bezier_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\bezier_test.dir\codegen: tests\CMakeFiles\bezier_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\bezier_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\bezier_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=56 "Finished codegen for target bezier_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target bezier_test"
 .PHONY : tests\CMakeFiles\bezier_test.dir\codegen
 
 # clean rule for target.
@@ -1193,16 +1198,16 @@ tests\CMakeFiles\bezier_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\builtin_gradients_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\builtin_gradients_test.dir\all: tests\CMakeFiles\builtin_gradients_test_autogen.dir\all
 tests\CMakeFiles\builtin_gradients_test.dir\all: tests\CMakeFiles\builtin_gradients_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\builtin_gradients_test.dir\all: tests\CMakeFiles\builtin_gradients_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\builtin_gradients_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\builtin_gradients_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\builtin_gradients_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\builtin_gradients_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=57 "Built target builtin_gradients_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target builtin_gradients_test"
 .PHONY : tests\CMakeFiles\builtin_gradients_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\builtin_gradients_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\builtin_gradients_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\builtin_gradients_test.dir\rule
@@ -1214,7 +1219,7 @@ builtin_gradients_test: tests\CMakeFiles\builtin_gradients_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\builtin_gradients_test.dir\codegen: tests\CMakeFiles\builtin_gradients_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\builtin_gradients_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\builtin_gradients_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=57 "Finished codegen for target builtin_gradients_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target builtin_gradients_test"
 .PHONY : tests\CMakeFiles\builtin_gradients_test.dir\codegen
 
 # clean rule for target.
@@ -1227,11 +1232,11 @@ tests\CMakeFiles\builtin_gradients_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\core_smoke_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\core_smoke_test.dir\all: tests\CMakeFiles\core_smoke_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\core_smoke_test.dir\all: tests\CMakeFiles\core_smoke_test_autogen.dir\all
+tests\CMakeFiles\core_smoke_test.dir\all: tests\CMakeFiles\core_smoke_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\core_smoke_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\core_smoke_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\core_smoke_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\core_smoke_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=58 "Built target core_smoke_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=57 "Built target core_smoke_test"
 .PHONY : tests\CMakeFiles\core_smoke_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1248,7 +1253,7 @@ core_smoke_test: tests\CMakeFiles\core_smoke_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\core_smoke_test.dir\codegen: tests\CMakeFiles\core_smoke_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\core_smoke_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\core_smoke_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=58 "Finished codegen for target core_smoke_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=57 "Finished codegen for target core_smoke_test"
 .PHONY : tests\CMakeFiles\core_smoke_test.dir\codegen
 
 # clean rule for target.
@@ -1260,9 +1265,9 @@ tests\CMakeFiles\core_smoke_test.dir\clean:
 # Target rules for target tests/CMakeFiles/flame_clone_test.dir
 
 # All Build rule for target.
+tests\CMakeFiles\flame_clone_test.dir\all: tests\CMakeFiles\flame_clone_test_autogen.dir\all
 tests\CMakeFiles\flame_clone_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\CMakeFiles\flame_clone_test.dir\all: tests\CMakeFiles\flame_clone_test_autogen_timestamp_deps.dir\all
-tests\CMakeFiles\flame_clone_test.dir\all: tests\CMakeFiles\flame_clone_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_clone_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_clone_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_clone_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_clone_test.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=62 "Built target flame_clone_test"
@@ -1294,9 +1299,9 @@ tests\CMakeFiles\flame_clone_test.dir\clean:
 # Target rules for target tests/CMakeFiles/flame_io_test.dir
 
 # All Build rule for target.
-tests\CMakeFiles\flame_io_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\flame_io_test.dir\all: tests\CMakeFiles\flame_io_test_autogen.dir\all
 tests\CMakeFiles\flame_io_test.dir\all: tests\CMakeFiles\flame_io_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\flame_io_test.dir\all: tests\CMakeFiles\flame_io_test_autogen.dir\all
+tests\CMakeFiles\flame_io_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_io_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_io_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_io_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_io_test.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=63 "Built target flame_io_test"
@@ -1328,12 +1333,12 @@ tests\CMakeFiles\flame_io_test.dir\clean:
 # Target rules for target tests/CMakeFiles/flame_ops_test.dir
 
 # All Build rule for target.
-tests\CMakeFiles\flame_ops_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\CMakeFiles\flame_ops_test.dir\all: tests\CMakeFiles\flame_ops_test_autogen.dir\all
 tests\CMakeFiles\flame_ops_test.dir\all: tests\CMakeFiles\flame_ops_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\flame_ops_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_ops_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_ops_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_ops_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_ops_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=64 "Built target flame_ops_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target flame_ops_test"
 .PHONY : tests\CMakeFiles\flame_ops_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1350,7 +1355,7 @@ flame_ops_test: tests\CMakeFiles\flame_ops_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\flame_ops_test.dir\codegen: tests\CMakeFiles\flame_ops_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_ops_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_ops_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=64 "Finished codegen for target flame_ops_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target flame_ops_test"
 .PHONY : tests\CMakeFiles\flame_ops_test.dir\codegen
 
 # clean rule for target.
@@ -1362,12 +1367,12 @@ tests\CMakeFiles\flame_ops_test.dir\clean:
 # Target rules for target tests/CMakeFiles/gpu_baseline_parity_test.dir
 
 # All Build rule for target.
-tests\CMakeFiles\gpu_baseline_parity_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\CMakeFiles\gpu_baseline_parity_test.dir\all: tests\CMakeFiles\gpu_baseline_parity_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\gpu_baseline_parity_test.dir\all: tests\CMakeFiles\gpu_baseline_parity_test_autogen.dir\all
+tests\CMakeFiles\gpu_baseline_parity_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_baseline_parity_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_baseline_parity_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_baseline_parity_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_baseline_parity_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=67 "Built target gpu_baseline_parity_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=66 "Built target gpu_baseline_parity_test"
 .PHONY : tests\CMakeFiles\gpu_baseline_parity_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1384,7 +1389,7 @@ gpu_baseline_parity_test: tests\CMakeFiles\gpu_baseline_parity_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\gpu_baseline_parity_test.dir\codegen: tests\CMakeFiles\gpu_baseline_parity_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_baseline_parity_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_baseline_parity_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=67 "Finished codegen for target gpu_baseline_parity_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=66 "Finished codegen for target gpu_baseline_parity_test"
 .PHONY : tests\CMakeFiles\gpu_baseline_parity_test.dir\codegen
 
 # clean rule for target.
@@ -1396,12 +1401,12 @@ tests\CMakeFiles\gpu_baseline_parity_test.dir\clean:
 # Target rules for target tests/CMakeFiles/gpu_progress_control_test.dir
 
 # All Build rule for target.
-tests\CMakeFiles\gpu_progress_control_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\gpu_progress_control_test.dir\all: tests\CMakeFiles\gpu_progress_control_test_autogen.dir\all
 tests\CMakeFiles\gpu_progress_control_test.dir\all: tests\CMakeFiles\gpu_progress_control_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\gpu_progress_control_test.dir\all: tests\CMakeFiles\gpu_progress_control_test_autogen.dir\all
+tests\CMakeFiles\gpu_progress_control_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_progress_control_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_progress_control_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_progress_control_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_progress_control_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target gpu_progress_control_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=67 "Built target gpu_progress_control_test"
 .PHONY : tests\CMakeFiles\gpu_progress_control_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1418,7 +1423,7 @@ gpu_progress_control_test: tests\CMakeFiles\gpu_progress_control_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\gpu_progress_control_test.dir\codegen: tests\CMakeFiles\gpu_progress_control_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_progress_control_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_progress_control_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target gpu_progress_control_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=67 "Finished codegen for target gpu_progress_control_test"
 .PHONY : tests\CMakeFiles\gpu_progress_control_test.dir\codegen
 
 # clean rule for target.
@@ -1430,12 +1435,12 @@ tests\CMakeFiles\gpu_progress_control_test.dir\clean:
 # Target rules for target tests/CMakeFiles/gpu_variation_parity_test.dir
 
 # All Build rule for target.
-tests\CMakeFiles\gpu_variation_parity_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\gpu_variation_parity_test.dir\all: tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\all
 tests\CMakeFiles\gpu_variation_parity_test.dir\all: tests\CMakeFiles\gpu_variation_parity_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\gpu_variation_parity_test.dir\all: tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\all
+tests\CMakeFiles\gpu_variation_parity_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_variation_parity_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_variation_parity_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_variation_parity_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_variation_parity_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target gpu_variation_parity_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=68 "Built target gpu_variation_parity_test"
 .PHONY : tests\CMakeFiles\gpu_variation_parity_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1452,7 +1457,7 @@ gpu_variation_parity_test: tests\CMakeFiles\gpu_variation_parity_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\gpu_variation_parity_test.dir\codegen: tests\CMakeFiles\gpu_variation_parity_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_variation_parity_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_variation_parity_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target gpu_variation_parity_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=68 "Finished codegen for target gpu_variation_parity_test"
 .PHONY : tests\CMakeFiles\gpu_variation_parity_test.dir\codegen
 
 # clean rule for target.
@@ -1464,9 +1469,9 @@ tests\CMakeFiles\gpu_variation_parity_test.dir\clean:
 # Target rules for target tests/CMakeFiles/gradient_io_test.dir
 
 # All Build rule for target.
-tests\CMakeFiles\gradient_io_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\CMakeFiles\gradient_io_test.dir\all: tests\CMakeFiles\gradient_io_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\gradient_io_test.dir\all: tests\CMakeFiles\gradient_io_test_autogen.dir\all
+tests\CMakeFiles\gradient_io_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gradient_io_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gradient_io_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gradient_io_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gradient_io_test.dir\build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=70 "Built target gradient_io_test"
@@ -1498,12 +1503,12 @@ tests\CMakeFiles\gradient_io_test.dir\clean:
 # Target rules for target tests/CMakeFiles/gradient_ops_test.dir
 
 # All Build rule for target.
-tests\CMakeFiles\gradient_ops_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\CMakeFiles\gradient_ops_test.dir\all: tests\CMakeFiles\gradient_ops_test_autogen.dir\all
 tests\CMakeFiles\gradient_ops_test.dir\all: tests\CMakeFiles\gradient_ops_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\gradient_ops_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gradient_ops_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gradient_ops_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gradient_ops_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gradient_ops_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=71 "Built target gradient_ops_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target gradient_ops_test"
 .PHONY : tests\CMakeFiles\gradient_ops_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1520,7 +1525,7 @@ gradient_ops_test: tests\CMakeFiles\gradient_ops_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\gradient_ops_test.dir\codegen: tests\CMakeFiles\gradient_ops_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gradient_ops_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gradient_ops_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=71 "Finished codegen for target gradient_ops_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target gradient_ops_test"
 .PHONY : tests\CMakeFiles\gradient_ops_test.dir\codegen
 
 # clean rule for target.
@@ -1532,12 +1537,12 @@ tests\CMakeFiles\gradient_ops_test.dir\clean:
 # Target rules for target tests/CMakeFiles/mutation_ops_test.dir
 
 # All Build rule for target.
-tests\CMakeFiles\mutation_ops_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\CMakeFiles\mutation_ops_test.dir\all: tests\CMakeFiles\mutation_ops_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\mutation_ops_test.dir\all: tests\CMakeFiles\mutation_ops_test_autogen.dir\all
+tests\CMakeFiles\mutation_ops_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\mutation_ops_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\mutation_ops_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\mutation_ops_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\mutation_ops_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target mutation_ops_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=74 "Built target mutation_ops_test"
 .PHONY : tests\CMakeFiles\mutation_ops_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1554,7 +1559,7 @@ mutation_ops_test: tests\CMakeFiles\mutation_ops_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\mutation_ops_test.dir\codegen: tests\CMakeFiles\mutation_ops_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\mutation_ops_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\mutation_ops_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target mutation_ops_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=74 "Finished codegen for target mutation_ops_test"
 .PHONY : tests\CMakeFiles\mutation_ops_test.dir\codegen
 
 # clean rule for target.
@@ -1566,12 +1571,12 @@ tests\CMakeFiles\mutation_ops_test.dir\clean:
 # Target rules for target tests/CMakeFiles/plugin_variations_test.dir
 
 # All Build rule for target.
-tests\CMakeFiles\plugin_variations_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\CMakeFiles\plugin_variations_test.dir\all: tests\CMakeFiles\plugin_variations_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\plugin_variations_test.dir\all: tests\CMakeFiles\plugin_variations_test_autogen.dir\all
+tests\CMakeFiles\plugin_variations_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\plugin_variations_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\plugin_variations_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\plugin_variations_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\plugin_variations_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target plugin_variations_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=76 "Built target plugin_variations_test"
 .PHONY : tests\CMakeFiles\plugin_variations_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1588,7 +1593,7 @@ plugin_variations_test: tests\CMakeFiles\plugin_variations_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\plugin_variations_test.dir\codegen: tests\CMakeFiles\plugin_variations_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\plugin_variations_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\plugin_variations_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target plugin_variations_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=76 "Finished codegen for target plugin_variations_test"
 .PHONY : tests\CMakeFiles\plugin_variations_test.dir\codegen
 
 # clean rule for target.
@@ -1605,7 +1610,7 @@ tests\CMakeFiles\png_writer_test.dir\all: tests\CMakeFiles\png_writer_test_autog
 tests\CMakeFiles\png_writer_test.dir\all: tests\CMakeFiles\png_writer_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\png_writer_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\png_writer_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\png_writer_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\png_writer_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target png_writer_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=77 "Built target png_writer_test"
 .PHONY : tests\CMakeFiles\png_writer_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1622,7 +1627,7 @@ png_writer_test: tests\CMakeFiles\png_writer_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\png_writer_test.dir\codegen: tests\CMakeFiles\png_writer_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\png_writer_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\png_writer_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target png_writer_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=77 "Finished codegen for target png_writer_test"
 .PHONY : tests\CMakeFiles\png_writer_test.dir\codegen
 
 # clean rule for target.
@@ -1635,11 +1640,11 @@ tests\CMakeFiles\png_writer_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\random_flame_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\random_flame_test.dir\all: tests\CMakeFiles\random_flame_test_autogen.dir\all
 tests\CMakeFiles\random_flame_test.dir\all: tests\CMakeFiles\random_flame_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\random_flame_test.dir\all: tests\CMakeFiles\random_flame_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\random_flame_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\random_flame_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\random_flame_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\random_flame_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=80 "Built target random_flame_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target random_flame_test"
 .PHONY : tests\CMakeFiles\random_flame_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1656,7 +1661,7 @@ random_flame_test: tests\CMakeFiles\random_flame_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\random_flame_test.dir\codegen: tests\CMakeFiles\random_flame_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\random_flame_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\random_flame_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=80 "Finished codegen for target random_flame_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target random_flame_test"
 .PHONY : tests\CMakeFiles\random_flame_test.dir\codegen
 
 # clean rule for target.
@@ -1669,11 +1674,11 @@ tests\CMakeFiles\random_flame_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\renderer_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\renderer_test.dir\all: tests\CMakeFiles\renderer_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\renderer_test.dir\all: tests\CMakeFiles\renderer_test_autogen.dir\all
+tests\CMakeFiles\renderer_test.dir\all: tests\CMakeFiles\renderer_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\renderer_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\renderer_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\renderer_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\renderer_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=83 "Built target renderer_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=82 "Built target renderer_test"
 .PHONY : tests\CMakeFiles\renderer_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1690,7 +1695,7 @@ renderer_test: tests\CMakeFiles\renderer_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\renderer_test.dir\codegen: tests\CMakeFiles\renderer_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\renderer_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\renderer_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=83 "Finished codegen for target renderer_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=82 "Finished codegen for target renderer_test"
 .PHONY : tests\CMakeFiles\renderer_test.dir\codegen
 
 # clean rule for target.
@@ -1707,7 +1712,7 @@ tests\CMakeFiles\smooth_palette_test.dir\all: tests\CMakeFiles\smooth_palette_te
 tests\CMakeFiles\smooth_palette_test.dir\all: tests\CMakeFiles\smooth_palette_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\smooth_palette_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\smooth_palette_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\smooth_palette_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\smooth_palette_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target smooth_palette_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=84 "Built target smooth_palette_test"
 .PHONY : tests\CMakeFiles\smooth_palette_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1724,7 +1729,7 @@ smooth_palette_test: tests\CMakeFiles\smooth_palette_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\smooth_palette_test.dir\codegen: tests\CMakeFiles\smooth_palette_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\smooth_palette_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\smooth_palette_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target smooth_palette_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=84 "Finished codegen for target smooth_palette_test"
 .PHONY : tests\CMakeFiles\smooth_palette_test.dir\codegen
 
 # clean rule for target.
@@ -1737,16 +1742,16 @@ tests\CMakeFiles\smooth_palette_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\symmetry_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\symmetry_test.dir\all: tests\CMakeFiles\symmetry_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\symmetry_test.dir\all: tests\CMakeFiles\symmetry_test_autogen.dir\all
+tests\CMakeFiles\symmetry_test.dir\all: tests\CMakeFiles\symmetry_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\symmetry_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\symmetry_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\symmetry_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\symmetry_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target symmetry_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=85 "Built target symmetry_test"
 .PHONY : tests\CMakeFiles\symmetry_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\symmetry_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\symmetry_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\symmetry_test.dir\rule
@@ -1758,7 +1763,7 @@ symmetry_test: tests\CMakeFiles\symmetry_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\symmetry_test.dir\codegen: tests\CMakeFiles\symmetry_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\symmetry_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\symmetry_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target symmetry_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=85 "Finished codegen for target symmetry_test"
 .PHONY : tests\CMakeFiles\symmetry_test.dir\codegen
 
 # clean rule for target.
@@ -1771,11 +1776,11 @@ tests\CMakeFiles\symmetry_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\triangle_geometry_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\triangle_geometry_test.dir\all: tests\CMakeFiles\triangle_geometry_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\triangle_geometry_test.dir\all: tests\CMakeFiles\triangle_geometry_test_autogen.dir\all
+tests\CMakeFiles\triangle_geometry_test.dir\all: tests\CMakeFiles\triangle_geometry_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\triangle_geometry_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\triangle_geometry_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\triangle_geometry_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\triangle_geometry_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=88 "Built target triangle_geometry_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=87 "Built target triangle_geometry_test"
 .PHONY : tests\CMakeFiles\triangle_geometry_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1792,7 +1797,7 @@ triangle_geometry_test: tests\CMakeFiles\triangle_geometry_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\triangle_geometry_test.dir\codegen: tests\CMakeFiles\triangle_geometry_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\triangle_geometry_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\triangle_geometry_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=88 "Finished codegen for target triangle_geometry_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=87 "Finished codegen for target triangle_geometry_test"
 .PHONY : tests\CMakeFiles\triangle_geometry_test.dir\codegen
 
 # clean rule for target.
@@ -1809,7 +1814,7 @@ tests\CMakeFiles\variation_roundtrip_test.dir\all: tests\CMakeFiles\variation_ro
 tests\CMakeFiles\variation_roundtrip_test.dir\all: tests\CMakeFiles\variation_roundtrip_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variation_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variation_roundtrip_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variation_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variation_roundtrip_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=90 "Built target variation_roundtrip_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=89 "Built target variation_roundtrip_test"
 .PHONY : tests\CMakeFiles\variation_roundtrip_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1826,7 +1831,7 @@ variation_roundtrip_test: tests\CMakeFiles\variation_roundtrip_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\variation_roundtrip_test.dir\codegen: tests\CMakeFiles\variation_roundtrip_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variation_roundtrip_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variation_roundtrip_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=90 "Finished codegen for target variation_roundtrip_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=89 "Finished codegen for target variation_roundtrip_test"
 .PHONY : tests\CMakeFiles\variation_roundtrip_test.dir\codegen
 
 # clean rule for target.
@@ -1839,11 +1844,11 @@ tests\CMakeFiles\variation_roundtrip_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\variations_batch1_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\variations_batch1_test.dir\all: tests\CMakeFiles\variations_batch1_test_autogen.dir\all
 tests\CMakeFiles\variations_batch1_test.dir\all: tests\CMakeFiles\variations_batch1_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\variations_batch1_test.dir\all: tests\CMakeFiles\variations_batch1_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch1_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch1_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch1_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch1_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_batch1_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=90 "Built target variations_batch1_test"
 .PHONY : tests\CMakeFiles\variations_batch1_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1860,7 +1865,7 @@ variations_batch1_test: tests\CMakeFiles\variations_batch1_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\variations_batch1_test.dir\codegen: tests\CMakeFiles\variations_batch1_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch1_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch1_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_batch1_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=90 "Finished codegen for target variations_batch1_test"
 .PHONY : tests\CMakeFiles\variations_batch1_test.dir\codegen
 
 # clean rule for target.
@@ -1873,11 +1878,11 @@ tests\CMakeFiles\variations_batch1_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\variations_batch2_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\variations_batch2_test.dir\all: tests\CMakeFiles\variations_batch2_test_autogen.dir\all
 tests\CMakeFiles\variations_batch2_test.dir\all: tests\CMakeFiles\variations_batch2_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\variations_batch2_test.dir\all: tests\CMakeFiles\variations_batch2_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch2_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch2_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch2_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch2_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_batch2_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=91 "Built target variations_batch2_test"
 .PHONY : tests\CMakeFiles\variations_batch2_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1894,7 +1899,7 @@ variations_batch2_test: tests\CMakeFiles\variations_batch2_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\variations_batch2_test.dir\codegen: tests\CMakeFiles\variations_batch2_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch2_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch2_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_batch2_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=91 "Finished codegen for target variations_batch2_test"
 .PHONY : tests\CMakeFiles\variations_batch2_test.dir\codegen
 
 # clean rule for target.
@@ -1916,7 +1921,7 @@ tests\CMakeFiles\variations_batch3_test.dir\all: tests\CMakeFiles\variations_bat
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\variations_batch3_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch3_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\variations_batch3_test.dir\rule
@@ -1941,11 +1946,11 @@ tests\CMakeFiles\variations_batch3_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\variations_batch4_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\variations_batch4_test.dir\all: tests\CMakeFiles\variations_batch4_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\variations_batch4_test.dir\all: tests\CMakeFiles\variations_batch4_test_autogen.dir\all
+tests\CMakeFiles\variations_batch4_test.dir\all: tests\CMakeFiles\variations_batch4_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch4_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch4_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch4_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch4_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=93 "Built target variations_batch4_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_batch4_test"
 .PHONY : tests\CMakeFiles\variations_batch4_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -1962,7 +1967,7 @@ variations_batch4_test: tests\CMakeFiles\variations_batch4_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\variations_batch4_test.dir\codegen: tests\CMakeFiles\variations_batch4_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch4_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch4_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=93 "Finished codegen for target variations_batch4_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_batch4_test"
 .PHONY : tests\CMakeFiles\variations_batch4_test.dir\codegen
 
 # clean rule for target.
@@ -1979,12 +1984,12 @@ tests\CMakeFiles\variations_batch5_test.dir\all: tests\CMakeFiles\variations_bat
 tests\CMakeFiles\variations_batch5_test.dir\all: tests\CMakeFiles\variations_batch5_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch5_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch5_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch5_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch5_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=94 "Built target variations_batch5_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_batch5_test"
 .PHONY : tests\CMakeFiles\variations_batch5_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\variations_batch5_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch5_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\variations_batch5_test.dir\rule
@@ -1996,7 +2001,7 @@ variations_batch5_test: tests\CMakeFiles\variations_batch5_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\variations_batch5_test.dir\codegen: tests\CMakeFiles\variations_batch5_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch5_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch5_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=94 "Finished codegen for target variations_batch5_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_batch5_test"
 .PHONY : tests\CMakeFiles\variations_batch5_test.dir\codegen
 
 # clean rule for target.
@@ -2009,11 +2014,11 @@ tests\CMakeFiles\variations_batch5_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\variations_batch6_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\variations_batch6_test.dir\all: tests\CMakeFiles\variations_batch6_test_autogen.dir\all
 tests\CMakeFiles\variations_batch6_test.dir\all: tests\CMakeFiles\variations_batch6_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\variations_batch6_test.dir\all: tests\CMakeFiles\variations_batch6_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch6_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch6_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch6_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch6_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=95 "Built target variations_batch6_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=94 "Built target variations_batch6_test"
 .PHONY : tests\CMakeFiles\variations_batch6_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -2030,7 +2035,7 @@ variations_batch6_test: tests\CMakeFiles\variations_batch6_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\variations_batch6_test.dir\codegen: tests\CMakeFiles\variations_batch6_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch6_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch6_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=95 "Finished codegen for target variations_batch6_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=94 "Finished codegen for target variations_batch6_test"
 .PHONY : tests\CMakeFiles\variations_batch6_test.dir\codegen
 
 # clean rule for target.
@@ -2047,7 +2052,7 @@ tests\CMakeFiles\variations_batch7_test.dir\all: tests\CMakeFiles\variations_bat
 tests\CMakeFiles\variations_batch7_test.dir\all: tests\CMakeFiles\variations_batch7_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch7_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch7_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch7_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch7_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=96 "Built target variations_batch7_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=95 "Built target variations_batch7_test"
 .PHONY : tests\CMakeFiles\variations_batch7_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -2064,7 +2069,7 @@ variations_batch7_test: tests\CMakeFiles\variations_batch7_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\variations_batch7_test.dir\codegen: tests\CMakeFiles\variations_batch7_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch7_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch7_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=96 "Finished codegen for target variations_batch7_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=95 "Finished codegen for target variations_batch7_test"
 .PHONY : tests\CMakeFiles\variations_batch7_test.dir\codegen
 
 # clean rule for target.
@@ -2077,11 +2082,11 @@ tests\CMakeFiles\variations_batch7_test.dir\clean:
 
 # All Build rule for target.
 tests\CMakeFiles\variations_batch8_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
-tests\CMakeFiles\variations_batch8_test.dir\all: tests\CMakeFiles\variations_batch8_test_autogen_timestamp_deps.dir\all
 tests\CMakeFiles\variations_batch8_test.dir\all: tests\CMakeFiles\variations_batch8_test_autogen.dir\all
+tests\CMakeFiles\variations_batch8_test.dir\all: tests\CMakeFiles\variations_batch8_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch8_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch8_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch8_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch8_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=97 "Built target variations_batch8_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=96 "Built target variations_batch8_test"
 .PHONY : tests\CMakeFiles\variations_batch8_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -2098,7 +2103,7 @@ variations_batch8_test: tests\CMakeFiles\variations_batch8_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\variations_batch8_test.dir\codegen: tests\CMakeFiles\variations_batch8_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch8_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch8_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=97 "Finished codegen for target variations_batch8_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=96 "Finished codegen for target variations_batch8_test"
 .PHONY : tests\CMakeFiles\variations_batch8_test.dir\codegen
 
 # clean rule for target.
@@ -2115,7 +2120,7 @@ tests\CMakeFiles\variations_batch9_test.dir\all: tests\CMakeFiles\variations_bat
 tests\CMakeFiles\variations_batch9_test.dir\all: tests\CMakeFiles\variations_batch9_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch9_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch9_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch9_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch9_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=98 "Built target variations_batch9_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=97 "Built target variations_batch9_test"
 .PHONY : tests\CMakeFiles\variations_batch9_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -2132,13 +2137,47 @@ variations_batch9_test: tests\CMakeFiles\variations_batch9_test.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\variations_batch9_test.dir\codegen: tests\CMakeFiles\variations_batch9_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch9_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch9_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=98 "Finished codegen for target variations_batch9_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=97 "Finished codegen for target variations_batch9_test"
 .PHONY : tests\CMakeFiles\variations_batch9_test.dir\codegen
 
 # clean rule for target.
 tests\CMakeFiles\variations_batch9_test.dir\clean:
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch9_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch9_test.dir\clean
 .PHONY : tests\CMakeFiles\variations_batch9_test.dir\clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/variations_supermoire_test.dir
+
+# All Build rule for target.
+tests\CMakeFiles\variations_supermoire_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
+tests\CMakeFiles\variations_supermoire_test.dir\all: tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\all
+tests\CMakeFiles\variations_supermoire_test.dir\all: tests\CMakeFiles\variations_supermoire_test_autogen.dir\all
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\depend
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=98 "Built target variations_supermoire_test"
+.PHONY : tests\CMakeFiles\variations_supermoire_test.dir\all
+
+# Build rule for subdir invocation for target.
+tests\CMakeFiles\variations_supermoire_test.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
+.PHONY : tests\CMakeFiles\variations_supermoire_test.dir\rule
+
+# Convenience name for target.
+variations_supermoire_test: tests\CMakeFiles\variations_supermoire_test.dir\rule
+.PHONY : variations_supermoire_test
+
+# codegen rule for target.
+tests\CMakeFiles\variations_supermoire_test.dir\codegen: tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\all
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=98 "Finished codegen for target variations_supermoire_test"
+.PHONY : tests\CMakeFiles\variations_supermoire_test.dir\codegen
+
+# clean rule for target.
+tests\CMakeFiles\variations_supermoire_test.dir\clean:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test.dir\clean
+.PHONY : tests\CMakeFiles\variations_supermoire_test.dir\clean
 
 #=============================================================================
 # Target rules for target tests/CMakeFiles/all_plugins_smoke_test_autogen_timestamp_deps.dir
@@ -2371,12 +2410,12 @@ tests\CMakeFiles\bezier_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\bezier_test_autogen.dir\all: tests\CMakeFiles\bezier_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\bezier_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\bezier_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\bezier_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\bezier_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target bezier_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=56 "Built target bezier_test_autogen"
 .PHONY : tests\CMakeFiles\bezier_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\bezier_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\bezier_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\bezier_test_autogen.dir\rule
@@ -2388,7 +2427,7 @@ bezier_test_autogen: tests\CMakeFiles\bezier_test_autogen.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\bezier_test_autogen.dir\codegen: tests\CMakeFiles\bezier_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\bezier_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\bezier_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target bezier_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=56 "Finished codegen for target bezier_test_autogen"
 .PHONY : tests\CMakeFiles\bezier_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -2691,12 +2730,12 @@ tests\CMakeFiles\flame_ops_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\flame_ops_test_autogen.dir\all: tests\CMakeFiles\flame_ops_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_ops_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_ops_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_ops_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_ops_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target flame_ops_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=64 "Built target flame_ops_test_autogen"
 .PHONY : tests\CMakeFiles\flame_ops_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\flame_ops_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_ops_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\flame_ops_test_autogen.dir\rule
@@ -2708,7 +2747,7 @@ flame_ops_test_autogen: tests\CMakeFiles\flame_ops_test_autogen.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\flame_ops_test_autogen.dir\codegen: tests\CMakeFiles\flame_ops_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\flame_ops_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\flame_ops_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target flame_ops_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=64 "Finished codegen for target flame_ops_test_autogen"
 .PHONY : tests\CMakeFiles\flame_ops_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -2819,12 +2858,12 @@ tests\CMakeFiles\gpu_progress_control_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\gpu_progress_control_test_autogen.dir\all: tests\CMakeFiles\gpu_progress_control_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_progress_control_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_progress_control_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_progress_control_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_progress_control_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=68 "Built target gpu_progress_control_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target gpu_progress_control_test_autogen"
 .PHONY : tests\CMakeFiles\gpu_progress_control_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\gpu_progress_control_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_progress_control_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\gpu_progress_control_test_autogen.dir\rule
@@ -2836,7 +2875,7 @@ gpu_progress_control_test_autogen: tests\CMakeFiles\gpu_progress_control_test_au
 # codegen rule for target.
 tests\CMakeFiles\gpu_progress_control_test_autogen.dir\codegen: tests\CMakeFiles\gpu_progress_control_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_progress_control_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_progress_control_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=68 "Finished codegen for target gpu_progress_control_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target gpu_progress_control_test_autogen"
 .PHONY : tests\CMakeFiles\gpu_progress_control_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -2883,12 +2922,12 @@ tests\CMakeFiles\gpu_variation_parity_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\all: tests\CMakeFiles\gpu_variation_parity_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=69 "Built target gpu_variation_parity_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target gpu_variation_parity_test_autogen"
 .PHONY : tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\rule
@@ -2900,7 +2939,7 @@ gpu_variation_parity_test_autogen: tests\CMakeFiles\gpu_variation_parity_test_au
 # codegen rule for target.
 tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\codegen: tests\CMakeFiles\gpu_variation_parity_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=69 "Finished codegen for target gpu_variation_parity_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target gpu_variation_parity_test_autogen"
 .PHONY : tests\CMakeFiles\gpu_variation_parity_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3011,12 +3050,12 @@ tests\CMakeFiles\gradient_ops_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\gradient_ops_test_autogen.dir\all: tests\CMakeFiles\gradient_ops_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gradient_ops_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gradient_ops_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gradient_ops_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gradient_ops_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target gradient_ops_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=71 "Built target gradient_ops_test_autogen"
 .PHONY : tests\CMakeFiles\gradient_ops_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\gradient_ops_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\gradient_ops_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\gradient_ops_test_autogen.dir\rule
@@ -3028,7 +3067,7 @@ gradient_ops_test_autogen: tests\CMakeFiles\gradient_ops_test_autogen.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\gradient_ops_test_autogen.dir\codegen: tests\CMakeFiles\gradient_ops_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\gradient_ops_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\gradient_ops_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target gradient_ops_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=71 "Finished codegen for target gradient_ops_test_autogen"
 .PHONY : tests\CMakeFiles\gradient_ops_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3075,12 +3114,12 @@ tests\CMakeFiles\mutation_ops_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\mutation_ops_test_autogen.dir\all: tests\CMakeFiles\mutation_ops_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\mutation_ops_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\mutation_ops_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\mutation_ops_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\mutation_ops_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=75 "Built target mutation_ops_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target mutation_ops_test_autogen"
 .PHONY : tests\CMakeFiles\mutation_ops_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\mutation_ops_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\mutation_ops_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\mutation_ops_test_autogen.dir\rule
@@ -3092,7 +3131,7 @@ mutation_ops_test_autogen: tests\CMakeFiles\mutation_ops_test_autogen.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\mutation_ops_test_autogen.dir\codegen: tests\CMakeFiles\mutation_ops_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\mutation_ops_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\mutation_ops_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=75 "Finished codegen for target mutation_ops_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target mutation_ops_test_autogen"
 .PHONY : tests\CMakeFiles\mutation_ops_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3139,12 +3178,12 @@ tests\CMakeFiles\plugin_variations_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\plugin_variations_test_autogen.dir\all: tests\CMakeFiles\plugin_variations_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\plugin_variations_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\plugin_variations_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\plugin_variations_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\plugin_variations_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=77 "Built target plugin_variations_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target plugin_variations_test_autogen"
 .PHONY : tests\CMakeFiles\plugin_variations_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\plugin_variations_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\plugin_variations_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\plugin_variations_test_autogen.dir\rule
@@ -3156,7 +3195,7 @@ plugin_variations_test_autogen: tests\CMakeFiles\plugin_variations_test_autogen.
 # codegen rule for target.
 tests\CMakeFiles\plugin_variations_test_autogen.dir\codegen: tests\CMakeFiles\plugin_variations_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\plugin_variations_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\plugin_variations_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=77 "Finished codegen for target plugin_variations_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target plugin_variations_test_autogen"
 .PHONY : tests\CMakeFiles\plugin_variations_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3203,12 +3242,12 @@ tests\CMakeFiles\png_writer_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\png_writer_test_autogen.dir\all: tests\CMakeFiles\png_writer_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\png_writer_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\png_writer_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\png_writer_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\png_writer_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=78 "Built target png_writer_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target png_writer_test_autogen"
 .PHONY : tests\CMakeFiles\png_writer_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\png_writer_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\png_writer_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\png_writer_test_autogen.dir\rule
@@ -3220,7 +3259,7 @@ png_writer_test_autogen: tests\CMakeFiles\png_writer_test_autogen.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\png_writer_test_autogen.dir\codegen: tests\CMakeFiles\png_writer_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\png_writer_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\png_writer_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=78 "Finished codegen for target png_writer_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target png_writer_test_autogen"
 .PHONY : tests\CMakeFiles\png_writer_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3267,12 +3306,12 @@ tests\CMakeFiles\random_flame_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\random_flame_test_autogen.dir\all: tests\CMakeFiles\random_flame_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\random_flame_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\random_flame_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\random_flame_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\random_flame_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target random_flame_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=80 "Built target random_flame_test_autogen"
 .PHONY : tests\CMakeFiles\random_flame_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\random_flame_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\random_flame_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\random_flame_test_autogen.dir\rule
@@ -3284,7 +3323,7 @@ random_flame_test_autogen: tests\CMakeFiles\random_flame_test_autogen.dir\rule
 # codegen rule for target.
 tests\CMakeFiles\random_flame_test_autogen.dir\codegen: tests\CMakeFiles\random_flame_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\random_flame_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\random_flame_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target random_flame_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=80 "Finished codegen for target random_flame_test_autogen"
 .PHONY : tests\CMakeFiles\random_flame_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3395,12 +3434,12 @@ tests\CMakeFiles\smooth_palette_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\smooth_palette_test_autogen.dir\all: tests\CMakeFiles\smooth_palette_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\smooth_palette_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\smooth_palette_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\smooth_palette_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\smooth_palette_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=85 "Built target smooth_palette_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target smooth_palette_test_autogen"
 .PHONY : tests\CMakeFiles\smooth_palette_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\smooth_palette_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\smooth_palette_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\smooth_palette_test_autogen.dir\rule
@@ -3412,7 +3451,7 @@ smooth_palette_test_autogen: tests\CMakeFiles\smooth_palette_test_autogen.dir\ru
 # codegen rule for target.
 tests\CMakeFiles\smooth_palette_test_autogen.dir\codegen: tests\CMakeFiles\smooth_palette_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\smooth_palette_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\smooth_palette_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=85 "Finished codegen for target smooth_palette_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target smooth_palette_test_autogen"
 .PHONY : tests\CMakeFiles\smooth_palette_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3651,12 +3690,12 @@ tests\CMakeFiles\variations_batch1_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\variations_batch1_test_autogen.dir\all: tests\CMakeFiles\variations_batch1_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch1_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch1_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch1_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch1_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=91 "Built target variations_batch1_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_batch1_test_autogen"
 .PHONY : tests\CMakeFiles\variations_batch1_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\variations_batch1_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch1_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\variations_batch1_test_autogen.dir\rule
@@ -3668,7 +3707,7 @@ variations_batch1_test_autogen: tests\CMakeFiles\variations_batch1_test_autogen.
 # codegen rule for target.
 tests\CMakeFiles\variations_batch1_test_autogen.dir\codegen: tests\CMakeFiles\variations_batch1_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch1_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch1_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=91 "Finished codegen for target variations_batch1_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_batch1_test_autogen"
 .PHONY : tests\CMakeFiles\variations_batch1_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3715,12 +3754,12 @@ tests\CMakeFiles\variations_batch2_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\variations_batch2_test_autogen.dir\all: tests\CMakeFiles\variations_batch2_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch2_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch2_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch2_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch2_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=92 "Built target variations_batch2_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_batch2_test_autogen"
 .PHONY : tests\CMakeFiles\variations_batch2_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\variations_batch2_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch2_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\variations_batch2_test_autogen.dir\rule
@@ -3732,7 +3771,7 @@ variations_batch2_test_autogen: tests\CMakeFiles\variations_batch2_test_autogen.
 # codegen rule for target.
 tests\CMakeFiles\variations_batch2_test_autogen.dir\codegen: tests\CMakeFiles\variations_batch2_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch2_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch2_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=92 "Finished codegen for target variations_batch2_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_batch2_test_autogen"
 .PHONY : tests\CMakeFiles\variations_batch2_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3779,12 +3818,12 @@ tests\CMakeFiles\variations_batch3_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\variations_batch3_test_autogen.dir\all: tests\CMakeFiles\variations_batch3_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch3_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch3_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch3_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch3_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_batch3_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=92 "Built target variations_batch3_test_autogen"
 .PHONY : tests\CMakeFiles\variations_batch3_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\variations_batch3_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch3_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\variations_batch3_test_autogen.dir\rule
@@ -3796,7 +3835,7 @@ variations_batch3_test_autogen: tests\CMakeFiles\variations_batch3_test_autogen.
 # codegen rule for target.
 tests\CMakeFiles\variations_batch3_test_autogen.dir\codegen: tests\CMakeFiles\variations_batch3_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch3_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch3_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_batch3_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=92 "Finished codegen for target variations_batch3_test_autogen"
 .PHONY : tests\CMakeFiles\variations_batch3_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -3843,12 +3882,12 @@ tests\CMakeFiles\variations_batch4_test_autogen_timestamp_deps.dir\clean:
 tests\CMakeFiles\variations_batch4_test_autogen.dir\all: tests\CMakeFiles\variations_batch4_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch4_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch4_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch4_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch4_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_batch4_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=93 "Built target variations_batch4_test_autogen"
 .PHONY : tests\CMakeFiles\variations_batch4_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\CMakeFiles\variations_batch4_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 43
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch4_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\CMakeFiles\variations_batch4_test_autogen.dir\rule
@@ -3860,7 +3899,7 @@ variations_batch4_test_autogen: tests\CMakeFiles\variations_batch4_test_autogen.
 # codegen rule for target.
 tests\CMakeFiles\variations_batch4_test_autogen.dir\codegen: tests\CMakeFiles\variations_batch4_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_batch4_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_batch4_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_batch4_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=93 "Finished codegen for target variations_batch4_test_autogen"
 .PHONY : tests\CMakeFiles\variations_batch4_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -4189,21 +4228,85 @@ tests\CMakeFiles\variations_batch9_test_autogen.dir\clean:
 .PHONY : tests\CMakeFiles\variations_batch9_test_autogen.dir\clean
 
 #=============================================================================
+# Target rules for target tests/CMakeFiles/variations_supermoire_test_autogen_timestamp_deps.dir
+
+# All Build rule for target.
+tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\all: src\core\CMakeFiles\apo_core.dir\all
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\depend
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_supermoire_test_autogen_timestamp_deps"
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\all
+
+# Build rule for subdir invocation for target.
+tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\rule
+
+# Convenience name for target.
+variations_supermoire_test_autogen_timestamp_deps: tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\rule
+.PHONY : variations_supermoire_test_autogen_timestamp_deps
+
+# codegen rule for target.
+tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\codegen:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_supermoire_test_autogen_timestamp_deps"
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\codegen
+
+# clean rule for target.
+tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\clean:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\clean
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\clean
+
+#=============================================================================
+# Target rules for target tests/CMakeFiles/variations_supermoire_test_autogen.dir
+
+# All Build rule for target.
+tests\CMakeFiles\variations_supermoire_test_autogen.dir\all: tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\all
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen.dir\depend
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen.dir\build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target variations_supermoire_test_autogen"
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen.dir\all
+
+# Build rule for subdir invocation for target.
+tests\CMakeFiles\variations_supermoire_test_autogen.dir\rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 42
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen.dir\all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen.dir\rule
+
+# Convenience name for target.
+variations_supermoire_test_autogen: tests\CMakeFiles\variations_supermoire_test_autogen.dir\rule
+.PHONY : variations_supermoire_test_autogen
+
+# codegen rule for target.
+tests\CMakeFiles\variations_supermoire_test_autogen.dir\codegen: tests\CMakeFiles\variations_supermoire_test_autogen_timestamp_deps.dir\all
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen.dir\codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target variations_supermoire_test_autogen"
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen.dir\codegen
+
+# clean rule for target.
+tests\CMakeFiles\variations_supermoire_test_autogen.dir\clean:
+	$(MAKE) $(MAKESILENT) -f tests\CMakeFiles\variations_supermoire_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\CMakeFiles\variations_supermoire_test_autogen.dir\clean
+.PHONY : tests\CMakeFiles\variations_supermoire_test_autogen.dir\clean
+
+#=============================================================================
 # Target rules for target tests/ui/CMakeFiles/triangle_canvas_interaction_test.dir
 
 # All Build rule for target.
 tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\all: tests\ui\CMakeFiles\triangle_canvas_interaction_test_autogen_timestamp_deps.dir\all
 tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\all: tests\ui\CMakeFiles\triangle_canvas_interaction_test_autogen.dir\all
+tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\all: tests\ui\CMakeFiles\triangle_canvas_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=87 "Built target triangle_canvas_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target triangle_canvas_interaction_test"
 .PHONY : tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\rule
@@ -4215,7 +4318,7 @@ triangle_canvas_interaction_test: tests\ui\CMakeFiles\triangle_canvas_interactio
 # codegen rule for target.
 tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\codegen: tests\ui\CMakeFiles\triangle_canvas_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=87 "Finished codegen for target triangle_canvas_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target triangle_canvas_interaction_test"
 .PHONY : tests\ui\CMakeFiles\triangle_canvas_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4264,11 +4367,11 @@ tests\ui\CMakeFiles\adjust_dialog_interaction_test.dir\clean:
 # All Build rule for target.
 tests\ui\CMakeFiles\render_dialog_interaction_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\render_dialog_interaction_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\render_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\render_dialog_interaction_test_autogen_timestamp_deps.dir\all
 tests\ui\CMakeFiles\render_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\render_dialog_interaction_test_autogen.dir\all
+tests\ui\CMakeFiles\render_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\render_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\render_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\render_dialog_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\render_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\render_dialog_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=82 "Built target render_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=81 "Built target render_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\render_dialog_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4285,7 +4388,7 @@ render_dialog_interaction_test: tests\ui\CMakeFiles\render_dialog_interaction_te
 # codegen rule for target.
 tests\ui\CMakeFiles\render_dialog_interaction_test.dir\codegen: tests\ui\CMakeFiles\render_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\render_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\render_dialog_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=82 "Finished codegen for target render_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=81 "Finished codegen for target render_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\render_dialog_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4303,7 +4406,7 @@ tests\ui\CMakeFiles\options_dialog_interaction_test.dir\all: tests\ui\CMakeFiles
 tests\ui\CMakeFiles\options_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\options_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\options_dialog_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\options_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\options_dialog_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target options_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=75 "Built target options_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\options_dialog_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4320,7 +4423,7 @@ options_dialog_interaction_test: tests\ui\CMakeFiles\options_dialog_interaction_
 # codegen rule for target.
 tests\ui\CMakeFiles\options_dialog_interaction_test.dir\codegen: tests\ui\CMakeFiles\options_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\options_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\options_dialog_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target options_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=75 "Finished codegen for target options_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\options_dialog_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4334,11 +4437,11 @@ tests\ui\CMakeFiles\options_dialog_interaction_test.dir\clean:
 # All Build rule for target.
 tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\mutate_dialog_interaction_test_autogen.dir\all
 tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\mutate_dialog_interaction_test_autogen_timestamp_deps.dir\all
+tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\mutate_dialog_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=74 "Built target mutate_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=73 "Built target mutate_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4355,7 +4458,7 @@ mutate_dialog_interaction_test: tests\ui\CMakeFiles\mutate_dialog_interaction_te
 # codegen rule for target.
 tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\codegen: tests\ui\CMakeFiles\mutate_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=74 "Finished codegen for target mutate_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=73 "Finished codegen for target mutate_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4369,16 +4472,16 @@ tests\ui\CMakeFiles\mutate_dialog_interaction_test.dir\clean:
 # All Build rule for target.
 tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test_autogen_timestamp_deps.dir\all
 tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test_autogen.dir\all
+tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target gradient_browser_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=69 "Built target gradient_browser_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\rule
@@ -4390,7 +4493,7 @@ gradient_browser_dialog_interaction_test: tests\ui\CMakeFiles\gradient_browser_d
 # codegen rule for target.
 tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\codegen: tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target gradient_browser_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=69 "Finished codegen for target gradient_browser_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4404,16 +4507,16 @@ tests\ui\CMakeFiles\gradient_browser_dialog_interaction_test.dir\clean:
 # All Build rule for target.
 tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\all: tests\ui\CMakeFiles\fullscreen_view_interaction_test_autogen.dir\all
 tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\all: tests\ui\CMakeFiles\fullscreen_view_interaction_test_autogen_timestamp_deps.dir\all
+tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\all: tests\ui\CMakeFiles\fullscreen_view_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=66 "Built target fullscreen_view_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target fullscreen_view_interaction_test"
 .PHONY : tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\rule
@@ -4425,7 +4528,7 @@ fullscreen_view_interaction_test: tests\ui\CMakeFiles\fullscreen_view_interactio
 # codegen rule for target.
 tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\codegen: tests\ui\CMakeFiles\fullscreen_view_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=66 "Finished codegen for target fullscreen_view_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target fullscreen_view_interaction_test"
 .PHONY : tests\ui\CMakeFiles\fullscreen_view_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4443,12 +4546,12 @@ tests\ui\CMakeFiles\main_window_interaction_test.dir\all: tests\ui\CMakeFiles\ma
 tests\ui\CMakeFiles\main_window_interaction_test.dir\all: tests\ui\CMakeFiles\main_window_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\main_window_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\main_window_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\main_window_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\main_window_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=72 "Built target main_window_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target main_window_interaction_test"
 .PHONY : tests\ui\CMakeFiles\main_window_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\main_window_interaction_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\main_window_interaction_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\main_window_interaction_test.dir\rule
@@ -4460,7 +4563,7 @@ main_window_interaction_test: tests\ui\CMakeFiles\main_window_interaction_test.d
 # codegen rule for target.
 tests\ui\CMakeFiles\main_window_interaction_test.dir\codegen: tests\ui\CMakeFiles\main_window_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\main_window_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\main_window_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=72 "Finished codegen for target main_window_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target main_window_interaction_test"
 .PHONY : tests\ui\CMakeFiles\main_window_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4478,7 +4581,7 @@ tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\
 tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target curves_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=58 "Built target curves_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4495,7 +4598,7 @@ curves_dialog_interaction_test: tests\ui\CMakeFiles\curves_dialog_interaction_te
 # codegen rule for target.
 tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\codegen: tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target curves_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=58 "Finished codegen for target curves_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\curves_dialog_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4513,12 +4616,12 @@ tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\all: tests\ui\CMakeF
 tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\postprocess_dialog_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target postprocess_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=78 "Built target postprocess_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\rule
@@ -4530,7 +4633,7 @@ postprocess_dialog_interaction_test: tests\ui\CMakeFiles\postprocess_dialog_inte
 # codegen rule for target.
 tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\codegen: tests\ui\CMakeFiles\postprocess_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target postprocess_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=78 "Finished codegen for target postprocess_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\postprocess_dialog_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4579,11 +4682,11 @@ tests\ui\CMakeFiles\xaos_dialog_interaction_test.dir\clean:
 # All Build rule for target.
 tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\all
 tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen_timestamp_deps.dir\all
+tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=65 "Built target force_symmetry_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target force_symmetry_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4600,7 +4703,7 @@ force_symmetry_dialog_interaction_test: tests\ui\CMakeFiles\force_symmetry_dialo
 # codegen rule for target.
 tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\codegen: tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=65 "Finished codegen for target force_symmetry_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target force_symmetry_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4614,11 +4717,11 @@ tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test.dir\clean:
 # All Build rule for target.
 tests\ui\CMakeFiles\transform_panel_interaction_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\transform_panel_interaction_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\transform_panel_interaction_test.dir\all: tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\all
 tests\ui\CMakeFiles\transform_panel_interaction_test.dir\all: tests\ui\CMakeFiles\transform_panel_interaction_test_autogen_timestamp_deps.dir\all
+tests\ui\CMakeFiles\transform_panel_interaction_test.dir\all: tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\transform_panel_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\transform_panel_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\transform_panel_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\transform_panel_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=86 "Built target transform_panel_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target transform_panel_interaction_test"
 .PHONY : tests\ui\CMakeFiles\transform_panel_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4635,7 +4738,7 @@ transform_panel_interaction_test: tests\ui\CMakeFiles\transform_panel_interactio
 # codegen rule for target.
 tests\ui\CMakeFiles\transform_panel_interaction_test.dir\codegen: tests\ui\CMakeFiles\transform_panel_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\transform_panel_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\transform_panel_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=86 "Finished codegen for target transform_panel_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target transform_panel_interaction_test"
 .PHONY : tests\ui\CMakeFiles\transform_panel_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4653,7 +4756,7 @@ tests\ui\CMakeFiles\preview_label_interaction_test.dir\all: tests\ui\CMakeFiles\
 tests\ui\CMakeFiles\preview_label_interaction_test.dir\all: tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\preview_label_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\preview_label_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\preview_label_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\preview_label_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=79 "Built target preview_label_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target preview_label_interaction_test"
 .PHONY : tests\ui\CMakeFiles\preview_label_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4670,7 +4773,7 @@ preview_label_interaction_test: tests\ui\CMakeFiles\preview_label_interaction_te
 # codegen rule for target.
 tests\ui\CMakeFiles\preview_label_interaction_test.dir\codegen: tests\ui\CMakeFiles\preview_label_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\preview_label_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\preview_label_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=79 "Finished codegen for target preview_label_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target preview_label_interaction_test"
 .PHONY : tests\ui\CMakeFiles\preview_label_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4684,16 +4787,16 @@ tests\ui\CMakeFiles\preview_label_interaction_test.dir\clean:
 # All Build rule for target.
 tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\render_all_dialog_interaction_test_autogen_timestamp_deps.dir\all
 tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\render_all_dialog_interaction_test_autogen.dir\all
+tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\render_all_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=81 "Built target render_all_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target render_all_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\rule
@@ -4705,7 +4808,7 @@ render_all_dialog_interaction_test: tests\ui\CMakeFiles\render_all_dialog_intera
 # codegen rule for target.
 tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\codegen: tests\ui\CMakeFiles\render_all_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=81 "Finished codegen for target render_all_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target render_all_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\render_all_dialog_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4723,7 +4826,7 @@ tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\all: tests\ui\CMa
 tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\all: tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target smooth_palette_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=83 "Built target smooth_palette_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4740,7 +4843,7 @@ smooth_palette_dialog_interaction_test: tests\ui\CMakeFiles\smooth_palette_dialo
 # codegen rule for target.
 tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\codegen: tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target smooth_palette_dialog_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=83 "Finished codegen for target smooth_palette_dialog_interaction_test"
 .PHONY : tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4758,7 +4861,7 @@ tests\ui\CMakeFiles\memory_budget_test.dir\all: tests\ui\CMakeFiles\memory_budge
 tests\ui\CMakeFiles\memory_budget_test.dir\all: tests\ui\CMakeFiles\memory_budget_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\memory_budget_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\memory_budget_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\memory_budget_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\memory_budget_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=73 "Built target memory_budget_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=72 "Built target memory_budget_test"
 .PHONY : tests\ui\CMakeFiles\memory_budget_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4775,7 +4878,7 @@ memory_budget_test: tests\ui\CMakeFiles\memory_budget_test.dir\rule
 # codegen rule for target.
 tests\ui\CMakeFiles\memory_budget_test.dir\codegen: tests\ui\CMakeFiles\memory_budget_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\memory_budget_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\memory_budget_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=73 "Finished codegen for target memory_budget_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=72 "Finished codegen for target memory_budget_test"
 .PHONY : tests\ui\CMakeFiles\memory_budget_test.dir\codegen
 
 # clean rule for target.
@@ -4793,7 +4896,7 @@ tests\ui\CMakeFiles\update_checker_test.dir\all: tests\ui\CMakeFiles\update_chec
 tests\ui\CMakeFiles\update_checker_test.dir\all: tests\ui\CMakeFiles\update_checker_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=89 "Built target update_checker_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=88 "Built target update_checker_test"
 .PHONY : tests\ui\CMakeFiles\update_checker_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4810,7 +4913,7 @@ update_checker_test: tests\ui\CMakeFiles\update_checker_test.dir\rule
 # codegen rule for target.
 tests\ui\CMakeFiles\update_checker_test.dir\codegen: tests\ui\CMakeFiles\update_checker_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\update_checker_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\update_checker_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=89 "Finished codegen for target update_checker_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=88 "Finished codegen for target update_checker_test"
 .PHONY : tests\ui\CMakeFiles\update_checker_test.dir\codegen
 
 # clean rule for target.
@@ -4824,16 +4927,16 @@ tests\ui\CMakeFiles\update_checker_test.dir\clean:
 # All Build rule for target.
 tests\ui\CMakeFiles\editor_window_interaction_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\editor_window_interaction_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\editor_window_interaction_test.dir\all: tests\ui\CMakeFiles\editor_window_interaction_test_autogen.dir\all
 tests\ui\CMakeFiles\editor_window_interaction_test.dir\all: tests\ui\CMakeFiles\editor_window_interaction_test_autogen_timestamp_deps.dir\all
+tests\ui\CMakeFiles\editor_window_interaction_test.dir\all: tests\ui\CMakeFiles\editor_window_interaction_test_autogen.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_interaction_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_interaction_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target editor_window_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=61 "Built target editor_window_interaction_test"
 .PHONY : tests\ui\CMakeFiles\editor_window_interaction_test.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\editor_window_interaction_test.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_interaction_test.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\editor_window_interaction_test.dir\rule
@@ -4845,7 +4948,7 @@ editor_window_interaction_test: tests\ui\CMakeFiles\editor_window_interaction_te
 # codegen rule for target.
 tests\ui\CMakeFiles\editor_window_interaction_test.dir\codegen: tests\ui\CMakeFiles\editor_window_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_interaction_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_interaction_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target editor_window_interaction_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=61 "Finished codegen for target editor_window_interaction_test"
 .PHONY : tests\ui\CMakeFiles\editor_window_interaction_test.dir\codegen
 
 # clean rule for target.
@@ -4929,11 +5032,11 @@ tests\ui\CMakeFiles\adjust_panel_interaction_test.dir\clean:
 # All Build rule for target.
 tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\all: src\core\CMakeFiles\apo_core.dir\all
 tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\all: src\ui\CMakeFiles\apo_ui.dir\all
-tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\all: tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen_timestamp_deps.dir\all
 tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\all: tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\all
+tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\all: tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target editor_window_adjust_panel_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=60 "Built target editor_window_adjust_panel_test"
 .PHONY : tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4950,7 +5053,7 @@ editor_window_adjust_panel_test: tests\ui\CMakeFiles\editor_window_adjust_panel_
 # codegen rule for target.
 tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\codegen: tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target editor_window_adjust_panel_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=60 "Finished codegen for target editor_window_adjust_panel_test"
 .PHONY : tests\ui\CMakeFiles\editor_window_adjust_panel_test.dir\codegen
 
 # clean rule for target.
@@ -4968,7 +5071,7 @@ tests\ui\CMakeFiles\editor_splitter_test.dir\all: tests\ui\CMakeFiles\editor_spl
 tests\ui\CMakeFiles\editor_splitter_test.dir\all: tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=60 "Built target editor_splitter_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=59 "Built target editor_splitter_test"
 .PHONY : tests\ui\CMakeFiles\editor_splitter_test.dir\all
 
 # Build rule for subdir invocation for target.
@@ -4985,7 +5088,7 @@ editor_splitter_test: tests\ui\CMakeFiles\editor_splitter_test.dir\rule
 # codegen rule for target.
 tests\ui\CMakeFiles\editor_splitter_test.dir\codegen: tests\ui\CMakeFiles\editor_splitter_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_splitter_test.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_splitter_test.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=60 "Finished codegen for target editor_splitter_test"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=59 "Finished codegen for target editor_splitter_test"
 .PHONY : tests\ui\CMakeFiles\editor_splitter_test.dir\codegen
 
 # clean rule for target.
@@ -5228,12 +5331,12 @@ tests\ui\CMakeFiles\options_dialog_interaction_test_autogen_timestamp_deps.dir\c
 tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\all: tests\ui\CMakeFiles\options_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=76 "Built target options_dialog_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target options_dialog_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\rule
@@ -5245,7 +5348,7 @@ options_dialog_interaction_test_autogen: tests\ui\CMakeFiles\options_dialog_inte
 # codegen rule for target.
 tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\codegen: tests\ui\CMakeFiles\options_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=76 "Finished codegen for target options_dialog_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target options_dialog_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\options_dialog_interaction_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -5553,12 +5656,12 @@ tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen_timestamp_deps.dir\cl
 tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\all: tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=59 "Built target curves_dialog_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target curves_dialog_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\rule
@@ -5570,7 +5673,7 @@ curves_dialog_interaction_test_autogen: tests\ui\CMakeFiles\curves_dialog_intera
 # codegen rule for target.
 tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\codegen: tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=59 "Finished codegen for target curves_dialog_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target curves_dialog_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\curves_dialog_interaction_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -5748,12 +5851,12 @@ tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen_timestamp_dep
 tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\all: tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target force_symmetry_dialog_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=65 "Built target force_symmetry_dialog_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\rule
@@ -5765,7 +5868,7 @@ force_symmetry_dialog_interaction_test_autogen: tests\ui\CMakeFiles\force_symmet
 # codegen rule for target.
 tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\codegen: tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target force_symmetry_dialog_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=65 "Finished codegen for target force_symmetry_dialog_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\force_symmetry_dialog_interaction_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -5813,12 +5916,12 @@ tests\ui\CMakeFiles\transform_panel_interaction_test_autogen_timestamp_deps.dir\
 tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\all: tests\ui\CMakeFiles\transform_panel_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target transform_panel_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=86 "Built target transform_panel_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\rule
@@ -5830,7 +5933,7 @@ transform_panel_interaction_test_autogen: tests\ui\CMakeFiles\transform_panel_in
 # codegen rule for target.
 tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\codegen: tests\ui\CMakeFiles\transform_panel_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target transform_panel_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=86 "Finished codegen for target transform_panel_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\transform_panel_interaction_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -5878,12 +5981,12 @@ tests\ui\CMakeFiles\preview_label_interaction_test_autogen_timestamp_deps.dir\cl
 tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\all: tests\ui\CMakeFiles\preview_label_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target preview_label_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=79 "Built target preview_label_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\rule
@@ -5895,7 +5998,7 @@ preview_label_interaction_test_autogen: tests\ui\CMakeFiles\preview_label_intera
 # codegen rule for target.
 tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\codegen: tests\ui\CMakeFiles\preview_label_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target preview_label_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=79 "Finished codegen for target preview_label_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\preview_label_interaction_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -6008,12 +6111,12 @@ tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen_timestamp_dep
 tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\all: tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=84 "Built target smooth_palette_dialog_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target smooth_palette_dialog_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\rule
@@ -6025,7 +6128,7 @@ smooth_palette_dialog_interaction_test_autogen: tests\ui\CMakeFiles\smooth_palet
 # codegen rule for target.
 tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\codegen: tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=84 "Finished codegen for target smooth_palette_dialog_interaction_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target smooth_palette_dialog_interaction_test_autogen"
 .PHONY : tests\ui\CMakeFiles\smooth_palette_dialog_interaction_test_autogen.dir\codegen
 
 # clean rule for target.
@@ -6398,12 +6501,12 @@ tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen_timestamp_deps.dir\c
 tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\all: tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\depend
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=61 "Built target editor_window_adjust_panel_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Built target editor_window_adjust_panel_test_autogen"
 .PHONY : tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\all
 
 # Build rule for subdir invocation for target.
 tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 49
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 48
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles 0
 .PHONY : tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\rule
@@ -6415,7 +6518,7 @@ editor_window_adjust_panel_test_autogen: tests\ui\CMakeFiles\editor_window_adjus
 # codegen rule for target.
 tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\codegen: tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen_timestamp_deps.dir\all
 	$(MAKE) $(MAKESILENT) -f tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\build.make /nologo -$(MAKEFLAGS) tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=61 "Finished codegen for target editor_window_adjust_panel_test_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num= "Finished codegen for target editor_window_adjust_panel_test_autogen"
 .PHONY : tests\ui\CMakeFiles\editor_window_adjust_panel_test_autogen.dir\codegen
 
 # clean rule for target.

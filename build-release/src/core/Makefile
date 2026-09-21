@@ -5730,6 +5730,36 @@ variations\VarSplits.cpp.s:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
 .PHONY : variations\VarSplits.cpp.s
 
+variations\VarSupermoire.obj: variations\VarSupermoire.cpp.obj
+.PHONY : variations\VarSupermoire.obj
+
+# target to build an object file
+variations\VarSupermoire.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\core\CMakeFiles\apo_core.dir\build.make /nologo -$(MAKEFLAGS) src\core\CMakeFiles\apo_core.dir\variations\VarSupermoire.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+.PHONY : variations\VarSupermoire.cpp.obj
+
+variations\VarSupermoire.i: variations\VarSupermoire.cpp.i
+.PHONY : variations\VarSupermoire.i
+
+# target to preprocess a source file
+variations\VarSupermoire.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\core\CMakeFiles\apo_core.dir\build.make /nologo -$(MAKEFLAGS) src\core\CMakeFiles\apo_core.dir\variations\VarSupermoire.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+.PHONY : variations\VarSupermoire.cpp.i
+
+variations\VarSupermoire.s: variations\VarSupermoire.cpp.s
+.PHONY : variations\VarSupermoire.s
+
+# target to generate assembly for a file
+variations\VarSupermoire.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\core\CMakeFiles\apo_core.dir\build.make /nologo -$(MAKEFLAGS) src\core\CMakeFiles\apo_core.dir\variations\VarSupermoire.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core
+.PHONY : variations\VarSupermoire.cpp.s
+
 variations\VarTangent.obj: variations\VarTangent.cpp.obj
 .PHONY : variations\VarTangent.obj
 
@@ -6447,6 +6477,9 @@ help:
 	@echo ... variations/VarSplits.obj
 	@echo ... variations/VarSplits.i
 	@echo ... variations/VarSplits.s
+	@echo ... variations/VarSupermoire.obj
+	@echo ... variations/VarSupermoire.i
+	@echo ... variations/VarSupermoire.s
 	@echo ... variations/VarTangent.obj
 	@echo ... variations/VarTangent.i
 	@echo ... variations/VarTangent.s

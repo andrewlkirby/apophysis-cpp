@@ -1094,6 +1094,39 @@ __device__ inline void devSinhPowIA(DeviceVarContext& c) {
     c.pz += c.vvar * c.tz;
 }
 
+// Sum of three plane waves at 120 degrees apart - a triangular lattice
+// potential of the given spatial frequency and twist angle. Shared helper
+// for devSupermoire below (see VarSupermoire.cpp's identical triLattice()).
+__device__ inline double devTriLattice(double x, double y, double angle, double freq) {
+    constexpr double kTwoPiOver3 = 2.0 * 3.14159265358979323846 / 3.0;
+    double sum = 0;
+    for (int k = 0; k < 3; ++k) {
+        const double a = angle + k * kTwoPiOver3;
+        sum += cos(freq * (x * cos(a) + y * sin(a)));
+    }
+    return sum;
+}
+
+// Ported from VarSupermoire.cpp - two triLattice() potentials (the second
+// sampled through a uniaxial-strain-warped coordinate) combined nonlinearly
+// as L1 + L2 + mix*L1*L2. No RNG, no cached prepare()-derived constant -
+// same convention as devSinhPow above.
+__device__ inline double devSupermoireField(double x, double y, double freq1, double freq2, double angle1,
+                                             double angle2, double strain, double mix) {
+    const double l1 = devTriLattice(x, y, angle1, freq1);
+    const double l2 = devTriLattice(x * (1 + strain), y * (1 - strain), angle2, freq2);
+    return l1 + l2 + mix * l1 * l2;
+}
+
+__device__ inline void devSupermoire(DeviceVarContext& c) {
+    const double freq1 = c.params[0], freq2 = c.params[1], angle1 = c.params[2], angle2 = c.params[3];
+    const double strain = c.params[4], mix = c.params[5], scale = c.params[6];
+
+    c.px += c.vvar * (c.tx + scale * devSupermoireField(c.tx, c.ty, freq1, freq2, angle1, angle2, strain, mix));
+    c.py += c.vvar * (c.ty + scale * devSupermoireField(c.ty, c.tx, freq1, freq2, angle1, angle2, strain, mix));
+    c.pz += c.vvar * c.tz;
+}
+
 // RadialBlur's selectCalcFunction specializations (calcZoom/calcSpin) are
 // also verified-algebraically-equivalent limits (spinVar/zoomVar -> 0 - see
 // VarRadialBlur.h's own comment), so the general formula alone suffices.
@@ -1303,6 +1336,7 @@ __device__ inline void devCalcVariation(int kind, DeviceVarContext& c) {
         case kind::kPreFalloff2: devPreFalloff2(c); return;
         case kind::kSinhPow: devSinhPow(c); return;
         case kind::kSinhPowIA: devSinhPowIA(c); return;
+        case kind::kSupermoire: devSupermoire(c); return;
         default: return; // unreachable if RenderDispatcher's eligibility check is correct
     }
 }

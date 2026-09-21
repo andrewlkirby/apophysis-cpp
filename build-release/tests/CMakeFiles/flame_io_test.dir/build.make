@@ -189,6 +189,7 @@ flame_io_test_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarSupermoire.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\core\CMakeFiles\apo_core.dir\variations\VarWaves.cpp.obj" \
@@ -382,6 +383,7 @@ tests\flame_io_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSeparati
 tests\flame_io_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPow.cpp.obj
 tests\flame_io_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSinhPowIA.cpp.obj
 tests\flame_io_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSplits.cpp.obj
+tests\flame_io_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarSupermoire.cpp.obj
 tests\flame_io_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarTangent.cpp.obj
 tests\flame_io_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarTwintrian.cpp.obj
 tests\flame_io_test.exe: src\core\CMakeFiles\apo_core.dir\variations\VarWaves.cpp.obj

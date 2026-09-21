@@ -199,6 +199,8 @@ int main() {
         "julia3D", "radial_blur", "falloff2", "post_falloff2", "pre_falloff2",
         // Batch 4
         "sinhpow", "sinhpowia",
+        // Batch 5
+        "supermoire",
     };
 
     for (const auto& name : kLocalVariations) testVariationParity(name);

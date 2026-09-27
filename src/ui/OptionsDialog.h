@@ -98,6 +98,7 @@ private:
     QCheckBox* discardBlankCheck_ = nullptr;
     QSpinBox* minFramingSamplesSpin_ = nullptr;
     QDoubleSpinBox* minColoredCoverageSpin_ = nullptr;
+    QSpinBox* coverageTestSizeSpin_ = nullptr;
     QCheckBox* restrictToGpuCompatibleCheck_ = nullptr;
     QSpinBox* mutationMinXformsSpin_ = nullptr;
     QSpinBox* mutationMaxXformsSpin_ = nullptr;

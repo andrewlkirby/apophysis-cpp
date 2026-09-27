@@ -188,8 +188,10 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/ap
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/edit/RandomFlame.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/edit/TriangleGeometry.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/io/PngWriter.h
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/AutoFrame.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/RenderDispatcher.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AboutDialog.cpp
@@ -229,6 +231,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/ap
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewLabel.cpp
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewLabel.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewSizing.h
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RandomBatchTask.cpp
+ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RandomBatchTask.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderAllDialog.cpp
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderAllDialog.h
  C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderDialog.cpp

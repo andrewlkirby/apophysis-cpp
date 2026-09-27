@@ -123,6 +123,7 @@ memory_budget_test_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj" \
@@ -343,6 +344,7 @@ tests\ui\memory_budget_test.exe: tests\ui\CMakeFiles\memory_budget_test.dir\memo
 tests\ui\memory_budget_test.exe: src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj
 tests\ui\memory_budget_test.exe: src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj
 tests\ui\memory_budget_test.exe: src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj
+tests\ui\memory_budget_test.exe: src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj
 tests\ui\memory_budget_test.exe: src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj
 tests\ui\memory_budget_test.exe: src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj
 tests\ui\memory_budget_test.exe: src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj

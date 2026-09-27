@@ -468,6 +468,16 @@ C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextformat.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qpen.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qtextoption.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qchar.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/moc_RandomBatchTask.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/../../../../../src/ui/RandomBatchTask.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QRunnable
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/qrunnable.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcompilerdetection.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfunctionaltools_impl.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/edit/RandomFlame.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/edit/../render/AutoFrame.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/moc_RenderAllDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/../../../../../src/ui/RenderAllDialog.h
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QDialog
@@ -506,9 +516,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/ap
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QImage
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QRunnable
-C:/Qt/6.8.0/msvc2022_64/include/QtCore/qrunnable.h
-C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcompilerdetection.h
-C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfunctionaltools_impl.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewSizing.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/moc_TransformPanel.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/build-release/src/ui/apo_ui_autogen/EWIEGA46WW/../../../../../src/ui/TransformPanel.h

@@ -453,6 +453,7 @@ C:/Qt/6.8.0/msvc2022_64/include/QtGui/QDesktopServices
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/qdesktopservices.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QDragEnterEvent
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QDropEvent
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QEventLoop
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QFileDialog
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qfiledialog.h
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/qdir.h
@@ -566,6 +567,12 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDia
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QDialog
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QImage
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RandomBatchTask.h
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QRunnable
+C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/edit/RandomFlame.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/edit/../render/AutoFrame.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ThumbnailTask.h
 C:/Qt/6.8.0/msvc2022_64/include/QtGui/QImage
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
@@ -577,7 +584,5 @@ C:/Qt/6.8.0/msvc2022_64/include/QtCore/QByteArray
 C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
 C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/QWidget
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/BuiltinGradients.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/edit/RandomFlame.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/edit/../render/AutoFrame.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/edit/Symmetry.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/../core/io/FlameIO.h

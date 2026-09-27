@@ -119,6 +119,15 @@ void setRandomMinFramingSamples(int count);
 // kDefaultMinColoredCoverage.
 double randomMinColoredCoverage();
 void setRandomMinColoredCoverage(double fraction);
+// The longer edge (pixels) of the quick test render randomMinColoredCoverage
+// is measured against - passed straight through to AutoFrame.h's
+// measureContent/hasMinimumColoredCoverage `testSize` parameter (see its own
+// doc comment for why raising this helps: a coarse test render makes
+// coveredFraction blocky/imprecise, which otherwise pushes users toward
+// cranking minColoredCoverage ever higher to compensate). Defaults to
+// AutoFrame.h's own kDefaultCoverageTestSize.
+int randomCoverageTestSize();
+void setRandomCoverageTestSize(int size);
 int mutationMinXforms();
 void setMutationMinXforms(int count);
 int mutationMaxXforms();

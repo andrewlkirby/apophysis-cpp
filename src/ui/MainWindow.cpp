@@ -1,7 +1,9 @@
 #include "MainWindow.h"
 
 #include <algorithm>
+#include <atomic>
 #include <cstddef>
+#include <functional>
 #include <random>
 
 #include <QAbstractItemView>
@@ -13,6 +15,7 @@
 #include <QDesktopServices>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QEventLoop>
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QGuiApplication>
@@ -48,6 +51,7 @@
 #include "RenderAllDialog.h"
 #include "RenderWorker.h"
 #include "SmoothPaletteDialog.h"
+#include "RandomBatchTask.h"
 #include "ThumbnailTask.h"
 #include "UpdateChecker.h"
 #include "WindowGeometry.h"
@@ -932,67 +936,83 @@ void MainWindow::generateRandomBatch(int count) {
     // rebuilding flames_ in place, so flames_/flameList_ stay in a fully
     // consistent, valid state for the entire generation loop even though
     // that loop now reenters the event loop on every iteration.
-    std::vector<std::shared_ptr<apo::Flame>> newFlames;
-    newFlames.reserve(static_cast<size_t>(count));
+    std::vector<std::shared_ptr<apo::Flame>> newFlames(static_cast<size_t>(count));
 
-    const int minXforms = AppSettings::randomMinXforms();
-    const int maxXforms = AppSettings::randomMaxXforms();
-    const QString titlePrefix = AppSettings::randomBatchTitlePrefix();
+    // Every RandomBatchTask reads this one shared, read-only snapshot
+    // instead of touching AppSettings/QSettings itself - see
+    // RandomBatchSettings's own doc comment for why. Built once, here, on
+    // the GUI thread.
+    auto settings = std::make_shared<apo::ui::RandomBatchSettings>();
+    settings->width = AppSettings::defaultWidth();
+    settings->height = AppSettings::defaultHeight();
+    settings->minXforms = AppSettings::randomMinXforms();
+    settings->maxXforms = AppSettings::randomMaxXforms();
+    settings->titlePrefix = AppSettings::randomBatchTitlePrefix();
     // 0=None, 1=Bilateral, 2=Rotational, 3=Dihedral - matches Options.dfm's
     // cmbSymType.Items order exactly (see AppSettings.h).
-    const int symType = AppSettings::randomSymmetryType();
-    const int symOrder = AppSettings::randomSymmetryOrder();
+    settings->symType = AppSettings::randomSymmetryType();
+    settings->symOrder = AppSettings::randomSymmetryOrder();
 
     // Options.pas's "Variation" menu equivalent (Options > Random >
     // Variation) - empty/not-found both mean "Random" (variationIndex -1).
     const QString forcedVariationName = AppSettings::randomForcedVariationName();
-    int forcedVariationIndex = -1;
     if (!forcedVariationName.isEmpty()) {
-        forcedVariationIndex = apo::VariationRegistry::instance().variationIndex(forcedVariationName.toStdString());
+        settings->forcedVariationIndex =
+            apo::VariationRegistry::instance().variationIndex(forcedVariationName.toStdString());
     }
     // Options.pas's Variations tab checklist - restricts the "Random"
     // draw above (a forced variation, if any, bypasses this entirely,
     // matching randomizeXforms's own variationIndex>=0 short-circuit).
-    const std::vector<int> eligibleVariations = AppSettings::enabledVariationIndices();
-    const auto gradientSource = static_cast<apo::RandomGradientSource>(std::clamp(AppSettings::randomGradientSource(), 0, 2));
+    settings->eligibleVariations = AppSettings::enabledVariationIndices();
+    settings->gradientSource =
+        static_cast<apo::RandomGradientSource>(std::clamp(AppSettings::randomGradientSource(), 0, 2));
+    settings->hasCurrentGradient = hasCurrentGradient;
+    settings->currentGradient = currentGradient;
 
     // Options.pas has no equivalent of this group - a new setting this port
     // adds (see AppSettings.h's own comment on why it defaults to "on"
     // rather than the old single-variation-only behavior).
-    const int minVariationsPerXform = AppSettings::randomMinVariationsPerXform();
-    const int maxVariationsPerXform = AppSettings::randomMaxVariationsPerXform();
-    const double variationWeightMin = AppSettings::randomVariationWeightMin();
-    const double variationWeightMax = AppSettings::randomVariationWeightMax();
-    const bool randomizeVariationParameters = AppSettings::randomizeVariationParameters();
-    const double variationParameterStrength = AppSettings::randomVariationParameterStrength();
+    settings->minVariationsPerXform = AppSettings::randomMinVariationsPerXform();
+    settings->maxVariationsPerXform = AppSettings::randomMaxVariationsPerXform();
+    settings->variationWeightMin = AppSettings::randomVariationWeightMin();
+    settings->variationWeightMax = AppSettings::randomVariationWeightMax();
+    settings->randomizeVariationParameters = AppSettings::randomizeVariationParameters();
+    settings->variationParameterStrength = AppSettings::randomVariationParameterStrength();
 
-    // Distinct, splitmix64-mixed seeds per flame from one random base -
-    // same derivation Renderer.cpp already uses for its own per-thread
-    // seeds, reused here so each flame in the batch is independently
-    // well-seeded rather than just base+i (see Renderer.cpp's own comment
-    // on why adjacent integer seeds can correlate for some PRNGs).
     // Options.pas has no equivalent - a new setting this port adds (see
     // AppSettings.h's own comment). When set, a batch slot whose generated
     // flame is too degenerate to frame (would render blank) is retried with
-    // a new seed, up to kMaxDiscardBlankRetries times, rather than kept as-is.
-    const bool discardBlank = AppSettings::randomDiscardBlank();
-    const int minFramingSamples = AppSettings::randomMinFramingSamples();
-    const double minColoredCoverage = AppSettings::randomMinColoredCoverage();
-    constexpr int kMaxDiscardBlankRetries = 20;
+    // a new seed, up to RandomBatchTask::kMaxDiscardRetries times, rather
+    // than kept as-is.
+    settings->discardBlank = AppSettings::randomDiscardBlank();
+    settings->minFramingSamples = AppSettings::randomMinFramingSamples();
+    settings->minColoredCoverage = AppSettings::randomMinColoredCoverage();
+    settings->coverageTestSize = AppSettings::randomCoverageTestSize();
+    settings->keepBackground = AppSettings::randomKeepBackground();
+    settings->keepBackgroundColor = keepBackgroundColor;
+
+    // Options.pas's Display tab "Rendering" group - see
+    // RandomBatchSettings::applyRenderDefaults's own doc comment for why
+    // this is snapshotted here rather than each task calling
+    // applyDefaultRenderSettings() (MainWindow.cpp's AppSettings-reading
+    // free function, above) for itself.
+    settings->gamma = AppSettings::defaultGamma();
+    settings->brightness = AppSettings::defaultBrightness();
+    settings->vibrancy = AppSettings::defaultVibrancy();
+    settings->gammaThreshold = AppSettings::defaultGammaThreshold();
+    settings->sampleDensity = AppSettings::defaultSampleDensity();
+    settings->spatialOversample = AppSettings::defaultOversample();
+    settings->spatialFilterRadius = AppSettings::defaultFilterRadius();
 
     // Modal (blocks input to MainWindow itself, so the user can't start a
     // second, overlapping batch mid-generation) but not application-modal -
-    // other top-level windows (EditorWindow, etc.) stay usable. setValue()
-    // below reenters the event loop each iteration (QProgressDialog's own
-    // documented behavior), which is what keeps the UI responsive/repainting
-    // and lets the Cancel button - and the window's own close button - both
-    // actually register a click while generation is in progress; a strict
+    // other top-level windows (EditorWindow, etc.) stay usable. A strict
     // enough minColoredCoverage setting can make a slot burn through every
-    // one of its kMaxDiscardBlankRetries attempts, each doing a real test
-    // render (AutoFrame.h's hasMinimumColoredCoverage), so a large batch is
-    // no longer guaranteed to be fast. setMinimumDuration() keeps this from
-    // ever flashing on screen for the common case where generation finishes
-    // quickly anyway.
+    // one of its RandomBatchTask::kMaxDiscardRetries attempts, each doing a
+    // real test render (AutoFrame.h's hasMinimumColoredCoverage), so a large
+    // batch is no longer guaranteed to be fast even with every slot running
+    // concurrently below. setMinimumDuration() keeps this from ever flashing
+    // on screen for the common case where generation finishes quickly anyway.
     QProgressDialog progressDialog(QString("Generating random flames..."), "Cancel", 0, count, this);
     progressDialog.setWindowTitle("New Random Batch");
     progressDialog.setWindowModality(Qt::WindowModal);
@@ -1000,121 +1020,84 @@ void MainWindow::generateRandomBatch(int count) {
     progressDialog.setValue(0);
 
     const auto baseSeed = static_cast<std::uint64_t>(std::random_device{}());
+    // Every RandomBatchTask below polls this (between its own retry
+    // attempts, not before the first - see RandomBatchTask::run()'s own
+    // comment) instead of the old sequential loop's direct
+    // progressDialog.wasCanceled() check - a QRunnable running on a
+    // QThreadPool worker thread can't safely touch a GUI-thread QWidget
+    // itself. cancelPoll below is what actually notices the Cancel click and
+    // flips this.
+    auto cancelledFlag = std::make_shared<std::atomic<bool>>(false);
     bool cancelled = false;
     // Count of batch slots where every attempt failed discardBlank's checks
-    // and the best-scoring (not just the last) attempt was kept instead -
-    // surfaced to the user below rather than silently handed over, since a
-    // strict enough minColoredCoverage can make this the common case, not a
-    // rare edge case.
+    // (or cancellation cut the retry loop short) and the best-scoring (not
+    // just the last) attempt was kept instead - surfaced to the user below
+    // rather than silently handed over, since a strict enough
+    // minColoredCoverage can make this the common case, not a rare edge case.
     int fallbackCount = 0;
-    for (int i = 0; i < count; ++i) {
-        if (progressDialog.wasCanceled()) {
+    int completed = 0;
+    // How many slots have been dispatched to the pool so far - also doubles
+    // as "how many of newFlames' leading entries are actually populated"
+    // once the loop below exits, since slots are always started in index
+    // order and (see startNext below) never skipped.
+    int nextToStart = 0;
+    // In-flight task count - cancellation waits for this to hit 0 (not for
+    // `completed == count`) before returning, matching the old sequential
+    // loop's own "finish whatever slot was already in progress, then stop"
+    // cancel semantics instead of waiting for slots that were never started.
+    int outstanding = 0;
+
+    // QThreadPool caps how many RandomBatchTasks actually run at once (its
+    // own default ideal thread count) - dispatching all `count` of them
+    // immediately would just queue the rest, and would also mean a cancel
+    // has to wait for every already-queued task to run at least one attempt
+    // before this can return. Keeping at most one pool-worth in flight, and
+    // starting the next only as each one finishes, bounds that wait to
+    // roughly one thread-pool's worth of tasks instead of the whole batch.
+    const int concurrency = std::max(1, QThreadPool::globalInstance()->maxThreadCount());
+
+    QEventLoop loop;
+    std::function<void(int)> startNext;
+    startNext = [&](int index) {
+        ++outstanding;
+        auto* task = new apo::ui::RandomBatchTask(index, baseSeed, settings, cancelledFlag);
+        connect(task, &apo::ui::RandomBatchTask::finished, this,
+                [&](int finishedIndex, std::shared_ptr<apo::Flame> flame, bool wasFallback) {
+                    newFlames[static_cast<size_t>(finishedIndex)] = std::move(flame);
+                    if (wasFallback) ++fallbackCount;
+                    ++completed;
+                    --outstanding;
+                    if (!cancelled) {
+                        progressDialog.setValue(completed);
+                        if (nextToStart < count) startNext(nextToStart++);
+                    }
+                    if (cancelled ? outstanding == 0 : completed >= count) loop.quit();
+                });
+        QThreadPool::globalInstance()->start(task);
+    };
+
+    // Polls the progress dialog's Cancel button independently of any task
+    // finishing (see cancelledFlag's own comment) - a batch where every
+    // in-flight task is mid-attempt for a while would otherwise leave Cancel
+    // unresponsive until one of them happened to finish on its own.
+    QTimer cancelPoll;
+    connect(&cancelPoll, &QTimer::timeout, this, [&]() {
+        if (!cancelled && progressDialog.wasCanceled()) {
             cancelled = true;
-            break;
+            cancelledFlag->store(true, std::memory_order_relaxed);
         }
+    });
+    cancelPoll.start(50);
 
-        std::unique_ptr<apo::Flame> flame;
-        // Best-scoring attempt seen so far this slot, kept in case every
-        // attempt fails discardBlank's checks - see the fallback below.
-        std::unique_ptr<apo::Flame> bestFlame;
-        double bestScore = -1.0;
-        bool accepted = false;
-        std::uint64_t seed = 0;
-        for (int attempt = 0; attempt < kMaxDiscardBlankRetries; ++attempt) {
-            seed = baseSeed +
-                   (static_cast<std::uint64_t>(i) * kMaxDiscardBlankRetries + static_cast<std::uint64_t>(attempt)) *
-                       0x9e3779b97f4a7c15ULL;
-            bool hasContent = true;
-            flame = apo::generateRandomFlame(seed, AppSettings::defaultWidth(), AppSettings::defaultHeight(), minXforms, maxXforms,
-                                              forcedVariationIndex, &eligibleVariations, gradientSource,
-                                              hasCurrentGradient ? &currentGradient : nullptr, minVariationsPerXform,
-                                              maxVariationsPerXform, variationWeightMin, variationWeightMax,
-                                              randomizeVariationParameters, variationParameterStrength, &hasContent,
-                                              minFramingSamples);
+    for (; nextToStart < std::min(count, concurrency);) startNext(nextToStart++);
+    if (count > 0) loop.exec();
+    cancelPoll.stop();
 
-            // Forced symmetry on random generation (Options.pas's Random tab) -
-            // matches Main.pas's own sign convention exactly (see
-            // core/edit/Symmetry.h's doc comment): Bilateral -> sym=-1,
-            // Rotational -> sym=+Order, Dihedral -> sym=-Order.
-            switch (symType) {
-                case 1: apo::addSymmetry(*flame, -1); break;
-                case 2: apo::addSymmetry(*flame, symOrder); break;
-                case 3: apo::addSymmetry(*flame, -symOrder); break;
-                default: break; // 0 = None
-            }
-
-            // generateRandomFlame() already auto-framed the flame
-            // (AutoFrame.h), but that framing was computed before
-            // addSymmetry() above ran - addSymmetry's copies rotate/reflect
-            // about the origin (Symmetry.cpp), not about that
-            // already-computed camera center, so whenever the pre-symmetry
-            // attractor wasn't itself centered near the origin (the common
-            // case), the symmetric copies can land partly or wholly outside
-            // the earlier frame - the flame then renders tiny or blank until
-            // the user manually re-centers/zooms. Re-running autoFrameFlame
-            // now, against the fully-built (post-symmetry) flame, fixes
-            // that - and its return value supersedes the pre-symmetry
-            // hasContent for the discard check below.
-            if (symType != 0) hasContent = apo::autoFrameFlame(*flame, seed + 7, minFramingSamples);
-
-            if (!discardBlank) { accepted = true; break; }
-
-            // Apply the render settings (and "keep background") this flame
-            // will actually be kept with *before* measuring its content
-            // below, not after (as this used to do at the very end of the
-            // per-slot loop) - hasMinimumColoredCoverage/measureContent
-            // otherwise scores generateRandomFlame's own gamma=1/
-            // brightness=1 Flame defaults while the flame is actually shown
-            // at applyDefaultRenderSettings's gamma=4/brightness=4, silently
-            // judging a much darker image than the one being decided on.
-            applyDefaultRenderSettings(*flame);
-            if (AppSettings::randomKeepBackground()) flame->background = keepBackgroundColor;
-
-            // A flame can pass the spatial framing check above (a real,
-            // non-degenerate attractor extent) and still render as barely
-            // more than a faint dot/smudge - see AutoFrame.h's
-            // hasMinimumColoredCoverage doc comment for why. Only worth the
-            // extra test render when framing already succeeded - otherwise
-            // this attempt is getting discarded regardless of coverage.
-            double score = 0.0;
-            if (hasContent) {
-                const apo::ContentScore content = apo::measureContent(*flame, seed + 13);
-                score = content.score;
-                hasContent = content.coveredFraction >= minColoredCoverage;
-            }
-
-            if (hasContent) { accepted = true; break; }
-
-            // Degenerate, or real but below the coverage bar - remember
-            // this attempt if it's the best-scoring one seen so far for
-            // this slot, then loop and retry with a new seed. If every
-            // attempt fails, the best-scoring attempt (not just whichever
-            // happened to be tried last) is kept below, so a strict filter
-            // can no longer make a slot fall back to an arbitrary reject.
-            if (!bestFlame || score > bestScore) {
-                bestScore = score;
-                bestFlame = std::move(flame);
-            }
-        }
-
-        if (!accepted) {
-            if (bestFlame) flame = std::move(bestFlame);
-            ++fallbackCount;
-        }
-
-        flame->name = QString("%1 %2").arg(titlePrefix).arg(i + 1).toStdString();
-        // When discardBlank is on, every attempt above (accepted or not)
-        // already had render settings/background applied before its content
-        // was measured - applying again here would be redundant. When it's
-        // off, nothing above touched them, so apply now as before.
-        if (!discardBlank) {
-            applyDefaultRenderSettings(*flame);
-            if (AppSettings::randomKeepBackground()) flame->background = keepBackgroundColor;
-        }
-
-        newFlames.push_back(std::shared_ptr<apo::Flame>(std::move(flame)));
-        progressDialog.setValue(i + 1);
-    }
+    // Trims the unpopulated tail left by cancellation: slots are always
+    // started in index order and never skipped, so whatever finished forms
+    // exactly newFlames[0..nextToStart-1] - matching the old sequential
+    // loop's own "however many finished before Cancel" result.
+    newFlames.resize(static_cast<size_t>(nextToStart));
     if (!cancelled) progressDialog.setValue(count); // dismiss it - cancel() already hid it on the cancelled path
 
     flames_ = std::move(newFlames);

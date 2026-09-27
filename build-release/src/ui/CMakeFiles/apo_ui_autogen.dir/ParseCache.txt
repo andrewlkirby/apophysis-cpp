@@ -485,7 +485,9 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderAllDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AppSettings.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -652,9 +654,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.cpp
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.cpp
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/WindowGeometry.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesWidget.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h
@@ -810,8 +811,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesWidget.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Bezier.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/CurvesWidget.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.cpp
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h
@@ -974,7 +975,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDia
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
- mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QElapsedTimer
@@ -1144,7 +1145,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/EditorWindow.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h
@@ -1307,8 +1308,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
- mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/XaosDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.cpp
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ForceSymmetryDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QElapsedTimer
@@ -1475,8 +1476,8 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/FullscreenView.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -1634,7 +1635,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserD
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/ColorMap.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GradientBrowserDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/GpuCompatibilityBadge.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QElapsedTimer
@@ -1805,7 +1805,9 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MainWindow.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RandomBatchTask.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MutateDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -1972,7 +1974,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MutateDialog.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MutateDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/AdjustPanel.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/OptionsDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -2129,6 +2130,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/OptionsDialog.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qtwidgetsglobal.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/OptionsDialog.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PostProcessDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QElapsedTimer
@@ -2297,7 +2299,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PostProcessDialo
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/Renderer.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PostProcessDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/MemoryBudget.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewLabel.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h
@@ -3110,6 +3111,7 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qtwidgetsglobal.h
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.h
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
@@ -3268,7 +3270,6 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDia
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtWidgets/qwidget.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/ColorMap.h
  mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SmoothPaletteDialog.h
-C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderDialog.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/ThumbnailTask.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
@@ -3749,3 +3750,119 @@ C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewLabel.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TransformPanel.cpp
 C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/TriangleCanvas.cpp
+C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RandomBatchTask.h
+ mmc:Q_OBJECT
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QObject
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QRunnable
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/QString
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20functional.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20memory.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/q20type_traits.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qalgorithms.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qanystringview.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qarraydata.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qarraydataops.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qarraydatapointer.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qassert.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qatomic.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qatomic_cxx11.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qbasicatomic.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qbindingstorage.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qbytearray.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qbytearrayalgorithms.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qbytearraylist.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qbytearrayview.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qchar.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcompare.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcompare_impl.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcomparehelpers.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcompilerdetection.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qconfig.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qconstructormacros.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcontainerfwd.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcontainerinfo.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qcontainertools_impl.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qdarwinhelpers.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qdatastream.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qexceptionhandling.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qflags.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfloat16.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qforeach.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfunctionaltools_impl.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qfunctionpointer.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qgenericatomic.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qglobal.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qglobalstatic.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qhashfunctions.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qiodevicebase.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qiterable.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qiterator.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qlatin1stringview.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qlist.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qlogging.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qmalloc.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qmath.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qmetacontainer.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qmetatype.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qminmax.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qnamespace.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qnumeric.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qobject.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qobject_impl.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qobjectdefs.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qobjectdefs_impl.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qoverload.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qpair.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qprocessordetection.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qrefcount.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qrunnable.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qscopedpointer.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qscopeguard.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstring.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringalgorithms.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringbuilder.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringconverter.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringconverter_base.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringfwd.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringlist.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringliteral.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringmatcher.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringtokenizer.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qstringview.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qswap.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qsysinfo.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qsystemdetection.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtaggedpointer.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtclasshelpermacros.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtconfiginclude.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtconfigmacros.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtcore-config.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtcoreexports.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtdeprecationdefinitions.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtdeprecationmarkers.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtenvironmentvariables.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtmetamacros.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtnoop.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtpreprocessorsupport.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtresource.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qttranslation.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qttypetraits.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtversion.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtversionchecks.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtypeinfo.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qtypes.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qutf8stringview.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qversiontagging.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qxptype_traits.h
+ mdp:C:/Qt/6.8.0/msvc2022_64/include/QtCore/qyieldcpu.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Bezier.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/ColorMap.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Flame.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Point3.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Rng.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/Variation.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/VariationRegistry.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/XForm.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/edit/RandomFlame.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/core/render/AutoFrame.h
+ mdp:C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RandomBatchTask.h

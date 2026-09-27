@@ -73,6 +73,19 @@ bool autoFrameFlame(Flame& flame, std::uint64_t seed, int minValidSamples = kDef
 // structure across a meaningful fraction of the frame.
 constexpr double kDefaultMinColoredCoverage = 0.01;
 
+// Longer edge (in pixels) of measureContent's own quick test render - the
+// other edge is derived aspect-correctly from this. Exposed as a named
+// default (rather than a literal buried in the .cpp) so AppSettings/
+// OptionsDialog can offer it as a configurable "coverage test resolution"
+// knob: a coarse test render makes coveredFraction a blocky, low-precision
+// estimate, which pushes users chasing a clean result toward cranking
+// minColoredCoverage/minValidSamples ever higher instead of actually fixing
+// the measurement - raising this instead gives a more accurate
+// coveredFraction at the same threshold, at the cost of a proportionally
+// (roughly quadratically) more expensive test render per discard-retry
+// attempt.
+constexpr int kDefaultCoverageTestSize = 128;
+
 // Renders a small, cheap test image of `flame` (assumed already framed -
 // see autoFrameFlame above, which should run first) and measures what
 // fraction of its pixels differ meaningfully from flame.background.
@@ -90,8 +103,11 @@ constexpr double kDefaultMinColoredCoverage = 0.01;
 // RandomFlame.cpp already uses for its own topology/gradient/framing
 // draws). Returns true (nothing to check, so nothing to reject) if
 // flame.width/height are degenerate or minCoverageFraction <= 0.
+// `testSize` passes straight through to measureContent - see its own doc
+// comment for what it controls.
 bool hasMinimumColoredCoverage(const Flame& flame, std::uint64_t seed,
-                                double minCoverageFraction = kDefaultMinColoredCoverage);
+                                double minCoverageFraction = kDefaultMinColoredCoverage,
+                                int testSize = kDefaultCoverageTestSize);
 
 // Full breakdown behind hasMinimumColoredCoverage's pass/fail bool - lets a
 // caller doing best-of-N fallback (random batch generation, when every
@@ -113,6 +129,12 @@ struct ContentScore {
 // the gamma/brightness/vibrancy it will actually be displayed with - this
 // renders and measures exactly what's passed in, it doesn't apply any
 // defaults of its own.
-ContentScore measureContent(const Flame& flame, std::uint64_t seed);
+//
+// `testSize` is the longer edge (in pixels) of the test render, fit into a
+// testSize x testSize box aspect-correctly (see kDefaultCoverageTestSize's
+// own doc comment for why this is worth raising) - the sample density per
+// pixel stays fixed, so a larger testSize also draws proportionally more
+// chaos-game points overall, not just more pixels over the same points.
+ContentScore measureContent(const Flame& flame, std::uint64_t seed, int testSize = kDefaultCoverageTestSize);
 
 } // namespace apo

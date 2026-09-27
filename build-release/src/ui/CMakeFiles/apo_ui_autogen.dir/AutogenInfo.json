@@ -126,6 +126,12 @@
 			null
 		],
 		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RandomBatchTask.h",
+			"Mu",
+			"EWIEGA46WW/moc_RandomBatchTask.cpp",
+			null
+		],
+		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderAllDialog.h",
 			"Mu",
 			"EWIEGA46WW/moc_RenderAllDialog.cpp",
@@ -341,6 +347,11 @@
 		],
 		[
 			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewLabel.cpp",
+			"Mu",
+			null
+		],
+		[
+			"C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RandomBatchTask.cpp",
 			"Mu",
 			null
 		],

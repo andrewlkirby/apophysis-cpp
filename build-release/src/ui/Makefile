@@ -792,6 +792,36 @@ PreviewLabel.cpp.s:
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 .PHONY : PreviewLabel.cpp.s
 
+RandomBatchTask.obj: RandomBatchTask.cpp.obj
+.PHONY : RandomBatchTask.obj
+
+# target to build an object file
+RandomBatchTask.cpp.obj:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : RandomBatchTask.cpp.obj
+
+RandomBatchTask.i: RandomBatchTask.cpp.i
+.PHONY : RandomBatchTask.i
+
+# target to preprocess a source file
+RandomBatchTask.cpp.i:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.i
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : RandomBatchTask.cpp.i
+
+RandomBatchTask.s: RandomBatchTask.cpp.s
+.PHONY : RandomBatchTask.s
+
+# target to generate assembly for a file
+RandomBatchTask.cpp.s:
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+	$(MAKE) $(MAKESILENT) -f src\ui\CMakeFiles\apo_ui.dir\build.make /nologo -$(MAKEFLAGS) src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.s
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+.PHONY : RandomBatchTask.cpp.s
+
 RenderAllDialog.obj: RenderAllDialog.cpp.obj
 .PHONY : RenderAllDialog.obj
 
@@ -1202,6 +1232,9 @@ help:
 	@echo ... PreviewLabel.obj
 	@echo ... PreviewLabel.i
 	@echo ... PreviewLabel.s
+	@echo ... RandomBatchTask.obj
+	@echo ... RandomBatchTask.i
+	@echo ... RandomBatchTask.s
 	@echo ... RenderAllDialog.obj
 	@echo ... RenderAllDialog.i
 	@echo ... RenderAllDialog.s

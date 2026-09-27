@@ -13,6 +13,7 @@
 #include "EWIEGA46WW/moc_OptionsDialog.cpp"
 #include "EWIEGA46WW/moc_PostProcessDialog.cpp"
 #include "EWIEGA46WW/moc_PreviewLabel.cpp"
+#include "EWIEGA46WW/moc_RandomBatchTask.cpp"
 #include "EWIEGA46WW/moc_RenderAllDialog.cpp"
 #include "EWIEGA46WW/moc_RenderDialog.cpp"
 #include "EWIEGA46WW/moc_RenderWorker.cpp"

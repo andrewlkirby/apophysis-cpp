@@ -36,6 +36,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/apo_ui.dir/PostProcessDialog.cpp.obj.d"
   "CMakeFiles/apo_ui.dir/PreviewLabel.cpp.obj"
   "CMakeFiles/apo_ui.dir/PreviewLabel.cpp.obj.d"
+  "CMakeFiles/apo_ui.dir/RandomBatchTask.cpp.obj"
+  "CMakeFiles/apo_ui.dir/RandomBatchTask.cpp.obj.d"
   "CMakeFiles/apo_ui.dir/RenderAllDialog.cpp.obj"
   "CMakeFiles/apo_ui.dir/RenderAllDialog.cpp.obj.d"
   "CMakeFiles/apo_ui.dir/RenderDialog.cpp.obj"

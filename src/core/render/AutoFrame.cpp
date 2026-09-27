@@ -18,14 +18,15 @@ namespace {
 constexpr int kSampleCount = 10000;
 constexpr double kTrimFraction = 0.05;
 
-// measureContent's own test-render settings. 128x128 at sampleDensity=20 is
-// ~330000 points - still cheap next to a real render, but a big step up
-// from the 64x64/~41000-point version this replaced: at 64x64, one test
-// pixel spans roughly 20x12 pixels of a typical 1280x800 output, so even
-// thin/sparse structure "touches" nearly every test cell and reads as far
-// more covered than the real render looks. 128x128 quarters that per-cell
-// footprint, tracking perceived fullness much more closely.
-constexpr int kCoverageTestSize = 128;
+// measureContent's own test-render sample density. Combined with the
+// (now caller-configurable - see AutoFrame.h's kDefaultCoverageTestSize)
+// test size, the default 128x128 @ 20 is ~330000 points - still cheap next
+// to a real render, but a big step up from the 64x64/~41000-point version
+// this replaced: at 64x64, one test pixel spans roughly 20x12 pixels of a
+// typical 1280x800 output, so even thin/sparse structure "touches" nearly
+// every test cell and reads as far more covered than the real render
+// looks. 128x128 quarters that per-cell footprint, tracking perceived
+// fullness much more closely; raising testSize further quarters it again.
 constexpr double kCoverageTestSampleDensity = 20.0;
 // Luminance (Rec.601, 0-255) delta from the background's own luminance a
 // pixel must exceed to count as "covered" - small enough to catch faint
@@ -98,30 +99,31 @@ bool autoFrameFlame(Flame& flame, std::uint64_t seed, int minValidSamples) {
     return true;
 }
 
-bool hasMinimumColoredCoverage(const Flame& flame, std::uint64_t seed, double minCoverageFraction) {
+bool hasMinimumColoredCoverage(const Flame& flame, std::uint64_t seed, double minCoverageFraction, int testSize) {
     if (flame.width <= 0 || flame.height <= 0) return true;
     if (minCoverageFraction <= 0.0) return true;
-    return measureContent(flame, seed).coveredFraction >= minCoverageFraction;
+    return measureContent(flame, seed, testSize).coveredFraction >= minCoverageFraction;
 }
 
-ContentScore measureContent(const Flame& flame, std::uint64_t seed) {
+ContentScore measureContent(const Flame& flame, std::uint64_t seed, int testSize) {
     if (flame.width <= 0 || flame.height <= 0) return {};
+    if (testSize <= 0) testSize = kDefaultCoverageTestSize;
 
     auto testFlame = flame.clone();
-    // Fits into a kCoverageTestSize x kCoverageTestSize box aspect-
-    // correctly, then rescales pixelsPerUnit to preserve the exact same
-    // on-screen composition (Flame::adjustScale's own contract) - a plain
-    // width/height reassignment would leave pixelsPerUnit computed for the
-    // original (usually much larger) canvas untouched, zooming into a
-    // tighter crop instead of shrinking the same view (the same bug
-    // ThumbnailTask.h's own thumbnails had before switching to this same
-    // fit-then-adjustScale pattern).
+    // Fits into a testSize x testSize box aspect-correctly, then rescales
+    // pixelsPerUnit to preserve the exact same on-screen composition
+    // (Flame::adjustScale's own contract) - a plain width/height
+    // reassignment would leave pixelsPerUnit computed for the original
+    // (usually much larger) canvas untouched, zooming into a tighter crop
+    // instead of shrinking the same view (the same bug ThumbnailTask.h's
+    // own thumbnails had before switching to this same fit-then-
+    // adjustScale pattern).
     const double aspect = flame.height > 0 ? static_cast<double>(flame.width) / flame.height : 1.0;
-    int tw = kCoverageTestSize, th = kCoverageTestSize;
+    int tw = testSize, th = testSize;
     if (aspect > 1.0) {
-        th = std::max(1, static_cast<int>(kCoverageTestSize / aspect));
+        th = std::max(1, static_cast<int>(testSize / aspect));
     } else {
-        tw = std::max(1, static_cast<int>(kCoverageTestSize * aspect));
+        tw = std::max(1, static_cast<int>(testSize * aspect));
     }
     testFlame->adjustScale(tw, th);
     testFlame->spatialOversample = 1;

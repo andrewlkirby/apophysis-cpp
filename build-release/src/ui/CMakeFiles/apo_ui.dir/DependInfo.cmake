@@ -25,6 +25,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/OptionsDialog.cpp" "src/ui/CMakeFiles/apo_ui.dir/OptionsDialog.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/OptionsDialog.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PostProcessDialog.cpp" "src/ui/CMakeFiles/apo_ui.dir/PostProcessDialog.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/PostProcessDialog.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/PreviewLabel.cpp" "src/ui/CMakeFiles/apo_ui.dir/PreviewLabel.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/PreviewLabel.cpp.obj.d"
+  "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RandomBatchTask.cpp" "src/ui/CMakeFiles/apo_ui.dir/RandomBatchTask.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/RandomBatchTask.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderAllDialog.cpp" "src/ui/CMakeFiles/apo_ui.dir/RenderAllDialog.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/RenderAllDialog.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/RenderDialog.cpp" "src/ui/CMakeFiles/apo_ui.dir/RenderDialog.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/RenderDialog.cpp.obj.d"
   "C:/Users/andre/Documents/Code/apop_patched/apophysis-cpp/src/ui/SliderSpin.cpp" "src/ui/CMakeFiles/apo_ui.dir/SliderSpin.cpp.obj" "msvc" "src/ui/CMakeFiles/apo_ui.dir/SliderSpin.cpp.obj.d"

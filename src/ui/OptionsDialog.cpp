@@ -229,12 +229,27 @@ QWidget* OptionsDialog::buildRandomTab() {
         "kept - catches flames that have real spatial extent but render as barely more than a faint dot, which the "
         "min valid sample count above can't see. Only matters while \"Discard blank/degenerate flames\" is checked. "
         "Recommended: 1%.");
+    coverageTestSizeSpin_ = new QSpinBox(batchGroup);
+    coverageTestSizeSpin_->setObjectName("coverageTestSizeSpin");
+    // Upper bound keeps a single discard-retry attempt (up to 20 of these
+    // per batch slot) from getting too expensive; lower bound keeps the
+    // coverage measurement from degenerating into a handful of pixels.
+    coverageTestSizeSpin_->setRange(32, 512);
+    coverageTestSizeSpin_->setSingleStep(32);
+    coverageTestSizeSpin_->setValue(AppSettings::randomCoverageTestSize());
+    coverageTestSizeSpin_->setSuffix(" px");
+    coverageTestSizeSpin_->setToolTip(
+        "Resolution (longer edge) of the quick test render min colored coverage is measured against. Raising this "
+        "makes the coverage measurement itself more precise instead of just raising the coverage/sample thresholds "
+        "to compensate - each discard-retry attempt gets proportionally more expensive, though. Only matters while "
+        "\"Discard blank/degenerate flames\" is checked. Recommended: 128px.");
     batchForm->addRow("Default batch size", batchSizeSpin_);
     batchForm->addRow("Title prefix", batchTitlePrefixEdit_);
     batchForm->addRow(keepBackgroundCheck_);
     batchForm->addRow(discardBlankCheck_);
     batchForm->addRow("Min valid sample count", minFramingSamplesSpin_);
     batchForm->addRow("Min colored coverage", minColoredCoverageSpin_);
+    batchForm->addRow("Coverage test resolution", coverageTestSizeSpin_);
     layout->addWidget(batchGroup);
 
     auto* mutationGroup = new QGroupBox("Mutation", tab);
@@ -470,6 +485,7 @@ void OptionsDialog::applyAndAccept() {
     AppSettings::setRandomDiscardBlank(discardBlankCheck_->isChecked());
     AppSettings::setRandomMinFramingSamples(minFramingSamplesSpin_->value());
     AppSettings::setRandomMinColoredCoverage(minColoredCoverageSpin_->value() / 100.0);
+    AppSettings::setRandomCoverageTestSize(coverageTestSizeSpin_->value());
     AppSettings::setRandomRestrictToGpuCompatible(restrictToGpuCompatibleCheck_->isChecked());
     AppSettings::setMutationMinXforms(mutationMinXformsSpin_->value());
     AppSettings::setMutationMaxXforms(mutationMaxXformsSpin_->value());

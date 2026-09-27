@@ -11,6 +11,8 @@ add_library(apo_ui OBJECT
     PreviewSizing.h
     RenderWorker.h
     ThumbnailTask.h
+    RandomBatchTask.h
+    RandomBatchTask.cpp
     TriangleCanvas.h
     TriangleCanvas.cpp
     EditorWindow.h

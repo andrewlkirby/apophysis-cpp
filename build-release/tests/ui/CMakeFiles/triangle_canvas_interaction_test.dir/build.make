@@ -123,6 +123,7 @@ triangle_canvas_interaction_test_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj" \
@@ -343,6 +344,7 @@ tests\ui\triangle_canvas_interaction_test.exe: tests\ui\CMakeFiles\triangle_canv
 tests\ui\triangle_canvas_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj
 tests\ui\triangle_canvas_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj
 tests\ui\triangle_canvas_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj
+tests\ui\triangle_canvas_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj
 tests\ui\triangle_canvas_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj
 tests\ui\triangle_canvas_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj
 tests\ui\triangle_canvas_interaction_test.exe: src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj

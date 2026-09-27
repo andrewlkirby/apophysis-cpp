@@ -187,8 +187,10 @@ src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apop
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\XForm.h
+src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\RandomFlame.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\TriangleGeometry.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\PngWriter.h
+src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\AutoFrame.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\RenderDispatcher.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\Renderer.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AboutDialog.cpp
@@ -228,6 +230,8 @@ src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apop
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewLabel.cpp
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewLabel.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewSizing.h
+src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.cpp
+src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderAllDialog.cpp
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderAllDialog.h
 src\ui\apo_ui_autogen\timestamp: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderDialog.cpp
@@ -566,6 +570,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtGui\qrgb.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\QImage:
 
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\render\AutoFrame.h:
+
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qaction.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AboutDialog.cpp:
@@ -573,6 +579,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AboutDialog.cpp:
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qbitmap.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qbrush.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtGui\qcolor.h:
 
@@ -660,6 +668,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\XForm.h:
 
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\RandomFlame.h:
+
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\io\PngWriter.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\WindowGeometry.h:
@@ -719,6 +729,8 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PostProcessDialo
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewLabel.cpp:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewLabel.h:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.cpp:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderAllDialog.h:
 

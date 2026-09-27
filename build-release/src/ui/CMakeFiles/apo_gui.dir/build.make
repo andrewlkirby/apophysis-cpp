@@ -166,6 +166,7 @@ apo_gui_EXTERNAL_OBJECTS = \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj" \
+"C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj" \
 "C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj" \
@@ -388,6 +389,7 @@ src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_gui.dir\.qt\rcc\qrc_app_icon.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj
+src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj
 src\ui\apo_gui.exe: src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj

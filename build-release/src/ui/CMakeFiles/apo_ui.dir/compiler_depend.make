@@ -5380,6 +5380,7 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qdesktopservices.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QDragEnterEvent
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QDropEvent
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QEventLoop
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QFileDialog
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\qfiledialog.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdir.h
@@ -5493,6 +5494,12 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\a
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QDialog
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QImage
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QObject
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\edit\RandomFlame.h
+src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ThumbnailTask.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QImage
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QObject
@@ -5504,8 +5511,6 @@ src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QWidget
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\BuiltinGradients.h
-src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\edit\RandomFlame.h
-src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\edit\Symmetry.h
 src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\io\FlameIO.h
 
@@ -7709,6 +7714,342 @@ src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\inclu
 src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qguiapplication_platform.h
 src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qguiapplication.h
 src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QWheelEvent
+
+
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.cpp
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\array"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\yvals_core.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\sal.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concurrencysal.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vadefs.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xkeycheck.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xutility"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\yvals.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\crtdbg.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_new_debug.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_new.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\crtdefs.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\use_ansi.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_iter_core.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\utility"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\initializer_list"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstddef"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stddef.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtr1common"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\type_traits"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdint"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdint.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstring"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\string.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_memory.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_memcpy_s.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\errno.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_string.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstring.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\compare"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concepts"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\climits"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdlib"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_math.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdlib.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_malloc.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_search.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdlib.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cwchar"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cstdio"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdio.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\wchar.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wconio.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wctype.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wdirect.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wio.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_share.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wprocess.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wtime.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\stat.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\types.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.inl.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\setjmp.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\immintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\wmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\nmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\smmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\tmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\pmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\emmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\mmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\malloc.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\zmmintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ammintrin.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\atomic"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\intrin0.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xatomic_wait.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xthreads.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_threads_core.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtimec.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ctime"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\time.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\memory"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\exception"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_exception.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\eh.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_terminate.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iosfwd"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\typeinfo"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_typeinfo.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xmemory"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\limits"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cfloat"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\float.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\new"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\tuple"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vector"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_bit_utils.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_sanitizer_annotate_container.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xpolymorphic_allocator.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QObject
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobject.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobjectdefs.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qnamespace.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qglobal.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdbool.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtversionchecks.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtconfiginclude.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qconfig.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtcore-config.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtconfigmacros.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtdeprecationdefinitions.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\assert.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtcoreexports.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\version"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtdeprecationmarkers.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtclasshelpermacros.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtpreprocessorsupport.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qassert.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtnoop.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtypes.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtversion.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtypeinfo.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainerfwd.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsysinfo.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlogging.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qflags.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompare_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qatomic.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbasicatomic.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qatomic_cxx11.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qgenericatomic.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qyieldcpu.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qprocessordetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qconstructormacros.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdarwinhelpers.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qexceptionhandling.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qforeach.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qttypetraits.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\optional"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xsmf_control.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\variant"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionpointer.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qglobalstatic.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmalloc.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qminmax.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qnumeric.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cmath"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qoverload.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qswap.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtenvironmentvariables.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtresource.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qttranslation.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qversiontagging.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompare.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\bit"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcomparehelpers.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20type_traits.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsystemdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\functional"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\unordered_map"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xhash"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\list"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xbit_ops.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xnode_handle.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtmetamacros.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobjectdefs_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionaltools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringview.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringview.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearray.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrefcount.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qarraydata.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qpair.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qarraydatapointer.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qarraydataops.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qxptype_traits.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iterator"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\algorithm"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_heap_algorithms.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_minmax.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20functional.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\q20memory.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearrayalgorithms.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdarg.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearrayview.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xstring"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_string_view.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cctype"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\string_view"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringliteral.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringalgorithms.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlatin1stringview.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qanystringview.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qutf8stringview.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringtokenizer.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringbuilder.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringconverter.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringconverter_base.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringbuilder.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstring.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlist.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qhashfunctions.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringfwd.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\numeric"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiterator.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbytearraylist.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlist.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringlist.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qlist.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qalgorithms.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainertools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qstringmatcher.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qscopedpointer.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmetatype.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qdatastream.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiodevicebase.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfloat16.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmath.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qiterable.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qmetacontainer.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcontainerinfo.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtaggedpointer.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qscopeguard.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\map"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xtree"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qobject_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbindingstorage.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\chrono"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_chrono.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ratio"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\system_error"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_system_error_abi.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\cerrno"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stdexcept"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcall_once.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xerrc.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xfilesystem_abi.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_tzdb.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\format"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_format_ucd_tables.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_formatter.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_print.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_ranges_tuple_formatter.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocale"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xfacet"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocinfo"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_xlocinfo_types.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\clocale"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\locale.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\charconv"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv_ryu.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv_ryu_tables.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xcharconv_tables.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\locale"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocbuf"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\streambuf"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xiosbase"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\share.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocmes"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocmon"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xlocnum"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\xloctime"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\forward_list"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\iomanip"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\istream"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_ostream.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\ios"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\sstream"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrunnable.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionaltools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\Flame.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Bezier.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\ColorMap.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\XForm.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\mutex"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\thread"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\process.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_startup.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vcruntime_startup.h"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\stop_token"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Point3.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Rng.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\random"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\__msvc_int128.hpp"
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\Variation.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\VariationRegistry.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\edit\RandomFlame.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\edit\Symmetry.h
 
 
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderAllDialog.cpp
@@ -11871,6 +12212,16 @@ src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qpen.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\qtextoption.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qchar.h
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\moc_RandomBatchTask.cpp
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\RandomBatchTask.h
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QObject
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrunnable.h
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionaltools_impl.h
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QString
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\..\core\edit\RandomFlame.h
+src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\moc_RenderAllDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\RenderAllDialog.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QDialog
@@ -11909,9 +12260,6 @@ src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtGui\QImage
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QObject
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable
-src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qrunnable.h
-src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qcompilerdetection.h
-src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Qt\6.8.0\msvc2022_64\include\QtCore\qfunctionaltools_impl.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PreviewSizing.h
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\moc_TransformPanel.cpp
 src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj: src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\TransformPanel.h
@@ -12029,6 +12377,8 @@ src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\FullscreenView.h:
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\concurrencysal.h":
 
 C:\Qt\6.8.0\msvc2022_64\include\QtWidgets\QColorDialog:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.h:
 
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\vadefs.h":
 
@@ -12235,6 +12585,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qbindingstorage.h:
 "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.44.35207\include\forward_list":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wtime.h":
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.cpp:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\stat.h":
 
@@ -12473,6 +12825,8 @@ C:\Qt\6.8.0\msvc2022_64\include\QtCore\qswap.h:
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtenvironmentvariables.h:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qsharedpointer.h:
+
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QEventLoop:
 
 C:\Qt\6.8.0\msvc2022_64\include\QtCore\qtresource.h:
 
@@ -13224,15 +13578,15 @@ C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderAllDialog.
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SmoothPaletteDialog.h:
 
+C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable:
+
+C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h:
+
 src\ui\apo_ui_autogen\EWIEGA46WW\moc_MainWindow.cpp:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ThumbnailTask.h:
 
-C:\Qt\6.8.0\msvc2022_64\include\QtCore\QRunnable:
-
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.h:
-
-C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\core\edit\..\render\AutoFrame.h:
 
 C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MemoryBudget.h:
 
@@ -13449,6 +13803,10 @@ src\ui\apo_ui_autogen\EWIEGA46WW\moc_PostProcessDialog.cpp:
 src\ui\apo_ui_autogen\EWIEGA46WW\moc_PreviewLabel.cpp:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\PreviewLabel.h:
+
+src\ui\apo_ui_autogen\EWIEGA46WW\moc_RandomBatchTask.cpp:
+
+src\ui\apo_ui_autogen\EWIEGA46WW\..\..\..\..\..\src\ui\RandomBatchTask.h:
 
 src\ui\apo_ui_autogen\EWIEGA46WW\moc_RenderAllDialog.cpp:
 

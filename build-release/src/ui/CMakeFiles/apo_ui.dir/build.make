@@ -139,10 +139,36 @@ src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.s: cmake_force
 <<
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
 
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.cpp
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/RandomBatchTask.cpp.obj"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/apo_ui.dir/RandomBatchTask.cpp.i"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe > CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
+src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/apo_ui.dir/RandomBatchTask.cpp.s"
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
+	C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\apo_ui.dir\RandomBatchTask.cpp.s /c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RandomBatchTask.cpp
+<<
+	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release
+
 src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TriangleCanvas.cpp
 src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/TriangleCanvas.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/TriangleCanvas.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TriangleCanvas.cpp
@@ -168,7 +194,7 @@ src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\EditorWindow.cpp
 src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/EditorWindow.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/EditorWindow.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\EditorWindow.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\EditorWindow.cpp
@@ -194,7 +220,7 @@ src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SliderSpin.cpp
 src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/SliderSpin.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/SliderSpin.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\SliderSpin.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SliderSpin.cpp
@@ -220,7 +246,7 @@ src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AdjustDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/AdjustDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/AdjustDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\AdjustDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AdjustDialog.cpp
@@ -246,7 +272,7 @@ src\ui\CMakeFiles\apo_ui.dir\AdjustDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\AdjustPanel.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\AdjustPanel.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AdjustPanel.cpp
 src\ui\CMakeFiles\apo_ui.dir\AdjustPanel.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/AdjustPanel.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/AdjustPanel.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\AdjustPanel.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\AdjustPanel.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AdjustPanel.cpp
@@ -272,7 +298,7 @@ src\ui\CMakeFiles\apo_ui.dir\AdjustPanel.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/RenderDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/RenderDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\RenderDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\RenderDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderDialog.cpp
@@ -298,7 +324,7 @@ src\ui\CMakeFiles\apo_ui.dir\RenderDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderAllDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/RenderAllDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/RenderAllDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\RenderAllDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\RenderAllDialog.cpp
@@ -324,7 +350,7 @@ src\ui\CMakeFiles\apo_ui.dir\RenderAllDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AppSettings.cpp
 src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/AppSettings.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/AppSettings.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\AppSettings.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\AppSettings.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AppSettings.cpp
@@ -350,7 +376,7 @@ src\ui\CMakeFiles\apo_ui.dir\AppSettings.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MemoryBudget.cpp
 src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/MemoryBudget.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/MemoryBudget.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\MemoryBudget.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MemoryBudget.cpp
@@ -376,7 +402,7 @@ src\ui\CMakeFiles\apo_ui.dir\MemoryBudget.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\OptionsDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/OptionsDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/OptionsDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\OptionsDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\OptionsDialog.cpp
@@ -402,7 +428,7 @@ src\ui\CMakeFiles\apo_ui.dir\OptionsDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MutateDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/MutateDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/MutateDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\MutateDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\MutateDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\MutateDialog.cpp
@@ -428,7 +454,7 @@ src\ui\CMakeFiles\apo_ui.dir\MutateDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\GradientBrowserDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\GradientBrowserDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GradientBrowserDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\GradientBrowserDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/GradientBrowserDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/GradientBrowserDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\GradientBrowserDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\GradientBrowserDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GradientBrowserDialog.cpp
@@ -454,7 +480,7 @@ src\ui\CMakeFiles\apo_ui.dir\GradientBrowserDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\SmoothPaletteDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\SmoothPaletteDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SmoothPaletteDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\SmoothPaletteDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/SmoothPaletteDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/SmoothPaletteDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\SmoothPaletteDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\SmoothPaletteDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\SmoothPaletteDialog.cpp
@@ -480,7 +506,7 @@ src\ui\CMakeFiles\apo_ui.dir\SmoothPaletteDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\AboutDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\AboutDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AboutDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\AboutDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/AboutDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/AboutDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\AboutDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\AboutDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\AboutDialog.cpp
@@ -506,7 +532,7 @@ src\ui\CMakeFiles\apo_ui.dir\AboutDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\FullscreenView.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\FullscreenView.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\FullscreenView.cpp
 src\ui\CMakeFiles\apo_ui.dir\FullscreenView.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/FullscreenView.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/FullscreenView.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\FullscreenView.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\FullscreenView.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\FullscreenView.cpp
@@ -532,7 +558,7 @@ src\ui\CMakeFiles\apo_ui.dir\FullscreenView.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\CurvesWidget.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\CurvesWidget.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesWidget.cpp
 src\ui\CMakeFiles\apo_ui.dir\CurvesWidget.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/CurvesWidget.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/CurvesWidget.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\CurvesWidget.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\CurvesWidget.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesWidget.cpp
@@ -558,7 +584,7 @@ src\ui\CMakeFiles\apo_ui.dir\CurvesWidget.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/CurvesDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/CurvesDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\CurvesDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\CurvesDialog.cpp
@@ -584,7 +610,7 @@ src\ui\CMakeFiles\apo_ui.dir\CurvesDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PostProcessDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/PostProcessDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/PostProcessDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\PostProcessDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\PostProcessDialog.cpp
@@ -610,7 +636,7 @@ src\ui\CMakeFiles\apo_ui.dir\PostProcessDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\XaosDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/XaosDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/XaosDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\XaosDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\XaosDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\XaosDialog.cpp
@@ -636,7 +662,7 @@ src\ui\CMakeFiles\apo_ui.dir\XaosDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.cpp
 src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/ForceSymmetryDialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/ForceSymmetryDialog.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\ForceSymmetryDialog.cpp
@@ -662,7 +688,7 @@ src\ui\CMakeFiles\apo_ui.dir\ForceSymmetryDialog.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TransformPanel.cpp
 src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/TransformPanel.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/TransformPanel.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\TransformPanel.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\TransformPanel.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\TransformPanel.cpp
@@ -688,7 +714,7 @@ src\ui\CMakeFiles\apo_ui.dir\TransformPanel.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.cpp
 src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/GpuCompatibilityBadge.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/GpuCompatibilityBadge.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\GpuCompatibilityBadge.cpp
@@ -714,7 +740,7 @@ src\ui\CMakeFiles\apo_ui.dir\GpuCompatibilityBadge.cpp.s: cmake_force
 src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\flags.make
 src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp
 src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj: src\ui\CMakeFiles\apo_ui.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/UpdateChecker.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object src/ui/CMakeFiles/apo_ui.dir/UpdateChecker.cpp.obj"
 	cd C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj.d --working-dir=C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\build-release\src\ui --filter-prefix="Note: including file: " -- C:\PROGRA~2\MICROS~3\2022\BUILDT~1\VC\Tools\MSVC\1444~1.352\bin\Hostx64\x64\cl.exe @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\apo_ui.dir\UpdateChecker.cpp.obj /FdCMakeFiles\apo_ui.dir\ /FS -c C:\Users\andre\Documents\Code\apop_patched\apophysis-cpp\src\ui\UpdateChecker.cpp
@@ -740,6 +766,7 @@ src\ui\CMakeFiles\apo_ui.dir\UpdateChecker.cpp.s: cmake_force
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\apo_ui_autogen\mocs_compilation.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\MainWindow.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\PreviewLabel.cpp.obj
+apo_ui: src\ui\CMakeFiles\apo_ui.dir\RandomBatchTask.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\TriangleCanvas.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\EditorWindow.cpp.obj
 apo_ui: src\ui\CMakeFiles\apo_ui.dir\SliderSpin.cpp.obj

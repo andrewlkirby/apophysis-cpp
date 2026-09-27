@@ -108,6 +108,10 @@ double randomMinColoredCoverage() {
     return QSettings().value("random/minColoredCoverage", apo::kDefaultMinColoredCoverage).toDouble();
 }
 void setRandomMinColoredCoverage(double fraction) { QSettings().setValue("random/minColoredCoverage", fraction); }
+int randomCoverageTestSize() {
+    return QSettings().value("random/coverageTestSize", apo::kDefaultCoverageTestSize).toInt();
+}
+void setRandomCoverageTestSize(int size) { QSettings().setValue("random/coverageTestSize", size); }
 int mutationMinXforms() { return QSettings().value("random/mutationMinXforms", kDefaultMutationMinXforms).toInt(); }
 void setMutationMinXforms(int count) { QSettings().setValue("random/mutationMinXforms", count); }
 int mutationMaxXforms() { return QSettings().value("random/mutationMaxXforms", kDefaultMutationMaxXforms).toInt(); }

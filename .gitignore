@@ -1,5 +1,6 @@
 # Build output (out-of-source CMake/Visual Studio build directory)
 build/
+build-release/
 out/
 
 # vcpkg manifest-mode local install tree (restored automatically from

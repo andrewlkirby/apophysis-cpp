@@ -15,6 +15,29 @@ cost, allocation cost, memory traffic, and parallelism. Everything below
 was verified in source, not assumed.
 
 PROGRESS LOG (most recent first):
+  2026-11-10: docs/RENDER_OPTIMIZATION_PLAN.md steps 1-4 implemented. Found
+  by benchmarking at 16 threads (earlier Part B work measured mostly at 1
+  thread, where this was invisible): setup was dominated by
+  std::vector<BucketT<double>>::assign zero-filling every thread's private
+  bucket array serially on the calling thread (~70ms per 16MB per thread;
+  float buckets were ~40x cheaper, so it was the element-wise fill, not page
+  faults). (1) Renderer.cpp's buckets are now a calloc-backed BucketBuffer -
+  fresh OS pages are already zero, so nothing is written up front and pages
+  are first-touched lazily, in parallel, by the workers. (2) reduceBuckets()
+  sums in place into thread 0's array (same per-bucket addition order, so
+  bit-identical); estimatePeakMemoryBytes is now threads x array, not
+  (threads+1). (3) RenderDispatcher keeps renders under kMinGpuBatches=1024
+  sub-batches on the CPU (GPU wall time is floored by one thread's
+  10,000-iteration latency; measured crossover ~1,000 sub-batches), with
+  cpuFallbackReason "render too small to benefit from GPU". (4) Inline
+  bit-identical replacements for std::lround/std::isfinite in the hot path
+  and Xoshiro256Rng::uniformPow2 for the propTable draw.
+  Measured (apo_bench, Release, Ryzen 7 5800H): 800x600 d200 16 threads wall
+  linear 2.18s -> 1.25s, transcendental 2.94s -> 1.66s, blur 2.56s -> 1.51s
+  (setup 1.13s -> 0.001s); 1920x1080 os2 d100 transcendental 25.4s -> 5.6s.
+  Step 4 alone, interleaved A/B single-threaded: linear +28%, blur +15%,
+  transcendental within noise. No baseline regeneration: 56/56 ctest pass,
+  baseline_regression_test bit-exact.
   2026-08-01: Post-B1(b) regression fixed: a real data race in
   XForm::ensureRegVariation()'s lazy materialization, caught by a macOS CI
   segfault in main_window_interaction_test (0.39s runtime - dying almost

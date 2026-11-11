@@ -32,6 +32,7 @@
 #include "TestHelpers.h"
 #include "core/Flame.h"
 #include "core/VariationRegistry.h"
+#include "core/render/RenderDispatcher.h"
 #include "core/render/Renderer.h"
 #include "core/render/gpu/DeviceFlame.h"
 #include "core/render/gpu/GpuAvailability.h"
@@ -108,6 +109,31 @@ std::unique_ptr<apo::Flame> makePreviewScaleFlame() { return buildInteractiveFla
 // multiple in-flight launches and meaningfully exercise mid-render
 // pause/cancel.
 std::unique_ptr<apo::Flame> makeFinalScaleFlame() { return buildInteractiveFlame(1920, 1080, 400.0); }
+
+// RENDER_OPTIMIZATION_PLAN.md step 3: a live-drag-preview-sized render
+// (well under RenderDispatcher::kMinGpuBatches sub-batches) stays on the
+// CPU even with GPU preferred and available, and explains why; a real
+// preview/final-scale render still goes to the GPU.
+void testSmallRendersStayOnCpu() {
+    auto tiny = buildInteractiveFlame(200, 150, 30.0); // ~117 sub-batches
+    if (!check(apo::gpu::isFlameGpuEligible(*tiny), "dispatch: tiny test flame is GPU-eligible")) return;
+    check(!apo::RenderDispatcher::wouldUseGpu(*tiny, /*preferGpu=*/true),
+          "dispatch: a preview-sized render below kMinGpuBatches stays on the CPU");
+    check(apo::RenderDispatcher::cpuFallbackReason(*tiny, /*preferGpu=*/true) == "render too small to benefit from GPU",
+          "dispatch: the CPU fallback reason names the size threshold");
+
+    bool usedGpu = true;
+    const apo::RenderedImage img = apo::RenderDispatcher::render(*tiny, /*seed=*/1, /*threadCount=*/0, nullptr,
+                                                                  nullptr, apo::BucketPrecision::Float,
+                                                                  /*preferGpu=*/true, &usedGpu);
+    check(!usedGpu && !img.pixels.empty(), "dispatch: the small render actually ran on the CPU and produced an image");
+
+    auto big = makePreviewScaleFlame(); // ~12,000 sub-batches
+    check(apo::RenderDispatcher::wouldUseGpu(*big, /*preferGpu=*/true),
+          "dispatch: a render well above kMinGpuBatches still uses the GPU");
+    check(apo::RenderDispatcher::cpuFallbackReason(*big, /*preferGpu=*/true).empty(),
+          "dispatch: no CPU fallback reason for a GPU-sized render");
+}
 
 void testGpuProgressReachesCompletion() {
     auto flame = makePreviewScaleFlame();
@@ -287,6 +313,7 @@ int main() {
     }
 
 #ifdef APO_HAVE_CUDA
+    testSmallRendersStayOnCpu();
     testGpuProgressReachesCompletion();
     testGpuCancellationLatency();
     testGpuPauseLatencyThenResume();

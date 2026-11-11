@@ -43,7 +43,10 @@
 //                  any of this file's own fixtures, which use only ported
 //                  variations - a plugin-using flame). both: cpu rows then
 //                  one gpu row per fixture, for direct throughput
-//                  comparison - see docs/GPU_RENDERING_PLAN.md.
+//                  comparison - see docs/GPU_RENDERING_PLAN.md. GPU rows
+//                  are skipped (with the reason) for renders below
+//                  RenderDispatcher::kMinGpuBatches sub-batches, since
+//                  real dispatch keeps those on the CPU.
 
 #include <chrono>
 #include <cstddef>
@@ -194,8 +197,12 @@ std::vector<int> parseThreadList(const std::string& s) {
 void runOne(const char* fixtureName, const apo::Flame& flame, std::uint64_t seed, int threadCount,
             apo::BucketPrecision precision, bool useGpu) {
     if (useGpu && !apo::RenderDispatcher::wouldUseGpu(flame, /*preferGpu=*/true)) {
-        std::printf("%-16s threads=%-11s prec=%-6s  GPU not available for this fixture/build/machine - skipped\n",
-                    fixtureName, "gpu", precision == apo::BucketPrecision::Float ? "float" : "double");
+        // Includes "render too small to benefit from GPU" (see
+        // RenderDispatcher::kMinGpuBatches) - the bench reports what real
+        // dispatch would do rather than timing a path no caller can reach.
+        std::printf("%-16s threads=%-11s prec=%-6s  GPU not used: %s - skipped\n", fixtureName, "gpu",
+                    precision == apo::BucketPrecision::Float ? "float" : "double",
+                    apo::RenderDispatcher::cpuFallbackReason(flame, /*preferGpu=*/true).c_str());
         return;
     }
 

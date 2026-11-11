@@ -1,5 +1,6 @@
 #include "RenderDispatcher.h"
 
+#include "RenderPlan.h"
 #include "gpu/DeviceFlame.h"
 #include "gpu/GpuAvailability.h"
 
@@ -9,9 +10,27 @@
 
 namespace apo {
 
+namespace {
+
+#ifdef APO_HAVE_CUDA
+// Same sub-batch count Renderer::render()/GpuRenderer::render() will
+// compute for this flame - reuses buildFilter/buildBuffersAndCamera in the
+// same order render() calls them (same approach as
+// Renderer::estimatePeakMemoryBytes), so it can't drift from the real
+// formula. Pure arithmetic, no allocation of buckets.
+bool isTooSmallForGpu(const Flame& flame) {
+    detail::RenderPlan plan;
+    detail::buildFilter(flame, plan);
+    detail::buildBuffersAndCamera(flame, plan);
+    return plan.numBatches < RenderDispatcher::kMinGpuBatches;
+}
+#endif
+
+} // namespace
+
 bool RenderDispatcher::wouldUseGpu(const Flame& flame, bool preferGpu) {
 #ifdef APO_HAVE_CUDA
-    return preferGpu && gpu::isCudaAvailable() && gpu::isFlameGpuEligible(flame);
+    return preferGpu && gpu::isCudaAvailable() && gpu::isFlameGpuEligible(flame) && !isTooSmallForGpu(flame);
 #else
     (void)flame;
     (void)preferGpu;
@@ -24,6 +43,7 @@ std::string RenderDispatcher::cpuFallbackReason(const Flame& flame, bool preferG
 #ifdef APO_HAVE_CUDA
     if (!gpu::isCudaAvailable()) return gpu::cudaUnavailableReason();
     if (!gpu::isFlameGpuEligible(flame)) return "flame uses a CPU-only (legacy plugin) variation";
+    if (isTooSmallForGpu(flame)) return "render too small to benefit from GPU";
     return {};
 #else
     (void)flame;

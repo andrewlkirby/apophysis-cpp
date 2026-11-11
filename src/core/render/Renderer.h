@@ -188,7 +188,7 @@ public:
 
     // Estimated peak resident memory (bytes) a render() call with these
     // exact flame settings/threadCount/precision would use - dominated by
-    // (threadCount+1) private/reduction bucket arrays (see this class's
+    // threadCount private bucket arrays (reduced in place - see this class's
     // own comment above on the lock-free-private-bucket-per-thread
     // design), each bucketWidth*bucketHeight*(16 or 32 bytes depending on
     // `precision`); every other scratch allocation is comparatively

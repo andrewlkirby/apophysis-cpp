@@ -104,6 +104,15 @@ public:
         return static_cast<double>(next() >> 11) * 0x1.0p-53;
     }
 
+    // Uniform integer in [0, 2^bits), 1 <= bits <= 53. Bit-for-bit equal to
+    // uniformInt(1 << bits) - which computes trunc(((next() >> 11) * 2^-53)
+    // * 2^bits), and every step of that is exact for a power-of-two range,
+    // so it is just the top `bits` of next() - but skips the int -> double
+    // -> int round trip. Used by Renderer.cpp's per-point xform selection
+    // (kPropTableSize = 1024), so the RNG stream and rendered output are
+    // unchanged (RENDER_OPTIMIZATION_PLAN.md step 4).
+    int uniformPow2(int bits) { return static_cast<int>(next() >> (64 - bits)); }
+
 private:
     static uint64_t rotl(uint64_t x, int k) { return (x << k) | (x >> (64 - k)); }
 

@@ -2,12 +2,17 @@
 
 #include <algorithm>
 #include <atomic>
+#include <bit>
+#include <cstdint>
 #include <chrono>
 #include <cmath>
 #include <cstddef>
+#include <cstdlib>
 #include <exception>
 #include <mutex>
+#include <new>
 #include <thread>
+#include <type_traits>
 #include <vector>
 
 #include "../Bezier.h"
@@ -59,6 +64,41 @@ void waitWhilePaused(RenderProgress* progress) {
 }
 constexpr int kFuse = 15; // "for i := 0 to FUSE" -> 16 warm-up iterations
 
+// RENDER_OPTIMIZATION_PLAN.md step 4: per-point helpers that replace CRT
+// calls MSVC does not inline (std::lround, std::isfinite) with
+// bit-identical inline code. renderBatch/accumulate run these several
+// times per point, which made them a measurable share of the ~50ns/point
+// fixed cost on the cheapest (pure affine) flames.
+
+// xform-selection draw width: the propTable index is the top
+// kPropTableBits bits of one RNG draw (see Xoshiro256Rng::uniformPow2).
+constexpr int kPropTableBits = 10;
+static_assert((1 << kPropTableBits) == kPropTableSize, "kPropTableSize must be 2^kPropTableBits");
+
+// Same result as std::isfinite(v) (false for +-Inf and every NaN), as a
+// pure exponent-bits test - independent of /fp mode, so it keeps the
+// poisoned-point bailout honest exactly like isfinite does.
+inline bool isFiniteBits(double v) {
+    constexpr std::uint64_t kExpMask = 0x7ff0000000000000ULL;
+    return (std::bit_cast<std::uint64_t>(v) & kExpMask) != kExpMask;
+}
+
+inline bool allFinite(double a, double b, double c, double d) {
+    return isFiniteBits(a) && isFiniteBits(b) && isFiniteBits(c) && isFiniteBits(d);
+}
+
+// Same result as std::clamp(static_cast<int>(std::lround(v)), 0, hi) for any
+// finite v, hi >= 0: clamping first in the double domain gives the same
+// final value (anything lround would push below 0 or above hi clamps to
+// the same end), and for v in [0, hi] - well under 2^52 - v - trunc(v) is
+// exact, so `>= 0.5` is exactly lround's round-half-away-from-zero.
+inline int roundClamped(double v, int hi) {
+    if (!(v > 0)) return 0; // also maps NaN to 0, which lround would leave unspecified
+    if (v >= hi) return hi;
+    const int i = static_cast<int>(v);
+    return i + (v - i >= 0.5 ? 1 : 0);
+}
+
 // Scalar-templated (FOLLOWUP_PLAN.txt B5): Scalar=double is the original,
 // unchanged-behavior bucket (32 bytes) every existing caller still gets by
 // default; Scalar=float (16 bytes) is a new, explicitly opt-in path (see
@@ -78,6 +118,56 @@ struct BucketT {
     Scalar red = 0, green = 0, blue = 0, count = 0;
 };
 using BucketD = BucketT<double>;
+
+// Owning, zero-initialized bucket array backed by calloc (RENDER_OPTIMIZATION_PLAN.md
+// step 1). Replaces std::vector<BucketT>::assign(n, {}), which filled every
+// element serially on the calling thread before iteration could start -
+// measured at ~70ms per 16MB per thread for double buckets, i.e. more than
+// half the wall time of a typical 16-thread render and ~80% of a large
+// oversampled one. A large calloc is served straight from fresh OS pages,
+// which are already zero, so nothing is written up front; each page is
+// first touched lazily by whichever worker thread actually lands a point in
+// it. All-bits-zero is exactly BucketT{} for float/double (+0.0), which the
+// static_assert below backs up as far as the language allows.
+template <class Scalar>
+class BucketBuffer {
+public:
+    using Bucket = BucketT<Scalar>;
+    static_assert(std::is_trivially_copyable_v<Bucket>, "BucketBuffer relies on calloc zero-init");
+    static_assert(std::is_floating_point_v<Scalar>, "all-bits-zero must mean 0 for Scalar");
+
+    BucketBuffer() = default;
+    explicit BucketBuffer(size_t count) : size_(count) {
+        if (count == 0) return;
+        data_ = static_cast<Bucket*>(std::calloc(count, sizeof(Bucket)));
+        if (!data_) throw std::bad_alloc();
+    }
+    BucketBuffer(const BucketBuffer&) = delete;
+    BucketBuffer& operator=(const BucketBuffer&) = delete;
+    BucketBuffer(BucketBuffer&& other) noexcept : data_(other.data_), size_(other.size_) {
+        other.data_ = nullptr;
+        other.size_ = 0;
+    }
+    BucketBuffer& operator=(BucketBuffer&& other) noexcept {
+        if (this != &other) {
+            std::free(data_);
+            data_ = other.data_;
+            size_ = other.size_;
+            other.data_ = nullptr;
+            other.size_ = 0;
+        }
+        return *this;
+    }
+    ~BucketBuffer() { std::free(data_); }
+
+    Bucket& operator[](size_t i) { return data_[i]; }
+    const Bucket& operator[](size_t i) const { return data_[i]; }
+    size_t size() const { return size_; }
+
+private:
+    Bucket* data_ = nullptr;
+    size_t size_ = 0;
+};
 
 // 3D -> 2D camera projection, matching ControlPoint.pas's
 // ProjectNone/ProjectPitch/ProjectPitchYaw/ProjectPitchDOF/ProjectPitchYawDOF
@@ -224,24 +314,20 @@ template <class Scalar>
 struct ThreadState {
     std::unique_ptr<Flame> flame;
     Xoshiro256Rng rng;
-    std::vector<BucketT<Scalar>> buckets;
+    BucketBuffer<Scalar> buckets;
 };
 
 template <class Scalar>
-void accumulate(std::vector<BucketT<Scalar>>& buckets, const RenderPlan& plan, double x, double y,
+void accumulate(BucketBuffer<Scalar>& buckets, const RenderPlan& plan, double x, double y,
                  double colorCoord) {
     const double px = x - plan.camX0;
     if (px < 0 || px > plan.camW) return;
     const double py = y - plan.camY0;
     if (py < 0 || py > plan.camH) return;
 
-    int bx = static_cast<int>(std::lround(plan.bws * px));
-    int by = static_cast<int>(std::lround(plan.bhs * py));
-    bx = std::clamp(bx, 0, plan.bucketWidth - 1);
-    by = std::clamp(by, 0, plan.bucketHeight - 1);
-
-    int colorIdx = static_cast<int>(std::lround(colorCoord * 255));
-    colorIdx = std::clamp(colorIdx, 0, 255);
+    const int bx = roundClamped(plan.bws * px, plan.bucketWidth - 1);
+    const int by = roundClamped(plan.bhs * py, plan.bucketHeight - 1);
+    const int colorIdx = roundClamped(colorCoord * 255, 255);
 
     const auto& mapColor = plan.colorMap[colorIdx];
     BucketT<Scalar>& b = buckets[static_cast<size_t>(by) * plan.bucketWidth + bx];
@@ -269,16 +355,16 @@ void renderBatch(ThreadState<Scalar>& ts, const RenderPlan& plan, RenderStats& s
     int xfIdx = 0;
 
     for (int i = 0; i <= kFuse; ++i) {
-        xfIdx = plan.propTable[static_cast<size_t>(xfIdx) * kPropTableSize + rng.uniformInt(kPropTableSize)];
+        xfIdx = plan.propTable[static_cast<size_t>(xfIdx) * kPropTableSize + rng.uniformPow2(kPropTableBits)];
         xforms[xfIdx]->nextPoint(p, c);
     }
 
     for (int i = 0; i < kSubBatchSize; ++i) {
-        xfIdx = plan.propTable[static_cast<size_t>(xfIdx) * kPropTableSize + rng.uniformInt(kPropTableSize)];
+        xfIdx = plan.propTable[static_cast<size_t>(xfIdx) * kPropTableSize + rng.uniformPow2(kPropTableBits)];
         XForm& xf = *xforms[xfIdx];
         xf.nextPoint(p, c);
 
-        if (!std::isfinite(p.x) || !std::isfinite(p.y) || !std::isfinite(p.z) || !std::isfinite(c)) {
+        if (!allFinite(p.x, p.y, p.z, c)) {
             // Matches the original's EMathError bailout (a domain error
             // inside a variation, e.g. ln of a negative number) aborting
             // the rest of this batch rather than continuing to chain from
@@ -307,7 +393,7 @@ void renderBatch(ThreadState<Scalar>& ts, const RenderPlan& plan, RenderStats& s
         }
         project(q, plan.projectionKind, plan.persp, plan.zpos, plan.dofCoef, plan.cameraMatrix, rng);
 
-        if (!std::isfinite(q.x) || !std::isfinite(q.y) || !std::isfinite(q.z) || !std::isfinite(qc)) continue;
+        if (!allFinite(q.x, q.y, q.z, qc)) continue;
 
         accumulate(ts.buckets, plan, q.x, q.y, qc);
         ++stats.pointsAccepted;
@@ -319,29 +405,29 @@ void renderBatch(ThreadState<Scalar>& ts, const RenderPlan& plan, RenderStats& s
 // accumulation during iteration). Safe to parallelize across the bucket
 // index range (see parallelFor's own comment) because each output bucket's
 // value depends only on that same index across every source array - no
-// cross-index dependency, and summing `numSources` doubles in the same
-// t=0..numSources-1 order as the old single-threaded loop regardless of
-// which thread does it keeps output bit-identical (only *which bucket
-// indices* get reduced by which thread changes, never the order values are
-// added together within one bucket).
+// cross-index dependency, and summing `numSources` values in the same
+// t=0..numSources-1 order regardless of which thread does it keeps output
+// bit-identical (only *which bucket indices* get reduced by which thread
+// changes, never the order values are added together within one bucket).
+//
+// Reduces in place into source 0 (RENDER_OPTIMIZATION_PLAN.md step 2)
+// rather than into a freshly allocated destination: per bucket this
+// computes b0 + b1 + ... + bN-1, exactly the old 0 + b0 + b1 + ... (adding
+// +0.0 to a non-negative accumulated value is exact), while saving one
+// full bucket array of peak memory and its allocation/fill.
 template <class Scalar>
-std::vector<BucketT<Scalar>> reduceBuckets(std::vector<ThreadState<Scalar>>& threadStates, int numSources,
-                                            long long bucketCount, int reduceThreads) {
-    if (numSources == 1) {
-        // A "reduction" of exactly one source is that source itself
-        // (accumulating from a zero-initialized Bucket{} against one array
-        // is exactly a copy) - moved out rather than copied, and skips
-        // reduceBuckets' general path entirely (single-threaded renders are
-        // the deterministic/reproducible path - see Renderer.h - so this
-        // also keeps that path's cost identical to before B4).
-        return std::move(threadStates[0].buckets);
-    }
+BucketBuffer<Scalar> reduceBuckets(std::vector<ThreadState<Scalar>>& threadStates, int numSources,
+                                   long long bucketCount, int reduceThreads) {
+    BucketBuffer<Scalar> buckets = std::move(threadStates[0].buckets);
+    // A "reduction" of exactly one source is that source itself - moved
+    // out, no pass at all (single-threaded renders are the deterministic/
+    // reproducible path - see Renderer.h).
+    if (numSources == 1) return buckets;
 
-    std::vector<BucketT<Scalar>> buckets(static_cast<size_t>(bucketCount), BucketT<Scalar>{});
     parallelFor(reduceThreads, bucketCount, [&](long long begin, long long end) {
         for (long long i = begin; i < end; ++i) {
-            BucketT<Scalar> sum{};
-            for (int t = 0; t < numSources; ++t) {
+            BucketT<Scalar> sum = buckets[static_cast<size_t>(i)];
+            for (int t = 1; t < numSources; ++t) {
                 const BucketT<Scalar>& src = threadStates[static_cast<size_t>(t)].buckets[static_cast<size_t>(i)];
                 sum.red += src.red;
                 sum.green += src.green;
@@ -359,7 +445,7 @@ std::vector<BucketT<Scalar>> reduceBuckets(std::vector<ThreadState<Scalar>>& thr
 // gutter isn't provably wide enough for the current filter to never read
 // out of bounds).
 template <class Scalar>
-const BucketT<Scalar>& safeGetBucket(const std::vector<BucketT<Scalar>>& buckets, const RenderPlan& plan, int x,
+const BucketT<Scalar>& safeGetBucket(const BucketBuffer<Scalar>& buckets, const RenderPlan& plan, int x,
                                       int y) {
     x = std::clamp(x, 0, plan.bucketWidth - 1);
     y = std::clamp(y, 0, plan.bucketHeight - 1);
@@ -367,7 +453,7 @@ const BucketT<Scalar>& safeGetBucket(const std::vector<BucketT<Scalar>>& buckets
 }
 
 double logScaleFor(const RenderPlan& plan, const Flame& flame, double count) {
-    if (count < 1024) return plan.logScale[static_cast<size_t>(std::lround(count))];
+    if (count < 1024) return plan.logScale[static_cast<size_t>(roundClamped(count, 1024))];
     return (plan.k1 * std::log10(1 + flame.whiteLevel * count * plan.k2)) / (flame.whiteLevel * count);
 }
 
@@ -386,7 +472,7 @@ double logScaleFor(const RenderPlan& plan, const Flame& flame, double count) {
 // single-threaded loop this replaced, just reordered across rows (which
 // don't interact at all).
 template <class Scalar>
-RenderedImage toneMap(const Flame& flame, const RenderPlan& plan, const std::vector<BucketT<Scalar>>& buckets,
+RenderedImage toneMap(const Flame& flame, const RenderPlan& plan, const BucketBuffer<Scalar>& buckets,
                        int threadCount) {
     RenderedImage image;
     image.width = flame.width;
@@ -599,7 +685,7 @@ RenderedImage renderImpl(const Flame& flame, std::uint64_t seed, int threadCount
         // splitmix64 internally, so seed+t here is fine as an *input* to
         // that, it just needs to be distinct per thread, which it is).
         ts.rng = Xoshiro256Rng(seed + static_cast<std::uint64_t>(t) * 0x9e3779b97f4a7c15ULL);
-        ts.buckets.assign(static_cast<size_t>(plan.bucketWidth) * plan.bucketHeight, BucketT<Scalar>{});
+        ts.buckets = BucketBuffer<Scalar>(static_cast<size_t>(plan.bucketWidth) * plan.bucketHeight);
 
         if (flame.soloXform >= 0 && flame.soloXform < numXForms) {
             for (int i = 0; i < numXForms; ++i) ts.flame->xform[i]->transOpacity = 0;
@@ -690,8 +776,7 @@ RenderedImage renderImpl(const Flame& flame, std::uint64_t seed, int threadCount
     // Reduction: sum every thread's private bucket array into one (see
     // reduceBuckets' own comment for why this is safe to parallelize - B4).
     const long long bucketCount = static_cast<long long>(plan.bucketWidth) * plan.bucketHeight;
-    std::vector<BucketT<Scalar>> buckets =
-        reduceBuckets(threadStates, requestedThreads, bucketCount, requestedThreads);
+    BucketBuffer<Scalar> buckets = reduceBuckets(threadStates, requestedThreads, bucketCount, requestedThreads);
     RenderStats totalStats;
     for (int t = 0; t < requestedThreads; ++t) {
         totalStats.pointsGenerated += threadStats[t].pointsGenerated;
@@ -735,10 +820,9 @@ std::uint64_t Renderer::estimatePeakMemoryBytes(const Flame& flame, int threadCo
 
     const int resolvedThreads = threadCount > 0 ? threadCount : std::max(1u, std::thread::hardware_concurrency());
     // (resolvedThreads) private per-thread bucket arrays (see this class's
-    // own header comment on the lock-free-private-bucket design) plus 1
-    // more for the final reduction buffer every thread's buckets get
-    // summed into (see this function's caller, render(), a few lines
-    // above `std::vector<BucketT<Scalar>> buckets(...)`). Every other
+    // own header comment on the lock-free-private-bucket design). There is
+    // no separate reduction buffer: reduceBuckets() sums in place into
+    // thread 0's array (RENDER_OPTIMIZATION_PLAN.md step 2). Every other
     // allocation (the filter kernel, per-thread cloned Flame/XForm objects,
     // output pixels, tone-map lookup tables) is comparatively negligible -
     // a few KB to a few MB even at extreme settings - so omitted from this
@@ -750,7 +834,7 @@ std::uint64_t Renderer::estimatePeakMemoryBytes(const Flame& flame, int threadCo
     // BucketPrecision's own doc comment (Renderer.h) for the tradeoff.
     const std::uint64_t bucketBytes =
         precision == BucketPrecision::Float ? sizeof(BucketT<float>) : sizeof(BucketD);
-    return bucketArea * bucketBytes * static_cast<std::uint64_t>(resolvedThreads + 1);
+    return bucketArea * bucketBytes * static_cast<std::uint64_t>(resolvedThreads);
 }
 
 std::vector<std::pair<double, double>> Renderer::samplePoints(const Flame& flame, std::uint64_t seed, int count) {

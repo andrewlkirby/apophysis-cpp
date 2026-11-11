@@ -510,8 +510,9 @@ void testEstimatePeakMemoryScalesWithImageSizeAndThreadCount() {
     const std::uint64_t moreThreadsEstimate = apo::Renderer::estimatePeakMemoryBytes(*small, /*threadCount=*/4);
     check(moreThreadsEstimate > smallEstimate,
           "more threads estimates more peak memory - each gets its own private bucket array");
-    check(moreThreadsEstimate < smallEstimate * 5,
-          "the threadCount scaling is linear (threadCount+1 bucket arrays), not some larger multiple");
+    check(moreThreadsEstimate == smallEstimate * 4,
+          "the threadCount scaling is exactly linear (one bucket array per thread; the reduction sums in place "
+          "into thread 0's array, so there is no extra destination array)");
 }
 
 void testEstimatePeakMemoryIsPositiveForATinyImage() {

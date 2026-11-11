@@ -44,8 +44,8 @@ void testClampsWhenRequestExceedsTheBudget() {
     auto flame = makeProbeFlame();
     const std::uint64_t perThreadBytes = apo::Renderer::estimatePeakMemoryBytes(*flame, 1);
     // Sized so 20 threads' worth of buckets is far more than this "RAM"
-    // figure can hold (each additional thread is roughly one more
-    // perThreadBytes - see estimatePeakMemoryBytes' own (threadCount+1)
+    // figure can hold (each additional thread is exactly one more
+    // perThreadBytes - see estimatePeakMemoryBytes' own threadCount
     // scaling), but a handful of threads clearly fits.
     const std::uint64_t ramBytes = perThreadBytes * 6;
     const apo::ui::ThreadBudgetResult result = apo::ui::resolveMemorySafeThreadCount(*flame, 20, ramBytes);

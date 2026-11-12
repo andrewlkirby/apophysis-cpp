@@ -616,6 +616,9 @@ void testSaveParametersWritesAMatchingFlameFileAlongsideThePng() {
     std::remove(flamePath);
 
     auto flame = makeSierpinskiFlame();
+    const int editorWidth = flame->width, editorHeight = flame->height;
+    const double editorScale = flame->pixelsPerUnit;
+    const int editorOversample = flame->spatialOversample;
     auto* dialog = new apo::ui::RenderDialog(flame);
 
     auto* widthSpin = dialog->findChild<QSpinBox*>("widthSpin");
@@ -646,10 +649,11 @@ void testSaveParametersWritesAMatchingFlameFileAlongsideThePng() {
 
     auto loaded = apo::loadFlameFile(flamePath);
     if (check(!loaded.empty(), "checking Save Parameters writes a loadable .flame file next to the PNG")) {
-        check(loaded.front()->width == 40 && loaded.front()->height == 30,
-              "the saved .flame reflects the dialog's own width/height at Render time, not the original flame_'s");
-        check(loaded.front()->spatialOversample == 2,
-              "the saved .flame reflects the dialog's own oversample at Render time");
+        check(loaded.front()->width == editorWidth && loaded.front()->height == editorHeight &&
+                  loaded.front()->pixelsPerUnit == editorScale,
+              "the saved .flame keeps the editor's own size/scale (its framing), not the render dialog's size");
+        check(loaded.front()->spatialOversample == editorOversample,
+              "the saved .flame doesn't bake in the render dialog's oversample override");
     }
 
     std::remove(outputPath);

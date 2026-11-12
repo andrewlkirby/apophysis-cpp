@@ -110,7 +110,7 @@ void parseCoefs(const std::string& text, std::array<std::array<double, 2>, 3>& c
 
 std::string formatCoefs(const std::array<std::array<double, 2>, 3>& c) {
     char buf[256];
-    std::snprintf(buf, sizeof(buf), "%g %g %g %g %g %g", c[0][0], c[0][1], c[1][0], c[1][1], c[2][0], c[2][1]);
+    std::snprintf(buf, sizeof(buf), "%.17g %.17g %.17g %.17g %.17g %.17g", c[0][0], c[0][1], c[1][0], c[1][1], c[2][0], c[2][1]);
     return buf;
 }
 
@@ -136,7 +136,7 @@ std::string formatCurves(const std::array<BezierCurve, 4>& curves) {
     char buf[128];
     for (const auto& curve : curves) {
         for (int p = 0; p < 4; ++p) {
-            std::snprintf(buf, sizeof(buf), "%g %g %g ", curve.points[static_cast<size_t>(p)][0],
+            std::snprintf(buf, sizeof(buf), "%.17g %.17g %.17g ", curve.points[static_cast<size_t>(p)][0],
                           curve.points[static_cast<size_t>(p)][1], curve.weights[static_cast<size_t>(p)]);
             out += buf;
         }
@@ -149,14 +149,25 @@ std::string formatCurves(const std::array<BezierCurve, 4>& curves) {
 // ParameterIO.pas), including: zeroing every variation weight before
 // applying the file's attributes (NOT starting from XForm::clear()'s
 // linear=1 default - a saved xform that doesn't mention "linear" at all
-// means linear's weight really is 0, not implicitly 1), rejecting
-// weight/symmetry/color_speed/chaos/opacity/name/plotmode on a final
-// xform, and forcing symmetry=1/color=0 on a final xform after parsing
-// (unconditionally, even if a stray `color` attribute was present - the
-// original does exactly this, not a port-introduced restriction).
+// means linear's weight really is 0, not implicitly 1) and rejecting
+// weight/chaos/name/plotmode on a final xform. Deliberate divergence: the
+// original also forces a final xform's symmetry=1/color=0 unconditionally,
+// discarding any color edits; here those are only the defaults, and an
+// explicit color/color_speed/opacity (which writeXFormAttributes emits
+// only for an edited final xform) is honored. A stray `color` on an
+// original-format final xform is harmless, since symmetry=1 ignores it.
 void parseXForm(pugi::xml_node node, XForm& xf, bool isFinal) {
     xf.clear();
     for (int i = 0; i < xf.numVariations(); ++i) xf.setVariation(i, 0.0);
+    // A final xform without explicit color attributes (every file the
+    // original writes) gets the original's forced symmetry=1/color=0 -
+    // but this port writes the final xform's color/color_speed/opacity
+    // whenever the user changed them in the transform panel, and honors
+    // them here, so an edited final xform reloads exactly as it was.
+    if (isFinal) {
+        xf.symmetry = 1;
+        xf.color = 0;
+    }
 
     auto& registry = VariationRegistry::instance();
 
@@ -165,7 +176,7 @@ void parseXForm(pugi::xml_node node, XForm& xf, bool isFinal) {
 
         if (name == "weight" && !isFinal) {
             xf.density = attr.as_double(0.5);
-        } else if ((name == "symmetry" || name == "color_speed") && !isFinal) {
+        } else if (name == "symmetry" || name == "color_speed") {
             xf.symmetry = attr.as_double(0.0);
         } else if (name == "chaos" && !isFinal) {
             std::istringstream iss(attr.as_string());
@@ -174,7 +185,7 @@ void parseXForm(pugi::xml_node node, XForm& xf, bool isFinal) {
             while (iss >> w && i < static_cast<int>(xf.modWeights.size())) {
                 xf.modWeights[i++] = std::fabs(w);
             }
-        } else if ((name == "opacity" || name == "plotmode") && !isFinal) {
+        } else if (name == "opacity" || (name == "plotmode" && !isFinal)) {
             if (name == "plotmode") {
                 std::string v = attr.as_string();
                 for (char& ch : v) ch = static_cast<char>(std::tolower(static_cast<unsigned char>(ch)));
@@ -200,8 +211,7 @@ void parseXForm(pugi::xml_node node, XForm& xf, bool isFinal) {
             // `dummy` local it never applies to cp.useFinalXform, and the
             // save side's own comment says the flag is "disabled in this
             // release" - it's vestigial in both directions). Skip.
-        } else if (isFinal && (name == "symmetry" || name == "weight" || name == "color_speed" ||
-                                name == "chaos" || name == "opacity" || name == "name" || name == "plotmode")) {
+        } else if (isFinal && (name == "weight" || name == "chaos" || name == "name" || name == "plotmode")) {
             // Not valid on a final xform - ignored, matching the original.
         } else {
             const int idx = registry.variationIndex(name);
@@ -212,11 +222,6 @@ void parseXForm(pugi::xml_node node, XForm& xf, bool isFinal) {
                 xf.setVariable(name, value); // no-op if `name` isn't a known parameter
             }
         }
-    }
-
-    if (isFinal) {
-        xf.symmetry = 1;
-        xf.color = 0;
     }
 }
 
@@ -236,6 +241,7 @@ void writeXFormAttributes(pugi::xml_node node, const XForm& xf, bool isFinal) {
         }
         if (anyNonDefaultChaos) {
             std::ostringstream oss;
+            oss.precision(17); // exact round-trip, like every other number here
             for (int i = 0; i < static_cast<int>(xf.modWeights.size()); ++i) {
                 if (i > 0) oss << ' ';
                 oss << xf.modWeights[i];
@@ -244,6 +250,13 @@ void writeXFormAttributes(pugi::xml_node node, const XForm& xf, bool isFinal) {
         }
     }
 
+    if (isFinal) {
+        // Written only when they differ from what the loader assumes for a
+        // final xform (see parseXForm), keeping unedited files identical to
+        // the original's format.
+        if (xf.symmetry != 1) node.append_attribute("color_speed") = xf.symmetry;
+        if (xf.transOpacity != 1) node.append_attribute("opacity") = xf.transOpacity;
+    }
     node.append_attribute("color") = xf.color;
     node.append_attribute("var_color") = xf.pluginColor;
     node.append_attribute("coefs") = formatCoefs(xf.c).c_str();
@@ -333,6 +346,8 @@ std::unique_ptr<Flame> parseFlame(pugi::xml_node flameNode) {
 
     flame->vibrancy = attrFloat(flameNode, "vibrancy", kDefVibrancy);
     flame->brightness = attrFloat(flameNode, "brightness", kDefBrightness);
+    flame->contrast = attrFloat(flameNode, "contrast", 1.0);
+    flame->transparency = attrBool(flameNode, "transparency", false);
     flame->gamma = attrFloat(flameNode, "gamma", kDefGamma);
     flame->gammaThreshold = attrFloat(flameNode, "gamma_threshold", kDefGammaThreshold);
     flame->spatialOversample = attrInt(flameNode, "oversample", kDefOversample);
@@ -406,7 +421,9 @@ void writeFlame(pugi::xml_node parent, const Flame& flame) {
     char sizeBuf[32];
     std::snprintf(sizeBuf, sizeof(sizeBuf), "%d %d", flame.width, flame.height);
     node.append_attribute("size") = sizeBuf;
-    node.append_attribute("center") = (std::to_string(flame.center[0]) + " " + std::to_string(flame.center[1])).c_str();
+    char centerBuf[64];
+    std::snprintf(centerBuf, sizeof(centerBuf), "%.17g %.17g", flame.center[0], flame.center[1]);
+    node.append_attribute("center") = centerBuf;
     node.append_attribute("scale") = flame.pixelsPerUnit;
     node.append_attribute("quality") = flame.sampleDensity;
 
@@ -418,7 +435,10 @@ void writeFlame(pugi::xml_node parent, const Flame& flame) {
 
     if (flame.cameraPitch != 0) node.append_attribute("cam_pitch") = flame.cameraPitch;
     if (flame.cameraYaw != 0) node.append_attribute("cam_yaw") = flame.cameraYaw;
-    if (flame.cameraPersp != 0) node.append_attribute("cam_perspective") = flame.cameraPersp;
+    // Always written: the loader defaults a missing cam_perspective to 1
+    // (matching files from other Apophysis builds), so omitting a 0 here
+    // would silently reload a perspective-free flame with full perspective.
+    node.append_attribute("cam_perspective") = flame.cameraPersp;
     if (flame.cameraZpos != 0) node.append_attribute("cam_zpos") = flame.cameraZpos;
     if (flame.cameraDOF != 0) node.append_attribute("cam_dof") = flame.cameraDOF;
 
@@ -428,6 +448,11 @@ void writeFlame(pugi::xml_node parent, const Flame& flame) {
     node.append_attribute("gamma") = flame.gamma;
     node.append_attribute("gamma_threshold") = flame.gammaThreshold;
     node.append_attribute("brightness") = flame.brightness;
+    // Post-process dialog's contrast and the render dialog's transparent-
+    // background choice - both live on the Flame and affect the render, so
+    // they must survive a save/load (written only when non-default).
+    if (flame.contrast != 1.0) node.append_attribute("contrast") = flame.contrast;
+    if (flame.transparency) node.append_attribute("transparency") = 1;
     // Fixed encoding (see attrRgb's comment): plain 0-255 integers,
     // matching what the loader actually parses, instead of the original's
     // write-0-1-fraction/read-integers-only mismatch.

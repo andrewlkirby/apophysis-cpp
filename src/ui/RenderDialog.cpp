@@ -458,10 +458,16 @@ void RenderDialog::startRender() {
     // only after it finishes) so a crash mid-render still leaves the user
     // with the exact parameters to re-run from, instead of losing them
     // along with the incomplete render.
+    //
+    // Saves flame_ (the flame exactly as the editor/library holds it), not
+    // the render copy: reopening the file must show the same framing the
+    // editor showed, so the render dialog's own size (adjustScale) and
+    // quality/filter/DE/transparency overrides are deliberately not baked
+    // into it - those get re-entered here at the next render.
     parametersSaved_ = false;
     if (saveParametersCheck_->isChecked()) {
         const QString flamePath = flameParametersPathFor(outputPathEdit_->text());
-        parametersSaved_ = apo::saveFlameFile(flamePath.toStdString(), {pendingRenderFlame_.get()});
+        parametersSaved_ = apo::saveFlameFile(flamePath.toStdString(), {flame_.get()});
     }
 
     const quint64 seed = static_cast<quint64>(std::random_device{}());

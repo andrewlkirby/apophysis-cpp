@@ -1587,6 +1587,48 @@ void testSwitchingToThumbnailViewBackfillsExistingEntries() {
     std::remove(path.c_str());
 }
 
+void testOpeningAFileKeepsItsToneAndFilterSettings() {
+    RandomSettingsGuard guard;
+    apo::ui::AppSettings::setDefaultGamma(3.3);
+    apo::ui::AppSettings::setDefaultBrightness(5.5);
+
+    const std::string inputPath = "main_window_open_keeps_settings_input.flame";
+    const std::string outputPath = "main_window_open_keeps_settings_output.flame";
+    std::remove(inputPath.c_str());
+    std::remove(outputPath.c_str());
+
+    auto flame = makeNamedFlame("Saved");
+    flame->gamma = 1.75;
+    flame->brightness = 2.25;
+    flame->vibrancy = 0.6;
+    flame->gammaThreshold = 0.04;
+    flame->spatialFilterRadius = 0.85;
+    check(apo::saveFlameFile(inputPath, {flame.get()}), "test setup: writing the fixture succeeds");
+
+    auto* window = new apo::ui::MainWindow();
+    window->openFlameFile(QString::fromStdString(inputPath));
+    auto* saveAllAction = window->findChild<QAction*>("saveAllFlamesAction");
+    if (!check(saveAllAction != nullptr, "saveAllFlamesAction found")) {
+        delete window;
+        return;
+    }
+    acceptNextSaveDialogWith(window, QString::fromStdString(outputPath));
+    saveAllAction->trigger();
+
+    auto loaded = apo::loadFlameFile(outputPath);
+    if (check(loaded.size() == 1, "the opened flame saves back out")) {
+        const apo::Flame& f = *loaded.front();
+        check(f.gamma == 1.75 && f.brightness == 2.25 && f.vibrancy == 0.6 && f.gammaThreshold == 0.04 &&
+                  f.spatialFilterRadius == 0.85,
+              "opening a file keeps its own gamma/brightness/vibrancy/gamma threshold/filter radius instead of "
+              "replacing them with the configured new-flame defaults");
+    }
+
+    delete window;
+    std::remove(inputPath.c_str());
+    std::remove(outputPath.c_str());
+}
+
 void testNewFlameAppliesConfiguredRenderDefaults() {
     RandomSettingsGuard guard;
     apo::ui::AppSettings::setDefaultGamma(3.3);
@@ -2022,6 +2064,7 @@ int main(int argc, char** argv) {
     testNewRandomBatchRespectsConfiguredDisabledVariations();
     testCameraGestureOnPreviewLabelMutatesTheSelectedFlameAndReRenders();
     testMainPreviewShowsProgressDuringAFullQualityRender();
+    testOpeningAFileKeepsItsToneAndFilterSettings();
     testAboutDialogOpensAndClosesModally();
 
     return apo_test::reportAndExit();

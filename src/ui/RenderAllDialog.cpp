@@ -324,13 +324,16 @@ void RenderAllDialog::renderNext() {
     // Same reasoning as RenderDialog::startRender() - write the .flame
     // before this flame's render starts, not after it finishes, so a crash
     // mid-batch still leaves the user with parameters for whichever flame
-    // was in flight.
+    // was in flight. Saves the library flame itself, not the render copy -
+    // see RenderDialog::startRender() for why (reopening must show the
+    // editor's framing, not the batch's render size/quality overrides).
     parametersSaved_ = false;
     if (saveParametersCheck_->isChecked()) {
         QString flamePath = outputFileNames_[static_cast<std::size_t>(currentIndex_)];
         flamePath = flamePath.left(flamePath.length() - 4) + ".flame"; // strip ".png", add ".flame"
         flamePath = QDir(outputFolderEdit_->text()).filePath(flamePath);
-        parametersSaved_ = apo::saveFlameFile(flamePath.toStdString(), {pendingRenderFlame_.get()});
+        parametersSaved_ =
+            apo::saveFlameFile(flamePath.toStdString(), {flames_[static_cast<std::size_t>(currentIndex_)].get()});
     }
 
     const quint64 seed = static_cast<quint64>(std::random_device{}());

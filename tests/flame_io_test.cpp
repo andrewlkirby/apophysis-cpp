@@ -171,8 +171,8 @@ void testRoundTrip() {
     check(f.finalXformEnabled && f.useFinalXform, "finalxform presence round-trips");
     check(approxEqual(f.finalXform->c[2][0], 0.05) && approxEqual(f.finalXform->c[2][1], -0.05),
           "finalxform coefs round-trip");
-    check(approxEqual(f.finalXform->symmetry, 1.0) && approxEqual(f.finalXform->color, 0.0),
-          "finalxform symmetry/color are forced to 1/0, matching the original");
+    check(f.finalXform->symmetry == 0.0 && f.finalXform->color == 0.0,
+          "finalxform color speed/color round-trip as edited (not forced back to 1/0)");
 
     check(f.cmap.entries[0][0] == 0 && f.cmap.entries[0][1] == 255 && f.cmap.entries[255][0] == 255,
           "palette round-trips");
@@ -216,6 +216,15 @@ void testLoadHandAuthoredFile() {
         }
         check(f.cmap.entries[0][0] == 0 && f.cmap.entries[1][0] == 1 && f.cmap.entries[7][0] == 7,
               "hand-authored: palette hex parses in order");
+    }
+
+    // Original-format final xform: no color_speed attribute (and a stray
+    // color) must still load with the original's color speed 1 / color 0.
+    auto withFinal = apo::loadFlameFromString(
+        "<flame size=\"10 10\"><xform weight=\"1\" linear=\"1\" coefs=\"1 0 0 1 0 0\"/>"
+        "<finalxform color=\"0.7\" linear=\"1\" coefs=\"1 0 0 1 0 0\"/></flame>");
+    if (check(withFinal.size() == 1, "original-format finalxform loads")) {
+        check(withFinal[0]->finalXform->symmetry == 1.0, "original-format finalxform defaults to color speed 1");
     }
 
     std::remove(path.c_str());

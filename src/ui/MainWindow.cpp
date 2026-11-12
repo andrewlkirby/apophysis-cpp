@@ -80,6 +80,16 @@ void applyDefaultRenderSettings(apo::Flame& flame) {
     flame.spatialFilterRadius = AppSettings::defaultFilterRadius();
 }
 
+// Opened files only: caps just the two settings that make the library's
+// full-quality preview (which renders the flame at its own size/density)
+// slow or memory-hungry. Everything that defines how the flame *looks* -
+// gamma, brightness, vibrancy, gamma threshold, filter radius, and every
+// other saved parameter - is left exactly as saved.
+void applyFastPreviewQuality(apo::Flame& flame) {
+    flame.sampleDensity = AppSettings::defaultSampleDensity();
+    flame.spatialOversample = AppSettings::defaultOversample();
+}
+
 // "New Flame"'s starting point - matches the *intent* of Template.pas's
 // blankFlameXML (a single default xform, ready to edit) but not its literal
 // content: that template's palette is all-black (RGB 0,0,0 for all 256
@@ -420,7 +430,7 @@ void MainWindow::openFlameFile(const QString& path) {
     flames_.reserve(loaded.size());
     for (auto& f : loaded) {
         // A .flame saved after a final export often carries whatever huge
-        // sampleDensity (and matching oversample/filter) that export used -
+        // sampleDensity (and matching oversample) that export used -
         // perfectly fine for a one-shot render, but every preview re-render
         // this app does while the flame just sits in the library or gets
         // edited (selection preview, camera-drag preview, EditorWindow's
@@ -433,7 +443,7 @@ void MainWindow::openFlameFile(const QString& path) {
         // deliberately in the Render dialog for the actual final export
         // (which reads the flame's *current* values at Render time, not
         // whatever the original file happened to have).
-        applyDefaultRenderSettings(*f);
+        applyFastPreviewQuality(*f);
         flames_.push_back(std::shared_ptr<apo::Flame>(std::move(f)));
     }
 

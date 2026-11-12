@@ -203,6 +203,11 @@ private:
     std::unique_ptr<apo::RenderProgress> progress_;
     QTimer* progressTimer_ = nullptr;
     QElapsedTimer elapsedTimer_;
+    // Time spent paused is excluded from elapsed/ETA: pausedMs_ accumulates
+    // completed pauses, pauseTimer_ runs only while currently paused.
+    qint64 pausedMs_ = 0;
+    QElapsedTimer pauseTimer_;
+    double activeElapsedSec() const;
     // The exact clone startRender() launched RenderWorker::renderFull with
     // - onFullRenderFinished needs it (when saveParametersCheck_ is
     // checked) to write out the settings that were actually rendered, not

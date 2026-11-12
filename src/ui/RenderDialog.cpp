@@ -449,6 +449,8 @@ void RenderDialog::startRender() {
                                                 .arg(budget.threadCount == 1 ? "" : "s")
                                           : "Rendering...");
     elapsedTimer_.start();
+    pausedMs_ = 0;
+    pauseTimer_.invalidate();
     progressTimer_->start();
 
     std::shared_ptr<const apo::Flame> shared(std::move(renderFlame));
@@ -492,11 +494,23 @@ void RenderDialog::togglePauseRender() {
     const bool nowPaused = !progress_->pauseRequested.load(std::memory_order_relaxed);
     progress_->pauseRequested.store(nowPaused, std::memory_order_relaxed);
     pauseButton_->setText(nowPaused ? "Resume" : "Pause");
+    if (nowPaused) {
+        pauseTimer_.start();
+    } else if (pauseTimer_.isValid()) {
+        pausedMs_ += pauseTimer_.elapsed();
+        pauseTimer_.invalidate();
+    }
     // Refresh the status text immediately rather than waiting for the next
     // progressTimer_ tick (up to kProgressPollIntervalMs away) - onProgressTick
     // itself already knows how to render the "Paused" state (see below), so
     // this just calls it early for a snappier-feeling button.
     onProgressTick();
+}
+
+double RenderDialog::activeElapsedSec() const {
+    qint64 ms = elapsedTimer_.elapsed() - pausedMs_;
+    if (pauseTimer_.isValid()) ms -= pauseTimer_.elapsed();
+    return std::max<qint64>(0, ms) / 1000.0;
 }
 
 void RenderDialog::onProgressTick() {
@@ -508,7 +522,7 @@ void RenderDialog::onProgressTick() {
     progressBar_->setValue(percent);
 
     const bool paused = progress_->pauseRequested.load(std::memory_order_relaxed);
-    const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
+    const double elapsedSec = activeElapsedSec();
     // ETA is a simple linear extrapolation from progress-so-far - no
     // point-rate smoothing, since sample density (and thus points/sec) is
     // constant for the duration of a single render, so the estimate only
@@ -541,7 +555,7 @@ void RenderDialog::onFullRenderFinished(QImage /*image*/, quint64 /*pointsGenera
     setControlsEnabled(true);
 
     const QString backendSuffix = usedGpu ? " [GPU]" : "";
-    const double elapsedSec = elapsedTimer_.elapsed() / 1000.0;
+    const double elapsedSec = activeElapsedSec();
     // The .flame was already written (or attempted) up front in
     // startRender() - just report what happened, rather than re-saving here
     // (which would also be wrong now, since a cancelled/crashed render has

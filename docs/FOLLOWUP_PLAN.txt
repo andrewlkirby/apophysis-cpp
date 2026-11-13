@@ -15,6 +15,145 @@ cost, allocation cost, memory traffic, and parallelism. Everything below
 was verified in source, not assumed.
 
 PROGRESS LOG (most recent first):
+  2026-11-13: GPU sub-batches span kernel launches (chaos_kernel.cuh's
+  DeviceChaosWave/DeviceChaosState). Before, each GPU thread ran a whole
+  10,016-step sub-batch inside one launch, and launches are held to ~0.35s
+  (Windows' 2s watchdog), so for an expensive flame the per-thread latency
+  alone filled the budget: launches shrank to ~1000 threads and most SMs
+  sat idle. Now a render runs waves of as many sub-batches as the GPU keeps
+  resident (cudaOccupancyMaxActiveBlocksPerMultiprocessor x SMs x 256 =
+  20,480 slots on the RTX 3070 Laptop), each slot's state (RNG, point,
+  previous xform, alive) saved in device memory between launches, and the
+  step count per launch adapts (from 32; up to 8x growth while launches
+  are under 50ms, else 2x) instead of the thread count. Each sub-batch
+  draws exactly the same RNG sequence however it's split; the warp-uniform
+  shuffle is keyed on the step index, so it's split-independent too.
+  Progress counts plotted steps, still landing on numBatches * 10,000.
+  Waves are always full: a partly filled wave costs nearly as much as a
+  full one (busiest-SM bound) - balancing 63,202 sub-batches into 4 equal
+  waves measured 10-20% slower than 3 full + a 1,922 remainder.
+  Laptop in performance mode, 4000x2500 os2 double:
+    Real 5-xform flame d1000, GPU-only: 438-454s -> 41-61s (166-246M
+    pts/s, heat-dependent); old best was hybrid at 186-200s. Hybrid now
+    44-55s (CPU share 15-17%) - no better than GPU-only, and the probe
+    now picks GPU only (ratio 0.18).
+    Old (9c00456) vs new GPU-only, alternating, d300: transcendental
+    278-301 -> 419-428M pts/s; blur 653-716 -> 692M (same); linear 797 ->
+    750M (-6%: pure-affine points are so cheap that more threads mostly
+    add histogram-atomic contention; a slot sweep had 8192 slots fastest
+    for linear but 20,480+ for everything heavier).
+    transcendental d3000: GPU 108-112s (was 115-127s), hybrid 101s (was
+    129s).
+    800x600 d200 (fits in one wave): linear 0.21 -> 0.16s, transcendental
+    0.85 -> 0.28s, blur 0.19 -> 0.13s.
+  BackendProbe settles over 6 launches now (the step count ramps).
+  gpu_warp_uniform_test's exact-count test now covers both kernels at one
+  wave and at several waves with a partial last wave. 60/60 ctest.
+  2026-11-13: Render dialog "Render Backend" choice (Auto / GPU + CPU / GPU
+  only / CPU only; AppSettings::renderBackendChoice) with a measuring Auto
+  (core/render/BackendProbe.h). Auto runs probeBackends() in a background
+  thread ~0.6s after size/oversample/filter/precision/thread settings stop
+  changing (density only rescales the estimate): the real GPU render until
+  its adaptive launch size settles (4 launches or 3s, rate from the last
+  full-size launch - RenderTimings::gpuLastLaunchPointsPerSec), then 0.3s
+  of hybrid's CPU workers streaming into recycled chunks (no histogram).
+  Picks GPU + CPU when cpu/gpu >= 0.3, else GPU only; CPU when the GPU
+  can't take the render. Label shows the pick and "about N min", scaled by
+  a per-backend correction learned from finished renders >= 20s
+  (AppSettings::renderTimeCorrection), since the probe runs on a cool
+  machine. apo_bench --backend=probe, 4000x2500 os2:
+    real 5-xform flame d1000: gpu 36-43M, cpu 39-40M pts/s -> gpu+cpu
+    (long-run measurements: hybrid best, ~1.8x CPU-only).
+    fixtures d3000: linear 0.14, transcendental 0.30, blur 0.11 -> gpu
+    (long runs: GPU-only best or tied).
+  Uncorrected estimates were ~35-45% short of real long renders on this
+  laptop (thermal), hence the learned correction.
+  Hybrid's CPU workers now always use the full requested thread count
+  (RenderDispatcher::render's new cpuAssistThreads): they keep no
+  histograms, so the CPU renderer's memory-based thread reduction (13 of
+  16 at 4000x2500 os2 double) no longer applies to them; it still bounds
+  the CPU fallback.
+  Found while building the probe: the GPU's first 4096-thread launch on
+  the real flame ran ~70M pts/s, but launches then shrink to ~1000
+  threads to stay under the 0.35s per-launch target (each thread runs a
+  whole 10,000-point sub-batch per launch), leaving most SMs idle - steady
+  state is 22-35M. Resumable sub-batches (thread state kept in device
+  memory, fewer iterations per thread per launch, more threads) could
+  lift expensive flames' GPU rate 2x or more.
+  Tests: new backend_probe_test (rule, estimates, CPU-only probe, abort,
+  GPU probe); render_dialog_interaction_test checks the choice reaches the
+  render call and Auto settles to a pick. 60/60 ctest.
+  2026-11-13: Warp-uniform GPU xform scheduling (chaosKernelWarpUniform in
+  chaos_kernel.cu; GpuRenderer.h's XformScheduling). Fixes the warp
+  divergence found below: all 32 threads of a warp apply one xform per
+  step (lane 0 draws it, __shfl_sync broadcasts), then the block's 256
+  points are permuted across its 8 warps through double-buffered shared
+  memory (p -> rotl8((a*p+b) mod 256, r), a odd, per-step hash of
+  seed/block/step, one __syncthreads per step). Non-finite points become
+  dead slots carried through the shuffle, so sub-batch point accounting
+  is unchanged. Auto picks it only when the selectable xforms don't all
+  share one variation list and there is no xaos (warp's pick must not
+  depend on each point's previous xform); otherwise chaosKernel as before.
+  Laptop in performance mode, 4000x2500 os2 double, real 5-xform flame:
+    GPU-only d30: 46.6s -> 8.5s (6.5 -> 35.7M pts/s). Long renders run
+    thermally limited at 22-25M pts/s: d300 515s -> 121-124s, d1000
+    ~1700s (est.) -> 438-454s.
+    Hybrid (GPU + 15 CPU): d300 81s -> 51s, d1000 282s -> 186-200s.
+    CPU-only for reference: d300 118s, d1000 343s - hybrid is now ~1.8x
+    CPU-only, CPU share of points 58-62%.
+  Fixtures (all xforms share a variation list, so Auto keeps chaosKernel)
+  forced to warp-uniform at 1920x1080 os2 d300: linear 0.84 -> 0.82s,
+  transcendental 2.07 -> 2.44s, blur 0.86 -> 1.00s - the shuffle costs
+  ~15% when there's no divergence to save, hence the Auto rule.
+  New tests/gpu_warp_uniform_test.cpp: Auto/forced/xaos resolution;
+  warp-uniform vs per-thread 58.2 dB (double) / 55.7 dB (float); vs CPU
+  56.71 dB for both kernels (with the shuffle disabled this drops to
+  54.2 dB and the test fails); exact point count with a partial last
+  block; hybrid. apo_bench --gpu-kernel=auto|thread|warp. 59/59 ctest.
+  2026-11-12: Hybrid CPU+GPU rendering (docs/HYBRID_CPU_GPU_RENDERING_PLAN.md).
+  The planned design (CPU threads keep private histograms, reduce, upload)
+  was dropped after benchmarking: at 1920x1080 os2 the CPU reduce alone
+  (0.2-0.75s) cost more than the whole GPU render. Implemented instead:
+  CPU workers (hardware_concurrency-1) claim sub-batches from the same
+  atomic counter as the GPU launch loop and stream each in-bounds point as
+  an 8-byte (bucket, color) record through a pinned chunk pool
+  (PointStream.h, CpuPointProducer.h); the GPU thread uploads chunks on a
+  non-blocking stream while chaos launches run and scatterKernel adds them
+  with chaosKernel's own atomicAdd math. No CPU reduce, no per-thread
+  bucket memory. Opt-in: RenderDispatcher::render(..., cpuAssist),
+  AppSettings::useCpuAssist() (Options > "Also use CPU threads during GPU
+  final renders", default on since 2026-11-13, see below), final renders only. apo_bench
+  --backend=gpu,hybrid, Release, Ryzen 7 5800H + CUDA GPU, wall time:
+    800x600 d200:          linear 0.210 -> 0.153s, transcendental 0.845 ->
+                           0.512s, blur 0.193 -> 0.204s (slower)
+    1920x1080 os2 d100:    linear 0.340 -> 0.281s, transcendental 1.064 ->
+                           0.790s, blur 0.339 -> 0.370s (slower)
+    1920x1080 d1000:       linear 2.74 -> 2.55s, transcendental 8.47 ->
+                           6.74s, blur 3.41 -> 3.28s
+  CPU share of points 5-22%. Compute-heavy flames gain most; flames whose
+  GPU time is dominated by histogram atomics (blur) only gain on long
+  renders, since each streamed point costs the GPU the same atomics -
+  hence default off. CPU-only path unchanged (renderBatch now takes a sink;
+  interleaved A/B vs 9c00456 within noise) and baseline_regression_test
+  bit-exact. New tests/hybrid_render_test.cpp (hybrid vs GPU-only 57.5 dB,
+  every sub-batch run exactly once, cancel/pause); 58/58 ctest pass.
+  2026-11-13 follow-up, laptop in performance mode, 4000x2500 os2 double:
+    Real 5-xform flame (gaussian_blur, noise, falloff2, curl3D, julia3Dz,
+    epispiral, ...): GPU-only only 5.9M pts/s (d300: 515s) - each xform
+    alone runs 28-129M pts/s on the GPU, so this is warp divergence across
+    xforms with different variation lists (devXformNextPoint's per-op
+    switch). CPU is unaffected (27-33M). d150: CPU 52-57s, hybrid 38-40s;
+    d300: hybrid 81s vs GPU 515s; d1000: CPU 306s, hybrid 282s, hybrid
+    with 8 CPU threads 342s. CPU share 82-86%.
+    transcendental fixture d1000 (~32s): GPU 32.8s, hybrid 31.6s.
+    d3000 (~2 min): GPU 115s / 127s, hybrid 129s, hybrid 8 CPU threads
+    146s. GPU sits at 87C with SW thermal slowdown in every mode, clocks
+    1900 -> ~1250 MHz. The earlier 2x hybrid loss (d2000, 108s vs 212s) was
+    in the laptop's balanced power mode, where CPU load takes the GPU's
+    power budget.
+    Fewer CPU threads never helped. Default switched to on: worst case
+    ~5-10% slower for GPU-friendly flames, ~6x faster for divergent ones.
+    Fixed by warp-uniform xform scheduling, see the entry above.
   2026-11-10: docs/RENDER_OPTIMIZATION_PLAN.md steps 1-4 implemented. Found
   by benchmarking at 16 threads (earlier Part B work measured mostly at 1
   thread, where this was invisible): setup was dominated by

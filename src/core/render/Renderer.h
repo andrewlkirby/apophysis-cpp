@@ -72,6 +72,9 @@ struct RenderStats {
     // Points that both passed the opacity roll AND landed within camera
     // bounds - i.e. actually contributed to a bucket.
     std::uint64_t pointsAccepted = 0;
+    // Hybrid CPU+GPU renders only (RenderDispatcher's cpuAssist): how many
+    // of pointsGenerated came from the CPU worker threads. 0 otherwise.
+    std::uint64_t cpuAssistPointsGenerated = 0;
 };
 
 struct RenderedImage {
@@ -102,6 +105,13 @@ struct RenderTimings {
     double iterateSeconds = 0;
     double reduceSeconds = 0;
     double tonemapSeconds = 0;
+    // GPU backend only: sub-batch points per second of the last launch that
+    // ran at the size the adaptive controller asked for (a render's final,
+    // remainder-sized launch doesn't count). Launch size ramps up over the
+    // first few launches, so this is the steady-state rate a long render
+    // settles at, where pointsGenerated / iterateSeconds of a short render
+    // would include the ramp. BackendProbe uses it. 0 if no such launch ran.
+    double gpuLastLaunchPointsPerSec = 0;
 };
 
 // FOLLOWUP_PLAN.txt B5. The chaos game's bucket writes are random-access

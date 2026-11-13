@@ -85,6 +85,7 @@ private:
 
     QSpinBox* threadCountSpin_ = nullptr;
     QCheckBox* useGpuCheck_ = nullptr;
+    QCheckBox* cpuAssistCheck_ = nullptr;
     QComboBox* previewQualityCombo_ = nullptr;
 
     // Random tab

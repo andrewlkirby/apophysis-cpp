@@ -1,6 +1,8 @@
 #pragma once
 
+#include <atomic>
 #include <memory>
+#include <thread>
 
 #include <QDialog>
 #include <QElapsedTimer>
@@ -8,6 +10,7 @@
 #include <QString>
 
 #include "core/Flame.h"
+#include "core/render/BackendProbe.h"
 #include "core/render/Renderer.h"
 
 class QThread;
@@ -92,9 +95,14 @@ signals:
     // render's estimated peak memory within budget; not live-tracked
     // afterward either way. `precision` mirrors fasterRenderingCheck_'s
     // state at Render time - see RenderWorker::renderFull's own doc
-    // comment for what it trades off.
+    // comment for what it trades off. `backend` is an apo::RenderBackend
+    // int - the "Render Backend" choice, with Auto already resolved from the
+    // probe when one has finished for these settings (Auto is passed through
+    // otherwise, meaning AppSettings' GPU/CPU-assist options) - see
+    // RenderWorker::renderFullWithBackend.
     void fullRenderRequested(std::shared_ptr<const apo::Flame> flame, quint64 seed, int threadCount,
-                              apo::RenderProgress* progress, QString outputPath, apo::BucketPrecision precision);
+                              apo::RenderProgress* progress, QString outputPath, apo::BucketPrecision precision,
+                              int backend);
 
 private slots:
     // `usedGpu`: see RenderWorker::fullRenderFinished's own doc comment -
@@ -131,6 +139,27 @@ private:
     // lifetime), but recomputing it alongside the memory estimates is cheap
     // and keeps this one call site the single place both update from.
     void updateMemoryEstimate();
+
+    // "Render Backend" Auto (apo::probeBackends, BackendProbe.h): measures
+    // the CPU and GPU on this flame at the dialog's settings, in a
+    // background thread, after the settings stop changing for a moment
+    // (probeTimer_). Rates don't depend on sample density, so the probe is
+    // keyed on what does change them (size, oversample, filter radius,
+    // precision, threads, GPU option) and density edits only refresh the
+    // time estimate. Never runs during a render; Render cancels one in
+    // flight.
+    QString currentProbeKey() const;
+    void scheduleProbe();
+    void startProbe();
+    void onProbeFinished(const QString& key, const apo::BackendProbeResult& result, bool aborted);
+    void abortProbe();
+    // Auto resolved for the current settings - the probe's pick, or Auto
+    // itself while no probe for these settings has finished.
+    apo::RenderBackend resolvedBackend(const apo::Flame& renderFlame, int threadCount) const;
+    // Pre-render estimate in seconds for `backend` (never Auto), with the
+    // learned AppSettings::renderTimeCorrection applied; 0 if unknown.
+    double estimatedSeconds(const apo::Flame& renderFlame, apo::RenderBackend backend, bool corrected) const;
+    void updateBackendLabel(const apo::Flame& probeFlame, int threadCount);
 
     std::shared_ptr<apo::Flame> flame_;
 
@@ -171,6 +200,9 @@ private:
     // since a GPU attempt can itself fail mid-render and fall back - this
     // label predicts, that one reports what actually happened).
     QLabel* backendIndicatorLabel_ = nullptr;
+    // Auto / GPU + CPU / GPU only / CPU only, item data = apo::RenderBackend
+    // int; persisted as AppSettings::renderBackendChoice().
+    QComboBox* backendCombo_ = nullptr;
     QLabel* memoryEstimateLabel_ = nullptr;
     // GPU device-memory estimate (RenderDispatcher::estimateGpuPeakMemoryBytes)
     // alongside memoryEstimateLabel_'s CPU one - "-" when no CUDA device is
@@ -226,6 +258,23 @@ private:
     // PostProcessDialog per click (WA_DeleteOnClose), same fire-and-forget
     // pattern EditorWindow used for it.
     std::shared_ptr<const apo::Flame> lastRenderedFlame_;
+
+    QTimer* probeTimer_ = nullptr;
+    std::thread probeThread_;
+    std::atomic<bool> probeAbort_{false};
+    bool probeRunning_ = false;
+    // Last valid probe and the settings it was measured for.
+    bool probeValid_ = false;
+    QString probeKey_;
+    apo::BackendProbeResult probeResult_;
+    // Settings whose probe failed (not aborted) - not retried until they
+    // change, so a broken GPU doesn't re-probe every few hundred ms.
+    QString probeFailedKey_;
+    // For learning AppSettings::renderTimeCorrection: the backend the
+    // in-flight render was started with and its uncorrected estimate (0 if
+    // there was none).
+    apo::RenderBackend renderBackend_ = apo::RenderBackend::Auto;
+    double renderEstimateRaw_ = 0;
 
     QString autoScreenshotPath_;
     bool autoScreenshotExit_ = false;

@@ -49,10 +49,34 @@ public:
     // rendering, but can't know about a GPU failure the render() call
     // itself falls back from) - so a UI status indicator reflects what
     // really happened, not just what was expected to.
+    //
+    // `cpuAssist` (default false): when the GPU path is taken, also run
+    // (threadCount - 1) CPU worker threads alongside it (threadCount 0 =
+    // hardware_concurrency()), streaming their points to the GPU - see
+    // gpu::GpuRenderer::render's cpuAssistThreads and
+    // docs/HYBRID_CPU_GPU_RENDERING_PLAN.md. Ignored when the render goes
+    // to the CPU anyway. Not bit-reproducible run to run.
+    // `cpuAssistThreads` >= 0 sets hybrid's CPU worker count directly
+    // instead of deriving it from threadCount (cpuAssistThreadCount). The
+    // two differ when a caller has reduced threadCount to bound the CPU
+    // renderer's per-thread histogram memory: hybrid's CPU workers keep no
+    // histograms (they stream points to the GPU), so that limit doesn't
+    // apply to them, while threadCount must still bound the CPU fallback
+    // render if the GPU fails.
     static RenderedImage render(const Flame& flame, std::uint64_t seed, int threadCount = 0,
                                  RenderProgress* progress = nullptr, RenderTimings* timings = nullptr,
                                  BucketPrecision precision = BucketPrecision::Double, bool preferGpu = true,
-                                 bool* usedGpu = nullptr);
+                                 bool* usedGpu = nullptr, bool cpuAssist = false,
+                                 int cpuAssistThreads = -1);
+
+    // True iff render() with these arguments would run hybrid CPU+GPU:
+    // wouldUseGpu() plus cpuAssist plus at least one CPU thread to spare.
+    static bool wouldUseCpuAssist(const Flame& flame, bool preferGpu, bool cpuAssist, int threadCount = 0);
+
+    // CPU worker threads a hybrid render runs for this threadCount
+    // (threadCount 0 = hardware_concurrency()): one fewer, leaving a core
+    // for the thread driving the GPU. 0 when there's none to spare.
+    static int cpuAssistThreadCount(int threadCount);
 
     // True iff a render() call with these same `flame`/`preferGpu` would
     // actually use the GPU path - cheap, does no rendering. Meant for a UI

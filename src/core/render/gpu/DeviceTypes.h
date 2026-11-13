@@ -34,9 +34,11 @@ constexpr int kDeviceFuse = 15;
 // FUSE-warms-up, iterates kDeviceSubBatchSize points, and atomicAdd's
 // straight into one shared device-global histogram (no per-thread private
 // bucket array the way the CPU path needs one - GPU atomics make that
-// unnecessary). A render launches DeviceFlameHost::numBatches such threads
-// total, chunked across multiple kernel launches for progress/cancel
-// polling - see GpuRenderer.cu.
+// unnecessary). A render runs DeviceFlameHost::numBatches sub-batches in
+// waves of as many threads as the GPU keeps resident, each sub-batch's
+// state saved between kernel launches so a sub-batch spans several short
+// launches (progress/cancel polling, Windows' GPU watchdog) - see
+// DeviceChaosWave in chaos_kernel.cuh and GpuRenderer.cu.
 
 // Op-sequence "opcodes" a DeviceXform's variation list can contain, beyond
 // the 0..28 local-variation ids (which match VariationRegistry's own fixed
@@ -97,6 +99,16 @@ struct DeviceBucket {
 };
 struct DeviceBucketF {
     float red = 0, green = 0, blue = 0, count = 0;
+};
+
+// Hybrid CPU+GPU rendering (docs/HYBRID_CPU_GPU_RENDERING_PLAN.md): one
+// point produced by a CPU worker thread, already reduced to its flat bucket
+// index and 0..255 color-map index - same layout as
+// apo::detail::StreamedPoint (PointStream.h), static_assert'd in
+// GpuRenderer.cu. scatterKernel adds these into the device histogram.
+struct DeviceStreamedPoint {
+    std::uint32_t bucket;
+    std::uint32_t color;
 };
 
 // Everything chaos_kernel.cu's per-sub-batch kernel needs, bundled into one

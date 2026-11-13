@@ -36,6 +36,8 @@ namespace {
 
 struct SettingsGuard {
     int savedThreads = apo::ui::AppSettings::renderThreadCount();
+    bool savedUseGpu = apo::ui::AppSettings::useGpuRendering();
+    bool savedCpuAssist = apo::ui::AppSettings::useCpuAssist();
     double savedDensity = apo::ui::AppSettings::previewSampleDensity();
     int savedRandomMin = apo::ui::AppSettings::randomMinXforms();
     int savedRandomMax = apo::ui::AppSettings::randomMaxXforms();
@@ -70,6 +72,8 @@ struct SettingsGuard {
 
     ~SettingsGuard() {
         apo::ui::AppSettings::setRenderThreadCount(savedThreads);
+        apo::ui::AppSettings::setUseGpuRendering(savedUseGpu);
+        apo::ui::AppSettings::setUseCpuAssist(savedCpuAssist);
         apo::ui::AppSettings::setPreviewSampleDensity(savedDensity);
         apo::ui::AppSettings::setRandomMinXforms(savedRandomMin);
         apo::ui::AppSettings::setRandomMaxXforms(savedRandomMax);
@@ -171,6 +175,37 @@ void testOkButtonPersistsChangesToAppSettings() {
           "OK persists the edited thread count to AppSettings");
     check(approxEqual(apo::ui::AppSettings::previewSampleDensity(), 4.0),
           "OK persists the edited preview quality (Low = density 4.0) to AppSettings");
+
+    delete dialog;
+}
+
+// docs/HYBRID_CPU_GPU_RENDERING_PLAN.md: the CPU-assist checkbox is seeded
+// from AppSettings, only enabled while "Use GPU rendering" is checked, and
+// persisted by OK.
+void testCpuAssistCheckbox() {
+    SettingsGuard guard;
+    apo::ui::AppSettings::setUseGpuRendering(true);
+    apo::ui::AppSettings::setUseCpuAssist(false);
+
+    auto* dialog = new apo::ui::OptionsDialog();
+    auto* gpuCheck = dialog->findChild<QCheckBox*>("useGpuCheck");
+    auto* assistCheck = dialog->findChild<QCheckBox*>("cpuAssistCheck");
+    auto* buttons = dialog->findChild<QDialogButtonBox*>();
+    if (!check(gpuCheck && assistCheck && buttons, "cpu assist: controls found")) {
+        delete dialog;
+        return;
+    }
+    check(!assistCheck->isChecked(), "cpu assist: seeded unchecked from AppSettings");
+    check(assistCheck->isEnabled(), "cpu assist: enabled while GPU rendering is checked");
+
+    gpuCheck->setChecked(false);
+    check(!assistCheck->isEnabled(), "cpu assist: disabled when GPU rendering is unchecked");
+    gpuCheck->setChecked(true);
+    check(assistCheck->isEnabled(), "cpu assist: re-enabled when GPU rendering is checked again");
+
+    assistCheck->setChecked(true);
+    QTest::mouseClick(buttons->button(QDialogButtonBox::Ok), Qt::LeftButton);
+    check(apo::ui::AppSettings::useCpuAssist(), "cpu assist: OK persists the checkbox to AppSettings");
 
     delete dialog;
 }
@@ -534,6 +569,7 @@ int main(int argc, char** argv) {
     testControlsSeededFromAppSettings();
     testThreadCountAutoIsZero();
     testOkButtonPersistsChangesToAppSettings();
+    testCpuAssistCheckbox();
     testCancelButtonDiscardsChanges();
     testRandomTabControlsSeededFromAppSettings();
     testRandomTabOkPersistsToAppSettings();

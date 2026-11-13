@@ -1,5 +1,6 @@
 #include "AppSettings.h"
 
+#include <algorithm>
 #include <cstddef>
 
 #include <QSettings>
@@ -12,6 +13,7 @@ namespace apo::ui::AppSettings {
 
 namespace {
 constexpr int kDefaultRenderThreadCount = 0; // Auto - see Renderer::render()
+constexpr bool kDefaultUseCpuAssist = true; // see AppSettings.h
 constexpr bool kDefaultUseGpuRendering = true; // see AppSettings.h's own comment on why this is safe as a default
 constexpr double kDefaultPreviewSampleDensity = 10.0; // matches the quality dropdown's own "10" preset
 
@@ -76,6 +78,39 @@ bool useGpuRendering() {
 
 void setUseGpuRendering(bool useGpu) {
     QSettings().setValue("rendering/useGpu", useGpu);
+}
+
+bool useCpuAssist() {
+    return QSettings().value("rendering/cpuAssist", kDefaultUseCpuAssist).toBool();
+}
+
+void setUseCpuAssist(bool enabled) {
+    QSettings().setValue("rendering/cpuAssist", enabled);
+}
+
+int renderBackendChoice() {
+    return QSettings().value("rendering/backendChoice", 0).toInt(); // 0 = apo::RenderBackend::Auto
+}
+
+void setRenderBackendChoice(int backend) {
+    QSettings().setValue("rendering/backendChoice", backend);
+}
+
+double renderTimeCorrection(int backend) {
+    const double v = QSettings().value(QString("rendering/timeCorrection%1").arg(backend), 1.0).toDouble();
+    return v > 0 ? v : 1.0;
+}
+
+void recordRenderTimeCorrection(int backend, double actualOverEstimate) {
+    if (!(actualOverEstimate > 0)) return;
+    // Clamped so one odd render (another app hogging the GPU, a sleep
+    // mid-render) can't wreck the estimate; averaged half-and-half with the
+    // previous value so it settles over a few renders.
+    const double sample = std::clamp(actualOverEstimate, 0.5, 4.0);
+    const QString key = QString("rendering/timeCorrection%1").arg(backend);
+    QSettings settings;
+    const double previous = settings.contains(key) ? settings.value(key).toDouble() : sample;
+    settings.setValue(key, 0.5 * previous + 0.5 * sample);
 }
 
 double previewSampleDensity() {

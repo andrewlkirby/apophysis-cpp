@@ -19,6 +19,7 @@
 #include "../Point3.h"
 #include "../Rng.h"
 #include "../XForm.h"
+#include "CpuPointProducer.h"
 #include "RenderPlan.h"
 
 namespace apo {
@@ -310,10 +311,17 @@ void parallelFor(int threadCount, long long totalWork, F&& fn) {
 // registered-variation Variation::rng stay on that boundary deliberately -
 // see the plan's own scoping for why: it's a much broader, riskier surface
 // to specialize, and not what this item measured).
-template <class Scalar>
-struct ThreadState {
+//
+// Split in two for hybrid CPU+GPU rendering (CpuPointProducer.h):
+// WorkerState is everything renderBatchTo() needs to iterate; ThreadState
+// adds the private bucket array only the CPU-only path accumulates into.
+struct WorkerState {
     std::unique_ptr<Flame> flame;
     Xoshiro256Rng rng;
+};
+
+template <class Scalar>
+struct ThreadState : WorkerState {
     BucketBuffer<Scalar> buckets;
 };
 
@@ -343,8 +351,13 @@ void accumulate(BucketBuffer<Scalar>& buckets, const RenderPlan& plan, double x,
 // the intermediate Points[] buffer and shared critical section (see
 // Renderer.h's comment on why: buckets are lock-free-private-per-thread
 // here, so there's no reason to defer accumulation to a second pass).
-template <class Scalar>
-void renderBatch(ThreadState<Scalar>& ts, const RenderPlan& plan, RenderStats& stats) {
+//
+// `sink(x, y, colorCoord)` receives each projected, finite point - the
+// CPU-only path's sink is accumulate() into the thread's private buckets
+// (see the renderBatch() overload below); the hybrid path's sink writes a
+// StreamedPoint for the GPU instead (CpuPointProducer).
+template <class Sink>
+void renderBatchTo(WorkerState& ts, const RenderPlan& plan, RenderStats& stats, Sink&& sink) {
     // Concrete Xoshiro256Rng&, not Rng& (FOLLOWUP_PLAN.txt B2a) - see
     // ThreadState's own comment on why.
     Xoshiro256Rng& rng = ts.rng;
@@ -395,9 +408,31 @@ void renderBatch(ThreadState<Scalar>& ts, const RenderPlan& plan, RenderStats& s
 
         if (!allFinite(q.x, q.y, q.z, qc)) continue;
 
-        accumulate(ts.buckets, plan, q.x, q.y, qc);
+        sink(q.x, q.y, qc);
         ++stats.pointsAccepted;
     }
+}
+
+template <class Scalar>
+void renderBatch(ThreadState<Scalar>& ts, const RenderPlan& plan, RenderStats& stats) {
+    renderBatchTo(ts, plan, stats,
+                  [&ts, &plan](double x, double y, double c) { accumulate(ts.buckets, plan, x, y, c); });
+}
+
+// Hybrid-mode counterpart of accumulate(): identical bounds test and
+// bucket/color index math, but returns the indices for the GPU to add
+// instead of adding them here. False if the point falls outside the camera.
+inline bool streamPointFor(const RenderPlan& plan, double x, double y, double colorCoord, StreamedPoint& out) {
+    const double px = x - plan.camX0;
+    if (px < 0 || px > plan.camW) return false;
+    const double py = y - plan.camY0;
+    if (py < 0 || py > plan.camH) return false;
+
+    const int bx = roundClamped(plan.bws * px, plan.bucketWidth - 1);
+    const int by = roundClamped(plan.bhs * py, plan.bucketHeight - 1);
+    out.bucket = static_cast<std::uint32_t>(static_cast<size_t>(by) * plan.bucketWidth + bx);
+    out.color = static_cast<std::uint32_t>(roundClamped(colorCoord * 255, 255));
+    return true;
 }
 
 // Sums every thread's private bucket array into one (see ThreadState's own
@@ -627,6 +662,52 @@ RenderedImage toneMap(const Flame& flame, const RenderPlan& plan, const BucketBu
     return image;
 }
 
+// Builds every RenderPlan field a render needs - shared by renderImpl() and
+// CpuPointProducer so the two can't drift apart.
+void buildFullPlan(const Flame& flame, int numXForms, RenderPlan& plan) {
+    plan.numXForms = numXForms;
+    plan.useFinalXform = flame.finalXformEnabled && flame.useFinalXform;
+    plan.propTable = buildPropTable(flame, numXForms);
+
+    plan.projectionKind = selectProjectionKind(flame);
+    plan.cameraMatrix = buildCameraMatrix(flame.cameraPitch, flame.cameraYaw);
+    plan.persp = flame.cameraPersp;
+    plan.zpos = flame.cameraZpos;
+    plan.dofCoef = 0.1 * flame.cameraDOF;
+
+    buildFilter(flame, plan);
+    buildBuffersAndCamera(flame, plan);
+    buildColorMap(flame, plan);
+    buildToneMap(flame, plan);
+    buildCurveTables(flame, plan);
+    buildAdaptiveDE(flame, plan);
+}
+
+// Per-thread Flame clone, RNG stream, solo-xform override and xform
+// prepare() - shared by renderImpl() and CpuPointProducer.
+void initWorker(WorkerState& ts, const Flame& flame, const RenderPlan& plan, std::uint64_t threadSeed) {
+    const int numXForms = plan.numXForms;
+    // cloneForRender(), not clone() (FOLLOWUP_PLAN.txt B1a) - a render's
+    // per-thread clone only ever touches xform[0..numXForms-1] and
+    // finalXform (see buildPropTable()'s own index range and every
+    // ts.flame-> access below), so there's no reason to pay clone()'s
+    // full 101-slot instantiate-then-assign cost per thread when a real
+    // flame typically uses a handful of xforms.
+    ts.flame = flame.cloneForRender(numXForms);
+    ts.rng = Xoshiro256Rng(threadSeed);
+
+    if (flame.soloXform >= 0 && flame.soloXform < numXForms) {
+        for (int i = 0; i < numXForms; ++i) ts.flame->xform[i]->transOpacity = 0;
+        ts.flame->xform[flame.soloXform]->transOpacity = 1;
+    }
+
+    // XForm::prepare() still takes the abstract Rng& (B2a's own
+    // scoping - see ThreadState's comment): ts.rng upcasts implicitly
+    // here, same as passing *unique_ptr<Rng> did before.
+    for (int i = 0; i < numXForms; ++i) ts.flame->xform[i]->prepare(ts.rng);
+    if (plan.useFinalXform) ts.flame->finalXform->prepare(ts.rng);
+}
+
 // The full render pipeline, templated on the bucket scalar type
 // (FOLLOWUP_PLAN.txt B5) - Renderer::render() below is a thin, non-template
 // dispatcher that picks Scalar=double (every existing caller's unchanged
@@ -648,22 +729,7 @@ RenderedImage renderImpl(const Flame& flame, std::uint64_t seed, int threadCount
     }
 
     RenderPlan plan;
-    plan.numXForms = numXForms;
-    plan.useFinalXform = flame.finalXformEnabled && flame.useFinalXform;
-    plan.propTable = buildPropTable(flame, numXForms);
-
-    plan.projectionKind = selectProjectionKind(flame);
-    plan.cameraMatrix = buildCameraMatrix(flame.cameraPitch, flame.cameraYaw);
-    plan.persp = flame.cameraPersp;
-    plan.zpos = flame.cameraZpos;
-    plan.dofCoef = 0.1 * flame.cameraDOF;
-
-    buildFilter(flame, plan);
-    buildBuffersAndCamera(flame, plan);
-    buildColorMap(flame, plan);
-    buildToneMap(flame, plan);
-    buildCurveTables(flame, plan);
-    buildAdaptiveDE(flame, plan);
+    buildFullPlan(flame, numXForms, plan);
 
     const int requestedThreads =
         threadCount > 0 ? threadCount : std::max(1u, std::thread::hardware_concurrency());
@@ -671,32 +737,14 @@ RenderedImage renderImpl(const Flame& flame, std::uint64_t seed, int threadCount
     std::vector<ThreadState<Scalar>> threadStates(static_cast<size_t>(requestedThreads));
     for (int t = 0; t < requestedThreads; ++t) {
         ThreadState<Scalar>& ts = threadStates[t];
-        // cloneForRender(), not clone() (FOLLOWUP_PLAN.txt B1a) - a render's
-        // per-thread clone only ever touches xform[0..numXForms-1] and
-        // finalXform (see buildPropTable()'s own index range and every
-        // ts.flame-> access below), so there's no reason to pay clone()'s
-        // full 101-slot instantiate-then-assign cost per thread when a real
-        // flame typically uses a handful of xforms.
-        ts.flame = flame.cloneForRender(numXForms);
         // Distinct per-thread seeds derived from the caller's seed via
         // splitmix-style mixing (not just seed+t: adjacent integer seeds
         // fed straight into a raw LCG-like stream can correlate early
         // output - Xoshiro256Rng's own constructor already reseeds via
         // splitmix64 internally, so seed+t here is fine as an *input* to
         // that, it just needs to be distinct per thread, which it is).
-        ts.rng = Xoshiro256Rng(seed + static_cast<std::uint64_t>(t) * 0x9e3779b97f4a7c15ULL);
+        initWorker(ts, flame, plan, seed + static_cast<std::uint64_t>(t) * 0x9e3779b97f4a7c15ULL);
         ts.buckets = BucketBuffer<Scalar>(static_cast<size_t>(plan.bucketWidth) * plan.bucketHeight);
-
-        if (flame.soloXform >= 0 && flame.soloXform < numXForms) {
-            for (int i = 0; i < numXForms; ++i) ts.flame->xform[i]->transOpacity = 0;
-            ts.flame->xform[flame.soloXform]->transOpacity = 1;
-        }
-
-        // XForm::prepare() still takes the abstract Rng& (B2a's own
-        // scoping - see ThreadState's comment): ts.rng upcasts implicitly
-        // here, same as passing *unique_ptr<Rng> did before.
-        for (int i = 0; i < numXForms; ++i) ts.flame->xform[i]->prepare(ts.rng);
-        if (plan.useFinalXform) ts.flame->finalXform->prepare(ts.rng);
     }
 
     std::vector<RenderStats> threadStats(static_cast<size_t>(requestedThreads));
@@ -906,5 +954,118 @@ std::vector<std::pair<double, double>> Renderer::samplePoints(const Flame& flame
     }
     return points;
 }
+
+// ---------------------------------------------------------------------
+// CpuPointProducer (hybrid CPU+GPU rendering - see CpuPointProducer.h)
+// ---------------------------------------------------------------------
+
+namespace detail {
+
+struct CpuPointProducer::Impl {
+    RenderPlan plan;
+    std::vector<WorkerState> workers;
+    std::vector<RenderStats> stats;
+    std::vector<std::jthread> threads;
+    std::exception_ptr firstError;
+    std::atomic<bool> firstErrorFlag{false};
+    std::mutex errorMutex;
+    bool joined = false;
+    RenderStats total;
+};
+
+CpuPointProducer::CpuPointProducer(const Flame& flame, std::uint64_t seed, int threadCount,
+                                   std::atomic<int>& nextBatch, PointStream& stream, RenderProgress* progress)
+    : impl_(std::make_unique<Impl>()) {
+    Impl& im = *impl_;
+    const int numXForms = flame.numXForms();
+    if (numXForms <= 0 || flame.width <= 0 || flame.height <= 0) {
+        im.plan.numBatches = 0;
+        return;
+    }
+    buildFullPlan(flame, numXForms, im.plan);
+
+    threadCount = std::max(0, threadCount);
+    im.workers.resize(static_cast<size_t>(threadCount));
+    im.stats.resize(static_cast<size_t>(threadCount));
+    for (int t = 0; t < threadCount; ++t) {
+        // Salted so no CPU stream can share a seed input with a GPU
+        // sub-batch: the GPU seeds sub-batch i from seed + i * golden with
+        // i < 2^31 (chaos_kernel.cu); these use seed + (2^32 + t) * golden.
+        const std::uint64_t salt = (std::uint64_t{1} << 32) + static_cast<std::uint64_t>(t);
+        initWorker(im.workers[static_cast<size_t>(t)], flame, im.plan, seed + salt * 0x9e3779b97f4a7c15ULL);
+    }
+
+    im.threads.reserve(static_cast<size_t>(threadCount));
+    running_.store(threadCount, std::memory_order_relaxed);
+    for (int t = 0; t < threadCount; ++t) {
+        im.threads.emplace_back([this, t, &nextBatch, &stream, progress] {
+            Impl& im = *impl_;
+            const RenderPlan& plan = im.plan;
+            WorkerState& ws = im.workers[static_cast<size_t>(t)];
+            RenderStats& stats = im.stats[static_cast<size_t>(t)];
+            PointStream::Chunk* chunk = nullptr;
+            try {
+                for (;;) {
+                    if (progress && progress->cancelRequested.load(std::memory_order_relaxed)) break;
+                    if (im.firstErrorFlag.load(std::memory_order_relaxed) || stream.isAborted()) break;
+                    const int batch = nextBatch.fetch_add(1, std::memory_order_relaxed);
+                    if (batch >= plan.numBatches) break;
+
+                    if (!chunk || chunk->capacity - chunk->count < kSubBatchSize) {
+                        if (chunk) stream.submitFull(chunk);
+                        chunk = stream.acquireEmpty();
+                        if (!chunk) break; // stream aborted - the render is being discarded
+                    }
+                    StreamedPoint* out = chunk->data;
+                    int n = chunk->count;
+                    renderBatchTo(ws, plan, stats, [&plan, out, &n](double x, double y, double c) {
+                        if (streamPointFor(plan, x, y, c, out[n])) ++n;
+                    });
+                    chunk->count = n;
+
+                    if (progress) {
+                        progress->pointsDone.fetch_add(kSubBatchSize, std::memory_order_relaxed);
+                        waitWhilePaused(progress);
+                    }
+                }
+            } catch (...) {
+                if (!im.firstErrorFlag.exchange(true, std::memory_order_relaxed)) {
+                    std::lock_guard<std::mutex> lock(im.errorMutex);
+                    im.firstError = std::current_exception();
+                }
+                if (progress) progress->cancelRequested.store(true, std::memory_order_relaxed);
+            }
+            if (chunk) stream.submitFull(chunk);
+            running_.fetch_sub(1, std::memory_order_release);
+        });
+    }
+}
+
+CpuPointProducer::~CpuPointProducer() {
+    // jthreads join on destruction; callers must abort() the stream first
+    // if the consumer has stopped releasing chunks (see GpuRenderer.cu).
+    if (impl_) impl_->threads.clear();
+}
+
+int CpuPointProducer::bucketWidth() const { return impl_->plan.bucketWidth; }
+int CpuPointProducer::bucketHeight() const { return impl_->plan.bucketHeight; }
+int CpuPointProducer::numBatches() const { return impl_->plan.numBatches; }
+
+RenderStats CpuPointProducer::join() {
+    Impl& im = *impl_;
+    if (!im.joined) {
+        for (auto& th : im.threads) th.join();
+        im.threads.clear();
+        im.joined = true;
+        for (const RenderStats& s : im.stats) {
+            im.total.pointsGenerated += s.pointsGenerated;
+            im.total.pointsAccepted += s.pointsAccepted;
+        }
+    }
+    if (im.firstError) std::rethrow_exception(im.firstError);
+    return im.total;
+}
+
+} // namespace detail
 
 } // namespace apo

@@ -104,6 +104,18 @@ QWidget* OptionsDialog::buildGeneralTab() {
     useGpuCheck_->setObjectName("useGpuCheck");
     useGpuCheck_->setChecked(AppSettings::useGpuRendering());
     perfForm->addRow(useGpuCheck_);
+
+    // AppSettings::useCpuAssist() - only meaningful while GPU rendering is
+    // on, so it's disabled (not hidden) whenever that box is unchecked.
+    cpuAssistCheck_ = new QCheckBox("Also use CPU threads during GPU final renders", perfGroup);
+    cpuAssistCheck_->setObjectName("cpuAssistCheck");
+    cpuAssistCheck_->setToolTip("Runs CPU render threads alongside the GPU for final renders. Much faster for flames "
+                                "whose xforms use many different variations (the GPU handles those poorly); "
+                                "can be slightly slower for simple flames on a laptop that is limited by heat.");
+    cpuAssistCheck_->setChecked(AppSettings::useCpuAssist());
+    cpuAssistCheck_->setEnabled(useGpuCheck_->isChecked());
+    connect(useGpuCheck_, &QCheckBox::toggled, cpuAssistCheck_, &QWidget::setEnabled);
+    perfForm->addRow(cpuAssistCheck_);
     layout->addWidget(perfGroup);
 
     auto* previewGroup = new QGroupBox("Preview", tab);
@@ -471,6 +483,7 @@ QWidget* OptionsDialog::buildNewFlameTab() {
 void OptionsDialog::applyAndAccept() {
     AppSettings::setRenderThreadCount(threadCountSpin_->value());
     AppSettings::setUseGpuRendering(useGpuCheck_->isChecked());
+    AppSettings::setUseCpuAssist(cpuAssistCheck_->isChecked());
 
     const int index = previewQualityCombo_->currentIndex();
     if (index >= 0 && index < static_cast<int>(std::size(kPreviewQualityPresets))) {

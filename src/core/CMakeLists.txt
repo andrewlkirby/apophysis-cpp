@@ -42,6 +42,8 @@ add_library(apo_core OBJECT
     render/Renderer.h
     render/Renderer.cpp
     render/RenderPlan.h
+    render/PointStream.h
+    render/CpuPointProducer.h
     render/RenderPlan.cpp
     render/AutoFrame.h
     render/AutoFrame.cpp
@@ -53,6 +55,8 @@ add_library(apo_core OBJECT
     render/gpu/DeviceFlame.h
     render/gpu/DeviceFlameBuilder.cpp
     render/RenderDispatcher.h
+    render/BackendProbe.cpp
+    render/BackendProbe.h
     render/RenderDispatcher.cpp
     io/PngWriter.h
     io/PngWriter.cpp

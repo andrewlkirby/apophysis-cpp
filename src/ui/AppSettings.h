@@ -47,6 +47,38 @@ void setRenderThreadCount(int threads);
 bool useGpuRendering();
 void setUseGpuRendering(bool useGpu);
 
+// docs/HYBRID_CPU_GPU_RENDERING_PLAN.md: when a final render goes to the
+// GPU, also run CPU worker threads alongside it (RenderDispatcher::render's
+// `cpuAssist`). Defaults to true. Since the GPU renderer keeps the whole
+// GPU busy (sub-batches spanning launches, docs/FOLLOWUP_PLAN.txt
+// 2026-11-13) the CPU's share in hybrid mode is small (~15-20%) and hybrid
+// measured roughly even with GPU-only: ~7% faster on a compute-heavy
+// fixture, within noise on a real 5-xform flame, and up to ~5-10% slower
+// for cheap flames on long thermally limited laptop renders. The Render
+// dialog's Auto backend measures and picks per flame instead; this setting
+// covers the other final-render paths.
+// Only consulted for final renders (Render dialog, Render All), not
+// interactive previews.
+bool useCpuAssist();
+void setUseCpuAssist(bool enabled);
+
+// RenderDialog's "Render Backend" choice, as apo::RenderBackend's int value
+// (core/render/BackendProbe.h). Defaults to Auto, which measures the flame
+// (apo::probeBackends) and picks; the explicit choices override useGpuRendering/
+// useCpuAssist for that dialog's renders only. Other final-render paths
+// (Render All, fullscreen, post-process) keep using those two options.
+int renderBackendChoice();
+void setRenderBackendChoice(int backend);
+
+// Learned ratio of actual to estimated render time for `backend`
+// (apo::RenderBackend int), applied to RenderDialog's pre-render estimate.
+// The probe runs for a few seconds on a cool machine, so long renders on a
+// thermally limited laptop take longer than it predicts; each finished
+// render long enough to show that (see RenderDialog) nudges this toward
+// what it measured. 1.0 until a render has been recorded.
+double renderTimeCorrection(int backend);
+void recordRenderTimeCorrection(int backend, double actualOverEstimate);
+
 // Sample density used for live-updating interactive previews - every
 // EditorWindow render (triangle drags, property edits, ...), AdjustDialog's
 // slider drags, MutateDialog's 3x3 mutant grid, and MainWindow's own

@@ -5,9 +5,9 @@
 // Resumed/testPauseThenCancelStopsWithoutNeedingResumeFirst, but exercised at
 // the point-count scale a real interactive preview or final render actually
 // hits, not a single-sub-batch toy case: GpuRenderer::render() polls
-// progress/cancel/pause once per kernel-launch chunk, sized by
-// GpuRenderer.cu's adaptLaunchSize() to target ~0.35s per launch (see that
-// function's own doc comment) rather than a fixed sub-batch count - a
+// progress/cancel/pause once per kernel launch, sized by GpuRenderer.cu's
+// adaptStepsPerLaunch() to target ~0.35s per launch (see that function's
+// own doc comment) rather than a fixed sub-batch count - a
 // coarser granularity than the CPU renderer's per-10,000-point check, so
 // this file specifically measures *how coarse in practice* - the time
 // between setting cancelRequested/pauseRequested and the render actually

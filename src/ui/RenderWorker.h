@@ -3,6 +3,7 @@
 #include <cstdint>
 #include <exception>
 #include <memory>
+#include <utility>
 
 #include <QDebug>
 #include <QImage>
@@ -11,6 +12,7 @@
 
 #include "core/Flame.h"
 #include "core/io/PngWriter.h"
+#include "core/render/BackendProbe.h"
 #include "core/render/RenderDispatcher.h"
 #include "core/render/Renderer.h"
 
@@ -161,6 +163,27 @@ public slots:
     void renderFull(std::shared_ptr<const apo::Flame> flame, quint64 seed, int threadCount,
                      apo::RenderProgress* progress, QString outputPath,
                      apo::BucketPrecision precision = apo::BucketPrecision::Double) {
+        renderFullWithBackend(std::move(flame), seed, threadCount, progress, std::move(outputPath), precision,
+                              static_cast<int>(apo::RenderBackend::Auto));
+    }
+
+    // renderFull with an explicit backend (apo::RenderBackend's int value -
+    // an int so it queues across threads without a metatype). Auto keeps
+    // renderFull's behavior: AppSettings::useGpuRendering()/useCpuAssist().
+    // Cpu/Gpu/Hybrid force that backend (RenderDialog's "Render Backend"
+    // choice, with Auto already resolved there by measuring); the GPU ones
+    // still fall back to the CPU if the flame can't run on the GPU.
+    void renderFullWithBackend(std::shared_ptr<const apo::Flame> flame, quint64 seed, int threadCount,
+                               apo::RenderProgress* progress, QString outputPath, apo::BucketPrecision precision,
+                               int backend) {
+        bool preferGpu = AppSettings::useGpuRendering();
+        bool cpuAssist = AppSettings::useCpuAssist();
+        switch (static_cast<apo::RenderBackend>(backend)) {
+            case apo::RenderBackend::Cpu: preferGpu = false; cpuAssist = false; break;
+            case apo::RenderBackend::Gpu: preferGpu = true; cpuAssist = false; break;
+            case apo::RenderBackend::Hybrid: preferGpu = true; cpuAssist = true; break;
+            case apo::RenderBackend::Auto: break;
+        }
         // Note: a cancelled render already reaches this point normally (the
         // early-break in Renderer::render() just stops feeding more points
         // into the buckets already accumulated) and gets tone-mapped and
@@ -175,7 +198,13 @@ public slots:
             bool usedGpu = false;
             const apo::RenderedImage image =
                 apo::RenderDispatcher::render(*flame, seed, threadCount, progress, /*timings=*/nullptr, precision,
-                                               AppSettings::useGpuRendering(), &usedGpu);
+                                               preferGpu, &usedGpu, cpuAssist,
+                                               // Hybrid's CPU workers keep no histograms, so
+                                               // they use the full requested thread count, not
+                                               // the memory-reduced threadCount (which still
+                                               // bounds a CPU fallback) - see RenderDispatcher.
+                                               apo::RenderDispatcher::cpuAssistThreadCount(
+                                                   AppSettings::renderThreadCount()));
 
             bool saved = true;
             if (!outputPath.isEmpty() && !image.pixels.empty()) {

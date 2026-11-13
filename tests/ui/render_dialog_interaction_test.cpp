@@ -32,7 +32,9 @@
 #include <QTimer>
 
 #include "../TestHelpers.h"
+#include "AppSettings.h"
 #include "RenderDialog.h"
+#include "core/render/BackendProbe.h"
 #include "core/io/FlameIO.h"
 #include "core/io/PngWriter.h"
 
@@ -821,6 +823,62 @@ void testCancelStopsRenderAndUpdatesStatus() {
     delete dialog;
 }
 
+// "Render Backend" choice (RenderDialog's backendCombo, BackendProbe.h):
+// an explicit choice reaches the render call and is persisted, and Auto
+// measures the flame in the background, then shows and passes on its pick.
+// This 48x48 flame is far below RenderDispatcher::kMinGpuBatches, so Auto
+// always resolves to CPU here - independent of whether this machine has a
+// CUDA device.
+// (This binary sets no QApplication organization/application name, so the
+// choice isn't persisted to the user's real settings here; restored anyway.)
+void testBackendChoiceReachesTheRenderCall() {
+    const int savedChoice = apo::ui::AppSettings::renderBackendChoice();
+    const char* outputPath = "render_dialog_backend_test_output.png";
+    std::remove(outputPath);
+
+    auto flame = makeSierpinskiFlame();
+    auto* dialog = new apo::ui::RenderDialog(flame);
+    auto* combo = dialog->findChild<QComboBox*>("backendCombo");
+    auto* label = dialog->findChild<QLabel*>("backendIndicatorLabel");
+    auto* outputPathEdit = dialog->findChild<QLineEdit*>("outputPathEdit");
+    auto* renderButton = dialog->findChild<QPushButton*>("renderButton");
+    auto* cancelButton = dialog->findChild<QPushButton*>("cancelButton");
+    if (!check(combo && label && outputPathEdit && renderButton && cancelButton, "backend: controls found")) {
+        delete dialog;
+        return;
+    }
+    check(combo->count() == 4, "backend: Auto / GPU + CPU / GPU only / CPU only");
+    outputPathEdit->setText(outputPath);
+
+    const auto renderAndGetBackend = [&]() -> int {
+        QSignalSpy spy(dialog, &apo::ui::RenderDialog::fullRenderRequested);
+        QTest::mouseClick(renderButton, Qt::LeftButton);
+        const int backend = spy.count() == 1 ? spy.at(0).at(6).toInt() : -1;
+        QTest::mouseClick(cancelButton, Qt::LeftButton);
+        waitUntil([renderButton] { return renderButton->isEnabled(); });
+        return backend;
+    };
+
+    combo->setCurrentIndex(combo->findData(static_cast<int>(apo::RenderBackend::Cpu)));
+    check(label->text().startsWith("CPU"), "backend: label shows the explicit CPU choice");
+    check(renderAndGetBackend() == static_cast<int>(apo::RenderBackend::Cpu),
+          "backend: an explicit choice reaches fullRenderRequested");
+
+    combo->setCurrentIndex(combo->findData(static_cast<int>(apo::RenderBackend::Auto)));
+    check(label->text().startsWith("Auto: "), "backend: label marks Auto");
+    // The probe starts after a short debounce and takes well under a second
+    // on a render this small; the label then gains its time estimate.
+    const bool measured = waitUntil([label] { return label->text().contains("about"); }, 10000);
+    check(measured, ("backend: Auto finishes measuring and shows an estimate (" + label->text().toStdString() + ")")
+                        .c_str());
+    check(renderAndGetBackend() == static_cast<int>(apo::RenderBackend::Cpu),
+          "backend: Auto passes its resolved pick (CPU for a render too small for the GPU)");
+
+    delete dialog;
+    std::remove(outputPath);
+    apo::ui::AppSettings::setRenderBackendChoice(savedChoice);
+}
+
 } // namespace
 
 int main(int argc, char** argv) {
@@ -845,6 +903,7 @@ int main(int argc, char** argv) {
     testPauseFreezesProgressUntilResumed();
     testPauseThenCancelStillCancels();
     testCancelStopsRenderAndUpdatesStatus();
+    testBackendChoiceReachesTheRenderCall();
 
     return apo_test::reportAndExit();
 }

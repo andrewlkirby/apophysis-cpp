@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <memory>
 
 #include <QWidget>
@@ -44,11 +45,9 @@ public:
     // Re-reads every control from the current Flame state - for the host to
     // call after any edit that didn't originate from this panel (undo/redo,
     // a Transform-tab edit that happened to touch a shared field, switching
-    // back to this panel after time away). Also resets the Gradient tab's
-    // Reset button baseline and Amount-control baseline to the flame's
-    // *current* gradient, matching AdjustDialog's own onUndo/onRedo
-    // behavior (see its refreshControlsFromFlame() doc history) - not the
-    // gradient present when this panel was first constructed.
+    // back to this panel after time away). If the flame's gradient was
+    // changed outside this panel, the Gradient tab's per-mode amounts reset
+    // and apply on top of that new gradient; otherwise they are kept.
     void refreshControlsFromFlame();
 
 signals:
@@ -72,6 +71,11 @@ private:
     void pickBackgroundColor();
     void setGradientMode(int modeIndex);
     void applyGradientAmount(double amount);
+    void recomputeGradient();
+    // Replaces the gradient the per-mode amounts are applied to and resets
+    // every amount to its mode's default (used by Invert/Reverse/Randomize/
+    // Reset/Browse and by external edits such as undo).
+    void setGradientSource(const apo::ColorMap& source);
     void openGradientBrowser();
 
     void beginEditIfNeeded();
@@ -79,7 +83,13 @@ private:
 
     std::shared_ptr<apo::Flame> flame_;
     apo::ColorMap initialCmap_;      // for the Gradient tab's Reset button
-    apo::ColorMap gradientBaseline_; // snapshot the current mode's slider amount is applied on top of
+    // The Gradient tab's modes are non-destructive: flame_->cmap is always
+    // recomputed as gradientSource_ with every mode's remembered amount
+    // applied, so switching modes keeps each mode's value and returning a
+    // slider to its default exactly restores the unadjusted gradient.
+    apo::ColorMap gradientSource_;
+    apo::ColorMap gradientOutput_; // last value written to flame_->cmap by recomputeGradient()
+    std::array<double, 7> gradientAmounts_{};
     bool hasPendingGesture_ = false;
 
     // Camera tab

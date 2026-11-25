@@ -62,7 +62,10 @@ QImage colorMapToImage(const apo::ColorMap& cmap) {
 } // namespace
 
 AdjustPanel::AdjustPanel(std::shared_ptr<apo::Flame> flame, QWidget* parent)
-    : QWidget(parent), flame_(std::move(flame)), initialCmap_(flame_->cmap), gradientBaseline_(flame_->cmap) {
+    : QWidget(parent), flame_(std::move(flame)), initialCmap_(flame_->cmap), gradientSource_(flame_->cmap),
+      gradientOutput_(flame_->cmap) {
+    for (std::size_t i = 0; i < gradientAmounts_.size(); ++i) gradientAmounts_[i] = kGradientModes[i].defaultValue;
+
     auto* rootLayout = new QVBoxLayout(this);
     rootLayout->setContentsMargins(0, 0, 0, 0);
 
@@ -101,7 +104,9 @@ void AdjustPanel::refreshControlsFromFlame() {
     heightSpin_->blockSignals(false);
     sizeAspectRatio_ = static_cast<double>(flame_->width) / std::max(1, flame_->height);
 
-    gradientBaseline_ = flame_->cmap;
+    // Only rebase the gradient modes when the gradient changed outside this
+    // panel (undo/redo, a load, ...); otherwise keep every mode's amount.
+    if (flame_->cmap.entries != gradientOutput_.entries) setGradientSource(flame_->cmap);
     refreshGradientStrip();
 }
 
@@ -279,22 +284,19 @@ QWidget* AdjustPanel::buildGradientTab() {
     });
     connect(gradientAmountCtrl_, &SliderSpin::editingFinished, this, [this](double v) {
         applyGradientAmount(v);
-        gradientBaseline_ = flame_->cmap;
         commitEditIfNeeded();
     });
 
     connect(invertButton, &QPushButton::clicked, this, [this] {
         beginEditIfNeeded();
-        flame_->cmap = apo::invertGradient(flame_->cmap);
-        gradientBaseline_ = flame_->cmap;
+        setGradientSource(apo::invertGradient(flame_->cmap));
         refreshGradientStrip();
         emit propertyEdited();
         commitEditIfNeeded();
     });
     connect(reverseButton, &QPushButton::clicked, this, [this] {
         beginEditIfNeeded();
-        flame_->cmap = apo::reverseGradient(flame_->cmap);
-        gradientBaseline_ = flame_->cmap;
+        setGradientSource(apo::reverseGradient(flame_->cmap));
         refreshGradientStrip();
         emit propertyEdited();
         commitEditIfNeeded();
@@ -302,16 +304,14 @@ QWidget* AdjustPanel::buildGradientTab() {
     connect(randomizeButton, &QPushButton::clicked, this, [this] {
         beginEditIfNeeded();
         apo::Xoshiro256Rng rng(std::random_device{}());
-        flame_->cmap = apo::randomGradient(rng);
-        gradientBaseline_ = flame_->cmap;
+        setGradientSource(apo::randomGradient(rng));
         refreshGradientStrip();
         emit propertyEdited();
         commitEditIfNeeded();
     });
     connect(resetButton, &QPushButton::clicked, this, [this] {
         beginEditIfNeeded();
-        flame_->cmap = initialCmap_;
-        gradientBaseline_ = flame_->cmap;
+        setGradientSource(initialCmap_);
         refreshGradientStrip();
         emit propertyEdited();
         commitEditIfNeeded();
@@ -325,8 +325,7 @@ void AdjustPanel::openGradientBrowser() {
     auto* browser = new GradientBrowserDialog(this);
     connect(browser, &GradientBrowserDialog::gradientApplied, this, [this](apo::ColorMap cmap) {
         beginEditIfNeeded();
-        flame_->cmap = cmap;
-        gradientBaseline_ = flame_->cmap;
+        setGradientSource(cmap);
         refreshGradientStrip();
         emit propertyEdited();
         commitEditIfNeeded();
@@ -416,31 +415,49 @@ void AdjustPanel::pickBackgroundColor() {
 
 void AdjustPanel::setGradientMode(int modeIndex) {
     if (modeIndex < 0 || modeIndex >= static_cast<int>(std::size(kGradientModes))) return;
-    gradientBaseline_ = flame_->cmap;
     const auto& mode = kGradientModes[modeIndex];
-    gradientAmountCtrl_->setRange(mode.min, mode.max, mode.defaultValue);
+    gradientAmountCtrl_->setRange(mode.min, mode.max, gradientAmounts_[static_cast<std::size_t>(modeIndex)]);
+}
+
+void AdjustPanel::setGradientSource(const apo::ColorMap& source) {
+    gradientSource_ = source;
+    for (std::size_t i = 0; i < gradientAmounts_.size(); ++i) gradientAmounts_[i] = kGradientModes[i].defaultValue;
+    flame_->cmap = source;
+    gradientOutput_ = source;
+    const int modeIndex = gradientModeCombo_ ? gradientModeCombo_->currentIndex() : -1;
+    if (modeIndex >= 0 && gradientAmountCtrl_) gradientAmountCtrl_->setValue(kGradientModes[modeIndex].defaultValue);
 }
 
 void AdjustPanel::applyGradientAmount(double amount) {
     const int modeIndex = gradientModeCombo_->currentIndex();
-    if (modeIndex < 0) return;
-
-    switch (modeIndex) {
-        case 0: flame_->cmap = apo::rotateGradient(gradientBaseline_, static_cast<int>(std::lround(amount))); break;
-        case 1: flame_->cmap = apo::hueShiftGradient(gradientBaseline_, amount); break;
-        case 2: flame_->cmap = apo::saturationShiftGradient(gradientBaseline_, amount); break;
-        case 3:
-            flame_->cmap = apo::brightnessShiftGradient(gradientBaseline_, static_cast<int>(std::lround(amount)));
-            break;
-        case 4:
-            flame_->cmap = apo::contrastShiftGradient(gradientBaseline_, static_cast<int>(std::lround(amount)));
-            break;
-        case 5: flame_->cmap = apo::blurGradient(gradientBaseline_, static_cast<int>(std::lround(amount))); break;
-        case 6: flame_->cmap = apo::frequencyGradient(gradientBaseline_, static_cast<int>(std::lround(amount))); break;
-        default: break;
-    }
+    if (modeIndex < 0 || modeIndex >= static_cast<int>(gradientAmounts_.size())) return;
+    gradientAmounts_[static_cast<std::size_t>(modeIndex)] = amount;
+    recomputeGradient();
     refreshGradientStrip();
     emit propertyEdited();
+}
+
+void AdjustPanel::recomputeGradient() {
+    // Each mode at its default amount is skipped entirely (rather than
+    // applied as a no-op), so e.g. a hue shift of 0 can't introduce HSV
+    // round-trip error: all amounts at default == the untouched source.
+    const auto amount = [this](int mode) { return gradientAmounts_[static_cast<std::size_t>(mode)]; };
+    const auto amountInt = [&](int mode) { return static_cast<int>(std::lround(amount(mode))); };
+    const auto isDefault = [&](int mode) { return amount(mode) == kGradientModes[mode].defaultValue; };
+
+    apo::ColorMap cmap = gradientSource_;
+    // Per-entry color adjustments first, then the spatial ones, so Rotate
+    // (applied last) slides the finished gradient as a whole.
+    if (!isDefault(1)) cmap = apo::hueShiftGradient(cmap, amount(1));
+    if (!isDefault(2)) cmap = apo::saturationShiftGradient(cmap, amount(2));
+    if (!isDefault(3)) cmap = apo::brightnessShiftGradient(cmap, amountInt(3));
+    if (!isDefault(4)) cmap = apo::contrastShiftGradient(cmap, amountInt(4));
+    if (!isDefault(5)) cmap = apo::blurGradient(cmap, amountInt(5));
+    if (!isDefault(6)) cmap = apo::frequencyGradient(cmap, amountInt(6));
+    if (amountInt(0) != 0) cmap = apo::rotateGradient(cmap, amountInt(0));
+
+    flame_->cmap = cmap;
+    gradientOutput_ = cmap;
 }
 
 void AdjustPanel::beginEditIfNeeded() {

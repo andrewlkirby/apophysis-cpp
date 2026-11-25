@@ -218,9 +218,10 @@ void testGradientRotateModeMatchesGradientOps() {
     delete dialog;
 }
 
-void testGradientModeSwitchResetsAmountWithoutChangingGradient() {
+void testGradientModeSwitchKeepsAmountWithoutChangingGradient() {
     auto flame = makeTestFlame();
     for (int i = 0; i < 256; ++i) flame->cmap.entries[i] = {i, 255 - i, 128, 255};
+    const apo::ColorMap original = flame->cmap;
 
     auto* dialog = new apo::ui::AdjustDialog(flame);
     auto* modeCombo = dialog->findChild<QComboBox*>("gradientModeCombo");
@@ -234,8 +235,15 @@ void testGradientModeSwitchResetsAmountWithoutChangingGradient() {
     const apo::ColorMap afterRotate = flame->cmap;
 
     modeCombo->setCurrentIndex(1); // Hue
-    check(amountCtrl->value() == 0.0, "switching gradient mode resets the Amount control to that mode's default");
+    check(amountCtrl->value() == 0.0, "an untouched mode shows its default amount");
     check(flame->cmap.entries == afterRotate.entries, "switching gradient mode alone does not change the gradient");
+
+    modeCombo->setCurrentIndex(0); // back to Rotate
+    check(amountCtrl->value() == 20.0, "returning to a mode restores its remembered amount");
+    check(flame->cmap.entries == afterRotate.entries, "switching back does not change the gradient");
+
+    typeIntoSliderSpin(amountCtrl, 0);
+    check(flame->cmap.entries == original.entries, "returning the amount to 0 restores the original gradient");
 
     delete dialog;
 }
@@ -394,7 +402,7 @@ int main(int argc, char** argv) {
     testGammaSliderCommitsLiveAndOnRelease();
     testBackgroundColorPicker();
     testGradientRotateModeMatchesGradientOps();
-    testGradientModeSwitchResetsAmountWithoutChangingGradient();
+    testGradientModeSwitchKeepsAmountWithoutChangingGradient();
     testInvertReverseRandomizeResetButtons();
     testSizeTabApplyRescalesFlame();
     testFlameChangedSignalFiresOnceOnCommit();

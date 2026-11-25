@@ -16,7 +16,7 @@
 ; directly while setting this up).
 
 #define AppName "Apophysis 7X"
-#define AppVersion "1.0.0"
+#define AppVersion "1.2.0"
 #define AppPublisher "Apophysis Developers Team"
 #define AppExeName "apo_gui.exe"
 #define SourceDir "..\build\deploy"

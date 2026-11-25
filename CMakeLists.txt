@@ -101,7 +101,7 @@ set(CMAKE_AUTOMOC ON)
 # Declared here (rather than in cmake/Packaging.cmake) so src/ui's
 # MACOSX_BUNDLE_*_VERSION properties can use it too - both need the same
 # value, and src/ui is added before Packaging.cmake is included below.
-set(APO_VERSION "1.0.0" CACHE STRING "Apophysis 7X (C++ port) version, used for package filenames and bundle metadata")
+set(APO_VERSION "1.2.0" CACHE STRING "Apophysis 7X (C++ port) version, used for package filenames and bundle metadata")
 
 add_subdirectory(src/core)
 add_subdirectory(src/tools)
